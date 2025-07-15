@@ -71,10 +71,10 @@ const Hero = () => {
         data-ai-hint="happy children charity"
       />
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-center pt-24 md:pt-0">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
           Building a Brighter Future, Together
         </h1>
-        <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up">
+        <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
           We are committed to empowering communities through education, healthcare, and sustainable development.
         </p>
 
