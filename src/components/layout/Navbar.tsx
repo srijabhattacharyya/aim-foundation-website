@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '#', label: 'Home' },
@@ -21,7 +22,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <span className="font-bold text-xl text-primary font-headline">AIM Foundation</span>
+          <Image src="https://placehold.co/120x50.png" alt="AIM Foundation Logo" width={120} height={50} data-ai-hint="logo" />
         </Link>
         <div className="hidden md:flex items-center gap-6">
           <nav className="flex gap-6 items-center">
@@ -46,7 +47,7 @@ const Navbar = () => {
               <div className="flex flex-col p-6">
                 <div className="flex justify-between items-center mb-6">
                    <Link href="/" className="flex items-center gap-2">
-                    <span className="font-bold text-xl text-primary font-headline">AIM Foundation</span>
+                     <Image src="https://placehold.co/120x50.png" alt="AIM Foundation Logo" width={120} height={50} data-ai-hint="logo" />
                   </Link>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon">
