@@ -17,7 +17,7 @@ const patrons = [
 
 const Patrons = () => {
   return (
-    <section className="py-12 md:py-20 lg:py-24 bg-background">
+    <section className="py-12 md:py-20 lg:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Patrons & Supporters</h2>
