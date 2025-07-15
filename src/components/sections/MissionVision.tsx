@@ -34,7 +34,7 @@ const MissionVision = () => {
                 <CardTitle className="font-headline">{item.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base mb-6">{item.description}</CardDescription>
+                <CardDescription className="text-base mb-6 text-justify">{item.description}</CardDescription>
                 <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-transform transform hover:scale-105">
                   Learn More
                 </Button>
