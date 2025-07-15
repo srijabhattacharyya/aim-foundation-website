@@ -32,10 +32,10 @@ const Navbar = () => {
               </Link>
             ))}
           </nav>
-          <Button>Donate Now</Button>
+          <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
         </div>
         <div className="md:hidden flex items-center gap-2">
-          <Button size="sm">Donate Now</Button>
+          <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">

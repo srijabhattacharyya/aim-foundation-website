@@ -63,7 +63,7 @@ const Hero = () => {
       <Image
         src="https://placehold.co/1920x1080.png"
         alt="A group of happy children"
-        layout="fill"
+        fill
         objectFit="cover"
         className="brightness-50"
         data-ai-hint="happy children charity"
@@ -100,7 +100,7 @@ const Hero = () => {
                             <Image src={program.image} alt={program.title} width={80} height={80} className="rounded-full border-2 border-primary" data-ai-hint={program.data_ai_hint}/>
                             <h4 className="font-bold text-lg font-headline">{program.title}</h4>
                             <p className="text-sm text-center">{program.description}</p>
-                             <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto">Learn More</Button>
+                             <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">Learn More</Button>
                         </CardContent>
                         </Card>
                     </div>

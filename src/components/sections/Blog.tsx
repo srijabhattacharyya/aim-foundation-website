@@ -48,7 +48,7 @@ const Blog = () => {
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2 font-headline">{post.title}</h3>
                 <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-                <Button asChild variant="link" className="p-0">
+                <Button asChild variant="link" className="p-0 transition-transform transform hover:scale-105">
                   <Link href="#">Read More &rarr;</Link>
                 </Button>
               </CardContent>

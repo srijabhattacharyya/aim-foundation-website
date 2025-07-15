@@ -39,7 +39,7 @@ const Newsletter = () => {
               className="flex-grow text-base"
               aria-label="Email for newsletter"
             />
-            <Button type="submit" size="lg" className="flex-shrink-0">
+            <Button type="submit" size="lg" className="flex-shrink-0 transition-transform transform hover:scale-105">
               Subscribe
             </Button>
           </form>
