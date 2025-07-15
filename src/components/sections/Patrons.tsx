@@ -16,8 +16,6 @@ const patrons = [
 ];
 
 const Patrons = () => {
-  const allPatrons = [...patrons, ...patrons]; // Duplicate for seamless scrolling
-
   return (
     <section className="py-12 md:py-20 lg:py-24 bg-muted">
       <div className="container mx-auto px-4 md:px-6">
@@ -29,9 +27,23 @@ const Patrons = () => {
         </div>
         <div
           className="relative h-96 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
-          <div className="animate-scroll-y">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-              {allPatrons.map((patron, index) => (
+          <div className="flex flex-col animate-scroll-y-seamless">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 py-4">
+              {patrons.map((patron, index) => (
+                <div key={index} className="flex justify-center items-center h-24">
+                  <Image
+                    src={patron.logo}
+                    alt={patron.name}
+                    width={150}
+                    height={80}
+                    className="object-contain max-h-full max-w-full grayscale hover:grayscale-0 transition-all duration-300"
+                    data-ai-hint={patron.data_ai_hint}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 py-4" aria-hidden="true">
+              {patrons.map((patron, index) => (
                 <div key={index} className="flex justify-center items-center h-24">
                   <Image
                     src={patron.logo}

@@ -98,8 +98,8 @@ export default {
             transform: 'translateY(0)'
           }
         },
-        'scroll-y': {
-            '0%': { transform: 'translateY(100%)' },
+        'scroll-y-seamless': {
+            '0%': { transform: 'translateY(0)' },
             '100%': { transform: 'translateY(-100%)' },
         }
       },
@@ -108,7 +108,7 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in-down': 'fade-in-down 0.8s ease-out forwards',
         'fade-in-up': 'fade-in-up 0.8s ease-out 0.4s forwards',
-        'scroll-y': 'scroll-y 40s linear infinite',
+        'scroll-y-seamless': 'scroll-y-seamless 40s linear infinite',
       },
     },
   },
