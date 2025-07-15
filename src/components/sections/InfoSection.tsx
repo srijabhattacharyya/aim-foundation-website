@@ -8,9 +8,14 @@ const InfoSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold font-headline">
             Lighting the Way for Those Left Behind
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground">
-            Since inception, Associated Initiative for Mankind Foundation (AIM Foundation) have stood beside marginalized communities — nurturing children, healing the sick, empowering women, and restoring dignity where it's been lost.
-          </p>
+          <div className="mt-6 text-lg text-muted-foreground space-y-4">
+            <p>
+                Since inception, Associated Initiative for Mankind Foundation (AIM Foundation) have stood beside marginalized communities — nurturing children, healing the sick, empowering women, and restoring dignity where it's been lost.
+            </p>
+            <p className="font-semibold">
+                Together, we’re not just reaching lives — we’re transforming them.
+            </p>
+          </div>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="transition-transform transform hover:scale-105">Learn More</Button>
             <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105">Join Us</Button>
