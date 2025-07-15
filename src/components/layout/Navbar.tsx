@@ -47,7 +47,7 @@ const navLinks = [
   { href: '#events', label: 'Events' },
   { href: '#join', label: 'Together' },
   { href: '#blog', label: 'Blog' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#contact', label: 'Connect' },
 ];
 
 const Navbar = () => {
