@@ -10,7 +10,7 @@ const InfoSection = () => {
           </h2>
           <div className="mt-6 text-lg text-muted-foreground space-y-4">
             <p>
-                Since inception, Associated Initiative for Mankind Foundation (AIM Foundation) have stood beside marginalized communities — nurturing children, healing the sick, empowering women, and restoring dignity where it's been lost.
+                Since inception, <strong>Associated Initiative for Mankind Foundation (AIM Foundation)</strong> have stood beside marginalized communities — nurturing children, healing the sick, empowering women, and restoring dignity where it's been lost.
             </p>
             <p className="font-semibold">
                 Together, we’re not just reaching lives — we’re transforming them.
