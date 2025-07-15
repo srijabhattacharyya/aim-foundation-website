@@ -10,63 +10,54 @@ const programs = [
   {
     title: 'Educational Initiatives',
     description: 'Fostering learning and growth for all ages.',
-    image: 'https://placehold.co/80x80.png',
-    data_ai_hint: 'students classroom',
+    image: '/images/logo.png',
   },
   {
     title: 'Healthcare Initiatives',
     description: 'Ensuring access to quality medical care for communities.',
-    image: 'https://placehold.co/80x80.png',
-    data_ai_hint: 'doctor patient',
+    image: '/images/logo.png',
   },
   {
     title: 'Environment Initiatives',
     description: 'Protecting and preserving our planet for future generations.',
-    image: 'https://placehold.co/80x80.png',
-    data_ai_hint: 'nature conservation',
+    image: '/images/logo.png',
   },
   {
     title: 'Gender Equality Initiative',
     description: 'Empowering women and girls to achieve their full potential.',
-    image: 'https://placehold.co/80x80.png',
-    data_ai_hint: 'women empowerment',
+    image: '/images/logo.png',
   },
   {
     title: 'Childcare Initiatives',
     description: 'Providing safe and nurturing environments for children.',
-    image: 'https://placehold.co/80x80.png',
-    data_ai_hint: 'children playing',
+    image: '/images/logo.png',
   },
   {
     title: 'Relief to the underprivileged',
     description: 'Offering support and resources to those in need.',
-    image: 'https://placehold.co/80x80.png',
-    data_ai_hint: 'community help',
+    image: '/images/logo.png',
   },
   {
     title: 'Disaster Management',
     description: 'Providing timely aid and support during crises.',
-    image: 'https://placehold.co/80x80.png',
-    data_ai_hint: 'emergency relief',
+    image: '/images/logo.png',
   },
   {
     title: 'Ignite Change Initiative',
     description: 'Inspiring and mobilizing communities for social good.',
-    image: 'https://placehold.co/80x80.png',
-    data_ai_hint: 'community action',
+    image: '/images/logo.png',
   },
 ];
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-auto py-20 md:h-[80vh] flex items-center justify-center text-white">
+    <section className="relative w-full h-auto py-20 md:h-[80vh] flex items-center text-white">
       <Image
-        src="https://placehold.co/1920x1080.png"
+        src="/images/logo.png"
         alt="A group of happy children"
         fill
         objectFit="cover"
         className="brightness-50"
-        data-ai-hint="happy children charity"
       />
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-center pt-24 md:pt-0">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
@@ -97,7 +88,7 @@ const Hero = () => {
                     <div className="p-1 h-full">
                         <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full flex flex-col">
                         <CardContent className="flex flex-col items-center justify-center p-6 space-y-4 flex-grow">
-                            <Image src={program.image} alt={program.title} width={80} height={80} className="rounded-full border-2 border-primary" data-ai-hint={program.data_ai_hint}/>
+                            <Image src={program.image} alt={program.title} width={80} height={80} className="rounded-full border-2 border-primary" />
                             <h3 className="font-bold text-lg font-headline">{program.title}</h3>
                             <p className="text-sm text-center">{program.description}</p>
                              <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">Learn More</Button>

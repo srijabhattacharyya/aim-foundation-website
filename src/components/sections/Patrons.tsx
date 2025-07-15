@@ -1,18 +1,18 @@
 import Image from 'next/image';
 
 const patrons = [
-  { name: 'Patron 1', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 2', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 3', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 4', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 5', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 6', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 7', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 8', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 9', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 10', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 11', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
-  { name: 'Patron 12', logo: 'https://placehold.co/150x80.png', data_ai_hint: 'company logo' },
+  { name: 'Patron 1', logo: '/images/logo.png' },
+  { name: 'Patron 2', logo: '/images/logo.png' },
+  { name: 'Patron 3', logo: '/images/logo.png' },
+  { name: 'Patron 4', logo: '/images/logo.png' },
+  { name: 'Patron 5', logo: '/images/logo.png' },
+  { name: 'Patron 6', logo: '/images/logo.png' },
+  { name: 'Patron 7', logo: '/images/logo.png' },
+  { name: 'Patron 8', logo: '/images/logo.png' },
+  { name: 'Patron 9', logo: '/images/logo.png' },
+  { name: 'Patron 10', logo: '/images/logo.png' },
+  { name: 'Patron 11', logo: '/images/logo.png' },
+  { name: 'Patron 12', logo: '/images/logo.png' },
 ];
 
 const Patrons = () => {
@@ -36,7 +36,6 @@ const Patrons = () => {
                     width={150}
                     height={80}
                     className="object-contain max-h-full max-w-full grayscale hover:grayscale-0 transition-all duration-300"
-                    data-ai-hint={patron.data_ai_hint}
                   />
                 </div>
               ))}
@@ -50,7 +49,6 @@ const Patrons = () => {
                     width={150}
                     height={80}
                     className="object-contain max-h-full max-w-full grayscale hover:grayscale-0 transition-all duration-300"
-                    data-ai-hint={patron.data_ai_hint}
                   />
                 </div>
               ))}

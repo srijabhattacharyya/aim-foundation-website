@@ -8,12 +8,11 @@ const DonateSection = () => {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="https://placehold.co/600x400.png"
+              src="/images/logo.png"
               alt="Children receiving aid"
               width={600}
               height={400}
               className="w-full h-full object-cover"
-              data-ai-hint="charity donation"
             />
           </div>
           <div className="space-y-4 text-justify">
