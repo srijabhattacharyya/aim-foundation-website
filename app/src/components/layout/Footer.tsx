@@ -38,16 +38,16 @@ const Footer = () => {
               <li><Link href="#join" className="text-muted-foreground hover:text-primary transition-colors">Join Us</Link></li>
               <li><Link href="#join" className="text-muted-foreground hover:text-primary transition-colors">Donate Now</Link></li>
               <li><Link href="#team" className="text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
+              <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
             </ul>
           </div>
           <div>
             <h5 className="font-semibold text-md mb-4">Follow Us</h5>
             <div className="flex space-x-4">
-              <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors"><Facebook size={24} /></Link>
-              <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors"><Twitter size={24} /></Link>
-              <Link href="#" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors"><Instagram size={24} /></Link>
-              <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
+              <Link href="/" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors"><Facebook size={24} /></Link>
+              <Link href="/" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors"><Twitter size={24} /></Link>
+              <Link href="/" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors"><Instagram size={24} /></Link>
+              <Link href="/" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
             </div>
             <div className='mt-4'>
                 <h6 className='font-semibold text-md mb-4'>Newsletter</h6>
