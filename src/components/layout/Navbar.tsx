@@ -23,14 +23,18 @@ const Navbar = () => {
         <Link href="/" className="flex items-center gap-2">
           <span className="font-bold text-xl text-primary font-headline">AIM Foundation</span>
         </Link>
-        <nav className="hidden md:flex gap-6 items-center">
-          {navLinks.map((link) => (
-            <Link key={link.label} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="md:hidden">
+        <div className="hidden md:flex items-center gap-6">
+          <nav className="flex gap-6 items-center">
+            {navLinks.map((link) => (
+              <Link key={link.label} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <Button>Donate Now</Button>
+        </div>
+        <div className="md:hidden flex items-center gap-2">
+          <Button size="sm">Donate Now</Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
