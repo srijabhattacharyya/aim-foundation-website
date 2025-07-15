@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import InfoSection from "@/components/sections/InfoSection";
 import MissionVision from "@/components/sections/MissionVision";
-import Notices from "@/components/sections/Notices";
+import Patrons from "@/components/sections/Patrons";
 import DonateSection from "@/components/sections/DonateSection";
 import Activities from "@/components/sections/Activities";
 import Impact from "@/components/sections/Impact";
@@ -21,7 +21,7 @@ export default function Home() {
         <Hero />
         <InfoSection />
         <MissionVision />
-        <Notices />
+        <Patrons />
         <DonateSection />
         <Activities />
         <Impact />
