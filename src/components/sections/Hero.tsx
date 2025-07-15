@@ -5,6 +5,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
 import Autoplay from "embla-carousel-autoplay"
+import Link from 'next/link';
+import { PlayCircle } from 'lucide-react';
 
 const programs = [
   {
@@ -59,7 +61,7 @@ const programs = [
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center text-white">
+    <section className="relative w-full h-auto py-20 md:h-[80vh] flex items-center justify-center text-white">
       <Image
         src="https://placehold.co/1920x1080.png"
         alt="A group of happy children"
@@ -75,6 +77,15 @@ const Hero = () => {
         <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up">
           We are committed to empowering communities through education, healthcare, and sustainable development.
         </p>
+
+        <div className="flex justify-center mb-8 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+          <Link href="https://www.youtube.com/watch?v=sG3BRIdRI3k" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="lg" className="bg-transparent text-white border-white hover:bg-white hover:text-black transition-transform transform hover:scale-105">
+              <PlayCircle className="mr-2 h-6 w-6" />
+              Watch Our Story
+            </Button>
+          </Link>
+        </div>
         
         <div className="mt-8">
             <h2 className="text-2xl font-semibold mb-6">Our Current Programs</h2>
