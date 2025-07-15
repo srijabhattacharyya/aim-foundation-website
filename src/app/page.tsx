@@ -22,9 +22,9 @@ export default function Home() {
         <Hero />
         <InfoSection />
         <MissionVision />
-        <Patrons />
         <AboutUs />
         <DonateSection />
+        <Patrons />
         <Activities />
         <Impact />
         <Testimonials />
