@@ -61,7 +61,7 @@ const programs = [
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-auto py-20 md:h-[80vh] flex justify-center text-white">
+    <section className="relative w-full h-auto py-20 md:h-[80vh] flex items-center justify-center text-white">
       <Image
         src="https://placehold.co/1920x1080.png"
         alt="A group of happy children"
@@ -70,7 +70,7 @@ const Hero = () => {
         className="brightness-50"
         data-ai-hint="happy children charity"
       />
-      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-center">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-center pt-24 md:pt-0">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down">
           Building a Brighter Future, Together
         </h1>
