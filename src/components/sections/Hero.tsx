@@ -52,16 +52,16 @@ const Hero = () => {
                 }}
                 className="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto"
             >
-                <CarouselContent>
+                <CarouselContent className="-ml-4">
                 {programs.map((program, index) => (
-                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
-                        <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300">
-                        <CardContent className="flex flex-col items-center justify-center p-6 space-y-4">
+                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
+                    <div className="p-1 h-full">
+                        <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full flex flex-col">
+                        <CardContent className="flex flex-col items-center justify-center p-6 space-y-4 flex-grow">
                             <Image src={program.image} alt={program.title} width={80} height={80} className="rounded-full border-2 border-primary" data-ai-hint={program.data_ai_hint}/>
                             <h4 className="font-bold text-lg font-headline">{program.title}</h4>
                             <p className="text-sm text-center">{program.description}</p>
-                             <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black">Learn More</Button>
+                             <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto">Learn More</Button>
                         </CardContent>
                         </Card>
                     </div>
