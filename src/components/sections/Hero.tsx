@@ -5,22 +5,52 @@ import { Button } from '@/components/ui/button';
 
 const programs = [
   {
-    title: 'Education for All',
-    description: 'Providing quality education and resources to underprivileged children.',
-    image: 'https://placehold.co/600x400.png',
-    data_ai_hint: 'children studying',
+    title: 'Educational Initiatives',
+    description: 'Fostering learning and growth for all ages.',
+    image: 'https://placehold.co/80x80.png',
+    data_ai_hint: 'students classroom',
   },
   {
-    title: 'Healthcare Outreach',
-    description: 'Delivering essential medical services to remote communities.',
-    image: 'https://placehold.co/600x400.png',
-    data_ai_hint: 'medical camp',
+    title: 'Healthcare Initiatives',
+    description: 'Ensuring access to quality medical care for communities.',
+    image: 'https://placehold.co/80x80.png',
+    data_ai_hint: 'doctor patient',
   },
   {
-    title: 'Women Empowerment',
-    description: 'Skill development programs to help women achieve financial independence.',
-    image: 'https://placehold.co/600x400.png',
-    data_ai_hint: 'women working',
+    title: 'Environment Initiatives',
+    description: 'Protecting and preserving our planet for future generations.',
+    image: 'https://placehold.co/80x80.png',
+    data_ai_hint: 'nature conservation',
+  },
+  {
+    title: 'Gender Equality Initiative',
+    description: 'Empowering women and girls to achieve their full potential.',
+    image: 'https://placehold.co/80x80.png',
+    data_ai_hint: 'women empowerment',
+  },
+  {
+    title: 'Childcare Initiatives',
+    description: 'Providing safe and nurturing environments for children.',
+    image: 'https://placehold.co/80x80.png',
+    data_ai_hint: 'children playing',
+  },
+  {
+    title: 'Relief to the underprivileged',
+    description: 'Offering support and resources to those in need.',
+    image: 'https://placehold.co/80x80.png',
+    data_ai_hint: 'community help',
+  },
+  {
+    title: 'Disaster Management',
+    description: 'Providing timely aid and support during crises.',
+    image: 'https://placehold.co/80x80.png',
+    data_ai_hint: 'emergency relief',
+  },
+  {
+    title: 'Ignite Change Initiative',
+    description: 'Inspiring and mobilizing communities for social good.',
+    image: 'https://placehold.co/80x80.png',
+    data_ai_hint: 'community action',
   },
 ];
 
