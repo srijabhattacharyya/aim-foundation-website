@@ -10,21 +10,14 @@ const AboutUs = () => {
             <h2 className="text-3xl md:text-4xl font-bold font-headline">BE A PART OF OUR ACTIVITIES</h2>
             <div className="text-lg text-muted-foreground text-justify space-y-4">
                 <p>
-                    Mahatma Gandhi once said, “The best way to find yourself is to lose yourself in the service of others.” This timeless wisdom reminds us that true fulfillment often lies not in chasing personal success, but in giving ourselves to something greater.
+                    Mahatma Gandhi once said, “The best way to find yourself is to lose yourself in the service of others.” In our fast-paced world, it's easy to become consumed by routines, goals, and personal demands. While ambition drives us forward, it can also leave us feeling disconnected — from others and from our deeper selves.
                 </p>
                 <p>
-                    In today’s fast-paced, hyper-connected world, we’re constantly running — juggling responsibilities, chasing deadlines, and meeting our own expectations. While ambition and self-care are important, they can sometimes trap us in a cycle of self-focus, leaving little room for reflection, empathy, or meaningful connection.
-                </p>
-                <p>
-                    Community service, especially on weekends, offers a beautiful way to pause and realign. When we step out of our routines and give our time to others — to comfort, to support, to uplift — we begin to see the world through a broader, more compassionate lens. We discover the quiet, transformative power of helping someone without expecting anything in return.
-                </p>
-                <p>
-                    Through acts of service — whether it's teaching a child, organizing a health camp, planting a tree, or simply listening to someone in need — we begin to uncover parts of ourselves we didn’t know existed. We find purpose, peace, and a deeper sense of humanity.
+                    Weekend community service offers a powerful way to break that cycle. By stepping outside of our daily lives and offering our time to those in need, we not only uplift others — we reconnect with meaning, compassion, and purpose.
                 </p>
                 <div className="pt-4 italic">
-                    <p>In lifting others, we rise too.</p>
-                    <p>In healing others, we heal ourselves.</p>
-                    <p>And in serving others, we truly find ourselves.</p>
+                    <p>In giving, we grow.</p>
+                    <p>In serving, we discover who we truly are.</p>
                 </div>
             </div>
           </div>
