@@ -10,14 +10,18 @@ const AboutUs = () => {
             <h2 className="text-3xl md:text-4xl font-bold font-headline">BE A PART OF OUR ACTIVITIES</h2>
             <div className="text-lg text-muted-foreground text-justify space-y-4">
                 <p>
-                    Mahatma Gandhi once said, “The best way to find yourself is to lose yourself in the service of others.” In our fast-paced world, it's easy to become consumed by routines, goals, and personal demands. While ambition drives us forward, it can also leave us feeling disconnected — from others and from our deeper selves.
+                    Mahatma Gandhi once said, “The best way to find yourself is to lose yourself in the service of others.”
+                </p>
+                 <p>
+                    In today’s fast-paced world, we often become wrapped up in routines, chasing goals, and focusing on our own needs. In doing so, we may overlook the deeper meaning that comes from helping others.
                 </p>
                 <p>
-                    Weekend community service offers a powerful way to break that cycle. By stepping outside of our daily lives and offering our time to those in need, we not only uplift others — we reconnect with meaning, compassion, and purpose.
+                    Engaging in weekend community service gives us the chance to pause, connect, and contribute. Whether it’s supporting a child, aiding a community, or simply offering time — these moments create real change, both around us and within us.
                 </p>
                 <div className="pt-4 italic">
-                    <p>In giving, we grow.</p>
-                    <p>In serving, we discover who we truly are.</p>
+                    <p>In serving others, we discover purpose.</p>
+                    <p>In healing others, we heal ourselves.</p>
+                    <p>In lifting others, we find ourselves.</p>
                 </div>
             </div>
           </div>
