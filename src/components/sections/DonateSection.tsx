@@ -16,13 +16,19 @@ const DonateSection = () => {
               data-ai-hint="charity donation"
             />
           </div>
-          <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">Your Donation Can Change a Life</h2>
+          <div className="space-y-4 text-justify">
+            <h2 className="text-3xl md:text-4xl font-bold font-headline text-left">Your Donation Can Change a Life</h2>
             <p className="text-lg text-muted-foreground">
-              Every contribution, no matter how small, helps us provide essential resources, education, and healthcare to those in need. By donating today, you become a part of their story of hope and transformation.
+              Every contribution — no matter how small — plays a vital role in bringing hope, dignity, and opportunity to those who need it most. Your generosity helps us provide essential resources, quality education, accessible healthcare, and a chance at a brighter future for underserved communities.
             </p>
-            <p className="text-muted-foreground">
-              Your support allows us to expand our reach and continue our work in creating a better, more equitable world for everyone.
+            <p className="text-lg text-muted-foreground">
+              When you choose to donate, you’re not just giving money — you’re becoming part of a powerful journey of change. You become a thread in the story of someone’s transformation, someone’s second chance, someone’s new beginning.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Your support empowers us to reach more lives, extend our programs further, and work toward building a world where compassion, equality, and opportunity are within everyone’s reach.
+            </p>
+            <p className="text-lg text-muted-foreground">
+                Together, we can make lasting impact — one act of kindness at a time.
             </p>
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform transform hover:scale-105">
               Donate Now
