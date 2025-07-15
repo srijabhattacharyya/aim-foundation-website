@@ -6,17 +6,20 @@ import Link from 'next/link';
 const blogPosts = [
   {
     title: 'The Power of a Single Meal',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'meal charity',
     excerpt: 'Discover how providing one meal can create a ripple effect of change in a community...',
   },
   {
     title: 'From Darkness to Light: A Story of Education',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'education children',
     excerpt: 'Read the inspiring journey of a young girl who found her path through our educational programs...',
   },
   {
     title: 'Our Volunteers, Our Heroes',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'volunteers group',
     excerpt: 'A tribute to the selfless individuals who dedicate their time and energy to our cause...',
   },
 ];
@@ -39,6 +42,7 @@ const Blog = () => {
                 alt={post.title}
                 width={600}
                 height={400}
+                data-ai-hint={post.hint}
                 className="w-full h-48 object-cover"
               />
               <CardContent className="p-6">

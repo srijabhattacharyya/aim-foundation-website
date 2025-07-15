@@ -7,19 +7,22 @@ const testimonials = [
     name: 'Sunita Devi',
     role: 'Beneficiary',
     testimonial: 'The skills I learned through the AIM Foundation have empowered me to start my own small business. I am forever grateful for their support.',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/40x40.png',
+    hint: 'indian woman',
   },
   {
     name: 'Rohan Verma',
     role: 'Volunteer',
     testimonial: 'Volunteering with the AIM Foundation has been a life-changing experience. Seeing the direct impact of our work is incredibly rewarding.',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/40x40.png',
+    hint: 'indian man',
   },
   {
     name: 'Prakash Iyer',
     role: 'Donor',
     testimonial: 'I trust AIM Foundation with my contributions because of their transparency and the real, tangible results they deliver in communities.',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/40x40.png',
+    hint: 'indian man',
   },
 ];
 
@@ -43,7 +46,7 @@ const Testimonials = () => {
                 <blockquote className="text-muted-foreground mb-6 flex-grow text-justify">"{testimonial.testimonial}"</blockquote>
                 <div className="flex items-center">
                   <Avatar>
-                    <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                    <AvatarImage src={testimonial.image} alt={testimonial.name} data-ai-hint={testimonial.hint} />
                     <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div className="ml-4">

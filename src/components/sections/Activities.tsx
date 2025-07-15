@@ -10,37 +10,43 @@ const activities = [
   {
     title: 'Community Health Camp',
     date: 'October 26, 2023',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'health camp',
     description: 'A successful health camp providing free check-ups and medicines to over 500 people in rural areas.',
   },
   {
     title: 'Educational Material Distribution',
     date: 'October 15, 2023',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'education charity',
     description: 'We distributed books, bags, and stationery to underprivileged students to support their education.',
   },
   {
     title: 'Environmental Awareness Drive',
     date: 'September 28, 2023',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'environment cleanup',
     description: 'Planted over 1000 saplings and conducted workshops on waste management in local communities.',
   },
   {
     title: 'Women Empowerment Workshop',
     date: 'September 10, 2023',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'women empowerment',
     description: 'Conducted a workshop on financial literacy and skill development for women in the community.',
   },
   {
     title: 'Clean Water Project',
     date: 'August 22, 2023',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'clean water',
     description: 'Installed a new water purification system to provide clean drinking water to a village of 1,200 people.',
   },
   {
     title: 'Disaster Relief Mission',
     date: 'August 5, 2023',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'disaster relief',
     description: 'Provided essential supplies, shelter, and medical aid to families affected by recent flooding.',
   },
 ];
@@ -79,6 +85,7 @@ const Activities = () => {
                         alt={activity.title}
                         width={600}
                         height={400}
+                        data-ai-hint={activity.hint}
                         className="w-full h-48 object-cover"
                       />
                     </CardHeader>

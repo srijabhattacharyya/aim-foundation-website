@@ -6,22 +6,26 @@ const teamMembers = [
   {
     name: 'Mr. Tarun K. Chatterjee',
     designation: 'Founder & Chairman',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/128x128.png',
+    hint: 'portrait male',
   },
   {
     name: 'Mrs. Priya Sharma',
     designation: 'Chief Executive Officer',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/128x128.png',
+    hint: 'portrait female',
   },
   {
     name: 'Mr. Rajesh Kumar',
     designation: 'Head of Operations',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/128x128.png',
+    hint: 'portrait male',
   },
   {
     name: 'Ms. Anjali Mehta',
     designation: 'Lead, Community Outreach',
-    image: '/images/logo.png',
+    image: 'https://placehold.co/128x128.png',
+    hint: 'portrait female',
   },
 ];
 
@@ -40,7 +44,7 @@ const Team = () => {
             <Card key={index} className="text-center p-6 border-0 shadow-none hover:bg-muted transition-colors duration-300">
               <CardContent className="flex flex-col items-center">
                 <Avatar className="w-32 h-32 mb-4 border-4 border-primary/20">
-                  <AvatarImage src={member.image} alt={member.name} />
+                  <AvatarImage src={member.image} alt={member.name} data-ai-hint={member.hint} />
                   <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <h3 className="text-lg font-bold font-headline">{member.name}</h3>

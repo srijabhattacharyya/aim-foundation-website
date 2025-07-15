@@ -26,10 +26,11 @@ const AboutUs = () => {
           </div>
           <div className="rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="/images/logo.png"
+              src="https://placehold.co/600x400.png"
               alt="Our team working with the community"
               width={600}
               height={400}
+              data-ai-hint="community work"
               className="w-full h-full object-cover"
             />
           </div>
