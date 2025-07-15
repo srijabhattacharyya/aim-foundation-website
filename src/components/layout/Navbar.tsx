@@ -30,7 +30,20 @@ const navLinks = [
       { href: '#team', label: 'Our Team' },
     ]
   },
-  { href: '#initiatives', label: 'Initiatives' },
+  { 
+    label: 'Initiatives',
+    isDropdown: true,
+    items: [
+      { href: '#', label: 'Educational Initiatives' },
+      { href: '#', label: 'Healthcare Initiatives' },
+      { href: '#', label: 'Environment Initiatives' },
+      { href: '#', label: 'Gender Equality Initiative' },
+      { href: '#', label: 'Childcare Initiatives' },
+      { href: '#', label: 'Relief to the underprivileged' },
+      { href: '#', label: 'Disaster Management' },
+      { href: '#', label: 'Ignite Change Initiative' },
+    ]
+  },
   { href: '#events', label: 'Events' },
   { href: '#join', label: 'Join Us' },
   { href: '#contact', label: 'Contact' },
