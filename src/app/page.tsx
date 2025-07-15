@@ -10,7 +10,6 @@ import Activities from "@/components/sections/Activities";
 import Impact from "@/components/sections/Impact";
 import Testimonials from "@/components/sections/Testimonials";
 import Volunteer from "@/components/sections/Volunteer";
-import Team from "@/components/sections/Team";
 import Blog from "@/components/sections/Blog";
 import Newsletter from "@/components/sections/Newsletter";
 
@@ -29,7 +28,6 @@ export default function Home() {
         <Impact />
         <Testimonials />
         <Volunteer />
-        <Team />
         <Blog />
         <Newsletter />
       </main>
