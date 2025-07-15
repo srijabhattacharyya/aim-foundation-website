@@ -32,7 +32,7 @@ const Newsletter = () => {
               Receive inspiring stories, updates on our initiatives, and heartwarming glimpses of the lives we’re changing — all delivered straight to your inbox.
             </p>
             <p>
-              Let every update remind you that <strong className="italic">together, we’re making a difference.</strong>
+              <em className="italic">Let every update remind you that</em> <strong className="italic">together, we’re making a difference.</strong>
             </p>
           </div>
           <form onSubmit={handleSubmit} className="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
