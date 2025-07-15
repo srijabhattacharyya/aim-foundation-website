@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
+import Autoplay from "embla-carousel-autoplay"
 
 const programs = [
   {
@@ -80,6 +81,12 @@ const Hero = () => {
                 align: "start",
                 loop: true,
                 }}
+                plugins={[
+                    Autoplay({
+                      delay: 3000,
+                      stopOnInteraction: true,
+                    }),
+                ]}
                 className="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto"
             >
                 <CarouselContent className="-ml-4">
