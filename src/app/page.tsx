@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import InfoSection from "@/components/sections/InfoSection";
 import MissionVision from "@/components/sections/MissionVision";
 import Patrons from "@/components/sections/Patrons";
+import AboutUs from "@/components/sections/AboutUs";
 import DonateSection from "@/components/sections/DonateSection";
 import Activities from "@/components/sections/Activities";
 import Impact from "@/components/sections/Impact";
@@ -22,6 +23,7 @@ export default function Home() {
         <InfoSection />
         <MissionVision />
         <Patrons />
+        <AboutUs />
         <DonateSection />
         <Activities />
         <Impact />
