@@ -20,7 +20,6 @@ const AboutUs = () => {
                 </p>
                 <div className="pt-4 italic">
                     <p>In serving others, we discover purpose.</p>
-                    <p>In healing others, we heal ourselves.</p>
                     <p>In lifting others, we find ourselves.</p>
                 </div>
             </div>
