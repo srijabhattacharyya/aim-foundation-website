@@ -16,13 +16,13 @@ const MissionVision = () => {
     },
     {
       icon: <Briefcase className="w-10 h-10 text-primary" />,
-      title: 'Our Projects',
-      description: 'From building schools in remote villages to running mobile health clinics, our projects are designed to create sustainable, long-term impact where it is needed most.',
+      title: 'Our Initiatives',
+      description: 'From building schools in remote villages to running mobile health clinics, our initiatives are designed to create sustainable, long-term impact where it is needed most.',
     },
   ];
 
   return (
-    <section id="projects" className="py-12 md:py-20 lg:py-24 bg-card">
+    <section id="initiatives" className="py-12 md:py-20 lg:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {items.map((item, index) => (

@@ -30,7 +30,7 @@ const navLinks = [
       { href: '#team', label: 'Our Team' },
     ]
   },
-  { href: '#projects', label: 'Projects' },
+  { href: '#initiatives', label: 'Initiatives' },
   { href: '#events', label: 'Events' },
   { href: '#join', label: 'Join Us' },
   { href: '#contact', label: 'Contact' },

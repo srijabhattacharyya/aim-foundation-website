@@ -28,7 +28,7 @@ const Newsletter = () => {
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Subscribe to our Newsletter</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Get the latest updates on our projects, events, and success stories delivered straight to your inbox.
+            Get the latest updates on our initiatives, events, and success stories delivered straight to your inbox.
           </p>
           <form onSubmit={handleSubmit} className="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <Input

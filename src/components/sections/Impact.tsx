@@ -9,7 +9,7 @@ const Impact = () => {
   const stats = [
     { value: '7,000,000+', label: 'Lives Impacted' },
     { value: '60,000+', label: 'Villages Reached' },
-    { value: '1,500+', label: 'Projects Completed' },
+    { value: '1,500+', label: 'Initiatives Completed' },
     { value: '10,000+', label: 'Volunteers Engaged' },
   ];
 

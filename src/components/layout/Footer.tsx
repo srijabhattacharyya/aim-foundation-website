@@ -27,13 +27,13 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
               <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Projects</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Initiatives</Link></li>
               <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Events</Link></li>
               <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold text-md mb-4">Get Involved</h3>
+            <h4 className="font-semibold text-md mb-4">Get Involved</h4>
             <ul className="space-y-2">
               <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Join as a Volunteer</Link></li>
               <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Donate Now</Link></li>
@@ -42,7 +42,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold text-md mb-4">Follow Us</h3>
+            <h5 className="font-semibold text-md mb-4">Follow Us</h5>
             <div className="flex space-x-4">
               <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors"><Facebook size={24} /></Link>
               <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors"><Twitter size={24} /></Link>
@@ -50,7 +50,7 @@ const Footer = () => {
               <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
             </div>
             <div className='mt-4'>
-                <h4 className='font-semibold text-md mb-4'>Newsletter</h4>
+                <h6 className='font-semibold text-md mb-4'>Newsletter</h6>
                 <p className='text-muted-foreground'>Subscribe to our newsletter for updates.</p>
             </div>
           </div>
