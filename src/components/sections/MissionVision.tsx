@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Eye, Target, Briefcase } from 'lucide-react';
+import { Eye, Target, HeartHandshake } from 'lucide-react';
 
 const MissionVision = () => {
   const items = [
@@ -15,7 +15,7 @@ const MissionVision = () => {
       description: 'We envision a world of equality and dignity, where every individual has the power to reach their full potential and contribute to a just and compassionate global community.',
     },
     {
-      icon: <Briefcase className="w-10 h-10 text-primary" />,
+      icon: <HeartHandshake className="w-10 h-10 text-primary" />,
       title: 'Our Values',
       description: 'From building schools in remote villages to running mobile health clinics, our initiatives are designed to create sustainable, long-term impact where it is needed most.',
     },
