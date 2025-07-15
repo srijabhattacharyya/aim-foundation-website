@@ -10,7 +10,7 @@ const AboutUs = () => {
             <h2 className="text-3xl md:text-4xl font-bold font-headline">BE A PART OF OUR ACTIVITIES</h2>
             <div className="text-lg text-muted-foreground text-justify space-y-4">
                 <p>
-                    Mahatma Gandhi once said, “The best way to find yourself is to lose yourself in the service of others.”
+                    Mahatma Gandhi once said, <strong className="font-semibold">“The best way to find yourself is to lose yourself in the service of others.”</strong>
                 </p>
                  <p>
                     In today’s fast-paced world, we often become wrapped up in routines, chasing goals, and focusing on our own needs. In doing so, we may overlook the deeper meaning that comes from helping others.
