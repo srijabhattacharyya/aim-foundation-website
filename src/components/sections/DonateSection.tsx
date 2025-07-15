@@ -19,10 +19,10 @@ const DonateSection = () => {
           <div className="space-y-4 text-justify">
             <h2 className="text-3xl md:text-4xl font-bold font-headline text-left">Your Donation Can Change a Life</h2>
             <p className="text-lg text-muted-foreground">
-              Every contribution — no matter how small — plays a vital role in bringing hope, dignity, and opportunity to those who need it most. Your generosity helps us provide essential resources, quality education, accessible healthcare, and a chance at a brighter future for underserved communities.
+              Every contribution — big or small — brings hope, dignity, and opportunity to those who need it most. Your generosity helps us provide education, healthcare, and a brighter future to underserved communities.
             </p>
             <p className="text-lg text-muted-foreground">
-              When you choose to donate, you’re not just giving money — you’re becoming part of a powerful journey of change. You become a thread in the story of someone’s transformation, someone’s second chance, someone’s new beginning.
+              When you donate, you’re not just giving — you’re becoming part of someone’s transformation, a second chance, a new beginning.
             </p>
             <p className="text-lg text-muted-foreground">
               Your support empowers us to reach more lives, extend our programs further, and work toward building a world where compassion, equality, and opportunity are within everyone’s reach.
