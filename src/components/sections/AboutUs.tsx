@@ -11,7 +11,7 @@ const AboutUs = () => {
             <p className="text-lg text-muted-foreground text-justify">
               Mahatma Gandhi beautifully said, “The best way to lose yourself is to find yourself in the service of others.” In today’s fast-paced world, we often become consumed by daily routines, prioritizing our own needs and desires. This can cause us to overlook the profound joy and purpose derived from helping others.
             </p>
-            <p className="text-muted-foreground text-justify">
+            <p className="text-lg text-muted-foreground text-justify">
               Engaging in community service, particularly on weekends, offers a powerful way to break free from this cycle. By dedicating time to meaningful causes, we not only uplift others but also discover deeper personal fulfillment and a stronger sense of purpose.
             </p>
           </div>
