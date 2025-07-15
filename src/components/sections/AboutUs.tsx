@@ -6,7 +6,7 @@ const AboutUs = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">About Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">Making a Difference</h2>
             <p className="text-lg text-muted-foreground">
               AIM Foundation is a non-profit organization dedicated to fostering a society where every individual has the opportunity to thrive. We believe in creating sustainable change through comprehensive programs in education, healthcare, and livelihood.
             </p>
