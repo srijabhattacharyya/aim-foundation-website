@@ -19,7 +19,7 @@ const Impact = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold uppercase font-headline">Our Impact</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            We measure our success by the lives we change. Our efforts have reached millions, creating lasting positive change across numerous communities.
+            We don’t count numbers — we count changed lives. Together, we’re turning hope into lasting impact.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
