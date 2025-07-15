@@ -16,7 +16,7 @@ const MissionVision = () => {
     },
     {
       icon: <Briefcase className="w-10 h-10 text-primary" />,
-      title: 'Our Initiatives',
+      title: 'Our Values',
       description: 'From building schools in remote villages to running mobile health clinics, our initiatives are designed to create sustainable, long-term impact where it is needed most.',
     },
   ];
