@@ -55,6 +55,11 @@ const Blog = () => {
             </Card>
           ))}
         </div>
+        <div className="text-center mt-12">
+          <Button size="lg" className="transition-transform transform hover:scale-105">
+            More Hope Stories
+          </Button>
+        </div>
       </div>
     </section>
   );
