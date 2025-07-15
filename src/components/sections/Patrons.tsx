@@ -17,7 +17,7 @@ const patrons = [
 
 const Patrons = () => {
   return (
-    <section className="py-12 md:py-20 lg:py-24 bg-muted">
+    <section className="py-12 md:py-20 lg:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Patrons</h2>
@@ -44,7 +44,7 @@ const Patrons = () => {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 py-4" aria-hidden="true">
               {patrons.map((patron, index) => (
-                <div key={index} className="flex justify-center items-center h-24">
+                <div key={index + patrons.length} className="flex justify-center items-center h-24">
                   <Image
                     src={patron.logo}
                     alt={patron.name}
