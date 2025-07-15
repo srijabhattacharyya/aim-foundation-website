@@ -27,9 +27,14 @@ const Newsletter = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Subscribe to our Impact Mail</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Get the latest updates on our initiatives, events, and success stories delivered straight to your inbox.
-          </p>
+          <div className="mt-4 text-lg text-muted-foreground space-y-2">
+            <p>
+              Receive inspiring stories, updates on our initiatives, and heartwarming glimpses of the lives we’re changing — all delivered straight to your inbox.
+            </p>
+            <p>
+              Let every update remind you that together, we’re making a difference.
+            </p>
+          </div>
           <form onSubmit={handleSubmit} className="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <Input
               type="email"
