@@ -45,7 +45,7 @@ const navLinks = [
     ]
   },
   { href: '#events', label: 'Events' },
-  { href: '#join', label: 'Join Us' },
+  { href: '#join', label: 'Together' },
   { href: '#contact', label: 'Contact' },
 ];
 
