@@ -6,12 +6,12 @@ const AboutUs = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">Making a Difference</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">BE A PART OF OUR ACTIVITIES</h2>
             <p className="text-lg text-muted-foreground">
-              AIM Foundation is a non-profit organization dedicated to fostering a society where every individual has the opportunity to thrive. We believe in creating sustainable change through comprehensive programs in education, healthcare, and livelihood.
+              Mahatma Gandhi beautifully said, “The best way to lose yourself is to find yourself in the service of others.” In today’s fast-paced world, we often become consumed by daily routines, prioritizing our own needs and desires. This can cause us to overlook the profound joy and purpose derived from helping others.
             </p>
             <p className="text-muted-foreground">
-              Our approach is rooted in transparency, accountability, and community participation. We work hand-in-hand with local communities to address their unique needs and empower them to build a better future for themselves.
+              Engaging in community service, particularly on weekends, offers a powerful way to break free from this cycle. By dedicating time to meaningful causes, we not only uplift others but also discover deeper personal fulfillment and a stronger sense of purpose.
             </p>
           </div>
           <div className="rounded-lg overflow-hidden shadow-lg">
