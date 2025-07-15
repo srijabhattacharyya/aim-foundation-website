@@ -30,9 +30,6 @@ const DonateSection = () => {
             <p className="text-lg text-muted-foreground">
                 Together, we can make lasting impact — one act of kindness at a time.
             </p>
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform transform hover:scale-105">
-              Donate Now
-            </Button>
           </div>
         </div>
       </div>
