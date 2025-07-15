@@ -12,7 +12,7 @@ const Volunteer = () => {
           <Button size="lg" variant="secondary" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-transform transform hover:scale-105">
             Join as a Volunteer
           </Button>
-          <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-transform transform hover:scale-105">
+          <Button size="lg" variant="secondary" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-transform transform hover:scale-105">
             Donate Now
           </Button>
         </div>
