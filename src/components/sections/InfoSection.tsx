@@ -9,7 +9,7 @@ const InfoSection = () => {
             Lighting the Way for Those Left Behind
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            Since our inception, we have been dedicated to uplifting marginalized communities through comprehensive programs in education, health, and livelihood. Our commitment to transparency and accountability ensures that every contribution makes a real, measurable difference in the lives of the people we serve.
+            Since inception, Associated Initiative for Mankind Foundation (AIM Foundation) have stood beside marginalized communities — nurturing children, healing the sick, empowering women, and restoring dignity where it's been lost.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="transition-transform transform hover:scale-105">Learn More</Button>
