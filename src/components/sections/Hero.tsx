@@ -68,8 +68,8 @@ const Hero = () => {
                     </CarouselItem>
                 ))}
                 </CarouselContent>
-                <CarouselPrevious className="text-white hover:bg-white/20" />
-                <CarouselNext className="text-white hover:bg-white/20" />
+                <CarouselPrevious className="text-white bg-black/20 hover:bg-black/40 border-white/30" />
+                <CarouselNext className="text-white bg-black/20 hover:bg-black/40 border-white/30" />
             </Carousel>
         </div>
       </div>
