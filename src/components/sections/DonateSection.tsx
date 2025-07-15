@@ -27,7 +27,7 @@ const DonateSection = () => {
             <p className="text-lg text-muted-foreground">
               Your support empowers us to reach more lives, extend our programs further, and work toward building a world where compassion, equality, and opportunity are within everyone’s reach.
             </p>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground font-bold italic">
                 Together, we can make lasting impact — one act of kindness at a time.
             </p>
           </div>
