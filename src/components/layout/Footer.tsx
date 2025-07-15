@@ -49,6 +49,10 @@ const Footer = () => {
               <Link href="#" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors"><Instagram size={24} /></Link>
               <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
             </div>
+            <div className='mt-4'>
+                <h4 className='font-semibold text-md mb-4'>Newsletter</h4>
+                <p className='text-muted-foreground'>Subscribe to our newsletter for updates.</p>
+            </div>
           </div>
         </div>
         <div className="mt-12 border-t pt-8 text-center text-muted-foreground text-sm">

@@ -43,7 +43,7 @@ const Testimonials = () => {
                 <div className="flex text-yellow-400 mb-4">
                   {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" className="w-5 h-5" />)}
                 </div>
-                <p className="text-muted-foreground mb-6 flex-grow">"{testimonial.testimonial}"</p>
+                <blockquote className="text-muted-foreground mb-6 flex-grow">"{testimonial.testimonial}"</blockquote>
                 <div className="flex items-center">
                   <Avatar>
                     <AvatarImage src={testimonial.image} alt={testimonial.name} data-ai-hint={testimonial.data_ai_hint} />

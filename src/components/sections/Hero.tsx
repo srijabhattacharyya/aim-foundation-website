@@ -77,7 +77,7 @@ const Hero = () => {
         </p>
         
         <div className="mt-8">
-            <h3 className="text-2xl font-semibold mb-6">Our Current Programs</h3>
+            <h2 className="text-2xl font-semibold mb-6">Our Current Programs</h2>
             <Carousel
                 opts={{
                 align: "start",
@@ -98,7 +98,7 @@ const Hero = () => {
                         <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full flex flex-col">
                         <CardContent className="flex flex-col items-center justify-center p-6 space-y-4 flex-grow">
                             <Image src={program.image} alt={program.title} width={80} height={80} className="rounded-full border-2 border-primary" data-ai-hint={program.data_ai_hint}/>
-                            <h4 className="font-bold text-lg font-headline">{program.title}</h4>
+                            <h3 className="font-bold text-lg font-headline">{program.title}</h3>
                             <p className="text-sm text-center">{program.description}</p>
                              <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">Learn More</Button>
                         </CardContent>
