@@ -6,7 +6,7 @@ const InfoSection = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">
-            AIM Foundation is a credible and transparent non-profit organization
+            Lighting the Way for Those Left Behind
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
             Since our inception, we have been dedicated to uplifting marginalized communities through comprehensive programs in education, health, and livelihood. Our commitment to transparency and accountability ensures that every contribution makes a real, measurable difference in the lives of the people we serve.
