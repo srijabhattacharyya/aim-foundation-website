@@ -11,7 +11,7 @@ const priorities = [
   {
     icon: <BookOpen className="w-10 h-10 text-primary" />,
     title: "Education",
-    description: "Ensuring quality education for children, supporting schools, and offering skill development for youth.",
+    description: "Providing learning opportunities and resources for underprivileged children.",
   },
   {
     icon: <Leaf className="w-10 h-10 text-primary" />,
