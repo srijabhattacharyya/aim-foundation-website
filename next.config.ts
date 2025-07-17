@@ -1,7 +1,6 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  appDir: 'src/app',
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
