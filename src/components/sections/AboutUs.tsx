@@ -16,7 +16,7 @@ const AboutUs = () => {
             />
           </div>
           <div className="animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">OUR HISTORY</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">About Us</h2>
             <h3 className="mt-4 text-xl font-semibold text-primary">AIM Foundation: Transforming Lives, Building Futures</h3>
             <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                 <p>
