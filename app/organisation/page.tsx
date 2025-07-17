@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import Team from "@/components/sections/Team";
+import LegalRecognitions from "@/components/sections/LegalRecognitions";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -57,7 +57,7 @@ export default function OrganisationPage() {
                     At the heart of our mission is the unwavering belief that empowered women uplift entire communities. We strive to create a world where access to education, health, and a clean environment is not a privilege, but a right for all. With collaboration, care, and courage, AIM Foundation builds spaces where equality blossoms and futures are reshaped with hope.
                     </p>
                      <Button asChild className="mt-4">
-                        <Link href="#team">Meet Our Team</Link>
+                        <Link href="#legal-recognitions">Our Recognitions</Link>
                     </Button>
                 </div>
               </div>
@@ -67,7 +67,7 @@ export default function OrganisationPage() {
 
         <ImpactPriorities />
         <OurIdentity />
-        <Team />
+        <LegalRecognitions />
         
       </main>
       <Footer />
