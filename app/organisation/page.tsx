@@ -4,6 +4,8 @@ import Team from "@/components/sections/Team";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import ImpactPriorities from "@/components/sections/ImpactPriorities";
+import OurIdentity from "@/components/sections/OurIdentity";
 
 export default function OrganisationPage() {
   return (
@@ -11,7 +13,7 @@ export default function OrganisationPage() {
       <Navbar />
       <main className="flex-grow">
         <section className="relative w-full">
-          <div className="w-full aspect-video relative">
+          <div className="relative w-full" style={{ paddingTop: '52.08%' /* 1080 / 1920 = 0.5625 */ }}>
             <Image
               src="https://placehold.co/1920x1080.png"
               alt="Our Organisation Banner"
@@ -21,7 +23,7 @@ export default function OrganisationPage() {
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
-            <div className="relative z-10">
+            <div className="relative z-10 text-left">
               <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 From Vision to Action
               </h1>
@@ -60,10 +62,11 @@ export default function OrganisationPage() {
                 </div>
               </div>
             </div>
-
           </div>
         </section>
 
+        <ImpactPriorities />
+        <OurIdentity />
         <Team />
         
       </main>
