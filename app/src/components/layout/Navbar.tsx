@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
@@ -52,9 +53,9 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <div className="flex items-center gap-2 cursor-pointer">
+        <Link href="/" aria-label="AIM Foundation Home">
           <Image src="/images/logo.svg" alt="AIM Foundation Logo" width={120} height={50} loading="lazy" />
-        </div>
+        </Link>
         <div className="hidden md:flex items-center gap-6">
           <nav className="flex gap-6 items-center">
             {navLinks.map((link) => (
@@ -92,9 +93,9 @@ const Navbar = () => {
             <SheetContent side="right">
               <div className="flex flex-col p-6">
                 <div className="flex justify-between items-center mb-6">
-                   <div className="flex items-center gap-2 cursor-pointer">
+                  <Link href="/" aria-label="AIM Foundation Home">
                      <Image src="/images/logo.svg" alt="AIM Foundation Logo" width={120} height={50} loading="lazy" />
-                  </div>
+                  </Link>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon">
                         <X className="h-6 w-6" />
