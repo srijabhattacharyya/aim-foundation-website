@@ -15,7 +15,7 @@ export default function OrganisationPage() {
             src="https://placehold.co/1920x1080.png"
             alt="Diverse group of volunteers working together"
             fill
-            objectFit="cover"
+            style={{objectFit: "cover"}}
             className="brightness-50"
             data-ai-hint="diverse volunteers"
           />
