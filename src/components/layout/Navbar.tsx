@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import Image from 'next/image';
@@ -80,7 +80,14 @@ const Navbar = () => {
               )
             ))}
           </nav>
-          <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
+          <div className="flex items-center gap-2">
+            <Button asChild variant="ghost">
+              <Link href="/login">
+                <LogIn className="mr-2" /> Login
+              </Link>
+            </Button>
+            <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
+          </div>
         </div>
         <div className="md:hidden flex items-center gap-2">
           <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
@@ -133,6 +140,11 @@ const Navbar = () => {
                       </SheetClose>
                      )
                   ))}
+                  <SheetClose asChild>
+                    <Link href="/login" className="text-lg font-medium text-foreground transition-colors hover:text-primary flex items-center">
+                        <LogIn className="mr-2 h-5 w-5" /> Login
+                    </Link>
+                  </SheetClose>
                 </nav>
               </div>
             </SheetContent>
