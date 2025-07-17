@@ -20,10 +20,10 @@ const AboutUs = () => {
             <h3 className="mt-4 text-xl font-semibold text-primary">AIM Foundation: Transforming Lives, Building Futures</h3>
             <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                 <p>
-                    Founded in 2016, AIM Foundation is devoted to uplifting underprivileged and marginalized families—helping them move toward dignity, self-reliance, and a better future. With a focus on healthcare, education, environmental care, and women and child development, we aim to build a more just and compassionate society.
+                    AIM Foundation began its journey in 2016 with a simple yet powerful vision—to bring dignity, opportunity, and hope to those who need it most. We work hand in hand with underserved communities, focusing on healthcare, education, environmental sustainability, and the well-being of women and children.
                 </p>
                 <p>
-                    At our core is the belief in women’s empowerment—creating space for leadership and economic independence. We envision a world where everyone, regardless of background, has access to education, healthcare, and a healthy environment. Through collaboration and innovation, AIM Foundation nurtures communities where equality thrives and hope takes root.
+                    We believe that real change begins with empowerment. By nurturing women as leaders and changemakers, we help entire families and communities rise. Our mission is to create a world where everyone—regardless of background—has the chance to grow, thrive, and live with purpose. AIM Foundation is not just building services, but sowing seeds of lasting transformation.
                 </p>
             </div>
           </div>
