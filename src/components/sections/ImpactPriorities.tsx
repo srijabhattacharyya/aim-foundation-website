@@ -6,7 +6,7 @@ const priorities = [
   {
     icon: <HeartPulse className="w-10 h-10 text-primary" />,
     title: "Healthcare",
-    description: "Providing accessible medical care, health camps, and awareness programs to underserved communities.",
+    description: "Ensuring access to essential medical services and health awareness programs.",
   },
   {
     icon: <BookOpen className="w-10 h-10 text-primary" />,
