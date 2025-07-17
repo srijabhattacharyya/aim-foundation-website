@@ -26,7 +26,7 @@ export default function OrganisationPage() {
                 From Vision to Action
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                The people and passion behind our mission.
+                Driven by purpose, creating impact through compassion.
               </p>
             </div>
           </div>
