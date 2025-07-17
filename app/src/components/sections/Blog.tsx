@@ -50,16 +50,16 @@ const Blog = () => {
                 <h3 className="text-xl font-bold mb-2 font-headline">{post.title}</h3>
                 <p className="text-muted-foreground mb-4 text-justify">{post.excerpt}</p>
                 <Button asChild variant="link" className="p-0 transition-transform transform hover:scale-105">
-                  <Link href="#blog">Read More &rarr;</Link>
+                  <Link href="#">Read More &rarr;</Link>
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
         <div className="text-center mt-12">
-            <Button size="lg" className="transition-transform transform hover:scale-105" asChild>
-                <Link href="#blog">More Hope Stories</Link>
-            </Button>
+          <Button size="lg" className="transition-transform transform hover:scale-105">
+            More Hope Stories
+          </Button>
         </div>
       </div>
     </section>

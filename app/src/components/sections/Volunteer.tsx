@@ -1,6 +1,5 @@
 
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 
 const Volunteer = () => {
   return (
@@ -11,11 +10,11 @@ const Volunteer = () => {
           Your time, skills, and passion can make a world of difference. Join our team of dedicated volunteers or contribute to our cause.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" variant="secondary" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-transform transform hover:scale-105">
-            <Link href="#join">Join Us</Link>
+          <Button size="lg" variant="secondary" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-transform transform hover:scale-105">
+            Join Us
           </Button>
-          <Button asChild size="lg" variant="secondary" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-transform transform hover:scale-105">
-            <Link href="#contact">Donate Now</Link>
+          <Button size="lg" variant="secondary" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-transform transform hover:scale-105">
+            Donate Now
           </Button>
         </div>
       </div>

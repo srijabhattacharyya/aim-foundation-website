@@ -35,14 +35,14 @@ const navLinks = [
     label: 'Initiatives',
     isDropdown: true,
     items: [
-      { href: '#initiatives', label: 'Educational Initiatives' },
-      { href: '#initiatives', label: 'Healthcare Initiatives' },
-      { href: '#initiatives', label: 'Environment Initiatives' },
-      { href: '#initiatives', label: 'Gender Equality Initiative' },
-      { href: '#initiatives', label: 'Childcare Initiatives' },
-      { href: '#initiatives', label: 'Relief to the underprivileged' },
-      { href: '#initiatives', 'label': 'Disaster Management' },
-      { href: '#initiatives', label: 'Ignite Change Initiative' },
+      { href: '#', label: 'Educational Initiatives' },
+      { href: '#', label: 'Healthcare Initiatives' },
+      { href: '#', label: 'Environment Initiatives' },
+      { href: '#', label: 'Gender Equality Initiative' },
+      { href: '#', label: 'Childcare Initiatives' },
+      { href: '#', label: 'Relief to the underprivileged' },
+      { href: '#', label: 'Disaster Management' },
+      { href: '#', label: 'Ignite Change Initiative' },
     ]
   },
   { href: '#events', label: 'Events' },
@@ -81,14 +81,10 @@ const Navbar = () => {
               )
             ))}
           </nav>
-          <Button asChild className="transition-transform transform hover:scale-105">
-            <Link href="#contact">Donate Now</Link>
-          </Button>
+          <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
         </div>
         <div className="md:hidden flex items-center gap-2">
-          <Button asChild size="sm" className="transition-transform transform hover:scale-105">
-            <Link href="#contact">Donate Now</Link>
-          </Button>
+          <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">

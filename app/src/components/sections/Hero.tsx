@@ -6,7 +6,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
 import Autoplay from "embla-carousel-autoplay"
-import Link from 'next/link';
 
 const programs = [
   {
@@ -102,9 +101,7 @@ const Hero = () => {
                             <Image src={program.image} alt={program.title} width={80} height={80} data-ai-hint={program.hint} className="rounded-full border-2 border-primary" />
                             <h3 className="font-bold text-lg font-headline">{program.title}</h3>
                             <p className="text-sm text-center">{program.description}</p>
-                             <Button asChild variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">
-                              <Link href="#initiatives">Learn More</Link>
-                             </Button>
+                             <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">Learn More</Button>
                         </CardContent>
                         </Card>
                     </div>

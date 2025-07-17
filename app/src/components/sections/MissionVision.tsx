@@ -2,7 +2,6 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Eye, Target, HeartHandshake } from 'lucide-react';
-import Link from 'next/link';
 
 const MissionVision = () => {
   const items = [
@@ -37,8 +36,8 @@ const MissionVision = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base mb-6 text-justify">{item.description}</CardDescription>
-                <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-transform transform hover:scale-105">
-                  <Link href="#initiatives">Learn More</Link>
+                <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-transform transform hover:scale-105">
+                  Learn More
                 </Button>
               </CardContent>
             </Card>
