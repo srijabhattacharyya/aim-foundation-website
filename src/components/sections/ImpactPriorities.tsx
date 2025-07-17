@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { HeartPulse, BookOpen, Leaf, Users, Briefcase, ShieldAlert } from "lucide-react";
 
 const priorities = [
@@ -46,15 +47,18 @@ const ImpactPriorities = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {priorities.map((priority, index) => (
-            <Card key={index} className="text-center p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card key={index} className="flex flex-col text-center p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="flex flex-col items-center pb-4">
                 <div className="bg-primary/10 p-4 rounded-full mb-4">
                   {priority.icon}
                 </div>
                 <CardTitle className="font-headline">{priority.title}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-base">{priority.description}</p>
+              <CardContent className="flex flex-col flex-grow">
+                <p className="text-muted-foreground text-base flex-grow">{priority.description}</p>
+                 <Button variant="outline" className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-transform transform hover:scale-105">
+                  Read More
+                </Button>
               </CardContent>
             </Card>
           ))}
