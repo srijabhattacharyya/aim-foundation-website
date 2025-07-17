@@ -20,7 +20,7 @@ const priorities = [
   },
   {
     icon: <Users className="w-10 h-10 text-primary" />,
-    title: "Women & Child Development",
+    title: "Women Empowerment",
     description: "Empowering women through self-help groups and ensuring child protection, health, and nutrition.",
   },
   {
