@@ -11,10 +11,10 @@ const teamMembers = [
     hint: 'male leader portrait',
   },
   {
-    name: 'Priya Singh',
-    designation: 'Director, Programs',
+    name: 'Mr. Santanu Chatterjee',
+    designation: 'Vice Chairman',
     image: 'https://placehold.co/400x400.png',
-    hint: 'female leader portrait',
+    hint: 'male leader portrait',
   },
   {
     name: 'Rohan Mehta',
