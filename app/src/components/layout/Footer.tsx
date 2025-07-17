@@ -1,4 +1,3 @@
-
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 
@@ -26,29 +25,29 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-md mb-4">Useful Links</h3>
             <ul className="space-y-2">
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Initiatives</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Events</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Connect</Link></li>
+              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Home</Link></li>
+              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">About Us</Link></li>
+              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Initiatives</Link></li>
+              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Events</Link></li>
+              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Connect</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-md mb-4">Get Involved</h4>
             <ul className="space-y-2">
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Join Us</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Donate Now</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
+              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Join Us</Link></li>
+              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Donate Now</Link></li>
+              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Careers</Link></li>
+              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">FAQs</Link></li>
             </ul>
           </div>
           <div>
             <h5 className="font-semibold text-md mb-4">Follow Us</h5>
             <div className="flex space-x-4">
-              <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors"><Facebook size={24} /></Link>
-              <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors"><Twitter size={24} /></Link>
-              <Link href="#" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors"><Instagram size={24} /></Link>
-              <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
+              <Link href="" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none"><Facebook size={24} /></Link>
+              <Link href="" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none"><Twitter size={24} /></Link>
+              <Link href="" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none"><Instagram size={24} /></Link>
+              <Link href="" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none"><Linkedin size={24} /></Link>
             </div>
             <div className='mt-4'>
                 <h6 className='font-semibold text-md mb-4'>Newsletter</h6>

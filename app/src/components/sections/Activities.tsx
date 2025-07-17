@@ -94,7 +94,7 @@ const Activities = () => {
                       <p className="text-sm text-muted-foreground mb-2">{activity.date}</p>
                       <CardTitle className="mb-2 font-headline">{activity.title}</CardTitle>
                       <CardDescription className="flex-grow">{activity.description}</CardDescription>
-                      <Button variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">Read More &rarr;</Button>
+                      <Button disabled variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">Read More &rarr;</Button>
                     </CardContent>
                   </Card>
                 </div>

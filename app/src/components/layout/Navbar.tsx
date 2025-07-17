@@ -21,41 +21,41 @@ import {
 } from "@/components/ui/accordion";
 
 const navLinks = [
-  { href: '/', label: 'Home' },
+  { href: '', label: 'Home' },
   { 
     label: 'About',
     isDropdown: true,
     items: [
-      { href: '#organisation', label: 'Organisation' },
-      { href: '#gallery', label: 'Gallery' },
-      { href: '#team', label: 'Our Team' },
+      { href: '', label: 'Organisation' },
+      { href: '', label: 'Gallery' },
+      { href: '', label: 'Our Team' },
     ]
   },
   { 
     label: 'Initiatives',
     isDropdown: true,
     items: [
-      { href: '#', label: 'Educational Initiatives' },
-      { href: '#', label: 'Healthcare Initiatives' },
-      { href: '#', label: 'Environment Initiatives' },
-      { href: '#', label: 'Gender Equality Initiative' },
-      { href: '#', label: 'Childcare Initiatives' },
-      { href: '#', label: 'Relief to the underprivileged' },
-      { href: '#', label: 'Disaster Management' },
-      { href: '#', label: 'Ignite Change Initiative' },
+      { href: '', label: 'Educational Initiatives' },
+      { href: '', label: 'Healthcare Initiatives' },
+      { href: '', label: 'Environment Initiatives' },
+      { href: '', label: 'Gender Equality Initiative' },
+      { href: '', label: 'Childcare Initiatives' },
+      { href: '', label: 'Relief to the underprivileged' },
+      { href: '', label: 'Disaster Management' },
+      { href: '', label: 'Ignite Change Initiative' },
     ]
   },
-  { href: '#events', label: 'Events' },
-  { href: '#join', label: 'Together' },
-  { href: '#blog', label: 'Blog' },
-  { href: '#contact', label: 'Connect' },
+  { href: '', label: 'Events' },
+  { href: '', label: 'Together' },
+  { href: '', label: 'Blog' },
+  { href: '', label: 'Connect' },
 ];
 
 const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="" className="flex items-center gap-2 pointer-events-none">
           <Image src="https://placehold.co/120x50.png" alt="AIM Foundation Logo" width={120} height={50} />
         </Link>
         <div className="hidden md:flex items-center gap-6">
@@ -69,22 +69,22 @@ const Navbar = () => {
                   <DropdownMenuContent>
                     {link.items?.map((item) => (
                       <DropdownMenuItem key={item.label} asChild>
-                        <Link href={item.href}>{item.label}</Link>
+                        <Link href={item.href} className="pointer-events-none">{item.label}</Link>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link key={link.label} href={link.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
+                <Link key={link.label} href={link.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary pointer-events-none">
                   {link.label}
                 </Link>
               )
             ))}
           </nav>
-          <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
+          <Button disabled className="transition-transform transform hover:scale-105">Donate Now</Button>
         </div>
         <div className="md:hidden flex items-center gap-2">
-          <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
+          <Button disabled size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -95,7 +95,7 @@ const Navbar = () => {
             <SheetContent side="right">
               <div className="flex flex-col p-6">
                 <div className="flex justify-between items-center mb-6">
-                   <Link href="/" className="flex items-center gap-2">
+                   <Link href="" className="flex items-center gap-2 pointer-events-none">
                      <Image src="https://placehold.co/120x50.png" alt="AIM Foundation Logo" width={120} height={50} />
                   </Link>
                   <SheetClose asChild>
@@ -117,7 +117,7 @@ const Navbar = () => {
                             <nav className="flex flex-col gap-4 pt-2">
                             {link.items?.map((item) => (
                               <SheetClose asChild key={item.label}>
-                                <Link href={item.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
+                                <Link href={item.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary pointer-events-none">
                                   {item.label}
                                 </Link>
                               </SheetClose>
@@ -128,7 +128,7 @@ const Navbar = () => {
                       </Accordion>
                      ) : (
                       <SheetClose asChild key={link.label}>
-                          <Link href={link.href} className="text-lg font-medium text-foreground transition-colors hover:text-primary">
+                          <Link href={link.href} className="text-lg font-medium text-foreground transition-colors hover:text-primary pointer-events-none">
                           {link.label}
                           </Link>
                       </SheetClose>

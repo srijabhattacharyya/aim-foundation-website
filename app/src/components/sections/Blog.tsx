@@ -49,15 +49,15 @@ const Blog = () => {
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2 font-headline">{post.title}</h3>
                 <p className="text-muted-foreground mb-4 text-justify">{post.excerpt}</p>
-                <Button asChild variant="link" className="p-0 transition-transform transform hover:scale-105">
-                  <Link href="#">Read More &rarr;</Link>
+                <Button asChild variant="link" className="p-0 transition-transform transform hover:scale-105" disabled>
+                  <Link href="">Read More &rarr;</Link>
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
         <div className="text-center mt-12">
-          <Button size="lg" className="transition-transform transform hover:scale-105">
+          <Button size="lg" className="transition-transform transform hover:scale-105" disabled>
             More Hope Stories
           </Button>
         </div>
