@@ -12,6 +12,7 @@ import Blog from "@/components/sections/Blog";
 import Volunteer from "@/components/sections/Volunteer";
 import Newsletter from "@/components/sections/Newsletter";
 import Patrons from "@/components/sections/Patrons";
+import DonateSection from "@/components/sections/DonateSection";
 
 export default function HomePage() {
   return (
@@ -26,7 +27,7 @@ export default function HomePage() {
         <Activities />
         <Testimonials />
         <Patrons />
-        <Team />
+        <DonateSection />
         <Blog />
         <Volunteer />
         <Newsletter />
