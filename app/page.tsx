@@ -3,7 +3,6 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import InfoSection from "@/components/sections/InfoSection";
 import AboutUs from "@/components/sections/AboutUs";
-import MissionVision from "@/components/sections/MissionVision";
 import Impact from "@/components/sections/Impact";
 import Activities from "@/components/sections/Activities";
 import Testimonials from "@/components/sections/Testimonials";
@@ -22,7 +21,6 @@ export default function HomePage() {
         <Hero />
         <InfoSection />
         <AboutUs />
-        <MissionVision />
         <Impact />
         <Activities />
         <Testimonials />
