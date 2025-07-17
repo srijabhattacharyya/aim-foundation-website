@@ -1,8 +1,5 @@
-
 "use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
@@ -21,43 +18,43 @@ import {
 } from "@/components/ui/accordion";
 
 const navLinks = [
-  { href: '', label: 'Home' },
+  { label: 'Home' },
   { 
     label: 'About',
     isDropdown: true,
     items: [
-      { href: '', label: 'Organisation' },
-      { href: '', label: 'Gallery' },
-      { href: '', label: 'Our Team' },
+      { label: 'Organisation' },
+      { label: 'Gallery' },
+      { label: 'Our Team' },
     ]
   },
   { 
     label: 'Initiatives',
     isDropdown: true,
     items: [
-      { href: '', label: 'Educational Initiatives' },
-      { href: '', label: 'Healthcare Initiatives' },
-      { href: '', label: 'Environment Initiatives' },
-      { href: '', label: 'Gender Equality Initiative' },
-      { href: '', label: 'Childcare Initiatives' },
-      { href: '', label: 'Relief to the underprivileged' },
-      { href: '', label: 'Disaster Management' },
-      { href: '', label: 'Ignite Change Initiative' },
+      { label: 'Educational Initiatives' },
+      { label: 'Healthcare Initiatives' },
+      { label: 'Environment Initiatives' },
+      { label: 'Gender Equality Initiative' },
+      { label: 'Childcare Initiatives' },
+      { label: 'Relief to the underprivileged' },
+      { label: 'Disaster Management' },
+      { label: 'Ignite Change Initiative' },
     ]
   },
-  { href: '', label: 'Events' },
-  { href: '', label: 'Together' },
-  { href: '', label: 'Blog' },
-  { href: '', label: 'Connect' },
+  { label: 'Events' },
+  { label: 'Together' },
+  { label: 'Blog' },
+  { label: 'Connect' },
 ];
 
 const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="" className="flex items-center gap-2 pointer-events-none">
+        <div className="flex items-center gap-2 cursor-pointer">
           <Image src="https://placehold.co/120x50.png" alt="AIM Foundation Logo" width={120} height={50} />
-        </Link>
+        </div>
         <div className="hidden md:flex items-center gap-6">
           <nav className="flex gap-6 items-center">
             {navLinks.map((link) => (
@@ -69,15 +66,15 @@ const Navbar = () => {
                   <DropdownMenuContent>
                     {link.items?.map((item) => (
                       <DropdownMenuItem key={item.label} asChild>
-                        <Link href={item.href} className="pointer-events-none">{item.label}</Link>
+                        <span className="cursor-pointer">{item.label}</span>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link key={link.label} href={link.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary pointer-events-none">
+                <span key={link.label} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary cursor-pointer">
                   {link.label}
-                </Link>
+                </span>
               )
             ))}
           </nav>
@@ -95,9 +92,9 @@ const Navbar = () => {
             <SheetContent side="right">
               <div className="flex flex-col p-6">
                 <div className="flex justify-between items-center mb-6">
-                   <Link href="" className="flex items-center gap-2 pointer-events-none">
+                   <div className="flex items-center gap-2 cursor-pointer">
                      <Image src="https://placehold.co/120x50.png" alt="AIM Foundation Logo" width={120} height={50} />
-                  </Link>
+                  </div>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon">
                         <X className="h-6 w-6" />
@@ -117,9 +114,9 @@ const Navbar = () => {
                             <nav className="flex flex-col gap-4 pt-2">
                             {link.items?.map((item) => (
                               <SheetClose asChild key={item.label}>
-                                <Link href={item.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary pointer-events-none">
+                                <span className="text-base font-medium text-muted-foreground transition-colors hover:text-primary cursor-pointer">
                                   {item.label}
-                                </Link>
+                                </span>
                               </SheetClose>
                             ))}
                             </nav>
@@ -128,9 +125,9 @@ const Navbar = () => {
                       </Accordion>
                      ) : (
                       <SheetClose asChild key={link.label}>
-                          <Link href={link.href} className="text-lg font-medium text-foreground transition-colors hover:text-primary pointer-events-none">
+                          <span className="text-lg font-medium text-foreground transition-colors hover:text-primary cursor-pointer">
                           {link.label}
-                          </Link>
+                          </span>
                       </SheetClose>
                      )
                   ))}

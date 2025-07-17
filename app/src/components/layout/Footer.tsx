@@ -1,5 +1,4 @@
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -25,29 +24,29 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-md mb-4">Useful Links</h3>
             <ul className="space-y-2">
-              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Home</Link></li>
-              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">About Us</Link></li>
-              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Initiatives</Link></li>
-              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Events</Link></li>
-              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Connect</Link></li>
+              <li><span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Home</span></li>
+              <li><span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">About Us</span></li>
+              <li><span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Initiatives</span></li>
+              <li><span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Events</span></li>
+              <li><span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Connect</span></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-md mb-4">Get Involved</h4>
             <ul className="space-y-2">
-              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Join Us</Link></li>
-              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Donate Now</Link></li>
-              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">Careers</Link></li>
-              <li><Link href="" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none">FAQs</Link></li>
+              <li><span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Join Us</span></li>
+              <li><span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Donate Now</span></li>
+              <li><span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Careers</span></li>
+              <li><span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">FAQs</span></li>
             </ul>
           </div>
           <div>
             <h5 className="font-semibold text-md mb-4">Follow Us</h5>
             <div className="flex space-x-4">
-              <Link href="" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none"><Facebook size={24} /></Link>
-              <Link href="" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none"><Twitter size={24} /></Link>
-              <Link href="" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none"><Instagram size={24} /></Link>
-              <Link href="" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors pointer-events-none"><Linkedin size={24} /></Link>
+              <span aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"><Facebook size={24} /></span>
+              <span aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"><Twitter size={24} /></span>
+              <span aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"><Instagram size={24} /></span>
+              <span aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"><Linkedin size={24} /></span>
             </div>
             <div className='mt-4'>
                 <h6 className='font-semibold text-md mb-4'>Newsletter</h6>

@@ -1,7 +1,6 @@
 
 import { Button } from '@/components/ui/button';
 import { PlayCircle } from 'lucide-react';
-import Link from 'next/link';
 
 const InfoSection = () => {
   return (
@@ -22,12 +21,10 @@ const InfoSection = () => {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button disabled size="lg" variant="outline" className="transition-transform transform hover:scale-105">Learn More</Button>
             <Button disabled size="lg" variant="outline" className="transition-transform transform hover:scale-105">Join Us</Button>
-            <Link href="" className="pointer-events-none">
-              <Button disabled size="lg" variant="outline" className="transition-transform transform hover:scale-105">
-                <PlayCircle className="mr-2 h-6 w-6" />
-                Watch Our Story
-              </Button>
-            </Link>
+            <Button disabled size="lg" variant="outline" className="transition-transform transform hover:scale-105">
+              <PlayCircle className="mr-2 h-6 w-6" />
+              Watch Our Story
+            </Button>
           </div>
         </div>
       </div>
