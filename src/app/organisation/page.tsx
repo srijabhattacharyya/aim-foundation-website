@@ -47,7 +47,7 @@ export default function OrganisationPage() {
                 />
               </div>
               <div className="animate-fade-in-up">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Who We Are</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">From Vision to Reality</h2>
                 <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
                         Founded in 2016, AIM Foundation is devoted to uplifting underprivileged and marginalized families—helping them move toward dignity, self-reliance, and a better future. With a focus on healthcare, education, environmental care, and women and child development, we aim to build a more just and compassionate society.
