@@ -4,6 +4,8 @@ import Team from "@/components/sections/Team";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import ImpactPriorities from "@/components/sections/ImpactPriorities";
+import OurIdentity from "@/components/sections/OurIdentity";
 
 export default function OrganisationPage() {
   return (
@@ -46,13 +48,13 @@ export default function OrganisationPage() {
                 />
               </div>
               <div className="animate-fade-in-up">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">From Vision to Reality</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Footprints</h2>
                 <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
-                        Founded in 2016, AIM Foundation is devoted to uplifting underprivileged and marginalized families—helping them move toward dignity, self-reliance, and a better future. With a focus on healthcare, education, environmental care, and women and child development, we aim to build a more just and compassionate society.
+                    Since 2016, AIM Foundation has been a beacon of hope for underprivileged and marginalized families—walking beside them on their journey to dignity, self-reliance, and brighter possibilities. Rooted in compassion, our efforts span healthcare, education, environmental protection, and the growth of women and children.
                     </p>
                     <p>
-                        At our core is the belief in women’s empowerment—creating space for leadership and economic independence. We envision a world where everyone, regardless of background, has access to education, healthcare, and a healthy environment. Through collaboration and innovation, AIM Foundation nurtures communities where equality thrives and hope takes root.
+                    At the heart of our mission is the unwavering belief that empowered women uplift entire communities. We strive to create a world where access to education, health, and a clean environment is not a privilege, but a right for all. With collaboration, care, and courage, AIM Foundation builds spaces where equality blossoms and futures are reshaped with hope.
                     </p>
                      <Button asChild className="mt-4">
                         <Link href="#team">Meet Our Team</Link>
@@ -64,6 +66,8 @@ export default function OrganisationPage() {
           </div>
         </section>
 
+        <ImpactPriorities />
+        <OurIdentity />
         <Team />
         
       </main>

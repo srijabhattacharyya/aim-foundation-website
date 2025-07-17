@@ -46,13 +46,13 @@ export default function OrganisationPage() {
                 />
               </div>
               <div className="animate-fade-in-up">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Who We Are</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Footprints</h2>
                 <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
-                        AIM Foundation is powered by a team of dedicated professionals, passionate volunteers, and generous supporters who share a common vision: to build a more equitable and compassionate world.
+                    Since 2016, AIM Foundation has been a beacon of hope for underprivileged and marginalized families—walking beside them on their journey to dignity, self-reliance, and brighter possibilities. Rooted in compassion, our efforts span healthcare, education, environmental protection, and the growth of women and children.
                     </p>
                     <p>
-                        Our work is guided by our core values of integrity, transparency, and collaboration. We believe in working hand-in-hand with the communities we serve, ensuring that our initiatives are sustainable and truly meet their needs.
+                    At the heart of our mission is the unwavering belief that empowered women uplift entire communities. We strive to create a world where access to education, health, and a clean environment is not a privilege, but a right for all. With collaboration, care, and courage, AIM Foundation builds spaces where equality blossoms and futures are reshaped with hope.
                     </p>
                      <Button asChild className="mt-4">
                         <Link href="#team">Meet Our Team</Link>
