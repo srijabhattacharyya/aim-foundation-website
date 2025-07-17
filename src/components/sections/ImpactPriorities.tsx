@@ -16,7 +16,7 @@ const priorities = [
   {
     icon: <Leaf className="w-10 h-10 text-primary" />,
     title: "Environment",
-    description: "Promoting sustainability through tree plantation, waste management, and environmental awareness.",
+    description: "Promoting conservation efforts and eco-friendly initiatives.",
   },
   {
     icon: <Users className="w-10 h-10 text-primary" />,
