@@ -17,10 +17,10 @@ const AboutUs = () => {
           </div>
           <div className="animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">About AIM Foundation</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-muted-foreground text-justify">
               Associated Initiative for Mankind (AIM) Foundation is a non-profit organization dedicated to creating a significant and lasting impact on marginalized communities. We believe in the power of collective action to foster change.
             </p>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground text-justify">
               Our work spans across critical areas including education for underprivileged children, accessible healthcare for remote populations, women empowerment through skill development, and environmental sustainability projects. We strive to restore dignity and provide the tools for self-reliance, ensuring that every individual has the opportunity to build a better future.
             </p>
           </div>
