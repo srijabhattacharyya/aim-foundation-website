@@ -25,7 +25,7 @@ const navLinks = [
     label: 'About',
     isDropdown: true,
     items: [
-      { href: '/organisation', label: 'Organisation' },
+      { href: '/', label: 'Organisation' },
       { href: '#gallery', label: 'Gallery' },
       { href: '#team', label: 'Our Team' },
     ]
