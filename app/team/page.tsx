@@ -17,10 +17,10 @@ const teamMembers = [
     hint: 'male leader portrait',
   },
   {
-    name: 'Rohan Mehta',
-    designation: 'Chief Financial Officer',
+    name: 'Mr. Saibal Ganguly',
+    designation: 'General Secretary',
     image: 'https://placehold.co/400x400.png',
-    hint: 'male professional portrait',
+    hint: 'male leader portrait',
   },
   {
     name: 'Anika Gupta',
