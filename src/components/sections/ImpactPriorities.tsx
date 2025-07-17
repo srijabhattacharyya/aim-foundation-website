@@ -31,7 +31,7 @@ const priorities = [
   {
     icon: <ShieldAlert className="w-10 h-10 text-primary" />,
     title: "Disaster Response",
-    description: "Providing immediate relief and long-term rehabilitation to communities affected by natural disasters.",
+    description: "AIM Foundation prioritises disaster relief, providing food, medical aid & essentials to vulnerable communities during crises",
   },
 ];
 
