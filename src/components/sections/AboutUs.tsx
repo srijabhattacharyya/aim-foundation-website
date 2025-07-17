@@ -16,18 +16,16 @@ const AboutUs = () => {
             />
           </div>
           <div className="animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">Key Focus Areas</h2>
-            <div className="mt-4 text-lg text-muted-foreground space-y-2 text-justify">
-                <p>֍ Healthcare: Ensuring access to essential medical services and health awareness programs.</p>
-                <p>֍ Education: Providing learning opportunities and resources for underprivileged children.</p>
-                <p>֍ Environmental Sustainability: Promoting conservation efforts and eco-friendly initiatives.</p>
-                <p>֍ Women Empowerment: Encouraging leadership, skill development, and financial independence for women.</p>
-                <p>֍ Child Development: Supporting the holistic growth and well-being of children through education and healthcare.</p>
-                <p>֍ Disaster Relief: AIM Foundation prioritises disaster relief, providing food, medical aid &amp; essentials to vulnerable communities during crises</p>
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">OUR HISTORY</h2>
+            <h3 className="mt-4 text-xl font-semibold text-primary">AIM Foundation: Transforming Lives, Building Futures</h3>
+            <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
+                <p>
+                    Founded in 2016, AIM Foundation is dedicated to uplifting underprivileged and marginalised families, guiding them toward self-sufficiency and dignity. With a strong focus on healthcare, education, environmental conservation, and women and child development, the foundation is committed to fostering a sustainable and equitable society.
+                </p>
+                <p>
+                    At the heart of AIM Foundation’s mission is the empowerment of women—creating leadership opportunities and enabling economic independence—while driving holistic community development. The organization envisions a world where everyone, regardless of gender, socioeconomic status, or background, has access to quality education, healthcare, and a thriving environment. Through collaborative efforts and innovative solutions, AIM Foundation works toward building communities where health and education are prioritized, nature is preserved, and women are empowered to lead and contribute economically.
+                </p>
             </div>
-            <p className="mt-4 text-lg text-muted-foreground text-justify">
-              By engaging with communities and implementing holistic programs, AIM Foundation strives to create a lasting impact—fostering healthier individuals, educated societies, environmental responsibility, and economic opportunities for women. Its work contributes to the overall well-being of society, laying the foundation for sustainable growth and equitable progress.
-            </p>
           </div>
         </div>
       </div>
