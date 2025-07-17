@@ -13,6 +13,7 @@ import Impact from "@/components/sections/Impact";
 import Patrons from "@/components/sections/Patrons";
 import Team from "@/components/sections/Team";
 import Testimonials from "@/components/sections/Testimonials";
+import Newsletter from "@/components/sections/Newsletter";
 
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
         <Impact />
         <Volunteer />
         <Blog />
+        <Newsletter />
         <DonateSection />
         <Patrons />
         <Testimonials />
