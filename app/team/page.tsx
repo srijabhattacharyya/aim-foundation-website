@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const teamMembers = [
   {
-    name: 'Dr. Aarav Sharma',
-    designation: 'Founder & President',
+    name: 'Prof. Amitabha Mookherjee',
+    designation: 'Chairman',
     image: 'https://placehold.co/400x400.png',
     hint: 'male leader portrait',
   },
