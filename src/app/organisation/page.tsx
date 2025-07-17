@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import ImpactPriorities from "@/components/sections/ImpactPriorities";
-import Ethos from "@/components/sections/Ethos";
+import OurIdentity from "@/components/sections/OurIdentity";
 
 export default function OrganisationPage() {
   return (
@@ -66,7 +66,7 @@ export default function OrganisationPage() {
         </section>
 
         <ImpactPriorities />
-        <Ethos />
+        <OurIdentity />
         <LegalRecognitions />
         
       </main>

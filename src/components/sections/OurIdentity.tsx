@@ -19,12 +19,12 @@ const identityItems = [
   },
 ];
 
-const Ethos = () => {
+const OurIdentity = () => {
   return (
     <section className="py-12 md:py-20 lg:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">Ethos</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Identity</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
             Our mission, vision, and values are the bedrock of our foundation, guiding every action we take.
           </p>
@@ -49,4 +49,4 @@ const Ethos = () => {
   );
 };
 
-export default Ethos;
+export default OurIdentity;
