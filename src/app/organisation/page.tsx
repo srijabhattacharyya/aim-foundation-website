@@ -62,7 +62,6 @@ export default function OrganisationPage() {
                 </div>
               </div>
             </div>
-
           </div>
         </section>
 
