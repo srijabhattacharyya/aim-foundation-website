@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { HeartPulse, BookOpen, Leaf, Users, Briefcase, ShieldAlert } from "lucide-react";
+import { HeartPulse, BookOpen, Leaf, Users, ShieldAlert, Baby } from "lucide-react";
 
 const priorities = [
   {
@@ -24,8 +24,8 @@ const priorities = [
     description: "Encouraging leadership, skill development, and financial independence for women.",
   },
   {
-    icon: <Briefcase className="w-10 h-10 text-primary" />,
-    title: "Livelihood",
+    icon: <Baby className="w-10 h-10 text-primary" />,
+    title: "Child Development",
     description: "Creating sustainable livelihood opportunities through vocational training and support for small enterprises.",
   },
   {
