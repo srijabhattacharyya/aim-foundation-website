@@ -10,6 +10,24 @@ export default function OrganisationPage() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
+        <section className="relative w-full h-[50vh] flex items-center justify-center text-white">
+          <Image
+            src="https://placehold.co/1920x1080.png"
+            alt="Our Organisation Banner"
+            fill
+            className="object-cover brightness-50"
+            data-ai-hint="office team building"
+          />
+          <div className="relative z-10 text-center p-4">
+            <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+              Our Organisation
+            </h1>
+            <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+              The people and passion behind our mission.
+            </p>
+          </div>
+        </section>
+
         <section className="py-12 md:py-20 lg:py-24 bg-card">
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
