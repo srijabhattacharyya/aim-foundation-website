@@ -5,7 +5,7 @@ const recognitions = [
     { text: "Registered with the Income Tax Department u/s 12A" },
     { text: "Registered with the Income Tax Department u/s 80G" },
     { text: "Registered with the NITI Aayog" },
-    { text: "Registered with Ministry of Corporate Affairs" },
+    { text: "Registered with Ministry of Corporate Affairs (CSR 1)" },
     { text: "Registered in Foreign Contribution Regulation Act (FCRA)" },
 ];
 
