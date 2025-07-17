@@ -26,7 +26,7 @@ const priorities = [
   {
     icon: <Baby className="w-10 h-10 text-primary" />,
     title: "Child Development",
-    description: "Creating sustainable livelihood opportunities through vocational training and support for small enterprises.",
+    description: "Supporting the holistic growth and well-being of children through education and healthcare.",
   },
   {
     icon: <ShieldAlert className="w-10 h-10 text-primary" />,
