@@ -20,10 +20,10 @@ const AboutUs = () => {
             <h3 className="mt-4 text-xl font-semibold text-primary">AIM Foundation: Transforming Lives, Building Futures</h3>
             <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                 <p>
-                    Founded in 2016, AIM Foundation is dedicated to uplifting underprivileged and marginalised families, guiding them toward self-sufficiency and dignity. With a strong focus on healthcare, education, environmental conservation, and women and child development, the foundation is committed to fostering a sustainable and equitable society.
+                    Founded in 2016, AIM Foundation is driven by a deep commitment to uplift underprivileged and marginalized families—guiding them toward dignity, self-reliance, and lasting change. Rooted in compassion and purpose, we focus on healthcare, education, environmental conservation, and the empowerment of women and children to build a more just and inclusive society.
                 </p>
                 <p>
-                    At the heart of AIM Foundation’s mission is the empowerment of women—creating leadership opportunities and enabling economic independence—while driving holistic community development. The organization envisions a world where everyone, regardless of gender, socioeconomic status, or background, has access to quality education, healthcare, and a thriving environment. Through collaborative efforts and innovative solutions, AIM Foundation works toward building communities where health and education are prioritized, nature is preserved, and women are empowered to lead and contribute economically.
+                    At the heart of our mission lies the belief that true transformation begins with empowering women—creating opportunities for leadership and economic independence. We envision a world where every individual, regardless of gender or background, has access to quality education, essential healthcare, and a thriving natural environment. Through collective action and innovative solutions, AIM Foundation works tirelessly to create communities where hope grows, equality thrives, and every voice matters.
                 </p>
             </div>
           </div>
