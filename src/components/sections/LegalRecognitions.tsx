@@ -2,7 +2,7 @@ import { CheckCircle } from 'lucide-react';
 
 const recognitions = [
     { text: "Registered under the Indian Trusts Act, 1882" },
-    { text: "Registered with the Income Tax Department, Govt. of India" },
+    { text: "Registered with the Income Tax Department u/s 12A" },
     { text: "Registered with the Income Tax Department u/s 80G" },
     { text: "Registered with the NITI Aayog" },
     { text: "Registered with Ministry of Corporate Affairs" },
