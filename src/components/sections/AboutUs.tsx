@@ -17,7 +17,7 @@ const AboutUs = () => {
           </div>
           <div className="animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">About Us</h2>
-            <h3 className="mt-4 text-xl font-semibold text-primary">AIM Foundation: Transforming Lives, Building Futures</h3>
+            <h3 className="mt-4 text-xl font-semibold text-primary">Building Dignity. Inspiring Change.</h3>
             <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                 <p>
                     AIM Foundation began its journey in 2016 with a simple yet powerful vision—to bring dignity, opportunity, and hope to those who need it most. We work hand in hand with underserved communities, focusing on healthcare, education, environmental sustainability, and the well-being of women and children.
