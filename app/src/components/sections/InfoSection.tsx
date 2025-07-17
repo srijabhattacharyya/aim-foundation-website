@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { PlayCircle } from 'lucide-react';
 import Link from 'next/link';
@@ -25,12 +26,14 @@ const InfoSection = () => {
             <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105" asChild>
               <Link href="#join">Join Us</Link>
             </Button>
-            <Link href="https://www.youtube.com/watch?v=sG3BRIdRI3k" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105">
-                <PlayCircle className="mr-2 h-6 w-6" />
-                Watch Our Story
-              </Button>
-            </Link>
+            <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105" asChild>
+              <Link href="https://www.youtube.com/watch?v=sG3BRIdRI3k" target="_blank" rel="noopener noreferrer">
+                <span>
+                  <PlayCircle className="mr-2 h-6 w-6" />
+                  Watch Our Story
+                </span>
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

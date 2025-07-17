@@ -1,3 +1,4 @@
+
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 
@@ -36,9 +37,9 @@ const Footer = () => {
             <h4 className="font-semibold text-md mb-4">Get Involved</h4>
             <ul className="space-y-2">
               <li><Link href="#join" className="text-muted-foreground hover:text-primary transition-colors">Join Us</Link></li>
-              <li><Link href="#join" className="text-muted-foreground hover:text-primary transition-colors">Donate Now</Link></li>
+              <li><Link href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Donate Now</Link></li>
               <li><Link href="#team" className="text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
+              <li><Link href="#contact" className="text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
             </ul>
           </div>
           <div>

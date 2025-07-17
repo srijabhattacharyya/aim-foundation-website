@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -10,6 +11,9 @@ import Impact from "@/components/sections/Impact";
 import Volunteer from "@/components/sections/Volunteer";
 import Blog from "@/components/sections/Blog";
 import Newsletter from "@/components/sections/Newsletter";
+import Patrons from "@/components/sections/Patrons";
+import Testimonials from "@/components/sections/Testimonials";
+import Team from "@/components/sections/Team";
 
 export default function Home() {
   return (
@@ -21,8 +25,11 @@ export default function Home() {
         <MissionVision />
         <AboutUs />
         <DonateSection />
+        <Patrons />
         <Activities />
         <Impact />
+        <Testimonials />
+        <Team />
         <Volunteer />
         <Blog />
         <Newsletter />
