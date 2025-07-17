@@ -18,11 +18,11 @@ const InfoSection = () => {
                 Together, we’re not just reaching lives — we’re transforming them.
             </p>
           </div>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105">Learn More</Button>
             <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105">Join Us</Button>
             <Link href="https://www.youtube.com/watch?v=sG3BRIdRI3k" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105">
+              <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105 w-full sm:w-auto">
                 <PlayCircle className="mr-2 h-6 w-6" />
                 Watch Our Story
               </Button>

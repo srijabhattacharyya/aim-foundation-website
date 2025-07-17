@@ -41,10 +41,10 @@ const Newsletter = () => {
               name="email"
               placeholder="Enter your email"
               required
-              className="flex-grow text-base"
+              className="flex-grow text-base w-full sm:w-auto"
               aria-label="Email for newsletter"
             />
-            <Button type="submit" size="lg" className="flex-shrink-0 transition-transform transform hover:scale-105">
+            <Button type="submit" size="lg" className="flex-shrink-0 w-full sm:w-auto transition-transform transform hover:scale-105">
               Subscribe
             </Button>
           </form>
