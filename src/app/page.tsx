@@ -1,18 +1,19 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import InfoSection from "@/components/sections/InfoSection";
 import MissionVision from "@/components/sections/MissionVision";
-import AboutUs from "@/components/sections/AboutUs";
-import DonateSection from "@/components/sections/DonateSection";
 import Activities from "@/components/sections/Activities";
-import Impact from "@/components/sections/Impact";
 import Volunteer from "@/components/sections/Volunteer";
 import Blog from "@/components/sections/Blog";
-import Newsletter from "@/components/sections/Newsletter";
+import AboutUs from "@/components/sections/AboutUs";
+import DonateSection from "@/components/sections/DonateSection";
+import Impact from "@/components/sections/Impact";
 import Patrons from "@/components/sections/Patrons";
-import Testimonials from "@/components/sections/Testimonials";
 import Team from "@/components/sections/Team";
+import Testimonials from "@/components/sections/Testimonials";
+
 
 export default function Home() {
   return (
@@ -23,15 +24,14 @@ export default function Home() {
         <InfoSection />
         <MissionVision />
         <AboutUs />
-        <DonateSection />
-        <Patrons />
         <Activities />
         <Impact />
-        <Testimonials />
-        <Team />
         <Volunteer />
         <Blog />
-        <Newsletter />
+        <DonateSection />
+        <Patrons />
+        <Testimonials />
+        <Team />
       </main>
       <Footer />
     </div>
