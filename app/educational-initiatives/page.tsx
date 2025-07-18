@@ -4,13 +4,15 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const initiatives = [
   {
     title: "Innocent Smiles",
     description: "empowers children through education, art, dance, and music—blending creativity with academics. It provides a nurturing space where young minds build confidence, express themselves, and grow holistically. Through joyful learning and guided support, the initiative helps shape brighter, more confident futures.",
     image: "https://placehold.co/600x400.png",
-    hint: "classroom children"
+    hint: "classroom children",
+    link: "/innocent-smiles"
   },
   {
     title: "Inspire EduLab",
@@ -108,7 +110,9 @@ export default function EducationalInitiativesPage() {
                   <CardContent className="p-6 flex flex-col flex-grow">
                     <CardTitle className="mb-2 font-headline">{item.title}</CardTitle>
                     <CardDescription className="flex-grow text-justify">{item.description}</CardDescription>
-                    <Button variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">Learn More &rarr;</Button>
+                    <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
+                      <Link href={item.link || "#"}>Learn More &rarr;</Link>
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
