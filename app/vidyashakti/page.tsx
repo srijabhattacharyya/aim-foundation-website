@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import DonationForm from "@/components/sections/DonationForm";
+import { Button } from "@/components/ui/button";
 
 export default function VidyaShaktiPage() {
   return (
@@ -51,6 +52,9 @@ export default function VidyaShaktiPage() {
                   <p>
                     VidyaShakti is more than just an app; it is a lifeline for learners in remote areas, bringing the power of knowledge directly to their fingertips.
                   </p>
+                </div>
+                <div className="mt-8">
+                  <Button disabled>App is under construction</Button>
                 </div>
               </div>
               
