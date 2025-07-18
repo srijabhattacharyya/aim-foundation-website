@@ -13,8 +13,8 @@ export default function InnocentSmilesPage() {
             <h1 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">
               Innocent Smiles
             </h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              <div className="text-lg text-muted-foreground space-y-6 text-justify">
+            <div className="flex flex-col lg:flex-row gap-12">
+              <div className="lg:w-1/2 text-lg text-muted-foreground space-y-6 text-justify">
                  <p>
                   Childhood is said to be the best part of human life – an age where we are carefree, safe and happy. But a happy childhood is not the reality for many children, who are out-of-school. There are many reasons for children to drop out of school – from challenging socio-economic circumstances, to lack of awareness in communities where education is not seen as a priority.
                 </p>
@@ -25,8 +25,10 @@ export default function InnocentSmilesPage() {
                   Smile Foundation, through its ‘Shiksha Na Ruke’ initiative has been helping children from difficult circumstances continue their education, with the hope of a brighter future and better life. At present, we are directly providing education to over 160,000 children in 27 states of India.
                 </p>
               </div>
-              <div className="lg:sticky lg:top-24">
-                <DonationForm />
+              <div className="lg:w-1/2">
+                <div className="lg:sticky lg:top-24">
+                    <DonationForm />
+                </div>
               </div>
             </div>
           </div>
