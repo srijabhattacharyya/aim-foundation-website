@@ -14,7 +14,7 @@ const initiatives = [
   },
   {
     title: "Inspire EduLab",
-    description: "Equipping young adults with essential computer skills and digital knowledge to thrive in the modern workforce.",
+    description: "transforms classrooms into smart, internet-enabled learning hubs that spark curiosity and engagement. With interactive tools like audio-visual content, online sessions, and 2D/3D animations, it makes lessons dynamic and easier to grasp. Bridging traditional education with modern tech, Inspire EduLab empowers students through immersive, future-ready learning.",
     image: "https://placehold.co/600x400.png",
     hint: "computer lab students"
   },
