@@ -1,8 +1,7 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import DonationForm from "@/components/sections/DonationForm";
 
 export default function InspireEduLabPage() {
   return (
@@ -51,22 +50,9 @@ export default function InspireEduLabPage() {
                 </div>
               </div>
               
-              {/* Right Sticky Image Column */}
-              <div>
-                <div className="sticky top-24">
-                  <Card className="overflow-hidden shadow-lg">
-                    <CardContent className="p-0">
-                      <Image
-                        src="https://placehold.co/400x600.png"
-                        alt="Students in a smart classroom"
-                        width={400}
-                        height={600}
-                        className="w-full h-auto object-cover"
-                        data-ai-hint="students learning computer"
-                      />
-                    </CardContent>
-                  </Card>
-                </div>
+              {/* Right Sticky Form Column */}
+              <div className="sticky top-24">
+                <DonationForm />
               </div>
             </div>
           </div>
