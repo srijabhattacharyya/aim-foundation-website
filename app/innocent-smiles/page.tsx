@@ -24,6 +24,9 @@ export default function InnocentSmilesPage() {
               <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Innocent Smiles
               </h1>
+              <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                Shaping Dreams with Smiles and Skills
+              </p>
             </div>
           </div>
         </section>
