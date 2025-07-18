@@ -45,7 +45,7 @@ const navLinks = [
         subItems: [
           { href: '/innocent-smiles', label: 'Innocent Smiles' },
           { href: '/inspire-eduLab', label: 'Inspire EduLab' },
-          { href: '/EduAccess', label: 'EduAccess' },
+          { href: '/eduAccess', label: 'EduAccess' },
         ]
       },
       { href: '#', label: 'Healthcare Initiatives' },
