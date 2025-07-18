@@ -29,7 +29,6 @@ const navLinks = [
       { href: '/team', label: 'Our Team' },
     ]
   },
-  { href: '#gallery', label: 'Gallery' },
   { 
     label: 'Initiatives',
     isDropdown: true,
@@ -46,6 +45,7 @@ const navLinks = [
   },
   { href: '#events', label: 'Events' },
   { href: '#join', label: 'Together' },
+  { href: '#gallery', label: 'Gallery' },
   { href: '#blog', label: 'Blog' },
   { href: '#contact', label: 'Connect' },
 ];
