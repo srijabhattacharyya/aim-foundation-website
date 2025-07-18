@@ -39,15 +39,18 @@ export default function MilieuPage() {
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Connecting Worlds, Creating a Shared Future.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    Milieu fosters holistic development by connecting children from diverse economic backgrounds. Through interactive sessions, students from reputed schools and underprivileged communities learn together, building empathy, respect, and inclusivity.
-                  </p>
-                  <p>
-                    This mutual exchange enhances emotional intelligence, breaks social barriers, and nurtures compassionate, community-minded young individuals. The program is built on the belief that shared experiences are the most powerful tool for learning and growth.
-                  </p>
-                  <p>
-                    By creating a platform for genuine interaction, Milieu helps dissolve stereotypes and encourages children to see the world from different perspectives. It's about building a future where collaboration and understanding are the cornerstones of society.
-                  </p>
+                    <p>
+                        Milieu is a unique initiative that promotes holistic development in children by fostering meaningful connections across diverse socio-economic backgrounds. The program brings together students from reputed schools and underprivileged communities, offering a shared space where learning, empathy, and mutual respect flourish.
+                    </p>
+                    <p>
+                        Through interactive sessions, collaborative activities, and open conversations, children engage with one another in ways that go beyond textbooks. These exchanges create opportunities for students to see the world through different lenses—helping privileged children develop humility and social awareness, while underprivileged children gain confidence and a sense of inclusion.
+                    </p>
+                    <p>
+                        Milieu helps to break down socio-economic barriers, replacing stereotypes with understanding and compassion. It instills values of respect, equality, and inclusivity in young minds at an early age—planting the seeds for a more united and empathetic future.
+                    </p>
+                    <p>
+                        By promoting emotional intelligence, communication, and shared learning, Milieu builds a sense of community and connectedness, empowering all children involved to grow into open-minded, socially responsible individuals who value diversity and collective well-being.
+                    </p>
                 </div>
               </div>
               
