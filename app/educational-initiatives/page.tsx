@@ -43,10 +43,10 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "Adult Education & Vocational Centers",
-    description: "Offering literacy programs and vocational training for adults to improve their livelihoods and self-reliance.",
+    title: "SheConnects",
+    description: "Connecting women with mentorship, skill development, and networking opportunities to foster personal and professional growth.",
     image: "https://placehold.co/600x400.png",
-    hint: "adult learning",
+    hint: "women networking",
     link: "#"
   },
   {
