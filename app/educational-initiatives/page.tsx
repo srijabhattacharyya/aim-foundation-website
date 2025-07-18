@@ -72,12 +72,12 @@ export default function EducationalInitiativesPage() {
               priority
             />
           </div>
-          <div className="absolute inset-0 flex items-center justify-center text-white p-8 md:p-12">
-            <div className="relative z-10 text-center">
+          <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
+            <div className="relative z-10 text-left">
               <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Fostering Knowledge, Inspiring Futures
               </h1>
-              <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+              <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Our educational programs are designed to unlock potential and create pathways to a brighter tomorrow for every learner.
               </p>
             </div>
