@@ -58,7 +58,7 @@ const initiatives = [
   },
   {
     title: "VidyaShakti",
-    description: "Unlocking the power of knowledge by providing inclusive and quality education for children, ensuring every child has the opportunity to learn and succeed.",
+    description: "is a multilingual app that supports rural and first-generation learners from Class 5 to 12. Students can ask questions and receive AI-generated, class-specific answers in their preferred language, making learning accessible. It bridges educational gaps where quality teachers are not always available.",
     image: "https://placehold.co/600x400.png",
     hint: "children learning",
     link: "#"
