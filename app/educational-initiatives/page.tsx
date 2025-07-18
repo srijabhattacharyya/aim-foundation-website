@@ -40,7 +40,7 @@ const initiatives = [
     description: "supported by Dhritiman Abilizing Infinity Foundation, promotes digital literacy among underprivileged and Adivasi children in Kolkata, Purba Bardhaman, and Jalpaiguri. Through computer training at Dhriti Abilizing Centres, AIM Foundation equips them with essential digital skills, bridging the digital divide and enabling future success.",
     image: "https://placehold.co/600x400.png",
     hint: "teacher technology",
-    link: "#"
+    link: "/digiempower"
   },
   {
     title: "SheConnects",

@@ -46,6 +46,8 @@ const navLinks = [
           { href: '/innocent-smiles', label: 'Innocent Smiles' },
           { href: '/inspire-eduLab', label: 'Inspire EduLab' },
           { href: '/eduaccess', label: 'EduAccess' },
+          { href: '/empower-english', label: 'Empower English'},
+          { href: '/digiempower', label: 'DigiEmpower' },
         ]
       },
       { href: '#', label: 'Healthcare Initiatives' },
