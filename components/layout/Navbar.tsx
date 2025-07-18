@@ -48,6 +48,7 @@ const navLinks = [
           { href: '/eduaccess', label: 'EduAccess' },
           { href: '/empower-english', label: 'Empower English'},
           { href: '/digiempower', label: 'DigiEmpower' },
+          { href: '/sheconnects', label: 'SheConnects' },
         ]
       },
       { href: '#', label: 'Healthcare Initiatives' },

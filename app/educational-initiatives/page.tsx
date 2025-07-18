@@ -47,7 +47,7 @@ const initiatives = [
     description: "empowers women through digital literacy training, helping them promote businesses on social media and sell online confidently. The program includes cyber safety sessions to ensure secure digital participation. By fostering tech skills and financial independence, SheConnects supports women in building brighter, self-reliant futures.",
     image: "https://placehold.co/600x400.png",
     hint: "women networking",
-    link: "#"
+    link: "/sheconnects"
   },
   {
     title: "Milieu",
