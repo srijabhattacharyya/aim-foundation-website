@@ -53,10 +53,10 @@ const teamMembers = [
     hint: 'female communications portrait',
   },
   {
-    name: 'Kabir Khan',
-    designation: 'IT & Operations Manager',
+    name: 'Prof Sushovon Sengupta',
+    designation: 'Convenor - Awareness Initiative',
     image: 'https://placehold.co/400x400.png',
-    hint: 'male tech portrait',
+    hint: 'male professor portrait',
   },
   {
     name: 'Naina Joshi',
