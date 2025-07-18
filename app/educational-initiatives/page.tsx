@@ -57,10 +57,10 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "Special Needs Education Support",
-    description: "Providing specialized resources, support, and inclusive learning environments for children with disabilities.",
+    title: "VidyaShakti",
+    description: "Unlocking the power of knowledge by providing inclusive and quality education for children, ensuring every child has the opportunity to learn and succeed.",
     image: "https://placehold.co/600x400.png",
-    hint: "special needs classroom",
+    hint: "children learning",
     link: "#"
   }
 ];
