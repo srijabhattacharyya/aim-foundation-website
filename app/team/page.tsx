@@ -47,8 +47,8 @@ const teamMembers = [
     hint: 'female doctor portrait',
   },
   {
-    name: 'Diya Patel',
-    designation: 'Communications Coordinator',
+    name: 'Dr. Madhumita Mukherjee',
+    designation: 'Convenor - Environment',
     image: 'https://placehold.co/400x400.png',
     hint: 'female communications portrait',
   },
