@@ -26,10 +26,10 @@ const navLinks = [
     isDropdown: true,
     items: [
       { href: '/organisation', label: 'Organisation' },
-      { href: '#gallery', label: 'Gallery' },
       { href: '/team', label: 'Our Team' },
     ]
   },
+  { href: '#gallery', label: 'Gallery' },
   { 
     label: 'Initiatives',
     isDropdown: true,
