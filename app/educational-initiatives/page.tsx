@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const initiatives = [
   {
-    title: "Project Pathshala",
+    title: "Innocent Smiles",
     description: "Providing quality primary education to children in remote villages, ensuring every child has a strong foundation for learning.",
     image: "https://placehold.co/600x400.png",
     hint: "classroom children"
