@@ -89,7 +89,7 @@ export default function EducationalInitiativesPage() {
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Core Educational Programs</h2>
               <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                We believe in the power of education to transform lives. Explore our key initiatives that are making a difference.
+                Education indeed plays a pivotal role in shaping responsible citizens! At AIM Foundation, we believe that education is the cornerstone of building responsible citizens and empowering future leaders.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
