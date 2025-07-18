@@ -75,211 +75,207 @@ export default function DonationForm() {
   }
 
   return (
-    <section className="py-12 md:py-20 lg:py-24 bg-muted">
-        <div className="container mx-auto px-4 md:px-6 flex justify-center">
-            <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg">
-                <CardContent className="p-0">
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl font-bold font-headline">SUPPORT THE CAUSE</h2>
-                        <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
-                    </div>
+    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg bg-card">
+        <CardContent className="p-0">
+            <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold font-headline">SUPPORT THE CAUSE</h2>
+                <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
+            </div>
 
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                        <FormField
-                            control={form.control}
-                            name="amount"
-                            render={({ field }) => (
-                            <FormItem className="space-y-3">
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                    control={form.control}
+                    name="amount"
+                    render={({ field }) => (
+                    <FormItem className="space-y-3">
+                        <FormControl>
+                        <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-wrap justify-center gap-4 md:gap-8"
+                        >
+                            {donationAmounts.map((item) => (
+                            <FormItem key={item.value} className="flex items-center space-x-2 space-y-0">
                                 <FormControl>
-                                <RadioGroup
-                                    onValueChange={field.onChange}
-                                    defaultValue={field.value}
-                                    className="flex flex-wrap justify-center gap-4 md:gap-8"
-                                >
-                                    {donationAmounts.map((item) => (
-                                    <FormItem key={item.value} className="flex items-center space-x-2 space-y-0">
-                                        <FormControl>
-                                        <RadioGroupItem value={item.value} />
-                                        </FormControl>
-                                        <FormLabel className="font-normal text-base">{item.label}</FormLabel>
-                                    </FormItem>
-                                    ))}
-                                </RadioGroup>
+                                <RadioGroupItem value={item.value} />
                                 </FormControl>
-                                <FormMessage />
-                                <p className="text-center text-muted-foreground pt-2">EDUCATION OF 1 CHILD FOR 6 MONTHS</p>
+                                <FormLabel className="font-normal text-base">{item.label}</FormLabel>
                             </FormItem>
-                            )}
-                        />
+                            ))}
+                        </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                        <p className="text-center text-muted-foreground pt-2">EDUCATION OF 1 CHILD FOR 6 MONTHS</p>
+                    </FormItem>
+                    )}
+                />
 
-                        <FormField
-                            control={form.control}
-                            name="otherAmount"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Other Amount" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <FormField
-                                control={form.control}
-                                name="fullName"
-                                render={({ field }) => (
-                                    <FormItem>
-                                    <FormControl>
-                                        <Input placeholder="Enter Full Name" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="email"
-                                render={({ field }) => (
-                                    <FormItem>
-                                    <FormControl>
-                                        <Input type="email" placeholder="Enter Email ID" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="mobile"
-                                render={({ field }) => (
-                                    <FormItem>
-                                    <FormControl>
-                                        <Input type="tel" placeholder="Enter Mobile No" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="dob"
-                                render={({ field }) => (
-                                    <FormItem>
-                                    <FormControl>
-                                        <Input type="date" placeholder="DOB" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="pan"
-                                render={({ field }) => (
-                                    <FormItem>
-                                    <FormControl>
-                                        <Input placeholder="Pan No" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                             <FormField
-                                control={form.control}
-                                name="country"
-                                render={({ field }) => (
-                                    <FormItem>
-                                    <FormControl>
-                                        <Input placeholder="India" {...field} disabled />
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="state"
-                                render={({ field }) => (
-                                    <FormItem>
-                                    <FormControl>
-                                        <Input placeholder="Select State" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="city"
-                                render={({ field }) => (
-                                    <FormItem>
-                                    <FormControl>
-                                        <Input placeholder="City" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                <FormField
+                    control={form.control}
+                    name="otherAmount"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormControl>
+                            <Input placeholder="Other Amount" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                        control={form.control}
+                        name="fullName"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="Enter Full Name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input type="email" placeholder="Enter Email ID" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="mobile"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input type="tel" placeholder="Enter Mobile No" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="dob"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input type="date" placeholder="DOB" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="pan"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="Pan No" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                     <FormField
+                        control={form.control}
+                        name="country"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="India" {...field} disabled />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="state"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="Select State" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="city"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="City" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+                
+                <FormField
+                    control={form.control}
+                    name="address"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormControl>
+                            <Input placeholder="Address" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="pincode"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormControl>
+                            <Input placeholder="Pincode" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                
+                <div className="text-xs text-muted-foreground text-center space-y-1">
+                    <p>YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT UNDER SECTION 80G AS ASSOCIATED INITIATIVE FOR MANKIND FOUNDATION IS REGISTERED AS NON PROFIT ORGANIZATION</p>
+                    <p>PAN: AACTS7973G | 80G NUMBER: AACTS7973GF20210</p>
+                </div>
+                
+                <FormField
+                    control={form.control}
+                    name="agree"
+                    render={({ field }) => (
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow-sm">
+                        <FormControl>
+                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                            <FormLabel className="text-xs text-muted-foreground">
+                            You agree that Associated Initiative for Mankind Foundation can reach out to you through Whatsapp/email/SMS/Phone to provide information of your donation, campaigns, 80G receipt etc.
+                            </FormLabel>
+                            <FormMessage />
                         </div>
-                        
-                        <FormField
-                            control={form.control}
-                            name="address"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Address" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        </FormItem>
+                    )}
+                />
 
-                        <FormField
-                            control={form.control}
-                            name="pincode"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Pincode" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        
-                        <div className="text-xs text-muted-foreground text-center space-y-1">
-                            <p>YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT UNDER SECTION 80G AS SMILE FOUNDATION IS REGISTERED AS NON PROFIT ORGANIZATION</p>
-                            <p>PAN: AACTS7973G | 80G NUMBER: AACTS7973GF20210</p>
-                        </div>
-                        
-                        <FormField
-                            control={form.control}
-                            name="agree"
-                            render={({ field }) => (
-                                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow-sm">
-                                <FormControl>
-                                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                                </FormControl>
-                                <div className="space-y-1 leading-none">
-                                    <FormLabel className="text-xs text-muted-foreground">
-                                    You agree that Smile Foundation can reach out to you through Whatsapp/email/SMS/Phone to provide information of your donation, campaigns, 80G receipt etc.
-                                    </FormLabel>
-                                    <FormMessage />
-                                </div>
-                                </FormItem>
-                            )}
-                        />
-
-                        <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
-                        </form>
-                    </Form>
-                </CardContent>
-            </Card>
-        </div>
-    </section>
+                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
+                </form>
+            </Form>
+        </CardContent>
+    </Card>
   );
 }
