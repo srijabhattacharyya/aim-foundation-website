@@ -13,7 +13,7 @@ const initiatives = [
     hint: "classroom children"
   },
   {
-    title: "Digital Literacy Program",
+    title: "Inspire EduLab",
     description: "Equipping young adults with essential computer skills and digital knowledge to thrive in the modern workforce.",
     image: "https://placehold.co/600x400.png",
     hint: "computer lab students"
