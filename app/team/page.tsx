@@ -65,10 +65,10 @@ const teamMembers = [
     hint: 'male fundraiser portrait',
   },
   {
-    name: 'Ravi Kumar',
-    designation: 'Field Officer',
+    name: 'Mrs. Sushmeli Dutta',
+    designation: 'Eminant Writer',
     image: 'https://placehold.co/400x400.png',
-    hint: 'male field officer',
+    hint: 'female writer portrait',
   },
   {
     name: 'Mira Kapoor',
