@@ -26,7 +26,7 @@ export default function MilieuPage() {
                 Milieu
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Fostering Empathy, Building Bridges.
+                Bridging Backgrounds, Building Bonds.
               </p>
             </div>
           </div>
