@@ -71,10 +71,10 @@ const teamMembers = [
     hint: 'female writer portrait',
   },
   {
-    name: 'Mira Kapoor',
-    designation: 'Field Officer',
+    name: 'Dr. Apurba Mukherjee',
+    designation: 'Scientist & Entrepreneur, California',
     image: 'https://placehold.co/400x400.png',
-    hint: 'female field officer',
+    hint: 'male scientist portrait',
   },
 ];
 
