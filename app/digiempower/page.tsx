@@ -37,7 +37,7 @@ export default function DigiEmpowerPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Unlocking Potential Through Technology</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">No Child Left Offline</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     DigiEmpower, an initiative supported by the Dhritiman Abilizing Infinity Foundation, is dedicated to promoting digital literacy among underprivileged and Adivasi children in both urban and remote regions of West Bengal. Operating in areas such as Kolkata, Rangakhila in Purba Bardhaman, and Dakshin Dhupjhora in Jalpaiguri, the program reaches children who traditionally have limited or no access to technology.
