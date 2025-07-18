@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
@@ -25,7 +26,7 @@ export default function InspireEduLabPage() {
                 Inspire EduLab
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Transforming classrooms into smart, internet-enabled learning hubs.
+                Transforming Learning, Empowering Minds
               </p>
             </div>
           </div>
