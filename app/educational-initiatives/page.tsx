@@ -36,10 +36,10 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "Teacher Training Workshops",
-    description: "Enhancing the skills and methodologies of educators to improve the quality of learning in schools.",
+    title: "DigiEmpower",
+    description: "Equipping educators with modern digital tools and teaching methodologies to foster innovative and engaging learning environments.",
     image: "https://placehold.co/600x400.png",
-    hint: "teacher training",
+    hint: "teacher technology",
     link: "#"
   },
   {
