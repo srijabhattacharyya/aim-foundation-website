@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 const initiatives = [
   {
     title: "Innocent Smiles",
-    description: "empowers children through education, art, dance, and music—nurturing both creativity and academics. It offers a supportive space for holistic growth, helping young minds build confidence, express themselves, and prepare for a brighter future.",
+    description: "empowers children through a vibrant blend of education, art, dance, and music—nurturing both their creative expression and academic development. The initiative provides a safe, supportive space where young minds can explore their talents, discover their passions, and grow with confidence. By focusing on holistic growth, it helps children develop essential life skills, build self-esteem, and find joy in learning. Through engaging programs and mentorship, Innocent Smiles lays the foundation for a brighter, more empowered future for every child it touches.",
     image: "https://placehold.co/600x400.png",
     hint: "classroom children"
   },
