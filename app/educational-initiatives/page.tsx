@@ -50,10 +50,10 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "STEM for Girls",
-    description: "Inspiring and supporting young girls to pursue education and careers in science, technology, engineering, and math.",
+    title: "Milieu",
+    description: "Fostering a positive social and cultural environment to support community development and personal growth.",
     image: "https://placehold.co/600x400.png",
-    hint: "girls science experiment",
+    hint: "community gathering",
     link: "#"
   },
   {
