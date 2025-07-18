@@ -40,13 +40,16 @@ export default function EmpowerEnglishPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Building Confidence Through Communication</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    Empower English provides spoken English training to students in underserved areas like Kolkata, Purba Bardhaman, and Jalpaiguri. The program is designed to build confidence and improve communication skills, which are crucial for academic and professional success.
+                    Empower English is a transformative initiative by the AIM Foundation that offers spoken English training to students from underserved communities in Kolkata, Purba Bardhaman, and Jalpaiguri. Recognizing the critical role of language in shaping academic and professional success, the program is designed to strengthen students’ communication skills and boost their self-confidence.
                   </p>
                   <p>
-                    Our curriculum focuses on practical, real-world English, helping students overcome language barriers and express themselves clearly. By creating an interactive and supportive learning environment, we empower students to participate in conversations, interviews, and public speaking with ease.
+                    Many students in these regions face challenges due to a lack of exposure to proficient English instruction. Empower English bridges this gap by providing structured, interactive learning sessions that focus on practical speaking, listening, and comprehension skills. These classes help students express themselves more clearly, participate actively in their education, and prepare for future career opportunities.
                   </p>
                    <p>
-                    This initiative bridges critical language gaps, opening doors to greater opportunities in higher education and the job market. We believe that mastering English is not just about learning a new language, but about unlocking potential and paving the way for long-term growth and a brighter future.
+                    The initiative not only improves language proficiency but also fosters a sense of self-assurance, enabling students to engage more fully in classrooms, interviews, and everyday conversations. By equipping them with essential communication tools, Empower English opens doors to higher education, employment, and social mobility.
+                  </p>
+                  <p>
+                    Through this program, the AIM Foundation continues its mission of uplifting marginalized communities—creating pathways for personal growth, inclusion, and a more empowered future.
                   </p>
                 </div>
               </div>
