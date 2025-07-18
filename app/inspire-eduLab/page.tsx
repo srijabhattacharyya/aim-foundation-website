@@ -37,7 +37,7 @@ export default function InspireEduLabPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Future-Ready Learning Environments</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Redefining Classrooms for a Digital Tomorrow</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     Inspire EduLab transforms traditional classrooms into smart, internet-enabled learning hubs that spark curiosity and engagement. With interactive tools like audio-visual content, online expert sessions, and dynamic 2D/3D animations, it makes complex lessons dynamic and easier to grasp for every student.
@@ -63,3 +63,4 @@ export default function InspireEduLabPage() {
     </div>
   );
 }
+
