@@ -14,18 +14,6 @@ export default function InnocentSmilesPage() {
               YOUR SUPPORT IS CRUCIAL IN ENSURING EDUCATION FOR ALL!
             </h1>
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-              <div className="lg:col-span-2">
-                 <div className="flex justify-center">
-                   <Image
-                      src="https://placehold.co/400x600.png"
-                      alt="Placeholder"
-                      width={400}
-                      height={600}
-                      data-ai-hint="child education"
-                      className="rounded-lg shadow-lg"
-                    />
-                 </div>
-              </div>
               <div className="lg:col-span-3 text-lg text-muted-foreground space-y-6 text-justify">
                 <p>
                   Childhood is said to be the best part of human life – an age where we are carefree, safe and happy. But a happy childhood is not the reality for many children, who are out-of-school. There are many reasons for children to drop out of school – from challenging socio-economic circumstances, to lack of awareness in communities where education is not seen as a priority.
@@ -42,6 +30,18 @@ export default function InnocentSmilesPage() {
                 <p>
                   Despite all the odds, these young champions have not given up and continue to dream and work hard. With your support, we can fuel their dreams with accessible and quality education. Join hands with us to ensure a happy and safe childhood for all!
                 </p>
+              </div>
+              <div className="lg:col-span-2">
+                 <div className="flex justify-center">
+                   <Image
+                      src="https://placehold.co/400x600.png"
+                      alt="Placeholder"
+                      width={400}
+                      height={600}
+                      data-ai-hint="child education"
+                      className="rounded-lg shadow-lg"
+                    />
+                 </div>
               </div>
             </div>
           </div>
