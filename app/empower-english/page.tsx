@@ -37,7 +37,7 @@ export default function EmpowerEnglishPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Building Confidence Through Communication</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Confidence Begins with Conversation.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     Empower English is a transformative initiative by the AIM Foundation that offers spoken English training to students from underserved communities in Kolkata, Purba Bardhaman, and Jalpaiguri. Recognizing the critical role of language in shaping academic and professional success, the program is designed to strengthen students’ communication skills and boost their self-confidence.
