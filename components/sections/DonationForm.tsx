@@ -49,7 +49,7 @@ export default function DonationForm() {
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
-      amount: "3000",
+      amount: "6000",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -75,7 +75,7 @@ export default function DonationForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg border border-gray-200">
+    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg border border-primary">
         <CardContent className="p-0">
             <div className="text-center mb-8">
                 <h2 className="text-xl font-bold font-headline tracking-widest text-primary">SUPPORT THE CAUSE</h2>
