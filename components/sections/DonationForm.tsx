@@ -1,0 +1,281 @@
+
+"use client";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/hooks/use-toast";
+import { Card, CardContent } from "../ui/card";
+
+const donationSchema = z.object({
+  amount: z.string().nonempty({ message: "Please select a donation amount." }),
+  otherAmount: z.string().optional(),
+  fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
+  dob: z.string().nonempty({ message: "Date of birth is required." }),
+  pan: z.string().min(10, { message: "PAN must be 10 characters." }).max(10, { message: "PAN must be 10 characters." }),
+  country: z.string(),
+  state: z.string().nonempty({ message: "State is required." }),
+  city: z.string().nonempty({ message: "City is required." }),
+  address: z.string().nonempty({ message: "Address is required." }),
+  pincode: z.string().min(6, { message: "Pincode must be 6 digits." }).max(6, { message: "Pincode must be 6 digits." }),
+  agree: z.boolean().refine((val) => val === true, {
+    message: "You must agree to the terms.",
+  }),
+});
+
+const donationAmounts = [
+    { value: "3000", label: "₹3000" },
+    { value: "6000", label: "₹6000" },
+    { value: "12000", label: "₹12000" },
+    { value: "24000", label: "₹24000" },
+];
+
+export default function DonationForm() {
+  const { toast } = useToast();
+  const form = useForm<z.infer<typeof donationSchema>>({
+    resolver: zodResolver(donationSchema),
+    defaultValues: {
+      amount: "3000",
+      otherAmount: "",
+      fullName: "",
+      email: "",
+      mobile: "",
+      dob: "",
+      pan: "",
+      country: "India",
+      state: "",
+      city: "",
+      address: "",
+      pincode: "",
+      agree: false,
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof donationSchema>) {
+    console.log(values);
+    toast({
+      title: "Thank you for your donation!",
+      description: "Your support makes a difference.",
+    });
+    form.reset();
+  }
+
+  return (
+    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg border-2 border-[#8bc34a]">
+        <CardContent className="p-0">
+            <div className="text-center mb-8">
+                <h2 className="text-xl font-bold font-headline tracking-widest">SUPPORT THE CAUSE</h2>
+                <p className="text-muted-foreground text-sm tracking-wider">MAKE A DIFFERENCE</p>
+            </div>
+
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                    control={form.control}
+                    name="amount"
+                    render={({ field }) => (
+                    <FormItem className="space-y-3">
+                        <FormControl>
+                        <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-wrap justify-center gap-4 md:gap-6"
+                        >
+                            {donationAmounts.map((item) => (
+                            <FormItem key={item.value} className="flex items-center space-x-2 space-y-0">
+                                <FormControl>
+                                <RadioGroupItem value={item.value} />
+                                </FormControl>
+                                <FormLabel className="font-normal text-sm">{item.label}</FormLabel>
+                            </FormItem>
+                            ))}
+                        </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                        <p className="text-center text-muted-foreground pt-2 text-sm font-semibold">EDUCATION OF 1 CHILD FOR 6 MONTHS</p>
+                    </FormItem>
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="otherAmount"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormControl>
+                            <Input placeholder="Other Amount" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                        control={form.control}
+                        name="fullName"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="Enter Full Name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input type="email" placeholder="Enter Email ID" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="mobile"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input type="tel" placeholder="Enter Mobile No" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="dob"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input type="date" placeholder="DOB" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="pan"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="Pan No" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                     <FormField
+                        control={form.control}
+                        name="country"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="India" {...field} disabled />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="state"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="Select State" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="city"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="City" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+                
+                <FormField
+                    control={form.control}
+                    name="address"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormControl>
+                            <Input placeholder="Address" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="pincode"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormControl>
+                            <Input placeholder="Pincode" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                
+                <div className="text-xs text-muted-foreground text-center space-y-1">
+                    <p>YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT UNDER SECTION 80G AS SMILE FOUNDATION IS REGISTERED AS NON PROFIT ORGANIZATION</p>
+                    <p>PAN: AACTS7973G | 80G NUMBER: AACTS7973GF20210</p>
+                </div>
+                
+                <FormField
+                    control={form.control}
+                    name="agree"
+                    render={({ field }) => (
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow-sm">
+                        <FormControl>
+                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                            <FormLabel className="text-xs text-muted-foreground">
+                            You agree that Smile Foundation can reach out to you through Whatsapp/email/SMS/Phone to provide information of your donation, campaigns, 80G receipt etc.
+                            </FormLabel>
+                            <FormMessage />
+                        </div>
+                        </FormItem>
+                    )}
+                />
+
+                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
+                </form>
+            </Form>
+        </CardContent>
+    </Card>
+  );
+}
