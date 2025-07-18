@@ -9,7 +9,7 @@ import Link from "next/link";
 const initiatives = [
   {
     title: "Innocent Smiles",
-    description: "empowers children through education, art, dance, and music—blending creativity with academics. It provides a nurturing space where young minds build confidence, express themselves, and grow holistically. Through joyful learning and guided support, the initiative helps shape brighter, more confident futures.",
+    description: "empowers children by combining education with art, dance, and music, nurturing both creativity and academics. It offers a supportive space where young minds gain confidence, express themselves, and grow holistically. Through engaging programs and guidance, the initiative fosters joyful learning and builds brighter, more confident futures.",
     image: "https://placehold.co/600x400.png",
     hint: "classroom children",
     link: "/innocent-smiles"
