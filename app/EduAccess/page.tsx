@@ -37,7 +37,7 @@ export default function EduAccessPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Quality Education, Delivered Remotely</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Teaching Beyond Boundaries</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     Supported by Dhritiman Abilizing Infinity Foundation, EduAccess delivers quality education to rural West Bengal through expert-led online classes from a Kolkata studio. Covering subjects like English, Math, and Science, it empowers students in underserved areas with skills essential for academic success and future opportunities.
