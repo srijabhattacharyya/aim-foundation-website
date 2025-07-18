@@ -75,10 +75,10 @@ export default function DonationForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg border-2 border-[#8bc34a]">
+    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg border border-gray-200">
         <CardContent className="p-0">
             <div className="text-center mb-8">
-                <h2 className="text-xl font-bold font-headline tracking-widest">SUPPORT THE CAUSE</h2>
+                <h2 className="text-xl font-bold font-headline tracking-widest text-primary">SUPPORT THE CAUSE</h2>
                 <p className="text-muted-foreground text-sm tracking-wider">MAKE A DIFFERENCE</p>
             </div>
 
@@ -272,7 +272,7 @@ export default function DonationForm() {
                     )}
                 />
 
-                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white" size="lg">Submit</Button>
                 </form>
             </Form>
         </CardContent>
