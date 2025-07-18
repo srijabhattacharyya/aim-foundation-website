@@ -54,7 +54,7 @@ const initiatives = [
     description: "fosters holistic development by connecting children from diverse economic backgrounds. Through interactive sessions, students from reputed schools and underprivileged communities learn together, building empathy, respect, and inclusivity. This mutual exchange enhances emotional intelligence, breaks social barriers, and nurtures compassionate, community-minded young individuals.",
     image: "https://placehold.co/600x400.png",
     hint: "community gathering",
-    link: "#"
+    link: "/milieu"
   },
   {
     title: "VidyaShakti",

@@ -49,6 +49,7 @@ const navLinks = [
           { href: '/empower-english', label: 'Empower English'},
           { href: '/digiempower', label: 'DigiEmpower' },
           { href: '/sheconnects', label: 'SheConnects' },
+          { href: '/milieu', label: 'Milieu' },
         ]
       },
       { href: '#', label: 'Healthcare Initiatives' },
