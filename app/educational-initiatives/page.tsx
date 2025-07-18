@@ -30,7 +30,7 @@ const initiatives = [
   },
   {
     title: "Empower English",
-    description: "Enhancing language skills and communication abilities for better opportunities through English language training.",
+    description: "provides spoken English training to students in underserved areas like Kolkata, Purba Bardhaman, and Jalpaiguri. The program builds confidence and improves communication skills, helping students succeed academically and professionally. It bridges language gaps, opening doors to greater opportunities and long-term growth.",
     image: "https://placehold.co/600x400.png",
     hint: "english classroom",
     link: "#"
