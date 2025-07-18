@@ -1,7 +1,7 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import DonationForm from "@/components/sections/DonationForm";
+import Image from "next/image";
 
 export default function InnocentSmilesPage() {
   return (
@@ -33,7 +33,14 @@ export default function InnocentSmilesPage() {
               </div>
               <div className="lg:col-span-2">
                  <div className="sticky top-24">
-                   <DonationForm />
+                   <Image
+                      src="https://placehold.co/600x400.png"
+                      alt="Placeholder"
+                      width={600}
+                      height={400}
+                      data-ai-hint="donation form"
+                      className="rounded-lg shadow-lg w-full"
+                    />
                  </div>
               </div>
             </div>
