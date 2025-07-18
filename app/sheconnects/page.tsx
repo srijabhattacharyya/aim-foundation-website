@@ -37,7 +37,7 @@ export default function SheConnectsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Digital Skills for Brighter Futures</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Women Through Technology.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     Project SheConnects is a women-centric initiative designed to promote digital empowerment and financial independence. The program provides comprehensive digital literacy training to women from underserved communities, enabling them to harness the power of technology to improve their livelihoods. Participants learn how to create and manage social media profiles, market their products online, and navigate e-commerce platforms effectively.
