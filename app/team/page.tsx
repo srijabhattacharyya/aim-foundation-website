@@ -41,10 +41,10 @@ const teamMembers = [
     hint: 'female professional portrait',
   },
   {
-    name: 'Arjun Verma',
-    designation: 'Environmental Specialist',
+    name: 'Dr. Piyali Bhaduri',
+    designation: 'Convenor - Health & Hygiene',
     image: 'https://placehold.co/400x400.png',
-    hint: 'male scientist portrait',
+    hint: 'female doctor portrait',
   },
   {
     name: 'Diya Patel',
