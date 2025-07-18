@@ -50,6 +50,7 @@ const navLinks = [
           { href: '/digiempower', label: 'DigiEmpower' },
           { href: '/sheconnects', label: 'SheConnects' },
           { href: '/milieu', label: 'Milieu' },
+          { href: '/vidyashakti', label: 'VidyaShakti' },
         ]
       },
       { href: '#', label: 'Healthcare Initiatives' },
