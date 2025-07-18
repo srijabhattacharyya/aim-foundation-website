@@ -1,7 +1,6 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import DonationForm from "@/components/sections/DonationForm";
 import Image from "next/image";
 
 export default function InnocentSmilesPage() {
@@ -34,6 +33,16 @@ export default function InnocentSmilesPage() {
 
         <div className="container mx-auto px-4 md:px-6 py-12 md:py-20">
             <div className="flex flex-col md:flex-row gap-12 items-start">
+              <div className="md:w-1/2">
+                <Image
+                  src="https://placehold.co/600x400.png"
+                  alt="Placeholder Image"
+                  width={600}
+                  height={400}
+                  className="rounded-lg shadow-lg w-full"
+                  data-ai-hint="education learning"
+                />
+              </div>
               <div className="md:w-1/2 space-y-4">
                 <h2 className="text-3xl font-bold mb-4 font-headline text-center">Why Education Matters for Every Child</h2>
                 <div className="space-y-4 text-muted-foreground text-lg text-justify">
@@ -47,10 +56,6 @@ export default function InnocentSmilesPage() {
                     By supporting a child's education, you're investing in a brighter future — not just for the child, but for their family and community too.
                     </p>
                 </div>
-              </div>
-
-              <div className="md:w-1/2 w-full">
-                <DonationForm />
               </div>
             </div>
         </div>
