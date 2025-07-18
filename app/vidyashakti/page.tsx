@@ -40,7 +40,16 @@ export default function VidyaShaktiPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Knowledge in Your Language.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    VidyaShakti is a multilingual app that supports rural and first-generation learners from Class 5 to 12. Students can ask questions and receive AI-generated, class-specific answers in their preferred language, making learning accessible. It bridges educational gaps where quality teachers are not always available.
+                    VidyaShakti is a multilingual educational app designed to support rural children and first-generation learners. While it may not be possible to provide quality teachers in every village, the widespread availability of smartphones and internet connectivity has opened new doors for accessible learning.
+                  </p>
+                  <p>
+                    Through VidyaShakti, students from Class 5 to Class 12 can ask any academic question and receive AI-generated answers tailored to their class level and comprehension ability. What sets the app apart is its ability to deliver explanations in the student’s preferred language, ensuring clarity and better understanding.
+                  </p>
+                  <p>
+                    This innovative platform bridges the educational gap by offering personalized, on-demand support—empowering rural students to learn independently, strengthen their academic foundation, and stay connected with quality education regardless of their location.
+                  </p>
+                  <p>
+                    VidyaShakti is more than just an app; it is a lifeline for learners in remote areas, bringing the power of knowledge directly to their fingertips.
                   </p>
                 </div>
               </div>
