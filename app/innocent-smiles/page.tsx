@@ -1,92 +1,32 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import DonationForm from "@/components/sections/DonationForm";
 
-const initiatives = [
-  {
-    title: "Innocent Smiles",
-    description: "empowers children through education, art, dance, and music—blending creativity with academics. It provides a nurturing space where young minds build confidence, express themselves, and grow holistically. Through joyful learning and guided support, the initiative helps shape brighter, more confident futures.",
-    image: "https://placehold.co/600x400.png",
-    hint: "classroom children",
-    link: "#"
-  },
-  {
-    title: "Inspire EduLab",
-    description: "transforms classrooms into smart, internet-enabled learning hubs that spark curiosity and engagement. With interactive tools like audio-visual content, online sessions, and 2D/3D animations, it makes lessons dynamic and easier to grasp. Bridging traditional education with modern tech, Inspire EduLab empowers students through immersive, future-ready learning.",
-    image: "https://placehold.co/600x400.png",
-    hint: "computer lab students",
-    link: "#"
-  },
-  {
-    title: "Scholarship Fund for Higher Education",
-    description: "Supporting meritorious students from low-income families to pursue their dreams of higher education.",
-    image: "https://placehold.co/600x400.png",
-    hint: "university graduate",
-    link: "#"
-  },
-  {
-    title: "Mobile Library Initiative",
-    description: "Bringing the joy of reading to communities with limited access to books and educational resources.",
-    image: "https://placehold.co/600x400.png",
-    hint: "mobile library",
-    link: "#"
-  },
-  {
-    title: "Teacher Training Workshops",
-    description: "Enhancing the skills and methodologies of educators to improve the quality of learning in schools.",
-    image: "https://placehold.co/600x400.png",
-    hint: "teacher training",
-    link: "#"
-  },
-  {
-    title: "Adult Education & Vocational Centers",
-    description: "Offering literacy programs and vocational training for adults to improve their livelihoods and self-reliance.",
-    image: "https://placehold.co/600x400.png",
-    hint: "adult learning",
-    link: "#"
-  },
-  {
-    title: "STEM for Girls",
-    description: "Inspiring and supporting young girls to pursue education and careers in science, technology, engineering, and math.",
-    image: "https://placehold.co/600x400.png",
-    hint: "girls science experiment",
-    link: "#"
-  },
-  {
-    title: "Special Needs Education Support",
-    description: "Providing specialized resources, support, and inclusive learning environments for children with disabilities.",
-    image: "https://placehold.co/600x400.png",
-    hint: "special needs classroom",
-    link: "#"
-  }
-];
-
-export default function EducationalInitiativesPage() {
+export default function InnocentSmilesPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
         <section className="relative w-full">
-          <div className="relative w-full" style={{ paddingTop: '45%' }}>
+          <div className="relative w-full" style={{ paddingTop: '56.25%' /* 1080 / 1920 = 0.5625 */ }}>
             <Image
-              src="https://placehold.co/1920x864.png"
-              alt="Educational Initiatives Banner"
+              src="https://placehold.co/1920x1080.png"
+              alt="Innocent Smiles Banner"
               fill
               className="object-cover brightness-50"
-              data-ai-hint="education children"
+              data-ai-hint="children smiling classroom"
               priority
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
             <div className="relative z-10 text-left">
               <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Igniting Talent, Inspiring Futures
+                Innocent Smiles
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Our educational programs are designed to unlock potential and create pathways to a brighter tomorrow for every learner.
+                Empowering children through joyful learning, creativity, and holistic growth.
               </p>
             </div>
           </div>
@@ -94,34 +34,27 @@ export default function EducationalInitiativesPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Core Educational Programs</h2>
-              <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                Education indeed plays a pivotal role in shaping responsible citizens! At AIM Foundation, we believe that education is the cornerstone of building responsible citizens and empowering future leaders.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {initiatives.map((item, index) => (
-                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                  <CardHeader className="p-0">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={600}
-                      height={400}
-                      data-ai-hint={item.hint}
-                      className="w-full h-48 object-cover"
-                    />
-                  </CardHeader>
-                  <CardContent className="p-6 flex flex-col flex-grow">
-                    <CardTitle className="mb-2 font-headline">{item.title}</CardTitle>
-                    <CardDescription className="flex-grow text-justify">{item.description}</CardDescription>
-                    <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
-                      <Link href={item.link || "#"}>Learn More &rarr;</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+              {/* Left Text Column */}
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Nurturing Bright Futures</h2>
+                <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                   <p>
+                    The "Innocent Smiles" initiative empowers children through a blend of education, art, dance, and music. We merge creativity with academics to create a nurturing space where young minds can build confidence, express themselves, and grow holistically. 
+                  </p>
+                  <p>
+                    Our program provides a joyful and supportive environment designed to unlock each child's unique potential. Through guided support and engaging activities, we help shape brighter, more confident futures, fostering a lifelong love for learning and self-expression.
+                  </p>
+                  <p>
+                    We believe every child deserves the chance to shine. "Innocent Smiles" is committed to providing the foundational skills and creative outlets that allow children to thrive, dream, and succeed in all aspects of life.
+                  </p>
+                </div>
+              </div>
+              
+              {/* Right Sticky Form Column */}
+              <div className="sticky top-24">
+                <DonationForm />
+              </div>
             </div>
           </div>
         </section>
