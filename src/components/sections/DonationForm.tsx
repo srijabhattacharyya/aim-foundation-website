@@ -251,7 +251,7 @@ export default function DonationForm() {
                 
                 <div className="text-xs text-muted-foreground text-center space-y-1">
                     <p>YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT UNDER SECTION 80G AS ASSOCIATED INITIATIVE FOR MANKIND FOUNDATION IS REGISTERED AS NON PROFIT ORGANIZATION</p>
-                    <p>PAN: AACTS7973G | 80G NUMBER: AACTS7973GF20210</p>
+                    <p>PAN: AAFTA1983P | 80G NUMBER: AAFTA1983PF20221</p>
                 </div>
                 
                 <FormField
