@@ -44,7 +44,7 @@ export default function DonationForm() {
   }
 
   return (
-    <Card className="w-full max-w-lg p-6 md:p-8 shadow-lg">
+    <Card className="w-full max-w-lg p-6 md:p-8 shadow-lg bg-card">
       <CardHeader>
         <CardTitle className="text-2xl font-bold font-headline text-center">Make a Donation</CardTitle>
       </CardHeader>
@@ -90,7 +90,7 @@ export default function DonationForm() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white" size="lg">
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" size="lg">
               Donate Now
             </Button>
           </form>
