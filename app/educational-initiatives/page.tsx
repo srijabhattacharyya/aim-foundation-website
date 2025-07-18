@@ -26,7 +26,7 @@ const initiatives = [
     description: "supported by Dhritiman Abilizing Infinity Foundation, delivers quality education to rural West Bengal through expert-led online classes from a Kolkata studio. Covering subjects like English, Math, and Science, it empowers students in underserved areas with skills essential for academic success and future opportunities.",
     image: "https://placehold.co/600x400.png",
     hint: "university graduate",
-    link: "/eduAccess"
+    link: "/eduaccess"
   },
   {
     title: "Empower English",
