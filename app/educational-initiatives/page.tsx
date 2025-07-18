@@ -12,7 +12,7 @@ const initiatives = [
     description: "empowers children through education, art, dance, and music—blending creativity with academics. It provides a nurturing space where young minds build confidence, express themselves, and grow holistically. Through joyful learning and guided support, the initiative helps shape brighter, more confident futures.",
     image: "https://placehold.co/600x400.png",
     hint: "classroom children",
-    link: "/innocent-smiles"
+    link: "#"
   },
   {
     title: "Inspire EduLab",
