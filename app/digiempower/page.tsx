@@ -40,13 +40,16 @@ export default function DigiEmpowerPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Unlocking Potential Through Technology</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    DigiEmpower, supported by Dhritiman Abilizing Infinity Foundation, promotes digital literacy among underprivileged and Adivasi children in Kolkata, Purba Bardhaman, and Jalpaiguri. Through computer training at Dhriti Abilizing Centres, AIM Foundation equips them with essential digital skills, bridging the digital divide and enabling future success.
+                    DigiEmpower, an initiative supported by the Dhritiman Abilizing Infinity Foundation, is dedicated to promoting digital literacy among underprivileged and Adivasi children in both urban and remote regions of West Bengal. Operating in areas such as Kolkata, Rangakhila in Purba Bardhaman, and Dakshin Dhupjhora in Jalpaiguri, the program reaches children who traditionally have limited or no access to technology.
                   </p>
                   <p>
-                    Our program provides hands-on training in basic computer operations, internet usage, and essential software applications, opening up a world of information and opportunities for children who would otherwise be left behind in an increasingly digital world.
+                    Through its Dhriti Abilizing Centres, the AIM Foundation provides hands-on computer training that equips children with essential digital skills—such as typing, navigating the internet, using productivity software, and understanding online safety. These skills are critical in today’s technology-driven world and form the foundation for future educational and career opportunities.
                   </p>
                   <p>
-                    By fostering digital fluency, we empower these young minds to pursue higher education, secure better job prospects, and participate fully in modern society, creating a more inclusive and equitable future for all.
+                    DigiEmpower recognizes that digital competence is no longer optional but a necessity. By offering structured training and exposure to technology, the initiative helps children develop the confidence and knowledge needed to thrive in school, compete in the job market, and participate fully in an increasingly digital society.
+                  </p>
+                  <p>
+                    Importantly, the program ensures equitable access by extending its reach to Adivasi communities in Aushgram, Rangakhila, and Dakshin Dhupjhora, where children often face both social and infrastructural barriers. By bridging the digital divide, DigiEmpower not only enhances individual futures but also fosters broader social inclusion and empowerment across rural Bengal.
                   </p>
                 </div>
               </div>
