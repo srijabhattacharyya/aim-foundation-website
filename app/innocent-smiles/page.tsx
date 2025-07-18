@@ -13,16 +13,16 @@ export default function InnocentSmilesPage() {
             <h1 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">
               YOUR SUPPORT IS CRUCIAL IN ENSURING EDUCATION FOR ALL!
             </h1>
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
               <div className="lg:col-span-2">
-                 <div className="sticky top-24">
+                 <div className="flex justify-center">
                    <Image
-                      src="https://placehold.co/600x400.png"
+                      src="https://placehold.co/400x600.png"
                       alt="Placeholder"
-                      width={600}
-                      height={400}
-                      data-ai-hint="donation form"
-                      className="rounded-lg shadow-lg w-full"
+                      width={400}
+                      height={600}
+                      data-ai-hint="child education"
+                      className="rounded-lg shadow-lg"
                     />
                  </div>
               </div>
