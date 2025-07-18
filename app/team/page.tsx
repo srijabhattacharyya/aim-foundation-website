@@ -35,8 +35,8 @@ const teamMembers = [
     hint: 'male professional portrait',
   },
   {
-    name: 'Saanvi Desai',
-    designation: 'Lead, Education Initiatives',
+    name: 'CA Banasri Bhattacharyya',
+    designation: 'Treasurer',
     image: 'https://placehold.co/400x400.png',
     hint: 'female professional portrait',
   },
