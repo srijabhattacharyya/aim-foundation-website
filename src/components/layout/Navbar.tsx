@@ -33,7 +33,7 @@ const navLinks = [
     label: 'Initiatives',
     isDropdown: true,
     items: [
-      { href: '#', label: 'Educational Initiatives' },
+      { href: '/educational-initiatives', label: 'Educational Initiatives' },
       { href: '#', label: 'Healthcare Initiatives' },
       { href: '#', label: 'Environment Initiatives' },
       { href: '#', label: 'Gender Equality Initiative' },
