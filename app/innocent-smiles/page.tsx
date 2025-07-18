@@ -2,6 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
+import DonationForm from "@/components/sections/DonationForm";
 
 export default function InnocentSmilesPage() {
   return (
@@ -66,6 +67,9 @@ export default function InnocentSmilesPage() {
             </div>
           </div>
         </section>
+        
+        <DonationForm />
+
       </main>
       <Footer />
     </div>
