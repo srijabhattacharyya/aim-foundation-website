@@ -40,13 +40,16 @@ export default function InnocentSmilesPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Nurturing Bright Futures</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    The "Innocent Smiles" initiative empowers children through a blend of education, art, dance, and music. We merge creativity with academics to create a nurturing space where young minds can build confidence, express themselves, and grow holistically. 
+                    Innocent Smiles is a heartfelt initiative dedicated to nurturing the creative and academic potential of children, especially those from underprivileged backgrounds. The program focuses on developing talents across multiple disciplines, including education, visual arts, dance, and singing—ensuring that each child receives the opportunity to grow both intellectually and artistically.
                   </p>
                   <p>
-                    Our program provides a joyful and supportive environment designed to unlock each child's unique potential. Through guided support and engaging activities, we help shape brighter, more confident futures, fostering a lifelong love for learning and self-expression.
+                    At its core, the project creates a safe, inclusive, and encouraging environment where children can freely express themselves, discover their passions, and build self-confidence. By integrating artistic expression with strong academic foundations, Innocent Smiles promotes a holistic model of development—recognizing that true learning goes beyond textbooks.
                   </p>
                   <p>
-                    We believe every child deserves the chance to shine. "Innocent Smiles" is committed to providing the foundational skills and creative outlets that allow children to thrive, dream, and succeed in all aspects of life.
+                    Through thoughtfully designed activities, workshops, and mentorship, children are not only taught essential academic concepts but also guided to explore their creativity, voice their feelings, and work collaboratively. These experiences equip them with life skills such as communication, discipline, teamwork, and resilience.
+                  </p>
+                   <p>
+                    By investing in the potential of each child, Project Innocent Smiles aims to brighten futures, instill hope, and cultivate well-rounded individuals who can thrive in all areas of life. It’s more than a program—it’s a journey of growth, joy, and transformation for every young heart it touches.
                   </p>
                 </div>
               </div>
