@@ -59,10 +59,10 @@ const teamMembers = [
     hint: 'male professor portrait',
   },
   {
-    name: 'Naina Joshi',
-    designation: 'Volunteer Coordinator',
+    name: 'Mr. Bhaskar Bhadra',
+    designation: 'Convenors - Fund Raising',
     image: 'https://placehold.co/400x400.png',
-    hint: 'female coordinator portrait',
+    hint: 'male fundraiser portrait',
   },
   {
     name: 'Ravi Kumar',
