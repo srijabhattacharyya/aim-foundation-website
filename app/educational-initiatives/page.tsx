@@ -12,17 +12,17 @@ const initiatives = [
     description: "empowers children through education, art, dance, and music—blending creativity with academics. It provides a nurturing space where young minds build confidence, express themselves, and grow holistically. Through joyful learning and guided support, the initiative helps shape brighter, more confident futures.",
     image: "https://placehold.co/600x400.png",
     hint: "classroom children",
-    link: "#"
+    link: "/innocent-smiles"
   },
   {
     title: "Inspire EduLab",
     description: "transforms classrooms into smart, internet-enabled learning hubs that spark curiosity and engagement. With interactive tools like audio-visual content, online sessions, and 2D/3D animations, it makes lessons dynamic and easier to grasp. Bridging traditional education with modern tech, Inspire EduLab empowers students through immersive, future-ready learning.",
     image: "https://placehold.co/600x400.png",
     hint: "computer lab students",
-    link: "#"
+    link: "/inspire-eduLab"
   },
   {
-    title: "Scholarship Fund for Higher Education",
+    title: "EduAccess",
     description: "Supporting meritorious students from low-income families to pursue their dreams of higher education.",
     image: "https://placehold.co/600x400.png",
     hint: "university graduate",
