@@ -18,43 +18,50 @@ const initiatives = [
     title: "Inspire EduLab",
     description: "transforms classrooms into smart, internet-enabled learning hubs that spark curiosity and engagement. With interactive tools like audio-visual content, online sessions, and 2D/3D animations, it makes lessons dynamic and easier to grasp. Bridging traditional education with modern tech, Inspire EduLab empowers students through immersive, future-ready learning.",
     image: "https://placehold.co/600x400.png",
-    hint: "computer lab students"
+    hint: "computer lab students",
+    link: "#"
   },
   {
     title: "Scholarship Fund for Higher Education",
     description: "Supporting meritorious students from low-income families to pursue their dreams of higher education.",
     image: "https://placehold.co/600x400.png",
-    hint: "university graduate"
+    hint: "university graduate",
+    link: "#"
   },
   {
     title: "Mobile Library Initiative",
     description: "Bringing the joy of reading to communities with limited access to books and educational resources.",
     image: "https://placehold.co/600x400.png",
-    hint: "mobile library"
+    hint: "mobile library",
+    link: "#"
   },
   {
     title: "Teacher Training Workshops",
     description: "Enhancing the skills and methodologies of educators to improve the quality of learning in schools.",
     image: "https://placehold.co/600x400.png",
-    hint: "teacher training"
+    hint: "teacher training",
+    link: "#"
   },
   {
     title: "Adult Education & Vocational Centers",
     description: "Offering literacy programs and vocational training for adults to improve their livelihoods and self-reliance.",
     image: "https://placehold.co/600x400.png",
-    hint: "adult learning"
+    hint: "adult learning",
+    link: "#"
   },
   {
     title: "STEM for Girls",
     description: "Inspiring and supporting young girls to pursue education and careers in science, technology, engineering, and math.",
     image: "https://placehold.co/600x400.png",
-    hint: "girls science experiment"
+    hint: "girls science experiment",
+    link: "#"
   },
   {
     title: "Special Needs Education Support",
     description: "Providing specialized resources, support, and inclusive learning environments for children with disabilities.",
     image: "https://placehold.co/600x400.png",
-    hint: "special needs classroom"
+    hint: "special needs classroom",
+    link: "#"
   }
 ];
 
