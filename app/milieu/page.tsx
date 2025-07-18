@@ -37,7 +37,7 @@ export default function MilieuPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Connecting Worlds, Creating a Shared Future.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Shaping Conscious Citizens of Tomorrow.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
                         Milieu is a unique initiative that promotes holistic development in children by fostering meaningful connections across diverse socio-economic backgrounds. The program brings together students from reputed schools and underprivileged communities, offering a shared space where learning, empathy, and mutual respect flourish.
