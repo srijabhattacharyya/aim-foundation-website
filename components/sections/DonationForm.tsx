@@ -20,7 +20,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 const donationSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
-  amount: z.string().nonempty({ message: "Please enter an amount." }),
+  amount: z.coerce.number().positive({ message: "Please enter a valid amount." }),
 });
 
 export default function DonationForm() {
@@ -30,7 +30,7 @@ export default function DonationForm() {
     defaultValues: {
       name: "",
       email: "",
-      amount: "",
+      amount: 1000,
     },
   });
 
@@ -44,13 +44,13 @@ export default function DonationForm() {
   }
 
   return (
-    <Card className="w-full max-w-lg p-6 md:p-8 shadow-lg bg-card">
+    <Card className="w-full shadow-lg">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold font-headline text-center">Make a Donation</CardTitle>
+        <CardTitle className="text-xl font-semibold">Support the Cause</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="name"
@@ -58,7 +58,7 @@ export default function DonationForm() {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your name" {...field} />
+                    <Input placeholder="Your Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -71,7 +71,7 @@ export default function DonationForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="Enter your email" {...field} />
+                    <Input type="email" placeholder="Your Email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -82,15 +82,15 @@ export default function DonationForm() {
               name="amount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Amount (₹)</FormLabel>
+                  <FormLabel>Donation Amount (INR)</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="Enter amount" {...field} />
+                    <Input type="number" placeholder="1000" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" size="lg">
+            <Button type="submit" className="w-full" size="lg">
               Donate Now
             </Button>
           </form>
