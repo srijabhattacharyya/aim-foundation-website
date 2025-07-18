@@ -29,10 +29,10 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "Mobile Library Initiative",
-    description: "Bringing the joy of reading to communities with limited access to books and educational resources.",
+    title: "Empower English",
+    description: "Enhancing language skills and communication abilities for better opportunities through English language training.",
     image: "https://placehold.co/600x400.png",
-    hint: "mobile library",
+    hint: "english classroom",
     link: "#"
   },
   {
