@@ -34,8 +34,8 @@ export default function InnocentSmilesPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-card">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              <div className="text-lg text-muted-foreground space-y-6 text-justify">
+            <div className="grid lg:grid-cols-5 gap-12 items-start">
+              <div className="lg:col-span-3 text-lg text-muted-foreground space-y-6 text-justify">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary mb-6">About the Initiative</h2>
                   <p>
@@ -54,7 +54,7 @@ export default function InnocentSmilesPage() {
                   </p>
                 </div>
               </div>
-              <div className="lg:sticky lg:top-24">
+              <div className="lg:col-span-2 lg:sticky lg:top-24">
                 <DonationForm />
               </div>
             </div>
