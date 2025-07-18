@@ -54,7 +54,7 @@ export default function VidyaShaktiPage() {
                   </p>
                 </div>
                 <div className="mt-8">
-                  <Button disabled>App is under construction</Button>
+                  <Button disabled className="bg-primary/50 cursor-not-allowed">App is under construction</Button>
                 </div>
               </div>
               
