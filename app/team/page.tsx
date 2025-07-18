@@ -29,8 +29,8 @@ const teamMembers = [
     hint: 'male professional portrait',
   },
   {
-    name: 'Vikram Reddy',
-    designation: 'Project Manager, Healthcare',
+    name: 'Mr. Mridul Das',
+    designation: 'Joint Secretary',
     image: 'https://placehold.co/400x400.png',
     hint: 'male professional portrait',
   },
