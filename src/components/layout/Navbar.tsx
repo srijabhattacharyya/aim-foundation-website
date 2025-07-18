@@ -43,8 +43,8 @@ const navLinks = [
       { href: '#', label: 'Ignite Change Initiative' },
     ]
   },
-  { href: '#events', label: 'Events' },
   { href: '#join', label: 'Together' },
+  { href: '#events', label: 'Events' },
   { href: '#gallery', label: 'Gallery' },
   { href: '#blog', label: 'Blog' },
   { href: '#contact', label: 'Connect' },
