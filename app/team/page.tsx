@@ -23,10 +23,10 @@ const teamMembers = [
     hint: 'male leader portrait',
   },
   {
-    name: 'Anika Gupta',
-    designation: 'Head of Community Outreach',
+    name: 'Mr. Chandan Roy',
+    designation: 'Joint Secretary',
     image: 'https://placehold.co/400x400.png',
-    hint: 'female professional portrait',
+    hint: 'male professional portrait',
   },
   {
     name: 'Vikram Reddy',
