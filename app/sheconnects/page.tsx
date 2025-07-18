@@ -40,7 +40,16 @@ export default function SheConnectsPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Digital Skills for Brighter Futures</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    SheConnects empowers women through digital literacy training, helping them promote businesses on social media and sell online confidently. The program includes cyber safety sessions to ensure secure digital participation. By fostering tech skills and financial independence, SheConnects supports women in building brighter, self-reliant futures.
+                    Project SheConnects is a women-centric initiative designed to promote digital empowerment and financial independence. The program provides comprehensive digital literacy training to women from underserved communities, enabling them to harness the power of technology to improve their livelihoods. Participants learn how to create and manage social media profiles, market their products online, and navigate e-commerce platforms effectively.
+                  </p>
+                  <p>
+                    Recognizing that digital access must be paired with digital safety, SheConnects also conducts awareness sessions on cyber safety and online security. These sessions teach women how to protect their personal data, handle online transactions securely, and identify and avoid cyber threats—empowering them to participate in the digital world with confidence.
+                  </p>
+                  <p>
+                    By combining technical skills with real-world business applications, SheConnects not only equips women to boost their income but also nurtures self-reliance and entrepreneurial spirit. Whether they are homemakers, artisans, or small-scale entrepreneurs, the program gives them the tools and confidence to reach wider markets and grow sustainably.
+                  </p>
+                  <p>
+                    Through its holistic approach, Project SheConnects plays a vital role in closing the digital gender gap and fostering inclusive economic growth. It is a step toward building a more equitable society, where women are not just connected—but empowered.
                   </p>
                 </div>
               </div>
