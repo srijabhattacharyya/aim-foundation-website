@@ -41,6 +41,10 @@ const navLinks = [
       { 
         href: '/educational-initiatives', 
         label: 'Educational Initiatives',
+        isSubDropdown: true,
+        subItems: [
+          { href: '/inspire-eduLab', label: 'Inspire EduLab' },
+        ]
       },
       { href: '#', label: 'Healthcare Initiatives' },
       { href: '#', label: 'Environment Initiatives' },
@@ -75,9 +79,26 @@ const Navbar = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     {link.items?.map((item) => (
-                      <DropdownMenuItem key={item.label} asChild>
-                        <Link href={item.href}>{item.label}</Link>
-                      </DropdownMenuItem>
+                      item.isSubDropdown ? (
+                        <DropdownMenuSub key={item.label}>
+                           <DropdownMenuSubTrigger>
+                              <Link href={item.href} className="w-full text-left">{item.label}</Link>
+                           </DropdownMenuSubTrigger>
+                           <DropdownMenuPortal>
+                             <DropdownMenuSubContent>
+                              {item.subItems?.map((subItem) => (
+                                <DropdownMenuItem key={subItem.label} asChild>
+                                  <Link href={subItem.href}>{subItem.label}</Link>
+                                </DropdownMenuItem>
+                              ))}
+                             </DropdownMenuSubContent>
+                           </DropdownMenuPortal>
+                        </DropdownMenuSub>
+                      ) : (
+                        <DropdownMenuItem key={item.label} asChild>
+                          <Link href={item.href}>{item.label}</Link>
+                        </DropdownMenuItem>
+                      )
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -130,11 +151,34 @@ const Navbar = () => {
                           <AccordionContent className="pl-4">
                             <nav className="flex flex-col gap-4 pt-2">
                             {link.items?.map((item) => (
-                              <SheetClose asChild key={item.label}>
-                                <Link href={item.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
-                                  {item.label}
-                                </Link>
-                              </SheetClose>
+                              item.isSubDropdown ? (
+                                <Accordion type="single" collapsible key={item.label}>
+                                  <AccordionItem value={item.label} className="border-b-0">
+                                    <AccordionTrigger className="text-base font-medium text-muted-foreground transition-colors hover:text-primary py-2 hover:no-underline">
+                                      <SheetClose asChild>
+                                        <Link href={item.href} className="flex-1 text-left">{item.label}</Link>
+                                      </SheetClose>
+                                    </AccordionTrigger>
+                                    <AccordionContent className="pl-4">
+                                      <nav className="flex flex-col gap-4 pt-2">
+                                        {item.subItems?.map((subItem) => (
+                                          <SheetClose asChild key={subItem.label}>
+                                            <Link href={subItem.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
+                                              {subItem.label}
+                                            </Link>
+                                          </SheetClose>
+                                        ))}
+                                      </nav>
+                                    </AccordionContent>
+                                  </AccordionItem>
+                                </Accordion>
+                              ) : (
+                                <SheetClose asChild key={item.label}>
+                                  <Link href={item.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
+                                    {item.label}
+                                  </Link>
+                                </SheetClose>
+                              )
                             ))}
                             </nav>
                           </AccordionContent>
