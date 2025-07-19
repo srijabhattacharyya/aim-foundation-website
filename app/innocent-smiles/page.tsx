@@ -2,6 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
+import DonationForm from "@/components/sections/DonationForm";
 
 export default function InnocentSmilesPage() {
   return (
@@ -33,7 +34,7 @@ export default function InnocentSmilesPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Shaping Dreams with Smiles and Skills</h2>
@@ -51,6 +52,11 @@ export default function InnocentSmilesPage() {
                     By investing in the potential of each child, Project Innocent Smiles aims to brighten futures, instill hope, and cultivate well-rounded individuals who can thrive in all areas of life. It’s more than a program—it’s a journey of growth, joy, and transformation for every young heart it touches.
                   </p>
                 </div>
+              </div>
+              
+              {/* Right Sticky Form Column */}
+              <div className="sticky top-24">
+                <DonationForm />
               </div>
             </div>
           </div>
