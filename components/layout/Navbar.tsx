@@ -53,7 +53,7 @@ const navLinks = [
           { href: '/vidyashakti', label: 'VidyaShakti' },
         ]
       },
-      { href: '#', label: 'Healthcare Initiatives' },
+      { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
       { href: '#', label: 'Environment Initiatives' },
       { href: '#', label: 'Gender Equality Initiative' },
       { href: '#', label: 'Childcare Initiatives' },
