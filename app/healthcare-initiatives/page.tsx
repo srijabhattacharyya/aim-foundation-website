@@ -49,7 +49,7 @@ const initiatives = [
   },
   {
     title: "OralScan",
-    description: "Organizes free dental check-ups, treatments, and awareness sessions on oral hygiene to prevent dental diseases and promote healthy smiles in rural areas.",
+    description: "is a crucial initiative offering free oral cancer screening camps in underserved communities. By focusing on early detection and public awareness, it identifies potential risks at the outset, improving treatment outcomes. The program promotes oral hygiene, educates on risk factors, and helps save lives through timely medical intervention.",
     image: "https://placehold.co/600x400.png",
     hint: "dental checkup",
     link: "#"
