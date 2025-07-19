@@ -52,6 +52,10 @@ export default function VidyaShaktiPage() {
                   <p>
                     VidyaShakti is more than just an app; it is a lifeline for learners in remote areas, bringing the power of knowledge directly to their fingertips.
                   </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Put the Power of Learning in a Child’s Hands</h3>
+                  <p>
+                    In many rural homes, a smartphone is the only classroom a child can access. <strong>Your donation can help us expand VidyaShakti</strong>—bringing AI-powered, multilingual learning to more remote students who lack quality teaching support. With just a click, a child can ask questions, receive tailored answers in their own language, and build the confidence to learn independently. <strong>Support VidyaShakti today</strong>, and help transform a mobile device into a gateway of hope, knowledge, and possibility for first-generation learners across rural India.
+                  </p>
                    <div className="mt-8">
                     <Button disabled className="bg-primary hover:bg-primary/90 text-primary-foreground cursor-not-allowed opacity-100">App is under construction</Button>
                   </div>
