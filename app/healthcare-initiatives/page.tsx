@@ -28,7 +28,7 @@ const initiatives = [
   },
   {
     title: "ChildFirst",
-    description: "is a vital initiative providing pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It creates a safe, respectful space for early medical care and intervention, aiming to improve health outcomes and dignity for these vulnerable young lives.",
+    description: " is a compassionate healthcare initiative by AIM Foundation offering pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.",
     image: "https://placehold.co/600x400.png",
     hint: "mental health support",
     link: "#"
