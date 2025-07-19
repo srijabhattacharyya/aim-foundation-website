@@ -14,7 +14,7 @@ const initiatives = [
   },
   {
     title: "SurgiReach",
-    description: "Tackles malnutrition in children and mothers by providing nutritional supplements, health education, and regular monitoring. Our goal is to ensure healthy development for children and improve maternal well-being, creating a foundation for a stronger, healthier future generation.",
+    description: "is AIM Foundation’s hospital partnership initiative, offering free surgeries to economically disadvantaged patients. Children aged 5 months to 14 years receive pediatric operations, while adults benefit from essential procedures like kidney transplants and knee replacements—ensuring critical care is accessible, regardless of financial status.",
     image: "https://placehold.co/600x400.png",
     hint: "child nutrition program",
     link: "#"
