@@ -61,6 +61,13 @@ const initiatives = [
     hint: "menstrual hygiene",
     link: "#"
   },
+  {
+    title: "SoulCircle",
+    description: "is a mental wellness initiative focused on providing support, counseling, and resources to individuals and communities, fostering emotional well-being and resilience.",
+    image: "https://placehold.co/600x400.png",
+    hint: "support group",
+    link: "#"
+  },
 ];
 
 export default function HealthCareInitiativesPage() {
