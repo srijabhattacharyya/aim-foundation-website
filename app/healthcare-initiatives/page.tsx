@@ -7,7 +7,7 @@ import Link from "next/link";
 const initiatives = [
   {
     title: "CureLine",
-    description: "conducts regular healthcare camps in rural villages, remote forest areas, and disaster-hit regions to ensure access to essential medical services. The initiative reaches marginalized communities with free check-ups, consultations, and medicines—bridging healthcare gaps and promoting well-being regardless of income or location.",
+    description: "is AIM Foundation’s rural and remote healthcare outreach program that delivers essential medical services to underserved communities. Through regular health camps, it offers free check-ups, consultations, medicines, and health education in villages, forest-fringe settlements, and disaster-hit areas—bridging critical care gaps and ensuring health access regardless of location or income.",
     image: "https://placehold.co/600x400.png",
     hint: "mobile health clinic",
     link: "#"
