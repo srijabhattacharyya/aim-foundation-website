@@ -48,6 +48,10 @@ export default function EduAccessPage() {
                    <p>
                     By leveraging technology, EduAccess creates a virtual classroom environment where students can ask questions, participate in discussions, and receive personalized attention, fostering a supportive and effective learning experience.
                   </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Bring a Classroom to a Village</h3>
+                  <p>
+                    Thousands of bright young minds in rural West Bengal are eager to learn—but lack access to quality teachers and resources. Your donation can help us expand EduAccess to more remote communities, provide digital learning tools, and ensure uninterrupted online education from our Kolkata-based studio. With your support, a child who once struggled to keep up can thrive, dream bigger, and build a better future. Help us bridge the education gap—<strong>donate today</strong> and be the link between talent and opportunity.
+                  </p>
                 </div>
               </div>
               
