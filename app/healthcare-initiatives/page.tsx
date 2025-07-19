@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import DonationForm from "@/components/sections/DonationForm";
+
 
 const initiatives = [
   {
@@ -58,7 +60,7 @@ export default function HealthCareInitiativesPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Column for Initiatives */}
               <div className="space-y-12">
                  <div className="text-center md:text-left">
@@ -94,6 +96,10 @@ export default function HealthCareInitiativesPage() {
                     </Card>
                   ))}
                 </div>
+              </div>
+               {/* Right Sticky Form Column */}
+              <div className="sticky top-24">
+                <DonationForm />
               </div>
             </div>
           </div>
