@@ -63,7 +63,7 @@ const initiatives = [
   },
   {
     title: "SoulCircle",
-    description: "is a mental wellness initiative focused on providing support, counseling, and resources to individuals and communities, fostering emotional well-being and resilience.",
+    description: "is an AI-driven mental health support app offering round-the-clock emotional assistance. It connects users with compassionate AI counselors for private, judgment-free conversations. Whether dealing with stress, anxiety, or loneliness, SoulCircle provides a safe digital space for support, reflection, and healing—empowering users to prioritize mental well-being anytime, anywhere.",
     image: "https://placehold.co/600x400.png",
     hint: "support group",
     link: "#"
