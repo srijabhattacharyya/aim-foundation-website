@@ -55,10 +55,10 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "Rehabilitation Support",
-    description: "Supports individuals in overcoming addiction through counseling, rehabilitation programs, and community support systems, helping them reintegrate into society.",
+    title: "CycleSafe",
+    description: "empowers underprivileged adolescent girls in and around Kolkata by promoting menstrual hygiene, cervical health awareness, and reproductive well-being. Through monthly sanitary napkin distribution and educational sessions, the initiative breaks taboos, builds knowledge, and fosters confidence—ensuring dignity, health, and equal opportunities for young girls to thrive.",
     image: "https://placehold.co/600x400.png",
-    hint: "support group",
+    hint: "menstrual hygiene",
     link: "#"
   },
 ];
