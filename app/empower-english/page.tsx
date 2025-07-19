@@ -53,7 +53,7 @@ export default function EmpowerEnglishPage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Give a Voice to Their Dreams</h3>
                   <p>
-                    For many students in underserved communities, learning English isn’t just about language—it’s about confidence, opportunity, and belonging. Your donation can help provide trained instructors, learning materials, and digital access so these students can speak up, stand out, and succeed. Whether it’s for a college interview, a job application, or simply being heard in the classroom, every word they learn is a step toward a brighter future. <strong>Support Empower English today</strong>—and <strong>help unlock the power of communication for those who need it most.</strong>
+                    For many students in underserved communities, learning English isn’t just about language—it’s about confidence, opportunity, and belonging. <strong>Your donation can help provide trained instructors, learning materials, and digital access</strong> so these students can speak up, stand out, and succeed. Whether it’s for a college interview, a job application, or simply being heard in the classroom, every word they learn is a step toward a brighter future. <strong>Support Empower English today</strong>—and <strong>help unlock the power of communication for those who need it most.</strong>
                   </p>
                 </div>
               </div>
