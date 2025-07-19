@@ -53,7 +53,7 @@ export default function InnocentSmilesPage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">You Can Make a Difference</h3>
                   <p>
-                    Every child deserves the chance to dream, create, and succeed—regardless of their background. Your support can help us provide art supplies, educational resources, nutritious snacks, and safe spaces for learning and expression. With your generous contribution, we can reach more children, organize more workshops, and nurture brighter, more confident futures. <strong>Donate today</strong> and become a part of a child’s journey toward joy, growth, and transformation. Because every innocent smile deserves to shine.
+                    Every child deserves the chance to dream, create, and succeed—regardless of their background. Your support can help us provide art supplies, educational resources, nutritious snacks, and safe spaces for learning and expression. With your generous contribution, we can reach more children, organize more workshops, and nurture brighter, more confident futures. <strong>Donate today</strong> and become a part of a child’s journey toward joy, growth, and transformation. <strong>Because every innocent smile deserves to shine.</strong>
                   </p>
                 </div>
               </div>
