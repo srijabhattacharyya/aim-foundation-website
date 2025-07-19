@@ -51,6 +51,10 @@ export default function MilieuPage() {
                     <p>
                         By promoting emotional intelligence, communication, and shared learning, Milieu builds a sense of community and connectedness, empowering all children involved to grow into open-minded, socially responsible individuals who value diversity and collective well-being.
                     </p>
+                    <h3 className="text-2xl font-bold font-headline pt-4">Help Children Learn Beyond Boundaries</h3>
+                    <p>
+                      In every Milieu session, a child discovers empathy, breaks a bias, or finds the courage to connect across differences. <strong>Your donation can help us organize more inclusive workshops, provide transportation, materials, and safe spaces</strong> where children from all walks of life learn together, grow together, and inspire each other. <strong>Support Milieu today</strong> to build bridges of understanding and shape a generation that sees unity in diversity. <strong>Your kindness can nurture a more compassionate tomorrow—one child at a time.</strong>
+                    </p>
                 </div>
               </div>
               
