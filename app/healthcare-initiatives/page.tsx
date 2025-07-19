@@ -41,7 +41,7 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "Vision Care for All",
+    title: "SightHope",
     description: "Conducts eye screening camps and provides free spectacles to those in need, helping to prevent blindness and improve quality of life through better vision.",
     image: "https://placehold.co/600x400.png",
     hint: "vision eye exam",
