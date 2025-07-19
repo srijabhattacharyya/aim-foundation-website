@@ -2,6 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
+import DonationForm from "@/components/sections/DonationForm";
 
 export default function DigiEmpowerPage() {
   return (
@@ -33,7 +34,7 @@ export default function DigiEmpowerPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">No Child Left Offline</h2>
@@ -51,6 +52,11 @@ export default function DigiEmpowerPage() {
                     Importantly, the program ensures equitable access by extending its reach to Adivasi communities in Aushgram, Rangakhila, and Dakshin Dhupjhora, where children often face both social and infrastructural barriers. By bridging the digital divide, DigiEmpower not only enhances individual futures but also fosters broader social inclusion and empowerment across rural Bengal.
                   </p>
                 </div>
+              </div>
+
+              {/* Right Sticky Form Column */}
+              <div className="sticky top-24">
+                <DonationForm />
               </div>
             </div>
           </div>
