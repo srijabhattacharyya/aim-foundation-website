@@ -48,7 +48,7 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "Dental Health Camps",
+    title: "OralScan",
     description: "Organizes free dental check-ups, treatments, and awareness sessions on oral hygiene to prevent dental diseases and promote healthy smiles in rural areas.",
     image: "https://placehold.co/600x400.png",
     hint: "dental checkup",
