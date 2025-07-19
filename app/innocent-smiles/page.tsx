@@ -51,6 +51,10 @@ export default function InnocentSmilesPage() {
                    <p>
                     By investing in the potential of each child, Project Innocent Smiles aims to brighten futures, instill hope, and cultivate well-rounded individuals who can thrive in all areas of life. It’s more than a program—it’s a journey of growth, joy, and transformation for every young heart it touches.
                   </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">You Can Make a Difference</h3>
+                  <p>
+                    Every child deserves the chance to dream, create, and succeed—regardless of their background. Your support can help us provide art supplies, educational resources, nutritious snacks, and safe spaces for learning and expression. With your generous contribution, we can reach more children, organize more workshops, and nurture brighter, more confident futures. Donate today and become a part of a child’s journey toward joy, growth, and transformation. Because every innocent smile deserves to shine.
+                  </p>
                 </div>
               </div>
               
