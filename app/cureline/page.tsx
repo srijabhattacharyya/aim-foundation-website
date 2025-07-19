@@ -43,7 +43,7 @@ export default function CureLinePage() {
                     CureLine is a frontline healthcare initiative by AIM Foundation, designed to deliver <strong>essential medical services</strong> to communities that are often neglected by mainstream health systems. Through regular, on-ground <strong>healthcare camps</strong>, CureLine serves <strong>remote villages, forest-fringe settlements,</strong> and <strong>disaster-affected regions</strong> across West Bengal and beyond.
                   </p>
                   <p>
-                    Many of these regions suffer from limited or no access to registered medical practitioners, diagnostic facilities, or affordable treatment options. CureLine fills this critical gap by bringing doctors, nurses, and essential medicines directly to the people, eliminating the barriers of distance, cost, and awareness.
+                    Many of these regions suffer from <strong>limited or no access to registered medical practitioners</strong>, diagnostic facilities, or affordable treatment options. CureLine fills this critical gap by bringing doctors, nurses, and essential medicines directly to the people, eliminating the barriers of distance, cost, and awareness.
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Key Services Offered:</h3>
                   <ul className="list-disc list-inside space-y-2">
