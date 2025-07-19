@@ -40,17 +40,32 @@ export default function CureLinePage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Reaching the Unreachable with Care.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    CureLine is AIM Foundation’s rural and remote healthcare outreach program that delivers essential medical services to underserved communities. Through regular health camps, it offers free check-ups, consultations, medicines, and health education in villages, forest-fringe settlements, and disaster-hit areas—bridging critical care gaps and ensuring health access regardless of location or income.
+                    CureLine is a frontline healthcare initiative by AIM Foundation, designed to deliver essential medical services to communities that are often neglected by mainstream health systems. Through regular, on-ground healthcare camps, CureLine serves urban slums, remote villages, forest-fringe settlements, and disaster-affected regions across West Bengal and beyond.
                   </p>
                   <p>
-                    Our mobile medical teams travel to the most remote areas, bringing quality healthcare to doorsteps where it's needed most. We focus on preventive care, maternal and child health, and treatment for common illnesses, ensuring that even the most isolated families receive the attention they deserve.
+                    Many of these regions suffer from limited or no access to registered medical practitioners, diagnostic facilities, or affordable treatment options. CureLine fills this critical gap by bringing doctors, nurses, and essential medicines directly to the people, eliminating the barriers of distance, cost, and awareness.
+                  </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Key Services Offered:</h3>
+                  <ul className="list-disc list-inside space-y-2">
+                    <li>General health check-ups and medical consultations</li>
+                    <li>Diagnosis and treatment of common ailments</li>
+                    <li>Monitoring of chronic conditions like diabetes and hypertension</li>
+                    <li>Maternal and child healthcare support</li>
+                    <li>Free distribution of prescribed medicines and supplements</li>
+                    <li>Health education sessions on hygiene, nutrition, and disease prevention</li>
+                  </ul>
+                  <p>
+                    Camps are conducted in both mobile formats and at local community hubs such as schools, village centers, and makeshift clinics—often in challenging terrains like the Sundarbans delta, the tribal villages near Gorumara, and flood-prone areas.
+                  </p>
+                   <p>
+                    In times of crisis, such as cyclones, floods, or epidemics, CureLine plays a crucial role in offering emergency medical relief, first aid, and recovery care. It works in tandem with local volunteers, health workers, and panchayat leaders to ensure every camp is tailored to the community’s specific health needs.
                   </p>
                   <p>
-                    By organizing these camps, CureLine not only treats immediate health issues but also empowers communities with knowledge about hygiene, nutrition, and disease prevention, fostering long-term well-being and resilience.
+                    More than just treatment, CureLine builds trust. It promotes regular health-seeking behavior, improves awareness, and helps communities take ownership of their well-being. With each outreach, the initiative strengthens the belief that quality healthcare is a right—not a privilege.
                   </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Your Support Saves Lives</h3>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Be the Lifeline Where Healthcare Doesn’t Reach</h3>
                   <p>
-                    In remote villages, a simple illness can become a life-threatening emergency. <strong>Your donation helps us equip our mobile health camps with essential medicines, diagnostic tools, and medical supplies.</strong> With your support, we can reach more villages, treat more patients, and provide critical health education that prevents disease. <strong>Donate to CureLine today</strong> and help us deliver a lifeline of health and hope to those who have nowhere else to turn.
+                    For families in remote villages, forest edges, and disaster-hit zones, CureLine may be the only source of medical care they ever receive. Your donation can help us send doctors, nurses, and essential medicines to the most neglected corners of West Bengal—where a clinic is miles away and affordability is out of reach. Whether it’s treating a fever, managing chronic illness, or responding to emergencies, your support keeps CureLine moving, healing, and saving lives. Donate today to bring healthcare to the heart of need—and hope to those who’ve gone unseen for far too long.
                   </p>
                 </div>
               </div>
