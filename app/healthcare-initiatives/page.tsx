@@ -21,7 +21,7 @@ const initiatives = [
   },
   {
     title: "CareCircle",
-    description: "Focuses on preventive healthcare through awareness campaigns on hygiene, sanitation, and disease prevention. By educating communities on healthy practices, we empower them to take control of their health, reducing the incidence of preventable illnesses and promoting long-term well-being.",
+    description: "through key collaborations, conducts healthcare camps at Kolkata centres like Sarala Punyashram, Sarat Bose Road, and Boral Natunhat. These camps provide essential medical services to underserved urban populations, ensuring accessible, inclusive healthcare for those living on the margins of city life.",
     image: "https://placehold.co/600x400.png",
     hint: "hygiene awareness session",
     link: "#"
