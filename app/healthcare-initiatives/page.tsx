@@ -34,7 +34,7 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "Maternal & Child Health",
+    title: "Detect",
     description: "Offers comprehensive pre-natal and post-natal care for mothers and infants, including vaccinations and regular health check-ups to ensure a healthy start in life.",
     image: "https://placehold.co/600x400.png",
     hint: "mother child health",
