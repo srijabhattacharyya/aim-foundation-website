@@ -13,7 +13,7 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "NourishCare",
+    title: "SurgiReach",
     description: "Tackles malnutrition in children and mothers by providing nutritional supplements, health education, and regular monitoring. Our goal is to ensure healthy development for children and improve maternal well-being, creating a foundation for a stronger, healthier future generation.",
     image: "https://placehold.co/600x400.png",
     hint: "child nutrition program",
