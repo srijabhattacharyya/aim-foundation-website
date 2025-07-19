@@ -20,7 +20,7 @@ const initiatives = [
     link: "#"
   },
   {
-    title: "Arogya",
+    title: "CareCircle",
     description: "Focuses on preventive healthcare through awareness campaigns on hygiene, sanitation, and disease prevention. By educating communities on healthy practices, we empower them to take control of their health, reducing the incidence of preventable illnesses and promoting long-term well-being.",
     image: "https://placehold.co/600x400.png",
     hint: "hygiene awareness session",
