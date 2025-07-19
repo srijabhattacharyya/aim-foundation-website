@@ -28,7 +28,7 @@ const initiatives = [
   },
   {
     title: "ChildFirst",
-    description: "Provides accessible mental health counseling and support groups to address stress, anxiety, and depression in underserved communities. We aim to break the stigma and foster emotional well-being.",
+    description: "is a vital initiative providing pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It creates a safe, respectful space for early medical care and intervention, aiming to improve health outcomes and dignity for these vulnerable young lives.",
     image: "https://placehold.co/600x400.png",
     hint: "mental health support",
     link: "#"
