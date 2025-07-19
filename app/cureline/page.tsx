@@ -40,7 +40,7 @@ export default function CureLinePage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Reaching the Unreachable with Care.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    CureLine is a frontline healthcare initiative by AIM Foundation, designed to deliver essential medical services to communities that are often neglected by mainstream health systems. Through regular, on-ground healthcare camps, CureLine serves urban slums, remote villages, forest-fringe settlements, and disaster-affected regions across West Bengal and beyond.
+                    CureLine is a frontline healthcare initiative by AIM Foundation, designed to deliver essential medical services to communities that are often neglected by mainstream health systems. Through regular, on-ground healthcare camps, CureLine serves remote villages, forest-fringe settlements, and disaster-affected regions across West Bengal and beyond.
                   </p>
                   <p>
                     Many of these regions suffer from limited or no access to registered medical practitioners, diagnostic facilities, or affordable treatment options. CureLine fills this critical gap by bringing doctors, nurses, and essential medicines directly to the people, eliminating the barriers of distance, cost, and awareness.
