@@ -10,7 +10,7 @@ const initiatives = [
     description: "is AIM Foundation’s rural and remote healthcare outreach program that delivers essential medical services to underserved communities. Through regular health camps, it offers free check-ups, consultations, medicines, and health education in villages, forest-fringe settlements, and disaster-hit areas—bridging critical care gaps and ensuring health access regardless of location or income.",
     image: "https://placehold.co/600x400.png",
     hint: "mobile health clinic",
-    link: "#"
+    link: "/cureline"
   },
   {
     title: "SurgiReach",
