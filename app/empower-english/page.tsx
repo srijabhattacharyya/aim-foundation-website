@@ -51,6 +51,10 @@ export default function EmpowerEnglishPage() {
                   <p>
                     Through this program, the AIM Foundation continues its mission of uplifting marginalized communities—creating pathways for personal growth, inclusion, and a more empowered future.
                   </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Give a Voice to Their Dreams</h3>
+                  <p>
+                    For many students in underserved communities, learning English isn’t just about language—it’s about confidence, opportunity, and belonging. Your donation can help provide trained instructors, learning materials, and digital access so these students can speak up, stand out, and succeed. Whether it’s for a college interview, a job application, or simply being heard in the classroom, every word they learn is a step toward a brighter future. <strong>Support Empower English today</strong>—and <strong>help unlock the power of communication for those who need it most.</strong>
+                  </p>
                 </div>
               </div>
 
