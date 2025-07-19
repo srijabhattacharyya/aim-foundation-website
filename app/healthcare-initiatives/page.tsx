@@ -5,8 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import DonationForm from "@/components/sections/DonationForm";
-
 
 const initiatives = [
   {
@@ -60,47 +58,33 @@ export default function HealthCareInitiativesPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              {/* Left Column for Initiatives */}
-              <div className="space-y-12">
-                 <div className="text-center md:text-left">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Core Healthcare Programs</h2>
-                    <p className="mt-4 text-lg text-muted-foreground max-w-3xl">
-                      At AIM Foundation, we believe that access to healthcare is a fundamental right. Our initiatives are designed to bring quality medical services to the most vulnerable communities.
-                    </p>
-                </div>
-                <div className="grid grid-cols-1 gap-8">
-                  {initiatives.map((item, index) => (
-                    <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col sm:flex-row">
-                      <div className="w-full sm:w-1/3">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          width={600}
-                          height={400}
-                          data-ai-hint={item.hint}
-                          className="w-full h-48 sm:h-full object-cover"
-                        />
-                      </div>
-                      <div className="w-full sm:w-2/3 flex flex-col">
-                        <CardHeader>
-                          <CardTitle className="font-headline">{item.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="flex flex-col flex-grow p-6 pt-0">
-                          <CardDescription className="flex-grow text-justify">{item.description}</CardDescription>
-                          <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
-                            <Link href={item.link || "#"}>Learn More &rarr;</Link>
-                          </Button>
-                        </CardContent>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-               {/* Right Sticky Form Column */}
-              <div className="sticky top-24">
-                <DonationForm />
-              </div>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Core Healthcare Programs</h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                At AIM Foundation, we believe that access to healthcare is a fundamental right. Our initiatives are designed to bring quality medical services to the most vulnerable communities.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {initiatives.map((item, index) => (
+                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                   <div className="relative w-full h-48">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      data-ai-hint={item.hint}
+                      className="object-cover"
+                    />
+                  </div>
+                  <CardContent className="p-6 flex flex-col flex-grow">
+                     <CardTitle className="font-headline mb-2">{item.title}</CardTitle>
+                    <CardDescription className="flex-grow text-justify">{item.description}</CardDescription>
+                    <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
+                      <Link href={item.link || "#"}>Learn More &rarr;</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
