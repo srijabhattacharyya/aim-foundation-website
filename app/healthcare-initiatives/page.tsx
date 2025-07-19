@@ -1,6 +1,4 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -26,6 +24,41 @@ const initiatives = [
     description: "Focuses on preventive healthcare through awareness campaigns on hygiene, sanitation, and disease prevention. By educating communities on healthy practices, we empower them to take control of their health, reducing the incidence of preventable illnesses and promoting long-term well-being.",
     image: "https://placehold.co/600x400.png",
     hint: "hygiene awareness session",
+    link: "#"
+  },
+  {
+    title: "Mental Wellness Support",
+    description: "Provides accessible mental health counseling and support groups to address stress, anxiety, and depression in underserved communities. We aim to break the stigma and foster emotional well-being.",
+    image: "https://placehold.co/600x400.png",
+    hint: "mental health support",
+    link: "#"
+  },
+  {
+    title: "Maternal & Child Health",
+    description: "Offers comprehensive pre-natal and post-natal care for mothers and infants, including vaccinations and regular health check-ups to ensure a healthy start in life.",
+    image: "https://placehold.co/600x400.png",
+    hint: "mother child health",
+    link: "#"
+  },
+  {
+    title: "Vision Care for All",
+    description: "Conducts eye screening camps and provides free spectacles to those in need, helping to prevent blindness and improve quality of life through better vision.",
+    image: "https://placehold.co/600x400.png",
+    hint: "vision eye exam",
+    link: "#"
+  },
+  {
+    title: "Dental Health Camps",
+    description: "Organizes free dental check-ups, treatments, and awareness sessions on oral hygiene to prevent dental diseases and promote healthy smiles in rural areas.",
+    image: "https://placehold.co/600x400.png",
+    hint: "dental checkup",
+    link: "#"
+  },
+  {
+    title: "Rehabilitation Support",
+    description: "Supports individuals in overcoming addiction through counseling, rehabilitation programs, and community support systems, helping them reintegrate into society.",
+    image: "https://placehold.co/600x400.png",
+    hint: "support group",
     link: "#"
   },
 ];
@@ -64,7 +97,7 @@ export default function HealthCareInitiativesPage() {
                 At AIM Foundation, we believe that access to healthcare is a fundamental right. Our initiatives are designed to bring quality medical services to the most vulnerable communities.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {initiatives.map((item, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                    <div className="relative w-full h-48">
