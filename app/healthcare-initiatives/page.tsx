@@ -35,7 +35,7 @@ const initiatives = [
   },
   {
     title: "Detect",
-    description: "Offers comprehensive pre-natal and post-natal care for mothers and infants, including vaccinations and regular health check-ups to ensure a healthy start in life.",
+    description: "empowers rural women through cervical health education and cancer screenings. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.",
     image: "https://placehold.co/600x400.png",
     hint: "mother child health",
     link: "#"
