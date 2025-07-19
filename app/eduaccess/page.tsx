@@ -2,7 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DonationForm from "@/components/sections/DonationForm";
+import EduAccessDonationForm from "@/components/sections/donation-forms/EduAccessDonationForm";
 
 export default function EduAccessPage() {
   return (
@@ -57,7 +57,7 @@ export default function EduAccessPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DonationForm />
+                <EduAccessDonationForm />
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DonationForm from "@/components/sections/DonationForm";
+import MilieuDonationForm from "@/components/sections/donation-forms/MilieuDonationForm";
 
 export default function MilieuPage() {
   return (
@@ -60,7 +60,7 @@ export default function MilieuPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DonationForm />
+                <MilieuDonationForm />
               </div>
             </div>
           </div>

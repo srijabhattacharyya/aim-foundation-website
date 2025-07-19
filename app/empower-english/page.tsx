@@ -2,7 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DonationForm from "@/components/sections/DonationForm";
+import EmpowerEnglishDonationForm from "@/components/sections/donation-forms/EmpowerEnglishDonationForm";
 
 export default function EmpowerEnglishPage() {
   return (
@@ -60,7 +60,7 @@ export default function EmpowerEnglishPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DonationForm />
+                <EmpowerEnglishDonationForm />
               </div>
             </div>
           </div>

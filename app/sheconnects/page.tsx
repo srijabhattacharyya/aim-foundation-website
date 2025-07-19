@@ -2,7 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DonationForm from "@/components/sections/DonationForm";
+import SheConnectsDonationForm from "@/components/sections/donation-forms/SheConnectsDonationForm";
 
 export default function SheConnectsPage() {
   return (
@@ -60,7 +60,7 @@ export default function SheConnectsPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DonationForm />
+                <SheConnectsDonationForm />
               </div>
             </div>
           </div>

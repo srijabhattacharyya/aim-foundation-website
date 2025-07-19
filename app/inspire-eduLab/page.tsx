@@ -2,7 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DonationForm from "@/components/sections/DonationForm";
+import InspireEduLabDonationForm from "@/components/sections/donation-forms/InspireEduLabDonationForm";
 
 export default function InspireEduLabPage() {
   return (
@@ -57,7 +57,7 @@ export default function InspireEduLabPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DonationForm />
+                <InspireEduLabDonationForm />
               </div>
             </div>
           </div>

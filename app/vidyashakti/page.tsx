@@ -2,7 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DonationForm from "@/components/sections/DonationForm";
+import VidyaShaktiDonationForm from "@/components/sections/donation-forms/VidyaShaktiDonationForm";
 import { Button } from "@/components/ui/button";
 
 export default function VidyaShaktiPage() {
@@ -64,7 +64,7 @@ export default function VidyaShaktiPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DonationForm />
+                <VidyaShaktiDonationForm />
               </div>
             </div>
           </div>
