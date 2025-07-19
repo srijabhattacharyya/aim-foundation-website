@@ -48,6 +48,10 @@ export default function InspireEduLabPage() {
                   <p>
                     The program focuses on creating a level playing field, ensuring that students from all backgrounds have access to high-quality digital education. From rural villages to urban centers, Inspire EduLab is dedicated to building a brighter, more equitable future through the power of technology.
                   </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Help Spark a Child’s Curiosity</h3>
+                  <p>
+                    Your support can turn an ordinary classroom into a world of discovery. With your donation, we can equip more schools with smartboards, internet access, and interactive digital tools—bringing engaging, future-ready education to children who need it most. Whether in a remote village or an urban slum, every student deserves the chance to learn through innovation. <strong>Donate today</strong> to help bridge the digital divide and empower young minds to think big, learn boldly, and dream beyond boundaries. Together, let’s inspire the future.
+                  </p>
                 </div>
               </div>
               
