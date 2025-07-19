@@ -41,8 +41,19 @@ const navLinks = [
       { 
         href: '/educational-initiatives', 
         label: 'Educational Initiatives',
+        isSubDropdown: true,
+        subItems: [
+          { href: '/innocent-smiles', label: 'Innocent Smiles' },
+          { href: '/inspire-eduLab', label: 'Inspire EduLab' },
+          { href: '/eduaccess', label: 'EduAccess' },
+          { href: '/empower-english', label: 'Empower English'},
+          { href: '/digiempower', label: 'DigiEmpower' },
+          { href: '/sheconnects', label: 'SheConnects' },
+          { href: '/milieu', label: 'Milieu' },
+          { href: '/vidyashakti', label: 'VidyaShakti' },
+        ]
       },
-      { href: '#', label: 'Healthcare Initiatives' },
+      { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
       { href: '#', label: 'Environment Initiatives' },
       { href: '#', label: 'Gender Equality Initiative' },
       { href: '#', label: 'Childcare Initiatives' },
