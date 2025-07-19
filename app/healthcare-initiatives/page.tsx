@@ -21,7 +21,7 @@ const initiatives = [
   },
   {
     title: "CareCircle",
-    description: "through key collaborations, conducts healthcare camps at Kolkata centres like Sarala Punyashram, Sarat Bose Road, and Boral Natunhat. These camps provide essential medical services to underserved urban populations, ensuring accessible, inclusive healthcare for those living on the margins of city life.",
+    description: "is an urban health initiative by AIM Foundation that organizes healthcare camps through partnerships at Kolkata centres like Sarala Punyashram, Sarat Bose Road, and Boral Natunhat. These camps deliver free check-ups, medicines, and consultations to underserved populations, ensuring inclusive, accessible healthcare for those often overlooked in city life.",
     image: "https://placehold.co/600x400.png",
     hint: "hygiene awareness session",
     link: "#"
