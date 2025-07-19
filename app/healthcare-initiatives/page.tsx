@@ -7,7 +7,7 @@ import Link from "next/link";
 const initiatives = [
   {
     title: "CureLine",
-    description: "Delivers essential healthcare services to remote and underserved communities, offering free medical camps, check-ups, and medicines. By bringing healthcare to their doorsteps, we ensure that even the most vulnerable populations have access to the care they need to lead healthy, productive lives.",
+    description: "conducts regular healthcare camps in rural villages, remote forest areas, and disaster-hit regions to ensure access to essential medical services. The initiative reaches marginalized communities with free check-ups, consultations, and medicines—bridging healthcare gaps and promoting well-being regardless of income or location.",
     image: "https://placehold.co/600x400.png",
     hint: "mobile health clinic",
     link: "#"
