@@ -51,6 +51,10 @@ export default function SheConnectsPage() {
                   <p>
                     Through its holistic approach, Project SheConnects plays a vital role in closing the digital gender gap and fostering inclusive economic growth. It is a step toward building a more equitable society, where women are not just connected—but empowered.
                   </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Empower a Woman, Transform a Community</h3>
+                  <p>
+                    When women gain digital skills, entire communities thrive. <strong>Your donation can help provide laptops, internet access, and training sessions</strong> that equip women from underserved backgrounds to start or grow their businesses online. With tools to market their products, manage finances, and stay cyber-safe, these women gain more than knowledge—they gain independence. <strong>Support Project SheConnects today</strong> and be the reason a woman becomes digitally empowered, financially secure, and fearlessly connected to opportunity.
+                  </p>
                 </div>
               </div>
               
