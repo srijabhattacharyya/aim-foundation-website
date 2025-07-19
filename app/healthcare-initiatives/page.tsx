@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const initiatives = [
   {
-    title: "Project Sanjeevani",
+    title: "CureLine",
     description: "Delivers essential healthcare services to remote and underserved communities, offering free medical camps, check-ups, and medicines. By bringing healthcare to their doorsteps, we ensure that even the most vulnerable populations have access to the care they need to lead healthy, productive lives.",
     image: "https://placehold.co/600x400.png",
     hint: "mobile health clinic",
