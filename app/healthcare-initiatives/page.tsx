@@ -42,7 +42,7 @@ const initiatives = [
   },
   {
     title: "SightHope",
-    description: "Conducts eye screening camps and provides free spectacles to those in need, helping to prevent blindness and improve quality of life through better vision.",
+    description: "in partnership with leading eye hospitals like Sushrut Eye Foundation, B. B. Eye Foundation, and Hope Foundation, brings free eye care to underserved communities. Through screenings, treatments, and cataract surgeries, it restores vision, dignity, and independence—offering new possibilities to those without access to quality eye health services.",
     image: "https://placehold.co/600x400.png",
     hint: "vision eye exam",
     link: "#"
