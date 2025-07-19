@@ -2,7 +2,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DonationForm from "@/components/sections/DonationForm";
 import { Button } from "@/components/ui/button";
 
 export default function VidyaShaktiPage() {
@@ -35,7 +34,7 @@ export default function VidyaShaktiPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div className="max-w-4xl mx-auto">
               {/* Left Text Column */}
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">When Teachers Aren’t Nearby, VidyaShakti Is!</h2>
@@ -56,11 +55,6 @@ export default function VidyaShaktiPage() {
                 <div className="mt-8">
                   <Button disabled className="bg-primary hover:bg-primary/90 text-primary-foreground cursor-not-allowed opacity-100">App is under construction</Button>
                 </div>
-              </div>
-              
-              {/* Right Sticky Form Column */}
-              <div className="sticky top-24">
-                <DonationForm />
               </div>
             </div>
           </div>

@@ -2,7 +2,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DonationForm from "@/components/sections/DonationForm";
 
 export default function EduAccessPage() {
   return (
@@ -34,7 +33,7 @@ export default function EduAccessPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div className="max-w-4xl mx-auto">
               {/* Left Text Column */}
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Teaching Beyond Boundaries</h2>
@@ -49,11 +48,6 @@ export default function EduAccessPage() {
                     By leveraging technology, EduAccess creates a virtual classroom environment where students can ask questions, participate in discussions, and receive personalized attention, fostering a supportive and effective learning experience.
                   </p>
                 </div>
-              </div>
-              
-              {/* Right Sticky Form Column */}
-              <div className="sticky top-24">
-                <DonationForm />
               </div>
             </div>
           </div>
