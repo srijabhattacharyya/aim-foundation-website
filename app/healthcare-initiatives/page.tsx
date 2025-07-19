@@ -14,7 +14,7 @@ const initiatives = [
   },
   {
     title: "SurgiReach",
-    description: "is AIM Foundation’s hospital partnership initiative, offering free surgeries to economically disadvantaged patients. Children aged 5 months to 14 years receive pediatric operations, while adults benefit from essential procedures like kidney transplants and knee replacements—ensuring critical care is accessible, regardless of financial status.",
+    description: "is AIM Foundation’s hospital partnership initiative providing free surgeries to economically disadvantaged individuals. Children aged 5 months to 14 years receive life-changing pediatric operations, while adults access essential procedures like kidney transplants and knee replacements. The program ensures critical medical care is available, regardless of financial limitations.",
     image: "https://placehold.co/600x400.png",
     hint: "child nutrition program",
     link: "#"
