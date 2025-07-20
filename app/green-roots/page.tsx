@@ -39,7 +39,16 @@ export default function GreenRootsPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">A Greener Tomorrow, One Sapling at a Time.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    GreenRoots aims to promote reforestation in areas where land acquisition is not feasible. By distributing saplings directly to villagers, the project overcomes space constraints and fosters active community involvement in afforestation efforts. This grassroots approach helps expand local green cover in a sustainable and inclusive manner.
+                    GreenRoots is a grassroots environmental initiative launched by AIM Foundation to promote reforestation and expand green cover in regions where land acquisition for large-scale plantation is not viable. In many rural and semi-rural areas, the lack of access to common or government-owned land poses a significant barrier to traditional afforestation efforts. GreenRoots addresses this challenge by empowering individual households and communities to become stewards of the environment.
+                  </p>
+                  <p>
+                    Under this initiative, saplings are directly distributed to villagers along with basic guidance on planting and nurturing them. Beneficiaries are encouraged to plant trees in courtyards, agricultural borders, schools, community spaces, and temple grounds—transforming idle land into green pockets. Through awareness campaigns and hands-on support, AIM Foundation ensures that recipients understand the long-term environmental benefits of tree care.
+                  </p>
+                  <p>
+                    By shifting the focus from centralized plantations to decentralized community participation, GreenRoots promotes environmental responsibility, encourages ownership, and builds lasting ecological resilience at the grassroots level. The project not only increases tree cover but also strengthens the bond between people and nature.
+                  </p>
+                  <p>
+                    You can be a part of this green movement. Your contribution can help provide more saplings, expand outreach, and support communities in nurturing our planet. Donate today and help GreenRoots grow stronger, deeper, and greener—one tree, one family, one village at a time.
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Plant a Seed of Hope</h3>
                   <p>
