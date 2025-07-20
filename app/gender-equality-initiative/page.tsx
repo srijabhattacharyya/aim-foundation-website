@@ -43,11 +43,11 @@ const initiatives = [
     link: "/suidhaga"
   },
   {
-    title: "Milieu",
-    description: "Fosters holistic development by connecting children from diverse economic backgrounds. Through interactive sessions, students from reputed schools and underprivileged communities learn together, building empathy and respect.",
+    title: "Krishti",
+    description: "Empowers women by preserving and promoting traditional art forms and cultural heritage. This initiative provides a platform for female artisans to showcase their talent, gain economic independence, and keep ancient traditions alive.",
     image: "https://placehold.co/600x400.png",
-    hint: "community gathering",
-    link: "/milieu"
+    hint: "women traditional art",
+    link: "/krishti"
   },
 ];
 
