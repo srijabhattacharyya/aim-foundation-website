@@ -54,7 +54,7 @@ export default function ChildFirstPage() {
                     <li>Safe and respectful care environments</li>
                   </ul>
                   <p>
-                    By working closely with local NGOs, women’s groups, and community leaders, ChildFirst ensures that these camps are accessible, stigma-free, and child-centered. Special efforts are made to earn the trust of both children and caregivers, fostering a long-term relationship built on care and dignity.
+                    By working closely with local NGOs, women’s groups, and community leaders, ChildFirst ensures that these camps are <strong>accessible, stigma-free, and child-centered</strong>. Special efforts are made to earn the trust of both children and caregivers, fostering a long-term relationship built on care and dignity.
                   </p>
                   <p>
                     Beyond physical health, the initiative also promotes emotional well-being, encouraging positive self-image, protection, and resilience in children who are often denied these basic securities.
