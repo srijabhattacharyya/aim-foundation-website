@@ -37,7 +37,7 @@ export default function SightHopePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">A Clearer Future for All.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Restoring Sight, Rekindling Dreams.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     SightHope, in partnership with leading eye hospitals like Sushrut Eye Foundation, B. B. Eye Foundation, and Hope Foundation, brings free eye care to underserved communities. Through screenings, treatments, and cataract surgeries, it restores vision, dignity, and independence—offering new possibilities to those without access to quality eye health services.
