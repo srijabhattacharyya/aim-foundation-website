@@ -65,7 +65,7 @@ export default function CureLinePage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Be the Lifeline Where Healthcare Doesn’t Reach</h3>
                   <p>
-                    For families in remote villages, forest edges, and disaster-hit zones, CureLine may be the only source of medical care they ever receive. Your donation can help us send doctors, nurses, and essential medicines to the most neglected corners of West Bengal—where a clinic is miles away and affordability is out of reach. Whether it’s treating a fever, managing chronic illness, or responding to emergencies, your support keeps CureLine moving, healing, and saving lives. Donate today to bring healthcare to the heart of need—and hope to those who’ve gone unseen for far too long.
+                    For families in remote villages, forest edges, and disaster-hit zones, CureLine may be the only source of medical care they ever receive. <strong>Your donation can help us send doctors, nurses, and essential medicines</strong> to the most neglected corners of West Bengal—where a clinic is miles away and affordability is out of reach. Whether it’s treating a fever, managing chronic illness, or responding to emergencies, your support keeps CureLine moving, healing, and saving lives. Donate today to bring healthcare to the heart of need—and hope to those who’ve gone unseen for far too long.
                   </p>
                 </div>
               </div>
