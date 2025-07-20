@@ -66,6 +66,7 @@ const navLinks = [
           { href: '/sighthope', label: 'SightHope' },
           { href: '/oralscan', label: 'OralScan' },
           { href: '/cyclesafe', label: 'CycleSafe' },
+          { href: '/soulcircle', label: 'SoulCircle' },
         ]
       },
       { href: '#', label: 'Environment Initiatives' },
