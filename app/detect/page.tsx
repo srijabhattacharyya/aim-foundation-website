@@ -48,7 +48,7 @@ export default function DetectPage() {
                   <ul className="list-disc list-inside space-y-2">
                     <li><strong>Community-based screening camps</strong>, especially for women with limited access to gynecological care</li>
                     <li><strong>Awareness sessions</strong> on HPV, cervical cancer symptoms, menstrual health, and preventive care</li>
-                    <li>Training and sensitization of ASHA and Anganwadi workers district-by-district, starting with Howrah, to ensure sustainable, local outreach</li>
+                    <li><strong>Training and sensitization of ASHA and Anganwadi workers</strong> district-by-district, starting with Howrah, to ensure sustainable, local outreach</li>
                     <li>Encouraging open dialogue to break myths and cultural barriers around reproductive health</li>
                   </ul>
                   <p>
