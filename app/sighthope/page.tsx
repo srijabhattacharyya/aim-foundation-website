@@ -63,7 +63,7 @@ export default function SightHopePage() {
                     By restoring sight, SightHope restores much more:
                   </p>
                   <ul className="list-none space-y-2">
-                    <li>🔹 The freedom to move confidently</li>
+                    <li>🔹 <strong>The freedom to move confidently</strong></li>
                     <li>🔹 The ability to work and earn</li>
                     <li>🔹 The joy of seeing loved ones clearly again</li>
                   </ul>
