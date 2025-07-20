@@ -40,10 +40,28 @@ export default function CareCirclePage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Healthcare for the Heart of the City</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    CareCircle is an urban health initiative by AIM Foundation that organizes healthcare camps through partnerships at Kolkata centres like Sarala Punyashram, Sarat Bose Road, and Boral Natunhat. These camps deliver free check-ups, medicines, and consultations to underserved populations, ensuring inclusive, accessible healthcare for those often overlooked in city life.
+                    CareCircle is a collaborative urban health initiative by AIM Foundation, focused on delivering accessible and inclusive medical services to underserved communities across Kolkata. Through strategic partnerships with healthcare providers and community organizations, CareCircle organizes regular healthcare camps at key urban outreach centres such as Sarala Punyashram, Sarat Bose Road, and Boral Natunhat.
                   </p>
                   <p>
-                    <strong>Your support helps us organize these camps, providing a vital lifeline to urban communities in need.</strong>
+                    These camps are designed to reach marginalized urban populations, including daily wage workers, senior citizens, migrants, single mothers, and others who often fall through the cracks of the healthcare system. By bringing basic health services directly to localities, CareCircle eliminates common barriers like affordability, transportation challenges, and lack of awareness.
+                  </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Each camp offers:</h3>
+                  <ul className="list-disc list-inside space-y-2">
+                    <li>General health check-ups and consultations</li>
+                    <li>Free distribution of essential medicines</li>
+                    <li>Health screenings for blood pressure, diabetes, and other chronic conditions</li>
+                    <li>Referrals to partner hospitals for further treatment</li>
+                    <li>Awareness sessions on hygiene, nutrition, and disease prevention</li>
+                  </ul>
+                  <p>
+                    What sets CareCircle apart is its holistic, community-based approach—fostering trust within neighborhoods, encouraging preventive care, and promoting health-seeking behavior among vulnerable urban residents. The program also empowers local volunteers and caregivers, turning every camp into an opportunity for both healing and education.
+                  </p>
+                  <p>
+                    In a fast-paced city where inequality often defines access to care, CareCircle ensures that health is not a privilege, but a shared right—accessible to all, regardless of income, identity, or background.
+                  </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Bring Healing to the Heart of the City</h3>
+                  <p>
+                    In the shadows of urban progress, thousands still live without access to basic healthcare. Your donation to CareCircle can provide free medical check-ups, life-saving medicines, and preventive care to daily wage earners, elderly citizens, migrants, and single mothers who are too often overlooked. By supporting these local health camps, you’re not just funding treatment—you’re restoring dignity, reducing suffering, and building a healthier, more inclusive Kolkata. Donate today and become part of a circle of care that truly leaves no one behind.
                   </p>
                 </div>
               </div>
