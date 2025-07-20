@@ -74,7 +74,7 @@ const navLinks = [
       { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
-      { href: '#', label: 'Ignite Change Initiative' },
+      { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
     ]
   },
   { href: '#join', label: 'Together' },
