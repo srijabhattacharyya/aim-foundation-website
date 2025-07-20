@@ -59,7 +59,7 @@ export default function DetectPage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Help Her Live—Not Just Survive</h3>
                   <p>
-                    In rural India, too many women are losing their lives to a disease that’s preventable. <strong>Your donation to Project Detect can fund life-saving cervical cancer screenings, awareness workshops, and training for frontline health workers.</strong> Just ₹500 can help screen a woman who’s never had access to gynecological care. With early detection comes hope, dignity, and a future. Stand with us to protect mothers, daughters, sisters—and ensure that no woman is left behind simply because she was unaware. Donate today and help us detect before it’s too late.
+                    In rural India, too many women are losing their lives to a disease that’s preventable. <strong>Your donation to Project Detect can fund life-saving cervical cancer screenings, awareness workshops, and training for frontline health workers.</strong> Just ₹500 can help screen a woman who’s never had access to gynecological care. With early detection comes hope, dignity, and a future. Stand with us to protect mothers, daughters, sisters—and <strong>ensure that no woman is left behind simply because she was unaware</strong>. Donate today and help us detect before it’s too late.
                   </p>
                 </div>
               </div>
