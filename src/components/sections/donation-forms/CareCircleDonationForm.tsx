@@ -18,6 +18,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
+import ReCAPTCHA from "react-google-recaptcha";
+import React from "react";
 
 const donationSchema = z.object({
   amount: z.string().nonempty({ message: "Please select a donation amount." }),
@@ -35,6 +37,7 @@ const donationSchema = z.object({
   agree: z.boolean().refine((val) => val === true, {
     message: "You must agree to the terms.",
   }),
+  recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
 });
 
 const donationAmounts = [
@@ -62,8 +65,11 @@ export default function CareCircleDonationForm() {
       address: "",
       pincode: "",
       agree: false,
+      recaptcha: "",
     },
   });
+
+  const recaptchaRef = React.createRef<ReCAPTCHA>();
 
   function onSubmit(values: z.infer<typeof donationSchema>) {
     console.log(values);
@@ -71,6 +77,7 @@ export default function CareCircleDonationForm() {
       title: "Thank you for supporting CareCircle!",
       description: "Your support makes a difference.",
     });
+    recaptchaRef.current?.reset();
     form.reset();
   }
 
@@ -270,6 +277,23 @@ export default function CareCircleDonationForm() {
                         </div>
                         </FormItem>
                     )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="recaptcha"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                          onChange={field.onChange}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
