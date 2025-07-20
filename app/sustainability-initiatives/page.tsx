@@ -16,10 +16,10 @@ const initiatives = [
   },
   {
     title: "TideShield",
-    description: "An educational program focused on raising environmental awareness among students and communities. Through workshops and interactive sessions, we teach about conservation, recycling, and sustainable living practices.",
+    description: "is a mangrove restoration initiative on Bali Island in the Sundarbans, launched to revive ecosystems damaged by cyclones Amphan and Yaas. By planting native mangrove species and involving local communities, the project strengthens coastal resilience, prevents erosion, and restores biodiversity along vulnerable shorelines.",
     image: "https://placehold.co/600x400.png",
-    hint: "environmental education",
-    link: "/enviro-guard"
+    hint: "mangrove restoration",
+    link: "/tideshield"
   },
   {
     title: "Aqua-Sure",

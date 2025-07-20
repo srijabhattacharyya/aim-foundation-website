@@ -97,7 +97,7 @@ const navLinks = [
         href: '/sustainability-initiatives',
         subItems: [
           { href: '/green-roots', label: 'GreenRoots' },
-          { href: '/enviro-guard', label: 'Enviro-Guard' },
+          { href: '/tideshield', label: 'TideShield' },
           { href: '/aqua-sure', label: 'Aqua-Sure' },
         ]
       },
