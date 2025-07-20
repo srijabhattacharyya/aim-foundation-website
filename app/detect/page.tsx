@@ -46,7 +46,7 @@ export default function DetectPage() {
                     Cervical cancer is one of the leading causes of cancer-related deaths among women in India, especially in rural areas where <strong>lack of awareness, stigma, and poor access to healthcare</strong> hinder early diagnosis. Project Detect addresses this gap through:
                   </p>
                   <ul className="list-disc list-inside space-y-2">
-                    <li>Community-based screening camps, especially for women with limited access to gynecological care</li>
+                    <li><strong>Community-based screening camps</strong>, especially for women with limited access to gynecological care</li>
                     <li>Awareness sessions on HPV, cervical cancer symptoms, menstrual health, and preventive care</li>
                     <li>Training and sensitization of ASHA and Anganwadi workers district-by-district, starting with Howrah, to ensure sustainable, local outreach</li>
                     <li>Encouraging open dialogue to break myths and cultural barriers around reproductive health</li>
