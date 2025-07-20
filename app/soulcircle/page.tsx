@@ -43,7 +43,7 @@ export default function SoulCirclePage() {
                         SoulCircle is an innovative <strong>AI-powered mental health support app</strong> created to provide accessible, compassionate, and judgment-free support for anyone experiencing emotional distress, stress, anxiety, loneliness, or other mental health challenges.
                     </p>
                     <p>
-                        Whether you're struggling in silence, need someone to talk to, or just want daily emotional check-ins, <strong>SoulCircle's intelligent AI mental health counselors</strong> are always available—24/7. These virtual companions are designed to <strong>listen empathetically, respond mindfully</strong>, and provide <strong>supportive guidance</strong> based on therapeutic frameworks and emotional well-being best practices.
+                        Whether you're struggling in silence, need someone to talk to, or just want daily emotional check-ins, <strong>SoulCircle's intelligent AI mental health counselors</strong> are always available—24/7. These virtual companions are designed to <strong>listen empathetically, respond mindfully,</strong> and provide <strong>supportive guidance</strong> based on therapeutic frameworks and emotional well-being best practices.
                     </p>
                     <h3 className="text-2xl font-bold font-headline pt-4">SoulCircle is especially helpful for:</h3>
                     <ul className="list-disc list-inside space-y-2">
@@ -63,7 +63,7 @@ export default function SoulCirclePage() {
                     </p>
                     <h3 className="text-2xl font-bold font-headline pt-4">Be the Reason Someone Feels Heard Today</h3>
                     <p>
-                        Millions suffer in silence, afraid or unable to seek help for their mental health. With your support, <strong>SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most</strong>. Your donation helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression. Mental health is not a luxury—it’s a necessity. Help us make healing accessible to all. Donate now.
+                        Millions suffer in silence, afraid or unable to seek help for their mental health. With your support, <strong>SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most</strong>. Your donation helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. <strong>Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression.</strong> Mental health is not a luxury—it’s a necessity. Help us make healing accessible to all. Donate now.
                     </p>
                 </div>
               </div>
