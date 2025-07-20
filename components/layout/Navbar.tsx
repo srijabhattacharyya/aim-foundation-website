@@ -81,7 +81,16 @@ const navLinks = [
           { href: '/krishti', label: 'Krishti' },
         ]
       },
-      { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+      { 
+        label: 'Childcare Initiatives',
+        isSubDropdown: true,
+        href: '/childcare-initiatives',
+        subItems: [
+          { href: '/innocent-smiles', label: 'Innocent Smiles' },
+          { href: '/milieu', label: 'Milieu' },
+          { href: '/childfirst', label: 'ChildFirst' },
+        ]
+      },
       { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
