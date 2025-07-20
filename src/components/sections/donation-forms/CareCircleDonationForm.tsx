@@ -70,6 +70,8 @@ export default function CareCircleDonationForm() {
   });
 
   const recaptchaRef = React.createRef<ReCAPTCHA>();
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+
 
   function onSubmit(values: z.infer<typeof donationSchema>) {
     console.log(values);
@@ -287,7 +289,7 @@ export default function CareCircleDonationForm() {
                       <FormControl>
                         <ReCAPTCHA
                           ref={recaptchaRef}
-                          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                          sitekey={recaptchaSiteKey}
                           onChange={field.onChange}
                         />
                       </FormControl>
