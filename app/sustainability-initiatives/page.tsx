@@ -12,21 +12,21 @@ const initiatives = [
     description: "Promotes urban greening and cleanliness drives to foster healthier, more sustainable city environments. We engage communities in tree planting, waste management, and beautification projects to create a lasting impact.",
     image: "https://placehold.co/600x400.png",
     hint: "urban garden",
-    link: "#"
+    link: "/green-clean"
   },
   {
     title: "Enviro-Guard",
     description: "An educational program focused on raising environmental awareness among students and communities. Through workshops and interactive sessions, we teach about conservation, recycling, and sustainable living practices.",
     image: "https://placehold.co/600x400.png",
     hint: "environmental education",
-    link: "#"
+    link: "/enviro-guard"
   },
   {
     title: "Aqua-Sure",
     description: "Dedicated to ensuring access to clean and safe drinking water in remote areas. This initiative involves installing water purification systems and educating communities on water conservation and hygiene.",
     image: "https://placehold.co/600x400.png",
     hint: "clean water source",
-    link: "#"
+    link: "/aqua-sure"
   },
 ];
 

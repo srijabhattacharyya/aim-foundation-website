@@ -91,7 +91,16 @@ const navLinks = [
           { href: '/childfirst', label: 'ChildFirst' },
         ]
       },
-      { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+      { 
+        label: 'Sustainability Initiatives',
+        isSubDropdown: true,
+        href: '/sustainability-initiatives',
+        subItems: [
+          { href: '/green-clean', label: 'Green-Clean' },
+          { href: '/enviro-guard', label: 'Enviro-Guard' },
+          { href: '/aqua-sure', label: 'Aqua-Sure' },
+        ]
+      },
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
       { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
