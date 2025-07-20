@@ -60,7 +60,7 @@ export default function ChildFirstPage() {
                     Beyond physical health, the initiative also promotes emotional well-being, encouraging positive self-image, protection, and resilience in children who are often denied these basic securities.
                   </p>
                   <p>
-                    ChildFirst stands as a promise—that every child, no matter their background, deserves quality healthcare, compassion, and a fair chance at a brighter future.
+                    ChildFirst stands as a promise—that <strong>every child, no matter their background, deserves quality healthcare, compassion, and a fair chance at a brighter future.</strong>
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Give Hope Where It’s Needed Most</h3>
                   <p>
