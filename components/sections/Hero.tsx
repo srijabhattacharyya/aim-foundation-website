@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
@@ -12,48 +13,56 @@ const programs = [
     description: 'Fostering learning and growth for all ages.',
     image: 'https://placehold.co/80x80.png',
     hint: 'education',
+    link: '/educational-initiatives',
   },
   {
     title: 'Healthcare Initiatives',
     description: 'Ensuring access to quality medical care for communities.',
     image: 'https://placehold.co/80x80.png',
     hint: 'healthcare',
+    link: '/healthcare-initiatives',
   },
   {
     title: 'Environment Initiatives',
     description: 'Protecting and preserving our planet for future generations.',
     image: 'https://placehold.co/80x80.png',
     hint: 'environment',
+    link: '/sustainability-initiatives',
   },
   {
     title: 'Gender Equality Initiative',
     description: 'Empowering women and girls to achieve their full potential.',
     image: 'https://placehold.co/80x80.png',
     hint: 'women empowerment',
+    link: '/gender-equality-initiative',
   },
   {
     title: 'Childcare Initiatives',
     description: 'Providing safe and nurturing environments for children.',
     image: 'https://placehold.co/80x80.png',
     hint: 'childcare',
+    link: '/childcare-initiatives',
   },
   {
     title: 'Relief to the underprivileged',
     description: 'Offering support and resources to those in need.',
     image: 'https://placehold.co/80x80.png',
     hint: 'underprivileged support',
+    link: '/relief-to-the-underprivileged',
   },
   {
     title: 'Disaster Management',
     description: 'Providing timely aid and support during crises.',
     image: 'https://placehold.co/80x80.png',
     hint: 'disaster relief',
+    link: '/disaster-management',
   },
   {
     title: 'Ignite Change Initiative',
     description: 'Inspiring and mobilizing communities for social good.',
     image: 'https://placehold.co/80x80.png',
     hint: 'community action',
+    link: '/ignite-change-initiative',
   },
 ];
 
@@ -102,7 +111,9 @@ const Hero = () => {
                             <Image src={program.image} alt={program.title} width={80} height={80} data-ai-hint={program.hint} className="rounded-full border-2 border-primary" />
                             <h3 className="font-bold text-lg font-headline">{program.title}</h3>
                             <p className="text-sm text-center">{program.description}</p>
-                             <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">Learn More</Button>
+                            <Button asChild variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">
+                                <Link href={program.link || '#'}>Learn More</Link>
+                            </Button>
                         </CardContent>
                         </Card>
                     </div>
