@@ -55,7 +55,7 @@ export default function DetectPage() {
                     The initiative has already witnessed inspiring participation from women in remote villages, many of whom are learning about cervical health for the first time. These sessions not only save lives through early detection but also promote a broader sense of bodily autonomy, health literacy, and dignity.
                   </p>
                   <p>
-                    By equipping both women and frontline health workers with knowledge and tools, Project Detect fosters a community-led movement for prevention, early intervention, and long-term well-being.
+                    By equipping both women and frontline health workers with knowledge and tools, Project Detect fosters a <strong>community-led movement for prevention, early intervention, and long-term well-being</strong>.
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Help Her Live—Not Just Survive</h3>
                   <p>
