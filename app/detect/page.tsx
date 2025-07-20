@@ -49,7 +49,7 @@ export default function DetectPage() {
                     <li><strong>Community-based screening camps</strong>, especially for women with limited access to gynecological care</li>
                     <li><strong>Awareness sessions</strong> on HPV, cervical cancer symptoms, menstrual health, and preventive care</li>
                     <li><strong>Training and sensitization of ASHA and Anganwadi workers</strong> district-by-district, starting with Howrah, to ensure sustainable, local outreach</li>
-                    <li>Encouraging open dialogue to break myths and cultural barriers around reproductive health</li>
+                    <li><strong>Encouraging open dialogue</strong> to break myths and cultural barriers around reproductive health</li>
                   </ul>
                   <p>
                     The initiative has already witnessed inspiring participation from women in remote villages, many of whom are learning about cervical health for the first time. These sessions not only save lives through early detection but also promote a broader sense of bodily autonomy, health literacy, and dignity.
