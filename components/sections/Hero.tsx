@@ -35,7 +35,7 @@ const programs = [
     description: 'Empowering women and girls to achieve their full potential.',
     image: 'https://placehold.co/80x80.png',
     hint: 'women empowerment',
-    link: '/gender-equality-initiative',
+    link: '/gender-equality-initiatives',
   },
   {
     title: 'Childcare Initiatives',
@@ -59,7 +59,7 @@ const programs = [
     link: '/disaster-management',
   },
   {
-    title: 'Ignite Change Initiative',
+    title: 'Ignite Change Initiatives',
     description: 'Inspiring and mobilizing communities for social good.',
     image: 'https://placehold.co/80x80.png',
     hint: 'community action',
