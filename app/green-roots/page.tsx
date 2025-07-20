@@ -49,7 +49,7 @@ export default function GreenRootsPage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Let your support take root—help green India’s future</h3>
                   <p>
-                    Your contribution helps us distribute saplings and support communities in their reforestation efforts. By donating, you are not just planting a tree; you are investing in a sustainable future, improving air quality, and empowering local communities to protect their environment. Join us in making our world greener, one sapling at a time.
+                    Your contribution can help provide more saplings, expand outreach, and support communities in nurturing our planet. Donate today and help GreenRoots grow stronger, deeper, and greener—one tree, one family, one village at a time.
                   </p>
                 </div>
               </div>
@@ -65,3 +65,4 @@ export default function GreenRootsPage() {
     </div>
   );
 }
+
