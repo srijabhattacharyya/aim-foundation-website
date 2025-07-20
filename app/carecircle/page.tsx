@@ -37,7 +37,7 @@ export default function CareCirclePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Healthcare for the Heart of the City</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Health Equity in Every Neighbourhood.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     CareCircle is a collaborative urban health initiative by AIM Foundation, focused on delivering accessible and inclusive medical services to underserved communities across Kolkata. Through strategic partnerships with healthcare providers and community organizations, CareCircle organizes regular healthcare camps at key urban outreach centres such as Sarala Punyashram, Sarat Bose Road, and Boral Natunhat.
