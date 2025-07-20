@@ -29,13 +29,6 @@ const initiatives = [
     link: "/detect"
   },
   {
-    title: "ChildFirst",
-    description: "A compassionate healthcare initiative offering pediatric and general health camps for children of sex workers. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health and dignity.",
-    image: "https://placehold.co/600x400.png",
-    hint: "mental health support",
-    link: "/childfirst"
-  },
-  {
     title: "SuiDhaga",
     description: "Empowers women by providing vocational training in tailoring and embroidery, enabling them to achieve financial independence. This initiative helps women turn a traditional skill into a modern livelihood, fostering entrepreneurship and self-reliance.",
     image: "https://placehold.co/600x400.png",
