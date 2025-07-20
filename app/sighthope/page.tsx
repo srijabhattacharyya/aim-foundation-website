@@ -40,7 +40,7 @@ export default function SightHopePage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Restoring Sight, Rekindling Dreams.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                   <p>
-                    SightHope is a transformative eye health initiative by AIM Foundation, launched to address the widespread but often overlooked burden of avoidable vision loss among underserved populations. In partnership with some of Kolkata’s most renowned eye hospitals—including Sushrut Eye Foundation, B. B. Eye Foundation, and the Hope Foundation—SightHope brings high-quality, no-cost eye care to those who need it most but can least afford it.
+                    SightHope is a transformative eye health initiative by AIM Foundation, launched to address the widespread but often overlooked burden of <strong>avoidable vision loss</strong> among underserved populations. In partnership with some of Kolkata’s most renowned eye hospitals—including Sushrut Eye Foundation, B. B. Eye Foundation, and the Hope Foundation—SightHope brings high-quality, no-cost eye care to those who need it most but can least afford it.
                   </p>
                   <p>
                     For many individuals living in urban slums, rural villages, and remote areas, poor eyesight is not just a health issue—it’s a barrier to education, employment, mobility, and dignity. Children struggle in school, adults lose livelihoods, and elders face isolation, all due to conditions that are often preventable or easily treatable, such as refractive errors or cataracts.
