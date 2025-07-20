@@ -66,7 +66,7 @@ export default function SurgiReachPage() {
                     SurgiReach represents AIM Foundation’s commitment to health equity—ensuring that no child suffers in pain, no adult is left untreated, and no family is pushed into poverty because of surgery-related costs.
                   </p>
                   <p>
-                    With every successful surgery, SurgiReach restores health, dignity, and hope—one patient at a time.
+                    With every successful surgery, <strong>SurgiReach restores health, dignity, and hope</strong>—one patient at a time.
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Help Someone Heal—and Hope Again</h3>
                   <p>
