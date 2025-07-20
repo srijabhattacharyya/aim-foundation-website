@@ -2,7 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DonationForm from "@/components/sections/DonationForm";
+import GreenRootsDonationForm from "@/components/sections/donation-forms/GreenRootsDonationForm";
 
 export default function GreenRootsPage() {
   return (
@@ -55,7 +55,7 @@ export default function GreenRootsPage() {
               </div>
               
               <div className="sticky top-24">
-                <DonationForm />
+                <GreenRootsDonationForm />
               </div>
             </div>
           </div>
@@ -65,4 +65,3 @@ export default function GreenRootsPage() {
     </div>
   );
 }
-
