@@ -66,9 +66,10 @@ const navLinks = [
           { href: '/sighthope', label: 'SightHope' },
           { href: '/oralscan', label: 'OralScan' },
           { href: '/cyclesafe', label: 'CycleSafe' },
+          { href: '/soulcircle', label: 'SoulCircle' },
         ]
       },
-      { href: '#', label: 'Environment Initiatives' },
+      { href: '/environment-initiatives', label: 'Environment Initiatives' },
       { href: '#', label: 'Gender Equality Initiative' },
       { href: '#', label: 'Childcare Initiatives' },
       { href: '#', label: 'Relief to the underprivileged' },

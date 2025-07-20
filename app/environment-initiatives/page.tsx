@@ -3,8 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 const initiatives = [
   {
@@ -39,9 +37,7 @@ const initiatives = [
 
 export default function EnvironmentInitiativesPage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
+    <>
         <section className="relative w-full">
           <div className="relative w-full" style={{ paddingTop: '45%' }}>
             <Image
@@ -97,8 +93,6 @@ export default function EnvironmentInitiativesPage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
-    </div>
+    </>
   );
 }
