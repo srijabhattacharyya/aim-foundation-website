@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h2 className="font-bold text-lg mb-4">AIM Foundation</h2>
+            <h2 className="font-bold text-lg mb-4">Associated Initiative for Mankind Foundation</h2>
             <p className="text-muted-foreground">
               A-123, Street Name,
               <br />
@@ -56,7 +56,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-12 border-t pt-8 text-center text-muted-foreground text-sm">
-          <p>&copy; {new Date().getFullYear()} AIM Foundation Hub. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Associated Initiative for Mankind Foundation. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
