@@ -54,7 +54,7 @@ export default function SightHopePage() {
                     <li><strong>Prescription and distribution of corrective lenses</strong></li>
                     <li><strong>Minor procedures for infections and irritations</strong></li>
                     <li><strong>Free cataract surgeries for eligible individuals</strong></li>
-                    <li>Referrals to partner hospitals for specialized care</li>
+                    <li><strong>Referrals to partner hospitals for specialized care</strong></li>
                   </ul>
                   <p>
                     Each camp is conducted by qualified ophthalmologists and healthcare staff from our partner hospitals, ensuring trusted expertise and continuity of care. Camps are held at accessible community hubs, including schools, health centers, and even temporary rural setups—bringing care directly to the doorstep of marginalized communities.
