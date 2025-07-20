@@ -26,7 +26,7 @@ export default function SoulCirclePage() {
                 SoulCircle
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Your Safe Space to Talk and Heal.
+                Safe Space to Talk and Heal
               </p>
             </div>
           </div>
