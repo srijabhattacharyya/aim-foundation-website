@@ -60,6 +60,7 @@ const navLinks = [
         subItems: [
           { href: '/cureline', label: 'CureLine' },
           { href: '/surgireach', label: 'SurgiReach' },
+          { href: '/carecircle', label: 'CareCircle' },
         ]
       },
       { href: '#', label: 'Environment Initiatives' },
