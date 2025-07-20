@@ -24,7 +24,7 @@ const programs = [
     link: '/healthcare-initiatives',
   },
   {
-    title: 'Environment Initiatives',
+    title: 'Sustainability Initiatives',
     description: 'Protecting and preserving our planet for future generations.',
     image: 'https://placehold.co/80x80.png',
     hint: 'environment',
