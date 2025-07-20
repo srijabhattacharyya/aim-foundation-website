@@ -40,23 +40,23 @@ export default function CycleSafePage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Girls, One Cycle at a Time.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                   <p>
-                    CycleSafe is a dedicated initiative by AIM Foundation that empowers underprivileged adolescent girls in and around Kolkata by promoting <strong>menstrual hygiene, cervical health awareness, and reproductive well-being</strong>. We believe that every girl deserves to manage her period with dignity and without shame.
+                    CycleSafe is a dedicated initiative that supports the menstrual and reproductive health of underprivileged adolescent girls in and around Kolkata. These girls, many of whom come from socioeconomically disadvantaged backgrounds, often lack access to basic menstrual hygiene resources, health education, and supportive spaces to discuss their bodies and well-being.
                   </p>
                   <p>
-                    In many communities, a lack of access to sanitary products and proper information leads to girls missing school, facing social stigma, and being at risk of infections. CycleSafe addresses these challenges head-on by:
+                    The project addresses this gap through comprehensive menstrual hygiene workshops, awareness sessions on cervical health, and open discussions on puberty, reproductive health, and emotional changes. These sessions are led by trained health educators who approach the subject with sensitivity, accuracy, and respect.
                   </p>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li><strong>Distributing free sanitary napkins</strong> on a monthly basis to ensure girls don't have to choose between education and hygiene.</li>
-                    <li>Conducting <strong>educational workshops</strong> on menstrual health to break taboos and spread accurate information.</li>
-                    <li>Raising awareness about <strong>cervical health and the importance of early screening</strong>.</li>
-                    <li>Creating a <strong>supportive and safe space</strong> for girls to ask questions and share experiences.</li>
-                  </ul>
                   <p>
-                    Through these efforts, CycleSafe fosters confidence, ensures health, and promotes equal opportunities, helping young girls thrive without barriers. The initiative is not just about providing products; it's about building knowledge, breaking cycles of misinformation, and empowering a new generation of healthy, confident young women.
+                    In addition, the initiative provides monthly sanitary napkins to ensure girls don’t miss school or feel shame during their menstrual cycles. Access to these essentials helps boost their confidence, attendance, and participation in daily life.
                   </p>
-                   <h3 className="text-2xl font-bold font-headline pt-4">Gift Dignity and Health</h3>
                   <p>
-                    For many adolescent girls, a period means missing school and facing shame. <strong>Your donation can provide sanitary napkins and vital health education, ensuring a girl can continue her education with confidence and dignity.</strong> Help us break the silence and stigma around menstruation. <strong>Support CycleSafe today and empower a girl to stay healthy, stay in school, and build a brighter future.</strong>
+                    The program also works to break taboos and social stigma surrounding menstruation and female reproductive health. By creating safe, inclusive, and educational spaces, the project not only promotes physical well-being but also helps these young girls build self-worth, body awareness, and emotional resilience.
+                  </p>
+                  <p>
+                    Ultimately, this initiative empowers adolescent girls to take charge of their health, voice their needs, and grow into informed, confident individuals—laying the foundation for a more equitable and healthy future.
+                  </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Help Her Stay in School, Stay Confident</h3>
+                  <p>
+                    For many adolescent girls, periods mean missed classes, silent shame, and compromised health—simply because they can’t afford sanitary napkins or don’t understand what’s happening to their bodies. Your support to CycleSafe can change that. Just ₹300 can provide a girl with sanitary pads and vital menstrual health education for a month. With your donation, you’re not just giving hygiene products—you’re restoring dignity, confidence, and opportunity. Stand with these girls. Help them grow without fear or stigma. Donate today and empower a future that’s safe, strong, and unstoppable.
                   </p>
                 </div>
               </div>
