@@ -39,16 +39,33 @@ export default function SoulCirclePage() {
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">24/7 Emotional Support, Just a Chat Away</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                  <p>
-                    SoulCircle is an AI-driven mental health support app offering round-the-clock emotional assistance. It connects users with compassionate AI counselors for private, judgment-free conversations.
-                  </p>
-                  <p>
-                    Whether dealing with stress, anxiety, or loneliness, SoulCircle provides a safe digital space for support, reflection, and healing—empowering users to prioritize mental well-being anytime, anywhere.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Your Support Matters</h3>
-                  <p>
-                    Help us maintain and expand this vital service, ensuring that anyone, anywhere can find the support they need.
-                  </p>
+                    <p>
+                        SoulCircle is an innovative AI-powered mental health support app created to provide accessible, compassionate, and judgment-free support for anyone experiencing emotional distress, stress, anxiety, loneliness, or other mental health challenges.
+                    </p>
+                    <p>
+                        Whether you're struggling in silence, need someone to talk to, or just want daily emotional check-ins, SoulCircle's intelligent AI mental health counselors are always available—24/7. These virtual companions are designed to listen empathetically, respond mindfully, and provide supportive guidance based on therapeutic frameworks and emotional well-being best practices.
+                    </p>
+                    <h3 className="text-2xl font-bold font-headline pt-4">SoulCircle is especially helpful for:</h3>
+                    <ul className="list-disc list-inside space-y-2">
+                        <li>People who hesitate to seek traditional therapy</li>
+                        <li>Those in regions with limited mental health resources</li>
+                        <li>Individuals needing immediate emotional support at odd hours</li>
+                        <li>Youth and students navigating emotional challenges</li>
+                    </ul>
+                     <h3 className="text-2xl font-bold font-headline pt-4">Key features include:</h3>
+                    <ul className="list-disc list-inside space-y-2">
+                        <li>Private, confidential conversations with AI counselors</li>
+                        <li>Mood tracking and journaling tools</li>
+                        <li>Mindfulness prompts and stress-relief exercises</li>
+                        <li>Multilingual support (optional) for greater accessibility</li>
+                    </ul>
+                    <p>
+                        In a world where mental health support is often hard to access, SoulCircle bridges the gap, creating a safe, stigma-free space where users can feel heard, supported, and guided toward emotional balance.
+                    </p>
+                    <h3 className="text-2xl font-bold font-headline pt-4">Be the Reason Someone Feels Heard Today</h3>
+                    <p>
+                        Millions suffer in silence, afraid or unable to seek help for their mental health. With your support, SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most. Your donation helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression. Mental health is not a luxury—it’s a necessity. Help us make healing accessible to all. Donate now.
+                    </p>
                 </div>
               </div>
 
