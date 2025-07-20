@@ -1,6 +1,5 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+
 import Image from "next/image";
 import GenderEqualityDonationForm from "@/components/sections/donation-forms/GenderEqualityDonationForm";
 
