@@ -39,8 +39,38 @@ export default function SurgiReachPage() {
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Surgery Shouldn’t Be a Luxury.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    SurgiReach is AIM Foundation’s hospital partnership initiative providing free surgeries to economically disadvantaged individuals. Children aged 5 months to 14 years receive life-changing pediatric operations, while adults access essential procedures like kidney transplants and knee replacements. The program ensures critical medical care is available, regardless of financial limitations.
+                  <p>
+                    SurgiReach is AIM Foundation’s flagship hospital partnership initiative, dedicated to ensuring that life-saving and life-enhancing surgeries are accessible to those who need them most—economically disadvantaged individuals who often go untreated due to high medical costs and limited access to specialized care.
+                  </p>
+                  <p>
+                    Through meaningful collaborations with reputed hospitals and surgical specialists, SurgiReach identifies eligible patients and facilitates free surgical interventions, with a focus on both pediatric and adult care.
+                  </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">For Children:</h3>
+                  <p>
+                    Children between 5 months and 14 years receive free pediatric surgeries, including treatments for congenital disorders, hernias, cleft conditions, orthopedic needs, and other critical conditions. Early intervention is key to giving these young lives a healthy start and preventing long-term complications.
+                  </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">For Adults:</h3>
+                  <p>
+                    SurgiReach supports complex and essential surgeries for adults such as:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2">
+                    <li>Kidney transplants</li>
+                    <li>Knee and joint replacements</li>
+                    <li>Gallbladder, appendix, and abdominal surgeries</li>
+                    <li>Other procedures based on medical urgency</li>
+                  </ul>
+                  <p>
+                    Every case is reviewed based on medical necessity and financial eligibility, ensuring a transparent, fair, and patient-centered process. The program covers not just the surgical cost but also pre-operative diagnostics, hospital admission, post-operative recovery support, and in some cases, medication assistance.
+                  </p>
+                  <p>
+                    SurgiReach represents AIM Foundation’s commitment to health equity—ensuring that no child suffers in pain, no adult is left untreated, and no family is pushed into poverty because of surgery-related costs.
+                  </p>
+                  <p>
+                    With every successful surgery, SurgiReach restores health, dignity, and hope—one patient at a time.
+                  </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Help Someone Heal—and Hope Again</h3>
+                  <p>
+                    For many families, a needed surgery is a distant dream—delayed by cost, denied by circumstance. With your donation, SurgiReach can provide life-changing operations to children and adults who would otherwise go untreated. From cleft repairs in toddlers to kidney transplants for struggling parents, every contribution helps restore not just health, but dignity and a second chance at life. Support SurgiReach today—and be the reason someone wakes up to a pain-free tomorrow.
                   </p>
                 </div>
               </div>
