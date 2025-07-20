@@ -39,7 +39,7 @@ export default function GreenRootsPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">A Greener Tomorrow, One Sapling at a Time.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    GreenRoots aims to promote reforestation in areas where land acquisition is not feasible. By distributing saplings directly to villagers and partnering with Ganga Mission for outreach, the project overcomes space constraints and fosters active community involvement in afforestation, expanding local green cover sustainably.
+                    GreenRoots aims to promote reforestation in areas where land acquisition is not feasible. By distributing saplings directly to villagers, the project overcomes space constraints and fosters active community involvement in afforestation efforts. This grassroots approach helps expand local green cover in a sustainable and inclusive manner.
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Plant a Seed of Hope</h3>
                   <p>
