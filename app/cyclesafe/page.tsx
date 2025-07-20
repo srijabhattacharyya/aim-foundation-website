@@ -56,7 +56,7 @@ export default function CycleSafePage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Help Her Stay in School, Stay Confident</h3>
                   <p>
-                    For many adolescent girls, periods mean missed classes, silent shame, and compromised health—simply because they can’t afford sanitary napkins or don’t understand what’s happening to their bodies. <strong>Your support to CycleSafe can change that.</strong> <strong>Just ₹300 can provide a girl with sanitary pads and vital menstrual health education for a month.</strong> With your donation, you’re not just giving hygiene products—you’re restoring dignity, confidence, and opportunity. Stand with these girls. Help them grow without fear or stigma. Donate today and empower a future that’s safe, strong, and unstoppable.
+                    For many adolescent girls, periods mean missed classes, silent shame, and compromised health—simply because they can’t afford sanitary napkins or don’t understand what’s happening to their bodies. <strong>Your support to CycleSafe can change that.</strong> <strong>Just ₹300 can provide a girl with sanitary pads and vital menstrual health education for a month.</strong> With your donation, you’re not just giving hygiene products—you’re restoring dignity, confidence, and opportunity. <strong>Stand with these girls. Help them grow without fear or stigma. Donate today and empower a future that’s safe, strong, and unstoppable.</strong>
                   </p>
                 </div>
               </div>
