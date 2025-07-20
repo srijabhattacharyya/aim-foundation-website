@@ -43,7 +43,7 @@ export default function ChildFirstPage() {
                     ChildFirst is a compassionate and vital healthcare initiative by AIM Foundation that focuses on delivering <strong>pediatric and general health support</strong> to the children of sex workers living in <strong>Rambagan</strong> and <strong>Sonagachi</strong>—two of Kolkata’s most marginalized and stigmatized red-light areas.
                   </p>
                   <p>
-                    These children often face multiple layers of vulnerability: limited access to healthcare, social exclusion, emotional trauma, and an increased risk of neglect and exploitation. ChildFirst recognizes the urgent need for early medical intervention and holistic well-being for these young lives.
+                    These children often face multiple layers of vulnerability: limited access to healthcare, social exclusion, emotional trauma, and an increased risk of neglect and exploitation. ChildFirst recognizes the <strong>urgent need for early medical intervention and holistic well-being</strong> for these young lives.
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Through this initiative, AIM Foundation organizes regular health camps offering:</h3>
                    <ul className="list-disc list-inside space-y-2">
