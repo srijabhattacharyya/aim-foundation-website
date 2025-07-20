@@ -39,8 +39,43 @@ export default function SightHopePage() {
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Restoring Sight, Rekindling Dreams.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    SightHope, in partnership with leading eye hospitals like Sushrut Eye Foundation, B. B. Eye Foundation, and Hope Foundation, brings free eye care to underserved communities. Through screenings, treatments, and cataract surgeries, it restores vision, dignity, and independence—offering new possibilities to those without access to quality eye health services.
+                  <p>
+                    SightHope is a transformative eye health initiative by AIM Foundation, launched to address the widespread but often overlooked burden of avoidable vision loss among underserved populations. In partnership with some of Kolkata’s most renowned eye hospitals—including Sushrut Eye Foundation, B. B. Eye Foundation, and the Hope Foundation—SightHope brings high-quality, no-cost eye care to those who need it most but can least afford it.
+                  </p>
+                  <p>
+                    For many individuals living in urban slums, rural villages, and remote areas, poor eyesight is not just a health issue—it’s a barrier to education, employment, mobility, and dignity. Children struggle in school, adults lose livelihoods, and elders face isolation, all due to conditions that are often preventable or easily treatable, such as refractive errors or cataracts.
+                  </p>
+                  <p>
+                    SightHope steps in to fill this critical gap by organizing regular eye care camps that provide:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2">
+                    <li>Comprehensive vision screenings</li>
+                    <li>Diagnosis and treatment of common eye conditions</li>
+                    <li>Prescription and distribution of corrective lenses</li>
+                    <li>Minor procedures for infections and irritations</li>
+                    <li>Free cataract surgeries for eligible individuals</li>
+                    <li>Referrals to partner hospitals for specialized care</li>
+                  </ul>
+                  <p>
+                    Each camp is conducted by qualified ophthalmologists and healthcare staff from our partner hospitals, ensuring trusted expertise and continuity of care. Camps are held at accessible community hubs, including schools, health centers, and even temporary rural setups—bringing care directly to the doorstep of marginalized communities.
+                  </p>
+                  <p>
+                    By restoring sight, SightHope restores much more:
+                  </p>
+                  <ul className="list-none space-y-2">
+                    <li>🔹 The freedom to move confidently</li>
+                    <li>🔹 The ability to work and earn</li>
+                    <li>🔹 The joy of seeing loved ones clearly again</li>
+                  </ul>
+                  <p>
+                    Above all, it restores hope—a renewed sense of possibility for people who had long accepted poor vision as their fate.
+                  </p>
+                  <p>
+                    Through this powerful collaboration between community outreach and medical excellence, SightHope is not just changing lives—it’s helping people see a better future.
+                  </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Restore Sight, Renew Lives</h3>
+                  <p>
+                    For millions, blurry vision means missed opportunities, lost income, and silent suffering. With just ₹3,000, you can help restore someone’s sight through a free eye screening or cataract surgery. Your donation to SightHope empowers children to succeed in school, enables elders to regain independence, and allows workers to return to their jobs with confidence. Vision is more than just sight—it’s dignity, freedom, and hope. Give someone the gift of seeing the world clearly again. Donate now—because no one should live in the dark when the cure is within reach.
                   </p>
                 </div>
               </div>
