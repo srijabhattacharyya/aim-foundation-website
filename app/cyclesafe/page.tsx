@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import CycleSafeDonationForm from "@/components/sections/donation-forms/CycleSafeDonationForm";
+import CycleSafeDonationForm from "../../components/sections/donation-forms/CycleSafeDonationForm";
 
 export default function CycleSafePage() {
   return (

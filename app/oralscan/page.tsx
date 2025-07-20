@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import OralScanDonationForm from "@/components/sections/donation-forms/OralScanDonationForm";
+import OralScanDonationForm from "../../components/sections/donation-forms/OralScanDonationForm";
 
 export default function OralScanPage() {
   return (

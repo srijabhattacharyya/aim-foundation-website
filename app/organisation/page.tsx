@@ -1,11 +1,12 @@
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import LegalRecognitions from "@/components/sections/LegalRecognitions";
-import { Button } from "@/components/ui/button";
+
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
+import LegalRecognitions from "../../components/sections/LegalRecognitions";
+import { Button } from "../../components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import ImpactPriorities from "@/components/sections/ImpactPriorities";
-import Ethos from "@/components/sections/Ethos";
+import ImpactPriorities from "../../components/sections/ImpactPriorities";
+import Ethos from "../../components/sections/Ethos";
 
 export default function OrganisationPage() {
   return (

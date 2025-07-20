@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import SheConnectsDonationForm from "@/components/sections/donation-forms/SheConnectsDonationForm";
+import SheConnectsDonationForm from "../../components/sections/donation-forms/SheConnectsDonationForm";
 
 export default function SheConnectsPage() {
   return (

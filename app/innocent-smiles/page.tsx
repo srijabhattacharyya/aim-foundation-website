@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import InnocentSmilesDonationForm from "@/components/sections/donation-forms/InnocentSmilesDonationForm";
+import InnocentSmilesDonationForm from "../../components/sections/donation-forms/InnocentSmilesDonationForm";
 
 export default function InnocentSmilesPage() {
   return (

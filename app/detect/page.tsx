@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import DetectDonationForm from "@/components/sections/donation-forms/DetectDonationForm";
+import DetectDonationForm from "../../components/sections/donation-forms/DetectDonationForm";
 
 export default function DetectPage() {
   return (

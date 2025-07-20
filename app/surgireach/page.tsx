@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import SurgiReachDonationForm from "@/components/sections/donation-forms/SurgiReachDonationForm";
+import SurgiReachDonationForm from "../../components/sections/donation-forms/SurgiReachDonationForm";
 
 export default function SurgiReachPage() {
   return (

@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import CureLineDonationForm from "@/components/sections/donation-forms/CureLineDonationForm";
+import CureLineDonationForm from "../../components/sections/donation-forms/CureLineDonationForm";
 
 export default function CureLinePage() {
   return (

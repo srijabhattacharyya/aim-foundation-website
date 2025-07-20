@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import InspireEduLabDonationForm from "@/components/sections/donation-forms/InspireEduLabDonationForm";
+import InspireEduLabDonationForm from "../../components/sections/donation-forms/InspireEduLabDonationForm";
 
 export default function InspireEduLabPage() {
   return (

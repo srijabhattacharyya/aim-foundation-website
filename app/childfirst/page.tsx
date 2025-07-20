@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import ChildFirstDonationForm from "@/components/sections/donation-forms/ChildFirstDonationForm";
+import ChildFirstDonationForm from "../../components/sections/donation-forms/ChildFirstDonationForm";
 
 export default function ChildFirstPage() {
   return (
