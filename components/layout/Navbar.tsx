@@ -69,7 +69,19 @@ const navLinks = [
           { href: '/soulcircle', label: 'SoulCircle' },
         ]
       },
-      { href: '/gender-equality-initiative', label: 'Gender Equality Initiative' },
+       { 
+        label: 'Gender Equality Initiatives',
+        isSubDropdown: true,
+        href: '/gender-equality-initiative',
+        subItems: [
+          { href: '/sheconnects', label: 'SheConnects' },
+          { href: '/cyclesafe', label: 'CycleSafe' },
+          { href: '/detect', label: 'Detect' },
+          { href: '/childfirst', label: 'ChildFirst' },
+          { href: '/suidhaga', label: 'SuiDhaga' },
+          { href: '/krishti', label: 'Krishti' },
+        ]
+      },
       { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
       { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
