@@ -35,6 +35,20 @@ const initiatives = [
     hint: "mental health support",
     link: "/childfirst"
   },
+  {
+    title: "Innocent Smiles",
+    description: "Empowers children by combining education with art, dance, and music, nurturing both creativity and academics. It offers a supportive space where young minds gain confidence, express themselves, and grow holistically.",
+    image: "https://placehold.co/600x400.png",
+    hint: "classroom children",
+    link: "/innocent-smiles"
+  },
+  {
+    title: "Milieu",
+    description: "Fosters holistic development by connecting children from diverse economic backgrounds. Through interactive sessions, students from reputed schools and underprivileged communities learn together, building empathy and respect.",
+    image: "https://placehold.co/600x400.png",
+    hint: "community gathering",
+    link: "/milieu"
+  },
 ];
 
 export default function GenderEqualityInitiativesPage() {
@@ -73,7 +87,7 @@ export default function GenderEqualityInitiativesPage() {
                 We believe that empowering women and girls is essential for building a just, prosperous, and compassionate society.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {initiatives.map((item, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                   <div className="relative w-full h-48">
