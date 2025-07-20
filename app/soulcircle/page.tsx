@@ -55,7 +55,7 @@ export default function SoulCirclePage() {
                      <h3 className="text-2xl font-bold font-headline pt-4">Key features include:</h3>
                     <ul className="list-disc list-inside space-y-2">
                         <li><strong>Private, confidential conversations</strong> with AI counselors</li>
-                        <li>Mood tracking and journaling tools</li>
+                        <li><strong>Mood tracking and journaling tools</strong></li>
                         <li>Mindfulness prompts and stress-relief exercises</li>
                     </ul>
                     <p>
