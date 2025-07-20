@@ -52,7 +52,7 @@ export default function SightHopePage() {
                     <li><strong>Comprehensive vision screenings</strong></li>
                     <li><strong>Diagnosis and treatment of common eye conditions</strong></li>
                     <li><strong>Prescription and distribution of corrective lenses</strong></li>
-                    <li>Minor procedures for infections and irritations</li>
+                    <li><strong>Minor procedures for infections and irritations</strong></li>
                     <li>Free cataract surgeries for eligible individuals</li>
                     <li>Referrals to partner hospitals for specialized care</li>
                   </ul>
