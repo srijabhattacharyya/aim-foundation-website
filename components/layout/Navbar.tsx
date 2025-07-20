@@ -62,6 +62,8 @@ const navLinks = [
           { href: '/surgireach', label: 'SurgiReach' },
           { href: '/carecircle', label: 'CareCircle' },
           { href: '/childfirst', label: 'ChildFirst' },
+          { href: '/detect', label: 'Detect' },
+          { href: '/sighthope', label: 'SightHope' },
         ]
       },
       { href: '#', label: 'Environment Initiatives' },
