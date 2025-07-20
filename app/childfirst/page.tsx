@@ -37,7 +37,7 @@ export default function ChildFirstPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">A Safe Space for Health and Dignity.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Care Beyond Stigma. Health Beyond Barriers.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     ChildFirst is a compassionate healthcare initiative by AIM Foundation offering pediatric and general health camps for children of sex workers in vulnerable areas like Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these often overlooked children.
