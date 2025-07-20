@@ -63,7 +63,7 @@ export default function SoulCirclePage() {
                     </p>
                     <h3 className="text-2xl font-bold font-headline pt-4">Be the Reason Someone Feels Heard Today</h3>
                     <p>
-                        Millions suffer in silence, afraid or unable to seek help for their mental health. With your support, <strong>SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most</strong>. Your donation helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. <strong>Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression.</strong> Mental health is not a luxury—it’s a necessity. Help us make healing accessible to all. Donate now.
+                        Millions suffer in silence, afraid or unable to seek help for their mental health. With your support, <strong>SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most</strong>. Your donation helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. <strong>Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression</strong>. Mental health is not a luxury—it’s a necessity. <strong>Help us make healing accessible to all. Donate now.</strong>
                     </p>
                 </div>
               </div>
