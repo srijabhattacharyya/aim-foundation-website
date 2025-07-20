@@ -57,7 +57,7 @@ export default function CareCirclePage() {
                     What sets CareCircle apart is its holistic, community-based approach—fostering trust within neighborhoods, encouraging preventive care, and promoting health-seeking behavior among vulnerable urban residents. The program also empowers local volunteers and caregivers, turning every camp into an opportunity for both healing and education.
                   </p>
                   <p>
-                    In a fast-paced city where inequality often defines access to care, CareCircle ensures that health is not a privilege, but a shared right—accessible to all, regardless of income, identity, or background.
+                    In a fast-paced city where inequality often defines access to care, <strong>CareCircle ensures that health is not a privilege, but a shared right—accessible to all, regardless of income, identity, or background.</strong>
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Bring Healing to the Heart of the City</h3>
                   <p>
