@@ -59,6 +59,7 @@ const navLinks = [
         isSubDropdown: true,
         subItems: [
           { href: '/cureline', label: 'CureLine' },
+          { href: '/surgireach', label: 'SurgiReach' },
         ]
       },
       { href: '#', label: 'Environment Initiatives' },
