@@ -26,7 +26,7 @@ export default function DetectPage() {
                 Detect
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Early Detection for a Healthier Future.
+                Detect Early. Live Fully.
               </p>
             </div>
           </div>
