@@ -40,7 +40,7 @@ export default function ChildFirstPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Care Beyond Stigma. Health Beyond Barriers.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    ChildFirst is a compassionate and vital healthcare initiative by AIM Foundation that focuses on delivering <strong>pediatric and general health support</strong> to the children of sex workers living in Rambagan and Sonagachi—two of Kolkata’s most marginalized and stigmatized red-light areas.
+                    ChildFirst is a compassionate and vital healthcare initiative by AIM Foundation that focuses on delivering <strong>pediatric and general health support</strong> to the children of sex workers living in <strong>Rambagan</strong> and Sonagachi—two of Kolkata’s most marginalized and stigmatized red-light areas.
                   </p>
                   <p>
                     These children often face multiple layers of vulnerability: limited access to healthcare, social exclusion, emotional trauma, and an increased risk of neglect and exploitation. ChildFirst recognizes the urgent need for early medical intervention and holistic well-being for these young lives.
