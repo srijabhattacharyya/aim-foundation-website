@@ -70,7 +70,7 @@ export default function SurgiReachPage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4"><strong>Help Someone Heal—and Hope Again</strong></h3>
                   <p>
-                    For many families, a needed surgery is a distant dream—delayed by cost, denied by circumstance. With your donation, SurgiReach can provide life-changing operations to children and adults who would otherwise go untreated. From cleft repairs in toddlers to kidney transplants for struggling parents, every contribution helps restore not just health, but dignity and a second chance at life. Support SurgiReach today—and be the reason someone wakes up to a pain-free tomorrow.
+                    For many families, a needed surgery is a distant dream—delayed by cost, denied by circumstance. <strong>With your donation, SurgiReach can provide life-changing operations to children and adults who would otherwise go untreated</strong>. From cleft repairs in toddlers to kidney transplants for struggling parents, every contribution helps restore not just health, but dignity and a second chance at life. Support SurgiReach today—and be the reason someone wakes up to a pain-free tomorrow.
                   </p>
                 </div>
               </div>
