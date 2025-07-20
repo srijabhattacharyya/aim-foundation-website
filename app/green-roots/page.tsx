@@ -47,9 +47,6 @@ export default function GreenRootsPage() {
                   <p>
                     By shifting the focus from centralized plantations to decentralized community participation, GreenRoots promotes environmental responsibility, encourages ownership, and builds lasting ecological resilience at the grassroots level. The project not only increases tree cover but also strengthens the bond between people and nature.
                   </p>
-                  <p>
-                    You can be a part of this green movement. Your contribution can help provide more saplings, expand outreach, and support communities in nurturing our planet. Donate today and help GreenRoots grow stronger, deeper, and greener—one tree, one family, one village at a time.
-                  </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Plant a Seed of Hope</h3>
                   <p>
                     Your contribution helps us distribute saplings and support communities in their reforestation efforts. By donating, you are not just planting a tree; you are investing in a sustainable future, improving air quality, and empowering local communities to protect their environment. Join us in making our world greener, one sapling at a time.
