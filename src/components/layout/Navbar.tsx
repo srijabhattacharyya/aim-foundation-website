@@ -61,6 +61,7 @@ const navLinks = [
           { href: '/cureline', label: 'CureLine' },
           { href: '/surgireach', label: 'SurgiReach' },
           { href: '/carecircle', label: 'CareCircle' },
+          { href: '/childfirst', label: 'ChildFirst' },
         ]
       },
       { href: '#', label: 'Environment Initiatives' },
