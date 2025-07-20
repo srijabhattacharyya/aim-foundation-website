@@ -40,7 +40,7 @@ export default function SoulCirclePage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">24/7 Emotional Support, Just a Chat Away</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
-                        SoulCircle is an innovative AI-powered mental health support app created to provide accessible, compassionate, and judgment-free support for anyone experiencing emotional distress, stress, anxiety, loneliness, or other mental health challenges.
+                        SoulCircle is an innovative <strong>AI-powered mental health support app</strong> created to provide accessible, compassionate, and judgment-free support for anyone experiencing emotional distress, stress, anxiety, loneliness, or other mental health challenges.
                     </p>
                     <p>
                         Whether you're struggling in silence, need someone to talk to, or just want daily emotional check-ins, SoulCircle's intelligent AI mental health counselors are always available—24/7. These virtual companions are designed to listen empathetically, respond mindfully, and provide supportive guidance based on therapeutic frameworks and emotional well-being best practices.
