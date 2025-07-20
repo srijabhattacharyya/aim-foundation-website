@@ -57,7 +57,6 @@ export default function SoulCirclePage() {
                         <li>Private, confidential conversations with AI counselors</li>
                         <li>Mood tracking and journaling tools</li>
                         <li>Mindfulness prompts and stress-relief exercises</li>
-                        <li>Multilingual support (optional) for greater accessibility</li>
                     </ul>
                     <p>
                         In a world where mental health support is often hard to access, SoulCircle bridges the gap, creating a safe, stigma-free space where users can feel heard, supported, and guided toward emotional balance.
