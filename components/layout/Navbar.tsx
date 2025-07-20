@@ -70,6 +70,7 @@ const navLinks = [
         ]
       },
       { href: '/gender-equality-initiative', label: 'Gender Equality Initiative' },
+      { href: '/environment-initiatives', label: 'Environment Initiatives' },
       { href: '#', label: 'Childcare Initiatives' },
       { href: '#', label: 'Relief to the underprivileged' },
       { href: '#', label: 'Disaster Management' },
