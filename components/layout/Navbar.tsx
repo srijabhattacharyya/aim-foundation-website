@@ -73,7 +73,7 @@ const navLinks = [
       { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
       { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
-      { href: '#', label: 'Disaster Management' },
+      { href: '/disaster-management', label: 'Disaster Management' },
       { href: '#', label: 'Ignite Change Initiative' },
     ]
   },
