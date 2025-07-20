@@ -15,7 +15,7 @@ const initiatives = [
     link: "/green-roots"
   },
   {
-    title: "Enviro-Guard",
+    title: "TideShield",
     description: "An educational program focused on raising environmental awareness among students and communities. Through workshops and interactive sessions, we teach about conservation, recycling, and sustainable living practices.",
     image: "https://placehold.co/600x400.png",
     hint: "environmental education",
