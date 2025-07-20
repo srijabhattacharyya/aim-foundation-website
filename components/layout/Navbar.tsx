@@ -77,7 +77,6 @@ const navLinks = [
           { href: '/sheconnects', label: 'SheConnects' },
           { href: '/cyclesafe', label: 'CycleSafe' },
           { href: '/detect', label: 'Detect' },
-          { href: '/childfirst', label: 'ChildFirst' },
           { href: '/suidhaga', label: 'SuiDhaga' },
           { href: '/krishti', label: 'Krishti' },
         ]
