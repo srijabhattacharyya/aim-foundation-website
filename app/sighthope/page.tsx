@@ -1,9 +1,9 @@
 
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import SightHopeDonationForm from "../../components/sections/donation-forms/SightHopeDonationForm";
+import SightHopeDonationForm from "@/components/sections/donation-forms/SightHopeDonationForm";
 
 export default function SightHopePage() {
   return (

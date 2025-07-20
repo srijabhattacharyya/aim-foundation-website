@@ -1,9 +1,9 @@
 
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import EmpowerEnglishDonationForm from "../../components/sections/donation-forms/EmpowerEnglishDonationForm";
+import EmpowerEnglishDonationForm from "@/components/sections/donation-forms/EmpowerEnglishDonationForm";
 
 export default function EmpowerEnglishPage() {
   return (

@@ -16,7 +16,7 @@ import {
 import { Input } from "../ui/input";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Checkbox } from "../ui/checkbox";
-import { useToast } from "../../hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "../ui/card";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";

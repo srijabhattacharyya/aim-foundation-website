@@ -1,10 +1,10 @@
 
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import VidyaShaktiDonationForm from "../../components/sections/donation-forms/VidyaShaktiDonationForm";
-import { Button } from "../../components/ui/button";
+import VidyaShaktiDonationForm from "@/components/sections/donation-forms/VidyaShaktiDonationForm";
+import { Button } from "@/components/ui/button";
 
 export default function VidyaShaktiPage() {
   return (

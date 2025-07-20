@@ -1,9 +1,9 @@
 
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DigiEmpowerDonationForm from "../../components/sections/donation-forms/DigiEmpowerDonationForm";
+import DigiEmpowerDonationForm from "@/components/sections/donation-forms/DigiEmpowerDonationForm";
 
 export default function DigiEmpowerPage() {
   return (

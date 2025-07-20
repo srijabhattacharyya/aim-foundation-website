@@ -1,9 +1,9 @@
 
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import EduAccessDonationForm from "../../components/sections/donation-forms/EduAccessDonationForm";
+import EduAccessDonationForm from "@/components/sections/donation-forms/EduAccessDonationForm";
 
 export default function EduAccessPage() {
   return (

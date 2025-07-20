@@ -1,9 +1,9 @@
 
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import CareCircleDonationForm from "../../components/sections/donation-forms/CareCircleDonationForm";
+import CareCircleDonationForm from "@/components/sections/donation-forms/CareCircleDonationForm";
 
 export default function CareCirclePage() {
   return (

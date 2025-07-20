@@ -1,10 +1,10 @@
 
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import SoulCircleDonationForm from "../../components/sections/donation-forms/SoulCircleDonationForm";
-import { Button } from "../../components/ui/button";
+import SoulCircleDonationForm from "@/components/sections/donation-forms/SoulCircleDonationForm";
+import { Button } from "@/components/ui/button";
 
 export default function SoulCirclePage() {
   return (
