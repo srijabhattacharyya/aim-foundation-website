@@ -43,7 +43,7 @@ export default function SurgiReachPage() {
                     SurgiReach is AIM Foundation’s flagship hospital partnership initiative, dedicated to ensuring that <strong>life-saving and life-enhancing surgeries</strong> are accessible to those who need them most—<strong>economically disadvantaged individuals</strong> who often go untreated due to high medical costs and limited access to specialized care.
                   </p>
                   <p>
-                    Through meaningful collaborations with reputed hospitals and surgical specialists, SurgiReach identifies eligible patients and facilitates free surgical interventions, with a focus on both pediatric and adult care.
+                    Through meaningful collaborations with reputed hospitals and surgical specialists, SurgiReach identifies eligible patients and facilitates <strong>free surgical interventions</strong>, with a focus on both pediatric and adult care.
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">For Children:</h3>
                   <p>
