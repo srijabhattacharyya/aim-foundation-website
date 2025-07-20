@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Toaster } from '@/components/ui/Toaster';
+
 
 export const metadata: Metadata = {
   title: 'AIM Foundation Hub',
@@ -21,7 +21,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         {children}
-        <Toaster />
+        
       </body>
     </html>
   );
