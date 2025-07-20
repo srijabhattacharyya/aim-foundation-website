@@ -31,7 +31,7 @@ const programs = [
     link: '/sustainability-initiatives',
   },
   {
-    title: 'Gender Equality Initiative',
+    title: 'Gender Equality Initiatives',
     description: 'Empowering women and girls to achieve their full potential.',
     image: 'https://placehold.co/80x80.png',
     hint: 'women empowerment',
