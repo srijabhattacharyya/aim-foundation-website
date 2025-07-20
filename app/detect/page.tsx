@@ -43,7 +43,7 @@ export default function DetectPage() {
                     Detect is a critical women’s health initiative by AIM Foundation that aims to empower rural women through increased awareness of <strong>cervical health and the early detection of cervical cancer</strong>. In partnership with the Chittaranjan National Cancer Institute and the Government of West Bengal, this initiative brings essential health education and screening services to some of the most underserved regions in the state.
                   </p>
                   <p>
-                    Cervical cancer is one of the leading causes of cancer-related deaths among women in India, especially in rural areas where lack of awareness, stigma, and poor access to healthcare hinder early diagnosis. Project Detect addresses this gap through:
+                    Cervical cancer is one of the leading causes of cancer-related deaths among women in India, especially in rural areas where <strong>lack of awareness, stigma, and poor access to healthcare</strong> hinder early diagnosis. Project Detect addresses this gap through:
                   </p>
                   <ul className="list-disc list-inside space-y-2">
                     <li>Community-based screening camps, especially for women with limited access to gynecological care</li>
