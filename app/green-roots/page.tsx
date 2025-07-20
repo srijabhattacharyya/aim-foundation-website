@@ -36,7 +36,7 @@ export default function GreenRootsPage() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">A Greener Tomorrow, One Sapling at a Time.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Planting Hope, Growing Futures</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     GreenRoots is a grassroots environmental initiative launched by AIM Foundation to promote reforestation and expand green cover in regions where land acquisition for large-scale plantation is not viable. In many rural and semi-rural areas, the lack of access to common or government-owned land poses a significant barrier to traditional afforestation efforts. GreenRoots addresses this challenge by empowering individual households and communities to become stewards of the environment.
