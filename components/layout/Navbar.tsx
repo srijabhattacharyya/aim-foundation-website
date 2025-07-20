@@ -69,7 +69,10 @@ const navLinks = [
           { href: '/soulcircle', label: 'SoulCircle' },
         ]
       },
-      { href: '/environment-initiatives', label: 'Environment Initiatives' },
+      { 
+        href: '/environment-initiatives', 
+        label: 'Environment Initiatives'
+      },
       { href: '#', label: 'Gender Equality Initiative' },
       { href: '#', label: 'Childcare Initiatives' },
       { href: '#', label: 'Relief to the underprivileged' },
