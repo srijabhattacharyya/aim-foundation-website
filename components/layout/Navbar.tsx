@@ -64,6 +64,7 @@ const navLinks = [
           { href: '/childfirst', label: 'ChildFirst' },
           { href: '/detect', label: 'Detect' },
           { href: '/sighthope', label: 'SightHope' },
+          { href: '/oralscan', label: 'OralScan' },
         ]
       },
       { href: '#', label: 'Environment Initiatives' },

@@ -52,7 +52,7 @@ const initiatives = [
     description: "is a crucial initiative offering free oral cancer screening camps in underserved communities. By focusing on early detection and public awareness, it identifies potential risks at the outset, improving treatment outcomes. The program promotes oral hygiene, educates on risk factors, and helps save lives through timely medical intervention.",
     image: "https://placehold.co/600x400.png",
     hint: "dental checkup",
-    link: "#"
+    link: "/oralscan"
   },
   {
     title: "CycleSafe",
