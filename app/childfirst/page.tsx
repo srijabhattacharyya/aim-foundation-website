@@ -64,7 +64,7 @@ export default function ChildFirstPage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Give Hope Where It’s Needed Most</h3>
                   <p>
-                    In places where childhood is shadowed by stigma and neglect, your support can bring light, healing, and dignity. A small donation to ChildFirst provides medical check-ups, immunizations, nutrition support, and a safe, caring environment for children of sex workers in Kolkata’s red-light areas. You can help protect their health, restore their confidence, and rewrite their future. Stand with us in saying: every child matters, and every child deserves a chance. Donate now—because healing begins with you.
+                    In places where childhood is shadowed by stigma and neglect, <strong>your support can bring light, healing, and dignity</strong>. A small donation to ChildFirst provides medical check-ups, immunizations, nutrition support, and a safe, caring environment for children of sex workers in Kolkata’s red-light areas. You can help protect their health, restore their confidence, and rewrite their future. Stand with us in saying: every child matters, and every child deserves a chance. Donate now—because healing begins with you.
                   </p>
                 </div>
               </div>
