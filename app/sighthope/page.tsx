@@ -51,7 +51,7 @@ export default function SightHopePage() {
                   <ul className="list-disc list-inside space-y-2">
                     <li><strong>Comprehensive vision screenings</strong></li>
                     <li><strong>Diagnosis and treatment of common eye conditions</strong></li>
-                    <li>Prescription and distribution of corrective lenses</li>
+                    <li><strong>Prescription and distribution of corrective lenses</strong></li>
                     <li>Minor procedures for infections and irritations</li>
                     <li>Free cataract surgeries for eligible individuals</li>
                     <li>Referrals to partner hospitals for specialized care</li>
