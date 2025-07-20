@@ -96,7 +96,7 @@ const navLinks = [
         isSubDropdown: true,
         href: '/sustainability-initiatives',
         subItems: [
-          { href: '/green-clean', label: 'Green-Clean' },
+          { href: '/green-roots', label: 'GreenRoots' },
           { href: '/enviro-guard', label: 'Enviro-Guard' },
           { href: '/aqua-sure', label: 'Aqua-Sure' },
         ]
