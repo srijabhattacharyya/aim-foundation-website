@@ -64,7 +64,7 @@ export default function SightHopePage() {
                   </p>
                   <ul className="list-none space-y-2">
                     <li>🔹 <strong>The freedom to move confidently</strong></li>
-                    <li>🔹 The ability to work and earn</li>
+                    <li>🔹 <strong>The ability to work and earn</strong></li>
                     <li>🔹 The joy of seeing loved ones clearly again</li>
                   </ul>
                   <p>
