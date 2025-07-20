@@ -36,11 +36,11 @@ const initiatives = [
     link: "/childfirst"
   },
   {
-    title: "Innocent Smiles",
-    description: "Empowers children by combining education with art, dance, and music, nurturing both creativity and academics. It offers a supportive space where young minds gain confidence, express themselves, and grow holistically.",
+    title: "SuiDhaga",
+    description: "Empowers women by providing vocational training in tailoring and embroidery, enabling them to achieve financial independence. This initiative helps women turn a traditional skill into a modern livelihood, fostering entrepreneurship and self-reliance.",
     image: "https://placehold.co/600x400.png",
-    hint: "classroom children",
-    link: "/innocent-smiles"
+    hint: "women sewing",
+    link: "/suidhaga"
   },
   {
     title: "Milieu",
