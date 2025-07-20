@@ -60,7 +60,7 @@ export default function SurgiReachPage() {
                     <li>Other procedures based on medical urgency</li>
                   </ul>
                   <p>
-                    Every case is reviewed based on medical necessity and financial eligibility, ensuring a transparent, fair, and patient-centered process. The program covers not just the surgical cost but also pre-operative diagnostics, hospital admission, post-operative recovery support, and in some cases, medication assistance.
+                    Every case is reviewed based on <strong>medical necessity and financial eligibility</strong>, ensuring a transparent, fair, and patient-centered process. The program covers not just the surgical cost but also pre-operative diagnostics, hospital admission, post-operative recovery support, and in some cases, medication assistance.
                   </p>
                   <p>
                     SurgiReach represents AIM Foundation’s commitment to health equity—ensuring that no child suffers in pain, no adult is left untreated, and no family is pushed into poverty because of surgery-related costs.
