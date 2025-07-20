@@ -287,11 +287,13 @@ export default function DonationForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <ReCAPTCHA
-                          ref={recaptchaRef}
-                          sitekey={recaptchaSiteKey}
-                          onChange={field.onChange}
-                        />
+                        <div className="flex justify-center">
+                            <ReCAPTCHA
+                              ref={recaptchaRef}
+                              sitekey={recaptchaSiteKey}
+                              onChange={field.onChange}
+                            />
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>

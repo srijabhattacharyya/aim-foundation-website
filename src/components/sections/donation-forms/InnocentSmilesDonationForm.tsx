@@ -286,11 +286,13 @@ export default function InnocentSmilesDonationForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <ReCAPTCHA
-                          ref={recaptchaRef}
-                          sitekey={recaptchaSiteKey}
-                          onChange={field.onChange}
-                        />
+                        <div className="flex justify-center">
+                            <ReCAPTCHA
+                              ref={recaptchaRef}
+                              sitekey={recaptchaSiteKey}
+                              onChange={field.onChange}
+                            />
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
