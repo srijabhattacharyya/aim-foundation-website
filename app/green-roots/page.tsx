@@ -36,13 +36,14 @@ export default function GreenRootsPage() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">A Cleaner City, A Greener Tomorrow.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">A Greener Tomorrow, One Sapling at a Time.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    GreenRoots promotes urban greening and cleanliness drives to foster healthier, more sustainable city environments. We engage communities in tree planting, waste management, and beautification projects to create a lasting impact.
+                    GreenRoots aims to promote reforestation in areas where land acquisition is not feasible. By distributing saplings directly to villagers and partnering with Ganga Mission for outreach, the project overcomes space constraints and fosters active community involvement in afforestation, expanding local green cover sustainably.
                   </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Plant a Seed of Hope</h3>
                   <p>
-                    Our initiative aims to transform neglected urban spaces into vibrant green areas, improving air quality and promoting biodiversity. By involving local residents, we create a sense of ownership and pride in the community's environment.
+                    Your contribution helps us distribute saplings and support communities in their reforestation efforts. By donating, you are not just planting a tree; you are investing in a sustainable future, improving air quality, and empowering local communities to protect their environment. Join us in making our world greener, one sapling at a time.
                   </p>
                 </div>
               </div>

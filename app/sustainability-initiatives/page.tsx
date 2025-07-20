@@ -9,7 +9,7 @@ import Link from "next/link";
 const initiatives = [
   {
     title: "GreenRoots",
-    description: "Promotes urban greening and cleanliness drives to foster healthier, more sustainable city environments. We engage communities in tree planting, waste management, and beautification projects to create a lasting impact.",
+    description: "aims to promote reforestation in areas where land acquisition is not feasible. By distributing saplings directly to villagers and partnering with Ganga Mission for outreach, the project overcomes space constraints and fosters active community involvement in afforestation, expanding local green cover sustainably.",
     image: "https://placehold.co/600x400.png",
     hint: "urban garden",
     link: "/green-roots"
