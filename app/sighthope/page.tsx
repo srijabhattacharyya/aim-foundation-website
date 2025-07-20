@@ -49,7 +49,7 @@ export default function SightHopePage() {
                     SightHope steps in to fill this critical gap by organizing regular eye care camps that provide:
                   </p>
                   <ul className="list-disc list-inside space-y-2">
-                    <li>Comprehensive vision screenings</li>
+                    <li><strong>Comprehensive vision screenings</strong></li>
                     <li>Diagnosis and treatment of common eye conditions</li>
                     <li>Prescription and distribution of corrective lenses</li>
                     <li>Minor procedures for infections and irritations</li>
