@@ -40,7 +40,26 @@ export default function DetectPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Catching Cancer Before It Catches Her.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    Detect empowers rural women through cervical health education and cancer screenings. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.
+                    Detect is a critical women’s health initiative by AIM Foundation that aims to empower rural women through increased awareness of cervical health and the early detection of cervical cancer. In partnership with the Chittaranjan National Cancer Institute and the Government of West Bengal, this initiative brings essential health education and screening services to some of the most underserved regions in the state.
+                  </p>
+                  <p>
+                    Cervical cancer is one of the leading causes of cancer-related deaths among women in India, especially in rural areas where lack of awareness, stigma, and poor access to healthcare hinder early diagnosis. Project Detect addresses this gap through:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2">
+                    <li>Community-based screening camps, especially for women with limited access to gynecological care</li>
+                    <li>Awareness sessions on HPV, cervical cancer symptoms, menstrual health, and preventive care</li>
+                    <li>Training and sensitization of ASHA and Anganwadi workers district-by-district, starting with Howrah, to ensure sustainable, local outreach</li>
+                    <li>Encouraging open dialogue to break myths and cultural barriers around reproductive health</li>
+                  </ul>
+                  <p>
+                    The initiative has already witnessed inspiring participation from women in remote villages, many of whom are learning about cervical health for the first time. These sessions not only save lives through early detection but also promote a broader sense of bodily autonomy, health literacy, and dignity.
+                  </p>
+                  <p>
+                    By equipping both women and frontline health workers with knowledge and tools, Project Detect fosters a community-led movement for prevention, early intervention, and long-term well-being.
+                  </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Help Her Live—Not Just Survive</h3>
+                  <p>
+                    In rural India, too many women are losing their lives to a disease that’s preventable. Your donation to Project Detect can fund life-saving cervical cancer screenings, awareness workshops, and training for frontline health workers. Just ₹500 can help screen a woman who’s never had access to gynecological care. With early detection comes hope, dignity, and a future. Stand with us to protect mothers, daughters, sisters—and ensure that no woman is left behind simply because she was unaware. Donate today and help us detect before it’s too late.
                   </p>
                 </div>
               </div>
