@@ -40,7 +40,7 @@ export default function SurgiReachPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Surgery Shouldn’t Be a Luxury.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                   <p>
-                    SurgiReach is AIM Foundation’s flagship hospital partnership initiative, dedicated to ensuring that <strong>life-saving and life-enhancing surgeries</strong> are accessible to those who need them most—economically disadvantaged individuals who often go untreated due to high medical costs and limited access to specialized care.
+                    SurgiReach is AIM Foundation’s flagship hospital partnership initiative, dedicated to ensuring that <strong>life-saving and life-enhancing surgeries</strong> are accessible to those who need them most—<strong>economically disadvantaged individuals</strong> who often go untreated due to high medical costs and limited access to specialized care.
                   </p>
                   <p>
                     Through meaningful collaborations with reputed hospitals and surgical specialists, SurgiReach identifies eligible patients and facilitates free surgical interventions, with a focus on both pediatric and adult care.
