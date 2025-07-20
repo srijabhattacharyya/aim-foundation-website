@@ -37,7 +37,7 @@ export default function SurgiReachPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Restoring Health, One Surgery at a Time.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Surgery Shouldn’t Be a Luxury.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     SurgiReach is AIM Foundation’s hospital partnership initiative providing free surgeries to economically disadvantaged individuals. Children aged 5 months to 14 years receive life-changing pediatric operations, while adults access essential procedures like kidney transplants and knee replacements. The program ensures critical medical care is available, regardless of financial limitations.
