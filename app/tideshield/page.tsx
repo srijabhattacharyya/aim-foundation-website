@@ -36,7 +36,7 @@ export default function TideShieldPage() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Guardians of the Coast</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Give the Sundarbans a fighting chance.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     TideShield is a focused environmental initiative by AIM Foundation to restore the mangrove ecosystems of Bali Island in the Sundarbans, severely impacted by cyclones Amphan and Yaas. These natural disasters caused widespread coastal degradation, increased erosion, and left communities more vulnerable to future climate events.
