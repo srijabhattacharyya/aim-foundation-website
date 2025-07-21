@@ -26,7 +26,7 @@ export default function RootsOfChangePage() {
                 Roots of Change
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Knowledge Blooms, Action Grows.
+                Planting knowledge, growing change
               </p>
             </div>
           </div>
