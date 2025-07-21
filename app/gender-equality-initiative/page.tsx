@@ -16,7 +16,7 @@ const initiatives = [
   },
   {
     title: "CycleSafe",
-    description: "Empowers underprivileged adolescent girls by promoting menstrual hygiene, cervical health awareness, and reproductive well-being. It breaks taboos and builds confidence, ensuring dignity and health for young girls to thrive.",
+    description: "empowers underprivileged adolescent girls in and around Kolkata by promoting menstrual hygiene, cervical health awareness, and reproductive well-being. Through monthly sanitary napkin distribution and educational sessions, the initiative breaks taboos, builds knowledge, and fosters confidence—ensuring dignity, health, and equal opportunities for young girls to thrive.",
     image: "https://placehold.co/600x400.png",
     hint: "menstrual hygiene",
     link: "/cyclesafe"
