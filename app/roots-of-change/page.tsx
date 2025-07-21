@@ -38,15 +38,17 @@ export default function RootsOfChangePage() {
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Because change begins with understanding</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    Roots of Change is AIM Foundation’s environmental education initiative aimed at cultivating awareness and sustainable habits. Through expert-led seminars, engaging workshops, and impactful learning materials, we empower students, communities, and leaders to take informed action for a greener, more resilient future—starting from the roots.
+                  <p>
+                    Roots of Change is AIM Foundation’s flagship environmental education initiative, rooted in the belief that lasting transformation begins with knowledge. Our mission is to cultivate deep environmental awareness and nurture sustainable habits in communities that are most vulnerable to climate change.
                   </p>
                   <p>
-                    Our programs are designed to be interactive and hands-on, covering topics like waste management, conservation, renewable energy, and the importance of biodiversity. We believe that by instilling a deep respect for the environment in the next generation, we can create a powerful ripple effect of positive change.
+                    Through expert-led seminars, interactive workshops, and engaging educational materials, Roots of Change empowers students, local leaders, and everyday citizens to become informed stewards of the planet. We work closely with schools, community centers, and local organizations to spark conversations, build understanding, and inspire action—from reducing plastic use to protecting local ecosystems.
                   </p>
-                   <h3 className="text-2xl font-bold font-headline pt-4">Sow the Seeds of Awareness</h3>
                   <p>
-                    Your support helps us develop educational materials, organize workshops, and reach more schools and communities. By donating to Roots of Change, you are investing in a future where people and nature thrive together. Help us empower the environmental leaders of tomorrow.
+                    This is more than just education—it’s about planting the seeds of responsibility and hope, and watching them grow into a greener, more resilient tomorrow. By starting at the grassroots level, we aim to build a future where environmental care is second nature, and every individual sees themselves as part of the solution.
+                  </p>
+                  <p>
+                    Because real change always starts at the roots. 🌱
                   </p>
                 </div>
               </div>
