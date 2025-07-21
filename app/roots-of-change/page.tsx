@@ -48,7 +48,7 @@ export default function RootsOfChangePage() {
                     This is more than just education—it’s about planting the seeds of responsibility and hope, and watching them grow into a greener, more resilient tomorrow. By starting at the grassroots level, we aim to build a future where environmental care is second nature, and every individual sees themselves as part of the solution.
                   </p>
                   <p>
-                    Because real change always starts at the roots. 🌱
+                    <strong>Because real change always starts at the roots.</strong> 🌱
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Plant Awareness, Grow a Greener Tomorrow</h3>
                   <p>
