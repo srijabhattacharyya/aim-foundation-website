@@ -37,7 +37,7 @@ export default function KrishtiPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Crafting Livelihoods, Weaving Independence.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Crafted by Her. Backed by Krishti</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                   <p>
                     Krishti is the next step for women trained through SuiDhaga, nurturing their journey from skill to self-reliance. By providing access to modern production setups and marketing support, Krishti empowers women to become entrepreneurs—transforming their craft into livelihood, their passion into purpose, and their efforts into lasting financial independence.
@@ -74,3 +74,4 @@ export default function KrishtiPage() {
     </div>
   );
 }
+
