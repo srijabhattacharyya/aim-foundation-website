@@ -41,6 +41,7 @@ const navLinks = [
       { 
         label: 'Educational Initiatives',
         isSubDropdown: true,
+        href: '/educational-initiatives',
         subItems: [
           { href: '/innocent-smiles', label: 'Innocent Smiles' },
           { href: '/inspire-eduLab', label: 'Inspire EduLab' },
