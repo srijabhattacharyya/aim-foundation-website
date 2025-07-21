@@ -37,7 +37,7 @@ export default function SuiDhagaPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               {/* Left Text Column */}
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Women Through Skill and Craft.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Threads of Hope, Dreams in Every Stitch</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     SuiDhaga is an empowering vocational training initiative by AIM Foundation that equips women from underserved communities with valuable skills in tailoring and embroidery. The program is designed to help women transform traditional crafts into sustainable sources of income, fostering financial independence and self-reliance.
