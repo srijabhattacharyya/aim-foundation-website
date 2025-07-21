@@ -45,7 +45,7 @@ export default function KrishtiPage() {
                   <p>
                     By connecting their traditional skills with contemporary platforms, Krishti helps these women launch their own micro-enterprises, reach wider markets, and earn dignified incomes. It’s not just about stitching garments; it’s about stitching stories of resilience, independence, and progress. Krishti is where skills blossom into sustainable livelihoods, and hope finds a path forward.
                   </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Empower an Artisan, Build an Enterprise</h3>
+                  <h3 className="text-2xl font-bold font-headline pt-4">She Learned to Sew—Now Let Her Soar</h3>
                   <p>
                     Your donation to Krishti helps provide a woman with the resources she needs to transition from a skilled artisan to a successful entrepreneur. Support her journey with access to better equipment, marketing platforms, and business training. Your contribution can help turn her passion into a sustainable livelihood. <strong>Donate today and help a woman build her own future.</strong>
                   </p>
@@ -64,3 +64,4 @@ export default function KrishtiPage() {
     </div>
   );
 }
+
