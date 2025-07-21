@@ -48,7 +48,7 @@ export default function SuiDhagaPage() {
                   <p>
                     Through SuiDhaga, women gain more than just skills—they gain dignity, confidence, and a renewed sense of purpose. They become active contributors to their households, role models in their communities, and participants in a larger movement toward equality and empowerment.
                   </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Help a Woman Weave a New Future</h3>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Hold the thread that changes her life</h3>
                   <p>
                     A sewing machine can be a tool of empowerment, and a new skill can be the start of a new life. <strong>Your donation to SuiDhaga provides women with the training, materials, and support they need to become financially independent.</strong> Help us equip more women with the skills to build a better future for themselves and their families. <strong>Donate today and help stitch together a world of opportunity.</strong>
                   </p>
