@@ -30,7 +30,7 @@ const initiatives = [
   },
   {
     title: "SuiDhaga",
-    description: "Empowers women by providing vocational training in tailoring and embroidery, enabling them to achieve financial independence. This initiative helps women turn a traditional skill into a modern livelihood, fostering entrepreneurship and self-reliance.",
+    description: "empowers women through hands-on training in tailoring and embroidery, helping them transform traditional skills into sources of income. By providing practical vocational education, the initiative equips women with the tools they need to gain financial independence, uplift their families, and take confident steps toward a more self-reliant future.",
     image: "https://placehold.co/600x400.png",
     hint: "women sewing",
     link: "/suidhaga"
