@@ -47,7 +47,7 @@ export default function KrishtiPage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">She Learned to Sew—Now Let Her Soar</h3>
                   <p>
-                    She mastered the skill. Now she needs the chance. Krishti bridges the gap between training and real livelihood, giving women access to modern production support and market exposure. Your contribution fuels her flight to financial freedom. Be the wind beneath her wings—donate to Krishti today.
+                    She mastered the skill. Now she needs the chance. Krishti bridges the gap between training and real livelihood, giving women access to modern production support and market exposure. Your contribution fuels her flight to financial freedom. <strong>Be the wind beneath her wings—donate to Krishti today.</strong>
                   </p>
                 </div>
               </div>
@@ -64,4 +64,3 @@ export default function KrishtiPage() {
     </div>
   );
 }
-
