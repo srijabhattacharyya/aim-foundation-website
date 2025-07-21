@@ -52,7 +52,7 @@ export default function RootsOfChangePage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Plant Awareness, Grow a Greener Tomorrow</h3>
                   <p>
-                    Every voice we awaken through Roots of Change plants a seed of environmental responsibility. But we can’t nurture these seeds alone. Your donation helps us reach more communities, host impactful seminars, and inspire lasting change. Together, let’s grow minds that protect the Earth. 
+                    Every voice we awaken through Roots of Change plants a seed of environmental responsibility. But we can’t nurture these seeds alone. Your donation helps us reach more communities, host impactful seminars, and inspire lasting change. Together, let’s grow minds that protect the Earth. <strong>Donate today—and let your support become the root of real change.</strong>
                   </p>
                 </div>
               </div>
