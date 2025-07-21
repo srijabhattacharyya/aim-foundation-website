@@ -71,7 +71,7 @@ const Hero = () => {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 bg-black">
-        <picture className="absolute inset-0">
+        <picture className="absolute inset-0 w-full h-full">
           <source srcSet="/images/banner/home.avif" type="image/avif" />
           <source srcSet="/images/banner/home.webp" type="image/webp" />
           <img
@@ -81,8 +81,8 @@ const Hero = () => {
           />
         </picture>
       </div>
-      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-between text-white min-h-[calc(100vh-4rem)] py-8 md:py-16">
-        <div className="flex-grow flex flex-col justify-center pt-16">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 flex flex-col justify-between text-white min-h-screen">
+        <div className="flex-grow flex flex-col justify-center items-center text-center pt-24 pb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
             Building a Brighter Future, Together
             </h1>
@@ -91,8 +91,8 @@ const Hero = () => {
             </p>
         </div>
         
-        <div className="pb-8 md:pb-16 w-full">
-            <h2 className="text-2xl font-semibold mb-6 [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">Our Current Programs</h2>
+        <div className="pb-16 w-full">
+            <h2 className="text-2xl font-semibold mb-6 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">Our Current Programs</h2>
             <Carousel
                 opts={{
                 align: "start",
@@ -113,7 +113,7 @@ const Hero = () => {
                         <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full flex flex-col">
                         <CardContent className="flex flex-col items-center justify-center p-6 space-y-4 flex-grow">
                             <Image src={program.image} alt={program.title} width={80} height={80} data-ai-hint={program.hint} className="rounded-full border-2 border-primary" />
-                            <h3 className="font-bold text-lg font-headline">{program.title}</h3>
+                            <h3 className="font-bold text-lg font-headline text-center">{program.title}</h3>
                             <p className="text-sm text-center">{program.description}</p>
                             <Button asChild variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">
                                 <Link href={program.link || '#'}>Learn More</Link>
