@@ -7,7 +7,7 @@ export default function ContactEmail() {
 
   useEffect(() => {
     const user = 'info';
-    const domain = 'aimfoundation.org';
+    const domain = 'aimindia.org.in';
     setEmail(`${user}@${domain}`);
   }, []);
 
