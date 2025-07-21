@@ -1,5 +1,6 @@
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
+import ContactEmail from './ContactEmail';
 
 const Footer = () => {
   return (
@@ -15,9 +16,7 @@ const Footer = () => {
               <br />
               India
             </p>
-            <p className="text-muted-foreground mt-4">
-              <strong>Email:</strong> info@aimfoundation.org
-            </p>
+            <ContactEmail />
             <p className="text-muted-foreground">
               <strong>Phone:</strong> +91 123 456 7890
             </p>
