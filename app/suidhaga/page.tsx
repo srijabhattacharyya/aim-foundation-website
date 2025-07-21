@@ -39,21 +39,14 @@ export default function SuiDhagaPage() {
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Threads of Hope, Dreams in Every Stitch</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    SuiDhaga is an empowering vocational training initiative by AIM Foundation that equips women from underserved communities with valuable skills in tailoring and embroidery. The program is designed to help women transform traditional crafts into sustainable sources of income, fostering financial independence and self-reliance.
+                  <p>
+                    SuiDhaga is AIM Foundation’s skill development initiative dedicated to empowering women from underserved communities. By offering structured training in tailoring and embroidery, this program helps women turn time-honored domestic crafts into meaningful livelihood opportunities.
                   </p>
                   <p>
-                    Through hands-on workshops and expert guidance, participants learn everything from basic stitching to intricate embroidery techniques. This practical education provides them with the tools and confidence needed to start their own small businesses, join local artisan groups, or secure employment in the textile industry.
+                    Many of these women have immense potential but lack access to formal employment or financial resources. SuiDhaga bridges that gap by providing them with practical, hands-on instruction, experienced trainers, and supportive learning environments. The focus is not on entrepreneurship but on enabling immediate, income-generating skills that women can use to support their families—whether by stitching from home or working in local tailoring units.
                   </p>
-                   <h3 className="text-2xl font-bold font-headline pt-4">Key Features of the Program:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Comprehensive training in tailoring and embroidery.</li>
-                    <li>Provision of sewing machines and materials.</li>
-                    <li>Mentorship on design, quality control, and marketing.</li>
-                    <li>Building a supportive community of female artisans.</li>
-                  </ul>
                   <p>
-                    By investing in these skills, SuiDhaga helps women uplift their families, contribute to their local economies, and take confident steps toward a more secure and empowered future. The initiative is a testament to the power of craft in creating opportunity and transforming lives.
+                    Through SuiDhaga, women gain more than just skills—they gain dignity, confidence, and a renewed sense of purpose. They become active contributors to their households, role models in their communities, and participants in a larger movement toward equality and empowerment.
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Help a Woman Weave a New Future</h3>
                   <p>
