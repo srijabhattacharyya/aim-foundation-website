@@ -50,6 +50,10 @@ export default function RootsOfChangePage() {
                   <p>
                     Because real change always starts at the roots. 🌱
                   </p>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Plant Awareness, Grow a Greener Tomorrow</h3>
+                  <p>
+                    Your donation helps us organize environmental workshops, create educational materials, and support community-led green initiatives. By investing in knowledge, you empower entire communities to become guardians of our planet. Join us in cultivating a sustainable future, one lesson at a time.
+                  </p>
                 </div>
               </div>
               
