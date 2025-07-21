@@ -9,7 +9,7 @@ import Link from "next/link";
 const initiatives = [
   {
     title: "SheConnects",
-    description: "Empowers women through digital literacy training, helping them promote businesses on social media and sell online confidently. The program includes cyber safety sessions to ensure secure digital participation, fostering tech skills and financial independence.",
+    description: "empowers rural women through cervical health education and cancer screenings. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.",
     image: "https://placehold.co/600x400.png",
     hint: "women networking",
     link: "/sheconnects"
