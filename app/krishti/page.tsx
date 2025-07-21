@@ -40,20 +40,10 @@ export default function KrishtiPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Crafted by Her. Backed by Krishti.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                   <p>
-                    Krishti is the next step for women trained through SuiDhaga, nurturing their journey from skill to self-reliance. By providing access to modern production setups and marketing support, Krishti empowers women to become entrepreneurs—transforming their craft into livelihood, their passion into purpose, and their efforts into lasting financial independence.
+                    Krishti is an empowerment initiative that builds on the foundation laid by SuiDhaga, guiding skilled women toward entrepreneurship. While SuiDhaga imparts tailoring and embroidery skills, Krishti takes it further—offering access to modern production infrastructure, collaborative workspaces, and crucial marketing support. Here, trained women are no longer just workers—they become creators, leaders, and businesswomen.
                   </p>
                   <p>
-                    This initiative bridges the crucial gap between acquiring a skill and successfully monetizing it. We provide a platform for these talented women to showcase their products to a wider audience, connect with buyers, and build a sustainable business. 
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Our support includes:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Access to well-equipped production facilities.</li>
-                    <li>Guidance on product design and quality enhancement.</li>
-                    <li>Marketing and branding support to reach new markets.</li>
-                    <li>Financial literacy and business management training.</li>
-                  </ul>
-                  <p>
-                    Krishti is about creating a thriving ecosystem where female artisans can flourish, turning their creative potential into economic empowerment for themselves and their communities.
+                    By connecting their traditional skills with contemporary platforms, Krishti helps these women launch their own micro-enterprises, reach wider markets, and earn dignified incomes. It’s not just about stitching garments; it’s about stitching stories of resilience, independence, and progress. Krishti is where skills blossom into sustainable livelihoods, and hope finds a path forward.
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Empower an Artisan, Build an Enterprise</h3>
                   <p>
@@ -74,5 +64,3 @@ export default function KrishtiPage() {
     </div>
   );
 }
-
-
