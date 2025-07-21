@@ -69,8 +69,8 @@ const programs = [
 
 const Hero = () => {
   return (
-    <section className="relative w-full">
-      <div className="relative w-full" style={{ paddingTop: '52.08%' }}>
+    <section className="relative w-full bg-black">
+      <div className="absolute inset-0">
         <Image
           src="https://placehold.co/1920x1080.png"
           alt="A group of happy children"
@@ -80,7 +80,7 @@ const Hero = () => {
           priority
         />
       </div>
-      <div className="absolute inset-0 z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-center text-white">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-center text-white pt-24 md:pt-32 pb-16 md:pb-24">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
           Building a Brighter Future, Together
         </h1>
