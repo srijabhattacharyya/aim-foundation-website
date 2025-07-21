@@ -69,7 +69,7 @@ const programs = [
 
 const Hero = () => {
   return (
-    <section className="relative w-full">
+    <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 bg-black">
         <Image
           src="https://placehold.co/1920x1080.png"
@@ -80,8 +80,8 @@ const Hero = () => {
           priority
         />
       </div>
-      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-center text-white min-h-[80vh] py-16">
-        <div className="flex-grow flex flex-col justify-center">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-between text-white min-h-[calc(100vh-4rem)] py-8 md:py-16">
+        <div className="flex-grow flex flex-col justify-center pt-16">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
             Building a Brighter Future, Together
             </h1>
@@ -90,7 +90,7 @@ const Hero = () => {
             </p>
         </div>
         
-        <div className="mt-8">
+        <div className="pb-8 md:pb-16 w-full">
             <h2 className="text-2xl font-semibold mb-6 [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">Our Current Programs</h2>
             <Carousel
                 opts={{
@@ -103,11 +103,11 @@ const Hero = () => {
                       stopOnInteraction: true,
                     }),
                 ]}
-                className="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto"
+                className="w-full max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto"
             >
                 <CarouselContent className="-ml-4">
                 {programs.map((program, index) => (
-                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
+                    <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                     <div className="p-1 h-full">
                         <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full flex flex-col">
                         <CardContent className="flex flex-col items-center justify-center p-6 space-y-4 flex-grow">
@@ -123,8 +123,8 @@ const Hero = () => {
                     </CarouselItem>
                 ))}
                 </CarouselContent>
-                <CarouselPrevious className="text-white bg-black/20 hover:bg-black/40 border-white/30" />
-                <CarouselNext className="text-white bg-black/20 hover:bg-black/40 border-white/30" />
+                <CarouselPrevious className="text-white bg-black/20 hover:bg-black/40 border-white/30 hidden sm:flex" />
+                <CarouselNext className="text-white bg-black/20 hover:bg-black/40 border-white/30 hidden sm:flex" />
             </Carousel>
         </div>
       </div>
