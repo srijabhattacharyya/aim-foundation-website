@@ -35,7 +35,7 @@ const programs = [
     description: 'Empowering women and girls to achieve their full potential.',
     image: 'https://placehold.co/80x80.png',
     hint: 'women empowerment',
-    link: '/gender-equality-initiatives',
+    link: '/gender-equality-initiative',
   },
   {
     title: 'Childcare Initiatives',
@@ -69,19 +69,20 @@ const programs = [
 
 const Hero = () => {
   return (
-    <section className="relative w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden min-h-screen flex flex-col">
       <div className="absolute inset-0 bg-black">
-        <picture className="absolute inset-0 w-full h-full">
-          <source srcSet="/images/banner/home.avif" type="image/avif" />
-          <source srcSet="/images/banner/home.webp" type="image/webp" />
-          <img
-            src="/images/banner/home.png"
-            alt="Home Banner"
-            className="w-full h-full object-cover brightness-50"
-          />
+        <picture>
+            <source srcSet="/images/banner/home.avif" type="image/avif" />
+            <source srcSet="/images/banner/home.webp" type="image/webp" />
+            <img
+                src="/images/banner/home.png"
+                alt="Home Banner"
+                className="w-full h-full object-cover brightness-50"
+            />
         </picture>
       </div>
-      <div className="relative z-10 container mx-auto px-4 md:px-6 flex flex-col justify-between text-white min-h-screen">
+
+      <div className="relative z-10 container mx-auto px-4 md:px-6 flex flex-col flex-grow justify-between text-white">
         <div className="flex-grow flex flex-col justify-center items-center text-center pt-24 pb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
             Building a Brighter Future, Together
