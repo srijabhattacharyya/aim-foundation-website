@@ -36,7 +36,7 @@ export default function RootsOfChangePage() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Cultivating a Greener Tomorrow, Today.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Because change begins with understanding</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
                     Roots of Change is AIM Foundation’s environmental education initiative aimed at cultivating awareness and sustainable habits. Through expert-led seminars, engaging workshops, and impactful learning materials, we empower students, communities, and leaders to take informed action for a greener, more resilient future—starting from the roots.
