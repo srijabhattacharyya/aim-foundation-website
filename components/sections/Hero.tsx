@@ -71,14 +71,15 @@ const Hero = () => {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 bg-black">
-        <Image
-          src="https://placehold.co/1920x1080.png"
-          alt="A group of happy children"
-          fill
-          className="object-cover brightness-50"
-          data-ai-hint="happy children"
-          priority
-        />
+        <picture className="absolute inset-0">
+          <source srcSet="/images/banner/home.avif" type="image/avif" />
+          <source srcSet="/images/banner/home.webp" type="image/webp" />
+          <img
+            src="/images/banner/home.png"
+            alt="Home Banner"
+            className="w-full h-full object-cover brightness-50"
+          />
+        </picture>
       </div>
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col justify-between text-white min-h-[calc(100vh-4rem)] py-8 md:py-16">
         <div className="flex-grow flex flex-col justify-center pt-16">
