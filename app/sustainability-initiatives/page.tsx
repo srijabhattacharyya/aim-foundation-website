@@ -22,7 +22,7 @@ const initiatives = [
     link: "/tideshield"
   },
   {
-    title: "Aqua-Sure",
+    title: "Roots of Change",
     description: "Dedicated to ensuring access to clean and safe drinking water in remote areas. This initiative involves installing water purification systems and educating communities on water conservation and hygiene.",
     image: "https://placehold.co/600x400.png",
     hint: "clean water source",
