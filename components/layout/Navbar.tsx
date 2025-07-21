@@ -41,7 +41,6 @@ const navLinks = [
       { 
         label: 'Educational Initiatives',
         isSubDropdown: true,
-        href: '/educational-initiatives',
         subItems: [
           { href: '/innocent-smiles', label: 'Innocent Smiles' },
           { href: '/inspire-eduLab', label: 'Inspire EduLab' },
@@ -133,7 +132,11 @@ const Navbar = () => {
                       item.isSubDropdown ? (
                         <DropdownMenuSub key={item.label}>
                            <DropdownMenuSubTrigger>
-                              <Link href={item.href || '#'} className="w-full text-left">{item.label}</Link>
+                              {item.href ? (
+                                <Link href={item.href} className="w-full text-left">{item.label}</Link>
+                              ) : (
+                                <span>{item.label}</span>
+                              )}
                            </DropdownMenuSubTrigger>
                            <DropdownMenuPortal>
                              <DropdownMenuSubContent>
@@ -207,7 +210,11 @@ const Navbar = () => {
                                   <AccordionItem value={item.label} className="border-b-0">
                                     <AccordionTrigger className="text-base font-medium text-muted-foreground transition-colors hover:text-primary py-2 hover:no-underline">
                                       <SheetClose asChild>
-                                        <Link href={item.href || '#'} className="flex-1 text-left">{item.label}</Link>
+                                        {item.href ? (
+                                          <Link href={item.href} className="flex-1 text-left">{item.label}</Link>
+                                        ) : (
+                                          <span className="flex-1 text-left">{item.label}</span>
+                                        )}
                                       </SheetClose>
                                     </AccordionTrigger>
                                     <AccordionContent className="pl-4">
