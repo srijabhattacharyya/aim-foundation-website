@@ -57,7 +57,7 @@ export default function DisasterManagementPage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Be a Beacon of Hope in the Storm</h3>
                   <p>
-                    Your contribution can provide life-saving assistance to a family devastated by disaster. A donation today can provide emergency shelter, a week's worth of food, or critical medical supplies. Stand with us as we stand with them. Your support can turn despair into hope and help communities rebuild stronger than before.
+                    Your contribution can provide life-saving assistance to a family devastated by disaster. A donation today can provide emergency shelter, a week's worth of food, or critical medical supplies. Stand with us as we stand with them. <strong>Your support can turn despair into hope and help communities rebuild stronger than before.</strong>
                   </p>
                 </div>
               </div>
