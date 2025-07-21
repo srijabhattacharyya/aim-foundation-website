@@ -37,7 +37,7 @@ const initiatives = [
   },
   {
     title: "Krishti",
-    description: "Empowers women by preserving and promoting traditional art forms and cultural heritage. This initiative provides a platform for female artisans to showcase their talent, gain economic independence, and keep ancient traditions alive.",
+    description: "is the next step for women trained through SuiDhaga, nurturing their journey from skill to self-reliance. By providing access to modern production setups and marketing support, Krishti empowers women to become entrepreneurs—transforming their craft into livelihood, their passion into purpose, and their efforts into lasting financial independence.",
     image: "https://placehold.co/600x400.png",
     hint: "women traditional art",
     link: "/krishti"
