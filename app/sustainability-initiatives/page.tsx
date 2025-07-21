@@ -23,10 +23,10 @@ const initiatives = [
   },
   {
     title: "Roots of Change",
-    description: "Dedicated to ensuring access to clean and safe drinking water in remote areas. This initiative involves installing water purification systems and educating communities on water conservation and hygiene.",
+    description: "is AIM Foundation’s environmental education initiative aimed at cultivating awareness and sustainable habits. Through expert-led seminars, engaging workshops, and impactful learning materials, we empower students, communities, and leaders to take informed action for a greener, more resilient future—starting from the roots.",
     image: "https://placehold.co/600x400.png",
-    hint: "clean water source",
-    link: "/aqua-sure"
+    hint: "environmental education",
+    link: "/roots-of-change"
   },
 ];
 
