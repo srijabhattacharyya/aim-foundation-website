@@ -98,7 +98,7 @@ const navLinks = [
         subItems: [
           { href: '/green-roots', label: 'GreenRoots' },
           { href: '/tideshield', label: 'TideShield' },
-          { href: '/aqua-sure', label: 'Aqua-Sure' },
+          { href: '/roots-of-change', label: 'Roots of Change' },
         ]
       },
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
