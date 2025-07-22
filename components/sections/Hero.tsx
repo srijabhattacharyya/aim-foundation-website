@@ -77,7 +77,7 @@ const Hero = () => {
             <img
                 src="/images/banner/home.png"
                 alt="Home Banner"
-                className="w-full h-full object-cover brightness-50"
+                className="w-full h-full object-cover"
             />
         </picture>
       </div>
