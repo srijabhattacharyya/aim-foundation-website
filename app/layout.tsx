@@ -14,7 +14,6 @@ const bricolage = Bricolage_Grotesque({
   variable: '--font-bricolage',
 });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
