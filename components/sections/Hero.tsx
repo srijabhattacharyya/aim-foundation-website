@@ -84,7 +84,7 @@ const Hero = () => {
       {/* Overlay Content */}
       <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
         <div className="container mx-auto px-4 md:px-6 text-white pb-8 md:pb-16">
-          <div className="text-center">
+          <div className="text-center hidden md:block">
               <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
               Building a Brighter Future, Together
               </h1>
