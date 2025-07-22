@@ -69,7 +69,7 @@ const programs = [
 
 const Hero = () => {
   return (
-    <section className="relative w-full overflow-hidden min-h-screen flex flex-col">
+    <section className="relative w-full min-h-screen flex flex-col">
       <div className="absolute inset-0 bg-black">
         <picture>
             <source srcSet="/images/banner/home.avif" type="image/avif" />
