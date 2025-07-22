@@ -79,6 +79,7 @@ const Hero = () => {
           height={1080}
           className="w-full h-auto object-cover hidden md:block"
           priority
+          sizes="100vw"
         />
         {/* Mobile Image */}
         <Image
