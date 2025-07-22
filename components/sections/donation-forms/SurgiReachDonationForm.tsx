@@ -20,6 +20,9 @@ import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
+import dynamic from "next/dynamic";
+
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 const donationSchema = z.object({
   amount: z.string().nonempty({ message: "Please select a donation amount." }),
@@ -288,7 +291,7 @@ export default function SurgiReachDonationForm() {
                     <FormItem>
                       <FormControl>
                         <div className="flex justify-center">
-                            <ReCAPTCHA
+                            <DynamicReCAPTCHA
                               ref={recaptchaRef}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
