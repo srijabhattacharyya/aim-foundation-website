@@ -3,8 +3,6 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import Autoplay from "embla-carousel-autoplay"
 
 const activities = [
   {
@@ -61,48 +59,30 @@ const Activities = () => {
             We are constantly working to make a positive impact. Here's a glimpse of our latest initiatives and events.
           </p>
         </div>
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 4000,
-              stopOnInteraction: true,
-            }),
-          ]}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4">
-            {activities.map((activity, index) => (
-              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="p-1 h-full">
-                  <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
-                    <CardHeader className="p-0">
-                      <Image
-                        src={activity.image}
-                        alt={activity.title}
-                        width={600}
-                        height={400}
-                        data-ai-hint={activity.hint}
-                        className="w-full h-48 object-cover"
-                      />
-                    </CardHeader>
-                    <CardContent className="p-6 flex-grow flex flex-col">
-                      <p className="text-sm text-muted-foreground mb-2">{activity.date}</p>
-                      <CardTitle className="mb-2 font-headline">{activity.title}</CardTitle>
-                      <CardDescription className="flex-grow">{activity.description}</CardDescription>
-                      <Button variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">Read More &rarr;</Button>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-0 -translate-x-1/2" />
-          <CarouselNext className="absolute right-0 translate-x-1/2" />
-        </Carousel>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {activities.slice(0, 3).map((activity, index) => (
+            <div key={index} className="p-1 h-full">
+              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+                <CardHeader className="p-0">
+                  <Image
+                    src={activity.image}
+                    alt={activity.title}
+                    width={600}
+                    height={400}
+                    data-ai-hint={activity.hint}
+                    className="w-full h-48 object-cover"
+                  />
+                </CardHeader>
+                <CardContent className="p-6 flex-grow flex flex-col">
+                  <p className="text-sm text-muted-foreground mb-2">{activity.date}</p>
+                  <CardTitle className="mb-2 font-headline">{activity.title}</CardTitle>
+                  <CardDescription className="flex-grow">{activity.description}</CardDescription>
+                  <Button variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">Read More &rarr;</Button>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
