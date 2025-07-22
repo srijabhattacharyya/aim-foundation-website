@@ -2,17 +2,17 @@
 'use client';
 
 import React from 'react';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogTrigger,
-} from '../ui/dialog';
+} from '@/components/ui/dialog';
 import dynamic from 'next/dynamic';
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from '@/components/ui/skeleton';
 
-const DynamicGeneralDonationForm = dynamic(
-    () => import('./donation-forms/GeneralDonationForm'),
+const GeneralDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/GeneralDonationForm'),
     { 
         ssr: false,
         loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
@@ -35,7 +35,7 @@ const DonateSection = () => {
                     </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px] p-0">
-                    <DynamicGeneralDonationForm />
+                    <GeneralDonationForm />
                 </DialogContent>
             </Dialog>
         </div>
