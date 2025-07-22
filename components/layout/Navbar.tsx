@@ -4,8 +4,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, ChevronDown, ChevronRight, LogIn } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Button } from '../ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '../ui/sheet';
 import Image from 'next/image';
 import {
   DropdownMenu,
@@ -16,13 +16,13 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuPortal,
-} from "@/components/ui/dropdown-menu";
+} from "../ui/dropdown-menu";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "../ui/accordion";
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -267,5 +267,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-    

@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from '../ui/skeleton';
 
 const HeroCarousel = dynamic(
   () => import('./HeroCarousel'),

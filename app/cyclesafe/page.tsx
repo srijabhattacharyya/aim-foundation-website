@@ -1,12 +1,12 @@
 
 'use client';
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CycleSafeDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/CycleSafeDonationForm'), { ssr: false });
 
 const donationProps = {
   title: "CycleSafe",
