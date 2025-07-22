@@ -5,9 +5,9 @@ import Hero from "@/components/sections/Hero";
 import InfoSection from "@/components/sections/InfoSection";
 import AboutUs from "@/components/sections/AboutUs";
 import Impact from "@/components/sections/Impact";
-import Activities from "@/components/sections/Activities";
 import dynamic from 'next/dynamic';
 
+const Activities = dynamic(() => import('@/components/sections/Activities'));
 const Testimonials = dynamic(() => import('@/components/sections/Testimonials'));
 const Patrons = dynamic(() => import('@/components/sections/Patrons'));
 const DonateSection = dynamic(() => import('@/components/sections/DonateSection'));
