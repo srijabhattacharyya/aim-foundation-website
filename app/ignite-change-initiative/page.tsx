@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/IgniteChangeDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "Ignite Change",
+  subtitle: "SPARK A CHANGE",
+  amounts: [
+    { value: "2000", label: "₹2000" },
+    { value: "5000", label: "₹5000" },
+    { value: "10000", label: "₹10000" },
+    { value: "20000", label: "₹20000" },
+  ],
+  amountDescription: "FUND A GRASSROOTS PROJECT",
+};
 
 export default function IgniteChangeInitiativePage() {
   return (
@@ -68,7 +80,7 @@ export default function IgniteChangeInitiativePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SurgiReachDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "SurgiReach",
+  subtitle: "MAKE A DIFFERENCE",
+  amounts: [
+    { value: "5000", label: "₹5000" },
+    { value: "10000", label: "₹10000" },
+    { value: "25000", label: "₹25000" },
+    { value: "50000", label: "₹50000" },
+  ],
+  amountDescription: "SPONSOR ONE SURGERY",
+};
 
 export default function SurgiReachPage() {
   return (
@@ -81,7 +93,7 @@ export default function SurgiReachPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "Innocent Smiles",
+  subtitle: "MAKE A DIFFERENCE",
+  amounts: [
+    { value: "3000", label: "₹3000" },
+    { value: "6000", label: "₹6000" },
+    { value: "12000", label: "₹12000" },
+    { value: "24000", label: "₹24000" },
+  ],
+  amountDescription: "EDUCATION & ART FOR 1 CHILD FOR 6 MONTHS",
+};
 
 export default function InnocentSmilesPage() {
   return (
@@ -64,7 +76,7 @@ export default function InnocentSmilesPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

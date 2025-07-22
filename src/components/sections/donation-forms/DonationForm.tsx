@@ -43,19 +43,19 @@ const donationSchema = z.object({
   recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
 });
 
-const donationAmounts = [
-    { value: "3000", label: "₹3000" },
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
-    { value: "24000", label: "₹24000" },
-];
+interface DonationFormProps {
+    title: string;
+    subtitle: string;
+    amounts: { value: string; label: string }[];
+    amountDescription: string;
+}
 
-export default function CureLineDonationForm() {
+export default function DonationForm({ title, subtitle, amounts, amountDescription }: DonationFormProps) {
   const { toast } = useToast();
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
-      amount: "3000",
+      amount: amounts[0]?.value || "",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -71,7 +71,7 @@ export default function CureLineDonationForm() {
       recaptcha: "",
     },
   });
-  
+
   const recaptchaRef = React.createRef<ReCAPTCHA>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
@@ -79,7 +79,7 @@ export default function CureLineDonationForm() {
   function onSubmit(values: z.infer<typeof donationSchema>) {
     console.log(values);
     toast({
-      title: "Thank you for supporting CureLine!",
+      title: `Thank you for supporting ${title}!`,
       description: "Your support makes a difference.",
     });
     recaptchaRef.current?.reset();
@@ -90,8 +90,8 @@ export default function CureLineDonationForm() {
     <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg bg-card">
         <CardContent className="p-0">
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold font-headline">SUPPORT CURELINE</h2>
-                <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT {title.toUpperCase()}</h2>
+                <p className="text-muted-foreground">{subtitle}</p>
             </div>
 
             <Form {...form}>
@@ -107,7 +107,7 @@ export default function CureLineDonationForm() {
                             defaultValue={field.value}
                             className="flex flex-wrap justify-center gap-4 md:gap-8"
                         >
-                            {donationAmounts.map((item) => (
+                            {amounts.map((item) => (
                             <FormItem key={item.value} className="flex items-center space-x-2 space-y-0">
                                 <FormControl>
                                 <RadioGroupItem value={item.value} />
@@ -118,7 +118,7 @@ export default function CureLineDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">MEDICINES FOR ONE HEALTH CAMP</p>
+                        <p className="text-center text-muted-foreground pt-2">{amountDescription}</p>
                     </FormItem>
                     )}
                 />
@@ -283,6 +283,7 @@ export default function CureLineDonationForm() {
                         </FormItem>
                     )}
                 />
+
                 <FormField
                   control={form.control}
                   name="recaptcha"

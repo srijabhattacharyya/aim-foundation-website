@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/RootsOfChangeDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "Roots of Change",
+  subtitle: "EMPOWER THROUGH EDUCATION",
+  amounts: [
+    { value: "1000", label: "₹1000" },
+    { value: "2500", label: "₹2500" },
+    { value: "5000", label: "₹5000" },
+    { value: "10000", label: "₹10000" },
+  ],
+  amountDescription: "FUND AN ENVIRONMENTAL WORKSHOP",
+};
 
 export default function RootsOfChangePage() {
   return (
@@ -62,7 +74,7 @@ export default function RootsOfChangePage() {
               </div>
               
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

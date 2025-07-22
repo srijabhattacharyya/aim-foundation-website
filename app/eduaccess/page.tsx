@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/EduAccessDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "EduAccess",
+  subtitle: "MAKE A DIFFERENCE",
+  amounts: [
+    { value: "3000", label: "₹3000" },
+    { value: "6000", label: "₹6000" },
+    { value: "12000", label: "₹12000" },
+    { value: "24000", label: "₹24000" },
+  ],
+  amountDescription: "ONLINE CLASSES FOR 1 CHILD FOR 6 MONTHS",
+};
 
 export default function EduAccessPage() {
   return (
@@ -61,7 +73,7 @@ export default function EduAccessPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

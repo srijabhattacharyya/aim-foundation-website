@@ -7,7 +7,19 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SoulCircleDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "SoulCircle",
+  subtitle: "PROVIDE A SAFE SPACE",
+  amounts: [
+    { value: "500", label: "₹500" },
+    { value: "1000", label: "₹1000" },
+    { value: "2500", label: "₹2500" },
+    { value: "5000", label: "₹5000" },
+  ],
+  amountDescription: "MAINTAIN APP FOR 1 MONTH",
+};
 
 export default function SoulCirclePage() {
   return (
@@ -78,7 +90,7 @@ export default function SoulCirclePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

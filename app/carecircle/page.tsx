@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CareCircleDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "CareCircle",
+  subtitle: "MAKE A DIFFERENCE",
+  amounts: [
+    { value: "2500", label: "₹2500" },
+    { value: "5000", label: "₹5000" },
+    { value: "10000", label: "₹10000" },
+    { value: "20000", label: "₹20000" },
+  ],
+  amountDescription: "MEDICINES FOR ONE URBAN HEALTH CAMP",
+};
 
 export default function CareCirclePage() {
   return (
@@ -72,7 +84,7 @@ export default function CareCirclePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

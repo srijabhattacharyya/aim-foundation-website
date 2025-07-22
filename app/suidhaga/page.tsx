@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SuiDhagaDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "SuiDhaga",
+  subtitle: "EMPOWER THROUGH SKILL",
+  amounts: [
+    { value: "3500", label: "₹3500" },
+    { value: "7000", label: "₹7000" },
+    { value: "14000", label: "₹14000" },
+    { value: "28000", label: "₹28000" },
+  ],
+  amountDescription: "SPONSOR A SEWING MACHINE & TRAINING",
+};
 
 export default function SuiDhagaPage() {
   return (
@@ -61,7 +73,7 @@ export default function SuiDhagaPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

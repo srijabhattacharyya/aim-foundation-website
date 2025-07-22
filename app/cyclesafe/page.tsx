@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CycleSafeDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "CycleSafe",
+  subtitle: "GIFT DIGNITY & HEALTH",
+  amounts: [
+    { value: "500", label: "₹500" },
+    { value: "1000", label: "₹1000" },
+    { value: "2500", label: "₹2500" },
+    { value: "5000", label: "₹5000" },
+  ],
+  amountDescription: "SANITARY NAPKINS FOR A GIRL FOR A YEAR",
+};
 
 export default function CycleSafePage() {
   return (
@@ -67,7 +79,7 @@ export default function CycleSafePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

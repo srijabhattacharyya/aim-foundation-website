@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/GreenRootsDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "GreenRoots",
+  subtitle: "PLANT A TREE, GROW A FUTURE",
+  amounts: [
+    { value: "500", label: "₹500" },
+    { value: "1000", label: "₹1000" },
+    { value: "2500", label: "₹2500" },
+    { value: "5000", label: "₹5000" },
+  ],
+  amountDescription: "SPONSOR SAPLINGS & SUPPORT THEIR CARE",
+};
 
 export default function GreenRootsPage() {
   return (
@@ -59,7 +71,7 @@ export default function GreenRootsPage() {
               </div>
               
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>

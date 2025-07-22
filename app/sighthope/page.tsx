@@ -6,7 +6,19 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SightHopeDonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+
+const donationProps = {
+  title: "SightHope",
+  subtitle: "GIFT OF SIGHT",
+  amounts: [
+    { value: "1500", label: "₹1500" },
+    { value: "3000", label: "₹3000" },
+    { value: "6000", label: "₹6000" },
+    { value: "12000", label: "₹12000" },
+  ],
+  amountDescription: "SPONSOR A CATARACT SURGERY",
+};
 
 export default function SightHopePage() {
   return (
@@ -86,7 +98,7 @@ export default function SightHopePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <DynamicDonationForm {...donationProps} />
               </div>
             </div>
           </div>
