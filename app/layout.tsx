@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
-import { Toaster } from '../src/components/ui/toaster';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation Hub',
@@ -21,6 +21,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${bricolage.variable}`}>
+      <head>
+        <link
+          rel="preload"
+          href="/images/banner/home.png"
+          as="image"
+          media="(min-width: 768px)"
+        />
+        <link
+          rel="preload"
+          href="/images/banner/home-mobile.avif"
+          as="image"
+          media="(max-width: 767px)"
+        />
+      </head>
       <body className="font-body antialiased">
         {children}
         <Toaster />
