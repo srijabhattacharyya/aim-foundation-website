@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -69,7 +70,7 @@ const programs = [
 const Hero = () => {
   return (
     <section className="relative w-screen h-screen flex flex-col left-1/2 right-1/2 ml-[-50vw] mr-[-50vw]">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         <picture className="w-full h-full block">
             <source srcSet="/images/banner/home.avif" type="image/avif" />
             <source srcSet="/images/banner/home.webp" type="image/webp" />
