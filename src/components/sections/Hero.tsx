@@ -82,7 +82,7 @@ const Hero = () => {
         />
         {/* Mobile Image */}
         <Image
-          src="/images/banner/home-mobile.png"
+          src="/images/banner/home-mobile.avif"
           alt="Home Banner Mobile"
           width={768}
           height={1024}
