@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import CycleSafeDonationForm from "@/components/sections/donation-forms/CycleSafeDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CycleSafeDonationForm'), { ssr: false });
 
 export default function CycleSafePage() {
   return (
@@ -64,7 +65,7 @@ export default function CycleSafePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <CycleSafeDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

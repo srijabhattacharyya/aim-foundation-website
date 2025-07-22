@@ -1,10 +1,11 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import VidyaShaktiDonationForm from "@/components/sections/donation-forms/VidyaShaktiDonationForm";
 import { Button } from "@/components/ui/button";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/VidyaShaktiDonationForm'), { ssr: false });
 
 export default function VidyaShaktiPage() {
   return (
@@ -65,7 +66,7 @@ export default function VidyaShaktiPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <VidyaShaktiDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

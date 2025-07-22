@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import InnocentSmilesDonationForm from "@/components/sections/donation-forms/InnocentSmilesDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false });
 
 export default function InnocentSmilesPage() {
   return (
@@ -61,7 +62,7 @@ export default function InnocentSmilesPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <InnocentSmilesDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

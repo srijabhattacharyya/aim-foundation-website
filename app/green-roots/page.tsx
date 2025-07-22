@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import GreenRootsDonationForm from "@/components/sections/donation-forms/GreenRootsDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/GreenRootsDonationForm'), { ssr: false });
 
 export default function GreenRootsPage() {
   return (
@@ -56,7 +57,7 @@ export default function GreenRootsPage() {
               </div>
               
               <div className="sticky top-24">
-                <GreenRootsDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

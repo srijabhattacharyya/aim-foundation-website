@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import RootsOfChangeDonationForm from "@/components/sections/donation-forms/RootsOfChangeDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/RootsOfChangeDonationForm'), { ssr: false });
 
 export default function RootsOfChangePage() {
   return (
@@ -59,7 +60,7 @@ export default function RootsOfChangePage() {
               </div>
               
               <div className="sticky top-24">
-                <RootsOfChangeDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

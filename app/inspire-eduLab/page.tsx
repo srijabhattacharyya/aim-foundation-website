@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import InspireEduLabDonationForm from "@/components/sections/donation-forms/InspireEduLabDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/InspireEduLabDonationForm'), { ssr: false });
 
 export default function InspireEduLabPage() {
   return (
@@ -58,7 +59,7 @@ export default function InspireEduLabPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <InspireEduLabDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

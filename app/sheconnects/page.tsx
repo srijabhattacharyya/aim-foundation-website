@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import SheConnectsDonationForm from "@/components/sections/donation-forms/SheConnectsDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SheConnectsDonationForm'), { ssr: false });
 
 export default function SheConnectsPage() {
   return (
@@ -61,7 +62,7 @@ export default function SheConnectsPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <SheConnectsDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

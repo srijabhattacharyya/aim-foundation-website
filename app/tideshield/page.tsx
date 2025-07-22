@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import TideShieldDonationForm from "@/components/sections/donation-forms/TideShieldDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/TideShieldDonationForm'), { ssr: false });
 
 export default function TideShieldPage() {
   return (
@@ -56,7 +57,7 @@ export default function TideShieldPage() {
               </div>
               
               <div className="sticky top-24">
-                <TideShieldDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

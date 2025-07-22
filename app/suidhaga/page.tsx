@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import SuiDhagaDonationForm from "@/components/sections/donation-forms/SuiDhagaDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SuiDhagaDonationForm'), { ssr: false });
 
 export default function SuiDhagaPage() {
   return (
@@ -58,7 +59,7 @@ export default function SuiDhagaPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <SuiDhagaDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

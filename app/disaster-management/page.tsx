@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DisasterManagementDonationForm from "@/components/sections/donation-forms/DisasterManagementDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DisasterManagementDonationForm'), { ssr: false });
 
 export default function DisasterManagementPage() {
   return (
@@ -65,7 +66,7 @@ export default function DisasterManagementPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DisasterManagementDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

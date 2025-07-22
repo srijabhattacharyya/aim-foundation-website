@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import CureLineDonationForm from "@/components/sections/donation-forms/CureLineDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CureLineDonationForm'), { ssr: false });
 
 export default function CureLinePage() {
   return (
@@ -73,7 +74,7 @@ export default function CureLinePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <CureLineDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

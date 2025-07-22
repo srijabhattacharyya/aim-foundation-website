@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import IgniteChangeDonationForm from "@/components/sections/donation-forms/IgniteChangeDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/IgniteChangeDonationForm'), { ssr: false });
 
 export default function IgniteChangeInitiativePage() {
   return (
@@ -65,7 +66,7 @@ export default function IgniteChangeInitiativePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <IgniteChangeDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

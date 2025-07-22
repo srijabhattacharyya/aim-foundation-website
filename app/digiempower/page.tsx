@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import DigiEmpowerDonationForm from "@/components/sections/donation-forms/DigiEmpowerDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DigiEmpowerDonationForm'), { ssr: false });
 
 export default function DigiEmpowerPage() {
   return (
@@ -61,7 +62,7 @@ export default function DigiEmpowerPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DigiEmpowerDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

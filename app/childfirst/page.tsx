@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import ChildFirstDonationForm from "@/components/sections/donation-forms/ChildFirstDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/ChildFirstDonationForm'), { ssr: false });
 
 export default function ChildFirstPage() {
   return (
@@ -72,7 +73,7 @@ export default function ChildFirstPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <ChildFirstDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

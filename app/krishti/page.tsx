@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import KrishtiDonationForm from "@/components/sections/donation-forms/KrishtiDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/KrishtiDonationForm'), { ssr: false });
 
 export default function KrishtiPage() {
   return (
@@ -55,7 +56,7 @@ export default function KrishtiPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <KrishtiDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

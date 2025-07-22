@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import EduAccessDonationForm from "@/components/sections/donation-forms/EduAccessDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/EduAccessDonationForm'), { ssr: false });
 
 export default function EduAccessPage() {
   return (
@@ -58,7 +59,7 @@ export default function EduAccessPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <EduAccessDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

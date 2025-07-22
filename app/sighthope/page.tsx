@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import SightHopeDonationForm from "@/components/sections/donation-forms/SightHopeDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SightHopeDonationForm'), { ssr: false });
 
 export default function SightHopePage() {
   return (
@@ -83,7 +84,7 @@ export default function SightHopePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <SightHopeDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

@@ -1,9 +1,10 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import SurgiReachDonationForm from "@/components/sections/donation-forms/SurgiReachDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SurgiReachDonationForm'), { ssr: false });
 
 export default function SurgiReachPage() {
   return (
@@ -78,7 +79,7 @@ export default function SurgiReachPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <SurgiReachDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

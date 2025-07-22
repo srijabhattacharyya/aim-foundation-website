@@ -1,9 +1,11 @@
-"use client";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import CareCircleDonationForm from "@/components/sections/donation-forms/CareCircleDonationForm";
+import dynamic from 'next/dynamic';
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CareCircleDonationForm'), { ssr: false });
 
 export default function CareCirclePage() {
   return (
@@ -69,7 +71,7 @@ export default function CareCirclePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <CareCircleDonationForm />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>
