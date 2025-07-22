@@ -9,10 +9,10 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import dynamic from 'next/dynamic';
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const DynamicGeneralDonationForm = dynamic(
-    () => import('./donation-forms/GeneralDonationForm'),
+    () => import('@/components/sections/donation-forms/GeneralDonationForm'),
     { 
         ssr: false,
         loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
