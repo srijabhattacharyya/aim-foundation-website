@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/VidyaShaktiDonationForm'), { ssr: false });
 
 const donationProps = {
   title: "VidyaShakti",
@@ -80,7 +80,7 @@ export default function VidyaShaktiPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm {...donationProps} />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

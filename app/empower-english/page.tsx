@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/EmpowerEnglishDonationForm'), { ssr: false });
 
 const donationProps = {
   title: "Empower English",
@@ -76,7 +76,7 @@ export default function EmpowerEnglishPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm {...donationProps} />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

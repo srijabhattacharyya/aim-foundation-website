@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SoulCircleDonationForm'), { ssr: false });
 
 const donationProps = {
   title: "SoulCircle",
@@ -90,7 +90,7 @@ export default function SoulCirclePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm {...donationProps} />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>

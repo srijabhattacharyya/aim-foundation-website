@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SightHopeDonationForm'), { ssr: false });
 
 const donationProps = {
   title: "SightHope",
@@ -98,7 +98,7 @@ export default function SightHopePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm {...donationProps} />
+                <DynamicDonationForm />
               </div>
             </div>
           </div>
