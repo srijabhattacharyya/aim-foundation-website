@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -77,7 +76,7 @@ const Hero = () => {
             <img
                 src="/images/banner/home.png"
                 alt="Home Banner"
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-cover"
             />
         </picture>
       </div>
