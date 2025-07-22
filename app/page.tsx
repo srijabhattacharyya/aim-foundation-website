@@ -8,8 +8,6 @@ const InfoSection = dynamic(() => import('@/components/sections/InfoSection'));
 const AboutUs = dynamic(() => import('@/components/sections/AboutUs'));
 const Impact = dynamic(() => import('@/components/sections/Impact'));
 const Activities = dynamic(() => import('@/components/sections/Activities'));
-const Testimonials = dynamic(() => import('@/components/sections/Testimonials'));
-const Patrons = dynamic(() => import('@/components/sections/Patrons'));
 const DonateSection = dynamic(() => import('@/components/sections/DonateSection'));
 const Blog = dynamic(() => import('@/components/sections/Blog'));
 const Volunteer = dynamic(() => import('@/components/sections/Volunteer'));
@@ -26,8 +24,6 @@ export default function HomePage() {
         <AboutUs />
         <Impact />
         <Activities />
-        <Testimonials />
-        <Patrons />
         <DonateSection />
         <Blog />
         <Volunteer />
