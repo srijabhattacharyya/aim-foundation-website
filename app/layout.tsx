@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
-import { Toaster } from '../components/ui/toaster';
+import { Toaster } from '../src/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation Hub',
