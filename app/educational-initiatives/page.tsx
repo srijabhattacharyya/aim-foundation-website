@@ -54,13 +54,6 @@ const initiatives = [
     hint: "children collaboration",
     link: "/milieu"
   },
-  {
-    title: "VidyaShakti",
-    description: "A multilingual educational app supporting rural children. It offers AI-generated answers in preferred languages, bridging educational gaps and empowering independent learning.",
-    image: "https://placehold.co/600x400.png",
-    hint: "mobile learning",
-    link: "/vidyashakti"
-  },
 ];
 
 export default function EducationalInitiativesPage() {
