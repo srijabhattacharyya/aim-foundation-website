@@ -9,12 +9,11 @@ import Activities from "@/components/sections/Activities";
 import dynamic from 'next/dynamic';
 
 const Testimonials = dynamic(() => import('@/components/sections/Testimonials'));
-const Team = dynamic(() => import('@/components/sections/Team'));
+const Patrons = dynamic(() => import('@/components/sections/Patrons'));
+const DonateSection = dynamic(() => import('@/components/sections/DonateSection'));
 const Blog = dynamic(() => import('@/components/sections/Blog'));
 const Volunteer = dynamic(() => import('@/components/sections/Volunteer'));
 const Newsletter = dynamic(() => import('@/components/sections/Newsletter'));
-const Patrons = dynamic(() => import('@/components/sections/Patrons'));
-const DonateSection = dynamic(() => import('@/components/sections/DonateSection'));
 
 
 export default function HomePage() {
