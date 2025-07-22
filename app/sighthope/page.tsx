@@ -5,22 +5,19 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
+import { useState } from "react";
+import { Button } from "../../components/ui/button";
+import { Skeleton } from "../../components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SightHopeDonationForm'), { ssr: false });
-
-const donationProps = {
-  title: "SightHope",
-  subtitle: "GIFT OF SIGHT",
-  amounts: [
-    { value: "1500", label: "₹1500" },
-    { value: "3000", label: "₹3000" },
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
-  ],
-  amountDescription: "SPONSOR A CATARACT SURGERY",
-};
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SightHopeDonationForm'), { 
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
+});
 
 export default function SightHopePage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -98,7 +95,14 @@ export default function SightHopePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <Dialog open={showForm} onOpenChange={setShowForm}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="w-full transition-transform transform hover:scale-105">Donate to SightHope</Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[600px] p-0">
+                    <DynamicDonationForm />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>

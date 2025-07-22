@@ -5,22 +5,19 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
+import { useState } from "react";
+import { Button } from "../../components/ui/button";
+import { Skeleton } from "../../components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DetectDonationForm'), { ssr: false });
-
-const donationProps = {
-  title: "Detect",
-  subtitle: "MAKE A DIFFERENCE",
-  amounts: [
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
-    { value: "10000", label: "₹10000" },
-    { value: "20000", label: "₹20000" },
-  ],
-  amountDescription: "SUPPORT A SCREENING CAMP",
-};
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DetectDonationForm'), { 
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
+});
 
 export default function DetectPage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -82,7 +79,14 @@ export default function DetectPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                 <Dialog open={showForm} onOpenChange={setShowForm}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="w-full transition-transform transform hover:scale-105">Donate to Detect</Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[600px] p-0">
+                    <DynamicDonationForm />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>

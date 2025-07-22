@@ -5,8 +5,15 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
+import { useState } from "react";
+import { Button } from "../../components/ui/button";
+import { Skeleton } from "../../components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DonationForm'), { ssr: false });
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DonationForm'), { 
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
+});
 
 const donationProps = {
   title: "Relief Efforts",
@@ -21,6 +28,8 @@ const donationProps = {
 };
 
 export default function ReliefPage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -80,7 +89,14 @@ export default function ReliefPage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm {...donationProps} />
+                <Dialog open={showForm} onOpenChange={setShowForm}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="w-full transition-transform transform hover:scale-105">Donate to Relief Efforts</Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[600px] p-0">
+                    <DynamicDonationForm {...donationProps} />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>

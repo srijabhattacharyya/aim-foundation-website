@@ -6,22 +6,18 @@ import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import dynamic from 'next/dynamic';
+import { useState } from "react";
+import { Skeleton } from "../../components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SoulCircleDonationForm'), { ssr: false });
-
-const donationProps = {
-  title: "SoulCircle",
-  subtitle: "PROVIDE A SAFE SPACE",
-  amounts: [
-    { value: "500", label: "₹500" },
-    { value: "1000", label: "₹1000" },
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
-  ],
-  amountDescription: "MAINTAIN APP FOR 1 MONTH",
-};
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SoulCircleDonationForm'), { 
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
+});
 
 export default function SoulCirclePage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -90,7 +86,14 @@ export default function SoulCirclePage() {
 
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <Dialog open={showForm} onOpenChange={setShowForm}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="w-full transition-transform transform hover:scale-105">Donate to SoulCircle</Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[600px] p-0">
+                    <DynamicDonationForm />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>

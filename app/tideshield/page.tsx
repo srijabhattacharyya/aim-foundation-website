@@ -5,22 +5,19 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
+import { useState } from "react";
+import { Button } from "../../components/ui/button";
+import { Skeleton } from "../../components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/TideShieldDonationForm'), { ssr: false });
-
-const donationProps = {
-  title: "TideShield",
-  subtitle: "PROTECT OUR COASTS",
-  amounts: [
-    { value: "1000", label: "₹1000" },
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
-    { value: "10000", label: "₹10000" },
-  ],
-  amountDescription: "PLANT 10 MANGROVE SAPLINGS",
-};
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/TideShieldDonationForm'), { 
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
+});
 
 export default function TideShieldPage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -71,7 +68,14 @@ export default function TideShieldPage() {
               </div>
               
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <Dialog open={showForm} onOpenChange={setShowForm}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="w-full transition-transform transform hover:scale-105">Donate to TideShield</Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[600px] p-0">
+                    <DynamicDonationForm />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>

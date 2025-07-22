@@ -5,22 +5,19 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
+import { useState } from "react";
+import { Button } from "../../components/ui/button";
+import { Skeleton } from "../../components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/EduAccessDonationForm'), { ssr: false });
-
-const donationProps = {
-  title: "EduAccess",
-  subtitle: "MAKE A DIFFERENCE",
-  amounts: [
-    { value: "3000", label: "₹3000" },
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
-    { value: "24000", label: "₹24000" },
-  ],
-  amountDescription: "ONLINE CLASSES FOR 1 CHILD FOR 6 MONTHS",
-};
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/EduAccessDonationForm'), { 
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
+});
 
 export default function EduAccessPage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -73,7 +70,14 @@ export default function EduAccessPage() {
               
               {/* Right Sticky Form Column */}
               <div className="sticky top-24">
-                <DynamicDonationForm />
+                <Dialog open={showForm} onOpenChange={setShowForm}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="w-full transition-transform transform hover:scale-105">Donate to EduAccess</Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[600px] p-0">
+                    <DynamicDonationForm />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>
