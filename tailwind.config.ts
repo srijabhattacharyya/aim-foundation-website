@@ -5,12 +5,13 @@ export default {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       fontFamily: {
-        body: ['"Bricolage Grotesque"', 'sans-serif'],
-        headline: ['"Bricolage Grotesque"', 'sans-serif'],
+        body: ['var(--font-bricolage)', 'sans-serif'],
+        headline: ['var(--font-bricolage)', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
