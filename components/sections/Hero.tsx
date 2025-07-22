@@ -77,13 +77,13 @@ const Hero = () => {
             <img
                 src="/images/banner/home.png"
                 alt="Home Banner"
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover"
             />
         </picture>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6 flex flex-col flex-grow justify-between text-white">
-        <div className="flex-grow flex flex-col justify-center items-center text-center pt-24 pb-12">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 flex flex-col flex-grow justify-end text-white pb-8 md:pb-16">
+        <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
             Building a Brighter Future, Together
             </h1>
@@ -92,7 +92,7 @@ const Hero = () => {
             </p>
         </div>
         
-        <div className="pb-16 w-full">
+        <div className="w-full">
             <h2 className="text-2xl font-semibold mb-6 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">Our Current Programs</h2>
             <Carousel
                 opts={{
