@@ -89,6 +89,7 @@ const Hero = () => {
           height={1024}
           className="w-full h-auto object-cover block md:hidden"
           priority
+          sizes="100vw"
         />
         <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
           <div className="container mx-auto px-4 md:px-6 text-white pb-8 md:pb-16">
