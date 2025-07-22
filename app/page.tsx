@@ -1,5 +1,4 @@
 
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -7,13 +6,16 @@ import InfoSection from "@/components/sections/InfoSection";
 import AboutUs from "@/components/sections/AboutUs";
 import Impact from "@/components/sections/Impact";
 import Activities from "@/components/sections/Activities";
-import Testimonials from "@/components/sections/Testimonials";
-import Team from "@/components/sections/Team";
-import Blog from "@/components/sections/Blog";
-import Volunteer from "@/components/sections/Volunteer";
-import Newsletter from "@/components/sections/Newsletter";
-import Patrons from "@/components/sections/Patrons";
-import DonateSection from "@/components/sections/DonateSection";
+import dynamic from 'next/dynamic';
+
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials'));
+const Team = dynamic(() => import('@/components/sections/Team'));
+const Blog = dynamic(() => import('@/components/sections/Blog'));
+const Volunteer = dynamic(() => import('@/components/sections/Volunteer'));
+const Newsletter = dynamic(() => import('@/components/sections/Newsletter'));
+const Patrons = dynamic(() => import('@/components/sections/Patrons'));
+const DonateSection = dynamic(() => import('@/components/sections/DonateSection'));
+
 
 export default function HomePage() {
   return (
