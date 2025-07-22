@@ -70,68 +70,67 @@ const programs = [
 const Hero = () => {
   return (
     <section className="relative w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw]">
-      {/* Background Image */}
-      <picture className="block w-full h-auto">
-          <source srcSet="/images/banner/home.avif" type="image/avif" />
-          <source srcSet="/images/banner/home.webp" type="image/webp" />
-          <img
-              src="/images/banner/home.png"
-              alt="Home Banner"
-              className="w-full h-auto object-cover"
-          />
-      </picture>
-
-      {/* Overlay Content */}
-      <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
-        <div className="container mx-auto px-4 md:px-6 text-white pb-8 md:pb-16">
-          <div className="text-center hidden md:block">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-              Building a Brighter Future, Together
-              </h1>
-              <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-              We are committed to empowering communities through education, healthcare, and sustainable development.
-              </p>
-          </div>
-          
-          <div className="w-full hidden md:block">
-              <h2 className="text-2xl font-semibold mb-6 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">Our Current Programs</h2>
-              <Carousel
-                  opts={{
-                  align: "start",
-                  loop: true,
-                  }}
-                  plugins={[
-                      Autoplay({
-                        delay: 3000,
-                        stopOnInteraction: true,
-                      }),
-                  ]}
-                  className="w-full max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto"
-              >
-                  <CarouselContent className="-ml-4">
-                  {programs.map((program, index) => (
-                      <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                      <div className="p-1 h-full">
-                          <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full flex flex-col">
-                          <CardContent className="flex flex-col items-center justify-center p-6 space-y-4 flex-grow">
-                              <Image src={program.image} alt={program.title} width={80} height={80} data-ai-hint={program.hint} className="rounded-full border-2 border-primary" />
-                              <h3 className="font-bold text-lg font-headline text-center">{program.title}</h3>
-                              <p className="text-sm text-center">{program.description}</p>
-                              <Button asChild variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">
-                                  <Link href={program.link || '#'}>Learn More</Link>
-                              </Button>
-                          </CardContent>
-                          </Card>
-                      </div>
-                      </CarouselItem>
-                  ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="text-white bg-black/20 hover:bg-black/40 border-white/30 hidden sm:flex" />
-                  <CarouselNext className="text-white bg-black/20 hover:bg-black/40 border-white/30 hidden sm:flex" />
-              </Carousel>
-          </div>
+        <div className="relative w-full h-auto">
+            <Image
+                src="/images/banner/home.png"
+                alt="Home Banner"
+                width={1920}
+                height={1080}
+                className="w-full h-auto object-cover"
+                priority
+            />
+            {/* Overlay Content */}
+            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
+                <div className="container mx-auto px-4 md:px-6 text-white pb-8 md:pb-16">
+                    <div className="text-center hidden md:block">
+                        <h1 className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                        Building a Brighter Future, Together
+                        </h1>
+                        <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                        We are committed to empowering communities through education, healthcare, and sustainable development.
+                        </p>
+                    </div>
+                    
+                    <div className="w-full hidden md:block">
+                        <h2 className="text-2xl font-semibold mb-6 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">Our Current Programs</h2>
+                        <Carousel
+                            opts={{
+                            align: "start",
+                            loop: true,
+                            }}
+                            plugins={[
+                                Autoplay({
+                                    delay: 3000,
+                                    stopOnInteraction: true,
+                                }),
+                            ]}
+                            className="w-full max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto"
+                        >
+                            <CarouselContent className="-ml-4">
+                            {programs.map((program, index) => (
+                                <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                                <div className="p-1 h-full">
+                                    <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full flex flex-col">
+                                    <CardContent className="flex flex-col items-center justify-center p-6 space-y-4 flex-grow">
+                                        <Image src={program.image} alt={program.title} width={80} height={80} data-ai-hint={program.hint} className="rounded-full border-2 border-primary" />
+                                        <h3 className="font-bold text-lg font-headline text-center">{program.title}</h3>
+                                        <p className="text-sm text-center">{program.description}</p>
+                                        <Button asChild variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">
+                                            <Link href={program.link || '#'}>Learn More</Link>
+                                        </Button>
+                                    </CardContent>
+                                    </Card>
+                                </div>
+                                </CarouselItem>
+                            ))}
+                            </CarouselContent>
+                            <CarouselPrevious className="text-white bg-black/20 hover:bg-black/40 border-white/30 hidden sm:flex" />
+                            <CarouselNext className="text-white bg-black/20 hover:bg-black/40 border-white/30 hidden sm:flex" />
+                        </Carousel>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
   );
 };
