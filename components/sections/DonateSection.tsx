@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const GeneralDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/GeneralDonationForm'),
+    () => import('./donation-forms/GeneralDonationForm'),
     { 
         ssr: false,
         loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
