@@ -8,19 +8,15 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
   return (
     <section className="relative w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw]">
       <div className="relative w-full h-auto">
-        <picture>
-          <source media="(max-width: 767px)" srcSet="/images/banner/home-mobile.avif" />
-          <source media="(min-width: 768px)" srcSet="/images/banner/home.png" />
-          <Image
-            src="/images/banner/home.png"
-            alt="Home Banner"
-            width={1920}
-            height={1080}
-            className="w-full h-auto object-cover"
-            priority
-            sizes="100vw"
-          />
-        </picture>
+        <Image
+          src="/images/banner/home.png"
+          alt="Home Banner"
+          width={1920}
+          height={1080}
+          className="w-full h-auto object-cover"
+          priority
+          sizes="100vw"
+        />
         <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
           <div className="container mx-auto px-4 md:px-6 text-white pb-8 md:pb-16">
             <div className="text-center md:hidden">
@@ -36,7 +32,10 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
                 We are committed to empowering communities through education, healthcare, and sustainable development.
               </p>
             </div>
-            {children}
+            <div className="w-full hidden md:block">
+                <h2 className="text-2xl font-semibold mb-6 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">Our Current Programs</h2>
+                {children}
+            </div>
           </div>
         </div>
       </div>
