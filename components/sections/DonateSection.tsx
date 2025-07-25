@@ -2,14 +2,14 @@
 'use client';
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '../ui/button';
 import {
   Dialog,
   DialogContent,
   DialogTrigger,
-} from '@/components/ui/dialog';
+} from '../ui/dialog';
 import dynamic from 'next/dynamic';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from '../ui/skeleton';
 
 const GeneralDonationForm = dynamic(
     () => import('./donation-forms/GeneralDonationForm'),
