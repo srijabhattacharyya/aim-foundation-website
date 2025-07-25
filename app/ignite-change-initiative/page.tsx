@@ -58,10 +58,9 @@ export default function IgniteChangeInitiativePage() {
         </section>
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
-              {/* Left Text Column */}
-              <div className="space-y-6 md:col-span-3">
+          <div className="container mx-auto px-4 md:px-6 relative">
+            <div className="max-w-4xl mx-auto">
+              <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Be the Spark. Fuel the Movement.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
@@ -86,18 +85,16 @@ export default function IgniteChangeInitiativePage() {
                   </p>
                 </div>
               </div>
-
-              {/* Right Sticky Form Column */}
-              <div className="sticky top-24">
-                <Dialog open={showForm} onOpenChange={setShowForm}>
-                  <DialogTrigger asChild>
-                    <Button size="lg" className="w-full transition-transform transform hover:scale-105">Donate to Ignite Change</Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                    <DynamicDonationForm {...donationProps} />
-                  </DialogContent>
-                </Dialog>
-              </div>
+            </div>
+            <div className="fixed bottom-8 right-8 z-50">
+              <Dialog open={showForm} onOpenChange={setShowForm}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to Ignite Change</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+                  <DynamicDonationForm {...donationProps} />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </section>
