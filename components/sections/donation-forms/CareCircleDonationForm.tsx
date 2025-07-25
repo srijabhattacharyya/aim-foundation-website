@@ -20,6 +20,9 @@ import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
+import dynamic from "next/dynamic";
+
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 const donationSchema = z.object({
   amount: z.string().nonempty({ message: "Please select a donation amount." }),
@@ -84,8 +87,8 @@ export default function CareCircleDonationForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg bg-card">
-        <CardContent className="p-0">
+    <Card className="w-full border-0 shadow-none rounded-none max-h-[90vh] overflow-y-auto">
+        <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT CARECIRCLE</h2>
                 <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
@@ -288,7 +291,7 @@ export default function CareCircleDonationForm() {
                     <FormItem>
                       <FormControl>
                         <div className="flex justify-center">
-                            <ReCAPTCHA
+                            <DynamicReCAPTCHA
                               ref={recaptchaRef}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
