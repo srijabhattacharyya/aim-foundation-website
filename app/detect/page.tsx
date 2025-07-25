@@ -1,16 +1,16 @@
 
 'use client';
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 import { useState } from "react";
-import { Button } from "../../components/ui/button";
-import { Skeleton } from "../../components/ui/skeleton";
-import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DetectDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DetectDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });

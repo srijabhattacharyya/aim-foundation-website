@@ -1,9 +1,9 @@
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
-import { Card, CardContent, CardTitle, CardDescription } from "../../components/ui/card";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import Image from "next/image";
-import { Button } from "../../components/ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const initiatives = [
