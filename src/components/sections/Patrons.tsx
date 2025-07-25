@@ -5,7 +5,7 @@ import Image from "next/image"
 
 const patrons = Array(20).fill({
   name: "Patron Logo",
-  logo: "https://placehold.co/300x135.png",
+  logo: "https://placehold.co/200x90.png",
   hint: "corporate logo",
 });
 
@@ -20,21 +20,37 @@ const Patrons = () => {
                     </p>
                 </div>
                 <div
-                    className="relative flex h-[400px] w-full flex-col items-center overflow-hidden rounded-lg border"
+                    className="relative flex h-[400px] w-full flex-col overflow-hidden rounded-lg border"
                 >
-                    <div className="flex flex-col items-center animate-scroll-up">
-                        {[...patrons, ...patrons].map((patron, index) => (
-                            <div key={index} className="flex justify-center items-center h-[135px] w-[300px] my-4">
-                                <Image
-                                    src={patron.logo}
-                                    alt={`${patron.name} ${index + 1}`}
-                                    width={300}
-                                    height={135}
-                                    data-ai-hint={patron.hint}
-                                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                                />
-                            </div>
-                        ))}
+                    <div className="flex flex-col animate-scroll-up">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6">
+                            {patrons.map((patron, index) => (
+                                <div key={index} className="flex justify-center items-center h-full">
+                                    <Image
+                                        src={patron.logo}
+                                        alt={`${patron.name} ${index + 1}`}
+                                        width={200}
+                                        height={90}
+                                        data-ai-hint={patron.hint}
+                                        className="object-contain w-full h-auto grayscale hover:grayscale-0 transition-all duration-300"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6" aria-hidden="true">
+                            {patrons.map((patron, index) => (
+                                <div key={index + patrons.length} className="flex justify-center items-center h-full">
+                                    <Image
+                                        src={patron.logo}
+                                        alt={`${patron.name} ${index + 1}`}
+                                        width={200}
+                                        height={90}
+                                        data-ai-hint={patron.hint}
+                                        className="object-contain w-full h-auto grayscale hover:grayscale-0 transition-all duration-300"
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
