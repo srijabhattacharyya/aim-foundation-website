@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Bricolage_Grotesque } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '../components/ui/toaster';
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   description: 'A non-profit organization dedicated to making a difference.',
 };
 
-const bricolage = Bricolage_Grotesque({
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-bricolage',
+  variable: '--font-inter',
 });
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bricolage.variable}`}>
+    <html lang="en" className={`${inter.variable}`}>
       <head>
       </head>
       <body className="font-body antialiased">
