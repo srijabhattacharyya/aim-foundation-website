@@ -119,7 +119,7 @@ export default function GeneralDonationForm() {
   }
 
   return (
-    <Card className="w-full border-0 shadow-none rounded-none">
+    <Card className="w-full border-0 shadow-none rounded-none max-h-[90vh] overflow-y-auto">
         <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold font-headline">DONATE TO A CAUSE</h2>
