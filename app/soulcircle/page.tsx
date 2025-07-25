@@ -1,16 +1,16 @@
 
 'use client';
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import dynamic from 'next/dynamic';
 import { useState } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Skeleton } from "../../components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SoulCircleDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SoulCircleDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
@@ -67,7 +67,7 @@ export default function SoulCirclePage() {
                     </ul>
                      <h3 className="text-2xl font-bold font-headline pt-4">Key features include:</h3>
                     <ul className="list-disc list-inside space-y-2">
-                        <li><strong>Private, confidential conversations</strong> with AI counselors</li>
+                        <li><strong>Private, confidential conversations</strong> with an AI counselor</li>
                         <li><strong>Mood tracking and journaling tools</strong></li>
                         <li><strong>Mindfulness prompts and stress-relief exercises</strong></li>
                     </ul>
