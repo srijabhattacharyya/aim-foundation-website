@@ -100,7 +100,7 @@ const Hero = () => {
               </p>
             </div>
             
-            <div className="w-full">
+            <div className="w-full hidden md:block">
               <h2 className="text-2xl font-semibold mb-6 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">Our Current Programs</h2>
               <Carousel
                 opts={{
