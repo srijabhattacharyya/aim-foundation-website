@@ -3,9 +3,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent } from '../ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel';
-import { Button } from '../ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Button } from '@/components/ui/button';
 import Autoplay from "embla-carousel-autoplay"
 
 const programs = [
