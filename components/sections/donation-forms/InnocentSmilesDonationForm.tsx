@@ -1,9 +1,10 @@
+
 "use client";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -11,12 +12,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "@/hooks/use-toast";
-import { Card, CardContent } from "@/components/ui/card";
+} from "../../../components/ui/form";
+import { Input } from "../../../components/ui/input";
+import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
+import { Checkbox } from "../../../components/ui/checkbox";
+import { useToast } from "../../../hooks/use-toast";
+import { Card, CardContent } from "../../../components/ui/card";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
 
@@ -83,8 +84,8 @@ export default function InnocentSmilesDonationForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg bg-card">
-        <CardContent className="p-0">
+    <Card className="w-full border-0 shadow-none rounded-none">
+        <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT INNOCENT SMILES</h2>
                 <p className="text-muted-foreground">MAKE A DIFFERENCE</p>

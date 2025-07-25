@@ -93,7 +93,7 @@ export default function DisasterManagementPage() {
                   <DialogTrigger asChild>
                     <Button size="lg" className="w-full transition-transform transform hover:scale-105">Donate to Disaster Relief</Button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[600px] p-0">
+                  <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
                     <DynamicDonationForm {...donationProps} />
                   </DialogContent>
                 </Dialog>

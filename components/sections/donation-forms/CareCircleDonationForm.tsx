@@ -4,7 +4,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,12 +12,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "@/hooks/use-toast";
-import { Card, CardContent } from "@/components/ui/card";
+} from "../../../components/ui/form";
+import { Input } from "../../../components/ui/input";
+import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
+import { Checkbox } from "../../../components/ui/checkbox";
+import { useToast } from "../../../hooks/use-toast";
+import { Card, CardContent } from "../../../components/ui/card";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
 import dynamic from "next/dynamic";
@@ -87,7 +87,7 @@ export default function CareCircleDonationForm() {
   }
 
   return (
-    <Card className="w-full border-0 shadow-none rounded-none max-h-[90vh] overflow-y-auto">
+    <Card className="w-full border-0 shadow-none rounded-none">
         <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT CARECIRCLE</h2>
