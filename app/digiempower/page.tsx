@@ -47,9 +47,9 @@ export default function DigiEmpowerPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
               {/* Left Text Column */}
-              <div className="space-y-6">
+              <div className="space-y-6 md:col-span-2">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">No Child Left Offline</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>

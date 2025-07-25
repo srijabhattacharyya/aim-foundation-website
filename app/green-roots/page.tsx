@@ -59,8 +59,8 @@ export default function GreenRootsPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+              <div className="space-y-6 md:col-span-2">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Planting Hope, Growing Futures</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
@@ -84,7 +84,7 @@ export default function GreenRootsPage() {
                   <DialogTrigger asChild>
                     <Button size="lg" className="w-full transition-transform transform hover:scale-105">Donate to GreenRoots</Button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[600px] p-0">
+                  <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
                     <DynamicDonationForm {...donationProps} />
                   </DialogContent>
                 </Dialog>
