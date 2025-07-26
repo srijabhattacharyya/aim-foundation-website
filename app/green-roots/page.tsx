@@ -35,14 +35,14 @@ export default function GreenRootsPage() {
       <Navbar />
       <main className="flex-grow">
         <section className="relative w-full">
-          <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+          <div className="relative w-full">
             <Image
               src="https://placehold.co/1920x1080.png"
               alt="GreenRoots Banner"
-              fill
-              className="object-cover brightness-50"
+              width={1920}
+              height={1080}
+              className="w-full h-auto object-cover brightness-50"
               data-ai-hint="urban garden community"
-              
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
