@@ -145,7 +145,13 @@ const navLinks = [
       },
     ]
   },
-  { href: '#events', label: 'Highlights' },
+  { 
+    label: 'Highlights',
+    isDropdown: true,
+    items: [
+      { href: '/press-releases', label: 'Press Releases' },
+    ]
+  },
   { href: '#gallery', label: 'Gallery' },
   { href: '#blog', label: 'Blog' },
   { href: '#contact', label: 'Connect' },
