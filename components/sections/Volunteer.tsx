@@ -12,7 +12,7 @@ const Volunteer = () => {
             Your time and skills are invaluable. Become a volunteer and join a passionate community dedicated to making a real difference. Whether it’s at our events, in our programs, or through administrative support, your contribution helps us create a bigger impact.
           </p>
           <Button size="lg" className="mt-8 transition-transform transform hover:scale-105" asChild>
-            <Link href="/join-us">Become a Volunteer</Link>
+            <Link href="/volunteering">Become a Volunteer</Link>
           </Button>
         </div>
       </div>
