@@ -42,7 +42,7 @@ export default function ReliefPage() {
               fill
               className="object-cover brightness-50"
               data-ai-hint="community support food"
-              priority
+              
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">

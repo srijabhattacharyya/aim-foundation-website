@@ -30,7 +30,7 @@ export default function SurgiReachPage() {
               fill
               className="object-cover brightness-50"
               data-ai-hint="operating room surgery"
-              priority
+              
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">

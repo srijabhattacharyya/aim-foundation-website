@@ -62,6 +62,13 @@ const initiatives = [
     hint: "menstrual hygiene",
     link: "/cyclesafe"
   },
+  {
+    title: "SoulCircle",
+    description: "is a 24/7 AI-powered mental health support app by AIM Foundation, offering a confidential, judgment-free space to talk and heal. Designed for those hesitant to seek traditional therapy, it provides empathetic guidance, mood tracking, and mindfulness exercises, making emotional well-being accessible to all, anytime, anywhere.",
+    image: "https://placehold.co/600x400.png",
+    hint: "mental health app",
+    link: "/soulcircle"
+  }
 ];
 
 export default function HealthCareInitiativesPage() {
@@ -75,7 +82,7 @@ export default function HealthCareInitiativesPage() {
               fill
               className="object-cover brightness-50"
               data-ai-hint="doctor patient care"
-              priority
+              
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">

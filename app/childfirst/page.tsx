@@ -30,7 +30,7 @@ export default function ChildFirstPage() {
               fill
               className="object-cover brightness-50"
               data-ai-hint="vulnerable children healthcare"
-              priority
+              
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">

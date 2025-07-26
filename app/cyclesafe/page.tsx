@@ -30,7 +30,7 @@ export default function CycleSafePage() {
               fill
               className="object-cover brightness-50"
               data-ai-hint="adolescent girls smiling"
-              priority
+              
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">

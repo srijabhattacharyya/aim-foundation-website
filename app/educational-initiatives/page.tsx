@@ -54,6 +54,13 @@ const initiatives = [
     hint: "children collaboration",
     link: "/milieu"
   },
+  {
+    title: "VidyaShakti",
+    description: "is a multilingual educational app by AIM Foundation that delivers AI-powered, on-demand academic support to rural and first-generation learners, bridging the gap where quality teaching is scarce. By providing instant, tailored answers in a student's own language, VidyaShakti empowers children to learn independently, build confidence, and unlock their full potential.",
+    image: "https://placehold.co/600x400.png",
+    hint: "learning app",
+    link: "/vidyashakti"
+  }
 ];
 
 export default function EducationalInitiativesPage() {
@@ -67,7 +74,7 @@ export default function EducationalInitiativesPage() {
             fill
             className="object-cover brightness-50"
             data-ai-hint="students learning together"
-            priority
+            
           />
         </div>
         <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
