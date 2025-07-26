@@ -26,7 +26,7 @@ const opportunities = [
     description: "Looking for a career that aligns with your values? Explore opportunities to join our dedicated team and drive our mission forward.",
     image: "https://placehold.co/600x400.png",
     hint: "professional meeting",
-    link: "#"
+    link: "/career"
   },
 ];
 
