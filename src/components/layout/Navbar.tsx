@@ -165,7 +165,7 @@ const navLinks = [
         { href: '/annual-report', label: 'Annual Report' },
     ]
   },
-  { href: '#contact', label: 'Connect' },
+  { href: '/connect', label: 'Connect' },
 ];
 
 const Navbar = () => {
