@@ -7,6 +7,7 @@ import AboutUs from '../components/sections/AboutUs';
 import Impact from '../components/sections/Impact';
 import Activities from '../components/sections/Activities';
 import DonateSection from '../components/sections/DonateSection';
+import Volunteer from '../components/sections/Volunteer';
 import dynamic from 'next/dynamic';
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -33,6 +34,7 @@ export default function HomePage() {
         <Impact />
         <Activities />
         <DonateSection />
+        <Volunteer />
         <Testimonials />
         <Patrons />
         <Blog />
