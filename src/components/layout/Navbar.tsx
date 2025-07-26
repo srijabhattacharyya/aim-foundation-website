@@ -23,6 +23,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const DynamicIndividualDonationForm = dynamic(
+  () => import('@/components/sections/donation-forms/IndividualDonationForm'),
+  {
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
+  }
+);
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -123,156 +134,161 @@ const navLinks = [
 const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2 md:mr-10" aria-label="AIM Foundation Home">
-          <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
-        </Link>
-        <div className="hidden md:flex items-center gap-6">
-          <nav className="flex gap-6 items-center">
-            {navLinks.map((link) => (
-              link.isDropdown ? (
-                <DropdownMenu key={link.label}>
-                  <DropdownMenuTrigger className="flex items-center gap-1 text-base font-medium text-muted-foreground transition-colors hover:text-primary focus:outline-none">
-                    {link.label} <ChevronDown className="h-4 w-4" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    {link.items?.map((item) => (
-                      item.isSubDropdown ? (
-                        <DropdownMenuSub key={item.label}>
-                           <DropdownMenuSubTrigger>
-                              {item.href ? (
-                                <Link href={item.href} className="w-full text-left">{item.label}</Link>
-                              ) : (
-                                <span>{item.label}</span>
-                              )}
-                           </DropdownMenuSubTrigger>
-                           <DropdownMenuPortal>
-                             <DropdownMenuSubContent>
-                              {item.subItems?.map((subItem) => (
-                                <DropdownMenuItem key={subItem.label} asChild>
-                                  <Link href={subItem.href}>{subItem.label}</Link>
-                                </DropdownMenuItem>
+      <Dialog>
+        <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+          <Link href="/" className="flex items-center gap-2 md:mr-10" aria-label="AIM Foundation Home">
+            <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
+          </Link>
+          <div className="hidden md:flex items-center gap-6">
+            <nav className="flex gap-6 items-center">
+              {navLinks.map((link) => (
+                link.isDropdown ? (
+                  <DropdownMenu key={link.label}>
+                    <DropdownMenuTrigger className="flex items-center gap-1 text-base font-medium text-muted-foreground transition-colors hover:text-primary focus:outline-none">
+                      {link.label} <ChevronDown className="h-4 w-4" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      {link.items?.map((item) => (
+                        item.isSubDropdown ? (
+                          <DropdownMenuSub key={item.label}>
+                            <DropdownMenuSubTrigger>
+                                {item.href ? (
+                                  <Link href={item.href} className="w-full text-left">{item.label}</Link>
+                                ) : (
+                                  <span>{item.label}</span>
+                                )}
+                            </DropdownMenuSubTrigger>
+                            <DropdownMenuPortal>
+                              <DropdownMenuSubContent>
+                                {item.subItems?.map((subItem) => (
+                                  <DropdownMenuItem key={subItem.label} asChild>
+                                    <Link href={subItem.href}>{subItem.label}</Link>
+                                  </DropdownMenuItem>
+                                ))}
+                              </DropdownMenuSubContent>
+                            </DropdownMenuPortal>
+                          </DropdownMenuSub>
+                        ) : (
+                          <DropdownMenuItem key={item.label} asChild>
+                            <Link href={item.href || '#'}>{item.label}</Link>
+                          </DropdownMenuItem>
+                        )
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Link key={link.label} href={link.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
+                    {link.label}
+                  </Link>
+                )
+              ))}
+            </nav>
+            <div className="flex items-center gap-2">
+              <Button asChild variant="ghost">
+                <Link href="/login">
+                  <LogIn className="mr-2" /> Login
+                </Link>
+              </Button>
+              <DialogTrigger asChild>
+                <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
+              </DialogTrigger>
+            </div>
+          </div>
+          <div className="md:hidden flex items-center gap-2">
+            <DialogTrigger asChild>
+              <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
+            </DialogTrigger>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <div className="flex flex-col p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <Link href="/" className="flex items-center gap-2" aria-label="AIM Foundation Home">
+                      <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
+                    </Link>
+                    <SheetClose asChild>
+                      <Button variant="ghost" size="icon">
+                          <X className="h-6 w-6" />
+                          <span className="sr-only">Close menu</span>
+                        </Button>
+                    </SheetClose>
+                  </div>
+                  <nav className="flex flex-col gap-4">
+                    {navLinks.map((link) => (
+                      link.isDropdown ? (
+                        <Accordion type="single" collapsible key={link.label}>
+                          <AccordionItem value={link.label} className="border-b-0">
+                            <AccordionTrigger className="text-lg font-medium text-foreground transition-colors hover:text-primary py-2 hover:no-underline">
+                              {link.label}
+                            </AccordionTrigger>
+                            <AccordionContent className="pl-4">
+                              <nav className="flex flex-col gap-4 pt-2">
+                              {link.items?.map((item) => (
+                                item.isSubDropdown ? (
+                                  <Accordion type="single" collapsible key={item.label}>
+                                    <AccordionItem value={item.label} className="border-b-0">
+                                      <AccordionTrigger className="text-base font-medium text-muted-foreground transition-colors hover:text-primary py-2 hover:no-underline">
+                                        <SheetClose asChild>
+                                          {item.href ? (
+                                            <Link href={item.href} className="flex-1 text-left">{item.label}</Link>
+                                          ) : (
+                                            <span className="flex-1 text-left">{item.label}</span>
+                                          )}
+                                        </SheetClose>
+                                      </AccordionTrigger>
+                                      <AccordionContent className="pl-4">
+                                        <nav className="flex flex-col gap-4 pt-2">
+                                          {item.subItems?.map((subItem) => (
+                                            <SheetClose asChild key={subItem.label}>
+                                              <Link href={subItem.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
+                                                {subItem.label}
+                                              </Link>
+                                            </SheetClose>
+                                          ))}
+                                        </nav>
+                                      </AccordionContent>
+                                    </AccordionItem>
+                                  </Accordion>
+                                ) : (
+                                  <SheetClose asChild key={item.label}>
+                                    <Link href={item.href || '#'} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
+                                      {item.label}
+                                    </Link>
+                                  </SheetClose>
+                                )
                               ))}
-                             </DropdownMenuSubContent>
-                           </DropdownMenuPortal>
-                        </DropdownMenuSub>
+                              </nav>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
                       ) : (
-                        <DropdownMenuItem key={item.label} asChild>
-                          <Link href={item.href || '#'}>{item.label}</Link>
-                        </DropdownMenuItem>
+                        <SheetClose asChild key={link.label}>
+                            <Link href={link.href} className="text-lg font-medium text-foreground transition-colors hover:text-primary">
+                            {link.label}
+                            </Link>
+                        </SheetClose>
                       )
                     ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <Link key={link.label} href={link.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
-                  {link.label}
-                </Link>
-              )
-            ))}
-          </nav>
-          <div className="flex items-center gap-2">
-            <Button asChild variant="ghost">
-              <Link href="/login">
-                <LogIn className="mr-2" /> Login
-              </Link>
-            </Button>
-            <Button asChild className="transition-transform transform hover:scale-105">
-              <Link href="/individual-donation">Donate Now</Link>
-            </Button>
+                    <SheetClose asChild>
+                      <Link href="/login" className="text-lg font-medium text-foreground transition-colors hover:text-primary flex items-center">
+                          <LogIn className="mr-2 h-5 w-5" /> Login
+                      </Link>
+                    </SheetClose>
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
-        <div className="md:hidden flex items-center gap-2">
-          <Button asChild size="sm" className="transition-transform transform hover:scale-105">
-            <Link href="/individual-donation">Donate Now</Link>
-          </Button>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="flex flex-col p-6">
-                <div className="flex justify-between items-center mb-6">
-                   <Link href="/" className="flex items-center gap-2" aria-label="AIM Foundation Home">
-                     <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
-                  </Link>
-                  <SheetClose asChild>
-                     <Button variant="ghost" size="icon">
-                        <X className="h-6 w-6" />
-                        <span className="sr-only">Close menu</span>
-                      </Button>
-                  </SheetClose>
-                </div>
-                <nav className="flex flex-col gap-4">
-                  {navLinks.map((link) => (
-                     link.isDropdown ? (
-                      <Accordion type="single" collapsible key={link.label}>
-                        <AccordionItem value={link.label} className="border-b-0">
-                          <AccordionTrigger className="text-lg font-medium text-foreground transition-colors hover:text-primary py-2 hover:no-underline">
-                            {link.label}
-                          </AccordionTrigger>
-                          <AccordionContent className="pl-4">
-                            <nav className="flex flex-col gap-4 pt-2">
-                            {link.items?.map((item) => (
-                              item.isSubDropdown ? (
-                                <Accordion type="single" collapsible key={item.label}>
-                                  <AccordionItem value={item.label} className="border-b-0">
-                                    <AccordionTrigger className="text-base font-medium text-muted-foreground transition-colors hover:text-primary py-2 hover:no-underline">
-                                      <SheetClose asChild>
-                                        {item.href ? (
-                                          <Link href={item.href} className="flex-1 text-left">{item.label}</Link>
-                                        ) : (
-                                          <span className="flex-1 text-left">{item.label}</span>
-                                        )}
-                                      </SheetClose>
-                                    </AccordionTrigger>
-                                    <AccordionContent className="pl-4">
-                                      <nav className="flex flex-col gap-4 pt-2">
-                                        {item.subItems?.map((subItem) => (
-                                          <SheetClose asChild key={subItem.label}>
-                                            <Link href={subItem.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
-                                              {subItem.label}
-                                            </Link>
-                                          </SheetClose>
-                                        ))}
-                                      </nav>
-                                    </AccordionContent>
-                                  </AccordionItem>
-                                </Accordion>
-                              ) : (
-                                <SheetClose asChild key={item.label}>
-                                  <Link href={item.href || '#'} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
-                                    {item.label}
-                                  </Link>
-                                </SheetClose>
-                              )
-                            ))}
-                            </nav>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                     ) : (
-                      <SheetClose asChild key={link.label}>
-                          <Link href={link.href} className="text-lg font-medium text-foreground transition-colors hover:text-primary">
-                          {link.label}
-                          </Link>
-                      </SheetClose>
-                     )
-                  ))}
-                  <SheetClose asChild>
-                    <Link href="/login" className="text-lg font-medium text-foreground transition-colors hover:text-primary flex items-center">
-                        <LogIn className="mr-2 h-5 w-5" /> Login
-                    </Link>
-                  </SheetClose>
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </div>
+        <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+          <DynamicIndividualDonationForm />
+        </DialogContent>
+      </Dialog>
     </header>
   );
 };
