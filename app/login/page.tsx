@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -20,8 +19,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AlertCircle } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function LoginPage() {
   return (
@@ -77,15 +74,6 @@ export default function LoginPage() {
               </Button>
             </div>
           </CardContent>
-          <CardFooter>
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Login Error</AlertTitle>
-              <AlertDescription>
-                This email is not in our database. Please contact an administrator.
-              </AlertDescription>
-            </Alert>
-          </CardFooter>
         </Card>
       </main>
       <Footer />
