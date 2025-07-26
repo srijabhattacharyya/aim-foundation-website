@@ -155,7 +155,7 @@ const navLinks = [
       { href: '/workshops-events', label: 'Workshops & Events' },
     ]
   },
-  { href: '#gallery', label: 'Gallery' },
+  { href: '/gallery', label: 'Gallery' },
   { href: '#resources', label: 'Resources' },
   { href: '#contact', label: 'Connect' },
 ];
