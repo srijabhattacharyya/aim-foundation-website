@@ -90,8 +90,8 @@ export default function IndividualDonationForm() {
     <Card className="w-full border-0 shadow-none rounded-none">
         <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold font-headline">BECOME A SMILE WARRIOR</h2>
-                <p className="text-muted-foreground">SUPPORT OUR CAUSE</p>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT OUR MISSION</h2>
+                <p className="text-muted-foreground">YOUR CONTRIBUTION MATTERS</p>
             </div>
 
             <Form {...form}>
