@@ -11,19 +11,16 @@ export default function ContactEmail() {
     setEmail(`${user}@${domain}`);
   }, []);
 
+  if (!email) {
+    return null;
+  }
+
   return (
-    <div className="text-muted-foreground mt-4">
-      {email && (
-        <>
-            <strong>Email:</strong>{' '}
-            <a
-            href={`mailto:${email}`}
-            className="hover:text-primary transition-colors"
-            >
-            {email}
-            </a>
-        </>
-      )}
-    </div>
+    <a
+      href={`mailto:${email}`}
+      className="hover:text-primary transition-colors"
+    >
+      {email}
+    </a>
   );
 }

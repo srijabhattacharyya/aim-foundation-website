@@ -17,7 +17,9 @@ const Footer = () => {
               <br />
               India
             </p>
-            <ContactEmail />
+            <div className="text-muted-foreground mt-1">
+              <strong>Email:</strong> <ContactEmail />
+            </div>
             <p className="text-muted-foreground">
               <strong>Phone:</strong> +91 123 456 7890
             </p>

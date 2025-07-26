@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ContactEmail from "@/components/layout/ContactEmail";
 
 export default function PrivacyPolicyPage() {
   return (
@@ -59,13 +60,13 @@ export default function PrivacyPolicyPage() {
                 AIM Foundation reserves the right to update or modify this Privacy Policy at any time, in accordance with legal requirements or changes in our data practices. Any such changes will be posted on this page with a revised effective date. We encourage you to review this policy periodically.
               </p>
               <h2 className="text-2xl font-bold font-headline pt-4">Contact Us</h2>
-               <p>
-                For queries related to Policies:
-                <br />
-                📧 Email: info@aimindia.org.in
-                <br />
-                🏢 Address: 41, Ballygaunge Terrace, Kolkata - 700029
-              </p>
+               <div className="text-muted-foreground">
+                <p>For queries related to Policies:</p>
+                <div className="flex items-center gap-2">
+                    <span>📧</span> <ContactEmail />
+                </div>
+                <p>🏢 Address: 41, Ballygaunge Terrace, Kolkata - 700029</p>
+              </div>
 
               <div className="pt-6 text-center">
                 <p>We thank you wholeheartedly for your support and understanding. Your kindness helps us continue creating meaningful change.</p>
