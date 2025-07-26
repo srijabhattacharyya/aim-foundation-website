@@ -20,6 +20,9 @@ import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
+import dynamic from "next/dynamic";
+
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 const donationSchema = z.object({
   amount: z.string().nonempty({ message: "Please select a donation amount." }),
@@ -41,18 +44,18 @@ const donationSchema = z.object({
 });
 
 const donationAmounts = [
-    { value: "3000", label: "₹3000" },
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
-    { value: "24000", label: "₹24000" },
+    { value: "1000", label: "₹1000" },
+    { value: "2500", label: "₹2500" },
+    { value: "5000", label: "₹5000" },
+    { value: "10000", label: "₹10000" },
 ];
 
-export default function InnocentSmilesDonationForm() {
+export default function TideShieldDonationForm() {
   const { toast } = useToast();
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
-      amount: "3000",
+      amount: "1000",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -76,8 +79,8 @@ export default function InnocentSmilesDonationForm() {
   function onSubmit(values: z.infer<typeof donationSchema>) {
     console.log(values);
     toast({
-      title: "Thank you for supporting Innocent Smiles!",
-      description: "Your support makes a difference.",
+      title: "Thank you for supporting TideShield!",
+      description: "Your contribution helps restore our coastlines.",
     });
     recaptchaRef.current?.reset();
     form.reset();
@@ -87,8 +90,8 @@ export default function InnocentSmilesDonationForm() {
     <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg bg-card">
         <CardContent className="p-0">
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold font-headline">SUPPORT INNOCENT SMILES</h2>
-                <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT TIDESHIELD</h2>
+                <p className="text-muted-foreground">PROTECT OUR COASTS</p>
             </div>
 
             <Form {...form}>
@@ -115,7 +118,7 @@ export default function InnocentSmilesDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">EDUCATION & ART FOR 1 CHILD FOR 6 MONTHS</p>
+                        <p className="text-center text-muted-foreground pt-2">PLANT 10 MANGROVE SAPLINGS</p>
                     </FormItem>
                     )}
                 />
@@ -288,7 +291,7 @@ export default function InnocentSmilesDonationForm() {
                     <FormItem>
                       <FormControl>
                         <div className="flex justify-center">
-                            <ReCAPTCHA
+                            <DynamicReCAPTCHA
                               ref={recaptchaRef}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
