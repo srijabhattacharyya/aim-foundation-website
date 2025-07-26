@@ -14,7 +14,11 @@ export default function PrivacyPolicyPage() {
             </h1>
             <div className="space-y-6 text-muted-foreground text-justify">
               <p>
-                Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation") is committed to protecting the privacy and confidentiality of all visitors, donors, and supporters who engage with us through our website: www.aimindia.org.in. We value your trust and are dedicated to handling your personal information with the utmost care, transparency, and responsibility.
+                Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation") is committed to protecting the privacy and confidentiality of all visitors, donors, and supporters who engage with us through our website: www.aimindia.org.in.
+              </p>
+              
+              <p>
+                We value your trust and are dedicated to handling your personal information with the utmost care, transparency, and responsibility.
               </p>
               
               <h2 className="text-2xl font-bold font-headline pt-4">Collection and Use of Personal Information</h2>
@@ -65,8 +69,7 @@ export default function PrivacyPolicyPage() {
 
               <div className="pt-6 text-center">
                 <p>We thank you wholeheartedly for your support and understanding. Your kindness helps us continue creating meaningful change.</p>
-                <p className="mt-2">Warm regards,</p>
-                <p>— Team AIM Foundation</p>
+                <p className="mt-2">— Team AIM Foundation</p>
               </div>
             </div>
           </div>
