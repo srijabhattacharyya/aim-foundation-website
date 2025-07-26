@@ -156,7 +156,13 @@ const navLinks = [
     ]
   },
   { href: '/gallery', label: 'Gallery' },
-  { href: '#resources', label: 'Resources' },
+  { 
+    label: 'Resources',
+    isDropdown: true,
+    items: [
+        { href: '/voices', label: 'Voices of Change' },
+    ]
+  },
   { href: '#contact', label: 'Connect' },
 ];
 

@@ -28,7 +28,7 @@ const Footer = () => {
               <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
               <li><Link href="/organisation" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
               <li><Link href="/educational-initiatives" className="text-muted-foreground hover:text-primary transition-colors">Initiatives</Link></li>
-              <li><Link href="#events" className="text-muted-foreground hover:text-primary transition-colors">Events</Link></li>
+              <li><Link href="/workshops-events" className="text-muted-foreground hover:text-primary transition-colors">Events</Link></li>
               <li><Link href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Connect</Link></li>
             </ul>
           </div>
@@ -38,7 +38,7 @@ const Footer = () => {
               <li><Link href="/join-us" className="text-muted-foreground hover:text-primary transition-colors">Join Us</Link></li>
               <li><Link href="/individual-donation" className="text-muted-foreground hover:text-primary transition-colors">Donate Now</Link></li>
               <li><Link href="/career" className="text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
+              <li><Link href="/voices" className="text-muted-foreground hover:text-primary transition-colors">Voices of Change</Link></li>
             </ul>
           </div>
           <div>
