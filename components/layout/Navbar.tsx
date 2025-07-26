@@ -152,6 +152,7 @@ const navLinks = [
     items: [
       { href: '/press-releases', label: 'Press Releases' },
       { href: '/media', label: 'Media' },
+      { href: '/workshops-events', label: 'Workshops & Events' },
     ]
   },
   { href: '#gallery', label: 'Gallery' },
