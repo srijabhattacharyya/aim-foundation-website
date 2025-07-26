@@ -121,7 +121,6 @@ const navLinks = [
     label: 'Together',
     isDropdown: true,
     items: [
-      { href: '#join', label: 'Join Us' },
       { href: '/individual-donation', label: 'Individual Donation' },
     ]
   },
