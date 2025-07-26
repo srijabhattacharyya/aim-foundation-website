@@ -12,14 +12,14 @@ const policies = [
     link: "/privacy-policy"
   },
   {
-    title: "Refund Policy",
-    content: "AIM Foundation deeply values donor support. As a non-profit, all donations are used immediately for charitable programs and are non-refundable. Donors are encouraged to review details carefully before giving. For any concerns, the Foundation remains available for clarification and assistance.",
-    link: "/refund-policy"
-  },
-  {
     title: "Donation Policy",
     content: "AIM Foundation ensures all donations are used responsibly for program support and community impact. Contributions are non-refundable and eligible for tax exemption under Section 80G. Donor data is kept confidential, and receipts are issued promptly. Transparency and accountability are prioritised.",
      link: "#"
+  },
+  {
+    title: "Refund Policy",
+    content: "AIM Foundation deeply values donor support. As a non-profit, all donations are used immediately for charitable programs and are non-refundable. Donors are encouraged to review details carefully before giving. For any concerns, the Foundation remains available for clarification and assistance.",
+    link: "/refund-policy"
   },
   {
     title: "Child Protection Policy",
