@@ -123,7 +123,14 @@ const navLinks = [
     isDropdown: true,
     items: [
       { href: '/individual-donation', label: 'Individual Donation' },
-      { href: '#', label: 'Corporate Partnership' },
+      { 
+        label: 'Corporate Partnership',
+        isSubDropdown: true,
+        href: '#',
+        subItems: [
+          { href: '/corporate-social-responsibility', label: 'Corporate Social Responsibility' },
+        ]
+      },
     ]
   },
   { href: '#events', label: 'Highlights' },
@@ -153,7 +160,7 @@ const Navbar = () => {
                         item.isSubDropdown ? (
                           <DropdownMenuSub key={item.label}>
                             <DropdownMenuSubTrigger>
-                                {item.href ? (
+                                {item.href && item.href !== '#' ? (
                                   <Link href={item.href} className="w-full text-left">{item.label}</Link>
                                 ) : (
                                   <span>{item.label}</span>
@@ -235,7 +242,7 @@ const Navbar = () => {
                                     <AccordionItem value={item.label} className="border-b-0">
                                       <AccordionTrigger className="text-base font-medium text-muted-foreground transition-colors hover:text-primary py-2 hover:no-underline">
                                         <SheetClose asChild>
-                                          {item.href ? (
+                                          {item.href && item.href !== '#' ? (
                                             <Link href={item.href} className="flex-1 text-left">{item.label}</Link>
                                           ) : (
                                             <span className="flex-1 text-left">{item.label}</span>
