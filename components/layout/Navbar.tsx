@@ -123,6 +123,7 @@ const navLinks = [
     isDropdown: true,
     items: [
       { href: '/individual-donation', label: 'Individual Donation' },
+      { href: '#', label: 'Corporate Partnership' },
     ]
   },
   { href: '#events', label: 'Highlights' },
