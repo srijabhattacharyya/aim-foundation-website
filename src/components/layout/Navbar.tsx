@@ -155,7 +155,7 @@ const navLinks = [
     ]
   },
   { href: '#gallery', label: 'Gallery' },
-  { href: '#blog', label: 'Blog' },
+  { href: '#resources', label: 'Resources' },
   { href: '#contact', label: 'Connect' },
 ];
 

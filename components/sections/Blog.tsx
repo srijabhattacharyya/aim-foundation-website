@@ -26,10 +26,10 @@ const blogPosts = [
 
 const Blog = () => {
   return (
-    <section id="blog" className="py-12 md:py-20 lg:py-24 bg-card">
+    <section id="resources" className="py-12 md:py-20 lg:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">Latest Blog</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">Latest Resources</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
             Stay close to the change you’re helping spark. Discover stories, reflections, and milestones from our journey of hope.
           </p>
