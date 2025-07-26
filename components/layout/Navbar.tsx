@@ -131,6 +131,7 @@ const navLinks = [
           { href: '/corporate-social-responsibility', label: 'Corporate Social Responsibility' },
           { href: '/cause-marketing-events', label: 'Cause Marketing & Events' },
           { href: '/employee-engagement', label: 'Employee Engagement' },
+          { href: '/payroll-giving', label: 'Payroll Giving' },
         ]
       },
     ]
