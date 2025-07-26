@@ -122,6 +122,7 @@ const navLinks = [
     label: 'Together',
     isDropdown: true,
     items: [
+      { href: '/join-us', label: 'Join Us' },
       { href: '/individual-donation', label: 'Individual Donation' },
       { 
         label: 'Corporate Partnership',
