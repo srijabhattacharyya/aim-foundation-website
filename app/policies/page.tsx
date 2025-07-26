@@ -24,7 +24,7 @@ const policies = [
   {
     title: "Transparency Policy",
     content: "AIM Foundation is committed to openness, accountability, and ethical practices. Financial reports, governance details, and program outcomes are publicly shared. Donations are used responsibly, and legal compliance is strictly followed. Stakeholders are encouraged to engage, review reports, and provide feedback.",
-     link: "#"
+     link: "/transparency-policy"
   },
   {
     title: "Volunteer Policy",
