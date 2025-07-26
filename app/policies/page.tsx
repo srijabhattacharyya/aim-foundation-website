@@ -22,8 +22,8 @@ const policies = [
     link: "/refund-policy"
   },
   {
-    title: "Child Protection Policy",
-    content: "Our strict guidelines and procedures to ensure the safety and well-being of all children we work with.",
+    title: "Transparency Policy",
+    content: "Details about our commitment to financial transparency, accountability, and reporting.",
      link: "#"
   },
   {
