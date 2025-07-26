@@ -9,34 +9,42 @@ const policies = [
   {
     title: "Privacy Policy",
     content: "AIM Foundation respects your privacy and protects all personal information shared on its website. Data is used solely for donations and communication, not shared with third parties. Users remain anonymous while browsing, and all information is securely handled internally.",
+    link: "/privacy-policy"
   },
   {
     title: "Refund Policy",
     content: "Details on our policy regarding donations and refunds, ensuring transparency and trust.",
+    link: "#"
   },
   {
     title: "Child Protection Policy",
     content: "Our strict guidelines and procedures to ensure the safety and well-being of all children we work with.",
+     link: "#"
   },
   {
     title: "Data Security Policy",
     content: "How we secure the data you entrust to us against unauthorized access and breaches.",
+     link: "#"
   },
   {
     title: "Volunteer Policy",
     content: "Guidelines and expectations for our valued volunteers who contribute their time and skills.",
+     link: "#"
   },
   {
     title: "Whistleblower Policy",
     content: "A safe and confidential process for reporting any concerns about misconduct or unethical behavior.",
+     link: "#"
   },
   {
     title: "Code of Conduct",
     content: "The ethical standards and principles that guide our staff, volunteers, and partners.",
+     link: "#"
   },
   {
     title: "Terms of Service",
     content: "The terms and conditions for using our website and engaging with our services.",
+     link: "#"
   },
 ];
 
@@ -64,7 +72,7 @@ export default function PoliciesPage() {
                   <CardContent className="flex-grow flex flex-col">
                     <p className="text-muted-foreground text-base flex-grow">{policy.content}</p>
                     <Button asChild className="mt-6 w-full transition-transform transform hover:scale-105">
-                      <Link href="#">View Policy</Link>
+                      <Link href={policy.link}>View Policy</Link>
                     </Button>
                   </CardContent>
                 </Card>
