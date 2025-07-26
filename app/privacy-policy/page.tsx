@@ -22,12 +22,22 @@ export default function PrivacyPolicyPage() {
                 When you choose to engage with AIM Foundation—by making a donation, subscribing to updates, or participating in our programs—you may be asked to provide personal details such as your name, email address, phone number, mailing address, and payment information.
               </p>
               <p>
-                Please be assured that this information is collected only with your knowledge and consent, and it is used solely for the purpose of processing donations, issuing receipts, providing updates, and responding to your queries or requests. Only authorised internal personnel have access to this information, and it is handled with the highest degree of confidentiality.
+                Please be assured that:
+              </p>
+              <ul className="list-disc list-inside space-y-2">
+                <li>This information is collected only with your knowledge and consent, and</li>
+                <li>It is used solely for the purpose of processing donations, issuing receipts, providing updates, and responding to your queries or requests.</li>
+              </ul>
+              <p>
+                Only authorised internal personnel have access to this information, and it is handled with the highest degree of confidentiality.
               </p>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Browsing Information</h2>
               <p>
-                You may browse our website without revealing any personal data. Basic non-personal information, such as IP address, date and time of access, browser type, and general location, may be automatically collected for analytics purposes. This information helps us improve website performance and user experience, but it does not identify individual users. We do not share, sell, rent, or trade any personal or browsing data with third parties.
+                You may browse our website without revealing any personal data. Basic non-personal information, such as IP address, date and time of access, browser type, and general location, may be automatically collected for analytics purposes. This information helps us improve website performance and user experience, but it does not identify individual users.
+              </p>
+              <p>
+                We do not share, sell, rent, or trade any personal or browsing data with third parties.
               </p>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Third-Party Links</h2>
@@ -44,6 +54,20 @@ export default function PrivacyPolicyPage() {
               <p>
                 AIM Foundation reserves the right to update or modify this Privacy Policy at any time, in accordance with legal requirements or changes in our data practices. Any such changes will be posted on this page with a revised effective date. We encourage you to review this policy periodically.
               </p>
+              <h2 className="text-2xl font-bold font-headline pt-4">Contact Us</h2>
+               <p>
+                For queries related to Policies:
+                <br />
+                📧 Email: info@aimindia.org.in
+                <br />
+                🏢 Address: 41, Ballygaunge Terrace, Kolkata - 700029
+              </p>
+
+              <div className="pt-6 text-center">
+                <p>We thank you wholeheartedly for your support and understanding. Your kindness helps us continue creating meaningful change.</p>
+                <p className="mt-2">Warm regards,</p>
+                <p>— Team AIM Foundation</p>
+              </div>
             </div>
           </div>
         </div>
