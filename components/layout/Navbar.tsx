@@ -177,11 +177,15 @@ const Navbar = () => {
                 <LogIn className="mr-2" /> Login
               </Link>
             </Button>
-            <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
+            <Button asChild className="transition-transform transform hover:scale-105">
+              <Link href="/individual-donation">Donate Now</Link>
+            </Button>
           </div>
         </div>
         <div className="md:hidden flex items-center gap-2">
-          <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
+          <Button asChild size="sm" className="transition-transform transform hover:scale-105">
+            <Link href="/individual-donation">Donate Now</Link>
+          </Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
