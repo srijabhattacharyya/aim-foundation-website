@@ -22,8 +22,8 @@ const policies = [
      link: "#"
   },
   {
-    title: "Data Security Policy",
-    content: "How we secure the data you entrust to us against unauthorized access and breaches.",
+    title: "Donation Policy",
+    content: "AIM Foundation ensures all donations are used responsibly for program support and community impact. Contributions are non-refundable and eligible for tax exemption under Section 80G. Donor data is kept confidential, and receipts are issued promptly. Transparency and accountability are prioritised.",
      link: "#"
   },
   {
