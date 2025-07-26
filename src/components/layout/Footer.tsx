@@ -25,12 +25,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-md mb-4">Useful Links</h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
-              <li><Link href="/organisation" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="/educational-initiatives" className="text-muted-foreground hover:text-primary transition-colors">Initiatives</Link></li>
-              <li><Link href="/workshops-events" className="text-muted-foreground hover:text-primary transition-colors">Events</Link></li>
-              <li><Link href="/films" className="text-muted-foreground hover:text-primary transition-colors">Films</Link></li>
-              <li><Link href="/connect" className="text-muted-foreground hover:text-primary transition-colors">Connect</Link></li>
+              <li><Link href="/policies" className="text-muted-foreground hover:text-primary transition-colors">Policies</Link></li>
             </ul>
           </div>
           <div>
