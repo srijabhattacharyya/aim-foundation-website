@@ -127,6 +127,7 @@ const navLinks = [
         href: '/join-us',
         subItems: [
           { href: '/internship', label: 'Join as an Intern' },
+          { href: '/volunteering', label: 'Join as a Volunteer' },
         ]
       },
       { href: '/individual-donation', label: 'Individual Donation' },

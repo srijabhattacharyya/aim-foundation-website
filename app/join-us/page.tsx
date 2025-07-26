@@ -19,7 +19,7 @@ const opportunities = [
     description: "Your time and skills are invaluable. Join our passionate community of volunteers dedicated to making a difference on the ground.",
     image: "https://placehold.co/600x400.png",
     hint: "volunteers community work",
-    link: "#"
+    link: "/volunteering"
   },
   {
     title: "Careers with Purpose",
