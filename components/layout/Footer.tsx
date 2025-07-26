@@ -54,6 +54,7 @@ const Footer = () => {
                 <h6 className='font-semibold text-md mb-4'><Link href="/newsletter">Newsletter</Link></h6>
                 <p className='text-muted-foreground'>Subscribe to our newsletter for updates.</p>
                 <h6 className='font-semibold text-md mb-4 mt-2'><Link href="/annual-report">Annual Report</Link></h6>
+                 <h6 className='font-semibold text-md mb-4 mt-2'><Link href="/library">Library</Link></h6>
             </div>
           </div>
         </div>

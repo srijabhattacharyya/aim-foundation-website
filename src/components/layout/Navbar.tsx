@@ -163,6 +163,7 @@ const navLinks = [
         { href: '/films', label: 'Films' },
         { href: '/newsletter', label: 'Newsletter' },
         { href: '/annual-report', label: 'Annual Report' },
+        { href: '/library', label: 'Library' },
     ]
   },
   { href: '/connect', label: 'Connect' },
