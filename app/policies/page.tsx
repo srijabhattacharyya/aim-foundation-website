@@ -14,7 +14,7 @@ const policies = [
   {
     title: "Donation Policy",
     content: "AIM Foundation ensures all donations are used responsibly for program support and community impact. Contributions are non-refundable and eligible for tax exemption under Section 80G. Donor data is kept confidential, and receipts are issued promptly. Transparency and accountability are prioritised.",
-     link: "#"
+     link: "/donation-policy"
   },
   {
     title: "Refund Policy",
