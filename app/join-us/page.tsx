@@ -12,7 +12,7 @@ const opportunities = [
     description: "Gain hands-on experience and contribute to meaningful projects. Our internship program offers a unique opportunity to learn, grow, and make a real impact.",
     image: "https://placehold.co/600x400.png",
     hint: "internship office team",
-    link: "#"
+    link: "/internship"
   },
   {
     title: "Join as a Volunteer",
