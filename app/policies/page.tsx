@@ -1,7 +1,9 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const policies = [
   {
@@ -59,8 +61,11 @@ export default function PoliciesPage() {
                   <CardHeader>
                     <CardTitle className="font-headline text-xl">{policy.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-grow">
-                    <p className="text-muted-foreground text-base">{policy.content}</p>
+                  <CardContent className="flex-grow flex flex-col">
+                    <p className="text-muted-foreground text-base flex-grow">{policy.content}</p>
+                    <Button asChild className="mt-6 w-full transition-transform transform hover:scale-105">
+                      <Link href="#">View Policy</Link>
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
