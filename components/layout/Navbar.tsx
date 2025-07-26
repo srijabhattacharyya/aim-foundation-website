@@ -163,6 +163,7 @@ const navLinks = [
         { href: '/voices', label: 'Voices of Change' },
         { href: '/films', label: 'Films' },
         { href: '/newsletter', label: 'Newsletter' },
+        { href: '/annual-report', label: 'Annual Report' },
     ]
   },
   { href: '#contact', label: 'Connect' },
