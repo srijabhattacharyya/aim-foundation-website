@@ -106,7 +106,14 @@ const navLinks = [
       { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
     ]
   },
-  { href: '#join', label: 'Together' },
+  { 
+    label: 'Together',
+    isDropdown: true,
+    items: [
+      { href: '#join', label: 'Join Us' },
+      { href: '/individual-donation', label: 'Individual Donation' },
+    ]
+  },
   { href: '#events', label: 'Highlights' },
   { href: '#gallery', label: 'Gallery' },
   { href: '#blog', label: 'Blog' },
