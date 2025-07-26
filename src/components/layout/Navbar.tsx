@@ -150,6 +150,7 @@ const navLinks = [
     isDropdown: true,
     items: [
       { href: '/press-releases', label: 'Press Releases' },
+      { href: '/media', label: 'Media' },
     ]
   },
   { href: '#gallery', label: 'Gallery' },
