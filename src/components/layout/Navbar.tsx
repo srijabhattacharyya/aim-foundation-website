@@ -160,6 +160,7 @@ const navLinks = [
     isDropdown: true,
     items: [
         { href: '/voices', label: 'Voices of Change' },
+        { href: '/films', label: 'Films' },
     ]
   },
   { href: '#contact', label: 'Connect' },
