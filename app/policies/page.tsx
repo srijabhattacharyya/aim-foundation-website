@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const policies = [
   {
     title: "Privacy Policy",
-    content: "Our commitment to protecting your personal information and how we use data responsibly.",
+    content: "AIM Foundation respects your privacy and protects all personal information shared on its website. Data is used solely for donations and communication, not shared with third parties. Users remain anonymous while browsing, and all information is securely handled internally.",
   },
   {
     title: "Refund Policy",
