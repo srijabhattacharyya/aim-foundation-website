@@ -175,18 +175,6 @@ export default function CareCircleDonationForm() {
                     />
                     <FormField
                         control={form.control}
-                        name="dob"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormControl>
-                                <Input type="date" placeholder="DOB" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
                         name="pan"
                         render={({ field }) => (
                             <FormItem>
@@ -197,6 +185,21 @@ export default function CareCircleDonationForm() {
                             </FormItem>
                         )}
                     />
+                </div>
+                <FormField
+                    control={form.control}
+                    name="dob"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Date of Birth</FormLabel>
+                        <FormControl>
+                            <Input type="date" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <FormField
                         control={form.control}
                         name="country"
@@ -233,6 +236,18 @@ export default function CareCircleDonationForm() {
                             </FormItem>
                         )}
                     />
+                    <FormField
+                        control={form.control}
+                        name="pincode"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="Pincode" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                 </div>
                 
                 <FormField
@@ -242,19 +257,6 @@ export default function CareCircleDonationForm() {
                         <FormItem>
                         <FormControl>
                             <Input placeholder="Address" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name="pincode"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormControl>
-                            <Input placeholder="Pincode" {...field} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>
