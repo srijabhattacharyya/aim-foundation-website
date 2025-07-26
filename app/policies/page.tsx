@@ -70,6 +70,10 @@ export default function PoliciesPage() {
                     <p>
                       We sincerely request all donors to carefully review the donation details before confirming the transaction.
                     </p>
+                  </div>
+                </div>
+                <div className="bg-card p-8 rounded-lg shadow-md">
+                   <div className="space-y-4 text-muted-foreground text-justify">
                     <p>
                       We thank you wholeheartedly for your support and understanding. Your kindness helps us continue creating meaningful change.
                     </p>
