@@ -128,6 +128,7 @@ const navLinks = [
         href: '#',
         subItems: [
           { href: '/corporate-social-responsibility', label: 'Corporate Social Responsibility' },
+          { href: '/cause-marketing-events', label: 'Cause Marketing & Events' },
         ]
       },
     ]
