@@ -39,7 +39,7 @@ const policies = [
   {
     title: "Volunteer Policy",
     content: "AIM Foundation values volunteers as essential partners in its mission. The policy outlines respectful engagement, clear roles, code of conduct, and safeguarding measures. Volunteers receive orientation, support, and recognition, while contributing ethically and responsibly to education, health, and community initiatives.",
-     link: "#"
+     link: "/volunteer-policy"
   },
   {
     title: "Terms of Service",
