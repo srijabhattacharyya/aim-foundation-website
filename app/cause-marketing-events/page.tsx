@@ -59,6 +59,7 @@ export default function CauseMarketingEventsPage() {
         </section>
 
         <WaysToPartner />
+        <QuickFacts />
         
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
@@ -107,8 +108,6 @@ export default function CauseMarketingEventsPage() {
            </div>
         </section>
         
-        <QuickFacts />
-
       </main>
       <Footer />
     </div>
