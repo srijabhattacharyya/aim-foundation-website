@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
+import QuickFacts from "@/components/sections/QuickFacts";
 
 export default function CauseMarketingEventsPage() {
   return (
@@ -84,7 +85,7 @@ export default function CauseMarketingEventsPage() {
                         Join hands with AIM Foundation to co-create meaningful campaigns that move hearts, inspire action, and transform lives.
                     </p>
                     <p className="mt-4">
-                        Connect with our Partnerships Team today: <TrusteeEmail />
+                       Connect with our Partnerships Team today: <TrusteeEmail />
                     </p>
                      <p className="mt-2">
                         Because when your brand stands for something bigger, your customers stand with you.
@@ -95,6 +96,7 @@ export default function CauseMarketingEventsPage() {
             </div>
           </div>
         </section>
+        <QuickFacts />
       </main>
       <Footer />
     </div>
