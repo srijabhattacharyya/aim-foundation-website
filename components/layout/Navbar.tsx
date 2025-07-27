@@ -184,7 +184,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto flex h-[100px] items-center justify-between px-4 md:px-6">
+        <div className="flex h-[100px] items-center justify-between px-4 md:px-6">
           <div className="flex h-full items-center mr-6">
             <Link href="/" className="flex items-center" aria-label="AIM Foundation Home">
               <Image src="/images/logo.png" alt="AIM Foundation Logo" width={150} height={60} />
@@ -200,7 +200,7 @@ const Navbar = () => {
                     </Button>
                     <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
                         <DialogTrigger asChild>
-                        <Button variant="outline" size="sm" className="transition-transform transform hover:scale-105 border-accent text-accent hover:bg-accent/10">Sponsor a Child</Button>
+                        <Button variant="outline" size="sm" className="transition-transform transform hover:scale-105 border-accent text-accent hover:bg-accent hover:text-accent-foreground">Sponsor a Child</Button>
                         </DialogTrigger>
                         <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
                             <DynamicSponsorChildDonationForm />
@@ -355,7 +355,7 @@ const Navbar = () => {
                     <SheetClose asChild>
                         <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
                             <DialogTrigger asChild>
-                                <Button variant="outline" className="w-full justify-start text-lg font-medium border-accent text-accent hover:bg-accent/10">Sponsor a Child</Button>
+                                <Button variant="outline" className="w-full justify-start text-lg font-medium border-accent text-accent hover:bg-accent hover:text-accent-foreground">Sponsor a Child</Button>
                             </DialogTrigger>
                             <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
                                 <DynamicSponsorChildDonationForm />

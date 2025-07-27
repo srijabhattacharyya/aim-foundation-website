@@ -199,7 +199,7 @@ const Navbar = () => {
                     </Button>
                     <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
                         <DialogTrigger asChild>
-                        <Button variant="outline" size="sm" className="transition-transform transform hover:scale-105 border-accent text-accent hover:bg-accent/10">Sponsor a Child</Button>
+                        <Button variant="outline" size="sm" className="transition-transform transform hover:scale-105 border-accent text-accent hover:bg-accent hover:text-accent-foreground">Sponsor a Child</Button>
                         </DialogTrigger>
                         <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
                             <DynamicSponsorChildDonationForm />
@@ -354,7 +354,7 @@ const Navbar = () => {
                     <SheetClose asChild>
                         <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
                             <DialogTrigger asChild>
-                                <Button variant="outline" className="w-full justify-start text-lg font-medium border-accent text-accent hover:bg-accent/10">Sponsor a Child</Button>
+                                <Button variant="outline" className="w-full justify-start text-lg font-medium border-accent text-accent hover:bg-accent hover:text-accent-foreground">Sponsor a Child</Button>
                             </DialogTrigger>
                             <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
                                 <DynamicSponsorChildDonationForm />
