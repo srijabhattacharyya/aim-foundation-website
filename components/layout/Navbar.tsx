@@ -190,7 +190,7 @@ const Navbar = () => {
               <Image src="/images/logo.png" alt="AIM Foundation Logo" width={150} height={60} />
             </Link>
           </div>
-          <div className="hidden md:flex flex-col h-full">
+          <div className="hidden md:flex flex-col h-full w-full">
               <div className="flex justify-end items-center h-1/2 border-b">
                   <div className="flex items-center gap-2">
                     <Button asChild variant="ghost" size="sm">
