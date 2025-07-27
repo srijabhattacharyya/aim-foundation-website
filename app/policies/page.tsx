@@ -29,7 +29,7 @@ const policies = [
   {
     title: "Safeguarding Policy",
     content: "AIM Foundation prioritizes the safety and dignity of children and vulnerable individuals. All staff and volunteers follow strict codes of conduct. Safeguarding concerns are handled confidentially, with zero tolerance for abuse. Legal compliance and regular training ensure a safe environment for all.",
-     link: "#"
+     link: "/safeguarding-policy"
   },
   {
     title: "Whistleblower Policy",
