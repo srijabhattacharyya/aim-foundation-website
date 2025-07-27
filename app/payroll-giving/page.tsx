@@ -36,11 +36,47 @@ export default function PayrollGivingPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline">Empower Change, One Paycheck at a Time</h2>
-              <p className="mt-4 text-lg text-muted-foreground text-justify">
-                Payroll Giving is a simple, effective, and convenient way for employees to make regular donations to AIM Foundation directly from their salary. A small, consistent contribution from many can create a powerful wave of change, providing us with the steady support needed to sustain our long-term community development projects. It's an effortless way for your team to engage in philanthropy and for your company to foster a culture of giving.
-              </p>
+            <div className="max-w-4xl mx-auto">
+                <div className="space-y-6 text-lg text-muted-foreground text-justify">
+                    <p>
+                        Payroll Giving is a powerful and seamless way for employees and organizations to support social causes they care about. Through this program, a small, voluntary amount is deducted from an employee’s monthly salary and donated directly to AIM Foundation’s initiatives, creating lasting impact—without any extra effort.
+                    </p>
+
+                    <h3 className="text-2xl font-bold font-headline pt-6">Why Choose Payroll Giving?</h3>
+                    <p>
+                        Payroll Giving is more than just a donation—it’s a culture. It encourages employees to:
+                    </p>
+                    <ul className="list-disc list-inside space-y-2 pl-4">
+                        <li>Contribute effortlessly from their workplace</li>
+                        <li>Feel connected to a larger social purpose</li>
+                        <li>Participate in creating positive, sustainable change</li>
+                        <li>Bond as a team through shared values and impact</li>
+                    </ul>
+                    <p>
+                        For organizations, it’s a meaningful way to demonstrate your social commitment, while fostering employee engagement and team spirit.
+                    </p>
+                    
+                    <h3 className="text-2xl font-bold font-headline pt-6">How It Works</h3>
+                    <ol className="list-decimal list-inside space-y-2 pl-4">
+                        <li>Employees opt-in voluntarily to donate a fixed monthly amount</li>
+                        <li>The organization facilitates automatic deductions from their salaries</li>
+                        <li>AIM Foundation receives the funds and channels them into programs across education, healthcare, women empowerment, environment, and more</li>
+                        <li>Regular updates and impact reports are shared with both employees and the organization</li>
+                    </ol>
+                    <p>
+                        It’s easy to implement, fully transparent, and customizable to your CSR goals.
+                    </p>
+                    
+                    <h3 className="text-2xl font-bold font-headline pt-6">Go Beyond Donations</h3>
+                    <p>
+                        Payroll Giving isn’t just about monetary contributions. Employees also have the chance to engage deeper with AIM Foundation’s work by:
+                    </p>
+                    <ul className="list-disc list-inside space-y-2 pl-4">
+                        <li>Volunteering on special occasions</li>
+                        <li>Participating in community drives and awareness campaigns</li>
+                        <li>Visiting project locations to witness their impact firsthand</li>
+                    </ul>
+                </div>
             </div>
           </div>
         </section>
@@ -50,19 +86,14 @@ export default function PayrollGivingPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center bg-card p-8 rounded-lg shadow-lg">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Ready to Implement Payroll Giving?</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Start a Culture of Giving in Your Workplace</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
-                    Partner with us to set up a seamless Payroll Giving program for your employees and join a network of socially responsible companies dedicated to creating lasting impact.
+                    Empower your employees to make a difference—right from their desks. Partner with AIM Foundation to launch your Payroll Giving Program today.
                 </p>
                 <div className="mt-6">
-                    <p className="font-semibold">Connect with our Corporate Partnerships Team</p>
-                    <p className="mt-2">
-                        Email us at: <TrusteeEmail />
-                    </p>
+                    <p className="font-semibold">Email us at: <TrusteeEmail /></p>
                 </div>
-                <Button size="lg" className="mt-8">
-                    Get Started Today
-                </Button>
+                 <p className="mt-4 text-lg font-semibold">Small contributions. Big change. Every month. Together.</p>
             </div>
           </div>
         </section>
