@@ -28,6 +28,7 @@ const Footer = () => {
             <h3 className="font-semibold text-md mb-4">Useful Links</h3>
             <ul className="space-y-2">
               <li><Link href="/policies" className="text-muted-foreground hover:text-primary transition-colors">Policies</Link></li>
+              <li><Link href="/code-of-conduct" className="text-muted-foreground hover:text-primary transition-colors">Code of Conduct</Link></li>
             </ul>
           </div>
           <div>
