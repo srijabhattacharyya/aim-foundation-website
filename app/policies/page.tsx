@@ -34,7 +34,7 @@ const policies = [
   {
     title: "Whistleblower Policy",
     content: "AIM Foundation encourages stakeholders to report any unethical conduct, fraud, or abuse in good faith. Reports are confidential, investigated fairly, and free from retaliation. Whistleblowers are protected, and false allegations are discouraged. Integrity and accountability are core to our mission.",
-     link: "#"
+     link: "/whistleblower-policy"
   },
   {
     title: "Code of Conduct",
