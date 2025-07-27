@@ -35,6 +35,14 @@ const DynamicIndividualDonationForm = dynamic(
   }
 );
 
+const DynamicSponsorChildDonationForm = dynamic(
+  () => import('../sections/donation-forms/SponsorChildDonationForm'),
+  {
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
+  }
+);
+
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -171,9 +179,11 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const [sponsorDialogOpen, setSponsorDialogOpen] = useState(false);
+  const [donateDialogOpen, setDonateDialogOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <Dialog>
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <Link href="/" className="flex items-center gap-2 md:mr-10" aria-label="AIM Foundation Home">
             <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
@@ -228,15 +238,33 @@ const Navbar = () => {
                   <LogIn className="mr-2" /> Login
                 </Link>
               </Button>
-              <DialogTrigger asChild>
-                <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
-              </DialogTrigger>
+               <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="transition-transform transform hover:scale-105 border-accent text-accent hover:bg-accent/10">Sponsor a Child</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+                    <DynamicSponsorChildDonationForm />
+                </DialogContent>
+              </Dialog>
+              <Dialog open={donateDialogOpen} onOpenChange={setDonateDialogOpen}>
+                <DialogTrigger asChild>
+                    <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+                    <DynamicIndividualDonationForm />
+                </DialogContent>
+               </Dialog>
             </div>
           </div>
           <div className="md:hidden flex items-center gap-2">
-            <DialogTrigger asChild>
-              <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
-            </DialogTrigger>
+            <Dialog open={donateDialogOpen} onOpenChange={setDonateDialogOpen}>
+                <DialogTrigger asChild>
+                    <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
+                </DialogTrigger>
+                 <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+                    <DynamicIndividualDonationForm />
+                </DialogContent>
+            </Dialog>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -324,10 +352,6 @@ const Navbar = () => {
             </Sheet>
           </div>
         </div>
-        <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-          <DynamicIndividualDonationForm />
-        </DialogContent>
-      </Dialog>
     </header>
   );
 };
