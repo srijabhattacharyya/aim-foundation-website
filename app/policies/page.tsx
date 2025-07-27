@@ -44,7 +44,7 @@ const policies = [
   {
     title: "Cookie Policy",
     content: "AIM Foundation’s website uses cookies to enhance user experience, analyse traffic, and enable essential functions. No personal data is collected or shared. Users can manage cookie preferences via browser settings. Continued use of the site implies consent to this policy.",
-     link: "#"
+     link: "/cookie-policy"
   },
 ];
 
