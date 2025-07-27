@@ -25,7 +25,7 @@ export default function VolunteeringPage() {
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
             <div className="relative z-10 text-left">
               <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Volunteer with AIM Foundation: Create Change!
+                Volunteer with AIM Foundation: <br /> Create Change!
               </h1>
             </div>
           </div>
@@ -74,12 +74,12 @@ export default function VolunteeringPage() {
                   <li>Certificate of Completion for every volunteer</li>
                 </ul>
 
-                <div className="bg-card p-6 rounded-lg shadow-md mt-10">
+                <div className="bg-card p-6 rounded-lg shadow-md mt-10 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">Ready to Get Involved?</h2>
                     <p className="mt-4">
                     Before applying, please explore our <Link href="/volunteer-policy" className="underline hover:text-primary">Volunteer Orientation Handbook</Link> and review our <Link href="/code-of-conduct" className="underline hover:text-primary">Code of Conduct for Working with Children & Young People</Link>.
                     </p>
-                    <p className="mt-4">
+                    <p className="mt-4 font-semibold">
                     Join Us & Be the Change You Wish to See!
                     </p>
                     <p className="mt-4">
