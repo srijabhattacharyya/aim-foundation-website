@@ -184,79 +184,85 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-          <Link href="/" className="flex items-center gap-2 md:mr-10" aria-label="AIM Foundation Home">
-            <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
-          </Link>
-          <div className="hidden md:flex items-center gap-6">
-            <nav className="flex gap-6 items-center">
-              {navLinks.map((link) => (
-                link.isDropdown ? (
-                  <DropdownMenu key={link.label}>
-                    <DropdownMenuTrigger className="flex items-center gap-1 text-base font-medium text-muted-foreground transition-colors hover:text-primary focus:outline-none">
-                      {link.label} <ChevronDown className="h-4 w-4" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      {link.items?.map((item) => (
-                        item.isSubDropdown ? (
-                          <DropdownMenuSub key={item.label}>
-                            <DropdownMenuSubTrigger>
-                                {item.href && item.href !== '#' ? (
-                                  <Link href={item.href} className="w-full text-left">{item.label}</Link>
-                                ) : (
-                                  <span>{item.label}</span>
-                                )}
-                            </DropdownMenuSubTrigger>
-                            <DropdownMenuPortal>
-                              <DropdownMenuSubContent>
-                                {item.subItems?.map((subItem) => (
-                                  <DropdownMenuItem key={subItem.label} asChild>
-                                    <Link href={subItem.href}>{subItem.label}</Link>
-                                  </DropdownMenuItem>
-                                ))}
-                              </DropdownMenuSubContent>
-                            </DropdownMenuPortal>
-                          </DropdownMenuSub>
-                        ) : (
-                          <DropdownMenuItem key={item.label} asChild>
-                            <Link href={item.href || '#'}>{item.label}</Link>
-                          </DropdownMenuItem>
-                        )
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <Link key={link.label} href={link.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-primary">
-                    {link.label}
-                  </Link>
-                )
-              ))}
-            </nav>
-            <div className="flex items-center gap-2">
-              <Button asChild variant="ghost">
-                <Link href="/login">
-                  <LogIn className="mr-2" /> Login
-                </Link>
-              </Button>
-               <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button variant="outline" className="transition-transform transform hover:scale-105 border-accent text-accent hover:bg-accent/10">Sponsor a Child</Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                    <DynamicSponsorChildDonationForm />
-                </DialogContent>
-              </Dialog>
-              <Dialog open={donateDialogOpen} onOpenChange={setDonateDialogOpen}>
-                <DialogTrigger asChild>
-                    <Button className="transition-transform transform hover:scale-105">Donate Now</Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                    <DynamicIndividualDonationForm />
-                </DialogContent>
-               </Dialog>
-            </div>
+        <div className="container mx-auto flex h-[100px] items-center px-4 md:px-6">
+          <div className="flex h-full items-center mr-6">
+            <Link href="/" className="flex items-center" aria-label="AIM Foundation Home">
+              <Image src="/images/logo.png" alt="AIM Foundation Logo" width={150} height={60} />
+            </Link>
           </div>
-          <div className="md:hidden flex items-center gap-2">
+          <div className="hidden md:flex flex-col h-full w-full">
+              <div className="flex justify-end items-center h-1/2 border-b">
+                  <div className="flex items-center gap-2">
+                    <Button asChild variant="ghost" size="sm">
+                        <Link href="/login">
+                        <LogIn className="mr-2 h-4 w-4" /> Login
+                        </Link>
+                    </Button>
+                    <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
+                        <DialogTrigger asChild>
+                        <Button variant="outline" size="sm" className="transition-transform transform hover:scale-105 border-accent text-accent hover:bg-accent/10">Sponsor a Child</Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+                            <DynamicSponsorChildDonationForm />
+                        </DialogContent>
+                    </Dialog>
+                    <Dialog open={donateDialogOpen} onOpenChange={setDonateDialogOpen}>
+                        <DialogTrigger asChild>
+                            <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+                            <DynamicIndividualDonationForm />
+                        </DialogContent>
+                    </Dialog>
+                  </div>
+              </div>
+              <div className="flex items-center h-1/2">
+                <nav className="flex gap-6 items-center">
+                {navLinks.map((link) => (
+                    link.isDropdown ? (
+                    <DropdownMenu key={link.label}>
+                        <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary focus:outline-none">
+                        {link.label} <ChevronDown className="h-4 w-4" />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                        {link.items?.map((item) => (
+                            item.isSubDropdown ? (
+                            <DropdownMenuSub key={item.label}>
+                                <DropdownMenuSubTrigger>
+                                    {item.href && item.href !== '#' ? (
+                                    <Link href={item.href} className="w-full text-left">{item.label}</Link>
+                                    ) : (
+                                    <span>{item.label}</span>
+                                    )}
+                                </DropdownMenuSubTrigger>
+                                <DropdownMenuPortal>
+                                <DropdownMenuSubContent>
+                                    {item.subItems?.map((subItem) => (
+                                    <DropdownMenuItem key={subItem.label} asChild>
+                                        <Link href={subItem.href}>{subItem.label}</Link>
+                                    </DropdownMenuItem>
+                                    ))}
+                                </DropdownMenuSubContent>
+                                </DropdownMenuPortal>
+                            </DropdownMenuSub>
+                            ) : (
+                            <DropdownMenuItem key={item.label} asChild>
+                                <Link href={item.href || '#'}>{item.label}</Link>
+                            </DropdownMenuItem>
+                            )
+                        ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                    ) : (
+                    <Link key={link.label} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                        {link.label}
+                    </Link>
+                    )
+                ))}
+                </nav>
+              </div>
+          </div>
+          <div className="md:hidden flex items-center gap-2 ml-auto">
             <Dialog open={donateDialogOpen} onOpenChange={setDonateDialogOpen}>
                 <DialogTrigger asChild>
                     <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
@@ -341,10 +347,20 @@ const Navbar = () => {
                         </SheetClose>
                       )
                     ))}
-                    <SheetClose asChild>
+                     <SheetClose asChild>
                       <Link href="/login" className="text-lg font-medium text-foreground transition-colors hover:text-primary flex items-center">
                           <LogIn className="mr-2 h-5 w-5" /> Login
                       </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                        <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
+                            <DialogTrigger asChild>
+                                <Button variant="outline" className="w-full justify-start text-lg font-medium border-accent text-accent hover:bg-accent/10">Sponsor a Child</Button>
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+                                <DynamicSponsorChildDonationForm />
+                            </DialogContent>
+                        </Dialog>
                     </SheetClose>
                   </nav>
                 </div>
