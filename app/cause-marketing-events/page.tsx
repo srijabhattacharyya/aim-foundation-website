@@ -106,8 +106,9 @@ export default function CauseMarketingEventsPage() {
             </div>
            </div>
         </section>
-
+        
         <QuickFacts />
+
       </main>
       <Footer />
     </div>
