@@ -27,8 +27,8 @@ const policies = [
      link: "/transparency-policy"
   },
   {
-    title: "Volunteer Policy",
-    content: "Guidelines and expectations for our valued volunteers who contribute their time and skills.",
+    title: "Safeguarding Policy",
+    content: "AIM Foundation prioritizes the safety and dignity of children and vulnerable individuals. All staff and volunteers follow strict codes of conduct. Safeguarding concerns are handled confidentially, with zero tolerance for abuse. Legal compliance and regular training ensure a safe environment for all.",
      link: "#"
   },
   {
