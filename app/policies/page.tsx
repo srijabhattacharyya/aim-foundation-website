@@ -42,8 +42,8 @@ const policies = [
      link: "/volunteer-policy"
   },
   {
-    title: "Terms of Service",
-    content: "The terms and conditions for using our website and engaging with our services.",
+    title: "Cookie Policy",
+    content: "AIM Foundation’s website uses cookies to enhance user experience, analyse traffic, and enable essential functions. No personal data is collected or shared. Users can manage cookie preferences via browser settings. Continued use of the site implies consent to this policy.",
      link: "#"
   },
 ];
