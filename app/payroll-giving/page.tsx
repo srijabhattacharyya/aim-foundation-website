@@ -28,7 +28,7 @@ export default function PayrollGivingPage() {
                 Payroll Giving with AIM Foundation
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                A Simple Way to Make a Big Impact
+                A Simple Way to Give Back—Every Month, Every Paycheck
               </p>
             </div>
           </div>
