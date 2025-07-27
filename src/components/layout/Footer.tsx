@@ -28,6 +28,8 @@ const Footer = () => {
             <h3 className="font-semibold text-md mb-4">Useful Links</h3>
             <ul className="space-y-2">
               <li><Link href="/policies" className="text-muted-foreground hover:text-primary transition-colors">Policies</Link></li>
+              <li><Link href="/code-of-conduct" className="text-muted-foreground hover:text-primary transition-colors">Code of Conduct</Link></li>
+              <li><Link href="/grievance-redressal" className="text-muted-foreground hover:text-primary transition-colors">Grievance Redressal</Link></li>
             </ul>
           </div>
           <div>
@@ -42,7 +44,7 @@ const Footer = () => {
           <div>
             <h5 className="font-semibold text-md mb-4">Follow Us</h5>
             <div className="flex space-x-4">
-              <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors"><Facebook size={24} /></Link>
+              <Link href="https://www.facebook.com/aimindiango/" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors"><Facebook size={24} /></Link>
               <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors"><Twitter size={24} /></Link>
               <Link href="#" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors"><Instagram size={24} /></Link>
               <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
