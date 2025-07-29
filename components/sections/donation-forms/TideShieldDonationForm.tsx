@@ -100,8 +100,11 @@ export default function TideShieldDonationForm() {
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
+      form.setValue("passport", "");
     } else {
-        form.setValue("country", "");
+      form.setValue("country", "");
+      form.setValue("pan", "");
+      form.setValue("state", "");
     }
   }, [nationality, form]);
 

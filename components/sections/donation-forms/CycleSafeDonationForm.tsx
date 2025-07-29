@@ -100,8 +100,11 @@ export default function CycleSafeDonationForm() {
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
+      form.setValue("passport", "");
     } else {
-        form.setValue("country", "");
+      form.setValue("country", "");
+      form.setValue("pan", "");
+      form.setValue("state", "");
     }
   }, [nationality, form]);
 
@@ -117,8 +120,8 @@ export default function CycleSafeDonationForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg bg-card">
-        <CardContent className="p-0">
+    <Card className="w-full border-0 shadow-none rounded-none">
+        <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT CYCLESAFE</h2>
                 <p className="text-muted-foreground">GIFT DIGNITY & HEALTH</p>
