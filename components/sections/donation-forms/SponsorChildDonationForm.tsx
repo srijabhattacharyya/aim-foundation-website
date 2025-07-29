@@ -28,15 +28,17 @@ const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), {
 });
 
 const donationSchema = z.object({
+  nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
   amount: z.string().nonempty({ message: "Please select a donation amount." }),
   otherAmount: z.string().optional(),
   fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
   dob: z.string().nonempty({ message: "Date of birth is required." }),
-  pan: z.string().min(10, { message: "PAN must be 10 characters." }).max(10, { message: "PAN must be 10 characters." }),
-  country: z.string(),
-  state: z.string().nonempty({ message: "State is required." }),
+  pan: z.string().optional(),
+  passport: z.string().optional(),
+  country: z.string().nonempty({ message: "Country is required." }),
+  state: z.string().optional(),
   city: z.string().nonempty({ message: "City is required." }),
   address: z.string().nonempty({ message: "Address is required." }),
   pincode: z.string().min(6, { message: "Pincode must be 6 digits." }).max(6, { message: "Pincode must be 6 digits." }),
@@ -44,6 +46,22 @@ const donationSchema = z.object({
     message: "You must agree to the terms.",
   }),
   recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
+}).refine(data => {
+    if (data.nationality === "Indian") {
+        return !!data.pan && data.pan.length === 10;
+    }
+    return true;
+}, {
+    message: "PAN must be 10 characters for Indian nationals.",
+    path: ["pan"],
+}).refine(data => {
+    if (data.nationality === "Indian") {
+        return !!data.state;
+    }
+    return true;
+}, {
+    message: "State is required for Indian nationals.",
+    path: ["state"],
 });
 
 const donationAmounts = [
@@ -58,6 +76,7 @@ export default function SponsorChildDonationForm() {
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
+      nationality: "Indian",
       amount: "12000",
       otherAmount: "",
       fullName: "",
@@ -65,6 +84,7 @@ export default function SponsorChildDonationForm() {
       mobile: "",
       dob: "",
       pan: "",
+      passport: "",
       country: "India",
       state: "",
       city: "",
@@ -77,6 +97,16 @@ export default function SponsorChildDonationForm() {
 
   const recaptchaRef = React.createRef<ReCAPTCHA>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+
+  const nationality = form.watch("nationality");
+
+  React.useEffect(() => {
+    if (nationality === "Indian") {
+      form.setValue("country", "India");
+    } else {
+        form.setValue("country", "");
+    }
+  }, [nationality, form]);
 
 
   function onSubmit(values: z.infer<typeof donationSchema>) {
@@ -99,6 +129,37 @@ export default function SponsorChildDonationForm() {
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+
+                <FormField
+                    control={form.control}
+                    name="nationality"
+                    render={({ field }) => (
+                        <FormItem className="space-y-3">
+                        <FormLabel>Nationality</FormLabel>
+                        <FormControl>
+                            <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex items-center space-x-4"
+                            >
+                            <FormItem className="flex items-center space-x-2 space-y-0">
+                                <FormControl>
+                                <RadioGroupItem value="Indian" />
+                                </FormControl>
+                                <FormLabel className="font-normal">Indian</FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-2 space-y-0">
+                                <FormControl>
+                                <RadioGroupItem value="Non-Indian" />
+                                </FormControl>
+                                <FormLabel className="font-normal">Non-Indian</FormLabel>
+                            </FormItem>
+                            </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
                 <FormField
                     control={form.control}
@@ -178,18 +239,33 @@ export default function SponsorChildDonationForm() {
                             </FormItem>
                         )}
                     />
-                    <FormField
-                        control={form.control}
-                        name="pan"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormControl>
-                                <Input placeholder="Pan No" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                     {nationality === 'Indian' ? (
+                        <FormField
+                            control={form.control}
+                            name="pan"
+                            render={({ field }) => (
+                                <FormItem>
+                                <FormControl>
+                                    <Input placeholder="Pan No" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    ) : (
+                         <FormField
+                            control={form.control}
+                            name="passport"
+                            render={({ field }) => (
+                                <FormItem>
+                                <FormControl>
+                                    <Input placeholder="Passport Number" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    )}
                 </div>
                 
                 <FormField
@@ -213,24 +289,26 @@ export default function SponsorChildDonationForm() {
                         render={({ field }) => (
                             <FormItem>
                             <FormControl>
-                                <Input placeholder="India" {...field} disabled />
+                                <Input placeholder="Country" {...field} disabled={nationality === 'Indian'} />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <FormField
-                        control={form.control}
-                        name="state"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormControl>
-                                <Input placeholder="Select State" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                     {nationality === 'Indian' && (
+                        <FormField
+                            control={form.control}
+                            name="state"
+                            render={({ field }) => (
+                                <FormItem>
+                                <FormControl>
+                                    <Input placeholder="Select State" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                     )}
                     <FormField
                         control={form.control}
                         name="city"

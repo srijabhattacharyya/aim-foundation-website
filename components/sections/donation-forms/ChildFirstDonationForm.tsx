@@ -33,6 +33,7 @@ const donationSchema = z.object({
   mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
   dob: z.string().nonempty({ message: "Date of birth is required." }),
   pan: z.string().optional(),
+  passport: z.string().optional(),
   country: z.string().nonempty({ message: "Country is required." }),
   state: z.string().optional(),
   city: z.string().nonempty({ message: "City is required." }),
@@ -81,6 +82,7 @@ export default function ChildFirstDonationForm() {
       mobile: "",
       dob: "",
       pan: "",
+      passport: "",
       country: "India",
       state: "",
       city: "",
@@ -99,6 +101,8 @@ export default function ChildFirstDonationForm() {
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
+    } else {
+        form.setValue("country", "");
     }
   }, [nationality, form]);
 
@@ -232,7 +236,7 @@ export default function ChildFirstDonationForm() {
                             </FormItem>
                         )}
                     />
-                    {nationality === 'Indian' && (
+                    {nationality === 'Indian' ? (
                         <FormField
                             control={form.control}
                             name="pan"
@@ -240,6 +244,19 @@ export default function ChildFirstDonationForm() {
                                 <FormItem>
                                 <FormControl>
                                     <Input placeholder="Pan No" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    ) : (
+                         <FormField
+                            control={form.control}
+                            name="passport"
+                            render={({ field }) => (
+                                <FormItem>
+                                <FormControl>
+                                    <Input placeholder="Passport Number" {...field} />
                                 </FormControl>
                                 <FormMessage />
                                 </FormItem>
