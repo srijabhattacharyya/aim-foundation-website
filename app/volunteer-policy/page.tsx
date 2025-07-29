@@ -106,7 +106,7 @@ export default function VolunteerPolicyPage() {
                 <div className="flex items-center gap-2">
                   <span>📧 Email:</span> <ContactEmail />
                 </div>
-                <p>📞 Phone: +91 123 456 7890</p>
+                <p>📞 Phone: +91 6290022813</p>
                 <p>🏢 Address: 41, Ballygaunge Terrace, Kolkata 700029, India</p>
               </div>
 

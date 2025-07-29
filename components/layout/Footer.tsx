@@ -21,7 +21,7 @@ const Footer = () => {
               <strong>Email:</strong> <ContactEmail />
             </div>
             <p className="text-muted-foreground">
-              <strong>Phone:</strong> +91 123 456 7890
+              <strong>Phone:</strong> +91 6290022813
             </p>
           </div>
           <div>

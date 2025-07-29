@@ -55,8 +55,8 @@ export default function ConnectPage() {
                   <div>
                     <h3 className="text-xl font-semibold font-headline">Call Us</h3>
                     <p className="text-muted-foreground mt-1">
-                      <a href="tel:+911234567890" className="hover:text-primary transition-colors">
-                        +91 123 456 7890
+                      <a href="tel:+916290022813" className="hover:text-primary transition-colors">
+                        +91 6290022813
                       </a>
                     </p>
                   </div>
