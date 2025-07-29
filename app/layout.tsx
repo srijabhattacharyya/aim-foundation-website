@@ -5,8 +5,12 @@ import './globals.css';
 import { Toaster } from '../components/ui/toaster';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://aim-foundation-hub.vercel.app'),
   title: 'AIM Foundation Hub',
   description: 'A non-profit organization dedicated to making a difference.',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 const bricolage = Bricolage_Grotesque({

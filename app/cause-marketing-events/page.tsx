@@ -1,10 +1,19 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import QuickFacts from "@/components/sections/QuickFacts";
 import WaysToPartner from "@/components/sections/WaysToPartner";
+
+export const metadata: Metadata = {
+  title: 'Cause-Related Marketing (CRM) - AIM Foundation',
+  description: 'Align your brand with purpose. Partner with AIM Foundation for cause-related marketing and drive impact together.',
+  alternates: {
+    canonical: '/cause-marketing-events',
+  },
+};
 
 export default function CauseMarketingEventsPage() {
   return (

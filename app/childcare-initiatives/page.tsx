@@ -1,10 +1,19 @@
 
+import type { Metadata } from 'next';
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: 'Childcare Initiatives - AIM Foundation',
+  description: 'Our initiatives are focused on creating a safe, healthy, and inspiring start for every child.',
+  alternates: {
+    canonical: '/childcare-initiatives',
+  },
+};
 
 const initiatives = [
   {

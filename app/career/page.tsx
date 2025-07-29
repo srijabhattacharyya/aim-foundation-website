@@ -1,8 +1,17 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import HREmail from "@/components/layout/HREmail";
+
+export const metadata: Metadata = {
+  title: 'Careers - AIM Foundation',
+  description: 'Join AIM Foundation and be a catalyst for change. Explore career opportunities with purpose.',
+  alternates: {
+    canonical: '/career',
+  },
+};
 
 export default function CareerPage() {
   return (

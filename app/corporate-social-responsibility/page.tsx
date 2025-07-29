@@ -1,8 +1,17 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
+
+export const metadata: Metadata = {
+  title: 'Corporate Social Responsibility - AIM Foundation',
+  description: 'Partner with AIM Foundation for your CSR initiatives and build sustainable impact together.',
+  alternates: {
+    canonical: '/corporate-social-responsibility',
+  },
+};
 
 export default function CorporateSocialResponsibilityPage() {
   return (

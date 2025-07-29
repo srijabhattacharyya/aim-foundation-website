@@ -1,10 +1,19 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import EngagementStats from "@/components/sections/EngagementStats";
 import WaysOfEngagement from "@/components/sections/WaysOfEngagement";
+
+export const metadata: Metadata = {
+  title: 'Employee Engagement - AIM Foundation',
+  description: 'Inspire purpose, strengthen teams, and create impact with our employee engagement programs.',
+  alternates: {
+    canonical: '/employee-engagement',
+  },
+};
 
 export default function EmployeeEngagementPage() {
   return (

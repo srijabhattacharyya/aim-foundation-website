@@ -1,7 +1,16 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
+
+export const metadata: Metadata = {
+  title: 'Grievance Redressal - AIM Foundation',
+  description: 'Our Grievance Redressal Policy outlines our framework for addressing concerns in a fair, transparent, and timely manner.',
+  alternates: {
+    canonical: '/grievance-redressal',
+  },
+};
 
 export default function GrievanceRedressalPage() {
   return (

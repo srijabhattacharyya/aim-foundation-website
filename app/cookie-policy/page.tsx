@@ -1,7 +1,16 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
+
+export const metadata: Metadata = {
+  title: 'Cookie Policy - AIM Foundation',
+  description: 'Learn how AIM Foundation uses cookies and similar technologies on our website.',
+  alternates: {
+    canonical: '/cookie-policy',
+  },
+};
 
 export default function CookiePolicyPage() {
   return (

@@ -1,9 +1,17 @@
 
-
+import type { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: 'Healthcare Initiatives - AIM Foundation',
+  description: 'Healthcare is a right, not merely a privilege! Our healthcare programs are dedicated to providing accessible and quality medical care to those in need.',
+  alternates: {
+    canonical: '/healthcare-initiatives',
+  },
+};
 
 const initiatives = [
   {

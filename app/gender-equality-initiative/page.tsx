@@ -1,10 +1,19 @@
 
+import type { Metadata } from 'next';
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: 'Gender Equality Initiatives - AIM Foundation',
+  description: 'Our initiatives are dedicated to creating a world of equal opportunity for women and girls.',
+  alternates: {
+    canonical: '/gender-equality-initiative',
+  },
+};
 
 const initiatives = [
   {

@@ -1,8 +1,17 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import DonationEmail from "@/components/layout/DonationEmail";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: 'Donation Policy - AIM Foundation',
+  description: 'Learn about our donation policies, tax exemptions, and how we ensure transparency and accountability.',
+  alternates: {
+    canonical: '/donation-policy',
+  },
+};
 
 export default function DonationPolicyPage() {
   return (

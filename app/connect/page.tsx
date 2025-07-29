@@ -1,9 +1,18 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/sections/ContactForm";
 import ContactEmail from "@/components/layout/ContactEmail";
 import { Mail, Phone, MapPin } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Connect with AIM Foundation',
+  description: 'Get in touch with us. We would love to hear from you.',
+  alternates: {
+    canonical: '/connect',
+  },
+};
 
 export default function ConnectPage() {
   return (

@@ -1,6 +1,15 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: 'Gallery - AIM Foundation',
+  description: 'View photos from our events and initiatives.',
+  alternates: {
+    canonical: '/gallery',
+  },
+};
 
 export default function GalleryPage() {
   return (

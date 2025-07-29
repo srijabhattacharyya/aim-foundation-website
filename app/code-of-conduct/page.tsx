@@ -1,6 +1,15 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: 'Code of Conduct - AIM Foundation',
+  description: 'Our Code of Conduct outlines the principles, values, and standards expected of everyone associated with our organization.',
+  alternates: {
+    canonical: '/code-of-conduct',
+  },
+};
 
 export default function CodeOfConductPage() {
   return (

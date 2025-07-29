@@ -1,4 +1,5 @@
 
+import type { Metadata } from 'next';
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/sections/Hero";
@@ -10,6 +11,14 @@ import DonateSection from '../components/sections/DonateSection';
 import Volunteer from '../components/sections/Volunteer';
 import dynamic from 'next/dynamic';
 import { Skeleton } from "@/components/ui/skeleton";
+
+export const metadata: Metadata = {
+  title: 'AIM Foundation Hub - Building a Brighter Future, Together',
+  description: 'We are committed to empowering communities through education, healthcare, and sustainable development.',
+  alternates: {
+    canonical: '/',
+  },
+};
 
 const Testimonials = dynamic(() => import('../components/sections/Testimonials'));
 const Patrons = dynamic(() => import('../components/sections/Patrons'));

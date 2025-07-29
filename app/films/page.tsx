@@ -1,6 +1,15 @@
 
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: 'Films - AIM Foundation',
+  description: 'Watch films about our work and impact.',
+  alternates: {
+    canonical: '/films',
+  },
+};
 
 export default function FilmsPage() {
   return (
