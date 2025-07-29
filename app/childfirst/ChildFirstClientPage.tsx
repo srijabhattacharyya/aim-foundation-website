@@ -30,7 +30,7 @@ export default function ChildFirstClientPage() {
               width={1920}
               height={1080}
               className="w-full h-auto object-cover brightness-50"
-              data-ai-hint="vulnerable children healthcare"
+              data-ai-hint="children health checkup"
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
@@ -39,7 +39,7 @@ export default function ChildFirstClientPage() {
                 ChildFirst
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Healing and Hope for Every Child.
+                Health, Dignity, and a Brighter Future.
               </p>
             </div>
           </div>
@@ -49,34 +49,17 @@ export default function ChildFirstClientPage() {
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="max-w-4xl mx-auto">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Care Beyond Stigma. Health Beyond Barriers.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Every Child Deserves a Healthy Start.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    ChildFirst is a compassionate and vital healthcare initiative by AIM Foundation that focuses on delivering <strong>pediatric and general health support</strong> to the children of sex workers living in <strong>Rambagan</strong> and <strong>Sonagachi</strong>—two of Kolkata’s most marginalized and stigmatized red-light areas.
+                  <p>
+                    ChildFirst is a compassionate healthcare initiative offering pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.
                   </p>
                   <p>
-                    These children often face multiple layers of vulnerability: limited access to healthcare, social exclusion, emotional trauma, and an increased risk of neglect and exploitation. ChildFirst recognizes the <strong>urgent need for early medical intervention and holistic well-being</strong> for these young lives.
+                    These camps offer free consultations, essential medicines, and nutritional support, ensuring that every child receives the care they need to thrive.
                   </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Through this initiative, AIM Foundation organizes regular health camps offering:</h3>
-                   <ul className="list-disc list-inside space-y-2">
-                    <li>Basic health screenings and growth monitoring</li>
-                    <li>Immunization support and referrals</li>
-                    <li>Treatment for common childhood illnesses</li>
-                    <li>Nutritional guidance and hygiene awareness</li>
-                    <li>Safe and respectful care environments</li>
-                  </ul>
+                  <h3 className="text-2xl font-bold font-headline pt-4">Your Support Can Change a Life</h3>
                   <p>
-                    By working closely with local NGOs, women’s groups, and community leaders, ChildFirst ensures that these camps are <strong>accessible, stigma-free, and child-centered</strong>. Special efforts are made to earn the trust of both children and caregivers, fostering a long-term relationship built on care and dignity.
-                  </p>
-                  <p>
-                    Beyond physical health, the initiative also promotes emotional well-being, encouraging positive self-image, protection, and resilience in children who are often denied these basic securities.
-                  </p>
-                  <p>
-                    ChildFirst stands as a promise—that <strong>every child, no matter their background, deserves quality healthcare, compassion, and a fair chance at a brighter future.</strong>
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Give Hope Where It’s Needed Most</h3>
-                  <p>
-                    In places where childhood is shadowed by stigma and neglect, <strong>your support can bring light, healing, and dignity</strong>. A small donation to ChildFirst provides medical check-ups, immunizations, nutrition support, and a safe, caring environment for children of sex workers in Kolkata’s red-light areas. You can help protect their health, restore their confidence, and rewrite their future. Stand with us in saying: <strong>every child matters, and every child deserves a chance. Donate now—because healing begins with you.</strong>
+                    A small contribution can provide a child with a complete health check-up and vital medicines. Help us ensure that no child is left behind. Donate today to support our mission and bring health and hope to those who need it most.
                   </p>
                 </div>
               </div>
