@@ -21,6 +21,7 @@ import { Card, CardContent } from "../../../components/ui/card";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
 import dynamic from "next/dynamic";
+import StatesAndUTs from "@/components/layout/StatesAndUTs";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
@@ -100,8 +101,11 @@ export default function InnocentSmilesDonationForm() {
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
+      form.setValue("passport", "");
     } else {
-        form.setValue("country", "");
+      form.setValue("country", "");
+      form.setValue("pan", "");
+      form.setValue("state", "");
     }
   }, [nationality, form]);
 
@@ -297,9 +301,7 @@ export default function InnocentSmilesDonationForm() {
                             name="state"
                             render={({ field }) => (
                                 <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Select State" {...field} />
-                                </FormControl>
+                                <StatesAndUTs field={field} />
                                 <FormMessage />
                                 </FormItem>
                             )}

@@ -22,6 +22,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
+import StatesAndUTs from "@/components/layout/StatesAndUTs";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
   ssr: false,
@@ -130,14 +131,17 @@ export default function GeneralDonationForm() {
 
   const recaptchaRef = React.createRef<ReCAPTCHA>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-
+  
   const nationality = form.watch("nationality");
 
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
+      form.setValue("passport", "");
     } else {
-        form.setValue("country", "");
+      form.setValue("country", "");
+      form.setValue("pan", "");
+      form.setValue("state", "");
     }
   }, [nationality, form]);
 
@@ -356,9 +360,7 @@ export default function GeneralDonationForm() {
                             name="state"
                             render={({ field }) => (
                                 <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Select State" {...field} />
-                                </FormControl>
+                                <StatesAndUTs field={field} />
                                 <FormMessage />
                                 </FormItem>
                             )}
