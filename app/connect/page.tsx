@@ -31,9 +31,9 @@ export default function ConnectPage() {
                   <div>
                     <h3 className="text-xl font-semibold font-headline">Our Office</h3>
                     <p className="text-muted-foreground mt-1">
-                        A-123, Street Name,
+                        41, Ballygaunge Terrace,
                         <br />
-                        City, State, 123456
+                        Kolkata 700029,
                         <br />
                         India
                     </p>

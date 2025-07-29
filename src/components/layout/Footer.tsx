@@ -11,9 +11,9 @@ const Footer = () => {
           <div>
             <h2 className="font-bold text-lg mb-4">Associated Initiative for Mankind Foundation</h2>
             <p className="text-muted-foreground">
-              A-123, Street Name,
+              41, Ballygaunge Terrace,
               <br />
-              City, State, 123456
+              Kolkata 700029,
               <br />
               India
             </p>

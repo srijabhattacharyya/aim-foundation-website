@@ -107,7 +107,7 @@ export default function VolunteerPolicyPage() {
                   <span>📧 Email:</span> <ContactEmail />
                 </div>
                 <p>📞 Phone: +91 123 456 7890</p>
-                <p>🏢 Address: A-123, Street Name, City, State, 123456, India</p>
+                <p>🏢 Address: 41, Ballygaunge Terrace, Kolkata 700029, India</p>
               </div>
 
               <div className="pt-6 text-center">
