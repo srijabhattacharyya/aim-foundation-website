@@ -1,13 +1,19 @@
-
 "use client"
 
 import Image from "next/image"
 
-const patrons = Array(20).fill({
-  name: "Patron Logo",
-  logo: "https://placehold.co/200x90.png",
-  hint: "corporate logo",
-});
+const patrons = [
+  {
+    name: "Forest Department",
+    logo: "/images/patrons/forest.png",
+    hint: "forest department logo"
+  },
+  ...Array(19).fill({
+    name: "Patron Logo",
+    logo: "https://placehold.co/200x90.png",
+    hint: "corporate logo",
+  })
+];
 
 const Patrons = () => {
     return (
@@ -32,7 +38,7 @@ const Patrons = () => {
                                         width={200}
                                         height={90}
                                         data-ai-hint={patron.hint}
-                                        className="object-contain w-full h-auto grayscale hover:grayscale-0 transition-all duration-300"
+                                        className="object-contain w-full h-auto transition-all duration-300"
                                     />
                                 </div>
                             ))}
@@ -46,7 +52,7 @@ const Patrons = () => {
                                         width={200}
                                         height={90}
                                         data-ai-hint={patron.hint}
-                                        className="object-contain w-full h-auto grayscale hover:grayscale-0 transition-all duration-300"
+                                        className="object-contain w-full h-auto transition-all duration-300"
                                     />
                                 </div>
                             ))}
