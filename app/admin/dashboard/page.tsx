@@ -1,8 +1,12 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Briefcase, Users, HeartHandshake } from "lucide-react";
+import { getCollectionCount } from "@/lib/firebase/firestore";
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  const initiativesCount = await getCollectionCount('initiatives');
+  const teamMembersCount = await getCollectionCount('teamMembers');
+
   return (
     <div className="flex flex-col gap-4">
         <header>
@@ -16,7 +20,7 @@ export default function AdminDashboard() {
                     <Briefcase className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">26</div>
+                    <div className="text-2xl font-bold">{initiativesCount}</div>
                     <p className="text-xs text-muted-foreground">
                     Manage your ongoing projects.
                     </p>
@@ -28,7 +32,7 @@ export default function AdminDashboard() {
                     <Users className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">12</div>
+                    <div className="text-2xl font-bold">{teamMembersCount}</div>
                     <p className="text-xs text-muted-foreground">
                     Add or update team profiles.
                     </p>
