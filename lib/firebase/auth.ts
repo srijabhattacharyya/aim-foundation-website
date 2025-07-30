@@ -4,7 +4,7 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { app } from '../firebase';
-import { adminDb } from './firebase-admin';
+import { adminDb } from '../firebase-admin';
 
 const auth = getAuth(app);
 
