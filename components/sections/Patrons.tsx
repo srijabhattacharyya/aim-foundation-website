@@ -39,7 +39,12 @@ const patrons = [
     logo: "/images/patrons/canva.png",
     hint: "Canva logo"
   },
-  ...Array(13).fill({
+  {
+    name: "Nexval",
+    logo: "/images/patrons/nexval.png",
+    hint: "Nexval logo"
+  },
+  ...Array(12).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
