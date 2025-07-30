@@ -28,17 +28,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useToast } from '@/hooks/use-toast';
+import { Loader2 } from 'lucide-react';
 
 const loginSchema = z.object({
-  role: z.enum(['Donor', 'User', 'Admin', 'Super Admin'], { required_error: 'Please select a role' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
 });
@@ -65,19 +58,28 @@ export default function LoginPage() {
         throw new Error("Login failed. Please check your credentials.");
       }
       
-      if (role !== values.role) {
-        throw new Error(`You do not have the required role. Expected ${values.role}, but you are a ${role}.`);
-      }
-
       toast({
         title: "Login Successful",
         description: `Welcome back, ${role}!`,
       });
 
-      if (role === 'Admin' || role === 'Super Admin') {
-        router.push('/admin/dashboard');
-      } else {
-        router.push('/');
+      // Role-based redirection
+      switch (role) {
+        case 'Super Admin':
+          router.push('/superadmin-panel');
+          break;
+        case 'Admin':
+          router.push('/admin/dashboard');
+          break;
+        case 'User':
+          router.push('/user-dashboard');
+          break;
+        case 'Donor':
+          router.push('/donor-dashboard');
+          break;
+        default:
+          router.push('/');
+          break;
       }
 
     } catch (error: any) {
@@ -99,35 +101,12 @@ export default function LoginPage() {
           <CardHeader>
             <CardTitle className="text-2xl font-headline">Login</CardTitle>
             <CardDescription>
-              Select your role and enter your credentials to login
+              Enter your credentials to access your account
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="role"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Login as</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a role" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="Donor">Donor</SelectItem>
-                          <SelectItem value="User">User</SelectItem>
-                          <SelectItem value="Admin">Admin</SelectItem>
-                          <SelectItem value="Super Admin">Super Admin</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
                 <FormField
                   control={form.control}
                   name="email"
@@ -164,6 +143,7 @@ export default function LoginPage() {
                   )}
                 />
                 <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                   {loading ? 'Logging in...' : 'Login'}
                 </Button>
               </form>

@@ -1,0 +1,60 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to get user role from the 'users' collection
+    function getUserRole(userId) {
+      return get(/databases/$(database)/documents/users/$(userId)).data.role;
+    }
+
+    // By default, deny all reads and writes
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Publicly readable collections (e.g., initiatives, teamMembers)
+    match /initiatives/{initiativeId} {
+      allow read: if true;
+      allow write: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+    }
+
+    match /teamMembers/{memberId} {
+      allow read: if true;
+      allow write: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+    }
+
+    // Users collection rules
+    match /users/{userId} {
+      // Any authenticated user can read their own user document
+      allow read: if request.auth != null && request.auth.uid == userId;
+      // Only Admins or Super Admins can create or modify user roles
+      allow create, update: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+      // Only Super Admins can delete user documents
+      allow delete: if getUserRole(request.auth.uid) == 'Super Admin';
+    }
+
+    // Donations collection rules
+    match /donations/{donationId} {
+      // Donors can read their own donation documents
+      // Assumes each donation document has a 'donorId' field matching the user's UID
+      allow read: if request.auth != null && get(path).data.donorId == request.auth.uid;
+      // Users can create donations
+      allow create: if request.auth != null;
+      // Only Admins or Super Admins can update or delete donations
+      allow update, delete: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+    }
+
+    // Collection for User uploads (e.g., 'user_uploads')
+    match /user_uploads/{uploadId} {
+        // Users can create new documents
+        allow create: if getUserRole(request.auth.uid) == 'User';
+        // Users can read their own documents
+        allow read: if request.auth != null && get(path).data.userId == request.auth.uid;
+        // Users can update their own documents
+        allow update: if request.auth != null && get(path).data.userId == request.auth.uid;
+        // Admins and Super Admins can delete documents
+        allow delete: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+    }
+  }
+}
