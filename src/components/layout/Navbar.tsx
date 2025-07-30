@@ -361,6 +361,9 @@ const Navbar = () => {
                             </DialogContent>
                         </Dialog>
                     </SheetClose>
+                     <Button asChild variant="outline" className="w-full justify-start text-lg font-medium">
+                        <Link href="/admin/dashboard">Admin Dashboard</Link>
+                    </Button>
                   </nav>
                 </div>
               </SheetContent>
