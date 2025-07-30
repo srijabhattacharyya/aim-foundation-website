@@ -1,7 +1,7 @@
 
 'use server';
 
-import { adminDb } from '../firebase-admin';
+import { adminDb } from './firebase-admin';
 
 export async function getCollectionCount(collectionName: string): Promise<number> {
   try {
