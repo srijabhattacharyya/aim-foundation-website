@@ -9,7 +9,6 @@ import * as z from 'zod';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { app } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
-import { getUserRole } from '@/lib/firebase/getUser';
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -55,28 +54,13 @@ export default function LoginPage() {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     setLoading(true);
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
-      const user = userCredential.user;
-
-      if (user) {
-        // Fetch role from client-side function
-        const role = await getUserRole(user.uid);
-
-        if (role === 'Admin') {
-          toast({
-            title: "Login Successful",
-            description: "Redirecting to your dashboard...",
-          });
-          router.push('/admin/dashboard');
-        } else {
-          await auth.signOut(); // Sign out the user if they don't have the correct role
-          toast({
-            title: "Authorization Failed",
-            description: "You do not have permission to access the admin dashboard.",
-            variant: "destructive",
-          });
-        }
-      }
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      toast({
+        title: "Login Successful",
+        description: "Redirecting to your dashboard...",
+      });
+      // The admin layout will handle the redirect.
+      router.push('/admin/dashboard'); 
     } catch (error: any) {
       console.error("Login error:", error);
       let description = "An unexpected error occurred. Please try again.";

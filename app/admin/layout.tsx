@@ -23,12 +23,19 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const role = await getUserRole(user.uid);
-        if (role === 'Admin') {
-          setUser(user);
-        } else {
+        try {
+          const role = await getUserRole(user.uid);
+          if (role === 'Admin') {
+            setUser(user);
+          } else {
+            toast({ title: "Unauthorized", description: "You are not authorized to access this page.", variant: "destructive" });
+            await signOut(auth);
+            router.push('/login');
+          }
+        } catch (error) {
+          console.error("Error checking user role:", error);
+          toast({ title: "Authorization Error", description: "Could not verify your role. Please try again.", variant: "destructive" });
           await signOut(auth);
-          toast({ title: "Unauthorized", description: "You are not authorized to view this page.", variant: "destructive" });
           router.push('/login');
         }
       } else {
@@ -36,6 +43,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       }
       setLoading(false);
     });
+
     return () => unsubscribe();
   }, [auth, router, toast]);
 
