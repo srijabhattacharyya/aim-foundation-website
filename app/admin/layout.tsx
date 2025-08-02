@@ -27,6 +27,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       }
       setLoading(false);
     });
+    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [auth, router]);
 
@@ -56,7 +57,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     <div className="flex min-h-screen w-full bg-muted/40">
       <aside className="hidden w-64 flex-col border-r bg-background sm:flex">
         <div className="flex h-[60px] items-center border-b px-6">
-          <Link href="/admin/dashboard" className="flex items-center gap-2 font-semibold">
+          <Link href="/" className="flex items-center gap-2 font-semibold">
             <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} />
           </Link>
         </div>
@@ -82,27 +83,6 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             >
               <Users className="h-4 w-4" />
               Team Members
-            </Link>
-             <Link
-              href="/superadmin-panel"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <Shield className="h-4 w-4" />
-              Super Admin
-            </Link>
-            <Link
-              href="/user-dashboard"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <UserCog className="h-4 w-4" />
-              User Dashboard
-            </Link>
-             <Link
-              href="/donor-dashboard"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <Building className="h-4 w-4" />
-              Donor Dashboard
             </Link>
             <Link
               href="#"

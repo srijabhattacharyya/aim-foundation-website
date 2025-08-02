@@ -5,14 +5,14 @@ import { app } from '../firebase';
 
 const auth = getAuth(app);
 
-export async function signInUser(email: string, password: string): Promise<{user: User | null}> {
+export async function signInUser(email: string, password: string): Promise<User> {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return { user: userCredential.user };
+    return userCredential.user;
   } catch (error: any) {
-    // Firebase Auth errors have a `code` property.
-    // Let the client handle the error message based on the code.
+    // Let the original Firebase error propagate
+    // The client-side will catch this and display an appropriate message.
     console.error('Firebase SignIn Error:', error.code);
-    throw new Error(error.code);
+    throw error;
   }
 }
