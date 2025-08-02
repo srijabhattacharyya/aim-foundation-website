@@ -59,7 +59,6 @@ export default function LoginPage() {
         title: "Login Successful",
         description: "Redirecting to your dashboard...",
       });
-      // The admin layout will handle the redirect.
       router.push('/admin/dashboard'); 
     } catch (error: any) {
       console.error("Login error:", error);

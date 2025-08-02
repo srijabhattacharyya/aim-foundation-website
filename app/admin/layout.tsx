@@ -10,7 +10,6 @@ import { getAuth, onAuthStateChanged, signOut, User } from 'firebase/auth';
 import { app } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
-import { getUserRole } from '@/lib/firebase/getUser';
 import { Loader2 } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -21,23 +20,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        try {
-          const role = await getUserRole(user.uid);
-          if (role === 'Admin') {
-            setUser(user);
-          } else {
-            toast({ title: "Unauthorized", description: "You are not authorized to access this page.", variant: "destructive" });
-            await signOut(auth);
-            router.push('/login');
-          }
-        } catch (error) {
-          console.error("Error checking user role:", error);
-          toast({ title: "Authorization Error", description: "Could not verify your role. Please try again.", variant: "destructive" });
-          await signOut(auth);
-          router.push('/login');
-        }
+        setUser(user);
       } else {
         router.push('/login');
       }
@@ -45,7 +30,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     });
 
     return () => unsubscribe();
-  }, [auth, router, toast]);
+  }, [auth, router]);
 
   const handleLogout = async () => {
     try {
