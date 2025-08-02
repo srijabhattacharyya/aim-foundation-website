@@ -14,6 +14,13 @@ export async function signInUser(email: string, password: string) {
     const user = userCredential.user;
     
     if (user) {
+      // WORKAROUND: If adminDb is not initialized, we cannot check roles.
+      // Default to 'User' role for now to allow the app to function.
+      if (!adminDb.collection) {
+        console.warn("Firebase Admin SDK not initialized. Defaulting to 'User' role.");
+        return { user, role: 'User' };
+      }
+
       const userDocRef = doc(adminDb, 'users', user.uid);
       const userDoc = await getDoc(userDocRef);
       
@@ -21,14 +28,12 @@ export async function signInUser(email: string, password: string) {
         const role = userDoc.data().role;
         return { user, role };
       } else {
-        // Handle case where user exists in Auth but not in Firestore
         await auth.signOut();
-        throw new Error('User role not found.');
+        throw new Error('User role not found in database.');
       }
     }
     return { user: null, role: null };
   } catch (error: any) {
-    // Firebase auth errors have a `code` property
     if (error.code) {
       switch (error.code) {
         case 'auth/user-not-found':
@@ -39,6 +44,6 @@ export async function signInUser(email: string, password: string) {
           throw new Error('An unexpected error occurred during login.');
       }
     }
-    throw error; // Re-throw other errors (like the ones we throw manually)
+    throw error;
   }
 }

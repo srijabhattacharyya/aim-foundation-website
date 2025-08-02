@@ -1,9 +1,10 @@
 
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Helper function to get user role from the 'users' collection
+  
+    // Helper function to get user's role from the 'users' collection
     function getUserRole(userId) {
       return get(/databases/$(database)/documents/users/$(userId)).data.role;
     }
@@ -12,49 +13,53 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false;
     }
-
-    // Publicly readable collections (e.g., initiatives, teamMembers)
-    match /initiatives/{initiativeId} {
-      allow read: if true;
-      allow write: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
-    }
-
-    match /teamMembers/{memberId} {
-      allow read: if true;
-      allow write: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
-    }
-
-    // Users collection rules
+    
+    // USERS Collection
     match /users/{userId} {
-      // Any authenticated user can read their own user document
+      // A user can read their own data
       allow read: if request.auth != null && request.auth.uid == userId;
-      // Only Admins or Super Admins can create or modify user roles
-      allow create, update: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+      
+      // Admins and Super Admins can create/update user roles
+      allow create, update: if request.auth != null && (getUserRole(request.auth.uid) == 'Admin' || getUserRole(request.auth.uid) == 'Super Admin');
+      
       // Only Super Admins can delete user documents
-      allow delete: if getUserRole(request.auth.uid) == 'Super Admin';
+      allow delete: if request.auth != null && getUserRole(request.auth.uid) == 'Super Admin';
     }
-
-    // Donations collection rules
+    
+    // DONATIONS Collection
     match /donations/{donationId} {
-      // Donors can read their own donation documents
-      // Assumes each donation document has a 'donorId' field matching the user's UID
-      allow read: if request.auth != null && get(path).data.donorId == request.auth.uid;
-      // Users can create donations
+      // Donors can read their own donation records
+      // Admins and Super Admins can read any donation record
+      allow read: if request.auth != null && 
+                    (resource.data.userId == request.auth.uid || 
+                     getUserRole(request.auth.uid) in ['Admin', 'Super Admin']);
+                     
+      // Allow anyone authenticated to create a donation (e.g., after payment)
       allow create: if request.auth != null;
-      // Only Admins or Super Admins can update or delete donations
-      allow update, delete: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+      
+      // Only Admins and Super Admins can update/delete donation records
+      allow update, delete: if request.auth != null && getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
     }
 
-    // Collection for User uploads (e.g., 'user_uploads')
-    match /user_uploads/{uploadId} {
-        // Users can create new documents
-        allow create: if getUserRole(request.auth.uid) == 'User';
-        // Users can read their own documents
-        allow read: if request.auth != null && get(path).data.userId == request.auth.uid;
-        // Users can update their own documents
-        allow update: if request.auth != null && get(path).data.userId == request.auth.uid;
-        // Admins and Super Admins can delete documents
-        allow delete: if getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+    // TEAMMEMBERS Collection
+    match /teamMembers/{memberId} {
+        // Publicly readable
+        allow read: if true;
+        // Writable only by Admins and Super Admins
+        allow write: if request.auth != null && getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+    }
+    
+    // INITIATIVES Collection
+    match /initiatives/{initiativeId} {
+        // Publicly readable
+        allow read: if true;
+        // Writable only by Admins and Super Admins
+        allow write: if request.auth != null && getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
+    }
+    
+    // Allow Super Admin full access to everything else
+    match /{document=**} {
+      allow read, write: if request.auth != null && getUserRole(request.auth.uid) == 'Super Admin';
     }
   }
 }
