@@ -16,6 +16,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Trash2 } from 'lucide-react';
 import { addPatron, deletePatron, Patron } from '@/lib/firebase/patrons';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { storage } from '@/lib/firebase';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Patron name must be at least 2 characters.' }),
@@ -43,19 +45,27 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
 
-    const formData = new FormData();
-    formData.append('name', values.name);
-    formData.append('logo', values.logo);
-
     try {
-      const result = await addPatron(formData);
+      const logoFile = values.logo;
+      const logoPath = `patrons/${Date.now()}-${logoFile.name.replace(/\s/g, '_')}`;
+      const storageRef = ref(storage, logoPath);
+      
+      // 1. Upload file to client
+      await uploadBytes(storageRef, logoFile);
+      
+      // 2. Get download URL
+      const logoUrl = await getDownloadURL(storageRef);
+
+      // 3. Call server action with text data
+      const result = await addPatron(values.name, logoUrl, logoPath);
+
       if (result.success && result.newPatron) {
         toast({ title: 'Success', description: 'Patron added successfully.' });
         setPatrons(prev => [result.newPatron!, ...prev]);
-        form.reset({ name: '', logo: undefined });
+        form.reset();
+        // Manually reset the file input visually
         const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
         if(fileInput) fileInput.value = '';
-
         router.refresh(); 
       } else {
         throw new Error(result.error || 'Failed to add patron.');

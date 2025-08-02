@@ -1,4 +1,5 @@
 import admin from 'firebase-admin';
+import { getApps } from 'firebase-admin/app';
 
 // IMPORTANT: The Firebase Admin SDK initialization requires a service account key.
 // This key is a secret credential that allows server-side code to have full
@@ -10,9 +11,9 @@ import admin from 'firebase-admin';
 
 if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
   // This error is expected if the key is not set.
-  console.error('CRITICAL: FIREBASE_SERVICE_ACCOUNT_KEY is not set. Admin SDK features (e.g., managing patrons, one-time setup) are disabled.');
+  console.warn('CRITICAL: FIREBASE_SERVICE_ACCOUNT_KEY is not set. Admin SDK features (e.g., managing patrons, one-time setup) may be disabled or fail.');
 } else {
-  if (!admin.apps.length) {
+  if (!getApps().length) {
     try {
       const serviceAccount = JSON.parse(
         process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string
@@ -29,6 +30,6 @@ if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
 
 // We export the initialized services or a placeholder that will cause a controlled failure.
 // This prevents the entire application from crashing on import.
-export const adminAuth = admin.apps.length ? admin.auth() : ({} as admin.auth.Auth);
-export const adminDb = admin.apps.length ? admin.firestore() : ({} as admin.firestore.Firestore);
-export const adminStorage = admin.apps.length ? admin.storage() : ({} as admin.storage.Storage);
+export const adminAuth = getApps().length ? admin.auth() : ({} as admin.auth.Auth);
+export const adminDb = getApps().length ? admin.firestore() : ({} as admin.firestore.Firestore);
+export const adminStorage = getApps().length ? admin.storage() : ({} as admin.storage.Storage);

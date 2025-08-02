@@ -3,6 +3,9 @@
 
 import { adminDb, adminStorage } from '../firebase-admin';
 import { revalidatePath } from 'next/cache';
+import { collection, addDoc, getDocs, deleteDoc, doc, orderBy, Timestamp } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { db, storage } from '../firebase'; // Using client SDK for this action
 
 export interface Patron {
   id: string;
@@ -12,69 +15,51 @@ export interface Patron {
   createdAt: FirebaseFirestore.Timestamp;
 }
 
-// Add a new patron
-export async function addPatron(formData: FormData): Promise<{ success: boolean, error?: string, newPatron?: Patron }> {
-  const name = formData.get('name') as string;
-  const logo = formData.get('logo') as File;
-
-  if (!name || !logo) {
-    return { success: false, error: 'Patron name and logo are required.' };
+// This function is now for adding the metadata to Firestore after upload
+export async function addPatron(name: string, logoUrl: string, logoPath: string): Promise<{ success: boolean, error?: string, newPatron?: Patron }> {
+  if (!name || !logoUrl || !logoPath) {
+    return { success: false, error: 'Patron name, logo URL, and logo path are required.' };
+  }
+  if (!adminDb) {
+      const errorMsg = 'Firebase Admin SDK not initialized. Cannot add patron.';
+      console.error(errorMsg);
+      return { success: false, error: errorMsg };
   }
 
-  if (!adminDb || !adminStorage) {
-    const errorMsg = 'Firebase Admin SDK not initialized. Cannot add patron.';
-    console.error(errorMsg);
-    return { success: false, error: errorMsg };
-  }
-  
   try {
-    // Upload image to Firebase Storage
-    const logoBuffer = Buffer.from(await logo.arrayBuffer());
-    const logoPath = `patrons/${Date.now()}-${logo.name.replace(/\s/g, '_')}`;
-    const file = adminStorage.bucket().file(logoPath);
-    
-    await file.save(logoBuffer, {
-      metadata: {
-        contentType: logo.type,
-      },
-    });
-
-    const [logoUrl] = await file.getSignedUrl({
-        action: 'read',
-        expires: '03-09-2491' // A far-future date
-    });
-
-    // Add patron info to Firestore
-    const patronRef = adminDb.collection('patrons').doc();
-    const newPatronData: Omit<Patron, 'id'> = {
+    const patronRef = await addDoc(collection(adminDb, 'patrons'), {
       name,
       logoUrl,
       logoPath,
-      createdAt: new Date() as any, // Firestore admin handles Timestamp conversion
-    };
-    
-    await patronRef.set(newPatronData);
+      createdAt: Timestamp.now(),
+    });
 
-    // Revalidate the homepage and patrons page to show new data
     revalidatePath('/');
     revalidatePath('/admin/patrons');
     
-    return { success: true, newPatron: { id: patronRef.id, ...newPatronData } as Patron };
+    const newPatron: Patron = {
+      id: patronRef.id,
+      name,
+      logoUrl,
+      logoPath,
+      createdAt: Timestamp.now() as any,
+    };
+
+    return { success: true, newPatron };
   } catch (error: any) {
-    console.error('Error adding patron:', error);
+    console.error('Error adding patron to Firestore:', error);
     return { success: false, error: error.message };
   }
 }
 
-// Get all patrons
+// Get all patrons (uses admin SDK for server-side rendering)
 export async function getPatrons(): Promise<Patron[]> {
-  if (!adminDb) {
+   if (!adminDb) {
     console.error('Firebase Admin SDK not initialized. Cannot get patrons.');
     return [];
   }
-  
   try {
-    const snapshot = await adminDb.collection('patrons').orderBy('createdAt', 'desc').get();
+    const snapshot = await getDocs(query(collection(adminDb, 'patrons'), orderBy('createdAt', 'desc')));
     if (snapshot.empty) {
       return [];
     }
@@ -85,22 +70,21 @@ export async function getPatrons(): Promise<Patron[]> {
   }
 }
 
-// Delete a patron
+// Delete a patron (uses admin SDK for security)
 export async function deletePatron(patronId: string, logoPath: string): Promise<{ success: boolean; error?: string }> {
-  if (!adminDb || !adminStorage) {
+   if (!adminDb || !adminStorage) {
      const errorMsg = 'Firebase Admin SDK not initialized. Cannot delete patron.';
     console.error(errorMsg);
     return { success: false, error: errorMsg };
   }
-  
   try {
     // Delete from Firestore
-    await adminDb.collection('patrons').doc(patronId).delete();
+    await deleteDoc(doc(adminDb, 'patrons', patronId));
 
     // Delete from Storage
-    await adminStorage.bucket().file(logoPath).delete();
+    const storageRef = ref(storage, logoPath);
+    await deleteObject(storageRef);
 
-    // Revalidate paths
     revalidatePath('/');
     revalidatePath('/admin/patrons');
 
