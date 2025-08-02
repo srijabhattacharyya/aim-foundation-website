@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { signInUser } from '@/lib/firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { app } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
 
 import Navbar from "@/components/layout/Navbar";
@@ -38,6 +39,7 @@ const loginSchema = z.object({
 export default function LoginPage() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const auth = getAuth(app);
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -50,14 +52,14 @@ export default function LoginPage() {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     setLoading(true);
     try {
-      await signInUser(values.email, values.password);
-      // The AuthRedirect component will handle redirection.
-      // We can show a generic success toast here.
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      // The AuthRedirect component handles redirection.
       toast({
         title: "Login Successful",
         description: "Redirecting to your dashboard...",
       });
     } catch (error: any) {
+      console.error("Login error:", error.code);
       toast({
         title: "Login Failed",
         description: "Invalid email or password.",
