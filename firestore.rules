@@ -1,65 +1,22 @@
-
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-  
-    // Helper function to get user's role from the 'users' collection
-    function getUserRole(userId) {
-      return get(/databases/$(database)/documents/users/$(userId)).data.role;
+    
+    // Allow admins to read/write their own user document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Allow admins to manage the patrons collection
+    match /patrons/{patronId} {
+       allow read: if true; // Allow anyone to read the patron logos for the homepage
+       allow create, update, delete: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Admin';
     }
 
-    // By default, deny all reads and writes
+    // Lock down other collections by default
     match /{document=**} {
       allow read, write: if false;
-    }
-    
-    // USERS Collection
-    match /users/{userId} {
-      // A user can read their own data
-      allow read: if request.auth != null && request.auth.uid == userId;
-      
-      // Admins and Super Admins can create/update user roles
-      allow create, update: if request.auth != null && (getUserRole(request.auth.uid) == 'Admin' || getUserRole(request.auth.uid) == 'Super Admin');
-      
-      // Only Super Admins can delete user documents
-      allow delete: if request.auth != null && getUserRole(request.auth.uid) == 'Super Admin';
-    }
-    
-    // DONATIONS Collection
-    match /donations/{donationId} {
-      // Donors can read their own donation records
-      // Admins and Super Admins can read any donation record
-      allow read: if request.auth != null && 
-                    (resource.data.userId == request.auth.uid || 
-                     getUserRole(request.auth.uid) in ['Admin', 'Super Admin']);
-                     
-      // Allow anyone authenticated to create a donation (e.g., after payment)
-      allow create: if request.auth != null;
-      
-      // Only Admins and Super Admins can update/delete donation records
-      allow update, delete: if request.auth != null && getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
-    }
-
-    // TEAMMEMBERS Collection
-    match /teamMembers/{memberId} {
-        // Publicly readable
-        allow read: if true;
-        // Writable only by Admins and Super Admins
-        allow write: if request.auth != null && getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
-    }
-    
-    // INITIATIVES Collection
-    match /initiatives/{initiativeId} {
-        // Publicly readable
-        allow read: if true;
-        // Writable only by Admins and Super Admins
-        allow write: if request.auth != null && getUserRole(request.auth.uid) in ['Admin', 'Super Admin'];
-    }
-    
-    // Allow Super Admin full access to everything else
-    match /{document=**} {
-      allow read, write: if request.auth != null && getUserRole(request.auth.uid) == 'Super Admin';
     }
   }
 }
