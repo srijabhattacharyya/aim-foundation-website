@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '../components/ui/toaster';
-import AuthRedirect from './AuthRedirect';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aim-foundation-hub.vercel.app'),
@@ -30,7 +29,6 @@ export default function RootLayout({
       <head>
       </head>
       <body className="font-body antialiased">
-        <AuthRedirect />
         {children}
         <Toaster />
       </body>

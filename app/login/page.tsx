@@ -2,12 +2,14 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { app } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
+import { getUserRole } from '@/lib/firebase/getUser';
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -39,6 +41,7 @@ const loginSchema = z.object({
 export default function LoginPage() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const auth = getAuth(app);
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -52,12 +55,26 @@ export default function LoginPage() {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, values.email, values.password);
-      // The AuthRedirect component handles redirection.
-      toast({
-        title: "Login Successful",
-        description: "Redirecting to your dashboard...",
-      });
+      const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+      const user = userCredential.user;
+
+      if (user) {
+        const role = await getUserRole(user.uid);
+        if (role === 'Admin') {
+          toast({
+            title: "Login Successful",
+            description: "Redirecting to your dashboard...",
+          });
+          router.push('/admin/dashboard');
+        } else {
+          await auth.signOut();
+          toast({
+            title: "Login Failed",
+            description: "You are not authorized to access this page.",
+            variant: "destructive",
+          });
+        }
+      }
     } catch (error: any) {
       console.error("Login error:", error.code);
       toast({
