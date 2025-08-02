@@ -3,14 +3,15 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { app } from '@/lib/firebase';
 import { getUserRole } from '@/lib/firebase/getUser';
 
 const auth = getAuth(app);
 
 const publicPages = ['/login'];
-const authenticatedGenericPages = ['/'];
+// Routes that are authenticated but don't have a role-specific dashboard.
+const genericAuthenticatedRoutes = ['/']; 
 
 export default function AuthRedirect() {
   const router = useRouter();
@@ -19,23 +20,19 @@ export default function AuthRedirect() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      const isPublicPage = publicPages.includes(pathname);
-      const isProtectedRoute = !isPublicPage && !authenticatedGenericPages.includes(pathname);
-
       if (user) {
-        // User is logged in, now check their role.
         const role = await getUserRole(user.uid);
 
         if (!role) {
-          // If user exists but has no role in Firestore, they are unauthorized.
-          // Log them out to prevent access and stop the loop.
-          await auth.signOut();
+          // If a user is authenticated but has no role, they are unauthorized.
+          // This prevents them from getting stuck in a redirect loop.
+          await signOut(auth);
           router.push('/login');
           setLoading(false);
           return;
         }
 
-        let targetDashboard = '/';
+        let targetDashboard = '/'; // Default for safety
         switch (role) {
           case 'Super Admin':
             targetDashboard = '/superadmin-panel';
@@ -50,38 +47,31 @@ export default function AuthRedirect() {
             targetDashboard = '/donor-dashboard';
             break;
         }
-        
-        // If user is on a public page (like /login) or the generic homepage,
-        // redirect them to their specific dashboard.
-        if (isPublicPage || authenticatedGenericPages.includes(pathname)) {
-          router.push(targetDashboard);
-        } else {
-            // User is already on a protected page. Check if it's the right one.
-            const currentBase = `/${pathname.split('/')[1]}`;
-            const targetBase = `/${targetDashboard.split('/')[1]}`;
-            if (currentBase !== targetBase) {
+
+        // Redirect if on a public page or if on a protected page that doesn't match their role.
+        if (publicPages.includes(pathname) || !pathname.startsWith(targetDashboard.split('/')[1])) {
+           if (pathname !== targetDashboard) {
                 router.push(targetDashboard);
-            }
+           }
         }
       } else {
-        // No user is logged in.
-        if (isProtectedRoute) {
-          // If they are trying to access a protected route, send them to login.
-          router.push('/login');
+        // No user logged in. Protect all routes except public ones.
+        const isPublic = publicPages.includes(pathname) || genericAuthenticatedRoutes.includes(pathname);
+        if (!isPublic) {
+            router.push('/login');
         }
       }
-      // Finished all checks, stop loading.
       setLoading(false);
     });
 
     return () => unsubscribe();
   }, [pathname, router]);
 
-  // Render nothing while loading to prevent premature redirects or content flashing.
   if (loading) {
-    return null;
+    // While checking auth, don't render anything to avoid flashes of content.
+    return null; 
   }
 
-  // This component handles redirects and does not render any UI itself.
+  // This component handles redirects and does not render UI itself.
   return null;
 }
