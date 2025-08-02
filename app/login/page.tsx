@@ -59,27 +59,41 @@ export default function LoginPage() {
       const user = userCredential.user;
 
       if (user) {
-        const role = await getUserRole(user.uid);
-        if (role === 'Admin') {
-          toast({
-            title: "Login Successful",
-            description: "Redirecting to your dashboard...",
-          });
-          router.push('/admin/dashboard');
-        } else {
-          await auth.signOut();
-          toast({
-            title: "Login Failed",
-            description: "You are not authorized to access this page.",
-            variant: "destructive",
-          });
+        try {
+          const role = await getUserRole(user.uid);
+          if (role === 'Admin') {
+            toast({
+              title: "Login Successful",
+              description: "Redirecting to your dashboard...",
+            });
+            router.push('/admin/dashboard');
+          } else {
+            await auth.signOut();
+            toast({
+              title: "Authorization Failed",
+              description: "You do not have permission to access this page.",
+              variant: "destructive",
+            });
+          }
+        } catch (roleError: any) {
+            await auth.signOut();
+            toast({
+                title: "Role Check Failed",
+                description: "Could not verify user role. Please contact support.",
+                variant: "destructive",
+            });
+            console.error("Role check error:", roleError);
         }
       }
     } catch (error: any) {
       console.error("Login error:", error.code);
+      let description = "Invalid email or password.";
+      if (error.code === 'auth/invalid-credential') {
+        description = "Invalid email or password. Please check your credentials and try again.";
+      }
       toast({
         title: "Login Failed",
-        description: "Invalid email or password.",
+        description: description,
         variant: "destructive",
       });
     } finally {

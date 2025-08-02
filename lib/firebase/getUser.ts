@@ -4,13 +4,13 @@
 import { adminDb } from '../firebase-admin';
 
 export async function getUserRole(uid: string): Promise<string | null> {
+  if (!adminDb || typeof adminDb.collection !== 'function') {
+    const errorMessage = "Firebase Admin SDK not initialized. Cannot fetch user role. Please check your FIREBASE_SERVICE_ACCOUNT_KEY environment variable.";
+    console.error(errorMessage);
+    throw new Error(errorMessage);
+  }
+  
   try {
-     if (!adminDb || typeof adminDb.collection !== 'function') {
-        console.error("Firebase Admin SDK not initialized. Cannot fetch user role. Please check your FIREBASE_SERVICE_ACCOUNT_KEY environment variable.");
-        // This will prevent login if the admin SDK is not working.
-        return null;
-    }
-    
     const userDocRef = adminDb.collection('users').doc(uid);
     const userDoc = await userDocRef.get();
 
@@ -18,10 +18,10 @@ export async function getUserRole(uid: string): Promise<string | null> {
       return userDoc.data()?.role || null;
     }
     
-    console.warn(`User document not found for UID: ${uid}`);
+    console.warn(`User document not found in 'users' collection for UID: ${uid}`);
     return null;
   } catch (error) {
-    console.error("Error fetching user role:", error);
-    return null;
+    console.error("Error fetching user role from Firestore:", error);
+    throw new Error("Failed to fetch user role from database.");
   }
 }
