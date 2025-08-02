@@ -10,8 +10,7 @@ import { getUserRole } from '@/lib/firebase/getUser';
 const auth = getAuth(app);
 
 const publicPages = ['/login'];
-// The homepage is now considered a protected route destination for logged-in users before role check
-const authenticatedGenericPages = ['/']; 
+const authenticatedGenericPages = ['/'];
 
 export default function AuthRedirect() {
   const router = useRouter();
@@ -20,16 +19,16 @@ export default function AuthRedirect() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setLoading(true); // Start loading when auth state changes
-
       const isPublicPage = publicPages.includes(pathname);
       const isProtectedRoute = !isPublicPage && !authenticatedGenericPages.includes(pathname);
 
       if (user) {
+        // User is logged in, now check their role.
         const role = await getUserRole(user.uid);
 
         if (!role) {
-          // If user exists but has no role, log them out.
+          // If user exists but has no role in Firestore, they are unauthorized.
+          // Log them out to prevent access and stop the loop.
           await auth.signOut();
           router.push('/login');
           setLoading(false);
@@ -38,42 +37,51 @@ export default function AuthRedirect() {
 
         let targetDashboard = '/';
         switch (role) {
-            case 'Super Admin':
-                targetDashboard = '/superadmin-panel';
-                break;
-            case 'Admin':
-                targetDashboard = '/admin/dashboard';
-                break;
-            case 'User':
-                targetDashboard = '/user-dashboard';
-                break;
-            case 'Donor':
-                targetDashboard = '/donor-dashboard';
-                break;
+          case 'Super Admin':
+            targetDashboard = '/superadmin-panel';
+            break;
+          case 'Admin':
+            targetDashboard = '/admin/dashboard';
+            break;
+          case 'User':
+            targetDashboard = '/user-dashboard';
+            break;
+          case 'Donor':
+            targetDashboard = '/donor-dashboard';
+            break;
         }
-
-        // If user is on a public page or the homepage, redirect to their dashboard
+        
+        // If user is on a public page (like /login) or the generic homepage,
+        // redirect them to their specific dashboard.
         if (isPublicPage || authenticatedGenericPages.includes(pathname)) {
-            router.push(targetDashboard);
+          router.push(targetDashboard);
         } else {
-            // If user is on a protected page, check if it's the correct one
-            const currentDashboardPrefix = `/${pathname.split('/')[1]}`;
-            const targetDashboardPrefix = `/${targetDashboard.split('/')[1]}`;
-            if (currentDashboardPrefix !== targetDashboardPrefix) {
+            // User is already on a protected page. Check if it's the right one.
+            const currentBase = `/${pathname.split('/')[1]}`;
+            const targetBase = `/${targetDashboard.split('/')[1]}`;
+            if (currentBase !== targetBase) {
                 router.push(targetDashboard);
             }
         }
       } else {
-        // No user is logged in
+        // No user is logged in.
         if (isProtectedRoute) {
+          // If they are trying to access a protected route, send them to login.
           router.push('/login');
         }
       }
+      // Finished all checks, stop loading.
       setLoading(false);
     });
 
     return () => unsubscribe();
-  }, [pathname, router]); // Dependency on pathname is important to re-check on navigation
+  }, [pathname, router]);
 
-  return null; // This component does not render anything
+  // Render nothing while loading to prevent premature redirects or content flashing.
+  if (loading) {
+    return null;
+  }
+
+  // This component handles redirects and does not render any UI itself.
+  return null;
 }
