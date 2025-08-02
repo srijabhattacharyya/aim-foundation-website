@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { Home, Settings, Users, Briefcase, Power, HeartHandshake } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { getAuth, onAuthStateChanged, signOut, User } from 'firebase/auth';
-import { app } from '@/lib/firebase';
+import { User, onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
@@ -14,7 +14,6 @@ import { Loader2 } from 'lucide-react';
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
   const { toast } = useToast();
-  const auth = getAuth(app);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,7 +28,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     });
 
     return () => unsubscribe();
-  }, [auth, router]);
+  }, [router]);
 
   const handleLogout = async () => {
     try {
@@ -51,7 +50,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   }
 
   if (!user) {
-    return null; 
+    return null; // or a redirect component
   }
 
   return (

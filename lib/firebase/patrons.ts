@@ -3,7 +3,6 @@
 
 import { adminDb, adminStorage } from '../firebase-admin';
 import { revalidatePath } from 'next/cache';
-import { collection, getDocs, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 
 export interface Patron {
   id: string;
@@ -20,8 +19,8 @@ export async function getPatrons(): Promise<Patron[]> {
     return [];
   }
   try {
-    const patronsQuery = query(collection(adminDb, 'patrons'), orderBy('createdAt', 'desc'));
-    const snapshot = await getDocs(patronsQuery);
+    const patronsQuery = adminDb.collection('patrons').orderBy('createdAt', 'desc');
+    const snapshot = await patronsQuery.get();
     if (snapshot.empty) {
       return [];
     }
@@ -41,7 +40,7 @@ export async function deletePatron(patronId: string, logoPath: string): Promise<
   }
   try {
     // Delete from Firestore
-    await deleteDoc(doc(adminDb, 'patrons', patronId));
+    await adminDb.collection('patrons').doc(patronId).delete();
 
     // Delete from Storage
     const bucket = adminStorage.bucket();
@@ -56,7 +55,7 @@ export async function deletePatron(patronId: string, logoPath: string): Promise<
     if (error.code === 404) {
         console.warn(`File not found in storage: ${logoPath}. Deleting Firestore record anyway.`);
         // Ensure Firestore record is deleted even if file is missing
-        await deleteDoc(doc(adminDb, 'patrons', patronId)).catch(err => console.error("Secondary delete error:", err));
+        await adminDb.collection('patrons').doc(patronId).delete().catch(err => console.error("Secondary delete error:", err));
         revalidatePath('/');
         revalidatePath('/admin/patrons');
         return { success: true }; // Treat as success if file is already gone

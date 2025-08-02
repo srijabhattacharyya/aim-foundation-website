@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -17,9 +16,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Trash2 } from 'lucide-react';
 import { deletePatron, Patron } from '@/lib/firebase/patrons';
 import { ScrollArea } from '@/components/ui/scroll-area';
+
+// Import client-side Firebase services
+import { db, storage } from '@/lib/firebase'; 
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, storage } from '@/lib/firebase';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
+
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Patron name must be at least 2 characters.' }),
@@ -51,6 +53,7 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
       const logoFile = values.logo;
       let fileToUpload = logoFile;
 
+      // Only compress if the file is larger than 200KB
       if (logoFile.size > 200 * 1024) {
         const options = {
           maxSizeMB: 0.2,
@@ -59,13 +62,16 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
         };
         fileToUpload = await imageCompression(logoFile, options);
       }
-
+      
       const logoPath = `patrons/${Date.now()}-${fileToUpload.name.replace(/\s/g, '_')}`;
       const storageRef = ref(storage, logoPath);
       
+      // 1. Upload the file using the client SDK
       const uploadResult = await uploadBytes(storageRef, fileToUpload);
+      // 2. Get the download URL
       const logoUrl = await getDownloadURL(uploadResult.ref);
 
+      // 3. Add the metadata to Firestore using the client SDK
       const docRef = await addDoc(collection(db, 'patrons'), {
         name: values.name,
         logoUrl,
@@ -78,14 +84,19 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
         name: values.name,
         logoUrl,
         logoPath,
-        createdAt: Timestamp.now() as any, 
+        createdAt: Timestamp.now() as any, // Cast for local state update
       };
 
-      toast({ title: 'Success', description: 'Patron added successfully.' });
+      // 4. Update local state immediately for a fast UI response
       setPatrons(prev => [newPatron, ...prev]);
+
+      toast({ title: 'Success', description: 'Patron added successfully.' });
       form.reset();
+      // Clear the file input visually
       const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
       if(fileInput) fileInput.value = '';
+      
+      // 5. Refresh server data in the background
       router.refresh();
 
     } catch (error: any) {
