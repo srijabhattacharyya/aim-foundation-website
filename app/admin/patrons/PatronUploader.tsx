@@ -78,7 +78,7 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
         form.reset();
         const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
         if(fileInput) fileInput.value = '';
-        router.refresh(); 
+        // router.refresh(); // This was causing the slowness
       } else {
         throw new Error(result.error || 'Failed to add patron.');
       }
@@ -101,7 +101,7 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
       await deletePatron(patronId, logoPath);
       toast({ title: 'Success', description: 'Patron deleted successfully.' });
       setPatrons(prev => prev.filter(p => p.id !== patronId));
-      router.refresh();
+      // router.refresh(); // Also removing here for consistency on delete
     } catch (error: any) {
       toast({
         title: 'Error',
