@@ -12,7 +12,7 @@ import admin from 'firebase-admin';
 
 if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
   // This error is expected if the key is not set.
-  console.warn('FIREBASE_SERVICE_ACCOUNT_KEY is not set. Admin SDK features will be disabled.');
+  console.error('CRITICAL: FIREBASE_SERVICE_ACCOUNT_KEY is not set. Admin SDK features are disabled. User role checking will fail.');
 } else {
   if (!admin.apps.length) {
     try {
@@ -23,13 +23,12 @@ if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
         credential: admin.credential.cert(serviceAccount)
       });
     } catch (e) {
-      console.error('Failed to parse FIREBASE_SERVICE_ACCOUNT_KEY:', e);
-      // We don't throw an error here anymore to allow the app to run without full admin features.
+      console.error('CRITICAL: Failed to parse FIREBASE_SERVICE_ACCOUNT_KEY. Admin SDK will not be initialized.', e);
     }
   }
 }
 
-// We export null objects to prevent the app from crashing where these are imported.
-// The code that uses these will need to handle the case where they are not available.
+// We export the initialized services or a placeholder that will cause a controlled failure.
+// This prevents the entire application from crashing on import.
 export const adminAuth = admin.apps.length ? admin.auth() : ({} as admin.auth.Auth);
 export const adminDb = admin.apps.length ? admin.firestore() : ({} as admin.firestore.Firestore);
