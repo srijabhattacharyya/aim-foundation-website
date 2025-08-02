@@ -36,11 +36,8 @@ export default function AuthRedirect() {
           }
         }
       } else {
-        // No user logged in. Protect all routes except public ones and homepage.
-        const isPublic = publicPages.includes(pathname) || pathname === homePage;
-        if (!isPublic && !pathname.startsWith('/admin')) {
-           // Let other pages handle their own non-auth state if needed
-        } else if (pathname.startsWith('/admin')) {
+        // No user logged in. Protect admin routes.
+        if (pathname.startsWith('/admin')) {
              router.push('/login');
         }
       }
@@ -48,7 +45,7 @@ export default function AuthRedirect() {
     });
 
     return () => unsubscribe();
-  }, [pathname, router]);
+  }, [router, pathname]); // Keep pathname to handle direct navigation attempts
 
   if (loading) {
     return null; // Don't render anything while checking auth
