@@ -10,72 +10,70 @@ import { getUserRole } from '@/lib/firebase/getUser';
 const auth = getAuth(app);
 
 const publicPages = ['/login'];
+// The homepage is now considered a protected route destination for logged-in users before role check
 const authenticatedGenericPages = ['/']; 
 
 export default function AuthRedirect() {
   const router = useRouter();
   const pathname = usePathname();
-  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-        setUser(user);
-        setLoading(false);
-    });
-    return () => unsubscribe();
-  }, []);
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      setLoading(true); // Start loading when auth state changes
 
-  useEffect(() => {
-    if (loading) return;
+      const isPublicPage = publicPages.includes(pathname);
+      const isProtectedRoute = !isPublicPage && !authenticatedGenericPages.includes(pathname);
 
-    const performRedirect = async () => {
-        const isPublicPage = publicPages.includes(pathname);
-        const isAuthPage = pathname.startsWith('/admin') || pathname.startsWith('/user-dashboard') || pathname.startsWith('/donor-dashboard') || pathname.startsWith('/superadmin-panel');
+      if (user) {
+        const role = await getUserRole(user.uid);
 
-        if (user) {
-            const role = await getUserRole(user.uid);
-            
-            if (!role) {
-                if (isAuthPage || !isPublicPage) {
-                    await auth.signOut();
-                    router.push('/login');
-                }
-                return;
-            }
+        if (!role) {
+          // If user exists but has no role, log them out.
+          await auth.signOut();
+          router.push('/login');
+          setLoading(false);
+          return;
+        }
 
-            let targetDashboard = '/'; 
-            switch (role) {
-                case 'Super Admin':
-                    targetDashboard = '/superadmin-panel';
-                    break;
-                case 'Admin':
-                    targetDashboard = '/admin/dashboard';
-                    break;
-                case 'User':
-                    targetDashboard = '/user-dashboard';
-                    break;
-                case 'Donor':
-                    targetDashboard = '/donor-dashboard';
-                    break;
-            }
+        let targetDashboard = '/';
+        switch (role) {
+            case 'Super Admin':
+                targetDashboard = '/superadmin-panel';
+                break;
+            case 'Admin':
+                targetDashboard = '/admin/dashboard';
+                break;
+            case 'User':
+                targetDashboard = '/user-dashboard';
+                break;
+            case 'Donor':
+                targetDashboard = '/donor-dashboard';
+                break;
+        }
 
-            if (isPublicPage || authenticatedGenericPages.includes(pathname)) {
-                 router.push(targetDashboard);
-            } else if (isAuthPage && !pathname.startsWith(`/${targetDashboard.split('/')[1]}`)) {
-                 router.push(targetDashboard);
-            }
-
+        // If user is on a public page or the homepage, redirect to their dashboard
+        if (isPublicPage || authenticatedGenericPages.includes(pathname)) {
+            router.push(targetDashboard);
         } else {
-            if (isAuthPage) {
-                router.push('/login');
+            // If user is on a protected page, check if it's the correct one
+            const currentDashboardPrefix = `/${pathname.split('/')[1]}`;
+            const targetDashboardPrefix = `/${targetDashboard.split('/')[1]}`;
+            if (currentDashboardPrefix !== targetDashboardPrefix) {
+                router.push(targetDashboard);
             }
         }
-    }
-    
-    performRedirect();
+      } else {
+        // No user is logged in
+        if (isProtectedRoute) {
+          router.push('/login');
+        }
+      }
+      setLoading(false);
+    });
 
-  }, [user, pathname, router, loading]);
+    return () => unsubscribe();
+  }, [pathname, router]); // Dependency on pathname is important to re-check on navigation
 
-  return null;
+  return null; // This component does not render anything
 }
