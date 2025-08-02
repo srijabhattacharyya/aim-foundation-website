@@ -7,56 +7,29 @@ import { Home, Settings, Users, Briefcase, Power, Shield, UserCog, Building } fr
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { getAuth, onAuthStateChanged, signOut, User } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
 import { app } from '@/lib/firebase';
-import { adminDb } from '@/lib/firebase-admin'; // This is a server-side import, will cause issues on client
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
-
-// Client-side function to get user role
-async function getUserRole(uid: string): Promise<string | null> {
-    try {
-        const userDocRef = doc(adminDb, 'users', uid); // This will fail client-side. Let's fix this.
-        // We can't use firebase-admin on the client.
-        // A proper way is to use a server action or an API route to get the role securely.
-        // For this implementation, we will use a workaround, but this is NOT secure for production.
-        // The proper way requires more setup. We'll simulate fetching the role for now.
-        // In a real app, you'd call a server action here.
-        // const role = await fetchUserRoleFromServer(uid);
-        
-        // This is a placeholder. A real implementation would fetch this securely.
-        // We'll proceed as if the login page logic handles role and redirects.
-        // This layout will assume the user has a valid admin/superadmin role if they land here.
-        // A more robust check should be implemented.
-        return 'Admin'; // Placeholder
-    } catch (error) {
-        console.error("Error fetching user role:", error);
-        return null;
-    }
-}
-
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
   const { toast } = useToast();
   const auth = getAuth(app);
   const [user, setUser] = useState<User | null>(null);
-  const [role, setRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUser(user);
-        // This is insecure. In a real app, get the role from a custom claim or a secure API endpoint.
-        // For demonstration, we are assuming if you get here, you are an admin.
-        // The login page should handle the primary redirection.
-        setRole('Admin'); // Placeholder
       } else {
+        // If no user is found, redirect to the login page.
         router.push('/login');
       }
       setLoading(false);
     });
+
+    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [auth, router]);
 
@@ -70,7 +43,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     }
   };
   
-  if (loading) {
+  if (loading || !user) {
       return (
           <div className="flex h-screen items-center justify-center">
               <p>Loading...</p>
