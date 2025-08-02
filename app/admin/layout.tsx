@@ -10,6 +10,7 @@ import { getAuth, onAuthStateChanged, signOut, User } from 'firebase/auth';
 import { app } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
+import { getUserRole } from '@/lib/firebase/getUser';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -19,17 +20,26 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        setUser(user);
+        const role = await getUserRole(user.uid);
+        if (role === 'Admin') {
+          setUser(user);
+        } else {
+          // If user is logged in but not an admin, sign them out and redirect
+          await signOut(auth);
+          toast({ title: "Unauthorized", description: "You are not authorized to view this page.", variant: "destructive" });
+          router.push('/login');
+        }
       } else {
+        // If no user is logged in, redirect to login
         router.push('/login');
       }
       setLoading(false);
     });
     // Cleanup subscription on unmount
     return () => unsubscribe();
-  }, [auth, router]);
+  }, [auth, router, toast]);
 
   const handleLogout = async () => {
     try {
@@ -44,12 +54,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   if (loading) {
       return (
           <div className="flex h-screen items-center justify-center">
-              <p>Loading...</p>
+              <p>Loading admin session...</p>
           </div>
       )
   }
 
   if (!user) {
+    // This will show briefly before the redirect kicks in
     return null; 
   }
 

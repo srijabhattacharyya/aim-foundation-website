@@ -59,36 +59,28 @@ export default function LoginPage() {
       const user = userCredential.user;
 
       if (user) {
-        try {
-          const role = await getUserRole(user.uid);
-          if (role === 'Admin') {
-            toast({
-              title: "Login Successful",
-              description: "Redirecting to your dashboard...",
-            });
-            router.push('/admin/dashboard');
-          } else {
-            await auth.signOut();
-            toast({
-              title: "Authorization Failed",
-              description: "You do not have permission to access this page.",
-              variant: "destructive",
-            });
-          }
-        } catch (roleError: any) {
-            await auth.signOut();
-            toast({
-                title: "Role Check Failed",
-                description: "Could not verify user role. Please contact support.",
-                variant: "destructive",
-            });
-            console.error("Role check error:", roleError);
+        // Fetch role from client-side function
+        const role = await getUserRole(user.uid);
+
+        if (role === 'Admin') {
+          toast({
+            title: "Login Successful",
+            description: "Redirecting to your dashboard...",
+          });
+          router.push('/admin/dashboard');
+        } else {
+          await auth.signOut(); // Sign out the user if they don't have the correct role
+          toast({
+            title: "Authorization Failed",
+            description: "You do not have permission to access the admin dashboard.",
+            variant: "destructive",
+          });
         }
       }
     } catch (error: any) {
-      console.error("Login error:", error.code);
-      let description = "Invalid email or password.";
-      if (error.code === 'auth/invalid-credential') {
+      console.error("Login error:", error);
+      let description = "An unexpected error occurred. Please try again.";
+      if (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
         description = "Invalid email or password. Please check your credentials and try again.";
       }
       toast({

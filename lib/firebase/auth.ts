@@ -1,19 +1,16 @@
+
 'use server';
 
-import { getAuth } from 'firebase-admin/auth';
-import { adminAuth } from '../firebase-admin';
+// Note: This file is now largely a placeholder.
+// The primary sign-in logic has been moved to the client-side
+// in `/app/login/page.tsx` to accommodate environments where
+// service account keys cannot be created.
 
 export async function signInUser(email: string, password: string): Promise<{ success: boolean; error?: string }> {
   try {
-    // This function now uses the Admin SDK, but since we can't create a custom token
-    // without the user being logged in first, we'll keep this as a placeholder.
     // The actual login must happen client-side with the client SDK.
-    // The previous attempts to mix client and admin SDKs were causing issues.
-    // This server action will be simplified on the client-side call.
-    
-    // The core logic will be managed in the login page component itself.
-    // This function remains for structure but the client will handle the sign-in.
-    
+    // This server action is no longer called by the login page.
+    // It remains for structure in case a future server-side auth flow is needed.
     return { success: true };
   } catch (error: any) {
     console.error('SignIn Error:', error.message);
