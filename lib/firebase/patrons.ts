@@ -3,9 +3,7 @@
 
 import { adminDb, adminStorage } from '../firebase-admin';
 import { revalidatePath } from 'next/cache';
-import { collection, addDoc, getDocs, deleteDoc, doc, orderBy, Timestamp } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { db, storage } from '../firebase'; // Using client SDK for this action
+import { collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, Timestamp } from 'firebase/firestore';
 
 export interface Patron {
   id: string;
@@ -15,19 +13,19 @@ export interface Patron {
   createdAt: FirebaseFirestore.Timestamp;
 }
 
-// This function is now for adding the metadata to Firestore after upload
+// This function is for adding the metadata to Firestore after upload
 export async function addPatron(name: string, logoUrl: string, logoPath: string): Promise<{ success: boolean, error?: string, newPatron?: Patron }> {
   if (!name || !logoUrl || !logoPath) {
     return { success: false, error: 'Patron name, logo URL, and logo path are required.' };
   }
-  if (!adminDb) {
+  if (!adminDb || !adminDb.collection) {
       const errorMsg = 'Firebase Admin SDK not initialized. Cannot add patron.';
       console.error(errorMsg);
       return { success: false, error: errorMsg };
   }
 
   try {
-    const patronRef = await addDoc(collection(adminDb, 'patrons'), {
+    const docRef = await addDoc(collection(adminDb, 'patrons'), {
       name,
       logoUrl,
       logoPath,
@@ -38,11 +36,11 @@ export async function addPatron(name: string, logoUrl: string, logoPath: string)
     revalidatePath('/admin/patrons');
     
     const newPatron: Patron = {
-      id: patronRef.id,
+      id: docRef.id,
       name,
       logoUrl,
       logoPath,
-      createdAt: Timestamp.now() as any,
+      createdAt: Timestamp.now() as any, // Type assertion for consistency
     };
 
     return { success: true, newPatron };
@@ -54,12 +52,13 @@ export async function addPatron(name: string, logoUrl: string, logoPath: string)
 
 // Get all patrons (uses admin SDK for server-side rendering)
 export async function getPatrons(): Promise<Patron[]> {
-   if (!adminDb) {
+   if (!adminDb || !adminDb.collection) {
     console.error('Firebase Admin SDK not initialized. Cannot get patrons.');
     return [];
   }
   try {
-    const snapshot = await getDocs(query(collection(adminDb, 'patrons'), orderBy('createdAt', 'desc')));
+    const patronsQuery = query(collection(adminDb, 'patrons'), orderBy('createdAt', 'desc'));
+    const snapshot = await getDocs(patronsQuery);
     if (snapshot.empty) {
       return [];
     }
@@ -72,7 +71,7 @@ export async function getPatrons(): Promise<Patron[]> {
 
 // Delete a patron (uses admin SDK for security)
 export async function deletePatron(patronId: string, logoPath: string): Promise<{ success: boolean; error?: string }> {
-   if (!adminDb || !adminStorage) {
+   if (!adminDb || !adminStorage || !adminDb.collection) {
      const errorMsg = 'Firebase Admin SDK not initialized. Cannot delete patron.';
     console.error(errorMsg);
     return { success: false, error: errorMsg };
@@ -82,8 +81,8 @@ export async function deletePatron(patronId: string, logoPath: string): Promise<
     await deleteDoc(doc(adminDb, 'patrons', patronId));
 
     // Delete from Storage
-    const storageRef = ref(storage, logoPath);
-    await deleteObject(storageRef);
+    const bucket = adminStorage.bucket();
+    await bucket.file(logoPath).delete();
 
     revalidatePath('/');
     revalidatePath('/admin/patrons');
@@ -91,6 +90,12 @@ export async function deletePatron(patronId: string, logoPath: string): Promise<
     return { success: true };
   } catch (error: any) {
     console.error('Error deleting patron:', error);
+    if (error.code === 404) {
+        console.warn(`File not found in storage: ${logoPath}. Deleting Firestore record anyway.`);
+        revalidatePath('/');
+        revalidatePath('/admin/patrons');
+        return { success: true }; // Treat as success if file is already gone
+    }
     return { success: false, error: error.message };
   }
 }
