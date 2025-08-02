@@ -1,57 +1,23 @@
+import Image from "next/image";
+import { getPatrons } from "@/lib/firebase/patrons";
 
-"use client"
+export const revalidate = 0;
 
-import Image from "next/image"
+const Patrons = async () => {
+    const patrons = await getPatrons();
+    
+    // Create a display list with real patrons and placeholders if needed
+    const displayItems = [...patrons];
+    while (displayItems.length < 8) { // Ensure at least 8 slots are filled
+        displayItems.push({
+            id: `placeholder-${displayItems.length}`,
+            name: "Patron Logo",
+            logoUrl: "https://placehold.co/200x90.png",
+            logoPath: '',
+            createdAt: new Date() as any,
+        });
+    }
 
-const patrons = [
-  {
-    name: "Forest Department",
-    logo: "/images/patrons/forest.png",
-    hint: "forest department logo"
-  },
-  {
-    name: "STR",
-    logo: "/images/patrons/str.png",
-    hint: "STR logo"
-  },
-  {
-    name: "JU",
-    logo: "/images/patrons/ju.png",
-    hint: "JU logo"
-  },
-  {
-    name: "Animal Husbandry Department",
-    logo: "/images/patrons/animal.png",
-    hint: "Animal Husbandry Department logo"
-  },
-  {
-    name: "Google",
-    logo: "/images/patrons/google.png",
-    hint: "Google logo"
-  },
-  {
-    name: "Amazon",
-    logo: "/images/patrons/amazon.png",
-    hint: "Amazon logo"
-  },
-  {
-    name: "Canva",
-    logo: "/images/patrons/canva.png",
-    hint: "Canva logo"
-  },
-  {
-    name: "Nexval",
-    logo: "/images/patrons/nexval.png",
-    hint: "Nexval logo"
-  },
-  ...Array(12).fill({
-    name: "Patron Logo",
-    logo: "https://placehold.co/200x90.png",
-    hint: "corporate logo",
-  })
-];
-
-const Patrons = () => {
     return (
         <section className="py-12 md:py-20 lg:py-24 bg-card">
             <div className="container mx-auto px-4 md:px-6">
@@ -61,39 +27,19 @@ const Patrons = () => {
                         We are grateful for the generous support from our partners and patrons who make our work possible.
                     </p>
                 </div>
-                <div
-                    className="relative flex h-[400px] w-full flex-col overflow-hidden rounded-lg border"
-                >
-                    <div className="flex flex-col animate-scroll-up">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6">
-                            {patrons.map((patron, index) => (
-                                <div key={index} className="flex justify-center items-center h-full">
-                                    <Image
-                                        src={patron.logo}
-                                        alt={`${patron.name} ${index + 1}`}
-                                        width={200}
-                                        height={90}
-                                        data-ai-hint={patron.hint}
-                                        className="object-contain w-full h-auto transition-all duration-300"
-                                    />
-                                </div>
-                            ))}
+                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6">
+                    {displayItems.map((patron, index) => (
+                        <div key={patron.id} className="flex justify-center items-center h-24 bg-muted/30 rounded-lg p-2">
+                            <Image
+                                src={patron.logoUrl}
+                                alt={patron.name}
+                                width={180}
+                                height={80}
+                                data-ai-hint="corporate logo"
+                                className="object-contain max-w-full max-h-full transition-all duration-300"
+                            />
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6" aria-hidden="true">
-                            {patrons.map((patron, index) => (
-                                <div key={index + patrons.length} className="flex justify-center items-center h-full">
-                                    <Image
-                                        src={patron.logo}
-                                        alt={`${patron.name} ${index + 1}`}
-                                        width={200}
-                                        height={90}
-                                        data-ai-hint={patron.hint}
-                                        className="object-contain w-full h-auto transition-all duration-300"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>

@@ -1,9 +1,8 @@
-
 'use client';
 
 import { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Home, Settings, Users, Briefcase, Power } from 'lucide-react';
+import { Home, Settings, Users, Briefcase, Power, HeartHandshake } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { getAuth, onAuthStateChanged, signOut, User } from 'firebase/auth';
@@ -71,6 +70,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             >
               <Home className="h-4 w-4" />
               Dashboard
+            </Link>
+             <Link
+              href="/admin/patrons"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+            >
+              <HeartHandshake className="h-4 w-4" />
+              Patrons
             </Link>
             <Link
               href="#"
