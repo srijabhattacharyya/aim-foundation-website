@@ -5,12 +5,10 @@ import { adminDb } from '../firebase-admin';
 
 export async function getUserRole(uid: string): Promise<string | null> {
   try {
-     if (!adminDb.collection) {
-        // This is the temporary workaround path if Admin SDK is not initialized
-        console.warn("Firebase Admin SDK not initialized. Defaulting to 'User' role for login.");
-        // To allow login for testing, you can return a default role.
-        // For production, you might want this to return null and fail the login.
-        return 'Admin'; 
+     if (!adminDb || typeof adminDb.collection !== 'function') {
+        console.error("Firebase Admin SDK not initialized. Cannot fetch user role.");
+        // This will prevent login if the admin SDK is not working.
+        return null;
     }
     
     const userDocRef = adminDb.collection('users').doc(uid);
@@ -20,6 +18,7 @@ export async function getUserRole(uid: string): Promise<string | null> {
       return userDoc.data()?.role || null;
     }
     
+    console.warn(`User document not found for UID: ${uid}`);
     return null;
   } catch (error) {
     console.error("Error fetching user role:", error);

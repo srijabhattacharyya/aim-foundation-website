@@ -10,10 +10,9 @@ import admin from 'firebase-admin';
 // 1. Set the FIREBASE_SERVICE_ACCOUNT_KEY environment variable.
 // 2. Uncomment the code block below.
 
-/*
 if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
   // This error is expected if the key is not set.
-  // console.warn('FIREBASE_SERVICE_ACCOUNT_KEY is not set. Admin SDK features will be disabled.');
+  console.warn('FIREBASE_SERVICE_ACCOUNT_KEY is not set. Admin SDK features will be disabled.');
 } else {
   if (!admin.apps.length) {
     try {
@@ -29,7 +28,6 @@ if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
     }
   }
 }
-*/
 
 // We export null objects to prevent the app from crashing where these are imported.
 // The code that uses these will need to handle the case where they are not available.
