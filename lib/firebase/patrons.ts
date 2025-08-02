@@ -3,13 +3,14 @@
 
 import { adminDb, adminStorage } from '../firebase-admin';
 import { revalidatePath } from 'next/cache';
+import { Timestamp } from 'firebase-admin/firestore';
 
 export interface Patron {
   id: string;
   name: string;
   logoUrl: string;
   logoPath: string;
-  createdAt: FirebaseFirestore.Timestamp;
+  createdAt: Timestamp;
 }
 
 // Get all patrons (uses admin SDK for server-side rendering)
@@ -44,7 +45,9 @@ export async function deletePatron(patronId: string, logoPath: string): Promise<
 
     // Delete from Storage
     const bucket = adminStorage.bucket();
-    await bucket.file(logoPath).delete();
+    if (logoPath) { // Check if logoPath exists before trying to delete
+        await bucket.file(logoPath).delete();
+    }
 
     revalidatePath('/');
     revalidatePath('/admin/patrons');

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -88,7 +89,7 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
       };
 
       // 4. Update local state immediately for a fast UI response
-      setPatrons(prev => [newPatron, ...prev]);
+      setPatrons(prev => [newPatron, ...prev].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()));
 
       toast({ title: 'Success', description: 'Patron added successfully.' });
       form.reset();
@@ -96,14 +97,14 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
       const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
       if(fileInput) fileInput.value = '';
       
-      // 5. Refresh server data in the background
+      // 5. Refresh server data in the background for consistency on next load
       router.refresh();
 
     } catch (error: any) {
       console.error("Error adding patron:", error);
       toast({
         title: 'Error',
-        description: error.message || 'An error occurred while adding the patron.',
+        description: error.message || 'An error occurred while adding the patron. Check Firestore rules.',
         variant: 'destructive',
       });
     } finally {
