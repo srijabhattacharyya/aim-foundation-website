@@ -30,7 +30,7 @@ export default async function AdminDashboard() {
                         Manage your ongoing projects and campaigns.
                     </p>
                     <Button variant="outline" size="sm" asChild>
-                        <Link href="#">Manage Initiatives</Link>
+                        <Link href="/admin/patrons">Manage Initiatives</Link>
                     </Button>
                 </CardContent>
             </Card>
@@ -45,7 +45,7 @@ export default async function AdminDashboard() {
                         Add or update team member profiles.
                     </p>
                      <Button variant="outline" size="sm" asChild>
-                        <Link href="#">Manage Team</Link>
+                        <Link href="/admin/patrons">Manage Team</Link>
                     </Button>
                 </CardContent>
             </Card>
@@ -60,7 +60,7 @@ export default async function AdminDashboard() {
                         A summary of all contributions received.
                     </p>
                      <Button variant="outline" size="sm" asChild>
-                        <Link href="#">View Donations</Link>
+                        <Link href="/admin/patrons">View Donations</Link>
                     </Button>
                 </CardContent>
             </Card>
