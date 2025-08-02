@@ -3,15 +3,15 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut, User } from 'firebase/auth';
 import { app } from '@/lib/firebase';
 import { getUserRole } from '@/lib/firebase/getUser';
 
 const auth = getAuth(app);
 
 const publicPages = ['/login'];
-// Routes that are authenticated but don't have a role-specific dashboard.
-const genericAuthenticatedRoutes = ['/']; 
+const adminDashboard = '/admin/dashboard';
+const homePage = '/';
 
 export default function AuthRedirect() {
   const router = useRouter();
@@ -23,42 +23,25 @@ export default function AuthRedirect() {
       if (user) {
         const role = await getUserRole(user.uid);
 
-        if (!role) {
-          // If a user is authenticated but has no role, they are unauthorized.
-          // This prevents them from getting stuck in a redirect loop.
+        if (role === 'Admin') {
+          // If admin is on a public page or homepage, redirect to dashboard
+          if (publicPages.includes(pathname) || pathname === homePage) {
+            router.push(adminDashboard);
+          }
+        } else {
+          // If user is authenticated but not an Admin, sign them out and send to login
           await signOut(auth);
-          router.push('/login');
-          setLoading(false);
-          return;
-        }
-
-        let targetDashboard = '/'; // Default for safety
-        switch (role) {
-          case 'Super Admin':
-            targetDashboard = '/superadmin-panel';
-            break;
-          case 'Admin':
-            targetDashboard = '/admin/dashboard';
-            break;
-          case 'User':
-            targetDashboard = '/user-dashboard';
-            break;
-          case 'Donor':
-            targetDashboard = '/donor-dashboard';
-            break;
-        }
-
-        // Redirect if on a public page or if on a protected page that doesn't match their role.
-        if (publicPages.includes(pathname) || !pathname.startsWith(targetDashboard.split('/')[1])) {
-           if (pathname !== targetDashboard) {
-                router.push(targetDashboard);
-           }
+          if (pathname !== '/login') {
+            router.push('/login');
+          }
         }
       } else {
-        // No user logged in. Protect all routes except public ones.
-        const isPublic = publicPages.includes(pathname) || genericAuthenticatedRoutes.includes(pathname);
-        if (!isPublic) {
-            router.push('/login');
+        // No user logged in. Protect all routes except public ones and homepage.
+        const isPublic = publicPages.includes(pathname) || pathname === homePage;
+        if (!isPublic && !pathname.startsWith('/admin')) {
+           // Let other pages handle their own non-auth state if needed
+        } else if (pathname.startsWith('/admin')) {
+             router.push('/login');
         }
       }
       setLoading(false);
@@ -68,10 +51,8 @@ export default function AuthRedirect() {
   }, [pathname, router]);
 
   if (loading) {
-    // While checking auth, don't render anything to avoid flashes of content.
-    return null; 
+    return null; // Don't render anything while checking auth
   }
 
-  // This component handles redirects and does not render UI itself.
   return null;
 }

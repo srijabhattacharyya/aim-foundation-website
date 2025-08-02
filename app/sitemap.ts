@@ -22,7 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/digiempower',
     '/disaster-management',
     '/donation-policy',
-    '/donor-dashboard',
     '/eduaccess',
     '/educational-initiatives',
     '/employee-engagement',
@@ -59,18 +58,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/sighthope',
     '/soulcircle',
     '/suidhaga',
-    '/superadmin-panel',
     '/surgireach',
     '/sustainability-initiatives',
     '/team',
     '/tideshield',
     '/transparency-policy',
-    '/user-dashboard',
     '/vidyashakti',
     '/voices',
     '/volunteer-policy',
     '/volunteering',
     '/workshops-events',
+    '/admin/dashboard',
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = staticPages.map((path) => ({
