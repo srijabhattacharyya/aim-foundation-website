@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import imageCompression from 'browser-image-compression';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -47,23 +48,33 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
 
     try {
       const logoFile = values.logo;
-      const logoPath = `patrons/${Date.now()}-${logoFile.name.replace(/\s/g, '_')}`;
+      
+      // Compression options
+      const options = {
+        maxSizeMB: 0.5, // (max file size in MB)
+        maxWidthOrHeight: 800, // (max width or height in pixels)
+        useWebWorker: true,
+      };
+
+      // 1. Compress the image
+      const compressedFile = await imageCompression(logoFile, options);
+
+      const logoPath = `patrons/${Date.now()}-${compressedFile.name.replace(/\s/g, '_')}`;
       const storageRef = ref(storage, logoPath);
       
-      // 1. Upload file to client
-      await uploadBytes(storageRef, logoFile);
+      // 2. Upload compressed file
+      await uploadBytes(storageRef, compressedFile);
       
-      // 2. Get download URL
+      // 3. Get download URL
       const logoUrl = await getDownloadURL(storageRef);
 
-      // 3. Call server action with text data
+      // 4. Call server action with text data
       const result = await addPatron(values.name, logoUrl, logoPath);
 
       if (result.success && result.newPatron) {
         toast({ title: 'Success', description: 'Patron added successfully.' });
         setPatrons(prev => [result.newPatron!, ...prev]);
         form.reset();
-        // Manually reset the file input visually
         const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
         if(fileInput) fileInput.value = '';
         router.refresh(); 
