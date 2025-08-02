@@ -15,10 +15,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Trash2 } from 'lucide-react';
-import { addPatron, deletePatron, Patron } from '@/lib/firebase/patrons';
+import { deletePatron, Patron } from '@/lib/firebase/patrons';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { storage } from '@/lib/firebase';
+import { db, storage } from '@/lib/firebase';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Patron name must be at least 2 characters.' }),
@@ -50,39 +51,45 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
       const logoFile = values.logo;
       let fileToUpload = logoFile;
 
-      // Only compress if the file is larger than 200KB
       if (logoFile.size > 200 * 1024) {
         const options = {
-          maxSizeMB: 0.2, // Max size 200KB
+          maxSizeMB: 0.2,
           maxWidthOrHeight: 800,
           useWebWorker: true,
         };
-        console.log(`Compressing image: ${logoFile.name}`);
         fileToUpload = await imageCompression(logoFile, options);
-      } else {
-         console.log(`Image is small enough, skipping compression for: ${logoFile.name}`);
       }
 
       const logoPath = `patrons/${Date.now()}-${fileToUpload.name.replace(/\s/g, '_')}`;
       const storageRef = ref(storage, logoPath);
       
-      await uploadBytes(storageRef, fileToUpload);
-      
-      const logoUrl = await getDownloadURL(storageRef);
+      const uploadResult = await uploadBytes(storageRef, fileToUpload);
+      const logoUrl = await getDownloadURL(uploadResult.ref);
 
-      const result = await addPatron(values.name, logoUrl, logoPath);
+      const docRef = await addDoc(collection(db, 'patrons'), {
+        name: values.name,
+        logoUrl,
+        logoPath,
+        createdAt: Timestamp.now(),
+      });
 
-      if (result.success && result.newPatron) {
-        toast({ title: 'Success', description: 'Patron added successfully.' });
-        setPatrons(prev => [result.newPatron!, ...prev]);
-        form.reset();
-        const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-        if(fileInput) fileInput.value = '';
-        // router.refresh(); // This was causing the slowness
-      } else {
-        throw new Error(result.error || 'Failed to add patron.');
-      }
+      const newPatron: Patron = {
+        id: docRef.id,
+        name: values.name,
+        logoUrl,
+        logoPath,
+        createdAt: Timestamp.now() as any, 
+      };
+
+      toast({ title: 'Success', description: 'Patron added successfully.' });
+      setPatrons(prev => [newPatron, ...prev]);
+      form.reset();
+      const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+      if(fileInput) fileInput.value = '';
+      router.refresh();
+
     } catch (error: any) {
+      console.error("Error adding patron:", error);
       toast({
         title: 'Error',
         description: error.message || 'An error occurred while adding the patron.',
@@ -101,7 +108,7 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
       await deletePatron(patronId, logoPath);
       toast({ title: 'Success', description: 'Patron deleted successfully.' });
       setPatrons(prev => prev.filter(p => p.id !== patronId));
-      // router.refresh(); // Also removing here for consistency on delete
+      router.refresh();
     } catch (error: any) {
       toast({
         title: 'Error',
