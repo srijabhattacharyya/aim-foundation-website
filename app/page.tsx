@@ -11,8 +11,7 @@ import LatestAnnouncements from '../components/sections/LatestAnnouncements';
 import DonateSection from '../components/sections/DonateSection';
 import Volunteer from '../components/sections/Volunteer';
 import dynamic from 'next/dynamic';
-import { Skeleton } from "@/components/ui/skeleton";
-import Programs from '@/components/sections/Programs';
+import HeroCarousel from '@/components/sections/HeroCarousel';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation Hub - Building a Brighter Future, Together',
@@ -32,9 +31,10 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <Hero />
+        <Hero>
+          <HeroCarousel />
+        </Hero>
         <InfoSection />
-        <Programs />
         <AboutUs />
         <Impact />
         <LatestAnnouncements />
