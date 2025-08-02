@@ -1,18 +1,17 @@
 
 import admin from 'firebase-admin';
 
-// IMPORTANT: The Firebase Admin SDK initialization is temporarily commented out.
-// You are currently blocked by a Google Cloud organization policy that prevents
-// the creation of service account keys.
+// IMPORTANT: The Firebase Admin SDK initialization requires a service account key.
+// This key is a secret credential that allows server-side code to have full
+// administrative access to your Firebase project.
 //
-// TO-DO: Once you have resolved the permission issue and obtained your
-// service account key JSON, you must:
-// 1. Set the FIREBASE_SERVICE_ACCOUNT_KEY environment variable.
-// 2. Uncomment the code block below.
+// TO-DO: To enable server-side features like the one-time admin setup, you must:
+// 1. Obtain your service account key JSON file from the Firebase console.
+// 2. Set its contents as the FIREBASE_SERVICE_ACCOUNT_KEY environment variable.
 
 if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
   // This error is expected if the key is not set.
-  console.error('CRITICAL: FIREBASE_SERVICE_ACCOUNT_KEY is not set. Admin SDK features are disabled. User role checking will fail.');
+  console.error('CRITICAL: FIREBASE_SERVICE_ACCOUNT_KEY is not set. Admin SDK features (like the one-time setup) are disabled.');
 } else {
   if (!admin.apps.length) {
     try {
