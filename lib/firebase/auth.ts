@@ -43,7 +43,8 @@ export async function signInUser(email: string, password: string) {
         case 'auth/invalid-credential':
           throw new Error('Invalid email or password.');
         default:
-          throw new Error('An unexpected error occurred during login. Please try again.');
+          // Use the original error message for other auth errors
+          throw new Error(error.message || 'An unexpected error occurred during login. Please try again.');
       }
     }
     // Re-throw any other errors (like the Firestore role error from above)
