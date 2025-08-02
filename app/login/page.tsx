@@ -1,12 +1,12 @@
+
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { signInUser } from '@/lib/firebase/auth';
-import { getUserRole } from '@/lib/firebase/getUser';
+import { useToast } from '@/hooks/use-toast';
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -28,10 +28,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
-import { getAuth } from 'firebase/auth';
-import { app } from '@/lib/firebase';
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
@@ -39,10 +36,8 @@ const loginSchema = z.object({
 });
 
 export default function LoginPage() {
-  const router = useRouter();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
-  const auth = getAuth(app);
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -55,59 +50,17 @@ export default function LoginPage() {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     setLoading(true);
     try {
-      const { user } = await signInUser(values.email, values.password);
-
-      if (!user) {
-        // This case should not be reached if signInUser throws an error
-        throw new Error("Authentication failed, user not found.");
-      }
-
-      const role = await getUserRole(user.uid);
-      
-      if (!role) {
-        await auth.signOut();
-        throw new Error('Your account does not have a role assigned. Please contact an administrator.');
-      }
-      
+      await signInUser(values.email, values.password);
+      // The AuthRedirect component will handle redirection.
+      // We can show a generic success toast here.
       toast({
         title: "Login Successful",
-        description: `Welcome back, ${role}!`,
+        description: "Redirecting to your dashboard...",
       });
-
-      // Role-based redirection
-      switch (role) {
-        case 'Super Admin':
-          router.push('/superadmin-panel');
-          break;
-        case 'Admin':
-          router.push('/admin/dashboard');
-          break;
-        case 'User':
-          router.push('/user-dashboard');
-          break;
-        case 'Donor':
-          router.push('/donor-dashboard');
-          break;
-        default:
-          router.push('/');
-          break;
-      }
-
     } catch (error: any) {
-        let errorMessage = "An unexpected error occurred.";
-        switch (error.message) {
-            case 'auth/user-not-found':
-            case 'auth/wrong-password':
-            case 'auth/invalid-credential':
-                errorMessage = 'Invalid email or password.';
-                break;
-            default:
-                errorMessage = error.message;
-                break;
-        }
       toast({
         title: "Login Failed",
-        description: errorMessage,
+        description: "Invalid email or password.",
         variant: "destructive",
       });
     } finally {

@@ -22,16 +22,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        setLoading(false);
       } else {
         router.push('/login');
       }
+      setLoading(false);
     });
-
-    // Cleanup subscription on unmount
     return () => unsubscribe();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty dependency array ensures this runs only once
+  }, [auth, router]);
 
   const handleLogout = async () => {
     try {
@@ -52,7 +49,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   }
 
   if (!user) {
-    return null; // or a redirect, but onAuthStateChanged should handle it.
+    return null; 
   }
 
   return (
