@@ -14,8 +14,8 @@ export async function signInUser(email: string, password: string) {
     const user = userCredential.user;
     
     if (user) {
-      // WORKAROUND: If adminDb is not initialized, we cannot check roles.
-      // Default to 'User' role for now to allow the app to function.
+      // This is a temporary workaround.
+      // We will default to the 'User' role if adminDb is not initialized.
       if (!adminDb.collection) {
         console.warn("Firebase Admin SDK not initialized. Defaulting to 'User' role.");
         return { user, role: 'User' };
@@ -28,10 +28,12 @@ export async function signInUser(email: string, password: string) {
         const role = userDoc.data().role;
         return { user, role };
       } else {
+        // If the user is authenticated but has no role in Firestore, sign them out.
         await auth.signOut();
-        throw new Error('User role not found in database.');
+        throw new Error('User role not found in the database. Please contact an administrator.');
       }
     }
+    // This should not be reached, but as a fallback:
     return { user: null, role: null };
   } catch (error: any) {
     if (error.code) {
@@ -41,9 +43,10 @@ export async function signInUser(email: string, password: string) {
         case 'auth/invalid-credential':
           throw new Error('Invalid email or password.');
         default:
-          throw new Error('An unexpected error occurred during login.');
+          throw new Error('An unexpected error occurred during login. Please try again.');
       }
     }
+    // Re-throw any other errors (like the Firestore role error from above)
     throw error;
   }
 }
