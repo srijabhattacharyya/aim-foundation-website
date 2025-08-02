@@ -48,27 +48,28 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
 
     try {
       const logoFile = values.logo;
-      
-      // Compression options
-      const options = {
-        maxSizeMB: 0.5, // (max file size in MB)
-        maxWidthOrHeight: 800, // (max width or height in pixels)
-        useWebWorker: true,
-      };
+      let fileToUpload = logoFile;
 
-      // 1. Compress the image
-      const compressedFile = await imageCompression(logoFile, options);
+      // Only compress if the file is larger than 200KB
+      if (logoFile.size > 200 * 1024) {
+        const options = {
+          maxSizeMB: 0.2, // Max size 200KB
+          maxWidthOrHeight: 800,
+          useWebWorker: true,
+        };
+        console.log(`Compressing image: ${logoFile.name}`);
+        fileToUpload = await imageCompression(logoFile, options);
+      } else {
+         console.log(`Image is small enough, skipping compression for: ${logoFile.name}`);
+      }
 
-      const logoPath = `patrons/${Date.now()}-${compressedFile.name.replace(/\s/g, '_')}`;
+      const logoPath = `patrons/${Date.now()}-${fileToUpload.name.replace(/\s/g, '_')}`;
       const storageRef = ref(storage, logoPath);
       
-      // 2. Upload compressed file
-      await uploadBytes(storageRef, compressedFile);
+      await uploadBytes(storageRef, fileToUpload);
       
-      // 3. Get download URL
       const logoUrl = await getDownloadURL(storageRef);
 
-      // 4. Call server action with text data
       const result = await addPatron(values.name, logoUrl, logoPath);
 
       if (result.success && result.newPatron) {
