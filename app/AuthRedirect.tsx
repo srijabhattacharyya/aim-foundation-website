@@ -36,9 +36,11 @@ export default function AuthRedirect() {
         if (user) {
             const role = await getUserRole(user.uid);
             
-            if (!role && !isPublicPage) {
-                await auth.signOut();
-                router.push('/login');
+            if (!role) {
+                if (isAuthPage || !isPublicPage) {
+                    await auth.signOut();
+                    router.push('/login');
+                }
                 return;
             }
 
@@ -58,10 +60,9 @@ export default function AuthRedirect() {
                     break;
             }
 
-            if (pathname !== targetDashboard && (isPublicPage || authenticatedGenericPages.includes(pathname))) {
-                router.push(targetDashboard);
-            }
-             else if (isAuthPage && !pathname.startsWith(`/${targetDashboard.split('/')[1]}`)) {
+            if (isPublicPage || authenticatedGenericPages.includes(pathname)) {
+                 router.push(targetDashboard);
+            } else if (isAuthPage && !pathname.startsWith(`/${targetDashboard.split('/')[1]}`)) {
                  router.push(targetDashboard);
             }
 
