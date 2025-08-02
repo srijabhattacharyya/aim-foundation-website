@@ -1,3 +1,4 @@
+
 'use server';
 
 import { adminDb, adminStorage } from '../firebase-admin';
@@ -12,7 +13,14 @@ export interface Patron {
 }
 
 // Add a new patron
-export async function addPatron(name: string, logo: File): Promise<{ success: boolean, error?: string, newPatron?: Patron }> {
+export async function addPatron(formData: FormData): Promise<{ success: boolean, error?: string, newPatron?: Patron }> {
+  const name = formData.get('name') as string;
+  const logo = formData.get('logo') as File;
+
+  if (!name || !logo) {
+    return { success: false, error: 'Patron name and logo are required.' };
+  }
+
   if (!adminDb || !adminStorage) {
     const errorMsg = 'Firebase Admin SDK not initialized. Cannot add patron.';
     console.error(errorMsg);

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -41,8 +42,13 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
+
+    const formData = new FormData();
+    formData.append('name', values.name);
+    formData.append('logo', values.logo);
+
     try {
-      const result = await addPatron(values.name, values.logo);
+      const result = await addPatron(formData);
       if (result.success && result.newPatron) {
         toast({ title: 'Success', description: 'Patron added successfully.' });
         setPatrons(prev => [result.newPatron!, ...prev]);
