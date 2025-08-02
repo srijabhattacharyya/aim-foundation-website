@@ -3,7 +3,7 @@
 
 import { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Home, Settings, Users, Briefcase, Power, Shield, UserCog, Building } from 'lucide-react';
+import { Home, Settings, Users, Briefcase, Power } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { getAuth, onAuthStateChanged, signOut, User } from 'firebase/auth';
@@ -11,6 +11,7 @@ import { app } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { getUserRole } from '@/lib/firebase/getUser';
+import { Loader2 } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -26,18 +27,15 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         if (role === 'Admin') {
           setUser(user);
         } else {
-          // If user is logged in but not an admin, sign them out and redirect
           await signOut(auth);
           toast({ title: "Unauthorized", description: "You are not authorized to view this page.", variant: "destructive" });
           router.push('/login');
         }
       } else {
-        // If no user is logged in, redirect to login
         router.push('/login');
       }
       setLoading(false);
     });
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [auth, router, toast]);
 
@@ -54,13 +52,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   if (loading) {
       return (
           <div className="flex h-screen items-center justify-center">
+              <Loader2 className="mr-2 h-8 w-8 animate-spin" />
               <p>Loading admin session...</p>
           </div>
       )
   }
 
   if (!user) {
-    // This will show briefly before the redirect kicks in
     return null; 
   }
 
