@@ -14,6 +14,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Trash2 } from 'lucide-react';
 import { addPatron, deletePatron, Patron } from '@/lib/firebase/patrons';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Patron name must be at least 2 characters.' }),
@@ -44,9 +45,12 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
       const result = await addPatron(values.name, values.logo);
       if (result.success && result.newPatron) {
         toast({ title: 'Success', description: 'Patron added successfully.' });
-        setPatrons(prev => [...prev, result.newPatron!]);
-        form.reset();
-        router.refresh(); // Refresh server component data
+        setPatrons(prev => [result.newPatron!, ...prev]);
+        form.reset({ name: '', logo: undefined });
+        const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+        if(fileInput) fileInput.value = '';
+
+        router.refresh(); 
       } else {
         throw new Error(result.error || 'Failed to add patron.');
       }
@@ -101,14 +105,15 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
             <FormField
               control={form.control}
               name="logo"
-              render={({ field }) => (
+              render={({ field: { onChange, value, ...rest } }) => (
                 <FormItem>
                   <FormLabel>Patron Logo</FormLabel>
                   <FormControl>
                     <Input
                       type="file"
-                      accept="image/png, image/jpeg, image/gif, image/svg+xml"
-                      onChange={(e) => field.onChange(e.target.files ? e.target.files[0] : null)}
+                      accept="image/png, image/jpeg, image/gif, image/svg+xml, image/webp"
+                      onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
+                      {...rest}
                     />
                   </FormControl>
                   <FormMessage />
@@ -124,31 +129,35 @@ export default function PatronUploader({ patrons: initialPatrons }: PatronUpload
       </div>
       <div>
         <h3 className="text-lg font-medium mb-4">Current Patrons</h3>
-        {patrons.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4 max-h-96 overflow-y-auto pr-4">
-            {patrons.map((patron) => (
-              <Card key={patron.id} className="group relative">
-                <CardContent className="p-4 flex items-center justify-center aspect-video">
-                  <Image src={patron.logoUrl} alt={patron.name} width={150} height={70} className="object-contain" />
-                </CardContent>
-                <CardFooter className="p-2 justify-between items-center bg-muted/50">
-                    <p className="text-sm font-medium truncate">{patron.name}</p>
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8 text-destructive opacity-50 group-hover:opacity-100 transition-opacity"
-                        onClick={() => handleDelete(patron.id, patron.logoPath)}
-                    >
-                        <Trash2 className="h-4 w-4" />
-                        <span className="sr-only">Delete</span>
-                    </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        ) : (
-          <p className="text-muted-foreground">No patrons have been added yet.</p>
-        )}
+         <ScrollArea className="h-[500px] pr-4">
+            {patrons.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {patrons.map((patron) => (
+                <Card key={patron.id} className="group relative">
+                    <CardContent className="p-4 flex items-center justify-center aspect-video">
+                    <Image src={patron.logoUrl} alt={patron.name} width={150} height={70} className="object-contain" />
+                    </CardContent>
+                    <CardFooter className="p-2 justify-between items-center bg-muted/50">
+                        <p className="text-sm font-medium truncate">{patron.name}</p>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 text-destructive opacity-50 group-hover:opacity-100 transition-opacity"
+                            onClick={() => handleDelete(patron.id, patron.logoPath)}
+                        >
+                            <Trash2 className="h-4 w-4" />
+                            <span className="sr-only">Delete</span>
+                        </Button>
+                    </CardFooter>
+                </Card>
+                ))}
+            </div>
+            ) : (
+            <div className="flex items-center justify-center h-full text-muted-foreground">
+                <p>No patrons have been added yet.</p>
+            </div>
+            )}
+        </ScrollArea>
       </div>
     </div>
   );

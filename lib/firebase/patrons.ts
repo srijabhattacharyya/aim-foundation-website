@@ -22,7 +22,7 @@ export async function addPatron(name: string, logo: File): Promise<{ success: bo
   try {
     // Upload image to Firebase Storage
     const logoBuffer = Buffer.from(await logo.arrayBuffer());
-    const logoPath = `patrons/${Date.now()}-${logo.name}`;
+    const logoPath = `patrons/${Date.now()}-${logo.name.replace(/\s/g, '_')}`;
     const file = adminStorage.bucket().file(logoPath);
     
     await file.save(logoBuffer, {
@@ -38,20 +38,20 @@ export async function addPatron(name: string, logo: File): Promise<{ success: bo
 
     // Add patron info to Firestore
     const patronRef = adminDb.collection('patrons').doc();
-    const newPatron: Omit<Patron, 'id'> = {
+    const newPatronData: Omit<Patron, 'id'> = {
       name,
       logoUrl,
       logoPath,
       createdAt: new Date() as any, // Firestore admin handles Timestamp conversion
     };
     
-    await patronRef.set(newPatron);
+    await patronRef.set(newPatronData);
 
     // Revalidate the homepage and patrons page to show new data
     revalidatePath('/');
     revalidatePath('/admin/patrons');
     
-    return { success: true, newPatron: { id: patronRef.id, ...newPatron } as Patron };
+    return { success: true, newPatron: { id: patronRef.id, ...newPatronData } as Patron };
   } catch (error: any) {
     console.error('Error adding patron:', error);
     return { success: false, error: error.message };
