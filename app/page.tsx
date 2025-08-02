@@ -1,4 +1,5 @@
 
+
 import type { Metadata } from 'next';
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
@@ -6,7 +7,7 @@ import Hero from "../components/sections/Hero";
 import InfoSection from '../components/sections/InfoSection';
 import AboutUs from '../components/sections/AboutUs';
 import Impact from '../components/sections/Impact';
-import Activities from '../components/sections/Activities';
+import LatestAnnouncements from '../components/sections/LatestAnnouncements';
 import DonateSection from '../components/sections/DonateSection';
 import Volunteer from '../components/sections/Volunteer';
 import dynamic from 'next/dynamic';
@@ -41,7 +42,7 @@ export default function HomePage() {
         <InfoSection />
         <AboutUs />
         <Impact />
-        <Activities />
+        <LatestAnnouncements />
         <DonateSection />
         <Volunteer />
         <Testimonials />
