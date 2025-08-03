@@ -40,7 +40,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/join-us',
     '/krishti',
     '/library',
-    '/login',
     '/media',
     '/milieu',
     '/newsletter',
@@ -68,7 +67,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/volunteer-policy',
     '/volunteering',
     '/workshops-events',
-    '/admin/dashboard',
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = staticPages.map((path) => ({

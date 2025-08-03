@@ -192,11 +192,6 @@ const Navbar = () => {
           <div className="hidden md:flex flex-col h-full">
               <div className="flex justify-end items-center h-1/2 border-b">
                   <div className="flex items-center gap-2">
-                    <Button asChild variant="ghost" size="sm">
-                        <Link href="/login">
-                        <LogIn className="mr-2 h-4 w-4" /> Login
-                        </Link>
-                    </Button>
                     <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
                         <DialogTrigger asChild>
                         <Button variant="outline" size="sm" className="transition-transform transform hover:scale-105 border-accent text-accent hover:bg-accent hover:text-accent-foreground">Sponsor a Child</Button>
@@ -346,11 +341,6 @@ const Navbar = () => {
                         </SheetClose>
                       )
                     ))}
-                     <SheetClose asChild>
-                      <Link href="/login" className="text-lg font-medium text-foreground transition-colors hover:text-primary flex items-center">
-                          <LogIn className="mr-2 h-5 w-5" /> Login
-                      </Link>
-                    </SheetClose>
                     <SheetClose asChild>
                         <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
                             <DialogTrigger asChild>
@@ -361,9 +351,6 @@ const Navbar = () => {
                             </DialogContent>
                         </Dialog>
                     </SheetClose>
-                     <Button asChild variant="outline" className="w-full justify-start text-lg font-medium">
-                        <Link href="/admin/dashboard">Admin Dashboard</Link>
-                    </Button>
                   </nav>
                 </div>
               </SheetContent>
