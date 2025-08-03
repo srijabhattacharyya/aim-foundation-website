@@ -112,7 +112,13 @@ const patrons = [
     hint: "mahadevi birla world academy logo",
     alt: "Mahadevi Birla"
   },
-  ...Array(2).fill({
+  {
+    name: "Great Eastern",
+    logo: "/images/patrons/great-eastern.png",
+    hint: "great eastern logo",
+    alt: "Great Eastern"
+  },
+  ...Array(1).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
