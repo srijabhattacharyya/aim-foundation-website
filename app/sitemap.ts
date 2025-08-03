@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/annual-report',
     '/blog',
     '/blog/threading-changes-the-suidhaga-story',
+    '/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu',
     '/carecircle',
     '/career',
     '/cause-marketing-events',

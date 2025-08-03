@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'nurturing-a-kinder-tomorrow-the-story-of-milieu',
+    title: 'Nurturing a Kinder Tomorrow: The Story of Milieu',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'children collaboration',
+    excerpt: 'Discover how Milieu helps shape conscious citizens who learn to see beyond economic, cultural, and social differences.',
+    date: 'November 5, 2023',
+  },
+  {
     slug: 'threading-changes-the-suidhaga-story',
     title: 'Threading Changes: The SuiDhaga Story by AIM Foundation',
     image: 'https://placehold.co/600x400.png',
