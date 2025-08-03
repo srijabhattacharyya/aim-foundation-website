@@ -186,7 +186,7 @@ const Navbar = () => {
         <div className="flex h-[100px] items-center px-4 md:px-6">
           <div className="flex h-full items-center mr-auto">
             <Link href="/" className="flex items-center" aria-label="AIM Foundation Home">
-              <Image src="/images/logo.png" alt="AIM Foundation Logo" width={150} height={60} />
+              <Image src="/images/logo.png" alt="AIM Foundation Logo" width={150} height={60} className="w-auto h-auto"/>
             </Link>
           </div>
           <div className="hidden md:flex flex-col h-full">
@@ -276,7 +276,7 @@ const Navbar = () => {
                 <div className="flex flex-col p-6">
                   <div className="flex justify-between items-center mb-6">
                     <Link href="/" className="flex items-center gap-2" aria-label="AIM Foundation Home">
-                      <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
+                      <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} className="w-auto h-auto"/>
                     </Link>
                     <SheetClose asChild>
                       <Button variant="ghost" size="icon">
