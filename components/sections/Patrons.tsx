@@ -12,9 +12,14 @@ const patrons = [
   {
     name: "STR",
     logo: "/images/patrons/str.png",
-    hint: "str logo"
+    hint: "sundarban tiger reserve logo"
   },
-  ...Array(18).fill({
+  {
+    name: "Jadavpur University",
+    logo: "/images/patrons/ju.png",
+    hint: "jadavpur university logo"
+  },
+  ...Array(17).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
