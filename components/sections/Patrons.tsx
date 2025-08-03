@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from "next/image"
@@ -57,7 +58,13 @@ const patrons = [
     hint: "lic logo",
     alt: "Life Insurance Corporation of India"
   },
-  ...Array(11).fill({
+  {
+    name: "Jio Digital",
+    logo: "/images/patrons/jio.png",
+    hint: "jio logo",
+    alt: "Jio Digital"
+  },
+  ...Array(10).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
