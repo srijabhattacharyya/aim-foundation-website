@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -5,22 +6,25 @@ import Link from 'next/link';
 
 const blogPosts = [
   {
+    slug: 'threading-changes-the-suidhaga-story',
+    title: 'Threading Changes: The SuiDhaga Story',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'women tailoring',
+    excerpt: 'Discover how AIM Foundation\'s SuiDhaga initiative is empowering women, stitching dignity into livelihoods...',
+  },
+  {
+    slug: '#',
     title: 'The Power of a Single Meal',
     image: 'https://placehold.co/600x400.png',
     hint: 'meal charity',
     excerpt: 'Discover how providing one meal can create a ripple effect of change in a community...',
   },
   {
+    slug: '#',
     title: 'From Darkness to Light: A Story of Education',
     image: 'https://placehold.co/600x400.png',
     hint: 'education children',
     excerpt: 'Read the inspiring journey of a young girl who found her path through our educational programs...',
-  },
-  {
-    title: 'Our Volunteers, Our Heroes',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'volunteers group',
-    excerpt: 'A tribute to the selfless individuals who dedicate their time and energy to our cause...',
   },
 ];
 
@@ -35,29 +39,33 @@ const Blog = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <Card key={index} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-              <Image
-                src={post.image}
-                alt={post.title}
-                width={600}
-                height={400}
-                data-ai-hint={post.hint}
-                className="w-full h-48 object-cover"
-              />
+          {blogPosts.map((post) => (
+            <Card key={post.slug} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Link href={`/blog/${post.slug}`}>
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    width={600}
+                    height={400}
+                    data-ai-hint={post.hint}
+                    className="w-full h-48 object-cover"
+                  />
+              </Link>
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2 font-headline">{post.title}</h3>
+                <h3 className="text-xl font-bold mb-2 font-headline">
+                    <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">{post.title}</Link>
+                </h3>
                 <p className="text-muted-foreground mb-4 text-justify">{post.excerpt}</p>
                 <Button asChild variant="link" className="p-0 transition-transform transform hover:scale-105">
-                  <Link href="#">Read More &rarr;</Link>
+                  <Link href={`/blog/${post.slug}`}>Read More &rarr;</Link>
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
         <div className="text-center mt-12">
-          <Button size="lg" className="transition-transform transform hover:scale-105">
-            More Hope Stories
+          <Button size="lg" className="transition-transform transform hover:scale-105" asChild>
+            <Link href="/blog">More Hope Stories</Link>
           </Button>
         </div>
       </div>

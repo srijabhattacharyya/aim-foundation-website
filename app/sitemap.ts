@@ -7,6 +7,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     '/',
     '/annual-report',
+    '/blog',
+    '/blog/threading-changes-the-suidhaga-story',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
