@@ -18,13 +18,13 @@ export const metadata: Metadata = {
   },
 };
 
-const LatestAnnouncements = dynamic(() => import('../components/sections/LatestAnnouncements'), { loading: () => <Skeleton className="h-[500px] w-full" /> });
-const DonateSection = dynamic(() => import('../components/sections/DonateSection'), { loading: () => <Skeleton className="h-[250px] w-full" /> });
-const Volunteer = dynamic(() => import('../components/sections/Volunteer'), { loading: () => <Skeleton className="h-[250px] w-full" /> });
-const Testimonials = dynamic(() => import('../components/sections/Testimonials'), { loading: () => <Skeleton className="h-[400px] w-full" /> });
-const Patrons = dynamic(() => import('../components/sections/Patrons'), { loading: () => <Skeleton className="h-[400px] w-full" /> });
-const Blog = dynamic(() => import('../components/sections/Blog'), { loading: () => <Skeleton className="h-[500px] w-full" /> });
-const Newsletter = dynamic(() => import('../components/sections/Newsletter'), { loading: () => <Skeleton className="h-[300px] w-full" /> });
+const LatestAnnouncements = dynamic(() => import('@/components/sections/LatestAnnouncements'), { loading: () => <Skeleton className="h-[500px] w-full" /> });
+const DonateSection = dynamic(() => import('@/components/sections/DonateSection'), { loading: () => <Skeleton className="h-[250px] w-full" /> });
+const Volunteer = dynamic(() => import('@/components/sections/Volunteer'), { loading: () => <Skeleton className="h-[250px] w-full" /> });
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), { loading: () => <Skeleton className="h-[400px] w-full" /> });
+const Patrons = dynamic(() => import('@/components/sections/Patrons'), { loading: () => <Skeleton className="h-[400px] w-full" /> });
+const Blog = dynamic(() => import('@/components/sections/Blog'), { loading: () => <Skeleton className="h-[500px] w-full" /> });
+const Newsletter = dynamic(() => import('@/components/sections/Newsletter'), { loading: () => <Skeleton className="h-[300px] w-full" /> });
 
 export default function HomePage() {
   return (
