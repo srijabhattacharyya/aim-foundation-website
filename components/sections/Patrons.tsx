@@ -1,4 +1,3 @@
-
 "use client"
 
 import Image from "next/image"
@@ -7,27 +6,38 @@ const patrons = [
   {
     name: "Forest Department",
     logo: "/images/patrons/forest.png",
-    hint: "forest department logo"
+    hint: "forest department logo",
+    alt: "Forest Department"
   },
   {
     name: "STR",
     logo: "/images/patrons/str.png",
-    hint: "sundarban tiger reserve logo"
+    hint: "sundarban tiger reserve logo",
+    alt: "STR"
   },
   {
     name: "Jadavpur University",
     logo: "/images/patrons/ju.png",
-    hint: "jadavpur university logo"
+    hint: "jadavpur university logo",
+    alt: "Jadavpur University"
   },
   {
     name: "Animal Welfare Board",
     logo: "/images/patrons/animal.png",
-    hint: "animal welfare board logo"
+    hint: "animal welfare board logo",
+    alt: "Animal Welfare Board"
   },
-  ...Array(16).fill({
+  {
+    name: "Google",
+    logo: "/images/patrons/google.png",
+    hint: "google logo",
+    alt: "Google"
+  },
+  ...Array(15).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
+    alt: "Patron Logo"
   })
 ];
 
@@ -45,12 +55,12 @@ const Patrons = () => {
                     className="relative flex h-[400px] w-full flex-col overflow-hidden rounded-lg border"
                 >
                     <div className="flex flex-col animate-scroll-up">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 p-6">
                             {patrons.map((patron, index) => (
                                 <div key={index} className="flex justify-center items-center h-full">
                                     <Image
                                         src={patron.logo}
-                                        alt={`${patron.name} ${index + 1}`}
+                                        alt={patron.alt}
                                         width={200}
                                         height={90}
                                         data-ai-hint={patron.hint}
@@ -60,12 +70,12 @@ const Patrons = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6" aria-hidden="true">
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 p-6" aria-hidden="true">
                             {patrons.map((patron, index) => (
                                 <div key={index + patrons.length} className="flex justify-center items-center h-full">
                                     <Image
                                         src={patron.logo}
-                                        alt={`${patron.name} ${index + 1}`}
+                                        alt={patron.alt}
                                         width={200}
                                         height={90}
                                         data-ai-hint={patron.hint}
