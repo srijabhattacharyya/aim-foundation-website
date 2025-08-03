@@ -31,9 +31,15 @@ const patrons = [
     name: "Google",
     logo: "/images/patrons/google.png",
     hint: "google logo",
-    alt: "Google"
+    alt: "google"
   },
-  ...Array(15).fill({
+  {
+    name: "Amazon",
+    logo: "/images/patrons/amazon.png",
+    hint: "amazon logo",
+    alt: "amazon"
+  },
+  ...Array(14).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
