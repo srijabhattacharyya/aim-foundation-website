@@ -82,7 +82,13 @@ const patrons = [
     hint: "tcs logo",
     alt: "Tata Consultancy Service"
   },
-  ...Array(7).fill({
+  {
+    name: "Narayana Health",
+    logo: "/images/patrons/nh.png",
+    hint: "narayana health logo",
+    alt: "Narayana Health"
+  },
+  ...Array(6).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
