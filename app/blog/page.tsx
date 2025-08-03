@@ -25,7 +25,7 @@ const blogPosts = [
     date: 'October 28, 2023',
   },
   {
-    slug: '#',
+    slug: 'threading-changes-the-suidhaga-story',
     title: 'The Power of a Single Meal',
     image: 'https://placehold.co/600x400.png',
     hint: 'meal charity',
@@ -33,7 +33,7 @@ const blogPosts = [
     date: 'October 20, 2023',
   },
   {
-    slug: '#',
+    slug: 'threading-changes-the-suidhaga-story',
     title: 'From Darkness to Light: A Story of Education',
     image: 'https://placehold.co/600x400.png',
     hint: 'education children',
@@ -41,7 +41,7 @@ const blogPosts = [
     date: 'October 12, 2023',
   },
   {
-    slug: '#',
+    slug: 'threading-changes-the-suidhaga-story',
     title: 'Our Volunteers, Our Heroes',
     image: 'https://placehold.co/600x400.png',
     hint: 'volunteers group',
@@ -64,8 +64,8 @@ export default function BlogPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post) => (
-                <Card key={post.slug} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+              {blogPosts.map((post, index) => (
+                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                   <Link href={`/blog/${post.slug}`} className="block">
                     <Image
                       src={post.image}
