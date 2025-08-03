@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from "next/image"
@@ -39,7 +40,13 @@ const patrons = [
     hint: "amazon logo",
     alt: "amazon"
   },
-  ...Array(14).fill({
+  {
+    name: "Canva",
+    logo: "/images/patrons/canva.png",
+    hint: "canva logo",
+    alt: "canva"
+  },
+  ...Array(13).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
