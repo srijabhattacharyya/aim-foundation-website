@@ -1,4 +1,3 @@
-
 "use client"
 
 import Image from "next/image"
@@ -52,7 +51,13 @@ const patrons = [
     hint: "nexval logo",
     alt: "Nexval"
   },
-  ...Array(12).fill({
+  {
+    name: "Life Insurance Corporation of India",
+    logo: "/images/patrons/lic.png",
+    hint: "lic logo",
+    alt: "Life Insurance Corporation of India"
+  },
+  ...Array(11).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
