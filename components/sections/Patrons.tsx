@@ -70,7 +70,13 @@ const patrons = [
     hint: "amul logo",
     alt: "Amul"
   },
-  ...Array(9).fill({
+  {
+    name: "Spencer",
+    logo: "/images/patrons/spencer.png",
+    hint: "spencer logo",
+    alt: "Spencer"
+  },
+  ...Array(8).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
