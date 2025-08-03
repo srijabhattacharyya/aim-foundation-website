@@ -106,6 +106,7 @@ const Patrons = () => {
                                         alt={patron.alt}
                                         width={200}
                                         height={90}
+                                        quality={100}
                                         data-ai-hint={patron.hint}
                                         className="object-contain w-full h-auto transition-all duration-300"
                                         loading="lazy"
@@ -121,6 +122,7 @@ const Patrons = () => {
                                         alt={patron.alt}
                                         width={200}
                                         height={90}
+                                        quality={100}
                                         data-ai-hint={patron.hint}
                                         className="object-contain w-full h-auto transition-all duration-300"
                                         loading="lazy"
