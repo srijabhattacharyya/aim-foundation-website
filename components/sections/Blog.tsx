@@ -6,6 +6,13 @@ import Link from 'next/link';
 
 const blogPosts = [
   {
+    slug: 'the-quiet-revolution-in-womens-health',
+    title: 'The Quiet Revolution in Women’s Health',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'women health rural',
+    excerpt: 'Discover how Project Detect is bringing life-saving cervical cancer screenings to rural women.',
+  },
+  {
     slug: 'nurturing-a-kinder-tomorrow-the-story-of-milieu',
     title: 'Nurturing a Kinder Tomorrow: The Story of Milieu',
     image: 'https://placehold.co/600x400.png',
@@ -18,13 +25,6 @@ const blogPosts = [
     image: 'https://placehold.co/600x400.png',
     hint: 'women tailoring',
     excerpt: 'Discover how AIM Foundation\'s SuiDhaga initiative is empowering women, stitching dignity into livelihoods...',
-  },
-  {
-    slug: '#',
-    title: 'The Power of a Single Meal',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'meal charity',
-    excerpt: 'Discover how providing one meal can create a ripple effect of change in a community...',
   },
 ];
 

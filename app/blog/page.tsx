@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'the-quiet-revolution-in-womens-health',
+    title: 'The Quiet Revolution in Women’s Health: The Story of Project Detect',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'women health rural',
+    excerpt: 'Discover how Project Detect is bringing life-saving cervical cancer screenings and health education to rural women in India.',
+    date: 'November 12, 2023',
+  },
+  {
     slug: 'nurturing-a-kinder-tomorrow-the-story-of-milieu',
     title: 'Nurturing a Kinder Tomorrow: The Story of Milieu',
     image: 'https://placehold.co/600x400.png',

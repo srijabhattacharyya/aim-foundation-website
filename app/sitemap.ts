@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog',
     '/blog/threading-changes-the-suidhaga-story',
     '/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu',
+    '/blog/the-quiet-revolution-in-womens-health',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
