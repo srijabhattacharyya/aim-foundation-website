@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { SewingPin } from 'lucide-react';
+import { PenTool } from 'lucide-react';
 
 export default function SuiDhagaBlogPage() {
   return (
@@ -168,7 +168,7 @@ export default function SuiDhagaBlogPage() {
                 
                 <div className="text-center pt-8">
                     <p className="text-2xl font-semibold text-primary font-headline flex items-center justify-center gap-2">
-                        <SewingPin /> Support SuiDhaga Today. Thread the Change.
+                        <PenTool /> Support SuiDhaga Today. Thread the Change.
                     </p>
                     <div className="mt-4 flex gap-4 justify-center">
                         <Button asChild><Link href="/suidhaga">Donate</Link></Button>
