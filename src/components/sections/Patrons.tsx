@@ -6,12 +6,92 @@ const patrons = [
   {
     name: "Forest Department",
     logo: "/images/patrons/forest.png",
-    hint: "forest department logo"
+    hint: "forest department logo",
+    alt: "Forest Department"
   },
-  ...Array(19).fill({
+  {
+    name: "STR",
+    logo: "/images/patrons/str.png",
+    hint: "sundarban tiger reserve logo",
+    alt: "STR"
+  },
+  {
+    name: "Jadavpur University",
+    logo: "/images/patrons/ju.png",
+    hint: "jadavpur university logo",
+    alt: "Jadavpur University"
+  },
+  {
+    name: "Animal Welfare Board",
+    logo: "/images/patrons/animal.png",
+    hint: "animal welfare board logo",
+    alt: "Animal Welfare Board"
+  },
+  {
+    name: "Google",
+    logo: "/images/patrons/google.png",
+    hint: "google logo",
+    alt: "google"
+  },
+  {
+    name: "Amazon",
+    logo: "/images/patrons/amazon.png",
+    hint: "amazon logo",
+    alt: "amazon"
+  },
+  {
+    name: "Canva",
+    logo: "/images/patrons/canva.png",
+    hint: "canva logo",
+    alt: "canva"
+  },
+  {
+    name: "Nexval",
+    logo: "/images/patrons/nexval.png",
+    hint: "nexval logo",
+    alt: "Nexval"
+  },
+  {
+    name: "Life Insurance Corporation of India",
+    logo: "/images/patrons/lic.png",
+    hint: "lic logo",
+    alt: "Life Insurance Corporation of India"
+  },
+  {
+    name: "Jio Digital",
+    logo: "/images/patrons/jio.png",
+    hint: "jio logo",
+    alt: "Jio Digital"
+  },
+  {
+    name: "Amul",
+    logo: "/images/patrons/amul.png",
+    hint: "amul logo",
+    alt: "Amul"
+  },
+  {
+    name: "Spencer",
+    logo: "/images/patrons/spencer.png",
+    hint: "spencer logo",
+    alt: "Spencer"
+  },
+  {
+    name: "Tata Consultancy Service",
+    logo: "/images/patrons/tcs.png",
+    hint: "tcs logo",
+    alt: "Tata Consultancy Service"
+  },
+  {
+    name: "Narayana Health",
+    logo: "/images/patron/narayana.png",
+    hint: "narayana health logo",
+    alt: "Narayana Health"
+  },
+  ...Array(6).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
+    alt: "Patron Logo"
   })
 ];
 
@@ -29,30 +109,34 @@ const Patrons = () => {
                     className="relative flex h-[400px] w-full flex-col overflow-hidden rounded-lg border"
                 >
                     <div className="flex flex-col animate-scroll-up">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 p-6">
                             {patrons.map((patron, index) => (
                                 <div key={index} className="flex justify-center items-center h-full">
                                     <Image
                                         src={patron.logo}
-                                        alt={`${patron.name} ${index + 1}`}
+                                        alt={patron.alt}
                                         width={200}
                                         height={90}
+                                        quality={100}
                                         data-ai-hint={patron.hint}
                                         className="object-contain w-full h-auto transition-all duration-300"
+                                        loading="lazy"
                                     />
                                 </div>
                             ))}
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6" aria-hidden="true">
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 p-6" aria-hidden="true">
                             {patrons.map((patron, index) => (
                                 <div key={index + patrons.length} className="flex justify-center items-center h-full">
                                     <Image
                                         src={patron.logo}
-                                        alt={`${patron.name} ${index + 1}`}
+                                        alt={patron.alt}
                                         width={200}
                                         height={90}
+                                        quality={100}
                                         data-ai-hint={patron.hint}
                                         className="object-contain w-full h-auto transition-all duration-300"
+                                        loading="lazy"
                                     />
                                 </div>
                             ))}

@@ -84,7 +84,7 @@ const patrons = [
   },
   {
     name: "Narayana Health",
-    logo: "/images/patrons/nh.png",
+    logo: "/images/patron/narayana.png",
     hint: "narayana health logo",
     alt: "Narayana Health"
   },
