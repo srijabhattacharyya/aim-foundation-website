@@ -40,30 +40,6 @@ const blogPosts = [
     excerpt: 'Discover how AIM Foundation\'s SuiDhaga initiative is empowering women, stitching dignity into livelihoods, and creating new patterns of possibility through tailoring and embroidery skills.',
     date: 'October 28, 2023',
   },
-  {
-    slug: '#',
-    title: 'The Power of a Single Meal',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'meal charity',
-    excerpt: 'Discover how providing one meal can create a ripple effect of change in a community...',
-    date: 'October 20, 2023',
-  },
-  {
-    slug: '#',
-    title: 'From Darkness to Light: A Story of Education',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'education children',
-    excerpt: 'Read the inspiring journey of a young girl who found her path through our educational programs...',
-    date: 'October 12, 2023',
-  },
-  {
-    slug: '#',
-    title: 'Our Volunteers, Our Heroes',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'volunteers group',
-    excerpt: 'A tribute to the selfless individuals who dedicate their time and energy to our cause...',
-    date: 'October 5, 2023',
-  },
 ];
 
 export default function VoicesPage() {
