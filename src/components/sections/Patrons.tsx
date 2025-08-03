@@ -83,11 +83,29 @@ const patrons = [
   },
   {
     name: "Narayana Health",
-    logo: "/images/patron/narayana.png",
+    logo: "/images/patrons/narayana.png",
     hint: "narayana health logo",
     alt: "Narayana Health"
   },
-  ...Array(6).fill({
+  {
+    name: "IIMS",
+    logo: "/images/patrons/iims.png",
+    hint: "iims logo",
+    alt: "IIMS"
+  },
+  {
+    name: "Indian Oil",
+    logo: "/images/patrons/ioc.png",
+    hint: "indian oil logo",
+    alt: "Indian Oil"
+  },
+  {
+    name: "BDM International",
+    logo: "/images/patrons/bdmi.png",
+    hint: "BDM international school logo",
+    alt: "BDM International"
+  },
+  ...Array(3).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
