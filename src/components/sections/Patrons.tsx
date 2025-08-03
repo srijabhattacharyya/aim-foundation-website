@@ -99,13 +99,7 @@ const patrons = [
     hint: "indian oil logo",
     alt: "Indian Oil"
   },
-  {
-    name: "BDM International",
-    logo: "/images/patrons/bdmi.png",
-    hint: "BDM international school logo",
-    alt: "BDM International"
-  },
-  ...Array(3).fill({
+  ...Array(4).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
