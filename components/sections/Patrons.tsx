@@ -106,7 +106,13 @@ const patrons = [
     hint: "bdm international logo",
     alt: "BDM International"
   },
-  ...Array(3).fill({
+  {
+    name: "Mahadevi Birla",
+    logo: "/images/patrons/mahadevi.png",
+    hint: "mahadevi birla world academy logo",
+    alt: "Mahadevi Birla"
+  },
+  ...Array(2).fill({
     name: "Patron Logo",
     logo: "https://placehold.co/200x90.png",
     hint: "corporate logo",
