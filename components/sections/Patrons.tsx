@@ -118,12 +118,12 @@ const patrons = [
     hint: "great eastern logo",
     alt: "Great Eastern"
   },
-  ...Array(1).fill({
-    name: "Patron Logo",
-    logo: "https://placehold.co/200x90.png",
-    hint: "corporate logo",
-    alt: "Patron Logo"
-  })
+  {
+    name: "Moothoot Finance",
+    logo: "/images/patrons/moothoot.png",
+    hint: "moothoot finance logo",
+    alt: "Moothoot Finance"
+  }
 ];
 
 const Patrons = () => {
