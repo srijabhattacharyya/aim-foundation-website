@@ -6,6 +6,13 @@ import Link from 'next/link';
 
 const blogPosts = [
   {
+    slug: 'nurturing-a-kinder-tomorrow-the-story-of-milieu',
+    title: 'Nurturing a Kinder Tomorrow: The Story of Milieu',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'children collaboration',
+    excerpt: 'Discover how Milieu helps shape conscious citizens who learn to see beyond economic, cultural, and social differences.',
+  },
+  {
     slug: 'threading-changes-the-suidhaga-story',
     title: 'Threading Changes: The SuiDhaga Story',
     image: 'https://placehold.co/600x400.png',
@@ -18,13 +25,6 @@ const blogPosts = [
     image: 'https://placehold.co/600x400.png',
     hint: 'meal charity',
     excerpt: 'Discover how providing one meal can create a ripple effect of change in a community...',
-  },
-  {
-    slug: '#',
-    title: 'From Darkness to Light: A Story of Education',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'education children',
-    excerpt: 'Read the inspiring journey of a young girl who found her path through our educational programs...',
   },
 ];
 
