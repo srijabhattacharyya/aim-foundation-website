@@ -194,7 +194,7 @@ const Navbar = () => {
               <div className="flex justify-end items-center h-1/2 border-b">
                   <div className="flex items-center gap-2">
                     <Button asChild variant="ghost" size="sm">
-                        <Link href="/login">
+                        <Link href="/admin/login">
                         <LogIn className="mr-2 h-4 w-4" /> Login
                         </Link>
                     </Button>
@@ -348,7 +348,7 @@ const Navbar = () => {
                       )
                     ))}
                      <SheetClose asChild>
-                      <Link href="/login" className="text-lg font-medium text-foreground transition-colors hover:text-primary flex items-center">
+                      <Link href="/admin/login" className="text-lg font-medium text-foreground transition-colors hover:text-primary flex items-center">
                           <LogIn className="mr-2 h-5 w-5" /> Login
                       </Link>
                     </SheetClose>
