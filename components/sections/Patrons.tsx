@@ -233,10 +233,10 @@ const patrons = [
     alt: "Assam University"
   },
   {
-    name: "Placeholder Patron 19",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 19"
+    name: "Indus Valley School",
+    logo: "/images/patrons/indus.png",
+    hint: "indus valley school logo",
+    alt: "Indus Valley School"
   },
   {
     name: "Placeholder Patron 20",
