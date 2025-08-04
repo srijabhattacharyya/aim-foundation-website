@@ -18,7 +18,7 @@ const programs = [
   {
     title: 'Healthcare Initiatives',
     description: 'Ensuring access to quality medical care for communities.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/health.png',
     hint: 'healthcare',
     link: '/healthcare-initiatives',
   },
