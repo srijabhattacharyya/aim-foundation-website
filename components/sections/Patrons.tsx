@@ -209,10 +209,10 @@ const patrons = [
     alt: "Lovely Professional University"
   },
   {
-    name: "Placeholder Patron 15",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 15"
+    name: "Martin Luther Christian University",
+    logo: "/images/patrons/mlcu.png",
+    hint: "martin luther christian university logo",
+    alt: "Martin Luther Christian University"
   },
   {
     name: "Placeholder Patron 16",
