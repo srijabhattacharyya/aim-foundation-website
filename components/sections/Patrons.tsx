@@ -173,10 +173,10 @@ const patrons = [
     alt: "Bengal Orthopedic Association"
   },
   {
-    name: "Placeholder Patron 9",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 9"
+    name: "UPES University",
+    logo: "/images/patrons/upes.png",
+    hint: "upes university logo",
+    alt: "UPES University"
   },
   {
     name: "Placeholder Patron 10",
@@ -213,6 +213,36 @@ const patrons = [
     logo: "https://placehold.co/200x90.png",
     hint: "company logo",
     alt: "Placeholder Patron 15"
+  },
+  {
+    name: "Placeholder Patron 16",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 16"
+  },
+  {
+    name: "Placeholder Patron 17",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 17"
+  },
+  {
+    name: "Placeholder Patron 18",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 18"
+  },
+  {
+    name: "Placeholder Patron 19",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 19"
+  },
+  {
+    name: "Placeholder Patron 20",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 20"
   }
 ];
 
