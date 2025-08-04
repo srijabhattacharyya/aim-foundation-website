@@ -61,8 +61,8 @@ const programs = [
   {
     title: 'Ignite Change Initiatives',
     description: 'Inspiring and mobilizing communities for social good.',
-    image: 'https://placehold.co/160x160.png',
-    hint: 'community action',
+    image: '/images/banner-card/awareness.png',
+    hint: 'community awareness',
     link: '/ignite-change-initiative',
   },
 ];
