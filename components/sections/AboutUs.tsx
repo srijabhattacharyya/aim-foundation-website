@@ -1,4 +1,39 @@
+
+'use client';
+
 import Image from 'next/image';
+import { Card, CardContent } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import Autoplay from "embla-carousel-autoplay";
+
+const aboutImages = [
+  {
+    src: 'https://placehold.co/500x500.png',
+    alt: 'Community volunteers working together',
+    hint: 'community volunteers'
+  },
+  {
+    src: 'https://placehold.co/500x500.png',
+    alt: 'Children in a learning session',
+    hint: 'children learning'
+  },
+  {
+    src: 'https://placehold.co/500x500.png',
+    alt: 'Healthcare camp in a rural area',
+    hint: 'rural healthcare'
+  },
+  {
+    src: 'https://placehold.co/500x500.png',
+    alt: 'Women empowerment workshop',
+    hint: 'women empowerment'
+  },
+  {
+    src: 'https://placehold.co/500x500.png',
+    alt: 'Tree plantation drive',
+    hint: 'tree plantation'
+  },
+];
+
 
 const AboutUs = () => {
   return (
@@ -6,14 +41,43 @@ const AboutUs = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in-down">
-            <Image
-              src="https://placehold.co/600x400.png"
-              alt="Volunteers helping the community"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-lg w-full"
-              data-ai-hint="community volunteers"
-            />
+            <Carousel
+                opts={{
+                    align: "start",
+                    loop: true,
+                }}
+                plugins={[
+                    Autoplay({
+                        delay: 2500,
+                        stopOnInteraction: true,
+                    }),
+                ]}
+                className="w-full max-w-md mx-auto"
+            >
+                <CarouselContent>
+                {aboutImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                    <div className="p-1">
+                        <Card>
+                        <CardContent className="flex aspect-square items-center justify-center p-0">
+                             <Image
+                                src={image.src}
+                                alt={image.alt}
+                                width={500}
+                                height={500}
+                                className="rounded-lg shadow-lg w-full h-full object-cover"
+                                data-ai-hint={image.hint}
+                                loading="lazy"
+                            />
+                        </CardContent>
+                        </Card>
+                    </div>
+                    </CarouselItem>
+                ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+            </Carousel>
           </div>
           <div className="animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">About Us</h2>
