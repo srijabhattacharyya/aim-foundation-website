@@ -32,7 +32,7 @@ const programs = [
   {
     title: 'Gender Equality Initiatives',
     description: 'Empowering women and girls to achieve their full potential.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/gender.png',
     hint: 'women empowerment',
     link: '/gender-equality-initiative',
   },
