@@ -14,8 +14,8 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
           width={1920}
           height={1080}
           className="w-full h-auto object-cover"
-          fetchPriority="auto"
-          sizes="100vw"
+          priority
+          fetchPriority="high"
         />
         <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
           <div className="container mx-auto px-4 md:px-6 text-white pb-8 md:pb-16">
