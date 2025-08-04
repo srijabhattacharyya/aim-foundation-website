@@ -47,10 +47,10 @@ export default function ChildcareInitiativesPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x864.png"
+              src="https://placehold.co/1920x580.png"
               alt="Childcare Initiatives Banner"
               width={1920}
-              height={864}
+              height={580}
               className="w-full h-auto object-cover brightness-50"
               data-ai-hint="happy children playing"
             />

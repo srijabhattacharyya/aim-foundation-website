@@ -15,9 +15,9 @@ export default function SuiDhagaBlogPage() {
       <Navbar />
       <main className="flex-grow">
         <article>
-          <header className="relative w-full h-[400px] md:h-[500px]">
+          <header className="relative w-full h-[580px]">
             <Image
-              src="https://placehold.co/1920x800.png"
+              src="https://placehold.co/1920x580.png"
               alt="Women learning to sew with sewing machines"
               fill
               objectFit="cover"

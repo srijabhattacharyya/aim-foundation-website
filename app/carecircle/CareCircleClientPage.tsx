@@ -25,10 +25,10 @@ export default function CareCircleClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x1080.png"
+              src="https://placehold.co/1920x580.png"
               alt="CareCircle Banner"
               width={1920}
-              height={1080}
+              height={580}
               className="w-full h-auto object-cover brightness-50"
               data-ai-hint="urban health camp"
             />
