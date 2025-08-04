@@ -25,7 +25,7 @@ const programs = [
   {
     title: 'Sustainability Initiatives',
     description: 'Protecting and preserving our planet for future generations.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/sustainability.png',
     hint: 'environment',
     link: '/sustainability-initiatives',
   },
