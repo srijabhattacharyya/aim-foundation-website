@@ -149,10 +149,10 @@ const patrons = [
     alt: "Narayana School"
   },
   {
-    name: "Placeholder Patron 5",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 5"
+    name: "Bethune College",
+    logo: "/images/patrons/bethun.png",
+    hint: "bethune college logo",
+    alt: "Bethune College"
   },
   {
     name: "Placeholder Patron 6",
