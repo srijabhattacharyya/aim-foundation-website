@@ -167,10 +167,10 @@ const patrons = [
     alt: "Ganga Mission"
   },
   {
-    name: "Placeholder Patron 8",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 8"
+    name: "Bengal Orthopedic Association",
+    logo: "/images/patrons/boa.png",
+    hint: "bengal orthopedic association logo",
+    alt: "Bengal Orthopedic Association"
   },
   {
     name: "Placeholder Patron 9",
