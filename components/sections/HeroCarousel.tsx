@@ -39,7 +39,7 @@ const programs = [
   {
     title: 'Childcare Initiatives',
     description: 'Providing safe and nurturing environments for children.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/child.png',
     hint: 'childcare',
     link: '/childcare-initiatives',
   },
