@@ -99,12 +99,30 @@ const patrons = [
     hint: "indian oil logo",
     alt: "Indian Oil"
   },
-  ...Array(4).fill({
-    name: "Patron Logo",
-    logo: "https://placehold.co/200x90.png",
-    hint: "corporate logo",
-    alt: "Patron Logo"
-  })
+  {
+    name: "BDM International",
+    logo: "/images/patrons/bdmi.png",
+    hint: "bdm international logo",
+    alt: "BDM International"
+  },
+  {
+    name: "Mahadevi Birla",
+    logo: "/images/patrons/mahadevi.png",
+    hint: "mahadevi birla world academy logo",
+    alt: "Mahadevi Birla"
+  },
+  {
+    name: "Great Eastern",
+    logo: "/images/patrons/great-eastern.png",
+    hint: "great eastern logo",
+    alt: "Great Eastern"
+  },
+  {
+    name: "Moothoot Finance",
+    logo: "/images/patrons/moothoot.png",
+    hint: "moothoot finance logo",
+    alt: "Moothoot Finance"
+  }
 ];
 
 const Patrons = () => {
