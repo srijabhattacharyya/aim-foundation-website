@@ -155,10 +155,10 @@ const patrons = [
     alt: "Bethune College"
   },
   {
-    name: "Chittaranjan National Cancer Institute",
+    name: "Children International",
     logo: "/images/patrons/ci.png",
-    hint: "cancer institute logo",
-    alt: "Chittaranjan National Cancer Institute"
+    hint: "children international logo",
+    alt: "Children International"
   },
   {
     name: "Placeholder Patron 7",
