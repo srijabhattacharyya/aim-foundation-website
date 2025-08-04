@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -12,42 +11,41 @@ const programs = [
   {
     title: 'Educational Initiatives',
     description: 'Fostering learning and growth for all ages.',
-    image: 'https://placehold.co/160x160.png',
-    hint: 'education',
+    image: '/images/banner-card/education.png',
     link: '/educational-initiatives',
   },
   {
     title: 'Healthcare Initiatives',
     description: 'Ensuring access to quality medical care for communities.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/health.png',
     hint: 'healthcare',
     link: '/healthcare-initiatives',
   },
   {
     title: 'Sustainability Initiatives',
     description: 'Protecting and preserving our planet for future generations.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/sustainability.png',
     hint: 'environment',
     link: '/sustainability-initiatives',
   },
   {
     title: 'Gender Equality Initiatives',
     description: 'Empowering women and girls to achieve their full potential.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/gender.png',
     hint: 'women empowerment',
     link: '/gender-equality-initiative',
   },
   {
     title: 'Childcare Initiatives',
     description: 'Providing safe and nurturing environments for children.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/child.png',
     hint: 'childcare',
     link: '/childcare-initiatives',
   },
   {
     title: 'Relief to the underprivileged',
     description: 'Offering support and resources to those in need.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/relief.png',
     hint: 'underprivileged support',
     link: '/relief-to-the-underprivileged',
   },
