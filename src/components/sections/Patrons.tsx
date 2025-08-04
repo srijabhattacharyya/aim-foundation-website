@@ -203,10 +203,10 @@ const patrons = [
     alt: "Alliance university"
   },
   {
-    name: "Lovely Professional university",
+    name: "Lovely Professional University",
     logo: "/images/patrons/lovely.png",
     hint: "lovely professional university logo",
-    alt: "Lovely Professional university"
+    alt: "Lovely Professional University"
   },
   {
     name: "Placeholder Patron 15",
