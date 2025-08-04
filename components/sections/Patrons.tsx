@@ -227,10 +227,10 @@ const patrons = [
     alt: "U Tech Industries"
   },
   {
-    name: "Placeholder Patron 18",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 18"
+    name: "Assam University",
+    logo: "/images/patrons/assam.png",
+    hint: "assam university logo",
+    alt: "Assam University"
   },
   {
     name: "Placeholder Patron 19",
