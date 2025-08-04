@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from "next/image"
@@ -122,6 +123,126 @@ const patrons = [
     logo: "/images/patrons/moothoot.png",
     hint: "moothoot finance logo",
     alt: "Moothoot Finance"
+  },
+  {
+    name: "Loreto",
+    logo: "/images/patrons/loreto.png",
+    hint: "loreto logo",
+    alt: "Loreto"
+  },
+  {
+    name: "CESC",
+    logo: "/images/patrons/cesc.png",
+    hint: "cesc logo",
+    alt: "CESC"
+  },
+  {
+    name: "Modern High School for Girls",
+    logo: "/images/patrons/mhs.png",
+    hint: "mhs logo",
+    alt: "Modern High School for Girls"
+  },
+  {
+    name: "Narayana School",
+    logo: "/images/patrons/narayana-school.png",
+    hint: "narayana school logo",
+    alt: "Narayana School"
+  },
+  {
+    name: "Bethune College",
+    logo: "/images/patrons/bethun.png",
+    hint: "bethune college logo",
+    alt: "Bethune College"
+  },
+  {
+    name: "Children International",
+    logo: "/images/patrons/ci.png",
+    hint: "children international logo",
+    alt: "Children International"
+  },
+  {
+    name: "Ganga Mission",
+    logo: "/images/patrons/ganga.png",
+    hint: "ganga mission logo",
+    alt: "Ganga Mission"
+  },
+  {
+    name: "Bengal Orthopedic Association",
+    logo: "/images/patrons/boa.png",
+    hint: "bengal orthopedic association logo",
+    alt: "Bengal Orthopedic Association"
+  },
+  {
+    name: "UPES University",
+    logo: "/images/patrons/upes.png",
+    hint: "upes university logo",
+    alt: "UPES University"
+  },
+  {
+    name: "St. Xavier's University",
+    logo: "/images/patrons/st-xav.png",
+    hint: "st xavier's university logo",
+    alt: "St. Xavier's University"
+  },
+  {
+    name: "Symbiosis Law School",
+    logo: "/images/patrons/symbiosis.png",
+    hint: "symbiosis law school logo",
+    alt: "Symbiosis Law School"
+  },
+  {
+    name: "Tata Institute of Social Science",
+    logo: "/images/patrons/tis.png",
+    hint: "tata institute social science logo",
+    alt: "Tata Institute of Social Science"
+  },
+  {
+    name: "Alliance university",
+    logo: "/images/patrons/au.png",
+    hint: "alliance university logo",
+    alt: "Alliance university"
+  },
+  {
+    name: "Lovely Professional university",
+    logo: "/images/patrons/lovely.png",
+    hint: "lovely professional university logo",
+    alt: "Lovely Professional university"
+  },
+  {
+    name: "Placeholder Patron 15",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 15"
+  },
+  {
+    name: "Placeholder Patron 16",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 16"
+  },
+  {
+    name: "Placeholder Patron 17",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 17"
+  },
+  {
+    name: "Placeholder Patron 18",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 18"
+  },
+  {
+    name: "Placeholder Patron 19",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 19"
+  },
+  {
+    name: "Placeholder Patron 20",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 20"
   }
 ];
 
