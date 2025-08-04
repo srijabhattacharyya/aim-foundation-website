@@ -197,10 +197,10 @@ const patrons = [
     alt: "Tata Institute of Social Science"
   },
   {
-    name: "Placeholder Patron 13",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 13"
+    name: "Alliance university",
+    logo: "/images/patrons/au.png",
+    hint: "alliance university logo",
+    alt: "Alliance university"
   },
   {
     name: "Placeholder Patron 14",
