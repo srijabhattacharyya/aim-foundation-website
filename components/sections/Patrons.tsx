@@ -221,10 +221,10 @@ const patrons = [
     alt: "BX"
   },
   {
-    name: "Placeholder Patron 17",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 17"
+    name: "U Tech Industries",
+    logo: "/images/patrons/utech.png",
+    hint: "u tech industries logo",
+    alt: "U Tech Industries"
   },
   {
     name: "Placeholder Patron 18",
