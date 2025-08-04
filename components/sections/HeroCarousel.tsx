@@ -47,7 +47,7 @@ const programs = [
   {
     title: 'Relief to the underprivileged',
     description: 'Offering support and resources to those in need.',
-    image: '/images/banner-card/relief.png',
+    image: '/images/banner-card/reliefu.png',
     hint: 'underprivileged support',
     link: '/relief-to-the-underprivileged',
   },
