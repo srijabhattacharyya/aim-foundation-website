@@ -125,10 +125,10 @@ const patrons = [
     alt: "Moothoot Finance"
   },
   {
-    name: "Placeholder Patron 1",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 1"
+    name: "Loreto",
+    logo: "/images/patrons/loreto.png",
+    hint: "loreto logo",
+    alt: "Loreto"
   },
   {
     name: "Placeholder Patron 2",
