@@ -46,7 +46,7 @@ const programs = [
   {
     title: 'Relief to the underprivileged',
     description: 'Offering support and resources to those in need.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/relief.png',
     hint: 'underprivileged support',
     link: '/relief-to-the-underprivileged',
   },
