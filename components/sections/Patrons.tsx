@@ -179,10 +179,10 @@ const patrons = [
     alt: "UPES University"
   },
   {
-    name: "Placeholder Patron 10",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 10"
+    name: "St. Xavier's University",
+    logo: "/images/patrons/st-xav.png",
+    hint: "st xavier's university logo",
+    alt: "St. Xavier's University"
   },
   {
     name: "Placeholder Patron 11",
