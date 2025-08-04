@@ -12,8 +12,7 @@ const programs = [
   {
     title: 'Educational Initiatives',
     description: 'Fostering learning and growth for all ages.',
-    image: 'https://placehold.co/160x160.png',
-    hint: 'education',
+    image: '/images/banner-card/education.png',
     link: '/educational-initiatives',
   },
   {
