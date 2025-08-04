@@ -13,6 +13,7 @@ const programs = [
     title: 'Educational Initiatives',
     description: 'Fostering learning and growth for all ages.',
     image: '/images/banner-card/education.png',
+    hint: 'education',
     link: '/educational-initiatives',
   },
   {
@@ -53,7 +54,7 @@ const programs = [
   {
     title: 'Disaster Management',
     description: 'Providing timely aid and support during crises.',
-    image: 'https://placehold.co/160x160.png',
+    image: '/images/banner-card/disaster.png',
     hint: 'disaster relief',
     link: '/disaster-management',
   },
