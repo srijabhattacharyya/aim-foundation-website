@@ -137,10 +137,10 @@ const patrons = [
     alt: "CESC"
   },
   {
-    name: "MHS",
+    name: "Modern High School for Girls",
     logo: "/images/patrons/mhs.png",
     hint: "mhs logo",
-    alt: "MHS"
+    alt: "Modern High School for Girls"
   },
   {
     name: "Narayana School",
@@ -161,10 +161,10 @@ const patrons = [
     alt: "Children International"
   },
   {
-    name: "Placeholder Patron 7",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 7"
+    name: "Ganga Mission",
+    logo: "/images/patrons/ganga.png",
+    hint: "ganga mission logo",
+    alt: "Ganga Mission"
   },
   {
     name: "Placeholder Patron 8",
