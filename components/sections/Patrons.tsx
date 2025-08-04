@@ -123,6 +123,36 @@ const patrons = [
     logo: "/images/patrons/moothoot.png",
     hint: "moothoot finance logo",
     alt: "Moothoot Finance"
+  },
+  {
+    name: "Placeholder Patron 1",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 1"
+  },
+  {
+    name: "Placeholder Patron 2",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 2"
+  },
+  {
+    name: "Placeholder Patron 3",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 3"
+  },
+  {
+    name: "Placeholder Patron 4",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 4"
+  },
+  {
+    name: "Placeholder Patron 5",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 5"
   }
 ];
 
