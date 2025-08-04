@@ -191,10 +191,10 @@ const patrons = [
     alt: "Symbiosis Law School"
   },
   {
-    name: "Placeholder Patron 12",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 12"
+    name: "Tata Institute of Social Science",
+    logo: "/images/patrons/tis.png",
+    hint: "tata institute social science logo",
+    alt: "Tata Institute of Social Science"
   },
   {
     name: "Placeholder Patron 13",
