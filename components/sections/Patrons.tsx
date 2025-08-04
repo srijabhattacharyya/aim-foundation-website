@@ -131,10 +131,10 @@ const patrons = [
     alt: "Loreto"
   },
   {
-    name: "Placeholder Patron 2",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 2"
+    name: "CESC",
+    logo: "/images/patrons/cesc.png",
+    hint: "cesc logo",
+    alt: "CESC"
   },
   {
     name: "Placeholder Patron 3",
