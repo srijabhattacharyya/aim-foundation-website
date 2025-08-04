@@ -155,10 +155,10 @@ const patrons = [
     alt: "Bethune College"
   },
   {
-    name: "Placeholder Patron 6",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 6"
+    name: "Chittaranjan National Cancer Institute",
+    logo: "/images/patrons/ci.png",
+    hint: "cancer institute logo",
+    alt: "Chittaranjan National Cancer Institute"
   },
   {
     name: "Placeholder Patron 7",
@@ -183,6 +183,36 @@ const patrons = [
     logo: "https://placehold.co/200x90.png",
     hint: "company logo",
     alt: "Placeholder Patron 10"
+  },
+  {
+    name: "Placeholder Patron 11",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 11"
+  },
+  {
+    name: "Placeholder Patron 12",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 12"
+  },
+  {
+    name: "Placeholder Patron 13",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 13"
+  },
+  {
+    name: "Placeholder Patron 14",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 14"
+  },
+  {
+    name: "Placeholder Patron 15",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 15"
   }
 ];
 
