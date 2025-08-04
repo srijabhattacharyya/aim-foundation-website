@@ -153,6 +153,36 @@ const patrons = [
     logo: "https://placehold.co/200x90.png",
     hint: "company logo",
     alt: "Placeholder Patron 5"
+  },
+  {
+    name: "Placeholder Patron 6",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 6"
+  },
+  {
+    name: "Placeholder Patron 7",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 7"
+  },
+  {
+    name: "Placeholder Patron 8",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 8"
+  },
+  {
+    name: "Placeholder Patron 9",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 9"
+  },
+  {
+    name: "Placeholder Patron 10",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron 10"
   }
 ];
 
