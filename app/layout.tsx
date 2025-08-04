@@ -2,12 +2,12 @@
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
-import { Toaster } from '../components/ui/toaster';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aim-foundation-hub.vercel.app'),
-  title: 'AIM Foundation Hub',
-  description: 'A non-profit organization dedicated to making a difference.',
+  title: 'AIM Foundation Hub - Building a Brighter Future, Together',
+  description: 'We are committed to empowering communities through education, healthcare, and sustainable development.',
   alternates: {
     canonical: '/',
   },
