@@ -23,6 +23,7 @@ export default function OrganisationPage() {
               height={580}
               className="w-full h-auto object-cover brightness-50"
               data-ai-hint="office team building"
+              priority
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
@@ -48,6 +49,7 @@ export default function OrganisationPage() {
                   height={400}
                   className="rounded-lg shadow-lg w-full"
                   data-ai-hint="community meeting"
+                  loading="lazy"
                 />
               </div>
               <div className="animate-fade-in-up">
