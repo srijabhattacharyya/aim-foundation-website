@@ -203,12 +203,6 @@ const patrons = [
     alt: "Alliance university"
   },
   {
-    name: "Lovely Professional University",
-    logo: "/images/patrons/lovely.png",
-    hint: "lovely professional university logo",
-    alt: "Lovely Professional University"
-  },
-  {
     name: "Martin Luther Christian University",
     logo: "/images/patrons/mlcu.png",
     hint: "martin luther christian university logo",
@@ -221,10 +215,10 @@ const patrons = [
     alt: "Bhagirathi Neotia Woman & Child Care Centre"
   },
   {
-    name: "U Tech Industries",
-    logo: "/images/patrons/utech.png",
-    hint: "u tech industries logo",
-    alt: "U Tech Industries"
+    name: "Susrut Eye Foundation & Research Centre",
+    logo: "/images/patrons/susrut.png",
+    hint: "susrut eye foundation logo",
+    alt: "Susrut Eye Foundation & Research Centre"
   },
   {
     name: "Assam University",
