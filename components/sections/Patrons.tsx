@@ -215,10 +215,10 @@ const patrons = [
     alt: "Martin Luther Christian University"
   },
   {
-    name: "BX",
-    logo: "/images/patrons/bx.png",
-    hint: "bx logo",
-    alt: "BX"
+    name: "Bhagirathi Neotia Woman & Child Care Centre",
+    logo: "/images/patrons/bnh.png",
+    hint: "bhagirathi neotia hospital logo",
+    alt: "Bhagirathi Neotia Woman & Child Care Centre"
   },
   {
     name: "U Tech Industries",
