@@ -237,6 +237,12 @@ const patrons = [
     logo: "/images/patrons/rotary.png",
     hint: "rotary club logo",
     alt: "Rotary Club"
+  },
+  {
+    name: "Placeholder Patron",
+    logo: "https://placehold.co/200x90.png",
+    hint: "company logo",
+    alt: "Placeholder Patron"
   }
 ];
 
