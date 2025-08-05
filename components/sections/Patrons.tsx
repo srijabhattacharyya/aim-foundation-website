@@ -239,10 +239,10 @@ const patrons = [
     alt: "Indus Valley School"
   },
   {
-    name: "Placeholder Patron 20",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 20"
+    name: "Rotary Club",
+    logo: "/images/patrons/rotary.png",
+    hint: "rotary club logo",
+    alt: "Rotary Club"
   }
 ];
 
