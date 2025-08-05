@@ -203,40 +203,40 @@ const patrons = [
     alt: "Alliance university"
   },
   {
-    name: "Lovely Professional University",
-    logo: "/images/patrons/lovely.png",
-    hint: "lovely professional university logo",
-    alt: "Lovely Professional University"
+    name: "Martin Luther Christian University",
+    logo: "/images/patrons/mlcu.png",
+    hint: "martin luther christian university logo",
+    alt: "Martin Luther Christian University"
   },
   {
-    name: "Placeholder Patron 15",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 15"
+    name: "Bhagirathi Neotia Woman & Child Care Centre",
+    logo: "/images/patrons/bnh.png",
+    hint: "bhagirathi neotia hospital logo",
+    alt: "Bhagirathi Neotia Woman & Child Care Centre"
   },
   {
-    name: "Placeholder Patron 16",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 16"
+    name: "Susrut Eye Foundation & Research Centre",
+    logo: "/images/patrons/susrut.png",
+    hint: "susrut eye foundation logo",
+    alt: "Susrut Eye Foundation & Research Centre"
   },
   {
-    name: "Placeholder Patron 17",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 17"
+    name: "Assam University",
+    logo: "/images/patrons/assam.png",
+    hint: "assam university logo",
+    alt: "Assam University"
   },
   {
-    name: "Placeholder Patron 18",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 18"
+    name: "Indus Valley School",
+    logo: "/images/patrons/indus.png",
+    hint: "indus valley school logo",
+    alt: "Indus Valley School"
   },
   {
-    name: "Placeholder Patron 19",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 19"
+    name: "Rotary Club",
+    logo: "/images/patrons/rotary.png",
+    hint: "rotary club logo",
+    alt: "Rotary Club"
   },
   {
     name: "Placeholder Patron 20",
