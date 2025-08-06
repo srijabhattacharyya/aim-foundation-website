@@ -17,7 +17,7 @@ export default function InternshipPage() {
               src="/images/banner/intern.jpg"
               alt="Internship Banner"
               width={1920}
-              height={580}
+              height={334}
               className="w-full h-auto object-cover brightness-50"
               data-ai-hint="interns working office"
             />
