@@ -25,7 +25,7 @@ export default function MilieuClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x334.png"
+              src="/images/banner/milieu.jpg"
               alt="Milieu Banner"
               width={1920}
               height={334}
