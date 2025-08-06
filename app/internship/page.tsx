@@ -11,6 +11,27 @@ export default function InternshipPage() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
+        <section className="relative w-full">
+            <div className="relative w-full">
+                <Image
+                    src="https://placehold.co/1920x334.png"
+                    alt="Internship banner"
+                    width={1920}
+                    height={334}
+                    className="w-full h-auto object-cover brightness-50"
+                    data-ai-hint="interns working"
+                    priority
+                />
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center text-white p-8">
+                <div className="text-center">
+                    <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                        Internship Opportunities
+                    </h1>
+                </div>
+            </div>
+        </section>
+
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
