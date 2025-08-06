@@ -6,6 +6,9 @@ import Link from "next/link";
 import { Skeleton } from '@/components/ui/skeleton';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Card, CardContent } from '@/components/ui/card';
+import Autoplay from "embla-carousel-autoplay";
 
 
 const ImpactPriorities = dynamic(() => import('@/components/sections/ImpactPriorities'), {
@@ -23,6 +26,34 @@ const LegalRecognitions = dynamic(() => import('@/components/sections/LegalRecog
   ssr: false
 });
 
+const footprintImages = [
+    {
+        src: "https://placehold.co/800x500.png",
+        alt: "Community engagement event",
+        hint: "community event"
+    },
+    {
+        src: "https://placehold.co/800x500.png",
+        alt: "Healthcare camp for children",
+        hint: "children healthcare"
+    },
+    {
+        src: "https://placehold.co/800x500.png",
+        alt: "Women's skill development workshop",
+        hint: "women empowerment"
+    },
+    {
+        src: "https://placehold.co/800x500.png",
+        alt: "Tree plantation drive",
+        hint: "environmental conservation"
+    },
+    {
+        src: "https://placehold.co/800x500.png",
+        alt: "Educational support for students",
+        hint: "children education"
+    }
+];
+
 
 export default function OrganisationPage() {
   return (
@@ -32,7 +63,7 @@ export default function OrganisationPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/banner/organistion.jpg"
+              src="/images/banner/organisation.jpg"
               alt="Our Organisation Banner"
               width={1920}
               height={334}
@@ -57,15 +88,43 @@ export default function OrganisationPage() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in-down">
-                <Image
-                  src="https://placehold.co/600x400.png"
-                  alt="AIM Foundation office or event"
-                  width={600}
-                  height={400}
-                  className="rounded-lg shadow-lg w-full"
-                  data-ai-hint="community meeting"
-                  loading="lazy"
-                />
+                <Carousel
+                    opts={{
+                        align: "start",
+                        loop: true,
+                    }}
+                    plugins={[
+                        Autoplay({
+                            delay: 3000,
+                            stopOnInteraction: true,
+                        }),
+                    ]}
+                    className="w-full max-w-lg mx-auto"
+                >
+                    <CarouselContent>
+                    {footprintImages.map((image, index) => (
+                        <CarouselItem key={index}>
+                        <div className="p-1">
+                            <Card className="overflow-hidden">
+                            <CardContent className="p-0 relative">
+                                <Image
+                                    src={image.src}
+                                    alt={image.alt}
+                                    width={800}
+                                    height={500}
+                                    className="shadow-lg w-full h-auto object-cover"
+                                    data-ai-hint={image.hint}
+                                    loading="lazy"
+                                />
+                            </CardContent>
+                            </Card>
+                        </div>
+                        </CarouselItem>
+                    ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-2" />
+                    <CarouselNext className="right-2" />
+                </Carousel>
               </div>
               <div className="animate-fade-in-up">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Footprints</h2>
