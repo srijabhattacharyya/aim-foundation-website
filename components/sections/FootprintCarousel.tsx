@@ -10,27 +10,32 @@ const footprintImages = [
     {
         src: "/images/home-scrolling/hs1.jpg",
         alt: "Garments Distribution to Sabar Community",
-        hint: "garments distribution"
+        hint: "garments distribution",
+        description: "Garments Distribution to Sabar Community"
     },
     {
         src: "/images/home-scrolling/hs2.jpg",
         alt: "Healthcare camp in a rural area",
-        hint: "rural healthcare"
+        hint: "rural healthcare",
+        description: "Healthcare camp in a rural area"
     },
     {
         src: "/images/home-scrolling/hs3.jpg",
         alt: "Award by Sundarbans Tiger Reserve",
-        hint: "award"
+        hint: "award",
+        description: "Award by Sundarbans Tiger Reserve"
     },
     {
         src: "/images/home-scrolling/hs4.jpg",
         alt: "Oral Cancer Detection Camp in Kolkata",
-        hint: "cancer detection"
+        hint: "cancer detection",
+        description: "Oral Cancer Detection Camp in Kolkata"
     },
     {
         src: "/images/home-scrolling/hs5.jpg",
         alt: "Health Camp in Sundarbans",
-        hint: "health camp"
+        hint: "health camp",
+        description: "Health Camp in Sundarbans"
     }
 ];
 
@@ -64,6 +69,11 @@ export default function FootprintCarousel() {
                             data-ai-hint={image.hint}
                             loading="lazy"
                         />
+                        {image.description && (
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-center text-sm">
+                            <p>{image.description}</p>
+                            </div>
+                        )}
                     </CardContent>
                     </Card>
                 </div>
