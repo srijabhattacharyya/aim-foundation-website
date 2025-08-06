@@ -8,27 +8,27 @@ import Autoplay from "embla-carousel-autoplay";
 
 const aboutImages = [
   {
-    src: 'https://placehold.co/500x500.png',
+    src: 'https://placehold.co/800x500.png',
     alt: 'Community volunteers working together',
     hint: 'community volunteers'
   },
   {
-    src: 'https://placehold.co/500x500.png',
+    src: 'https://placehold.co/800x500.png',
     alt: 'Children in a learning session',
     hint: 'children learning'
   },
   {
-    src: 'https://placehold.co/500x500.png',
+    src: 'https://placehold.co/800x500.png',
     alt: 'Healthcare camp in a rural area',
     hint: 'rural healthcare'
   },
   {
-    src: 'https://placehold.co/500x500.png',
+    src: 'https://placehold.co/800x500.png',
     alt: 'Women empowerment workshop',
     hint: 'women empowerment'
   },
   {
-    src: 'https://placehold.co/500x500.png',
+    src: 'https://placehold.co/800x500.png',
     alt: 'Tree plantation drive',
     hint: 'tree plantation'
   },
@@ -52,20 +52,20 @@ const AboutUs = () => {
                         stopOnInteraction: true,
                     }),
                 ]}
-                className="w-full max-w-md mx-auto"
+                className="w-full max-w-lg mx-auto"
             >
                 <CarouselContent>
                 {aboutImages.map((image, index) => (
                     <CarouselItem key={index}>
                     <div className="p-1">
                         <Card>
-                        <CardContent className="flex aspect-square items-center justify-center p-0">
+                        <CardContent className="flex items-center justify-center p-0">
                              <Image
                                 src={image.src}
                                 alt={image.alt}
-                                width={500}
+                                width={800}
                                 height={500}
-                                className="rounded-lg shadow-lg w-full h-full object-cover"
+                                className="rounded-lg shadow-lg w-full h-auto object-cover"
                                 data-ai-hint={image.hint}
                                 loading="lazy"
                             />
