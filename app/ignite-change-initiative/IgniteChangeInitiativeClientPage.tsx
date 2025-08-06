@@ -37,7 +37,7 @@ export default function IgniteChangeInitiativeClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/awareness.jpg"
               alt="Ignite Change Initiative Banner"
               width={1920}
               height={580}
