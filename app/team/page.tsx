@@ -1,8 +1,6 @@
 
-import dynamic from 'next/dynamic';
 import { Card, CardContent } from "../../components/ui/card";
 import Image from "next/image";
-import { Skeleton } from '@/components/ui/skeleton';
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 
@@ -82,43 +80,6 @@ const teamMembers = [
   },
 ];
 
-const TeamPageContent = () => (
-  <section className="py-12 md:py-20 lg:py-24 bg-muted">
-    <div className="container mx-auto px-4 md:px-6">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down">Meet Our Dedicated Team</h2>
-        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto animate-fade-in-up">
-          The driving force behind our mission, our team is a dedicated group of professionals passionate about making a difference.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {teamMembers.map((member, index) => (
-          <Card key={index} className="overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 text-center animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
-            <div className="relative">
-              <Image
-                src={member.image}
-                alt={`Portrait of ${member.name}`}
-                width={270}
-                height={270}
-                data-ai-hint={member.hint}
-                className="w-full h-auto object-cover"
-                loading="lazy"
-              />
-            </div>
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold font-headline">{member.name}</h3>
-              <p className="text-primary font-medium">{member.designation}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const DynamicTeamPageContent = dynamic(() => Promise.resolve(TeamPageContent), {
-  loading: () => <Skeleton className="h-screen w-full" />,
-});
 
 export default function TeamPage() {
   return (
@@ -148,7 +109,37 @@ export default function TeamPage() {
                 </div>
             </div>
         </section>
-        <DynamicTeamPageContent />
+        <section className="py-12 md:py-20 lg:py-24 bg-muted">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="text-center mb-12">
+                    <h2 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down">Meet Our Dedicated Team</h2>
+                    <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto animate-fade-in-up">
+                    The driving force behind our mission, our team is a dedicated group of professionals passionate about making a difference.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    {teamMembers.map((member, index) => (
+                    <Card key={index} className="overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 text-center animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
+                        <div className="relative">
+                        <Image
+                            src={member.image}
+                            alt={`Portrait of ${member.name}`}
+                            width={270}
+                            height={270}
+                            data-ai-hint={member.hint}
+                            className="w-full h-auto object-cover"
+                            loading="lazy"
+                        />
+                        </div>
+                        <CardContent className="p-6">
+                        <h3 className="text-xl font-bold font-headline">{member.name}</h3>
+                        <p className="text-primary font-medium">{member.designation}</p>
+                        </CardContent>
+                    </Card>
+                    ))}
+                </div>
+            </div>
+        </section>
       </main>
       <Footer />
     </div>
