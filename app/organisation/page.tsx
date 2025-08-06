@@ -4,15 +4,9 @@ import { Button } from "../../components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Skeleton } from '@/components/ui/skeleton';
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 
-const Navbar = dynamic(() => import('../../components/layout/Navbar'), {
-  loading: () => <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 h-[100px]"><Skeleton className="h-full w-full" /></header>,
-  ssr: false
-});
-const Footer = dynamic(() => import('../../components/layout/Footer'), {
-  loading: () => <footer className="bg-card text-card-foreground border-t h-[300px]"><Skeleton className="h-full w-full" /></footer>,
-  ssr: false
-});
 
 const ImpactPriorities = dynamic(() => import('../../components/sections/ImpactPriorities'), {
   loading: () => <section className="py-12 md:py-20 lg:py-24 bg-muted"><Skeleton className="h-[500px] w-full" /></section>,
