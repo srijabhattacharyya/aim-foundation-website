@@ -7,7 +7,6 @@ import InfoSection from '../components/sections/InfoSection';
 import AboutUs from '../components/sections/AboutUs';
 import Impact from '../components/sections/Impact';
 import dynamic from 'next/dynamic';
-import HeroCarousel from '@/components/sections/HeroCarousel';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
@@ -18,6 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
+const HeroCarousel = dynamic(() => import('@/components/sections/HeroCarousel'), { loading: () => <Skeleton className="h-[250px] w-full" /> });
 const LatestAnnouncements = dynamic(() => import('@/components/sections/LatestAnnouncements'), { loading: () => <Skeleton className="h-[500px] w-full" /> });
 const DonateSection = dynamic(() => import('@/components/sections/DonateSection'), { loading: () => <Skeleton className="h-[250px] w-full" /> });
 const Volunteer = dynamic(() => import('@/components/sections/Volunteer'), { loading: () => <Skeleton className="h-[250px] w-full" /> });

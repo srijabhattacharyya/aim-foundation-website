@@ -1,24 +1,24 @@
 
 import dynamic from 'next/dynamic';
-import { Button } from "../../components/ui/button";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Skeleton } from '@/components/ui/skeleton';
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 
-const ImpactPriorities = dynamic(() => import('../../components/sections/ImpactPriorities'), {
+const ImpactPriorities = dynamic(() => import('@/components/sections/ImpactPriorities'), {
   loading: () => <section className="py-12 md:py-20 lg:py-24 bg-muted"><Skeleton className="h-[500px] w-full" /></section>,
   ssr: false
 });
 
-const Ethos = dynamic(() => import('../../components/sections/Ethos'), {
+const Ethos = dynamic(() => import('@/components/sections/Ethos'), {
   loading: () => <section className="py-12 md:py-20 lg:py-24 bg-card"><Skeleton className="h-[400px] w-full" /></section>,
   ssr: false
 });
 
-const LegalRecognitions = dynamic(() => import('../../components/sections/LegalRecognitions'), {
+const LegalRecognitions = dynamic(() => import('@/components/sections/LegalRecognitions'), {
   loading: () => <section className="py-12 md:py-20 lg:py-24 bg-muted"><Skeleton className="h-[400px] w-full" /></section>,
   ssr: false
 });
