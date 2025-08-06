@@ -48,7 +48,7 @@ export default function SustainabilityInitiativesPage() {
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
             <div className="relative z-10 text-left">
-              <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+              <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Sustainability Initiatives
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">

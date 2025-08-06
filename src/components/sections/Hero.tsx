@@ -25,7 +25,7 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
               </div>
             </div>
             <div className="text-center hidden md:block">
-              <div role="heading" aria-level={1} className="text-4xl md:text-6xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+              <div role="heading" aria-level={1} className="text-4xl md:text-5xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Building a Brighter Future, Together
               </div>
               <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">

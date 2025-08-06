@@ -35,7 +35,7 @@ export default function IndividualDonationClientPage() {
           </div>
           <div className="absolute inset-0 flex items-center justify-center text-white p-8 md:p-12">
             <div className="relative z-10 text-center">
-              <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+              <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 THE WORLD NEEDS SMILE WARRIORS
               </h1>
             </div>
