@@ -7,7 +7,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 const aboutImages = [
   {
-    src: 'https://placehold.co/800x500.png',
+    src: '/images/home-scrolling/hs1.png',
     alt: 'Community volunteers working together',
     hint: 'community volunteers'
   },
