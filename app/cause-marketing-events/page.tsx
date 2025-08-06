@@ -31,7 +31,7 @@ export default function CauseMarketingEventsPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x334.png"
+              src="/images/banner/crm.jpg"
               alt="Cause Marketing & Events"
               width={1920}
               height={334}
