@@ -37,7 +37,7 @@ export default function ReliefClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/relief.jpg"
               alt="Relief for the Underprivileged Banner"
               width={1920}
               height={580}
