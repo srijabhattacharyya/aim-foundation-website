@@ -8,7 +8,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 const aboutImages = [
   {
-    src: '/images/home-scrolling/hs1.png',
+    src: '/images/home-scrolling/hs1.jpg',
     alt: 'Garments Distribution to Sabar Community',
     hint: 'garments distribution',
     description: 'Garments Distribution to Sabar Community'
