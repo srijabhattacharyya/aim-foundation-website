@@ -78,12 +78,12 @@ export default function EducationalInitiativesPage() {
       <section className="relative w-full">
         <div className="relative w-full">
           <Image
-            src="https://placehold.co/1920x580.png"
+            src="/images/banner/education.jpg"
             alt="Educational Initiatives Banner"
             width={1920}
             height={580}
             className="w-full h-auto object-cover brightness-50"
-            data-ai-hint="students learning together"
+            priority
           />
         </div>
         <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
