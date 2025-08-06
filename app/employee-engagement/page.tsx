@@ -4,8 +4,16 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
-import EngagementStats from "@/components/sections/EngagementStats";
-import WaysOfEngagement from "@/components/sections/WaysOfEngagement";
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const EngagementStats = dynamic(() => import('@/components/sections/EngagementStats'), {
+  loading: () => <Skeleton className="h-[250px] w-full" />,
+});
+const WaysOfEngagement = dynamic(() => import('@/components/sections/WaysOfEngagement'), {
+  loading: () => <Skeleton className="h-[350px] w-full" />,
+});
+
 
 export const metadata: Metadata = {
   title: 'Employee Engagement - AIM Foundation',

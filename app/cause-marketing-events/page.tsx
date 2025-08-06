@@ -4,8 +4,16 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
-import QuickFacts from "@/components/sections/QuickFacts";
-import WaysToPartner from "@/components/sections/WaysToPartner";
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const QuickFacts = dynamic(() => import('@/components/sections/QuickFacts'), {
+  loading: () => <Skeleton className="h-[200px] w-full" />,
+});
+const WaysToPartner = dynamic(() => import('@/components/sections/WaysToPartner'), {
+  loading: () => <Skeleton className="h-[250px] w-full" />,
+});
+
 
 export const metadata: Metadata = {
   title: 'Cause-Related Marketing (CRM) - AIM Foundation',
