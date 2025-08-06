@@ -31,7 +31,7 @@ export default function EmployeeEngagementPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x334.png"
+              src="/images/banner/ev.jpg"
               alt="Employee Engagement Banner"
               width={1920}
               height={334}
