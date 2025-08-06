@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -8,7 +7,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 const aboutImages = [
   {
-    src: '/images/home-scrolling/hs1.png',
+    src: 'https://placehold.co/800x500.png',
     alt: 'Community volunteers working together',
     hint: 'community volunteers'
   },
