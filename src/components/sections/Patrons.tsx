@@ -239,10 +239,10 @@ const patrons = [
     alt: "Rotary Club"
   },
   {
-    name: "Placeholder Patron 20",
-    logo: "https://placehold.co/200x90.png",
-    hint: "company logo",
-    alt: "Placeholder Patron 20"
+    name: "B B Eye Foundation",
+    logo: "/images/patrons/bbeye.png",
+    hint: "bb eye foundation logo",
+    alt: "B B Eye Foundation"
   }
 ];
 

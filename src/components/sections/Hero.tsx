@@ -6,7 +6,7 @@ import React from 'react';
 
 const Hero = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className="relative w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw]">
+    <section className="relative w-full">
       <div className="relative w-full h-auto">
         <Image
           src="/images/banner/home.png"
@@ -14,8 +14,8 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
           width={1920}
           height={1080}
           className="w-full h-auto object-cover"
-          fetchPriority="auto"
           sizes="100vw"
+          loading="eager"
         />
         <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
           <div className="container mx-auto px-4 md:px-6 text-white pb-8 md:pb-16">
