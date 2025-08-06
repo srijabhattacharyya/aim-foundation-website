@@ -99,6 +99,7 @@ export default function GenderEqualityInitiativesPage() {
                       fill
                       data-ai-hint={item.hint}
                       className="object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <CardContent className="p-6 flex flex-col flex-grow">
