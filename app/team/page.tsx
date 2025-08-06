@@ -122,8 +122,8 @@ export default function TeamPage() {
                                 <Image
                                 src={member.image}
                                 alt={`Portrait of ${member.name}`}
-                                width={400}
-                                height={400}
+                                width={270}
+                                height={270}
                                 data-ai-hint={member.hint}
                                 className="w-full h-auto object-cover"
                                 />
