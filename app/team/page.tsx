@@ -9,7 +9,7 @@ const teamMembers = [
   {
     name: 'Prof. Amitabha Mookherjee',
     designation: 'Chairman',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/am.jpg',
     hint: 'male leader portrait',
   },
   {
