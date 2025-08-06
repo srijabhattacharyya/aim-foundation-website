@@ -21,61 +21,61 @@ const teamMembers = [
   {
     name: 'Mr. Saibal Ganguly',
     designation: 'General Secretary',
-    image: '/images/team/am.jpg',
+    image: '/images/team/sg.jpg',
     hint: 'male leader portrait',
   },
   {
     name: 'Mr. Chandan Roy',
     designation: 'Joint Secretary',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/cr.jpg',
     hint: 'male professional portrait',
   },
   {
     name: 'Mr. Mridul Das',
     designation: 'Joint Secretary',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/md.jpg',
     hint: 'male professional portrait',
   },
   {
     name: 'CA Banasri Bhattacharyya',
     designation: 'Treasurer',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/bb1.jpg',
     hint: 'female professional portrait',
   },
   {
     name: 'Dr. Piyali Bhaduri',
     designation: 'Convenor - Health & Hygiene',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/pb.jpg',
     hint: 'female doctor portrait',
   },
   {
     name: 'Dr. Madhumita Mukherjee',
     designation: 'Convenor - Environment',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/mm.jpg',
     hint: 'female communications portrait',
   },
   {
     name: 'Prof Sushovon Sengupta',
     designation: 'Convenor - Awareness Initiative',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/ss.jpg',
     hint: 'male professor portrait',
   },
   {
     name: 'Mr. Bhaskar Bhadra',
     designation: 'Convenors - Fund Raising',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/bb.jpg',
     hint: 'male fundraiser portrait',
   },
   {
     name: 'Mrs. Sushmeli Dutta',
     designation: 'Eminant Writer',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/sd.jpg',
     hint: 'female writer portrait',
   },
   {
     name: 'Dr. Apurba Mukherjee',
     designation: 'Scientist & Entrepreneur, California',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/am1.jpg',
     hint: 'male scientist portrait',
   },
 ];
@@ -88,10 +88,10 @@ export default function TeamPage() {
         <section className="relative w-full">
             <div className="relative w-full">
                 <Image
-                src="https://placehold.co/1920x580.png"
+                src="https://placehold.co/1920x334.png"
                 alt="Our Team Banner"
                 width={1920}
-                height={580}
+                height={334}
                 className="w-full h-auto object-cover brightness-50"
                 data-ai-hint="diverse team professional"
                 />
