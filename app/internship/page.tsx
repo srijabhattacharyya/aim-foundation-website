@@ -11,30 +11,20 @@ export default function InternshipPage() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <section className="relative w-full">
-          <div className="relative w-full">
-            <Image
-              src="/images/banner/intern.jpg"
-              alt="Internship Banner"
-              width={1920}
-              height={334}
-              className="w-full h-auto object-cover brightness-50"
-              data-ai-hint="interns working office"
-            />
-          </div>
-          <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
-            <div className="relative z-10 text-left">
-              <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Internship Opportunities at AIM Foundation
-              </h1>
-               <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Learn. Contribute. Grow. Make a Difference.
-              </p>
+        <section className="py-12 md:py-20 lg:py-24 bg-muted">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-4xl mx-auto text-center">
+                <h1 className="text-4xl md:text-6xl font-bold font-headline animate-fade-in-down">
+                    Internship Opportunities at AIM Foundation
+                </h1>
+                <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto animate-fade-in-up text-muted-foreground">
+                    Learn. Contribute. Grow. Make a Difference.
+                </p>
             </div>
           </div>
         </section>
 
-        <section className="py-12 md:py-20 lg:py-24 bg-muted">
+        <section className="pb-12 md:pb-20 lg:pb-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
               <div className="space-y-6 text-lg text-muted-foreground text-justify">
