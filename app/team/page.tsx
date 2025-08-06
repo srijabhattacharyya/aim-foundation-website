@@ -21,7 +21,7 @@ const teamMembers = [
   {
     name: 'Mr. Saibal Ganguly',
     designation: 'General Secretary',
-    image: 'https://placehold.co/270x270.png',
+    image: '/images/team/am.jpg',
     hint: 'male leader portrait',
   },
   {
