@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/InnocentSmilesDonationForm'), { 
     ssr: false,
@@ -47,26 +48,46 @@ export default function InnocentSmilesClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Shaping Dreams with Smiles and Skills</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    Innocent Smiles is a heartfelt initiative dedicated to nurturing the creative and academic potential of children, especially those from underprivileged backgrounds. The program focuses on developing talents across multiple disciplines, including education, visual arts, dance, and singing—ensuring that each child receives the opportunity to grow both intellectually and artistically.
-                  </p>
-                  <p>
-                    At its core, the project creates a safe, inclusive, and encouraging environment where children can freely express themselves, discover their passions, and build self-confidence. By integrating artistic expression with strong academic foundations, Innocent Smiles promotes a holistic model of development—recognizing that true learning goes beyond textbooks.
-                  </p>
-                  <p>
-                    Through thoughtfully designed activities, workshops, and mentorship, children are not only taught essential academic concepts but also guided to explore their creativity, voice their feelings, and work collaboratively. These experiences equip them with life skills such as communication, discipline, teamwork, and resilience.
-                  </p>
-                   <p>
-                    By investing in the potential of each child, Project Innocent Smiles aims to brighten futures, instill hope, and cultivate well-rounded individuals who can thrive in all areas of life. It’s more than a program—it’s a journey of growth, joy, and transformation for every young heart it touches.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">You Can Make a Difference</h3>
-                  <p>
-                    Every child deserves the chance to dream, create, and succeed—regardless of their background. Your support can help us provide art supplies, educational resources, nutritious snacks, and safe spaces for learning and expression. With your generous contribution, we can reach more children, organize more workshops, and nurture brighter, more confident futures. <strong>Donate today</strong> and become a part of a child’s journey toward joy, growth, and transformation. <strong>Because every innocent smile deserves to shine.</strong>
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+              <aside className="md:col-span-1 space-y-8">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>KEEP DIFFERENT INITIATIVES</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Skeleton className="h-40 w-full" />
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Placeholder</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Skeleton className="h-40 w-full" />
+                  </CardContent>
+                </Card>
+              </aside>
+              <div className="md:col-span-2">
+                <div className="space-y-6">
+                  <h2 className="text-3xl md:text-4xl font-bold font-headline">Shaping Dreams with Smiles and Skills</h2>
+                  <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                    <p>
+                      Innocent Smiles is a heartfelt initiative dedicated to nurturing the creative and academic potential of children, especially those from underprivileged backgrounds. The program focuses on developing talents across multiple disciplines, including education, visual arts, dance, and singing—ensuring that each child receives the opportunity to grow both intellectually and artistically.
+                    </p>
+                    <p>
+                      At its core, the project creates a safe, inclusive, and encouraging environment where children can freely express themselves, discover their passions, and build self-confidence. By integrating artistic expression with strong academic foundations, Innocent Smiles promotes a holistic model of development—recognizing that true learning goes beyond textbooks.
+                    </p>
+                    <p>
+                      Through thoughtfully designed activities, workshops, and mentorship, children are not only taught essential academic concepts but also guided to explore their creativity, voice their feelings, and work collaboratively. These experiences equip them with life skills such as communication, discipline, teamwork, and resilience.
+                    </p>
+                    <p>
+                      By investing in the potential of each child, Project Innocent Smiles aims to brighten futures, instill hope, and cultivate well-rounded individuals who can thrive in all areas of life. It’s more than a program—it’s a journey of growth, joy, and transformation for every young heart it touches.
+                    </p>
+                    <h3 className="text-2xl font-bold font-headline pt-4">You Can Make a Difference</h3>
+                    <p>
+                      Every child deserves the chance to dream, create, and succeed—regardless of their background. Your support can help us provide art supplies, educational resources, nutritious snacks, and safe spaces for learning and expression. With your generous contribution, we can reach more children, organize more workshops, and nurture brighter, more confident futures. <strong>Donate today</strong> and become a part of a child’s journey toward joy, growth, and transformation. <strong>Because every innocent smile deserves to shine.</strong>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
