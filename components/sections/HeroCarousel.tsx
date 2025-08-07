@@ -87,7 +87,7 @@ export default function HeroCarousel() {
                 <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                 <div className="p-1 h-full">
                     <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full flex flex-col">
-                    <CardContent className="flex flex-col items-center justify-center p-4 space-y-2 flex-grow">
+                    <CardContent className="flex flex-col items-center p-4 space-y-2 flex-grow">
                         <Image src={program.image} alt={program.title} width={60} height={60} data-ai-hint={program.hint} className="rounded-full border-2 border-primary" />
                         <h3 className="font-bold text-base font-headline text-center">{program.title}</h3>
                         <p className="text-xs text-center flex-grow">{program.description}</p>
