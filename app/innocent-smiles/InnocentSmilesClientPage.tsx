@@ -60,7 +60,7 @@ export default function InnocentSmilesClientPage() {
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle>Placeholder</CardTitle>
+                    <CardTitle>Related Blogs</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <Skeleton className="h-40 w-full" />
