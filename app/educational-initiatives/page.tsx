@@ -27,7 +27,8 @@ const initiatives = [
     description: "Transforms classrooms into smart, internet-enabled hubs. With interactive tools, it makes complex lessons dynamic and easier to grasp, fostering engagement and a love for learning.",
     image: "https://placehold.co/600x400.png",
     hint: "smart classroom",
-    link: "/inspire-eduLab"
+    link: "/inspire-eduLab",
+    specialText: "(Smart Class Room)"
   },
   {
     title: "EduAccess",
