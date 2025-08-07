@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "2500", label: "₹2500", description: "MEDICINES FOR ONE URBAN HEALTH CAMP" },
-    { value: "5000", label: "₹5000", description: "MEDICINES FOR TWO URBAN HEALTH CAMPS" },
-    { value: "10000", label: "₹10000", description: "MEDICINES FOR FOUR URBAN HEALTH CAMPS" },
-    { value: "20000", label: "₹20000", description: "SPONSOR AN ENTIRE URBAN HEALTH CAMP" },
+    { value: "1500", label: "₹1500", description: "MEDICINES FOR 5 PEOPLE" },
+    { value: "3000", label: "₹3000", description: "MEDICINES FOR 10 PEOPLE" },
+    { value: "6000", label: "₹6000", description: "MEDICINES FOR 20 PEOPLE" },
+    { value: "30000", label: "₹30000", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "30", label: "$30", description: "MEDICINES FOR ONE URBAN HEALTH CAMP" },
-    { value: "60", label: "$60", description: "MEDICINES FOR TWO URBAN HEALTH CAMPS" },
-    { value: "120", label: "$120", description: "MEDICINES FOR FOUR URBAN HEALTH CAMPS" },
-    { value: "240", label: "$240", description: "SPONSOR AN ENTIRE URBAN HEALTH CAMP" },
+    { value: "18", label: "$18", description: "MEDICINES FOR 5 PEOPLE" },
+    { value: "36", label: "$36", description: "MEDICINES FOR 10 PEOPLE" },
+    { value: "72", label: "$72", description: "MEDICINES FOR 20 PEOPLE" },
+    { value: "360", label: "$360", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 export default function CareCircleDonationForm() {
@@ -82,7 +82,7 @@ export default function CareCircleDonationForm() {
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: "2500",
+      amount: "1500",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -115,12 +115,12 @@ export default function CareCircleDonationForm() {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
-      form.setValue("amount", "2500");
+      form.setValue("amount", "1500");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
-      form.setValue("amount", "30");
+      form.setValue("amount", "18");
     }
   }, [nationality, form]);
 
@@ -408,3 +408,5 @@ export default function CareCircleDonationForm() {
     </Card>
   );
 }
+
+    
