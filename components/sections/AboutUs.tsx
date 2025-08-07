@@ -8,31 +8,31 @@ import Autoplay from "embla-carousel-autoplay";
 
 const aboutImages = [
   {
-    src: '/images/home-scrolling/hs1.JPG',
+    src: '/images/home-scrolling/hs1.jpg',
     alt: 'Garments Distribution to Sabar Community',
     hint: 'garments distribution',
     description: 'Garments Distribution to Sabar Community'
   },
   {
-    src: '/images/home-scrolling/hs3.JPG',
+    src: '/images/home-scrolling/hs3.jpg',
     alt: 'Award by Sundarbans Tiger Reserve',
     hint: 'award by str',
     description: 'Award by Sundarbans Tiger Reserve'
   },
   {
-    src: '/images/home-scrolling/hs2.JPG',
+    src: '/images/home-scrolling/hs2.jpg',
     alt: 'Healthcare camp in a rural area',
     hint: 'rural healthcare',
     description: 'Healthcare camp in a rural area'
   },
   {
-    src: '/images/home-scrolling/hs4.JPG',
+    src: '/images/home-scrolling/hs4.jpg',
     alt: 'Oral Cancer Detection Camp in Kolkata',
     hint: 'oral cancer detection',
     description: 'Oral Cancer Detection Camp in Kolkata'
   },
   {
-    src: '/images/home-scrolling/hs5.JPG',
+    src: '/images/home-scrolling/hs5.jpg',
     alt: 'Health Camp in Sundarbans',
     hint: 'health camp',
     description: 'Health Camp in Sundarbans'
