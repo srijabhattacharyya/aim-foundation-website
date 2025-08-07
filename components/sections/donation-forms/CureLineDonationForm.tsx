@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
+    { value: "300", label: "₹300", description: "MEDICINES FOR 1 PERSON" },
+    { value: "1500", label: "₹1500", description: "MEDICINES FOR 5 PEOPLE" },
     { value: "3000", label: "₹3000", description: "MEDICINES FOR 10 PEOPLE" },
-    { value: "6000", label: "₹6000", description: "MEDICINES FOR 20 PEOPLE" },
-    { value: "12000", label: "₹12000", description: "MEDICINES FOR 40 PEOPLE" },
-    { value: "24000", label: "₹24000", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
+    { value: "30000", label: "₹30000", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 const donationAmountsNonIndian = [
+    { value: "4", label: "$4", description: "MEDICINES FOR 1 PERSON" },
+    { value: "18", label: "$18", description: "MEDICINES FOR 5 PEOPLE" },
     { value: "35", label: "$35", description: "MEDICINES FOR 10 PEOPLE" },
-    { value: "70", label: "$70", description: "MEDICINES FOR 20 PEOPLE" },
-    { value: "140", label: "$140", description: "MEDICINES FOR 40 PEOPLE" },
-    { value: "280", label: "$280", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
+    { value: "350", label: "$350", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 export default function CureLineDonationForm() {
@@ -82,7 +82,7 @@ export default function CureLineDonationForm() {
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: "3000",
+      amount: "300",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -114,12 +114,12 @@ export default function CureLineDonationForm() {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
-      form.setValue("amount", "3000");
+      form.setValue("amount", "300");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
-      form.setValue("amount", "35");
+      form.setValue("amount", "4");
     }
   }, [nationality, form]);
 
