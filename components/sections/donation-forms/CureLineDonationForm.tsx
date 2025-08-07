@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "300", label: "₹300", description: "MEDICINES FOR 1 PERSON" },
     { value: "1500", label: "₹1500", description: "MEDICINES FOR 5 PEOPLE" },
     { value: "3000", label: "₹3000", description: "MEDICINES FOR 10 PEOPLE" },
+    { value: "6000", label: "₹6000", description: "MEDICINES FOR 20 PEOPLE" },
     { value: "30000", label: "₹30000", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "4", label: "$4", description: "MEDICINES FOR 1 PERSON" },
     { value: "18", label: "$18", description: "MEDICINES FOR 5 PEOPLE" },
-    { value: "35", label: "$35", description: "MEDICINES FOR 10 PEOPLE" },
-    { value: "350", label: "$350", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
+    { value: "36", label: "$36", description: "MEDICINES FOR 10 PEOPLE" },
+    { value: "72", label: "$72", description: "MEDICINES FOR 20 PEOPLE" },
+    { value: "360", label: "$360", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 export default function CureLineDonationForm() {
@@ -82,7 +82,7 @@ export default function CureLineDonationForm() {
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: "300",
+      amount: "1500",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -114,12 +114,12 @@ export default function CureLineDonationForm() {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
-      form.setValue("amount", "300");
+      form.setValue("amount", "1500");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
-      form.setValue("amount", "4");
+      form.setValue("amount", "18");
     }
   }, [nationality, form]);
 
