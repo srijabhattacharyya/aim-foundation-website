@@ -52,7 +52,7 @@ export default function InnocentSmilesClientPage() {
               <aside className="md:col-span-1 space-y-8">
                 <Card>
                   <CardHeader>
-                    <CardTitle>KEEP DIFFERENT INITIATIVES</CardTitle>
+                    <CardTitle>Educational Initiatives</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <Skeleton className="h-40 w-full" />
