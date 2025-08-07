@@ -126,7 +126,7 @@ const navLinks = [
     ]
   },
   { 
-    label: 'Together',
+    label: 'Get Involved',
     isDropdown: true,
     items: [
       { 
@@ -372,3 +372,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+    
