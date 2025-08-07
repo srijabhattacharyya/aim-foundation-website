@@ -41,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/innocent-smiles',
     '/inspire-eduLab',
     '/internship',
+    '/internship-policy',
     '/join-us',
     '/krishti',
     '/library',
