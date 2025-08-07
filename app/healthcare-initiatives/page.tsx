@@ -19,7 +19,8 @@ const initiatives = [
     description: "is AIM Foundation’s rural and remote healthcare outreach program that delivers essential medical services to underserved communities. Through regular health camps, it offers free check-ups, consultations, medicines, and health education in villages, forest-fringe settlements, and disaster-hit areas—bridging critical care gaps and ensuring health access regardless of location or income.",
     image: "https://placehold.co/600x400.png",
     hint: "mobile health clinic",
-    link: "/cureline"
+    link: "/cureline",
+    specialText: "(Rural Healthcare)"
   },
   {
     title: "SurgiReach",
@@ -115,7 +116,7 @@ export default function HealthCareInitiativesPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {initiatives.map((item, index) => (
+              {initiatives.map((item: any, index: React.Key | null | undefined) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                    <div className="relative w-full h-48">
                     <Image
@@ -129,6 +130,7 @@ export default function HealthCareInitiativesPage() {
                   </div>
                   <CardContent className="p-6 flex flex-col flex-grow">
                      <CardTitle className="font-headline mb-2">{item.title}</CardTitle>
+                     {item.specialText && <p className="text-sm font-bold text-muted-foreground mb-2">{item.specialText}</p>}
                     <CardDescription className="flex-grow text-justify">{item.description}</CardDescription>
                     <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
                       <Link href={item.link || "#"}>Learn More &rarr;</Link>
