@@ -52,7 +52,7 @@ const initiatives = [
     image: "https://placehold.co/600x400.png",
     hint: "computer literacy",
     link: "/digiempower",
-    specialText: "(Digital Literacy)"
+    specialText: "(Digital Literacy for Children)"
   },
   {
     title: "SheConnects",
