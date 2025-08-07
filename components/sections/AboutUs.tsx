@@ -18,7 +18,7 @@ const AboutUs = () => {
             </div>
             <div>
                 <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4">About Us</h2>
-                <h3 className="text-xl md:text-2xl font-semibold font-headline text-primary mb-6">Building Dignity. Inspiring Change.</h3>
+                <h3 className="text-lg md:text-xl font-semibold font-headline text-primary mb-6">Building Dignity. Inspiring Change.</h3>
                 <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
                         Since 2016, AIM Foundation has stood for one unwavering belief — that every life deserves dignity, opportunity, and hope.
