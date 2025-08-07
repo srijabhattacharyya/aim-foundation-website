@@ -10,22 +10,10 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/GreenRootsDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
-
-const donationProps = {
-  title: "GreenRoots",
-  subtitle: "PLANT A TREE, GROW A FUTURE",
-  amounts: [
-    { value: "750", label: "₹750", description: "SPONSOR 5 SAPLINGS & THEIR CARE" },
-    { value: "1500", label: "₹1500", description: "SPONSOR 10 SAPLINGS & THEIR CARE" },
-    { value: "3750", label: "₹3750", description: "SPONSOR 25 SAPLINGS & THEIR CARE" },
-    { value: "7500", label: "₹7500", description: "SUPPORT A COMMUNITY PLANTATION DRIVE" },
-  ],
-  amountDescription: "SPONSOR SAPLINGS & SUPPORT THEIR CARE",
-};
 
 export default function GreenRootsClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -85,7 +73,7 @@ export default function GreenRootsClientPage() {
                   <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to GreenRoots</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                  <DynamicDonationForm {...donationProps} />
+                  <DynamicDonationForm />
                 </DialogContent>
               </Dialog>
             </div>
