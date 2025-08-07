@@ -10,22 +10,10 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/GeneralDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DisasterManagementDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
-
-const donationProps = {
-  title: "Disaster Relief",
-  subtitle: "PROVIDE URGENT AID",
-  amounts: [
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
-    { value: "10000", label: "₹10000" },
-    { value: "25000", label: "₹25000" },
-  ],
-  amountDescription: "PROVIDE AN EMERGENCY RELIEF KIT",
-};
 
 export default function DisasterManagementClientPage() {
   const [showForm, setShowForm] = useState(false);
