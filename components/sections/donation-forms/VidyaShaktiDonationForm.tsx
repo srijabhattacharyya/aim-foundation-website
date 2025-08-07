@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "3000", label: "₹3000" },
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
-    { value: "24000", label: "₹24000" },
+    { value: "3000", label: "₹3000", description: "APP ACCESS FOR 10 CHILDREN FOR A YEAR" },
+    { value: "6000", label: "₹6000", description: "APP ACCESS FOR 20 CHILDREN FOR A YEAR" },
+    { value: "12000", label: "₹12000", description: "APP ACCESS FOR 40 CHILDREN FOR A YEAR" },
+    { value: "24000", label: "₹24000", description: "SUPPORT APP DEVELOPMENT & MAINTENANCE" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "35", label: "$35" },
-    { value: "70", label: "$70" },
-    { value: "140", label: "$140" },
-    { value: "280", label: "$280" },
+    { value: "35", label: "$35", description: "APP ACCESS FOR 10 CHILDREN FOR A YEAR" },
+    { value: "70", label: "$70", description: "APP ACCESS FOR 20 CHILDREN FOR A YEAR" },
+    { value: "140", label: "$140", description: "APP ACCESS FOR 40 CHILDREN FOR A YEAR" },
+    { value: "280", label: "$280", description: "SUPPORT APP DEVELOPMENT & MAINTENANCE" },
 ];
 
 export default function VidyaShaktiDonationForm() {
@@ -105,6 +105,11 @@ export default function VidyaShaktiDonationForm() {
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  const selectedAmountValue = form.watch("amount");
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
@@ -194,7 +199,7 @@ export default function VidyaShaktiDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">APP ACCESS FOR 10 CHILDREN FOR A YEAR</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />

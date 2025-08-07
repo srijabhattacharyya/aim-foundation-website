@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "5000", label: "₹5000" },
-    { value: "10000", label: "₹10000" },
-    { value: "25000", label: "₹25000" },
-    { value: "50000", label: "₹50000" },
+    { value: "5000", label: "₹5000", description: "SPONSOR ONE SURGERY" },
+    { value: "10000", label: "₹10000", description: "SPONSOR TWO SURGERIES" },
+    { value: "25000", label: "₹25000", description: "SUPPORT A SURGICAL CAMP" },
+    { value: "50000", label: "₹50000", description: "SPONSOR A MAJOR SURGERY" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "60", label: "$60" },
-    { value: "120", label: "$120" },
-    { value: "300", label: "$300" },
-    { value: "600", label: "$600" },
+    { value: "60", label: "$60", description: "SPONSOR ONE SURGERY" },
+    { value: "120", label: "$120", description: "SPONSOR TWO SURGERIES" },
+    { value: "300", label: "$300", description: "SUPPORT A SURGICAL CAMP" },
+    { value: "600", label: "$600", description: "SPONSOR A MAJOR SURGERY" },
 ];
 
 export default function SurgiReachDonationForm() {
@@ -105,6 +105,11 @@ export default function SurgiReachDonationForm() {
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  const selectedAmountValue = form.watch("amount");
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
@@ -192,7 +197,7 @@ export default function SurgiReachDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">SPONSOR ONE SURGERY</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />
@@ -340,7 +345,7 @@ export default function SurgiReachDonationForm() {
                         )}
                     />
                 </div>
-
+                
                 <FormField
                     control={form.control}
                     name="address"

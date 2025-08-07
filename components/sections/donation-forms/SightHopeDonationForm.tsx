@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "1500", label: "₹1500" },
-    { value: "3000", label: "₹3000" },
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
+    { value: "1500", label: "₹1500", description: "SPONSOR A CATARACT SURGERY" },
+    { value: "3000", label: "₹3000", description: "SPONSOR 2 CATARACT SURGERIES" },
+    { value: "6000", label: "₹6000", description: "SPONSOR 4 CATARACT SURGERIES" },
+    { value: "12000", label: "₹12000", description: "SPONSOR AN ENTIRE EYE CAMP" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "18", label: "$18" },
-    { value: "36", label: "$36" },
-    { value: "72", label: "$72" },
-    { value: "144", label: "$144" },
+    { value: "18", label: "$18", description: "SPONSOR A CATARACT SURGERY" },
+    { value: "36", label: "$36", description: "SPONSOR 2 CATARACT SURGERIES" },
+    { value: "72", label: "$72", description: "SPONSOR 4 CATARACT SURGERIES" },
+    { value: "144", label: "$144", description: "SPONSOR AN ENTIRE EYE CAMP" },
 ];
 
 export default function SightHopeDonationForm() {
@@ -105,6 +105,11 @@ export default function SightHopeDonationForm() {
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  const selectedAmountValue = form.watch("amount");
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
@@ -194,7 +199,7 @@ export default function SightHopeDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">SPONSOR A CATARACT SURGERY</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />

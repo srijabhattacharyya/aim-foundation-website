@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "3000", label: "₹3000" },
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
-    { value: "24000", label: "₹24000" },
+    { value: "3000", label: "₹3000", description: "INCLUSIVE WORKSHOP FOR 10 CHILDREN" },
+    { value: "6000", label: "₹6000", description: "INCLUSIVE WORKSHOP FOR 20 CHILDREN" },
+    { value: "12000", label: "₹12000", description: "INCLUSIVE WORKSHOP FOR 40 CHILDREN" },
+    { value: "24000", label: "₹24000", description: "SPONSOR AN ENTIRE MILIEU SESSION" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "35", label: "$35" },
-    { value: "70", label: "$70" },
-    { value: "140", label: "$140" },
-    { value: "280", label: "$280" },
+    { value: "35", label: "$35", description: "INCLUSIVE WORKSHOP FOR 10 CHILDREN" },
+    { value: "70", label: "$70", description: "INCLUSIVE WORKSHOP FOR 20 CHILDREN" },
+    { value: "140", label: "$140", description: "INCLUSIVE WORKSHOP FOR 40 CHILDREN" },
+    { value: "280", label: "$280", description: "SPONSOR AN ENTIRE MILIEU SESSION" },
 ];
 
 export default function MilieuDonationForm() {
@@ -105,6 +105,11 @@ export default function MilieuDonationForm() {
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  const selectedAmountValue = form.watch("amount");
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
@@ -194,7 +199,7 @@ export default function MilieuDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">INCLUSIVE WORKSHOP FOR 10 CHILDREN</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />

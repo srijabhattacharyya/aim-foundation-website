@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "500", label: "₹500" },
-    { value: "1000", label: "₹1000" },
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
+    { value: "500", label: "₹500", description: "MAINTAIN APP FOR 1 MONTH" },
+    { value: "1000", label: "₹1000", description: "SUPPORT AI MODEL TRAINING" },
+    { value: "2500", label: "₹2500", description: "SUPPORT MULTILINGUAL CAPABILITIES" },
+    { value: "5000", label: "₹5000", description: "SUPPORT APP DEVELOPMENT" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "6", label: "$6" },
-    { value: "12", label: "$12" },
-    { value: "30", label: "$30" },
-    { value: "60", label: "$60" },
+    { value: "6", label: "$6", description: "MAINTAIN APP FOR 1 MONTH" },
+    { value: "12", label: "$12", description: "SUPPORT AI MODEL TRAINING" },
+    { value: "30", label: "$30", description: "SUPPORT MULTILINGUAL CAPABILITIES" },
+    { value: "60", label: "$60", description: "SUPPORT APP DEVELOPMENT" },
 ];
 
 export default function SoulCircleDonationForm() {
@@ -105,6 +105,11 @@ export default function SoulCircleDonationForm() {
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  const selectedAmountValue = form.watch("amount");
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
@@ -194,7 +199,7 @@ export default function SoulCircleDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">MAINTAIN APP FOR 1 MONTH</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />

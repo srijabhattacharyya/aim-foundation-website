@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "3000", label: "₹3000" },
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
-    { value: "24000", label: "₹24000" },
+    { value: "3000", label: "₹3000", description: "DIGITAL LITERACY FOR 1 CHILD FOR 6 MONTHS" },
+    { value: "6000", label: "₹6000", description: "DIGITAL LITERACY FOR 1 CHILD FOR A YEAR" },
+    { value: "12000", label: "₹12000", description: "DIGITAL LITERACY FOR 2 CHILDREN FOR A YEAR" },
+    { value: "24000", label: "₹24000", description: "SPONSOR A DIGITAL LITERACY CENTER" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "35", label: "$35" },
-    { value: "70", label: "$70" },
-    { value: "140", label: "$140" },
-    { value: "280", label: "$280" },
+    { value: "35", label: "$35", description: "DIGITAL LITERACY FOR 1 CHILD FOR 6 MONTHS" },
+    { value: "70", label: "$70", description: "DIGITAL LITERACY FOR 1 CHILD FOR A YEAR" },
+    { value: "140", label: "$140", description: "DIGITAL LITERACY FOR 2 CHILDREN FOR A YEAR" },
+    { value: "280", label: "$280", description: "SPONSOR A DIGITAL LITERACY CENTER" },
 ];
 
 export default function DigiEmpowerDonationForm() {
@@ -105,6 +105,11 @@ export default function DigiEmpowerDonationForm() {
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  const selectedAmountValue = form.watch("amount");
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
@@ -192,7 +197,7 @@ export default function DigiEmpowerDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">DIGITAL LITERACY FOR 1 CHILD FOR 6 MONTHS</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />

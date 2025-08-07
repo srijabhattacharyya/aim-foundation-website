@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "1000", label: "₹1000" },
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
-    { value: "10000", label: "₹10000" },
+    { value: "1000", label: "₹1000", description: "PLANT 10 MANGROVE SAPLINGS" },
+    { value: "2500", label: "₹2500", description: "PLANT 25 MANGROVE SAPLINGS" },
+    { value: "5000", label: "₹5000", description: "PLANT 50 MANGROVE SAPLINGS" },
+    { value: "10000", label: "₹10000", description: "RESTORE A SMALL MANGROVE PATCH" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "12", label: "$12" },
-    { value: "30", label: "$30" },
-    { value: "60", label: "$60" },
-    { value: "120", label: "$120" },
+    { value: "12", label: "$12", description: "PLANT 10 MANGROVE SAPLINGS" },
+    { value: "30", label: "$30", description: "PLANT 25 MANGROVE SAPLINGS" },
+    { value: "60", label: "$60", description: "PLANT 50 MANGROVE SAPLINGS" },
+    { value: "120", label: "$120", description: "RESTORE A SMALL MANGROVE PATCH" },
 ];
 
 export default function TideShieldDonationForm() {
@@ -105,6 +105,11 @@ export default function TideShieldDonationForm() {
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  const selectedAmountValue = form.watch("amount");
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
@@ -192,7 +197,7 @@ export default function TideShieldDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">PLANT 10 MANGROVE SAPLINGS</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />

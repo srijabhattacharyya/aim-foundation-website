@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "500", label: "₹500" },
-    { value: "1000", label: "₹1000" },
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
+    { value: "500", label: "₹500", description: "SANITARY NAPKINS FOR A GIRL FOR A YEAR" },
+    { value: "1000", label: "₹1000", description: "SANITARY NAPKINS FOR 2 GIRLS FOR A YEAR" },
+    { value: "2500", label: "₹2500", description: "SANITARY NAPKINS FOR 5 GIRLS FOR A YEAR" },
+    { value: "5000", label: "₹5000", description: "SUPPORT A MENSTRUAL HYGIENE WORKSHOP" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "6", label: "$6" },
-    { value: "12", label: "$12" },
-    { value: "30", label: "$30" },
-    { value: "60", label: "$60" },
+    { value: "6", label: "$6", description: "SANITARY NAPKINS FOR A GIRL FOR A YEAR" },
+    { value: "12", label: "$12", description: "SANITARY NAPKINS FOR 2 GIRLS FOR A YEAR" },
+    { value: "30", label: "$30", description: "SANITARY NAPKINS FOR 5 GIRLS FOR A YEAR" },
+    { value: "60", label: "$60", description: "SUPPORT A MENSTRUAL HYGIENE WORKSHOP" },
 ];
 
 export default function CycleSafeDonationForm() {
@@ -105,6 +105,11 @@ export default function CycleSafeDonationForm() {
   
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  const selectedAmountValue = form.watch("amount");
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
@@ -194,7 +199,7 @@ export default function CycleSafeDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">SANITARY NAPKINS FOR A GIRL FOR A YEAR</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />
@@ -342,7 +347,7 @@ export default function CycleSafeDonationForm() {
                         )}
                     />
                 </div>
-
+                
                 <FormField
                     control={form.control}
                     name="address"
