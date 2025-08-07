@@ -75,7 +75,8 @@ const initiatives = [
     description: "is a multilingual educational app by AIM Foundation that delivers AI-powered, on-demand academic support to rural and first-generation learners, bridging the gap where quality teaching is scarce. By providing instant, tailored answers in a student's own language, VidyaShakti empowers children to learn independently, build confidence, and unlock their full potential.",
     image: "https://placehold.co/600x400.png",
     hint: "learning app",
-    link: "/vidyashakti"
+    link: "/vidyashakti",
+    specialText: "(App for Education)"
   }
 ];
 
