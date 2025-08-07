@@ -93,10 +93,16 @@ const AboutUs = () => {
             <h2 className="text-3xl md:text-4xl font-bold font-headline">Building Dignity. Inspiring Change.</h2>
             <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
               <p>
-                From urban slums to remote villages, our work tackles pressing human needs where they are most urgent. In a country where millions still lack access to basic services, our efforts are focused, direct, and unwavering.
+                Since 2016, AIM Foundation has stood for one unwavering belief — that every life deserves dignity, opportunity, and hope.
               </p>
               <p>
-                We believe in empowering individuals to create their own futures. By providing tools for education, health, and sustainable livelihoods, we help build resilient communities from the ground up.
+                We partner with some of the most underserved communities in India, creating real impact through healthcare, education, environmental sustainability, and support for women and children. Our work goes beyond providing services — we work at the roots, empowering people to uplift themselves and those around them.
+              </p>
+               <p>
+                At the heart of our mission is the power of women as changemakers. When a woman is empowered, a family is strengthened, and a community begins to thrive.
+              </p>
+               <p>
+                We're not just delivering aid. We’re building futures — one life, one village, one step at a time.
               </p>
             </div>
           </div>
