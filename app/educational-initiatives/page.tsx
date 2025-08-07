@@ -35,7 +35,8 @@ const initiatives = [
     description: "Delivers quality education to rural West Bengal through expert-led online classes. Covering core subjects, it empowers students in underserved areas with skills for academic success.",
     image: "https://placehold.co/600x400.png",
     hint: "online learning",
-    link: "/eduaccess"
+    link: "/eduaccess",
+    specialText: "(Online class)"
   },
    {
     title: "Empower English",
