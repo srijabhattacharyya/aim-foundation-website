@@ -87,7 +87,7 @@ export default function SightHopeClientPage() {
                   </p>
                   <h3 className="text-2xl font-bold font-headline pt-4">Restore Sight, Renew Lives</h3>
                   <p>
-                    For millions, blurry vision means missed opportunities, lost income, and silent suffering. <strong>With just ₹3,000, you can help restore someone’s sight through a free eye screening or cataract surgery.</strong> Your donation to SightHope empowers children to succeed in school, enables elders to regain independence, and allows workers to return to their jobs with confidence. <strong>Vision is more than just sight—it’s dignity, freedom, and hope.</strong> Give someone the gift of seeing the world clearly again. <strong>Donate now—because no one should live in the dark when the cure is within reach.</strong>
+                    For millions, blurry vision means missed opportunities, lost income, and silent suffering. <strong>With just ₹1500, you can help restore someone’s sight through a free eye screening and spectacles.</strong> Your donation to SightHope empowers children to succeed in school, enables elders to regain independence, and allows workers to return to their jobs with confidence. <strong>Vision is more than just sight—it’s dignity, freedom, and hope.</strong> Give someone the gift of seeing the world clearly again. <strong>Donate now—because no one should live in the dark when the cure is within reach.</strong>
                   </p>
                 </div>
               </div>
