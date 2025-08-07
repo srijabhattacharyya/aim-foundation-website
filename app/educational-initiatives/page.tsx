@@ -59,7 +59,8 @@ const initiatives = [
     description: "Empowers women through digital literacy, helping them promote businesses online. Includes cyber safety sessions to ensure secure digital participation and financial independence.",
     image: "https://placehold.co/600x400.png",
     hint: "women entrepreneurs",
-    link: "/sheconnects"
+    link: "/sheconnects",
+    specialText: "(Digital Literacy for women)"
   },
   {
     title: "Milieu",
