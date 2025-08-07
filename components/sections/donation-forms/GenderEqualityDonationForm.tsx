@@ -20,17 +20,23 @@ import { useToast } from "../../../hooks/use-toast";
 import { Card, CardContent } from "../../ui/card";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
+import dynamic from "next/dynamic";
+import StatesAndUTs from "@/components/layout/StatesAndUTs";
+
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 const donationSchema = z.object({
+  nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
   amount: z.string().nonempty({ message: "Please select a donation amount." }),
   otherAmount: z.string().optional(),
   fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
   dob: z.string().nonempty({ message: "Date of birth is required." }),
-  pan: z.string().min(10, { message: "PAN must be 10 characters." }).max(10, { message: "PAN must be 10 characters." }),
-  country: z.string(),
-  state: z.string().nonempty({ message: "State is required." }),
+  pan: z.string().optional(),
+  passport: z.string().optional(),
+  country: z.string().nonempty({ message: "Country is required." }),
+  state: z.string().optional(),
   city: z.string().nonempty({ message: "City is required." }),
   address: z.string().nonempty({ message: "Address is required." }),
   pincode: z.string().min(6, { message: "Pincode must be 6 digits." }).max(6, { message: "Pincode must be 6 digits." }),
@@ -38,20 +44,45 @@ const donationSchema = z.object({
     message: "You must agree to the terms.",
   }),
   recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
+}).refine(data => {
+    if (data.nationality === "Indian") {
+        return !!data.pan && data.pan.length === 10;
+    }
+    return true;
+}, {
+    message: "PAN must be 10 characters for Indian nationals.",
+    path: ["pan"],
+}).refine(data => {
+    if (data.nationality === "Indian") {
+        return !!data.state;
+    }
+    return true;
+}, {
+    message: "State is required for Indian nationals.",
+    path: ["state"],
 });
 
-const donationAmounts = [
+const donationAmountsIndian = [
     { value: "2500", label: "₹2500" },
     { value: "5000", label: "₹5000" },
     { value: "10000", label: "₹10000" },
     { value: "25000", label: "₹25000" },
 ];
 
+const donationAmountsNonIndian = [
+    { value: "30", label: "$30" },
+    { value: "60", label: "$60" },
+    { value: "120", label: "$120" },
+    { value: "300", label: "$300" },
+];
+
+
 export default function GenderEqualityDonationForm() {
   const { toast } = useToast();
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
+      nationality: "Indian",
       amount: "2500",
       otherAmount: "",
       fullName: "",
@@ -59,6 +90,7 @@ export default function GenderEqualityDonationForm() {
       mobile: "",
       dob: "",
       pan: "",
+      passport: "",
       country: "India",
       state: "",
       city: "",
@@ -71,6 +103,22 @@ export default function GenderEqualityDonationForm() {
 
   const recaptchaRef = React.createRef<ReCAPTCHA>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+  
+  const nationality = form.watch("nationality");
+  const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+
+  React.useEffect(() => {
+    if (nationality === "Indian") {
+      form.setValue("country", "India");
+      form.setValue("passport", "");
+      form.setValue("amount", "2500");
+    } else {
+      form.setValue("country", "");
+      form.setValue("pan", "");
+      form.setValue("state", "");
+      form.setValue("amount", "30");
+    }
+  }, [nationality, form]);
 
 
   function onSubmit(values: z.infer<typeof donationSchema>) {
@@ -84,8 +132,8 @@ export default function GenderEqualityDonationForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg bg-card">
-        <CardContent className="p-0">
+    <Card className="w-full border-0 shadow-none rounded-none">
+        <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT GENDER EQUALITY</h2>
                 <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
@@ -95,13 +143,43 @@ export default function GenderEqualityDonationForm() {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
                     control={form.control}
+                    name="nationality"
+                    render={({ field }) => (
+                        <FormItem className="space-y-3">
+                        <FormLabel>Nationality</FormLabel>
+                        <FormControl>
+                            <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex items-center space-x-4"
+                            >
+                            <FormItem className="flex items-center space-x-2 space-y-0">
+                                <FormControl>
+                                <RadioGroupItem value="Indian" />
+                                </FormControl>
+                                <FormLabel className="font-normal">Indian</FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-2 space-y-0">
+                                <FormControl>
+                                <RadioGroupItem value="Non-Indian" />
+                                </FormControl>
+                                <FormLabel className="font-normal">Non-Indian</FormLabel>
+                            </FormItem>
+                            </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
                     name="amount"
                     render={({ field }) => (
                     <FormItem className="space-y-3">
                         <FormControl>
                         <RadioGroup
                             onValueChange={field.onChange}
-                            defaultValue={field.value}
+                            value={field.value}
                             className="flex flex-wrap justify-center gap-4 md:gap-8"
                         >
                             {donationAmounts.map((item) => (
@@ -170,54 +248,74 @@ export default function GenderEqualityDonationForm() {
                             </FormItem>
                         )}
                     />
-                    <FormField
-                        control={form.control}
-                        name="dob"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormControl>
-                                <Input type="date" placeholder="DOB" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="pan"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormControl>
-                                <Input placeholder="Pan No" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                     {nationality === 'Indian' ? (
+                        <FormField
+                            control={form.control}
+                            name="pan"
+                            render={({ field }) => (
+                                <FormItem>
+                                <FormControl>
+                                    <Input placeholder="Pan No" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    ) : (
+                         <FormField
+                            control={form.control}
+                            name="passport"
+                            render={({ field }) => (
+                                <FormItem>
+                                <FormControl>
+                                    <Input placeholder="Passport Number" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    )}
+                </div>
+                
+                 <FormField
+                    control={form.control}
+                    name="dob"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Date of Birth</FormLabel>
+                        <FormControl>
+                            <Input type="date" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <FormField
                         control={form.control}
                         name="country"
                         render={({ field }) => (
                             <FormItem>
                             <FormControl>
-                                <Input placeholder="India" {...field} disabled />
+                                <Input placeholder="Country" {...field} disabled={nationality === 'Indian'} />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <FormField
-                        control={form.control}
-                        name="state"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormControl>
-                                <Input placeholder="Select State" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                    {nationality === 'Indian' && (
+                        <FormField
+                            control={form.control}
+                            name="state"
+                            render={({ field }) => (
+                                <FormItem>
+                                <StatesAndUTs field={field} />
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                     )}
                     <FormField
                         control={form.control}
                         name="city"
@@ -230,8 +328,20 @@ export default function GenderEqualityDonationForm() {
                             </FormItem>
                         )}
                     />
+                    <FormField
+                        control={form.control}
+                        name="pincode"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormControl>
+                                <Input placeholder="Pincode" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                 </div>
-                
+
                 <FormField
                     control={form.control}
                     name="address"
@@ -239,19 +349,6 @@ export default function GenderEqualityDonationForm() {
                         <FormItem>
                         <FormControl>
                             <Input placeholder="Address" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name="pincode"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormControl>
-                            <Input placeholder="Pincode" {...field} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>
@@ -288,7 +385,7 @@ export default function GenderEqualityDonationForm() {
                     <FormItem>
                       <FormControl>
                         <div className="flex justify-center">
-                            <ReCAPTCHA
+                            <DynamicReCAPTCHA
                               ref={recaptchaRef}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}

@@ -10,22 +10,10 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/KrishtiDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
-
-const donationProps = {
-  title: "Krishti",
-  subtitle: "FROM SKILL TO SELF-RELIANCE",
-  amounts: [
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
-    { value: "10000", label: "₹10000" },
-    { value: "20000", label: "₹20000" },
-  ],
-  amountDescription: "SUPPORT A WOMAN'S ENTREPRENEURIAL JOURNEY",
-};
 
 export default function KrishtiClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -82,7 +70,7 @@ export default function KrishtiClientPage() {
                   <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to Krishti</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                  <DynamicDonationForm {...donationProps} />
+                  <DynamicDonationForm />
                 </DialogContent>
               </Dialog>
             </div>

@@ -63,26 +63,26 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "3000", label: "₹3000" },
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
-    { value: "24000", label: "₹24000" },
+    { value: "2500", label: "₹2500" },
+    { value: "5000", label: "₹5000" },
+    { value: "10000", label: "₹10000" },
+    { value: "20000", label: "₹20000" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "35", label: "$35" },
-    { value: "70", label: "$70" },
-    { value: "140", label: "$140" },
-    { value: "280", label: "$280" },
+    { value: "30", label: "$30" },
+    { value: "60", label: "$60" },
+    { value: "120", label: "$120" },
+    { value: "240", label: "$240" },
 ];
 
-export default function InspireEduLabDonationForm() {
+export default function KrishtiDonationForm() {
   const { toast } = useToast();
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: "3000",
+      amount: "2500",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -102,7 +102,7 @@ export default function InspireEduLabDonationForm() {
 
   const recaptchaRef = React.createRef<ReCAPTCHA>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-
+  
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
 
@@ -110,12 +110,12 @@ export default function InspireEduLabDonationForm() {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
-      form.setValue("amount", "3000");
+      form.setValue("amount", "2500");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
-      form.setValue("amount", "35");
+      form.setValue("amount", "30");
     }
   }, [nationality, form]);
 
@@ -123,8 +123,8 @@ export default function InspireEduLabDonationForm() {
   function onSubmit(values: z.infer<typeof donationSchema>) {
     console.log(values);
     toast({
-      title: "Thank you for supporting Inspire EduLab!",
-      description: "Your support makes a difference.",
+      title: "Thank you for supporting Krishti!",
+      description: "Your donation empowers women entrepreneurs.",
     });
     recaptchaRef.current?.reset();
     form.reset();
@@ -134,14 +134,14 @@ export default function InspireEduLabDonationForm() {
     <Card className="w-full border-0 shadow-none rounded-none">
         <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold font-headline">SUPPORT INSPIRE EDULAB</h2>
-                <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT KRISHTI</h2>
+                <p className="text-muted-foreground">FROM SKILL TO SELF-RELIANCE</p>
             </div>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-
-                <FormField
+                
+                 <FormField
                     control={form.control}
                     name="nationality"
                     render={({ field }) => (
@@ -194,7 +194,7 @@ export default function InspireEduLabDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">DIGITAL TOOLS FOR 1 CLASSROOM FOR 3 MONTHS</p>
+                        <p className="text-center text-muted-foreground pt-2">SUPPORT A WOMAN'S ENTREPRENEURIAL JOURNEY</p>
                     </FormItem>
                     )}
                 />
@@ -277,8 +277,8 @@ export default function InspireEduLabDonationForm() {
                         />
                     )}
                 </div>
-                
-                <FormField
+
+                 <FormField
                     control={form.control}
                     name="dob"
                     render={({ field }) => (
@@ -291,7 +291,7 @@ export default function InspireEduLabDonationForm() {
                         </FormItem>
                     )}
                 />
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <FormField
                         control={form.control}
@@ -305,7 +305,7 @@ export default function InspireEduLabDonationForm() {
                             </FormItem>
                         )}
                     />
-                    {nationality === 'Indian' && (
+                     {nationality === 'Indian' && (
                         <FormField
                             control={form.control}
                             name="state"
@@ -316,7 +316,7 @@ export default function InspireEduLabDonationForm() {
                                 </FormItem>
                             )}
                         />
-                    )}
+                     )}
                     <FormField
                         control={form.control}
                         name="city"
@@ -329,7 +329,7 @@ export default function InspireEduLabDonationForm() {
                             </FormItem>
                         )}
                     />
-                    <FormField
+                     <FormField
                         control={form.control}
                         name="pincode"
                         render={({ field }) => (
@@ -355,7 +355,7 @@ export default function InspireEduLabDonationForm() {
                         </FormItem>
                     )}
                 />
-                
+
                 <div className="text-xs text-muted-foreground text-center space-y-1">
                     <p>YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT UNDER SECTION 80G AS ASSOCIATED INITIATIVE FOR MANKIND FOUNDATION IS REGISTERED AS NON PROFIT ORGANIZATION</p>
                     <p>PAN: AAFTA1983P | 80G NUMBER: AAFTA1983PF20221</p>
@@ -378,7 +378,7 @@ export default function InspireEduLabDonationForm() {
                         </FormItem>
                     )}
                 />
-                
+
                 <FormField
                   control={form.control}
                   name="recaptcha"

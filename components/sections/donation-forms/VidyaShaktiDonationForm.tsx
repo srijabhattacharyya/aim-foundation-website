@@ -62,11 +62,18 @@ const donationSchema = z.object({
     path: ["state"],
 });
 
-const donationAmounts = [
+const donationAmountsIndian = [
     { value: "3000", label: "₹3000" },
     { value: "6000", label: "₹6000" },
     { value: "12000", label: "₹12000" },
     { value: "24000", label: "₹24000" },
+];
+
+const donationAmountsNonIndian = [
+    { value: "35", label: "$35" },
+    { value: "70", label: "$70" },
+    { value: "140", label: "$140" },
+    { value: "280", label: "$280" },
 ];
 
 export default function VidyaShaktiDonationForm() {
@@ -97,15 +104,18 @@ export default function VidyaShaktiDonationForm() {
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const nationality = form.watch("nationality");
+  const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
 
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
+      form.setValue("amount", "3000");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
+      form.setValue("amount", "35");
     }
   }, [nationality, form]);
 
@@ -170,7 +180,7 @@ export default function VidyaShaktiDonationForm() {
                         <FormControl>
                         <RadioGroup
                             onValueChange={field.onChange}
-                            defaultValue={field.value}
+                            value={field.value}
                             className="flex flex-wrap justify-center gap-4 md:gap-8"
                         >
                             {donationAmounts.map((item) => (

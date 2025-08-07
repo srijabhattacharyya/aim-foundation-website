@@ -62,11 +62,18 @@ const donationSchema = z.object({
     path: ["state"],
 });
 
-const donationAmounts = [
+const donationAmountsIndian = [
     { value: "5000", label: "₹5000" },
     { value: "10000", label: "₹10000" },
     { value: "25000", label: "₹25000" },
     { value: "50000", label: "₹50000" },
+];
+
+const donationAmountsNonIndian = [
+    { value: "60", label: "$60" },
+    { value: "120", label: "$120" },
+    { value: "300", label: "$300" },
+    { value: "600", label: "$600" },
 ];
 
 export default function SurgiReachDonationForm() {
@@ -97,15 +104,18 @@ export default function SurgiReachDonationForm() {
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const nationality = form.watch("nationality");
+  const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
 
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
+      form.setValue("amount", "5000");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
+      form.setValue("amount", "60");
     }
   }, [nationality, form]);
 
@@ -168,7 +178,7 @@ export default function SurgiReachDonationForm() {
                         <FormControl>
                         <RadioGroup
                             onValueChange={field.onChange}
-                            defaultValue={field.value}
+                            value={field.value}
                             className="flex flex-wrap justify-center gap-4 md:gap-8"
                         >
                             {donationAmounts.map((item) => (

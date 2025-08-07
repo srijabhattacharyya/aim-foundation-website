@@ -62,11 +62,18 @@ const donationSchema = z.object({
     path: ["state"],
 });
 
-const donationAmounts = [
+const donationAmountsIndian = [
     { value: "3000", label: "₹3000" },
     { value: "6000", label: "₹6000" },
     { value: "12000", label: "₹12000" },
     { value: "24000", label: "₹24000" },
+];
+
+const donationAmountsNonIndian = [
+    { value: "35", label: "$35" },
+    { value: "70", label: "$70" },
+    { value: "140", label: "$140" },
+    { value: "280", label: "$280" },
 ];
 
 export default function DigiEmpowerDonationForm() {
@@ -97,15 +104,18 @@ export default function DigiEmpowerDonationForm() {
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const nationality = form.watch("nationality");
+  const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
 
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
+      form.setValue("amount", "3000");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
+      form.setValue("amount", "35");
     }
   }, [nationality, form]);
 
@@ -121,8 +131,8 @@ export default function DigiEmpowerDonationForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl p-6 md:p-8 shadow-lg bg-card">
-        <CardContent className="p-0">
+    <Card className="w-full border-0 shadow-none rounded-none">
+        <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT DIGIEMPOWER</h2>
                 <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
@@ -168,7 +178,7 @@ export default function DigiEmpowerDonationForm() {
                         <FormControl>
                         <RadioGroup
                             onValueChange={field.onChange}
-                            defaultValue={field.value}
+                            value={field.value}
                             className="flex flex-wrap justify-center gap-4 md:gap-8"
                         >
                             {donationAmounts.map((item) => (
