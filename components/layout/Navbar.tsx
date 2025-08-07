@@ -156,7 +156,7 @@ const navLinks = [
   },
   { href: '/gallery', label: 'Gallery' },
   { 
-    label: 'Highlights',
+    label: 'Media Room',
     isDropdown: true,
     items: [
       { href: '/press-releases', label: 'Press Releases' },
@@ -375,4 +375,6 @@ const Navbar = () => {
 export default Navbar;
 
     
+    
+
     
