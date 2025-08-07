@@ -1,26 +1,39 @@
 
 'use client';
 
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
+    loading: () => <Skeleton className="h-[400px] w-full" />,
+    ssr: false
+});
+
 const AboutUs = () => {
   return (
     <section id="about" className="py-12 md:py-20 lg:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold font-headline mb-4">About Us</h2>
-            <h3 className="text-2xl md:text-3xl font-semibold font-headline text-primary mb-6">Building Dignity. Inspiring Change.</h3>
-            <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
-                <p>
-                    Since 2016, AIM Foundation has stood for one unwavering belief — that every life deserves dignity, opportunity, and hope.
-                </p>
-                <p>
-                    We partner with some of the most underserved communities in India, creating real impact through healthcare, education, environmental sustainability, and support for women and children. Our work goes beyond providing services — we work at the roots, empowering people to uplift themselves and those around them.
-                </p>
-                <p>
-                    At the heart of our mission is the power of women as changemakers. When a woman is empowered, a family is strengthened, and a community begins to thrive.
-                </p>
-                <p>
-                    We're not just delivering aid. We’re building futures — one life, one village, one step at a time.
-                </p>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="w-full max-w-lg mx-auto">
+                <FootprintCarousel />
+            </div>
+            <div>
+                <h2 className="text-4xl md:text-5xl font-bold font-headline mb-4">About Us</h2>
+                <h3 className="text-2xl md:text-3xl font-semibold font-headline text-primary mb-6">Building Dignity. Inspiring Change.</h3>
+                <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
+                    <p>
+                        Since 2016, AIM Foundation has stood for one unwavering belief — that every life deserves dignity, opportunity, and hope.
+                    </p>
+                    <p>
+                        We partner with some of the most underserved communities in India, creating real impact through healthcare, education, environmental sustainability, and support for women and children. Our work goes beyond providing services — we work at the roots, empowering people to uplift themselves and those around them.
+                    </p>
+                    <p>
+                        At the heart of our mission is the power of women as changemakers. When a woman is empowered, a family is strengthened, and a community begins to thrive.
+                    </p>
+                    <p>
+                        We're not just delivering aid. We’re building futures — one life, one village, one step at a time.
+                    </p>
+                </div>
             </div>
         </div>
       </div>
