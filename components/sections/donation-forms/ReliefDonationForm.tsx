@@ -4,7 +4,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "../../ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,12 +12,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../ui/form";
-import { Input } from "../../ui/input";
-import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
-import { Checkbox } from "../../ui/checkbox";
+} from "../../../components/ui/form";
+import { Input } from "../../../components/ui/input";
+import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
+import { Checkbox } from "../../../components/ui/checkbox";
 import { useToast } from "../../../hooks/use-toast";
-import { Card, CardContent } from "../../ui/card";
+import { Card, CardContent } from "../../../components/ui/card";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
 import dynamic from "next/dynamic";
@@ -62,20 +62,27 @@ const donationSchema = z.object({
     path: ["state"],
 });
 
-interface DonationFormProps {
-    title: string;
-    subtitle: string;
-    amounts: { value: string; label: string; description?: string }[];
-    amountDescription?: string;
-}
+const donationAmountsIndian = [
+    { value: "1000", label: "₹1000", description: "PROVIDE AN ESSENTIALS KIT" },
+    { value: "2500", label: "₹2500", description: "PROVIDE FOOD FOR A FAMILY FOR A WEEK" },
+    { value: "5000", label: "₹5000", description: "SUPPORT A SMALL RELIEF CAMP" },
+    { value: "10000", label: "₹10000", description: "SUPPORT A COMPREHENSIVE RELIEF CAMP" },
+];
 
-export default function DonationForm({ title, subtitle, amounts, amountDescription }: DonationFormProps) {
+const donationAmountsNonIndian = [
+    { value: "12", label: "$12", description: "PROVIDE AN ESSENTIALS KIT" },
+    { value: "30", label: "$30", description: "PROVIDE FOOD FOR A FAMILY FOR A WEEK" },
+    { value: "60", label: "$60", description: "SUPPORT A SMALL RELIEF CAMP" },
+    { value: "120", label: "$120", description: "SUPPORT A COMPREHENSIVE RELIEF CAMP" },
+];
+
+export default function ReliefDonationForm() {
   const { toast } = useToast();
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: amounts[0]?.value || "",
+      amount: "1000",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -97,18 +104,23 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const nationality = form.watch("nationality");
+  const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
   const selectedAmountValue = form.watch("amount");
-  const selectedAmount = amounts.find(a => a.value === selectedAmountValue);
-  const description = selectedAmount?.description || amountDescription || "";
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
+      form.setValue("amount", "1000");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
+      form.setValue("amount", "12");
     }
   }, [nationality, form]);
 
@@ -116,7 +128,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
   function onSubmit(values: z.infer<typeof donationSchema>) {
     console.log(values);
     toast({
-      title: `Thank you for supporting ${title}!`,
+      title: "Thank you for supporting our Relief Efforts!",
       description: "Your support makes a difference.",
     });
     recaptchaRef.current?.reset();
@@ -127,12 +139,13 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
     <Card className="w-full border-0 shadow-none rounded-none">
         <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold font-headline">SUPPORT {title.toUpperCase()}</h2>
-                <p className="text-muted-foreground">{subtitle}</p>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT RELIEF EFFORTS</h2>
+                <p className="text-muted-foreground">PROVIDE IMMEDIATE AID</p>
             </div>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                
                 <FormField
                     control={form.control}
                     name="nationality"
@@ -163,6 +176,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         </FormItem>
                     )}
                 />
+
                 <FormField
                     control={form.control}
                     name="amount"
@@ -171,10 +185,10 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         <FormControl>
                         <RadioGroup
                             onValueChange={field.onChange}
-                            defaultValue={field.value}
+                            value={field.value}
                             className="flex flex-wrap justify-center gap-4 md:gap-8"
                         >
-                            {amounts.map((item) => (
+                            {donationAmounts.map((item) => (
                             <FormItem key={item.value} className="flex items-center space-x-2 space-y-0">
                                 <FormControl>
                                 <RadioGroupItem value={item.value} />
@@ -185,7 +199,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">{description}</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />
@@ -268,7 +282,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         />
                     )}
                 </div>
-                
+
                  <FormField
                     control={form.control}
                     name="dob"
@@ -282,7 +296,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         </FormItem>
                     )}
                 />
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <FormField
                         control={form.control}
@@ -333,7 +347,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         )}
                     />
                 </div>
-
+                
                 <FormField
                     control={form.control}
                     name="address"
