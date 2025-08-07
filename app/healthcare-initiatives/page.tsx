@@ -83,7 +83,8 @@ const initiatives = [
     description: "is a 24/7 AI-powered mental health support app by AIM Foundation, offering a confidential, judgment-free space to talk and heal. Designed for those hesitant to seek traditional therapy, it provides empathetic guidance, mood tracking, and mindfulness exercises, making emotional well-being accessible to all, anytime, anywhere.",
     image: "https://placehold.co/600x400.png",
     hint: "mental health app",
-    link: "/soulcircle"
+    link: "/soulcircle",
+    specialText: "(Mental Health App)"
   }
 ];
 
