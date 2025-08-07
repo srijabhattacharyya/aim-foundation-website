@@ -20,7 +20,7 @@ const initiatives = [
     image: "https://placehold.co/600x400.png",
     hint: "classroom children",
     link: "/innocent-smiles",
-    specialText: "art and music class"
+    specialText: "(Art & Music Class)"
   },
   {
     title: "Inspire EduLab",
@@ -122,9 +122,9 @@ export default function EducationalInitiativesPage() {
                 </div>
                 <CardContent className="p-6 flex flex-col flex-grow">
                   <CardTitle className="font-headline mb-2">{item.title}</CardTitle>
+                  {item.specialText && <p className="text-sm font-bold text-muted-foreground mb-2">{item.specialText}</p>}
                   <CardDescription className="flex-grow text-justify">
                     {item.description}
-                    {item.specialText && <span className="font-bold"> {item.specialText}</span>}
                   </CardDescription>
                   <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
                     <Link href={item.link || "#"}>Learn More &rarr;</Link>
