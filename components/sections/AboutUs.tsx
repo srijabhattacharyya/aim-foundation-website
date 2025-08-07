@@ -91,13 +91,18 @@ const AboutUs = () => {
           </div>
           <div className="animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">About Us</h2>
-            <h3 className="mt-4 text-xl font-semibold text-primary">Building Dignity. Inspiring Change.</h3>
             <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                 <p>
-                    AIM Foundation began its journey in 2016 with a simple yet powerful vision—to bring dignity, opportunity, and hope to those who need it most. We work hand in hand with underserved communities, focusing on healthcare, education, environmental sustainability, and the well-being of women and children.
+                    Since 2016, AIM Foundation has stood for one unwavering belief — that every life deserves dignity, opportunity, and hope.
                 </p>
                 <p>
-                    We believe that real change begins with empowerment. By nurturing women as leaders and changemakers, we help entire families and communities rise. Our mission is to create a world where everyone—regardless of background—has the chance to grow, thrive, and live with purpose. AIM Foundation is not just building services, but sowing seeds of lasting transformation.
+                    We partner with some of the most underserved communities in India, creating real impact through healthcare, education, environmental sustainability, and support for women and children. Our work goes beyond providing services — we work at the roots, empowering people to uplift themselves and those around them.
+                </p>
+                <p>
+                    At the heart of our mission is the power of women as changemakers. When a woman is empowered, a family is strengthened, and a community begins to thrive.
+                </p>
+                <p>
+                    We're not just delivering aid. We’re building futures — one life, one village, one step at a time.
                 </p>
             </div>
           </div>
