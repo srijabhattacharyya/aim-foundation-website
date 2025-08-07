@@ -86,6 +86,14 @@ export default function InnocentSmilesClientPage() {
                     <Skeleton className="h-40 w-full" />
                   </CardContent>
                 </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Other Initiatives</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Skeleton className="h-40 w-full" />
+                  </CardContent>
+                </Card>
               </aside>
               <div className="md:col-span-2">
                 <div className="space-y-6">
