@@ -66,14 +66,14 @@ const donationAmountsIndian = [
     { value: "1500", label: "₹1500", description: "MEDICINES FOR 5 PEOPLE" },
     { value: "3000", label: "₹3000", description: "MEDICINES FOR 10 PEOPLE" },
     { value: "6000", label: "₹6000", description: "MEDICINES FOR 20 PEOPLE" },
-    { value: "30000", label: "₹30000", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
+    { value: "20000", label: "₹20000", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 const donationAmountsNonIndian = [
     { value: "18", label: "$18", description: "MEDICINES FOR 5 PEOPLE" },
     { value: "36", label: "$36", description: "MEDICINES FOR 10 PEOPLE" },
     { value: "72", label: "$72", description: "MEDICINES FOR 20 PEOPLE" },
-    { value: "360", label: "$360", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
+    { value: "240", label: "$240", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 export default function CareCircleDonationForm() {
@@ -408,5 +408,3 @@ export default function CareCircleDonationForm() {
     </Card>
   );
 }
-
-    
