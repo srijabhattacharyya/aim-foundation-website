@@ -59,7 +59,7 @@ export default function OrganisationPage() {
                 <FootprintCarousel />
               </div>
               <div className="animate-fade-in-up">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Footprints</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">About Us</h2>
                 <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
                     Since 2016, AIM Foundation has been a beacon of hope for underprivileged and marginalized families—walking beside them on their journey to dignity, self-reliance, and brighter possibilities. Rooted in compassion, our efforts span healthcare, education, environmental protection, and the growth of women and children.
