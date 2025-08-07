@@ -19,7 +19,8 @@ const initiatives = [
     description: "Empowers children by combining education with art, dance, and music, nurturing both creativity and academics. It offers a supportive space where young minds gain confidence, express themselves, and grow holistically.",
     image: "https://placehold.co/600x400.png",
     hint: "classroom children",
-    link: "/innocent-smiles"
+    link: "/innocent-smiles",
+    specialText: "art and music class"
   },
   {
     title: "Inspire EduLab",
@@ -121,7 +122,10 @@ export default function EducationalInitiativesPage() {
                 </div>
                 <CardContent className="p-6 flex flex-col flex-grow">
                   <CardTitle className="font-headline mb-2">{item.title}</CardTitle>
-                  <CardDescription className="flex-grow text-justify">{item.description}</CardDescription>
+                  <CardDescription className="flex-grow text-justify">
+                    {item.description}
+                    {item.specialText && <span className="font-bold"> {item.specialText}</span>}
+                  </CardDescription>
                   <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
                     <Link href={item.link || "#"}>Learn More &rarr;</Link>
                   </Button>
