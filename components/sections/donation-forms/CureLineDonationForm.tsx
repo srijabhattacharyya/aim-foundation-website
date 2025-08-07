@@ -66,14 +66,14 @@ const donationAmountsIndian = [
     { value: "3000", label: "₹3000", description: "MEDICINES FOR 10 PEOPLE" },
     { value: "6000", label: "₹6000", description: "MEDICINES FOR 20 PEOPLE" },
     { value: "12000", label: "₹12000", description: "MEDICINES FOR 40 PEOPLE" },
-    { value: "24000", label: "₹24000", description: "SUPPORT A FULL HEALTH CAMP" },
+    { value: "24000", label: "₹24000", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 const donationAmountsNonIndian = [
     { value: "35", label: "$35", description: "MEDICINES FOR 10 PEOPLE" },
     { value: "70", label: "$70", description: "MEDICINES FOR 20 PEOPLE" },
     { value: "140", label: "$140", description: "MEDICINES FOR 40 PEOPLE" },
-    { value: "280", label: "$280", description: "SUPPORT A FULL HEALTH CAMP" },
+    { value: "280", label: "$280", description: "SUPPORT A FULL HEALTH CAMP (EXCLUDING MEDICINE)" },
 ];
 
 export default function CureLineDonationForm() {
