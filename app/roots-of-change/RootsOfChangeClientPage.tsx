@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "../../components/layout/Navbar";
@@ -10,22 +9,10 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/RootsOfChangeDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
-
-const donationProps = {
-  title: "Roots of Change",
-  subtitle: "EMPOWER THROUGH EDUCATION",
-  amounts: [
-    { value: "1000", label: "₹1000" },
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
-    { value: "10000", label: "₹10000" },
-  ],
-  amountDescription: "FUND AN ENVIRONMENTAL WORKSHOP",
-};
 
 export default function RootsOfChangeClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -88,7 +75,7 @@ export default function RootsOfChangeClientPage() {
                   <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to Roots of Change</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                  <DynamicDonationForm {...donationProps} />
+                  <DynamicDonationForm />
                 </DialogContent>
               </Dialog>
             </div>
