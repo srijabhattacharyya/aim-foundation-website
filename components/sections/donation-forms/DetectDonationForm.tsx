@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "2500", label: "₹2500", description: "SUPPORT A SCREENING CAMP" },
-    { value: "5000", label: "₹5000", description: "SUPPORT 2 SCREENING CAMPS" },
-    { value: "10000", label: "₹10000", description: "TRAIN A FRONTLINE HEALTH WORKER" },
-    { value: "20000", label: "₹20000", description: "SPONSOR A FULL-DAY AWARENESS PROGRAM" },
+    { value: "1500", label: "₹1500", description: "SPONSOR SCREENING FOR 1 WOMAN" },
+    { value: "3000", label: "₹3000", description: "SPONSOR SCREENING FOR 2 WOMEN" },
+    { value: "7500", label: "₹7500", description: "SPONSOR SCREENING FOR 5 WOMEN" },
+    { value: "15000", label: "₹15000", description: "SPONSOR SCREENING FOR 10 WOMEN" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "30", label: "$30", description: "SUPPORT A SCREENING CAMP" },
-    { value: "60", label: "$60", description: "SUPPORT 2 SCREENING CAMPS" },
-    { value: "120", label: "$120", description: "TRAIN A FRONTLINE HEALTH WORKER" },
-    { value: "240", label: "$240", description: "SPONSOR A FULL-DAY AWARENESS PROGRAM" },
+    { value: "18", label: "$18", description: "SPONSOR SCREENING FOR 1 WOMAN" },
+    { value: "36", label: "$36", description: "SPONSOR SCREENING FOR 2 WOMEN" },
+    { value: "90", label: "$90", description: "SPONSOR SCREENING FOR 5 WOMEN" },
+    { value: "180", label: "$180", description: "SPONSOR SCREENING FOR 10 WOMEN" },
 ];
 
 export default function DetectDonationForm() {
@@ -82,7 +82,7 @@ export default function DetectDonationForm() {
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: "2500",
+      amount: "1500",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -115,12 +115,12 @@ export default function DetectDonationForm() {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
-      form.setValue("amount", "2500");
+      form.setValue("amount", "1500");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
-      form.setValue("amount", "30");
+      form.setValue("amount", "18");
     }
   }, [nationality, form]);
 
