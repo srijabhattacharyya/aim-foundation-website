@@ -73,7 +73,7 @@ export default function InternshipPage() {
                 <div className="bg-card p-6 rounded-lg shadow-md mt-10 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">Ready to Begin?</h2>
                     <p className="mt-4">
-                        Before applying, we encourage you to read our <Link href="/internship-policy" className="underline hover:text-primary">Internship Policy</Link> and the <Link href="/code-of-conduct" className="underline hover:text-primary">Code of Conduct</Link> to ensure a respectful, responsible, and enriching journey.
+                        Before applying, please explore our <Link href="/internship-policy" className="underline hover:text-primary">Internship Orientation Handbook</Link> and review our <Link href="/code-of-conduct" className="underline hover:text-primary">Code of Conduct for Working with Children & Young People</Link>.
                     </p>
                     <p className="mt-4 font-semibold">
                         Start your journey of purpose today!
