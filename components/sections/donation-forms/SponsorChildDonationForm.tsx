@@ -66,17 +66,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "6000", label: "₹6000" },
-    { value: "12000", label: "₹12000" },
-    { value: "18000", label: "₹18000" },
-    { value: "24000", label: "₹24000" },
+    { value: "6000", label: "₹6000", description: "SPONSOR A CHILD'S EDUCATION FOR 6 MONTHS" },
+    { value: "12000", label: "₹12000", description: "SPONSOR A CHILD'S EDUCATION FOR A YEAR" },
+    { value: "18000", label: "₹18000", description: "SPONSOR A CHILD'S EDUCATION & HEALTHCARE FOR A YEAR" },
+    { value: "24000", label: "₹24000", description: "SPONSOR A CHILD'S HOLISTIC DEVELOPMENT FOR A YEAR" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "72", label: "$72" },
-    { value: "144", label: "$144" },
-    { value: "216", label: "$216" },
-    { value: "288", label: "$288" },
+    { value: "72", label: "$72", description: "SPONSOR A CHILD'S EDUCATION FOR 6 MONTHS" },
+    { value: "144", label: "$144", description: "SPONSOR A CHILD'S EDUCATION FOR A YEAR" },
+    { value: "216", label: "$216", description: "SPONSOR A CHILD'S EDUCATION & HEALTHCARE FOR A YEAR" },
+    { value: "288", label: "$288", description: "SPONSOR A CHILD'S HOLISTIC DEVELOPMENT FOR A YEAR" },
 ];
 
 export default function SponsorChildDonationForm() {
@@ -108,6 +108,10 @@ export default function SponsorChildDonationForm() {
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  const selectedAmountValue = form.watch("amount");
+
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "SPONSOR A CHILD'S EDUCATION FOR A YEAR";
 
   React.useEffect(() => {
     if (nationality === "Indian") {
@@ -197,7 +201,7 @@ export default function SponsorChildDonationForm() {
                             ))}
                         </RadioGroup>
                         </FormControl>
-                        <p className="text-center text-muted-foreground pt-2">SPONSOR A CHILD'S EDUCATION FOR A YEAR</p>
+                        <p className="text-center text-muted-foreground pt-2">{description}</p>
                         <FormMessage />
                     </FormItem>
                     )}
