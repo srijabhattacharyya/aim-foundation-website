@@ -67,7 +67,8 @@ const initiatives = [
     description: "Fosters holistic development by connecting children from diverse backgrounds. Through interactive sessions, students learn together, building empathy, respect, and social awareness.",
     image: "https://placehold.co/600x400.png",
     hint: "children collaboration",
-    link: "/milieu"
+    link: "/milieu",
+    specialText: "(Learn Beyond Boundaries)"
   },
   {
     title: "VidyaShakti",
