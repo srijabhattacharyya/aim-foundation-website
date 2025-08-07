@@ -19,10 +19,10 @@ const donationProps = {
   title: "GreenRoots",
   subtitle: "PLANT A TREE, GROW A FUTURE",
   amounts: [
-    { value: "500", label: "₹500" },
-    { value: "1000", label: "₹1000" },
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
+    { value: "500", label: "₹500", description: "SPONSOR 5 SAPLINGS & THEIR CARE" },
+    { value: "1000", label: "₹1000", description: "SPONSOR 10 SAPLINGS & THEIR CARE" },
+    { value: "2500", label: "₹2500", description: "SPONSOR 25 SAPLINGS & THEIR CARE" },
+    { value: "5000", label: "₹5000", description: "SUPPORT A COMMUNITY PLANTATION DRIVE" },
   ],
   amountDescription: "SPONSOR SAPLINGS & SUPPORT THEIR CARE",
 };
