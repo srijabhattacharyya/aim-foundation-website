@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from "next/image";
@@ -8,31 +7,31 @@ import Autoplay from "embla-carousel-autoplay";
 
 const footprintImages = [
     {
-        src: "/images/home-scrolling/hs1.jpg",
+        src: "/images/home-scrolling/hs1.JPG",
         alt: "Garments Distribution to Sabar Community",
         hint: "garments distribution",
         description: "Garments Distribution to Sabar Community"
     },
     {
-        src: "/images/home-scrolling/hs2.jpg",
+        src: "/images/home-scrolling/hs2.JPG",
         alt: "Healthcare camp in a rural area",
         hint: "rural healthcare",
         description: "Healthcare camp in a rural area"
     },
     {
-        src: "/images/home-scrolling/hs3.jpg",
+        src: "/images/home-scrolling/hs3.JPG",
         alt: "Award by Sundarbans Tiger Reserve",
         hint: "award",
         description: "Award by Sundarbans Tiger Reserve"
     },
     {
-        src: "/images/home-scrolling/hs4.jpg",
+        src: "/images/home-scrolling/hs4.JPG",
         alt: "Oral Cancer Detection Camp in Kolkata",
         hint: "cancer detection",
         description: "Oral Cancer Detection Camp in Kolkata"
     },
     {
-        src: "/images/home-scrolling/hs5.jpg",
+        src: "/images/home-scrolling/hs5.JPG",
         alt: "Health Camp in Sundarbans",
         hint: "health camp",
         description: "Health Camp in Sundarbans"
