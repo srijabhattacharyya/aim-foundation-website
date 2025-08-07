@@ -10,7 +10,7 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/GeneralDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });

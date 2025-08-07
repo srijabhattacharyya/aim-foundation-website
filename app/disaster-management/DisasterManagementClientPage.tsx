@@ -10,7 +10,7 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/GeneralDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
@@ -92,7 +92,7 @@ export default function DisasterManagementClientPage() {
                   <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to Disaster Relief</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                  <DynamicDonationForm {...donationProps} />
+                  <DynamicDonationForm />
                 </DialogContent>
               </Dialog>
             </div>
