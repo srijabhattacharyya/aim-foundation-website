@@ -27,7 +27,8 @@ const initiatives = [
     description: "is AIM Foundation’s hospital partnership initiative providing free surgeries to economically disadvantaged individuals. Children aged 5 months to 14 years receive life-changing pediatric operations, while adults access essential procedures like kidney transplants and knee replacements. The program ensures critical medical care is available, regardless of financial limitations.",
     image: "https://placehold.co/600x400.png",
     hint: "child nutrition program",
-    link: "/surgireach"
+    link: "/surgireach",
+    specialText: "(Free Operation)"
   },
   {
     title: "CareCircle",
