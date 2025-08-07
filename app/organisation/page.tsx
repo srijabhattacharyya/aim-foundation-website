@@ -7,11 +7,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const ImpactPriorities = dynamic(() => import('@/components/sections/ImpactPriorities'), {
-  loading: () => <section className="py-12 md:py-20 lg:py-24 bg-muted"><Skeleton className="h-[500px] w-full" /></section>,
-  ssr: false
-});
-
 const Ethos = dynamic(() => import('@/components/sections/Ethos'), {
   loading: () => <section className="py-12 md:py-20 lg:py-24 bg-card"><Skeleton className="h-[400px] w-full" /></section>,
   ssr: false
@@ -81,7 +76,6 @@ export default function OrganisationPage() {
           </div>
         </section>
 
-        <ImpactPriorities />
         <Ethos />
         <LegalRecognitions />
         
