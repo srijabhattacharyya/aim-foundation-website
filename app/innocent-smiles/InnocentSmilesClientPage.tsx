@@ -28,6 +28,16 @@ const educationalInitiatives = [
   { href: '/vidyashakti', label: 'VidyaShakti' },
 ];
 
+const otherInitiatives = [
+    { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
+
 export default function InnocentSmilesClientPage() {
   const [showForm, setShowForm] = useState(false);
 
@@ -91,7 +101,15 @@ export default function InnocentSmilesClientPage() {
                     <CardTitle>Other Initiatives</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <Skeleton className="h-40 w-full" />
+                    <ul className="space-y-2">
+                        {otherInitiatives.map((item) => (
+                            <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
                   </CardContent>
                 </Card>
               </aside>
