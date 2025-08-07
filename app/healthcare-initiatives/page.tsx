@@ -35,7 +35,8 @@ const initiatives = [
     description: "is an urban health initiative by AIM Foundation that organizes healthcare camps through partnerships at Kolkata centres like Sarala Punyashram, Sarat Bose Road, and Boral Natunhat. These camps deliver free check-ups, medicines, and consultations to underserved populations, ensuring inclusive, accessible healthcare for those often overlooked in city life.",
     image: "https://placehold.co/600x400.png",
     hint: "hygiene awareness session",
-    link: "/carecircle"
+    link: "/carecircle",
+    specialText: "(Urban Healthcare)"
   },
   {
     title: "ChildFirst",
