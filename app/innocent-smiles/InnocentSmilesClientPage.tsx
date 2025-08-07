@@ -10,11 +10,23 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/InnocentSmilesDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const educationalInitiatives = [
+  { href: '/innocent-smiles', label: 'Innocent Smiles' },
+  { href: '/inspire-eduLab', label: 'Inspire EduLab' },
+  { href: '/eduaccess', label: 'EduAccess' },
+  { href: '/empower-english', label: 'Empower English' },
+  { href: '/digiempower', label: 'DigiEmpower' },
+  { href: '/sheconnects', label: 'SheConnects' },
+  { href: '/milieu', label: 'Milieu' },
+  { href: '/vidyashakti', label: 'VidyaShakti' },
+];
 
 export default function InnocentSmilesClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -55,7 +67,15 @@ export default function InnocentSmilesClientPage() {
                     <CardTitle>Educational Initiatives</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <Skeleton className="h-40 w-full" />
+                    <ul className="space-y-2">
+                      {educationalInitiatives.map((item) => (
+                        <li key={item.href}>
+                          <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </CardContent>
                 </Card>
                 <Card>
