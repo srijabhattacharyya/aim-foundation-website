@@ -63,17 +63,17 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "1000", label: "₹1000", description: "FUND AN AWARENESS WORKSHOP FOR 10 PEOPLE" },
-    { value: "2500", label: "₹2500", description: "FUND AN AWARENESS WORKSHOP FOR 25 PEOPLE" },
-    { value: "5000", label: "₹5000", description: "FUND AN AWARENESS WORKSHOP FOR 50 PEOPLE" },
-    { value: "10000", label: "₹10000", description: "SPONSOR AN ENTIRE ENVIRONMENTAL WORKSHOP" },
+    { value: "1000", label: "₹1000", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "2500", label: "₹2500", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "5000", label: "₹5000", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "10000", label: "₹10000", description: "FUND AWARENESS WORKSHOPS" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "12", label: "$12", description: "FUND AN AWARENESS WORKSHOP FOR 10 PEOPLE" },
-    { value: "30", label: "$30", description: "FUND AN AWARENESS WORKSHOP FOR 25 PEOPLE" },
-    { value: "60", label: "$60", description: "FUND AN AWARENESS WORKSHOP FOR 50 PEOPLE" },
-    { value: "120", label: "$120", description: "SPONSOR AN ENTIRE ENVIRONMENTAL WORKSHOP" },
+    { value: "12", label: "$12", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "30", label: "$30", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "60", label: "$60", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "120", label: "$120", description: "FUND AWARENESS WORKSHOPS" },
 ];
 
 
@@ -106,10 +106,10 @@ export default function RootsOfChangeDonationForm() {
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  
   const selectedAmountValue = form.watch("amount");
-
   const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
-  const description = selectedAmount ? selectedAmount.description : "";
+  const description = selectedAmount ? selectedAmount.description : "FUND AWARENESS WORKSHOPS";
 
 
   React.useEffect(() => {
