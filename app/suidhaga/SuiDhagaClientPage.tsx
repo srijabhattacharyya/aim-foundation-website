@@ -9,23 +9,12 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import SuiDhagaDonationForm from "@/components/sections/donation-forms/SuiDhagaDonationForm";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SuiDhagaDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
-
-const donationProps = {
-  title: "SuiDhaga",
-  subtitle: "EMPOWER THROUGH SKILL",
-  amounts: [
-    { value: "3500", label: "₹3500" },
-    { value: "7000", label: "₹7000" },
-    { value: "14000", label: "₹14000" },
-    { value: "28000", label: "₹28000" },
-  ],
-  amountDescription: "SPONSOR A SEWING MACHINE & TRAINING",
-};
 
 export default function SuiDhagaClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -85,7 +74,7 @@ export default function SuiDhagaClientPage() {
                   <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to SuiDhaga</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                  <DynamicDonationForm {...donationProps} />
+                  <DynamicDonationForm />
                 </DialogContent>
               </Dialog>
             </div>

@@ -62,20 +62,27 @@ const donationSchema = z.object({
     path: ["state"],
 });
 
-interface DonationFormProps {
-    title: string;
-    subtitle: string;
-    amounts: { value: string; label: string; description?: string }[];
-    amountDescription?: string;
-}
+const donationAmountsIndian = [
+    { value: "3500", label: "₹3500", description: "Basic tailoring training to 1 woman" },
+    { value: "7000", label: "₹7000", description: "Advance tailoring training for 1 woman" },
+    { value: "14000", label: "₹14000", description: "SPONSOR A SEWING MACHINE & Basic Tailoring TRAINING" },
+    { value: "21000", label: "₹21000", description: "SPONSOR A SEWING MACHINE & Complete TRAINING" },
+];
 
-export default function DonationForm({ title, subtitle, amounts, amountDescription }: DonationFormProps) {
+const donationAmountsNonIndian = [
+    { value: "42", label: "$42", description: "Basic tailoring training to 1 woman" },
+    { value: "84", label: "$84", description: "Advance tailoring training for 1 woman" },
+    { value: "168", label: "$168", description: "SPONSOR A SEWING MACHINE & Basic Tailoring TRAINING" },
+    { value: "252", label: "$252", description: "SPONSOR A SEWING MACHINE & Complete TRAINING" },
+];
+
+export default function SuiDhagaDonationForm() {
   const { toast } = useToast();
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: amounts[0]?.value || "",
+      amount: "3500",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -95,20 +102,24 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
 
   const recaptchaRef = React.createRef<ReCAPTCHA>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-
+  
   const nationality = form.watch("nationality");
+  const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
   const selectedAmountValue = form.watch("amount");
-  const selectedAmount = amounts.find(a => a.value === selectedAmountValue);
-  const description = selectedAmount?.description || amountDescription || "";
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
+      form.setValue("amount", "3500");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("state", "");
+      form.setValue("amount", "42");
     }
   }, [nationality, form]);
 
@@ -116,7 +127,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
   function onSubmit(values: z.infer<typeof donationSchema>) {
     console.log(values);
     toast({
-      title: `Thank you for supporting ${title}!`,
+      title: "Thank you for supporting SuiDhaga!",
       description: "Your support makes a difference.",
     });
     recaptchaRef.current?.reset();
@@ -127,12 +138,13 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
     <Card className="w-full border-0 shadow-none rounded-none">
         <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold font-headline">SUPPORT {title.toUpperCase()}</h2>
-                <p className="text-muted-foreground">{subtitle}</p>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT SUIDHAGA</h2>
+                <p className="text-muted-foreground">EMPOWER THROUGH SKILL</p>
             </div>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                
                 <FormField
                     control={form.control}
                     name="nationality"
@@ -163,6 +175,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         </FormItem>
                     )}
                 />
+
                 <FormField
                     control={form.control}
                     name="amount"
@@ -171,10 +184,10 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         <FormControl>
                         <RadioGroup
                             onValueChange={field.onChange}
-                            defaultValue={field.value}
+                            value={field.value}
                             className="flex flex-wrap justify-center gap-4 md:gap-8"
                         >
-                            {amounts.map((item) => (
+                            {donationAmounts.map((item) => (
                             <FormItem key={item.value} className="flex items-center space-x-2 space-y-0">
                                 <FormControl>
                                 <RadioGroupItem value={item.value} />
@@ -185,7 +198,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
-                        <p className="text-center text-muted-foreground pt-2">{description}</p>
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />
@@ -268,7 +281,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         />
                     )}
                 </div>
-                
+
                  <FormField
                     control={form.control}
                     name="dob"
@@ -282,7 +295,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         </FormItem>
                     )}
                 />
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <FormField
                         control={form.control}
@@ -296,7 +309,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                             </FormItem>
                         )}
                     />
-                    {nationality === 'Indian' && (
+                     {nationality === 'Indian' && (
                         <FormField
                             control={form.control}
                             name="state"
@@ -307,7 +320,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                                 </FormItem>
                             )}
                         />
-                    )}
+                     )}
                     <FormField
                         control={form.control}
                         name="city"
@@ -320,7 +333,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                             </FormItem>
                         )}
                     />
-                    <FormField
+                     <FormField
                         control={form.control}
                         name="pincode"
                         render={({ field }) => (
@@ -333,7 +346,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         )}
                     />
                 </div>
-
+                
                 <FormField
                     control={form.control}
                     name="address"
@@ -346,7 +359,7 @@ export default function DonationForm({ title, subtitle, amounts, amountDescripti
                         </FormItem>
                     )}
                 />
-                
+
                 <div className="text-xs text-muted-foreground text-center space-y-1">
                     <p>YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT UNDER SECTION 80G AS ASSOCIATED INITIATIVE FOR MANKIND FOUNDATION IS REGISTERED AS NON PROFIT ORGANIZATION</p>
                     <p>PAN: AAFTA1983P | 80G NUMBER: AAFTA1983PF20221</p>
