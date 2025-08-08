@@ -46,6 +46,18 @@ const DynamicSustainabilityDonationForm = dynamic(
     () => import('./SustainabilityDonationForm'),
     { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
+const DynamicReliefDonationForm = dynamic(
+    () => import('./ReliefDonationForm'),
+    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicDisasterManagementDonationForm = dynamic(
+    () => import('./DisasterManagementDonationForm'),
+    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicIgniteChangeDonationForm = dynamic(
+    () => import('./IgniteChangeDonationForm'),
+    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
 const DynamicInnocentSmilesDonationForm = dynamic(
   () => import("./InnocentSmilesDonationForm"),
   { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
@@ -232,6 +244,9 @@ const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "green-roots": DynamicGreenRootsDonationForm,
   "tideshield": DynamicTideShieldDonationForm,
   "roots-of-change": DynamicRootsOfChangeDonationForm,
+  "relief": DynamicReliefDonationForm,
+  "disaster-management": DynamicDisasterManagementDonationForm,
+  "ignite-change": DynamicIgniteChangeDonationForm,
 };
 
 export default function CauseSelectionForm() {
@@ -243,7 +258,7 @@ export default function CauseSelectionForm() {
 
   const handleCauseProceed = () => {
     if (selectedCause) {
-        if (selectedCause === "general") {
+        if (["general", "relief", "disaster-management", "ignite-change"].includes(selectedCause)) {
             const formComponent = subCauseToFormComponent[selectedCause];
             if (formComponent) {
                 setFormComponent(() => formComponent);
@@ -272,17 +287,12 @@ export default function CauseSelectionForm() {
             setIsFormOpen(true);
         } else {
             let list;
-            if (selectedCause === 'educational') {
-                list = educationalInitiatives;
-            } else if (selectedCause === 'healthcare') {
-                list = healthcareInitiatives;
-            } else if (selectedCause === 'gender-equality') {
-                list = genderEqualityInitiatives;
-            } else if (selectedCause === 'childcare') {
-                list = childcareInitiatives;
-            } else {
-                list = sustainabilityInitiatives;
-            }
+            if (selectedCause === 'educational') list = educationalInitiatives;
+            else if (selectedCause === 'healthcare') list = healthcareInitiatives;
+            else if (selectedCause === 'gender-equality') list = genderEqualityInitiatives;
+            else if (selectedCause === 'childcare') list = childcareInitiatives;
+            else list = sustainabilityInitiatives;
+            
             alert(`Donation form for "${list.find(c => c.value === selectedSubCause)?.label}" is coming soon!`);
         }
     }
