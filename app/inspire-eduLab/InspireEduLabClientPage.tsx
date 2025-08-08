@@ -9,11 +9,34 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/InspireEduLabDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const educationalInitiatives = [
+  { href: '/innocent-smiles', label: 'Innocent Smiles' },
+  { href: '/inspire-eduLab', label: 'Inspire EduLab' },
+  { href: '/eduaccess', label: 'EduAccess' },
+  { href: '/empower-english', label: 'Empower English' },
+  { href: '/digiempower', label: 'DigiEmpower' },
+  { href: '/sheconnects', label: 'SheConnects' },
+  { href: '/milieu', label: 'Milieu' },
+  { href: '/vidyashakti', label: 'VidyaShakti' },
+];
+
+const otherInitiatives = [
+    { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
 
 export default function InspireEduLabClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -47,25 +70,69 @@ export default function InspireEduLabClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Redefining Classrooms for a Digital Tomorrow</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    Inspire EduLab transforms traditional classrooms into smart, internet-enabled learning hubs that spark curiosity and engagement. With interactive tools like audio-visual content, online expert sessions, and dynamic 2D/3D animations, it makes complex lessons dynamic and easier to grasp for every student.
-                  </p>
-                  <p>
-                    Our approach bridges the gap between conventional education and modern technology, empowering students with the skills they need for tomorrow. By creating immersive and interactive learning experiences, Inspire EduLab fosters a love for learning and prepares students to thrive in a digital world. We believe in providing the tools that not only educate but also inspire innovation and critical thinking.
-                  </p>
-                  <p>
-                    The program focuses on creating a level playing field, ensuring that students from all backgrounds have access to high-quality digital education. From rural villages to urban centers, Inspire EduLab is dedicated to building a brighter, more equitable future through the power of technology.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Help Spark a Child’s Curiosity</h3>
-                  <p>
-                    Your support can turn an ordinary classroom into a world of discovery. With your donation, we can equip more schools with smartboards, internet access, and interactive digital tools—bringing engaging, future-ready education to children who need it most. Whether in a remote village or an urban slum, every student deserves the chance to learn through innovation. <strong>Donate today</strong> to help bridge the digital divide and empower young minds to think big, learn boldly, and dream beyond boundaries. <strong>Together, let’s inspire the future.</strong>
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+                <aside className="md:col-span-1 space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Educational Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                            {educationalInitiatives.map((item) => (
+                                <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Related Resources</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <Skeleton className="h-40 w-full" />
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Other Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                                {otherInitiatives.map((item) => (
+                                    <li key={item.href}>
+                                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                </aside>
+                <div className="md:col-span-2">
+                    <div className="space-y-6">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Redefining Classrooms for a Digital Tomorrow</h2>
+                        <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                        <p>
+                            Inspire EduLab transforms traditional classrooms into smart, internet-enabled learning hubs that spark curiosity and engagement. With interactive tools like audio-visual content, online expert sessions, and dynamic 2D/3D animations, it makes complex lessons dynamic and easier to grasp for every student.
+                        </p>
+                        <p>
+                            Our approach bridges the gap between conventional education and modern technology, empowering students with the skills they need for tomorrow. By creating immersive and interactive learning experiences, Inspire EduLab fosters a love for learning and prepares students to thrive in a digital world. We believe in providing the tools that not only educate but also inspire innovation and critical thinking.
+                        </p>
+                        <p>
+                            The program focuses on creating a level playing field, ensuring that students from all backgrounds have access to high-quality digital education. From rural villages to urban centers, Inspire EduLab is dedicated to building a brighter, more equitable future through the power of technology.
+                        </p>
+                        <h3 className="text-2xl font-bold font-headline pt-4">Help Spark a Child’s Curiosity</h3>
+                        <p>
+                            Your support can turn an ordinary classroom into a world of discovery. With your donation, we can equip more schools with smartboards, internet access, and interactive digital tools—bringing engaging, future-ready education to children who need it most. Whether in a remote village or an urban slum, every student deserves the chance to learn through innovation. <strong>Donate today</strong> to help bridge the digital divide and empower young minds to think big, learn boldly, and dream beyond boundaries. <strong>Together, let’s inspire the future.</strong>
+                        </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
               <Dialog open={showForm} onOpenChange={setShowForm}>
