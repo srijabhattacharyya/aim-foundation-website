@@ -9,11 +9,35 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/OralScanDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const healthcareInitiatives = [
+  { href: '/cureline', label: 'CureLine' },
+  { href: '/surgireach', label: 'SurgiReach' },
+  { href: '/carecircle', label: 'CareCircle' },
+  { href: '/childfirst', label: 'ChildFirst' },
+  { href: '/detect', label: 'Detect' },
+  { href: '/sighthope', label: 'SightHope' },
+  { href: '/oralscan', label: 'OralScan' },
+  { href: '/cyclesafe', label: 'CycleSafe' },
+  { href: '/soulcircle', label: 'SoulCircle' },
+];
+
+const otherInitiatives = [
+    { href: '/educational-initiatives', label: 'Educational Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
 
 export default function OralScanClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -47,33 +71,77 @@ export default function OralScanClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Screening Today for a Healthier Tomorrow.</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                  <p>
-                    OralScan is a crucial initiative by AIM Foundation focused on <strong>early detection of oral cancer</strong> through free screening camps in underserved communities. Oral cancer is a significant health threat in India, often diagnosed late due to lack of awareness and access to medical care. OralScan directly confronts this challenge by bringing vital services to those who need them most.
-                  </p>
-                  <p>
-                    Our camps provide more than just screenings. We focus on comprehensive community engagement through:
-                  </p>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li><strong>Free, non-invasive oral cancer screenings</strong> conducted by healthcare professionals.</li>
-                    <li><strong>Public awareness campaigns</strong> to educate on the risk factors, including tobacco and alcohol consumption.</li>
-                    <li><strong>Guidance on oral hygiene</strong> practices to promote long-term health.</li>
-                    <li><strong>Counseling and support</strong> for individuals identified with potential risks.</li>
-                    <li><strong>Referrals for further diagnosis and treatment</strong>, ensuring a continuum of care.</li>
-                  </ul>
-                  <p>
-                    By focusing on early detection, OralScan significantly improves the chances of successful treatment and saves lives. The program is built on the belief that preventive care and education are the most powerful tools in fighting this preventable disease. We work to break down barriers of fear and stigma, encouraging community members to take proactive steps for their health.
-                  </p>
-                  <p>
-                    Join us in our mission to combat oral cancer. Your support helps us reach more villages, screen more people, and spread the life-saving message of early detection.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Your Support Can Save a Life</h3>
-                  <p>
-                    A simple screening can be the difference between life and death. <strong>Your donation to OralScan funds free screening camps, educational materials, and follow-up care for at-risk individuals</strong> in communities with little to no access to dental and health services. Help us detect cancer early and give someone a chance for a healthy future. <strong>Donate today and be a part of the fight against oral cancer.</strong>
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+              <aside className="md:col-span-1 space-y-8">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Healthcare Initiatives</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {healthcareInitiatives.map((item) => (
+                        <li key={item.href}>
+                          <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Related Resources</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Skeleton className="h-40 w-full" />
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Other Initiatives</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                        {otherInitiatives.map((item) => (
+                            <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </aside>
+              <div className="md:col-span-2">
+                <div className="space-y-6">
+                  <h2 className="text-3xl md:text-4xl font-bold font-headline">Screening Today for a Healthier Tomorrow.</h2>
+                  <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                    <p>
+                      OralScan is a crucial initiative by AIM Foundation focused on <strong>early detection of oral cancer</strong> through free screening camps in underserved communities. Oral cancer is a significant health threat in India, often diagnosed late due to lack of awareness and access to medical care. OralScan directly confronts this challenge by bringing vital services to those who need them most.
+                    </p>
+                    <p>
+                      Our camps provide more than just screenings. We focus on comprehensive community engagement through:
+                    </p>
+                    <ul className="list-disc list-inside space-y-2">
+                      <li><strong>Free, non-invasive oral cancer screenings</strong> conducted by healthcare professionals.</li>
+                      <li><strong>Public awareness campaigns</strong> to educate on the risk factors, including tobacco and alcohol consumption.</li>
+                      <li><strong>Guidance on oral hygiene</strong> practices to promote long-term health.</li>
+                      <li><strong>Counseling and support</strong> for individuals identified with potential risks.</li>
+                      <li><strong>Referrals for further diagnosis and treatment</strong>, ensuring a continuum of care.</li>
+                    </ul>
+                    <p>
+                      By focusing on early detection, OralScan significantly improves the chances of successful treatment and saves lives. The program is built on the belief that preventive care and education are the most powerful tools in fighting this preventable disease. We work to break down barriers of fear and stigma, encouraging community members to take proactive steps for their health.
+                    </p>
+                    <p>
+                      Join us in our mission to combat oral cancer. Your support helps us reach more villages, screen more people, and spread the life-saving message of early detection.
+                    </p>
+                    <h3 className="text-2xl font-bold font-headline pt-4">Your Support Can Save a Life</h3>
+                    <p>
+                      A simple screening can be the difference between life and death. <strong>Your donation to OralScan funds free screening camps, educational materials, and follow-up care for at-risk individuals</strong> in communities with little to no access to dental and health services. Help us detect cancer early and give someone a chance for a healthy future. <strong>Donate today and be a part of the fight against oral cancer.</strong>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

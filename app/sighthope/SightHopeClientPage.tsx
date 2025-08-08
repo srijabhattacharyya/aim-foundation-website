@@ -9,11 +9,35 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SightHopeDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const healthcareInitiatives = [
+  { href: '/cureline', label: 'CureLine' },
+  { href: '/surgireach', label: 'SurgiReach' },
+  { href: '/carecircle', label: 'CareCircle' },
+  { href: '/childfirst', label: 'ChildFirst' },
+  { href: '/detect', label: 'Detect' },
+  { href: '/sighthope', label: 'SightHope' },
+  { href: '/oralscan', label: 'OralScan' },
+  { href: '/cyclesafe', label: 'CycleSafe' },
+  { href: '/soulcircle', label: 'SoulCircle' },
+];
+
+const otherInitiatives = [
+    { href: '/educational-initiatives', label: 'Educational Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
 
 export default function SightHopeClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -47,48 +71,92 @@ export default function SightHopeClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Restoring Sight, Rekindling Dreams.</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                  <p>
-                    SightHope is a transformative eye health initiative by AIM Foundation, launched to address the widespread but often overlooked burden of <strong>avoidable vision loss</strong> among underserved populations. In partnership with some of Kolkata’s most renowned eye hospitals—including Sushrut Eye Foundation, B. B. Eye Foundation, and the Hope Foundation—SightHope <strong>brings high-quality, no-cost eye care</strong> to those who need it most but can least afford it.
-                  </p>
-                  <p>
-                    For many individuals living in urban slums, rural villages, and remote areas, poor eyesight is not just a health issue—it’s a barrier to education, employment, mobility, and dignity. Children struggle in school, adults lose livelihoods, and elders face isolation, all due to conditions that are often preventable or easily treatable, such as refractive errors or cataracts.
-                  </p>
-                  <p>
-                    SightHope steps in to fill this critical gap by organizing regular eye care camps that provide:
-                  </p>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li><strong>Comprehensive vision screenings</strong></li>
-                    <li><strong>Diagnosis and treatment of common eye conditions</strong></li>
-                    <li><strong>Prescription and distribution of corrective lenses</strong></li>
-                    <li><strong>Minor procedures for infections and irritations</strong></li>
-                    <li><strong>Free cataract surgeries for eligible individuals</strong></li>
-                    <li><strong>Referrals to partner hospitals for specialized care</strong></li>
-                  </ul>
-                  <p>
-                    Each camp is conducted by qualified ophthalmologists and healthcare staff from our partner hospitals, ensuring trusted expertise and continuity of care. Camps are held at accessible community hubs, including schools, health centers, and even temporary rural setups—bringing care directly to the doorstep of marginalized communities.
-                  </p>
-                  <p>
-                    By restoring sight, SightHope restores much more:
-                  </p>
-                  <ul className="list-none space-y-2">
-                    <li>🔹 <strong>The freedom to move confidently</strong></li>
-                    <li>🔹 <strong>The ability to work and earn</strong></li>
-                    <li>🔹 <strong>The joy of seeing loved ones clearly again</strong></li>
-                  </ul>
-                  <p>
-                    Above all, it restores hope—a renewed sense of possibility for people who had long accepted poor vision as their fate.
-                  </p>
-                  <p>
-                    Through this powerful collaboration between community outreach and medical excellence, SightHope is not just changing lives—it’s helping people see a better future.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Restore Sight, Renew Lives</h3>
-                  <p>
-                    For millions, blurry vision means missed opportunities, lost income, and silent suffering. With just ₹300, you can provide the gift of spectacles to someone in need. A donation of ₹3000 can fund a life-changing cataract surgery. Your contribution to SightHope empowers children to succeed in school, enables elders to regain independence, and allows workers to return to their jobs with confidence. <strong>Vision is more than just sight—it’s dignity, freedom, and hope.</strong> Give someone the gift of seeing the world clearly again. <strong>Donate now—because no one should live in the dark when the cure is within reach.</strong>
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+              <aside className="md:col-span-1 space-y-8">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Healthcare Initiatives</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {healthcareInitiatives.map((item) => (
+                        <li key={item.href}>
+                          <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Related Resources</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Skeleton className="h-40 w-full" />
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Other Initiatives</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                        {otherInitiatives.map((item) => (
+                            <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </aside>
+              <div className="md:col-span-2">
+                <div className="space-y-6">
+                  <h2 className="text-3xl md:text-4xl font-bold font-headline">Restoring Sight, Rekindling Dreams.</h2>
+                  <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                    <p>
+                      SightHope is a transformative eye health initiative by AIM Foundation, launched to address the widespread but often overlooked burden of <strong>avoidable vision loss</strong> among underserved populations. In partnership with some of Kolkata’s most renowned eye hospitals—including Sushrut Eye Foundation, B. B. Eye Foundation, and the Hope Foundation—SightHope <strong>brings high-quality, no-cost eye care</strong> to those who need it most but can least afford it.
+                    </p>
+                    <p>
+                      For many individuals living in urban slums, rural villages, and remote areas, poor eyesight is not just a health issue—it’s a barrier to education, employment, mobility, and dignity. Children struggle in school, adults lose livelihoods, and elders face isolation, all due to conditions that are often preventable or easily treatable, such as refractive errors or cataracts.
+                    </p>
+                    <p>
+                      SightHope steps in to fill this critical gap by organizing regular eye care camps that provide:
+                    </p>
+                    <ul className="list-disc list-inside space-y-2">
+                      <li><strong>Comprehensive vision screenings</strong></li>
+                      <li><strong>Diagnosis and treatment of common eye conditions</strong></li>
+                      <li><strong>Prescription and distribution of corrective lenses</strong></li>
+                      <li><strong>Minor procedures for infections and irritations</strong></li>
+                      <li><strong>Free cataract surgeries for eligible individuals</strong></li>
+                      <li><strong>Referrals to partner hospitals for specialized care</strong></li>
+                    </ul>
+                    <p>
+                      Each camp is conducted by qualified ophthalmologists and healthcare staff from our partner hospitals, ensuring trusted expertise and continuity of care. Camps are held at accessible community hubs, including schools, health centers, and even temporary rural setups—bringing care directly to the doorstep of marginalized communities.
+                    </p>
+                    <p>
+                      By restoring sight, SightHope restores much more:
+                    </p>
+                    <ul className="list-none space-y-2">
+                      <li>🔹 <strong>The freedom to move confidently</strong></li>
+                      <li>🔹 <strong>The ability to work and earn</strong></li>
+                      <li>🔹 <strong>The joy of seeing loved ones clearly again</strong></li>
+                    </ul>
+                    <p>
+                      Above all, it restores hope—a renewed sense of possibility for people who had long accepted poor vision as their fate.
+                    </p>
+                    <p>
+                      Through this powerful collaboration between community outreach and medical excellence, SightHope is not just changing lives—it’s helping people see a better future.
+                    </p>
+                    <h3 className="text-2xl font-bold font-headline pt-4">Restore Sight, Renew Lives</h3>
+                    <p>
+                      For millions, blurry vision means missed opportunities, lost income, and silent suffering. With just ₹300, you can provide the gift of spectacles to someone in need. A donation of ₹3000 can fund a life-changing cataract surgery. Your contribution to SightHope empowers children to succeed in school, enables elders to regain independence, and allows workers to return to their jobs with confidence. <strong>Vision is more than just sight—it’s dignity, freedom, and hope.</strong> Give someone the gift of seeing the world clearly again. <strong>Donate now—because no one should live in the dark when the cure is within reach.</strong>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

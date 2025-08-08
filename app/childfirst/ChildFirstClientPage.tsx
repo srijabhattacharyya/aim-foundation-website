@@ -9,11 +9,35 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/ChildFirstDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const healthcareInitiatives = [
+  { href: '/cureline', label: 'CureLine' },
+  { href: '/surgireach', label: 'SurgiReach' },
+  { href: '/carecircle', label: 'CareCircle' },
+  { href: '/childfirst', label: 'ChildFirst' },
+  { href: '/detect', label: 'Detect' },
+  { href: '/sighthope', label: 'SightHope' },
+  { href: '/oralscan', label: 'OralScan' },
+  { href: '/cyclesafe', label: 'CycleSafe' },
+  { href: '/soulcircle', label: 'SoulCircle' },
+];
+
+const otherInitiatives = [
+    { href: '/educational-initiatives', label: 'Educational Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
 
 export default function ChildFirstClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -47,22 +71,66 @@ export default function ChildFirstClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Every Child Deserves a Healthy Start.</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                  <p>
-                    ChildFirst is a compassionate healthcare initiative offering pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.
-                  </p>
-                  <p>
-                    These camps offer free consultations, essential medicines, and nutritional support, ensuring that every child receives the care they need to thrive.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Your Support Can Change a Life</h3>
-                  <p>
-                    A small contribution can provide a child with a complete health check-up and vital medicines. Help us ensure that no child is left behind. Donate today to support our mission and bring health and hope to those who need it most.
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+                <aside className="md:col-span-1 space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Healthcare Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                            {healthcareInitiatives.map((item) => (
+                                <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Related Resources</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <Skeleton className="h-40 w-full" />
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Other Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                                {otherInitiatives.map((item) => (
+                                    <li key={item.href}>
+                                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                </aside>
+                <div className="md:col-span-2">
+                  <div className="space-y-6">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Every Child Deserves a Healthy Start.</h2>
+                    <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                      <p>
+                        ChildFirst is a compassionate healthcare initiative offering pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.
+                      </p>
+                      <p>
+                        These camps offer free consultations, essential medicines, and nutritional support, ensuring that every child receives the care they need to thrive.
+                      </p>
+                      <h3 className="text-2xl font-bold font-headline pt-4">Your Support Can Change a Life</h3>
+                      <p>
+                        A small contribution can provide a child with a complete health check-up and vital medicines. Help us ensure that no child is left behind. Donate today to support our mission and bring health and hope to those who need it most.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
               <Dialog open={showForm} onOpenChange={setShowForm}>

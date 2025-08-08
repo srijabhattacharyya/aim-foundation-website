@@ -9,11 +9,35 @@ import dynamic from 'next/dynamic';
 import { useState } from "react";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SoulCircleDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const healthcareInitiatives = [
+  { href: '/cureline', label: 'CureLine' },
+  { href: '/surgireach', label: 'SurgiReach' },
+  { href: '/carecircle', label: 'CareCircle' },
+  { href: '/childfirst', label: 'ChildFirst' },
+  { href: '/detect', label: 'Detect' },
+  { href: '/sighthope', label: 'SightHope' },
+  { href: '/oralscan', label: 'OralScan' },
+  { href: '/cyclesafe', label: 'CycleSafe' },
+  { href: '/soulcircle', label: 'SoulCircle' },
+];
+
+const otherInitiatives = [
+    { href: '/educational-initiatives', label: 'Educational Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
 
 export default function SoulCircleClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -47,41 +71,85 @@ export default function SoulCircleClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">24/7 Emotional Support, Just a Chat Away</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                    <p>
-                        SoulCircle is an innovative <strong>AI-powered mental health support app</strong> created to provide accessible, compassionate, and judgment-free support for anyone experiencing emotional distress, stress, anxiety, loneliness, or other mental health challenges.
-                    </p>
-                    <p>
-                        Whether you're struggling in silence, need someone to talk to, or just want daily emotional check-ins, <strong>SoulCircle's intelligent AI mental health counselors</strong> are always available—24/7. These virtual companions are designed to <strong>listen empathetically, respond mindfully,</strong> and provide <strong>supportive guidance</strong> based on therapeutic frameworks and emotional well-being best practices.
-                    </p>
-                    <h3 className="text-2xl font-bold font-headline pt-4">SoulCircle is especially helpful for:</h3>
-                    <ul className="list-disc list-inside space-y-2">
-                        <li>People who hesitate to seek traditional therapy</li>
-                        <li>Those in regions with limited mental health resources</li>
-                        <li>Individuals needing immediate emotional support at odd hours</li>
-                        <li>Youth and students navigating emotional challenges</li>
-                    </ul>
-                     <h3 className="text-2xl font-bold font-headline pt-4">Key features include:</h3>
-                    <ul className="list-disc list-inside space-y-2">
-                        <li><strong>Private, confidential conversations</strong> with an AI counselor</li>
-                        <li><strong>Mood tracking and journaling tools</strong></li>
-                        <li><strong>Mindfulness prompts and stress-relief exercises</strong></li>
-                    </ul>
-                    <p>
-                        In a world where mental health support is often hard to access, SoulCircle bridges the gap, creating a safe, stigma-free space where users can feel heard, supported, and guided toward emotional balance.
-                    </p>
-                    <h3 className="text-2xl font-bold font-headline pt-4">Be the Reason Someone Feels Heard Today</h3>
-                    <p>
-                       SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most. Your donation helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. <strong>Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression</strong>. Mental health is not a luxury—it’s a necessity. <strong>Help us make healing accessible to all. Donate now.</strong>
-                    </p>
-                     <div className="mt-8">
-                        <Button disabled className="bg-primary hover:bg-primary/90 text-primary-foreground cursor-not-allowed opacity-100">App is under construction</Button>
-                     </div>
+            <div className="grid md:grid-cols-3 gap-12">
+                <aside className="md:col-span-1 space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Healthcare Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                            {healthcareInitiatives.map((item) => (
+                                <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Related Resources</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <Skeleton className="h-40 w-full" />
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Other Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                                {otherInitiatives.map((item) => (
+                                    <li key={item.href}>
+                                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                </aside>
+                <div className="md:col-span-2">
+                  <div className="space-y-6">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">24/7 Emotional Support, Just a Chat Away</h2>
+                    <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                        <p>
+                            SoulCircle is an innovative <strong>AI-powered mental health support app</strong> created to provide accessible, compassionate, and judgment-free support for anyone experiencing emotional distress, stress, anxiety, loneliness, or other mental health challenges.
+                        </p>
+                        <p>
+                            Whether you're struggling in silence, need someone to talk to, or just want daily emotional check-ins, <strong>SoulCircle's intelligent AI mental health counselors</strong> are always available—24/7. These virtual companions are designed to <strong>listen empathetically, respond mindfully,</strong> and provide <strong>supportive guidance</strong> based on therapeutic frameworks and emotional well-being best practices.
+                        </p>
+                        <h3 className="text-2xl font-bold font-headline pt-4">SoulCircle is especially helpful for:</h3>
+                        <ul className="list-disc list-inside space-y-2">
+                            <li>People who hesitate to seek traditional therapy</li>
+                            <li>Those in regions with limited mental health resources</li>
+                            <li>Individuals needing immediate emotional support at odd hours</li>
+                            <li>Youth and students navigating emotional challenges</li>
+                        </ul>
+                        <h3 className="text-2xl font-bold font-headline pt-4">Key features include:</h3>
+                        <ul className="list-disc list-inside space-y-2">
+                            <li><strong>Private, confidential conversations</strong> with an AI counselor</li>
+                            <li><strong>Mood tracking and journaling tools</strong></li>
+                            <li><strong>Mindfulness prompts and stress-relief exercises</strong></li>
+                        </ul>
+                        <p>
+                            In a world where mental health support is often hard to access, SoulCircle bridges the gap, creating a safe, stigma-free space where users can feel heard, supported, and guided toward emotional balance.
+                        </p>
+                        <h3 className="text-2xl font-bold font-headline pt-4">Be the Reason Someone Feels Heard Today</h3>
+                        <p>
+                          SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most. Your donation helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. <strong>Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression</strong>. Mental health is not a luxury—it’s a necessity. <strong>Help us make healing accessible to all. Donate now.</strong>
+                        </p>
+                        <div className="mt-8">
+                            <Button disabled className="bg-primary hover:bg-primary/90 text-primary-foreground cursor-not-allowed opacity-100">App is under construction</Button>
+                        </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
               <Dialog open={showForm} onOpenChange={setShowForm}>

@@ -9,11 +9,35 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DetectDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const healthcareInitiatives = [
+  { href: '/cureline', label: 'CureLine' },
+  { href: '/surgireach', label: 'SurgiReach' },
+  { href: '/carecircle', label: 'CareCircle' },
+  { href: '/childfirst', label: 'ChildFirst' },
+  { href: '/detect', label: 'Detect' },
+  { href: '/sighthope', label: 'SightHope' },
+  { href: '/oralscan', label: 'OralScan' },
+  { href: '/cyclesafe', label: 'CycleSafe' },
+  { href: '/soulcircle', label: 'SoulCircle' },
+];
+
+const otherInitiatives = [
+    { href: '/educational-initiatives', label: 'Educational Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
 
 export default function DetectClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -47,34 +71,78 @@ export default function DetectClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Catching Cancer Before It Catches Her.</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    Detect is a critical women’s health initiative by AIM Foundation that aims to empower rural women through increased awareness of <strong>cervical health and the early detection of cervical cancer</strong>. In partnership with the Chittaranjan National Cancer Institute and the Government of West Bengal, this initiative brings essential health education and screening services to some of the most underserved regions in the state.
-                  </p>
-                  <p>
-                    Cervical cancer is one of the leading causes of cancer-related deaths among women in India, especially in rural areas where <strong>lack of awareness, stigma, and poor access to healthcare</strong> hinder early diagnosis. Project Detect addresses this gap through:
-                  </p>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li><strong>Community-based screening camps</strong>, especially for women with limited access to gynecological care</li>
-                    <li><strong>Awareness sessions</strong> on HPV, cervical cancer symptoms, menstrual health, and preventive care</li>
-                    <li><strong>Training and sensitization of ASHA and Anganwadi workers</strong> district-by-district, starting with Howrah, to ensure sustainable, local outreach</li>
-                    <li><strong>Encouraging open dialogue</strong> to break myths and cultural barriers around reproductive health</li>
-                  </ul>
-                  <p>
-                    The initiative has already witnessed inspiring participation from women in remote villages, many of whom are learning about cervical health for the first time. These sessions not only save lives through early detection but also promote a broader sense of bodily autonomy, health literacy, and dignity.
-                  </p>
-                  <p>
-                    By equipping both women and frontline health workers with knowledge and tools, Project Detect fosters a <strong>community-led movement for prevention, early intervention, and long-term well-being</strong>.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Help Her Live—Not Just Survive</h3>
-                  <p>
-                    In rural India, too many women are losing their lives to a disease that’s preventable. <strong>Your donation to Project Detect can fund life-saving cervical cancer screenings, awareness workshops, and training for frontline health workers.</strong> Just ₹500 can help screen a woman who’s never had access to gynecological care. With early detection comes hope, dignity, and a future. Stand with us to protect mothers, daughters, sisters—and <strong>ensure that no woman is left behind simply because she was unaware</strong>. Donate today and help us detect before it’s too late.
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+                <aside className="md:col-span-1 space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Healthcare Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                            {healthcareInitiatives.map((item) => (
+                                <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Related Resources</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <Skeleton className="h-40 w-full" />
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Other Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                                {otherInitiatives.map((item) => (
+                                    <li key={item.href}>
+                                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                </aside>
+                <div className="md:col-span-2">
+                  <div className="space-y-6">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Catching Cancer Before It Catches Her.</h2>
+                    <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                      <p>
+                        Detect is a critical women’s health initiative by AIM Foundation that aims to empower rural women through increased awareness of <strong>cervical health and the early detection of cervical cancer</strong>. In partnership with the Chittaranjan National Cancer Institute and the Government of West Bengal, this initiative brings essential health education and screening services to some of the most underserved regions in the state.
+                      </p>
+                      <p>
+                        Cervical cancer is one of the leading causes of cancer-related deaths among women in India, especially in rural areas where <strong>lack of awareness, stigma, and poor access to healthcare</strong> hinder early diagnosis. Project Detect addresses this gap through:
+                      </p>
+                      <ul className="list-disc list-inside space-y-2">
+                        <li><strong>Community-based screening camps</strong>, especially for women with limited access to gynecological care</li>
+                        <li><strong>Awareness sessions</strong> on HPV, cervical cancer symptoms, menstrual health, and preventive care</li>
+                        <li><strong>Training and sensitization of ASHA and Anganwadi workers</strong> district-by-district, starting with Howrah, to ensure sustainable, local outreach</li>
+                        <li><strong>Encouraging open dialogue</strong> to break myths and cultural barriers around reproductive health</li>
+                      </ul>
+                      <p>
+                        The initiative has already witnessed inspiring participation from women in remote villages, many of whom are learning about cervical health for the first time. These sessions not only save lives through early detection but also promote a broader sense of bodily autonomy, health literacy, and dignity.
+                      </p>
+                      <p>
+                        By equipping both women and frontline health workers with knowledge and tools, Project Detect fosters a <strong>community-led movement for prevention, early intervention, and long-term well-being</strong>.
+                      </p>
+                      <h3 className="text-2xl font-bold font-headline pt-4">Help Her Live—Not Just Survive</h3>
+                      <p>
+                        In rural India, too many women are losing their lives to a disease that’s preventable. <strong>Your donation to Project Detect can fund life-saving cervical cancer screenings, awareness workshops, and training for frontline health workers.</strong> Just ₹500 can help screen a woman who’s never had access to gynecological care. With early detection comes hope, dignity, and a future. Stand with us to protect mothers, daughters, sisters—and <strong>ensure that no woman is left behind simply because she was unaware</strong>. Donate today and help us detect before it’s too late.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
                <Dialog open={showForm} onOpenChange={setShowForm}>

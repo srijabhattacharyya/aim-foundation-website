@@ -9,11 +9,35 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/CycleSafeDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const healthcareInitiatives = [
+  { href: '/cureline', label: 'CureLine' },
+  { href: '/surgireach', label: 'SurgiReach' },
+  { href: '/carecircle', label: 'CareCircle' },
+  { href: '/childfirst', label: 'ChildFirst' },
+  { href: '/detect', label: 'Detect' },
+  { href: '/sighthope', label: 'SightHope' },
+  { href: '/oralscan', label: 'OralScan' },
+  { href: '/cyclesafe', label: 'CycleSafe' },
+  { href: '/soulcircle', label: 'SoulCircle' },
+];
+
+const otherInitiatives = [
+    { href: '/educational-initiatives', label: 'Educational Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
 
 export default function CycleSafeClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -47,31 +71,75 @@ export default function CycleSafeClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Girls, One Cycle at a Time.</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                  <p>
-                    CycleSafe is a dedicated initiative that supports the <strong>menstrual and reproductive health of underprivileged adolescent girls</strong> in and around Kolkata. These girls, many of whom come from socioeconomically disadvantaged backgrounds, often lack access to basic menstrual hygiene resources, health education, and supportive spaces to discuss their bodies and well-being.
-                  </p>
-                  <p>
-                    The project addresses this gap through comprehensive menstrual hygiene workshops, awareness sessions on cervical health, and open discussions on puberty, reproductive health, and emotional changes. These sessions are led by trained health educators who approach the subject with sensitivity, accuracy, and respect.
-                  </p>
-                  <p>
-                    In addition, the initiative provides monthly sanitary napkins to ensure girls don’t miss school or feel shame during their menstrual cycles. Access to these essentials helps boost their confidence, attendance, and participation in daily life.
-                  </p>
-                  <p>
-                    The program also works to break taboos and social stigma surrounding menstruation and female reproductive health. By creating safe, inclusive, and educational spaces, the project not only promotes physical well-being but also helps these young girls build self-worth, body awareness, and emotional resilience.
-                  </p>
-                  <p>
-                    Ultimately, this initiative empowers adolescent girls to take charge of their health, voice their needs, and grow into informed, confident individuals—laying the foundation for a more equitable and healthy future.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Help Her Stay in School, Stay Confident</h3>
-                  <p>
-                    For many adolescent girls, periods mean missed classes, silent shame, and compromised health—simply because they can’t afford sanitary napkins or don’t understand what’s happening to their bodies. <strong>Your support to CycleSafe can change that.</strong> <strong>Just ₹300 can provide a girl with sanitary pads and vital menstrual health education for a month.</strong> With your donation, you’re not just giving hygiene products—you’re restoring dignity, confidence, and opportunity. <strong>Stand with these girls. Help them grow without fear or stigma. Donate today and empower a future that’s safe, strong, and unstoppable.</strong>
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+                <aside className="md:col-span-1 space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Healthcare Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                            {healthcareInitiatives.map((item) => (
+                                <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Related Resources</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <Skeleton className="h-40 w-full" />
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Other Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                                {otherInitiatives.map((item) => (
+                                    <li key={item.href}>
+                                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                </aside>
+                <div className="md:col-span-2">
+                  <div className="space-y-6">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Girls, One Cycle at a Time.</h2>
+                    <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                      <p>
+                        CycleSafe is a dedicated initiative that supports the <strong>menstrual and reproductive health of underprivileged adolescent girls</strong> in and around Kolkata. These girls, many of whom come from socioeconomically disadvantaged backgrounds, often lack access to basic menstrual hygiene resources, health education, and supportive spaces to discuss their bodies and well-being.
+                      </p>
+                      <p>
+                        The project addresses this gap through comprehensive menstrual hygiene workshops, awareness sessions on cervical health, and open discussions on puberty, reproductive health, and emotional changes. These sessions are led by trained health educators who approach the subject with sensitivity, accuracy, and respect.
+                      </p>
+                      <p>
+                        In addition, the initiative provides monthly sanitary napkins to ensure girls don’t miss school or feel shame during their menstrual cycles. Access to these essentials helps boost their confidence, attendance, and participation in daily life.
+                      </p>
+                      <p>
+                        The program also works to break taboos and social stigma surrounding menstruation and female reproductive health. By creating safe, inclusive, and educational spaces, the project not only promotes physical well-being but also helps these young girls build self-worth, body awareness, and emotional resilience.
+                      </p>
+                      <p>
+                        Ultimately, this initiative empowers adolescent girls to take charge of their health, voice their needs, and grow into informed, confident individuals—laying the foundation for a more equitable and healthy future.
+                      </p>
+                      <h3 className="text-2xl font-bold font-headline pt-4">Help Her Stay in School, Stay Confident</h3>
+                      <p>
+                        For many adolescent girls, periods mean missed classes, silent shame, and compromised health—simply because they can’t afford sanitary napkins or don’t understand what’s happening to their bodies. <strong>Your support to CycleSafe can change that.</strong> <strong>Just ₹300 can provide a girl with sanitary pads and vital menstrual health education for a month.</strong> With your donation, you’re not just giving hygiene products—you’re restoring dignity, confidence, and opportunity. <strong>Stand with these girls. Help them grow without fear or stigma. Donate today and empower a future that’s safe, strong, and unstoppable.</strong>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
               <Dialog open={showForm} onOpenChange={setShowForm}>
