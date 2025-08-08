@@ -21,35 +21,35 @@ const initiatives = [
     description: "empowers rural women through cervical health education and cancer screenings. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.",
     image: "https://placehold.co/600x400.png",
     hint: "women networking",
-    link: "/sheconnects"
+    link: "/sheconnects?from=gender-equality"
   },
   {
     title: "CycleSafe",
     description: "empowers underprivileged adolescent girls in and around Kolkata by promoting menstrual hygiene, cervical health awareness, and reproductive well-being. Through monthly sanitary napkin distribution and educational sessions, the initiative breaks taboos, builds knowledge, and fosters confidence—ensuring dignity, health, and equal opportunities for young girls to thrive.",
     image: "https://placehold.co/600x400.png",
     hint: "menstrual hygiene",
-    link: "/cyclesafe"
+    link: "/cyclesafe?from=gender-equality"
   },
   {
     title: "Detect",
     description: "empowers rural women through cervical health education and cancer screenings. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.",
     image: "https://placehold.co/600x400.png",
     hint: "mother child health",
-    link: "/detect"
+    link: "/detect?from=gender-equality"
   },
   {
     title: "SuiDhaga",
     description: "empowers women through hands-on training in tailoring and embroidery, helping them transform traditional skills into sources of income. By providing practical vocational education, the initiative equips women with the tools they need to gain financial independence, uplift their families, and take confident steps toward a more self-reliant future.",
     image: "https://placehold.co/600x400.png",
     hint: "women sewing",
-    link: "/suidhaga"
+    link: "/suidhaga?from=gender-equality"
   },
   {
     title: "Krishti",
     description: "is the next step for women trained through SuiDhaga, nurturing their journey from skill to self-reliance. By providing access to modern production setups and marketing support, Krishti empowers women to become entrepreneurs—transforming their craft into livelihood, their passion into purpose, and their efforts into lasting financial independence.",
     image: "https://placehold.co/600x400.png",
     hint: "women traditional art",
-    link: "/krishti"
+    link: "/krishti?from=gender-equality"
   },
 ];
 

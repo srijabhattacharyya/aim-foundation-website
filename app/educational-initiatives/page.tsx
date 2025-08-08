@@ -19,7 +19,7 @@ const initiatives = [
     description: "Empowers children by combining education with art, dance, and music, nurturing both creativity and academics. It offers a supportive space where young minds gain confidence, express themselves, and grow holistically.",
     image: "https://placehold.co/600x400.png",
     hint: "classroom children",
-    link: "/innocent-smiles",
+    link: "/innocent-smiles?from=educational",
     specialText: "(Art & Music Class)"
   },
   {
@@ -27,7 +27,7 @@ const initiatives = [
     description: "Transforms classrooms into smart, internet-enabled hubs. With interactive tools, it makes complex lessons dynamic and easier to grasp, fostering engagement and a love for learning.",
     image: "https://placehold.co/600x400.png",
     hint: "smart classroom",
-    link: "/inspire-eduLab",
+    link: "/inspire-eduLab?from=educational",
     specialText: "(Smart Class Room)"
   },
   {
@@ -35,7 +35,7 @@ const initiatives = [
     description: "Delivers quality education to rural West Bengal through expert-led online classes. Covering core subjects, it empowers students in underserved areas with skills for academic success.",
     image: "https://placehold.co/600x400.png",
     hint: "online learning",
-    link: "/eduaccess",
+    link: "/eduaccess?from=educational",
     specialText: "(Online class)"
   },
    {
@@ -43,7 +43,7 @@ const initiatives = [
     description: "Offers spoken English training to students from underserved communities, strengthening communication skills and boosting self-confidence for academic and professional success.",
     image: "https://placehold.co/600x400.png",
     hint: "english class",
-    link: "/empower-english",
+    link: "/empower-english?from=educational",
     specialText: "(Spoken English class)"
   },
   {
@@ -51,7 +51,7 @@ const initiatives = [
     description: "Promotes digital literacy among underprivileged and Adivasi children. It provides hands-on computer training, equipping them with essential skills for today’s technology-driven world.",
     image: "https://placehold.co/600x400.png",
     hint: "computer literacy",
-    link: "/digiempower",
+    link: "/digiempower?from=educational",
     specialText: "(Digital Literacy for Children)"
   },
   {
@@ -59,7 +59,7 @@ const initiatives = [
     description: "Empowers women through digital literacy, helping them promote businesses online. Includes cyber safety sessions to ensure secure digital participation and financial independence.",
     image: "https://placehold.co/600x400.png",
     hint: "women entrepreneurs",
-    link: "/sheconnects",
+    link: "/sheconnects?from=educational",
     specialText: "(Digital Literacy for women)"
   },
   {
@@ -67,7 +67,7 @@ const initiatives = [
     description: "Fosters holistic development by connecting children from diverse backgrounds. Through interactive sessions, students learn together, building empathy, respect, and social awareness.",
     image: "https://placehold.co/600x400.png",
     hint: "children collaboration",
-    link: "/milieu",
+    link: "/milieu?from=educational",
     specialText: "(Learn Beyond Boundaries)"
   },
   {
@@ -75,7 +75,7 @@ const initiatives = [
     description: "is a multilingual educational app by AIM Foundation that delivers AI-powered, on-demand academic support to rural and first-generation learners, bridging the gap where quality teaching is scarce. By providing instant, tailored answers in a student's own language, VidyaShakti empowers children to learn independently, build confidence, and unlock their full potential.",
     image: "https://placehold.co/600x400.png",
     hint: "learning app",
-    link: "/vidyashakti",
+    link: "/vidyashakti?from=educational",
     specialText: "(App for Education)"
   }
 ];

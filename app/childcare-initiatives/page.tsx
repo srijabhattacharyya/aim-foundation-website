@@ -21,21 +21,21 @@ const initiatives = [
     description: "Empowers children by combining education with art, dance, and music, nurturing both creativity and academics. It offers a supportive space where young minds gain confidence, express themselves, and grow holistically.",
     image: "https://placehold.co/600x400.png",
     hint: "classroom children",
-    link: "/innocent-smiles"
+    link: "/innocent-smiles?from=childcare"
   },
   {
     title: "Milieu",
     description: "Fosters holistic development by connecting children from diverse economic backgrounds. Through interactive sessions, students from reputed schools and underprivileged communities learn together, building empathy and respect.",
     image: "https://placehold.co/600x400.png",
     hint: "community gathering",
-    link: "/milieu"
+    link: "/milieu?from=childcare"
   },
   {
     title: "ChildFirst",
     description: "A compassionate healthcare initiative offering pediatric and general health camps for children of sex workers. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health and dignity.",
     image: "https://placehold.co/600x400.png",
     hint: "mental health support",
-    link: "/childfirst"
+    link: "/childfirst?from=childcare"
   },
 ];
 

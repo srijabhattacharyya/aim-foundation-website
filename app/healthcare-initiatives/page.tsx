@@ -19,7 +19,7 @@ const initiatives = [
     description: "is AIM Foundation’s rural and remote healthcare outreach program that delivers essential medical services to underserved communities. Through regular health camps, it offers free check-ups, consultations, medicines, and health education in villages, forest-fringe settlements, and disaster-hit areas—bridging critical care gaps and ensuring health access regardless of location or income.",
     image: "https://placehold.co/600x400.png",
     hint: "mobile health clinic",
-    link: "/cureline",
+    link: "/cureline?from=healthcare",
     specialText: "(Rural Healthcare)"
   },
   {
@@ -27,7 +27,7 @@ const initiatives = [
     description: "is AIM Foundation’s hospital partnership initiative providing free surgeries to economically disadvantaged individuals. Children aged 5 months to 14 years receive life-changing pediatric operations, while adults access essential procedures like kidney transplants and knee replacements. The program ensures critical medical care is available, regardless of financial limitations.",
     image: "https://placehold.co/600x400.png",
     hint: "child nutrition program",
-    link: "/surgireach",
+    link: "/surgireach?from=healthcare",
     specialText: "(Free Operation)"
   },
   {
@@ -35,7 +35,7 @@ const initiatives = [
     description: "is an urban health initiative by AIM Foundation that organizes healthcare camps through partnerships at Kolkata centres like Sarala Punyashram, Sarat Bose Road, and Boral Natunhat. These camps deliver free check-ups, medicines, and consultations to underserved populations, ensuring inclusive, accessible healthcare for those often overlooked in city life.",
     image: "https://placehold.co/600x400.png",
     hint: "hygiene awareness session",
-    link: "/carecircle",
+    link: "/carecircle?from=healthcare",
     specialText: "(Urban Healthcare)"
   },
   {
@@ -43,7 +43,7 @@ const initiatives = [
     description: " is a compassionate healthcare initiative by AIM Foundation offering pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.",
     image: "https://placehold.co/600x400.png",
     hint: "mental health support",
-    link: "/childfirst",
+    link: "/childfirst?from=healthcare",
     specialText: "(Child Health)"
   },
   {
@@ -51,7 +51,7 @@ const initiatives = [
     description: "empowers rural women through cervical health education and cancer screenings. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.",
     image: "https://placehold.co/600x400.png",
     hint: "mother child health",
-    link: "/detect",
+    link: "/detect?from=healthcare",
     specialText: "(Cervical Cancer Detection)"
   },
   {
@@ -59,7 +59,7 @@ const initiatives = [
     description: "in partnership with leading eye hospitals like Sushrut Eye Foundation, B. B. Eye Foundation, and Hope Foundation, brings free eye care to underserved communities. Through screenings, treatments, and cataract surgeries, it restores vision, dignity, and independence—offering new possibilities to those without access to quality eye health services.",
     image: "https://placehold.co/600x400.png",
     hint: "vision eye exam",
-    link: "/sighthope",
+    link: "/sighthope?from=healthcare",
     specialText: "(Eye Camp)"
   },
   {
@@ -67,7 +67,7 @@ const initiatives = [
     description: "is a crucial initiative offering free oral cancer screening camps in underserved communities. By focusing on early detection and public awareness, it identifies potential risks at the outset, improving treatment outcomes. The program promotes oral hygiene, educates on risk factors, and helps save lives through timely medical intervention.",
     image: "https://placehold.co/600x400.png",
     hint: "dental checkup",
-    link: "/oralscan",
+    link: "/oralscan?from=healthcare",
     specialText: "(Oral Cancer Detection)"
   },
   {
@@ -75,7 +75,7 @@ const initiatives = [
     description: "empowers underprivileged adolescent girls in and around Kolkata by promoting menstrual hygiene, cervical health awareness, and reproductive well-being. Through monthly sanitary napkin distribution and educational sessions, the initiative breaks taboos, builds knowledge, and fosters confidence—ensuring dignity, health, and equal opportunities for young girls to thrive.",
     image: "https://placehold.co/600x400.png",
     hint: "menstrual hygiene",
-    link: "/cyclesafe",
+    link: "/cyclesafe?from=healthcare",
     specialText: "(Reproductive Health)"
   },
   {
@@ -83,7 +83,7 @@ const initiatives = [
     description: "is a 24/7 AI-powered mental health support app by AIM Foundation, offering a confidential, judgment-free space to talk and heal. Designed for those hesitant to seek traditional therapy, it provides empathetic guidance, mood tracking, and mindfulness exercises, making emotional well-being accessible to all, anytime, anywhere.",
     image: "https://placehold.co/600x400.png",
     hint: "mental health app",
-    link: "/soulcircle",
+    link: "/soulcircle?from=healthcare",
     specialText: "(Mental Health App)"
   }
 ];
