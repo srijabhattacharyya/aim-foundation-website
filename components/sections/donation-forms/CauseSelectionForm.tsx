@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -103,23 +104,26 @@ export default function CauseSelectionForm() {
   const [selectedCause, setSelectedCause] = useState<string | undefined>(undefined);
   const [selectedSubCause, setSelectedSubCause] = useState<string | undefined>(undefined);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [FormComponent, setFormComponent] = useState<React.FC | null>(null);
 
   const handleCauseProceed = () => {
-    if (selectedCause === 'general') {
-      setSelectedSubCause('general');
-      setIsFormOpen(true);
-      return;
+    if (selectedCause) {
+      if (selectedCause === "general") {
+        setFormComponent(() => subCauseToFormComponent.general);
+        setIsFormOpen(true);
+        return;
+      }
+      if (selectedCause === "educational") {
+        setStep(2);
+        return;
+      }
+      alert(`Donation form for "${mainCauses.find(c => c.value === selectedCause)?.label}" is coming soon!`);
     }
-    if (selectedCause === 'educational') {
-      setSelectedSubCause(undefined); // Reset sub-cause when moving to step 2
-      setStep(2);
-      return;
-    }
-    alert(`Donation form for "${mainCauses.find(c => c.value === selectedCause)?.label}" is coming soon!`);
   };
 
   const handleStep2Proceed = () => {
     if (selectedSubCause && subCauseToFormComponent[selectedSubCause]) {
+      setFormComponent(() => subCauseToFormComponent[selectedSubCause]);
       setIsFormOpen(true);
     } else {
       alert(`Donation form for "${educationalInitiatives.find(c => c.value === selectedSubCause)?.label}" is coming soon!`);
@@ -135,69 +139,72 @@ export default function CauseSelectionForm() {
     setStep(1);
     setSelectedCause(undefined);
     setSelectedSubCause(undefined);
+    setFormComponent(null);
   };
 
   return (
-    <div className="p-6">
-      {step === 1 && (
-        <>
-          <DialogHeader className="text-center mb-6">
-            <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
-            <DialogDescription>
-              Select a cause you are passionate about to make a donation.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-4">
-            <Select onValueChange={(value) => { setSelectedCause(value); setSelectedSubCause(undefined); }} value={selectedCause ?? undefined}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a cause to support" />
-              </SelectTrigger>
-              <SelectContent>
-                {mainCauses.map((cause) => (
-                  <SelectItem key={cause.value} value={cause.value}>
-                    {cause.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <DialogFooter className="mt-6">
-            <Button onClick={handleCauseProceed} disabled={!selectedCause}>
-              Proceed
-            </Button>
-          </DialogFooter>
-        </>
-      )}
+    <>
+      <div className="p-6">
+        {step === 1 && (
+          <>
+            <DialogHeader className="text-center mb-6">
+              <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
+              <DialogDescription>
+                Select a cause you are passionate about to make a donation.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4">
+              <Select onValueChange={(value) => setSelectedCause(value)} value={selectedCause ?? undefined}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a cause to support" />
+                </SelectTrigger>
+                <SelectContent>
+                  {mainCauses.map((cause) => (
+                    <SelectItem key={cause.value} value={cause.value}>
+                      {cause.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <DialogFooter className="mt-6">
+              <Button onClick={handleCauseProceed} disabled={!selectedCause}>
+                Proceed
+              </Button>
+            </DialogFooter>
+          </>
+        )}
 
-      {step === 2 && selectedCause === "educational" && (
-        <>
-          <DialogHeader className="text-center mb-6">
-            <DialogTitle className="text-xl font-bold font-headline">THANKS FOR YOUR SUPPORT IN OUR EDUCATIONAL INITIATIVES</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a specific educational initiative to support" />
-              </SelectTrigger>
-              <SelectContent>
-                {educationalInitiatives.map((initiative) => (
-                  <SelectItem key={initiative.value} value={initiative.value}>
-                    {initiative.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <DialogFooter className="mt-6 justify-between">
-            <Button variant="outline" onClick={handleBack}>
-              Back
-            </Button>
-            <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
-              Proceed
-            </Button>
-          </DialogFooter>
-        </>
-      )}
+        {step === 2 && selectedCause === "educational" && (
+          <>
+            <DialogHeader className="text-center mb-6">
+              <DialogTitle className="text-xl font-bold font-headline">THANKS FOR YOUR SUPPORT IN OUR EDUCATIONAL INITIATIVES</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4">
+              <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a specific educational initiative to support" />
+                </SelectTrigger>
+                <SelectContent>
+                  {educationalInitiatives.map((initiative) => (
+                    <SelectItem key={initiative.value} value={initiative.value}>
+                      {initiative.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <DialogFooter className="mt-6 justify-between">
+              <Button variant="outline" onClick={handleBack}>
+                Back
+              </Button>
+              <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
+                Proceed
+              </Button>
+            </DialogFooter>
+          </>
+        )}
+      </div>
 
       <Dialog
         open={isFormOpen}
@@ -209,13 +216,13 @@ export default function CauseSelectionForm() {
         }}
       >
         <DialogContent className="sm:max-w-[800px] p-0 max-h-[90vh] overflow-y-auto">
-          {selectedSubCause && subCauseToFormComponent[selectedSubCause] ? (
-            React.createElement(subCauseToFormComponent[selectedSubCause]!)
+          {FormComponent ? (
+            <FormComponent />
           ) : (
-            <div className="p-6">Form not available for this selection.</div>
+            <div className="p-6">Loading form...</div>
           )}
         </DialogContent>
       </Dialog>
-    </div>
+    </>
   );
 }
