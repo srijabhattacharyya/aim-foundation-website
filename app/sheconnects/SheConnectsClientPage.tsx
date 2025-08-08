@@ -9,11 +9,34 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SheConnectsDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const educationalInitiatives = [
+  { href: '/innocent-smiles', label: 'Innocent Smiles' },
+  { href: '/inspire-eduLab', label: 'Inspire EduLab' },
+  { href: '/eduaccess', label: 'EduAccess' },
+  { href: '/empower-english', label: 'Empower English' },
+  { href: '/digiempower', label: 'DigiEmpower' },
+  { href: '/sheconnects', label: 'SheConnects' },
+  { href: '/milieu', label: 'Milieu' },
+  { href: '/vidyashakti', label: 'VidyaShakti' },
+];
+
+const otherInitiatives = [
+    { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
 
 export default function SheConnectsClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -47,28 +70,72 @@ export default function SheConnectsClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Women Through Technology.</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    Project SheConnects is a women-centric initiative designed to promote digital empowerment and financial independence. The program provides comprehensive digital literacy training to women from underserved communities, enabling them to harness the power of technology to improve their livelihoods. Participants learn how to create and manage social media profiles, market their products online, and navigate e-commerce platforms effectively.
-                  </p>
-                  <p>
-                    Recognizing that digital access must be paired with digital safety, SheConnects also conducts awareness sessions on cyber safety and online security. These sessions teach women how to protect their personal data, handle online transactions securely, and identify and avoid cyber threats—empowering them to participate in the digital world with confidence.
-                  </p>
-                  <p>
-                    By combining technical skills with real-world business applications, SheConnects not only equips women to boost their income but also nurtures self-reliance and entrepreneurial spirit. Whether they are homemakers, artisans, or small-scale entrepreneurs, the program gives them the tools and confidence to reach wider markets and grow sustainably.
-                  </p>
-                  <p>
-                    Through its holistic approach, Project SheConnects plays a vital role in closing the digital gender gap and fostering inclusive economic growth. It is a step toward building a more equitable society, where women are not just connected—but empowered.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Empower a Woman, Transform a Community</h3>
-                  <p>
-                    When women gain digital skills, entire communities thrive. <strong>Your donation can help provide laptops, internet access, and training sessions</strong> that equip women from underserved backgrounds to start or grow their businesses online. With tools to market their products, manage finances, and stay cyber-safe, these women gain more than knowledge—they gain independence. <strong>Support Project SheConnects today</strong> and be the reason a woman becomes digitally empowered, financially secure, and fearlessly connected to opportunity.
-                  </p>
+             <div className="grid md:grid-cols-3 gap-12">
+                <aside className="md:col-span-1 space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Educational Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                            {educationalInitiatives.map((item) => (
+                                <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Related Resources</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <Skeleton className="h-40 w-full" />
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Other Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                                {otherInitiatives.map((item) => (
+                                    <li key={item.href}>
+                                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                </aside>
+                <div className="md:col-span-2">
+                    <div className="space-y-6">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Women Through Technology.</h2>
+                        <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                           <p>
+                            Project SheConnects is a women-centric initiative designed to promote digital empowerment and financial independence. The program provides comprehensive digital literacy training to women from underserved communities, enabling them to harness the power of technology to improve their livelihoods. Participants learn how to create and manage social media profiles, market their products online, and navigate e-commerce platforms effectively.
+                          </p>
+                          <p>
+                            Recognizing that digital access must be paired with digital safety, SheConnects also conducts awareness sessions on cyber safety and online security. These sessions teach women how to protect their personal data, handle online transactions securely, and identify and avoid cyber threats—empowering them to participate in the digital world with confidence.
+                          </p>
+                          <p>
+                            By combining technical skills with real-world business applications, SheConnects not only equips women to boost their income but also nurtures self-reliance and entrepreneurial spirit. Whether they are homemakers, artisans, or small-scale entrepreneurs, the program gives them the tools and confidence to reach wider markets and grow sustainably.
+                          </p>
+                          <p>
+                            Through its holistic approach, Project SheConnects plays a vital role in closing the digital gender gap and fostering inclusive economic growth. It is a step toward building a more equitable society, where women are not just connected—but empowered.
+                          </p>
+                          <h3 className="text-2xl font-bold font-headline pt-4">Empower a Woman, Transform a Community</h3>
+                          <p>
+                            When women gain digital skills, entire communities thrive. <strong>Your donation can help provide laptops, internet access, and training sessions</strong> that equip women from underserved backgrounds to start or grow their businesses online. With tools to market their products, manage finances, and stay cyber-safe, these women gain more than knowledge—they gain independence. <strong>Support Project SheConnects today</strong> and be the reason a woman becomes digitally empowered, financially secure, and fearlessly connected to opportunity.
+                          </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
               <Dialog open={showForm} onOpenChange={setShowForm}>
