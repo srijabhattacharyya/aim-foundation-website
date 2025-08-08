@@ -30,6 +30,10 @@ const DynamicEducationalDonationForm = dynamic(
   () => import("./EducationalDonationForm"),
   { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
+const DynamicHealthcareDonationForm = dynamic(
+  () => import("./HealthcareDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
 const DynamicInnocentSmilesDonationForm = dynamic(
   () => import("./InnocentSmilesDonationForm"),
   { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
@@ -66,6 +70,42 @@ const DynamicGenderEqualityDonationForm = dynamic(
     () => import('./GenderEqualityDonationForm'),
     { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
+const DynamicCureLineDonationForm = dynamic(
+  () => import("./CureLineDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicSurgiReachDonationForm = dynamic(
+  () => import("./SurgiReachDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicCareCircleDonationForm = dynamic(
+  () => import("./CareCircleDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicChildFirstDonationForm = dynamic(
+  () => import("./ChildFirstDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicDetectDonationForm = dynamic(
+  () => import("./DetectDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicSightHopeDonationForm = dynamic(
+  () => import("./SightHopeDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicOralScanDonationForm = dynamic(
+  () => import("./OralScanDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicCycleSafeDonationForm = dynamic(
+  () => import("./CycleSafeDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicSoulCircleDonationForm = dynamic(
+  () => import("./SoulCircleDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
 
 
 // Cause definitions
@@ -93,6 +133,19 @@ const educationalInitiatives = [
   { value: "vidyashakti", label: "VidyaShakti" },
 ];
 
+const healthcareInitiatives = [
+    { value: "healthcare-general", label: "General Donation to support Healthcare Initiatives" },
+    { value: "cureline", label: "CureLine" },
+    { value: "surgireach", label: "SurgiReach" },
+    { value: "carecircle", label: "CareCircle" },
+    { value: "childfirst", label: "ChildFirst" },
+    { value: "detect", label: "Detect" },
+    { value: "sighthope", label: "SightHope" },
+    { value: "oralscan", label: "OralScan" },
+    { value: "cyclesafe", label: "CycleSafe" },
+    { value: "soulcircle", label: "SoulCircle" },
+];
+
 // Map sub-cause values to their corresponding form components
 const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "general": DynamicIndividualDonationForm,
@@ -106,6 +159,16 @@ const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "milieu": DynamicMilieuDonationForm,
   "vidyashakti": DynamicVidyaShaktiDonationForm,
   "gender-equality": DynamicGenderEqualityDonationForm,
+  "healthcare-general": DynamicHealthcareDonationForm,
+  "cureline": DynamicCureLineDonationForm,
+  "surgireach": DynamicSurgiReachDonationForm,
+  "carecircle": DynamicCareCircleDonationForm,
+  "childfirst": DynamicChildFirstDonationForm,
+  "detect": DynamicDetectDonationForm,
+  "sighthope": DynamicSightHopeDonationForm,
+  "oralscan": DynamicOralScanDonationForm,
+  "cyclesafe": DynamicCycleSafeDonationForm,
+  "soulcircle": DynamicSoulCircleDonationForm,
   // Future forms will be mapped here
 };
 
@@ -118,8 +181,8 @@ export default function CauseSelectionForm() {
 
   const handleCauseProceed = () => {
     if (selectedCause) {
-        if (selectedCause === "educational") {
-            setSelectedSubCause(undefined); // Reset sub-cause for placeholder
+        if (selectedCause === "educational" || selectedCause === "healthcare") {
+            setSelectedSubCause(undefined); 
             setStep(2);
             return;
         }
@@ -141,7 +204,8 @@ export default function CauseSelectionForm() {
             setFormComponent(() => formComponent);
             setIsFormOpen(true);
         } else {
-            alert(`Donation form for "${educationalInitiatives.find(c => c.value === selectedSubCause)?.label}" is coming soon!`);
+            const list = selectedCause === 'educational' ? educationalInitiatives : healthcareInitiatives;
+            alert(`Donation form for "${list.find(c => c.value === selectedSubCause)?.label}" is coming soon!`);
         }
     }
   };
@@ -206,6 +270,39 @@ export default function CauseSelectionForm() {
                 </SelectTrigger>
                 <SelectContent>
                   {educationalInitiatives.map((initiative) => (
+                    <SelectItem key={initiative.value} value={initiative.value}>
+                      {initiative.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
+              <Button variant="outline" onClick={handleBack}>
+                Back
+              </Button>
+              <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
+                Proceed
+              </Button>
+            </DialogFooter>
+          </>
+        )}
+
+        {step === 2 && selectedCause === "healthcare" && (
+          <>
+            <DialogHeader className="text-center mb-8">
+              <DialogTitle className="text-xl font-bold font-headline">SUPPORT OUR HEALTHCARE INITIATIVES</DialogTitle>
+               <DialogDescription>
+                Choose a specific initiative or make a general donation to healthcare.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4">
+               <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a specific healthcare initiative to support" />
+                </SelectTrigger>
+                <SelectContent>
+                  {healthcareInitiatives.map((initiative) => (
                     <SelectItem key={initiative.value} value={initiative.value}>
                       {initiative.label}
                     </SelectItem>
