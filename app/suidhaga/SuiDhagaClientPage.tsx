@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "../../components/layout/Navbar";
@@ -9,31 +8,12 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
+import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SuiDhagaDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
-
-const genderEqualityInitiatives = [
-    { href: '/sheconnects?from=gender-equality', label: 'SheConnects' },
-    { href: '/cyclesafe?from=gender-equality', label: 'CycleSafe' },
-    { href: '/detect?from=gender-equality', label: 'Detect' },
-    { href: '/suidhaga?from=gender-equality', label: 'SuiDhaga' },
-    { href: '/krishti?from=gender-equality', label: 'Krishti' },
-];
-
-const otherInitiatives = [
-    { href: '/educational-initiatives', label: 'Educational Initiatives' },
-    { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
-    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
-    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
-    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
-    { href: '/disaster-management', label: 'Disaster Management' },
-    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
-];
 
 export default function SuiDhagaClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -68,48 +48,7 @@ export default function SuiDhagaClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="grid md:grid-cols-3 gap-12">
-               <aside className="md:col-span-1 space-y-8">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Gender Equality Initiatives</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-2">
-                            {genderEqualityInitiatives.map((item) => (
-                                <li key={item.href}>
-                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
-                                    {item.label}
-                                </Link>
-                                </li>
-                            ))}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Related Resources</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <Skeleton className="h-40 w-full" />
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Other Initiatives</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-2">
-                                {otherInitiatives.map((item) => (
-                                    <li key={item.href}>
-                                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
-                                            {item.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                </aside>
+               <InitiativeSidebar from="gender-equality" />
                 <div className="md:col-span-2">
                   <div className="space-y-6">
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">Threads of Hope, Dreams in Every Stitch</h2>
