@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -23,6 +24,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 // Dynamically import all the specific donation forms
 const DynamicIndividualDonationForm = dynamic(
   () => import("./IndividualDonationForm"),
+  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+const DynamicEducationalDonationForm = dynamic(
+  () => import("./EducationalDonationForm"),
   { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
 const DynamicInnocentSmilesDonationForm = dynamic(
@@ -61,10 +66,6 @@ const DynamicGenderEqualityDonationForm = dynamic(
     () => import('./GenderEqualityDonationForm'),
     { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
-const DynamicEducationalDonationForm = dynamic(
-    () => import('./EducationalDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
 
 
 // Cause definitions
@@ -95,7 +96,6 @@ const educationalInitiatives = [
 // Map sub-cause values to their corresponding form components
 const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "general": DynamicIndividualDonationForm,
-  "educational": DynamicEducationalDonationForm,
   "educational-general": DynamicEducationalDonationForm,
   "innocent-smiles": DynamicInnocentSmilesDonationForm,
   "inspire-edulab": DynamicInspireEduLabDonationForm,
@@ -119,8 +119,8 @@ export default function CauseSelectionForm() {
   const handleCauseProceed = () => {
     if (selectedCause) {
         if (selectedCause === "educational") {
-            setStep(2);
             setSelectedSubCause(undefined); // Reset sub-cause for placeholder
+            setStep(2);
             return;
         }
         
@@ -135,11 +135,14 @@ export default function CauseSelectionForm() {
   };
 
   const handleStep2Proceed = () => {
-    if (selectedSubCause && subCauseToFormComponent[selectedSubCause]) {
-      setFormComponent(() => subCauseToFormComponent[selectedSubCause]);
-      setIsFormOpen(true);
-    } else {
-      alert(`Donation form for "${educationalInitiatives.find(c => c.value === selectedSubCause)?.label}" is coming soon!`);
+    if (selectedSubCause) {
+        const formComponent = subCauseToFormComponent[selectedSubCause];
+        if (formComponent) {
+            setFormComponent(() => formComponent);
+            setIsFormOpen(true);
+        } else {
+            alert(`Donation form for "${educationalInitiatives.find(c => c.value === selectedSubCause)?.label}" is coming soon!`);
+        }
     }
   };
 
@@ -167,7 +170,7 @@ export default function CauseSelectionForm() {
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4">
-              <Select onValueChange={(value) => setSelectedCause(value)} value={selectedCause}>
+              <Select onValueChange={(value) => setSelectedCause(value)} value={selectedCause ?? undefined}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a cause to support" />
                 </SelectTrigger>
