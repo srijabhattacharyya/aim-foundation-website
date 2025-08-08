@@ -104,18 +104,9 @@ export default function CauseSelectionForm() {
   const [selectedSubCause, setSelectedSubCause] = useState<string | undefined>(undefined);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  // Function to determine which form to render
-  const DonationFormToRender = selectedSubCause ? subCauseToFormComponent[selectedSubCause] : null;
-
-  const resetAll = () => {
-    setStep(1);
-    setSelectedCause(undefined);
-    setSelectedSubCause(undefined);
-  };
-
-  const handleProceed = () => {
+  const handleCauseProceed = () => {
     if (selectedCause === 'general') {
-      setSelectedSubCause('general'); // Directly set sub-cause for general donation
+      setSelectedSubCause('general');
       setIsFormOpen(true);
       return;
     }
@@ -124,7 +115,6 @@ export default function CauseSelectionForm() {
       setStep(2);
       return;
     }
-    // Placeholder for other main causes that might open a form directly
     alert(`Donation form for "${mainCauses.find(c => c.value === selectedCause)?.label}" is coming soon!`);
   };
 
@@ -141,19 +131,24 @@ export default function CauseSelectionForm() {
     setSelectedSubCause(undefined);
   };
 
+  const resetAll = () => {
+    setStep(1);
+    setSelectedCause(undefined);
+    setSelectedSubCause(undefined);
+  };
+
   return (
-    <>
-      {/* Step 1: Select Main Cause */}
+    <div className="p-6">
       {step === 1 && (
         <>
-          <DialogHeader>
-            <DialogTitle>Choose a Cause</DialogTitle>
+          <DialogHeader className="text-center mb-6">
+            <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
             <DialogDescription>
               Select a cause you are passionate about to make a donation.
             </DialogDescription>
           </DialogHeader>
-          <div className="py-4">
-            <Select onValueChange={setSelectedCause} value={selectedCause}>
+          <div className="space-y-4">
+            <Select onValueChange={(value) => { setSelectedCause(value); setSelectedSubCause(undefined); }} value={selectedCause ?? undefined}>
               <SelectTrigger>
                 <SelectValue placeholder="Select a cause to support" />
               </SelectTrigger>
@@ -166,21 +161,20 @@ export default function CauseSelectionForm() {
               </SelectContent>
             </Select>
           </div>
-          <DialogFooter>
-            <Button onClick={handleProceed} disabled={!selectedCause}>
+          <DialogFooter className="mt-6">
+            <Button onClick={handleCauseProceed} disabled={!selectedCause}>
               Proceed
             </Button>
           </DialogFooter>
         </>
       )}
 
-      {/* Step 2: Select Specific Educational Initiative */}
       {step === 2 && selectedCause === "educational" && (
         <>
-          <DialogHeader>
-            <DialogTitle>THANKS FOR YOUR SUPPORT IN OUR EDUCATIONAL INITIATIVES</DialogTitle>
+          <DialogHeader className="text-center mb-6">
+            <DialogTitle className="text-xl font-bold font-headline">THANKS FOR YOUR SUPPORT IN OUR EDUCATIONAL INITIATIVES</DialogTitle>
           </DialogHeader>
-          <div className="py-4">
+          <div className="space-y-4">
             <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
               <SelectTrigger>
                 <SelectValue placeholder="Select a specific educational initiative to support" />
@@ -194,7 +188,7 @@ export default function CauseSelectionForm() {
               </SelectContent>
             </Select>
           </div>
-          <DialogFooter className="justify-between">
+          <DialogFooter className="mt-6 justify-between">
             <Button variant="outline" onClick={handleBack}>
               Back
             </Button>
@@ -205,20 +199,23 @@ export default function CauseSelectionForm() {
         </>
       )}
 
-      {/* Donation Form Dialog */}
       <Dialog
         open={isFormOpen}
         onOpenChange={(isOpen) => {
           setIsFormOpen(isOpen);
           if (!isOpen) {
-            resetAll(); // Reset state when form dialog is closed
+            resetAll();
           }
         }}
       >
         <DialogContent className="sm:max-w-[800px] p-0 max-h-[90vh] overflow-y-auto">
-          {DonationFormToRender ? <DonationFormToRender /> : <p>Form not available.</p>}
+          {selectedSubCause && subCauseToFormComponent[selectedSubCause] ? (
+            React.createElement(subCauseToFormComponent[selectedSubCause]!)
+          ) : (
+            <div className="p-6">Form not available for this selection.</div>
+          )}
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 }
