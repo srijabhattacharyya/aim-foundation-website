@@ -245,7 +245,7 @@ export default function CauseSelectionForm() {
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a cause to support" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent position="popper" side="bottom">
                   {mainCauses.map((cause) => (
                     <SelectItem key={cause.value} value={cause.value}>
                       {cause.label}
@@ -270,12 +270,12 @@ export default function CauseSelectionForm() {
                 Choose a specific initiative or make a general donation to education.
               </DialogDescription>
             </DialogHeader>
-            <div className="space-y-4 py-4">
+            <div className="space-y-4 py-8">
                <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a specific educational initiative to support" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent position="popper" side="bottom">
                   {educationalInitiatives.map((initiative) => (
                     <SelectItem key={initiative.value} value={initiative.value}>
                       {initiative.label}
@@ -303,12 +303,12 @@ export default function CauseSelectionForm() {
                 Choose a specific initiative or make a general donation to healthcare.
               </DialogDescription>
             </DialogHeader>
-            <div className="space-y-4 py-4">
+            <div className="space-y-4 py-8">
                <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a specific healthcare initiative to support" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent position="popper" side="bottom">
                   {healthcareInitiatives.map((initiative) => (
                     <SelectItem key={initiative.value} value={initiative.value}>
                       {initiative.label}
