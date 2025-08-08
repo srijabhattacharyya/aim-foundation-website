@@ -70,8 +70,15 @@ export default function CauseSelectionForm() {
   };
 
   const handleBack = () => {
-      setStep(1);
-      setSelectedSubCause(undefined);
+      if (step === 2) {
+          setStep(1);
+          setSelectedSubCause(undefined);
+      } else if (step === 3 && selectedCause === 'educational') {
+          setStep(2);
+      } else {
+          setStep(1);
+          setSelectedCause(undefined);
+      }
   }
 
   const renderForm = () => {
@@ -100,7 +107,7 @@ export default function CauseSelectionForm() {
             return (
                 <div className="text-center p-8">
                     <p>Donation form for '{causes.find(c => c.value === selectedCause)?.label}' is coming soon.</p>
-                    <Button onClick={() => { setStep(1); setSelectedCause(undefined); }} className="mt-4">Back</Button>
+                    <Button onClick={handleBack} className="mt-4">Back</Button>
                 </div>
             );
     }
@@ -115,7 +122,7 @@ export default function CauseSelectionForm() {
           </CardHeader>
           <CardContent>
               <div className="space-y-6">
-                  <Select onValueChange={setSelectedCause} value={selectedCause}>
+                  <Select onValueChange={setSelectedCause} value={selectedCause ?? undefined}>
                       <SelectTrigger className="w-full">
                           <SelectValue placeholder="Select a cause to support" />
                       </SelectTrigger>
@@ -144,7 +151,7 @@ export default function CauseSelectionForm() {
             </CardHeader>
             <CardContent>
                 <div className="space-y-6">
-                    <Select onValueChange={setSelectedSubCause} value={selectedSubCause}>
+                    <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
                         <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select a specific educational initiative to support" />
                         </SelectTrigger>
@@ -176,7 +183,7 @@ export default function CauseSelectionForm() {
       return (
           <div className="text-center p-8">
               <p>Donation form for '{causes.find(c => c.value === selectedCause)?.label}' is coming soon.</p>
-              <Button onClick={() => { setStep(1); setSelectedCause(undefined); }} className="mt-4">Back</Button>
+              <Button onClick={handleBack} className="mt-4">Back</Button>
           </div>
       );
   }
