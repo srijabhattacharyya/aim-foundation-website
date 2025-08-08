@@ -9,11 +9,34 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DigiEmpowerDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const educationalInitiatives = [
+  { href: '/innocent-smiles', label: 'Innocent Smiles' },
+  { href: '/inspire-eduLab', label: 'Inspire EduLab' },
+  { href: '/eduaccess', label: 'EduAccess' },
+  { href: '/empower-english', label: 'Empower English' },
+  { href: '/digiempower', label: 'DigiEmpower' },
+  { href: '/sheconnects', label: 'SheConnects' },
+  { href: '/milieu', label: 'Milieu' },
+  { href: '/vidyashakti', label: 'VidyaShakti' },
+];
+
+const otherInitiatives = [
+    { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
 
 export default function DigiEmpowerClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -47,28 +70,72 @@ export default function DigiEmpowerClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">No Child Left Offline</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    DigiEmpower, an initiative supported by the Dhritiman Abilizing Infinity Foundation, is dedicated to promoting digital literacy among underprivileged and Adivasi children in both urban and remote regions of West Bengal. Operating in areas such as Kolkata, Rangakhila in Purba Bardhaman, and Dakshin Dhupjhora in Jalpaiguri, the program reaches children who traditionally have limited or no access to technology.
-                  </p>
-                  <p>
-                    Through its Dhriti Abilizing Centres, the AIM Foundation provides hands-on computer training that equips children with essential digital skills—such as typing, navigating the internet, using productivity software, and understanding online safety. These skills are critical in today’s technology-driven world and form the foundation for future educational and career opportunities.
-                  </p>
-                  <p>
-                    DigiEmpower recognizes that digital competence is no longer optional but a necessity. By offering structured training and exposure to technology, the initiative helps children develop the confidence and knowledge needed to thrive in school, compete in the job market, and participate fully in an increasingly digital society.
-                  </p>
-                  <p>
-                    Importantly, the program ensures equitable access by extending its reach to Adivasi communities in Aushgram, Rangakhila, and Dakshin Dhupjhora, where children often face both social and infrastructural barriers. By bridging the digital divide, DigiEmpower not only enhances individual futures but also fosters broader social inclusion and empowerment across rural Bengal.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Bridge the Digital Divide—One Child at a Time</h3>
-                  <p>
-                    In a world where digital skills shape futures, many underprivileged and Adivasi children remain disconnected. <strong>Your donation can help us provide computers, internet access, and hands-on training at our Dhriti Abilizing Centres—turning curiosity into competence.</strong> With your support, a child in a remote village can learn to type, explore the internet safely, and build skills vital for school and future employment. Empower a generation to thrive in the digital age—<strong>donate today</strong> to DigiEmpower and light the screen of opportunity.
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+                <aside className="md:col-span-1 space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Educational Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                            {educationalInitiatives.map((item) => (
+                                <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Related Resources</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <Skeleton className="h-40 w-full" />
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Other Initiatives</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2">
+                                {otherInitiatives.map((item) => (
+                                    <li key={item.href}>
+                                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                </aside>
+                <div className="md:col-span-2">
+                    <div className="space-y-6">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">No Child Left Offline</h2>
+                        <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                           <p>
+                            DigiEmpower, an initiative supported by the Dhritiman Abilizing Infinity Foundation, is dedicated to promoting digital literacy among underprivileged and Adivasi children in both urban and remote regions of West Bengal. Operating in areas such as Kolkata, Rangakhila in Purba Bardhaman, and Dakshin Dhupjhora in Jalpaiguri, the program reaches children who traditionally have limited or no access to technology.
+                          </p>
+                          <p>
+                            Through its Dhriti Abilizing Centres, the AIM Foundation provides hands-on computer training that equips children with essential digital skills—such as typing, navigating the internet, using productivity software, and understanding online safety. These skills are critical in today’s technology-driven world and form the foundation for future educational and career opportunities.
+                          </p>
+                          <p>
+                            DigiEmpower recognizes that digital competence is no longer optional but a necessity. By offering structured training and exposure to technology, the initiative helps children develop the confidence and knowledge needed to thrive in school, compete in the job market, and participate fully in an increasingly digital society.
+                          </p>
+                          <p>
+                            Importantly, the program ensures equitable access by extending its reach to Adivasi communities in Aushgram, Rangakhila, and Dakshin Dhupjhora, where children often face both social and infrastructural barriers. By bridging the digital divide, DigiEmpower not only enhances individual futures but also fosters broader social inclusion and empowerment across rural Bengal.
+                          </p>
+                          <h3 className="text-2xl font-bold font-headline pt-4">Bridge the Digital Divide—One Child at a Time</h3>
+                          <p>
+                            In a world where digital skills shape futures, many underprivileged and Adivasi children remain disconnected. <strong>Your donation can help us provide computers, internet access, and hands-on training at our Dhriti Abilizing Centres—turning curiosity into competence.</strong> With your support, a child in a remote village can learn to type, explore the internet safely, and build skills vital for school and future employment. Empower a generation to thrive in the digital age—<strong>donate today</strong> to DigiEmpower and light the screen of opportunity.
+                          </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
               <Dialog open={showForm} onOpenChange={setShowForm}>
