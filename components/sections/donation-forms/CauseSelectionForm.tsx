@@ -181,18 +181,23 @@ export default function CauseSelectionForm() {
 
   const handleCauseProceed = () => {
     if (selectedCause) {
-        if (selectedCause === "educational" || selectedCause === "healthcare") {
+        if (selectedCause === "general") {
+            const formComponent = subCauseToFormComponent[selectedCause];
+            if (formComponent) {
+                setFormComponent(() => formComponent);
+                setIsFormOpen(true);
+            }
+        } else if (selectedCause === "educational" || selectedCause === "healthcare") {
             setSelectedSubCause(undefined); 
             setStep(2);
-            return;
-        }
-        
-        const formComponent = subCauseToFormComponent[selectedCause];
-        if (formComponent) {
-            setFormComponent(() => formComponent);
-            setIsFormOpen(true);
         } else {
-            alert(`Donation form for "${mainCauses.find(c => c.value === selectedCause)?.label}" is coming soon!`);
+            const formComponent = subCauseToFormComponent[selectedCause];
+            if (formComponent) {
+                setFormComponent(() => formComponent);
+                setIsFormOpen(true);
+            } else {
+                alert(`Donation form for "${mainCauses.find(c => c.value === selectedCause)?.label}" is coming soon!`);
+            }
         }
     }
   };
