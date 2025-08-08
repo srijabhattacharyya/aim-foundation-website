@@ -149,6 +149,7 @@ const healthcareInitiatives = [
 // Map sub-cause values to their corresponding form components
 const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "general": DynamicIndividualDonationForm,
+  "educational": DynamicEducationalDonationForm,
   "educational-general": DynamicEducationalDonationForm,
   "innocent-smiles": DynamicInnocentSmilesDonationForm,
   "inspire-edulab": DynamicInspireEduLabDonationForm,
@@ -159,6 +160,7 @@ const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "milieu": DynamicMilieuDonationForm,
   "vidyashakti": DynamicVidyaShaktiDonationForm,
   "gender-equality": DynamicGenderEqualityDonationForm,
+  "healthcare": DynamicHealthcareDonationForm,
   "healthcare-general": DynamicHealthcareDonationForm,
   "cureline": DynamicCureLineDonationForm,
   "surgireach": DynamicSurgiReachDonationForm,
@@ -268,7 +270,7 @@ export default function CauseSelectionForm() {
                 Choose a specific initiative or make a general donation to education.
               </DialogDescription>
             </DialogHeader>
-            <div className="space-y-4">
+            <div className="space-y-4 py-4">
                <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a specific educational initiative to support" />
@@ -301,7 +303,7 @@ export default function CauseSelectionForm() {
                 Choose a specific initiative or make a general donation to healthcare.
               </DialogDescription>
             </DialogHeader>
-            <div className="space-y-4">
+            <div className="space-y-4 py-4">
                <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a specific healthcare initiative to support" />
