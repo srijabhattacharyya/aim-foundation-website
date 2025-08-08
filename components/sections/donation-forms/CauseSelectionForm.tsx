@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -62,6 +61,10 @@ const DynamicGenderEqualityDonationForm = dynamic(
     () => import('./GenderEqualityDonationForm'),
     { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
+const DynamicEducationalDonationForm = dynamic(
+    () => import('./EducationalDonationForm'),
+    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
 
 
 // Cause definitions
@@ -92,8 +95,8 @@ const educationalInitiatives = [
 // Map sub-cause values to their corresponding form components
 const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "general": DynamicIndividualDonationForm,
-  "educational": DynamicIndividualDonationForm,
-  "educational-general": DynamicIndividualDonationForm,
+  "educational": DynamicEducationalDonationForm,
+  "educational-general": DynamicEducationalDonationForm,
   "innocent-smiles": DynamicInnocentSmilesDonationForm,
   "inspire-edulab": DynamicInspireEduLabDonationForm,
   "eduaccess": DynamicEduAccessDonationForm,
@@ -115,18 +118,19 @@ export default function CauseSelectionForm() {
 
   const handleCauseProceed = () => {
     if (selectedCause) {
-      const formComponent = subCauseToFormComponent[selectedCause];
-      if (selectedCause === "educational") {
-        setStep(2);
-        setSelectedSubCause(undefined); // Reset sub-cause when moving to step 2
-        return;
-      }
-      if (formComponent) {
-        setFormComponent(() => formComponent);
-        setIsFormOpen(true);
-        return;
-      }
-      alert(`Donation form for "${mainCauses.find(c => c.value === selectedCause)?.label}" is coming soon!`);
+        if (selectedCause === "educational") {
+            setStep(2);
+            setSelectedSubCause(undefined); // Reset sub-cause for placeholder
+            return;
+        }
+        
+        const formComponent = subCauseToFormComponent[selectedCause];
+        if (formComponent) {
+            setFormComponent(() => formComponent);
+            setIsFormOpen(true);
+        } else {
+            alert(`Donation form for "${mainCauses.find(c => c.value === selectedCause)?.label}" is coming soon!`);
+        }
     }
   };
 
