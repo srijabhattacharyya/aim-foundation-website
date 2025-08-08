@@ -144,7 +144,7 @@ export default function CauseSelectionForm() {
             </CardHeader>
             <CardContent>
                 <div className="space-y-6">
-                    <Select onValueChange={setSelectedSubCause} value={selectedSubCause || undefined}>
+                    <Select onValueChange={setSelectedSubCause}>
                         <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select a specific educational initiative to support" />
                         </SelectTrigger>
