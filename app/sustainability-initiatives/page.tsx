@@ -12,21 +12,21 @@ const initiatives = [
     description: "aims to promote reforestation in areas where land acquisition is not feasible. By distributing saplings directly to villagers, the project overcomes space constraints and fosters active community involvement in afforestation efforts. This grassroots approach helps expand local green cover in a sustainable and inclusive manner.",
     image: "https://placehold.co/600x400.png",
     hint: "urban garden",
-    link: "/green-roots"
+    link: "/green-roots?from=sustainability"
   },
   {
     title: "TideShield",
     description: "is a mangrove restoration initiative on Bali Island in the Sundarbans, launched to revive ecosystems damaged by cyclones Amphan and Yaas. By planting native mangrove species and involving local communities, the project strengthens coastal resilience, prevents erosion, and restores biodiversity along vulnerable shorelines.",
     image: "https://placehold.co/600x400.png",
     hint: "mangrove restoration",
-    link: "/tideshield"
+    link: "/tideshield?from=sustainability"
   },
   {
     title: "Roots of Change",
     description: "is AIM Foundation’s environmental education initiative aimed at cultivating awareness and sustainable habits. Through expert-led seminars, engaging workshops, and impactful learning materials, we empower students, communities, and leaders to take informed action for a greener, more resilient future—starting from the roots.",
     image: "https://placehold.co/600x400.png",
     hint: "environmental education",
-    link: "/roots-of-change"
+    link: "/roots-of-change?from=sustainability"
   },
 ];
 
