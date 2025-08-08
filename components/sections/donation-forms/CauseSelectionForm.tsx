@@ -58,6 +58,11 @@ const DynamicVidyaShaktiDonationForm = dynamic(
   () => import("./VidyaShaktiDonationForm"),
   { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
+const DynamicGenderEqualityDonationForm = dynamic(
+    () => import('./GenderEqualityDonationForm'),
+    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
+
 
 // Cause definitions
 const mainCauses = [
@@ -87,6 +92,7 @@ const educationalInitiatives = [
 // Map sub-cause values to their corresponding form components
 const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "general": DynamicIndividualDonationForm,
+  "educational": DynamicIndividualDonationForm,
   "educational-general": DynamicIndividualDonationForm,
   "innocent-smiles": DynamicInnocentSmilesDonationForm,
   "inspire-edulab": DynamicInspireEduLabDonationForm,
@@ -96,6 +102,7 @@ const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "sheconnects": DynamicSheConnectsDonationForm,
   "milieu": DynamicMilieuDonationForm,
   "vidyashakti": DynamicVidyaShaktiDonationForm,
+  "gender-equality": DynamicGenderEqualityDonationForm,
   // Future forms will be mapped here
 };
 
@@ -108,13 +115,15 @@ export default function CauseSelectionForm() {
 
   const handleCauseProceed = () => {
     if (selectedCause) {
-      if (selectedCause === "general") {
-        setFormComponent(() => subCauseToFormComponent.general);
-        setIsFormOpen(true);
-        return;
-      }
+      const formComponent = subCauseToFormComponent[selectedCause];
       if (selectedCause === "educational") {
         setStep(2);
+        setSelectedSubCause(undefined); // Reset sub-cause when moving to step 2
+        return;
+      }
+      if (formComponent) {
+        setFormComponent(() => formComponent);
+        setIsFormOpen(true);
         return;
       }
       alert(`Donation form for "${mainCauses.find(c => c.value === selectedCause)?.label}" is coming soon!`);
@@ -144,18 +153,18 @@ export default function CauseSelectionForm() {
 
   return (
     <>
-      <div className="p-6">
+      <div className="bg-card p-8 rounded-lg">
         {step === 1 && (
           <>
-            <DialogHeader className="text-center mb-6">
+            <DialogHeader className="text-center mb-8">
               <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
               <DialogDescription>
                 Select a cause you are passionate about to make a donation.
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4">
-              <Select onValueChange={(value) => setSelectedCause(value)} value={selectedCause ?? undefined}>
-                <SelectTrigger>
+              <Select onValueChange={(value) => setSelectedCause(value)} value={selectedCause}>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a cause to support" />
                 </SelectTrigger>
                 <SelectContent>
@@ -167,8 +176,8 @@ export default function CauseSelectionForm() {
                 </SelectContent>
               </Select>
             </div>
-            <DialogFooter className="mt-6">
-              <Button onClick={handleCauseProceed} disabled={!selectedCause}>
+            <DialogFooter className="mt-8">
+              <Button onClick={handleCauseProceed} disabled={!selectedCause} className="w-full">
                 Proceed
               </Button>
             </DialogFooter>
@@ -177,12 +186,15 @@ export default function CauseSelectionForm() {
 
         {step === 2 && selectedCause === "educational" && (
           <>
-            <DialogHeader className="text-center mb-6">
-              <DialogTitle className="text-xl font-bold font-headline">THANKS FOR YOUR SUPPORT IN OUR EDUCATIONAL INITIATIVES</DialogTitle>
+            <DialogHeader className="text-center mb-8">
+              <DialogTitle className="text-xl font-bold font-headline">SUPPORT OUR EDUCATIONAL INITIATIVES</DialogTitle>
+               <DialogDescription>
+                Choose a specific initiative or make a general donation to education.
+              </DialogDescription>
             </DialogHeader>
             <div className="space-y-4">
-              <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
-                <SelectTrigger>
+               <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a specific educational initiative to support" />
                 </SelectTrigger>
                 <SelectContent>
@@ -194,7 +206,7 @@ export default function CauseSelectionForm() {
                 </SelectContent>
               </Select>
             </div>
-            <DialogFooter className="mt-6 justify-between">
+            <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
               <Button variant="outline" onClick={handleBack}>
                 Back
               </Button>
