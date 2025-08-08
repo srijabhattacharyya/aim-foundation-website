@@ -303,7 +303,7 @@ export default function CauseSelectionForm() {
                 Choose a specific initiative or make a general donation to healthcare.
               </DialogDescription>
             </DialogHeader>
-            <div className="space-y-4 py-8">
+            <div className="space-y-4 py-12">
                <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a specific healthcare initiative to support" />
