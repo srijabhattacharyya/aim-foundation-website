@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DetectPage() {
-  return <DetectClientPage />;
+export default function DetectPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+  const from = typeof searchParams.from === 'string' ? searchParams.from : 'healthcare';
+  return <DetectClientPage from={from} />;
 }

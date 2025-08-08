@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MilieuPage() {
-  return <MilieuClientPage />;
+export default function MilieuPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+  const from = typeof searchParams.from === 'string' ? searchParams.from : 'educational';
+  return <MilieuClientPage from={from} />;
 }

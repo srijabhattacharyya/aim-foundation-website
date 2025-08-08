@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ChildFirstPage() {
-  return <ChildFirstClientPage />;
+export default function ChildFirstPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+  const from = typeof searchParams.from === 'string' ? searchParams.from : 'healthcare';
+  return <ChildFirstClientPage from={from} />;
 }

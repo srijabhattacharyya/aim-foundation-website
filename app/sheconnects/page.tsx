@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SheConnectsPage() {
-  return <SheConnectsClientPage />;
+export default function SheConnectsPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+  const from = typeof searchParams.from === 'string' ? searchParams.from : 'educational';
+  return <SheConnectsClientPage from={from} />;
 }

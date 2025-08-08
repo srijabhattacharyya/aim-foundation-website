@@ -5,13 +5,12 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/CycleSafeDonationForm'), { 
     ssr: false,
@@ -48,10 +47,8 @@ const otherInitiatives = [
     { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
 ];
 
-function PageContent() {
+export default function CycleSafeClientPage({ from }: { from: string }) {
     const [showForm, setShowForm] = useState(false);
-    const searchParams = useSearchParams();
-    const from = searchParams.get('from');
 
     let mainInitiatives, title;
 
@@ -182,13 +179,4 @@ function PageContent() {
           <Footer />
         </div>
       );
-}
-
-
-export default function CycleSafeClientPage() {
-    return (
-        <Suspense fallback={<Skeleton className="h-screen w-screen" />}>
-            <PageContent />
-        </Suspense>
-    )
 }

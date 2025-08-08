@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CycleSafePage() {
-  return <CycleSafeClientPage />;
+export default function CycleSafePage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+  const from = typeof searchParams.from === 'string' ? searchParams.from : 'healthcare';
+  return <CycleSafeClientPage from={from} />;
 }

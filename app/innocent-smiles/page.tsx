@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function InnocentSmilesPage() {
-  return <InnocentSmilesClientPage />;
+export default function InnocentSmilesPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+  const from = typeof searchParams.from === 'string' ? searchParams.from : 'educational';
+  return <InnocentSmilesClientPage from={from} />;
 }
