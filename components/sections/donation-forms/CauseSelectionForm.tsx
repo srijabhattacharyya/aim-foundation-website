@@ -38,6 +38,10 @@ const DynamicGenderEqualityDonationForm = dynamic(
     () => import('./GenderEqualityDonationForm'),
     { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
+const DynamicChildcareDonationForm = dynamic(
+    () => import('./ChildcareDonationForm'),
+    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
 const DynamicInnocentSmilesDonationForm = dynamic(
   () => import("./InnocentSmilesDonationForm"),
   { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
@@ -163,6 +167,13 @@ const genderEqualityInitiatives = [
     { value: "krishti", label: "Krishti" },
 ];
 
+const childcareInitiatives = [
+    { value: "childcare-general", label: "General Donation to support Childcare Initiatives" },
+    { value: "innocent-smiles", label: "Innocent Smiles" },
+    { value: "milieu", label: "Milieu" },
+    { value: "childfirst", label: "ChildFirst" },
+];
+
 // Map sub-cause values to their corresponding form components
 const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "general": DynamicIndividualDonationForm,
@@ -191,6 +202,8 @@ const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "oralscan": DynamicOralScanDonationForm,
   "cyclesafe": DynamicCycleSafeDonationForm,
   "soulcircle": DynamicSoulCircleDonationForm,
+  "childcare": DynamicChildcareDonationForm,
+  "childcare-general": DynamicChildcareDonationForm,
 };
 
 export default function CauseSelectionForm() {
@@ -208,7 +221,7 @@ export default function CauseSelectionForm() {
                 setFormComponent(() => formComponent);
                 setIsFormOpen(true);
             }
-        } else if (selectedCause === "educational" || selectedCause === "healthcare" || selectedCause === "gender-equality") {
+        } else if (selectedCause === "educational" || selectedCause === "healthcare" || selectedCause === "gender-equality" || selectedCause === "childcare") {
             setSelectedSubCause(undefined); 
             setStep(2);
         } else {
@@ -235,8 +248,10 @@ export default function CauseSelectionForm() {
                 list = educationalInitiatives;
             } else if (selectedCause === 'healthcare') {
                 list = healthcareInitiatives;
-            } else {
+            } else if (selectedCause === 'gender-equality') {
                 list = genderEqualityInitiatives;
+            } else {
+                list = childcareInitiatives;
             }
             alert(`Donation form for "${list.find(c => c.value === selectedSubCause)?.label}" is coming soon!`);
         }
@@ -386,6 +401,39 @@ export default function CauseSelectionForm() {
                 </DialogFooter>
             </>
         )}
+
+        {step === 2 && selectedCause === "childcare" && (
+            <>
+                <DialogHeader className="text-center mb-8">
+                <DialogTitle className="text-xl font-bold font-headline">SUPPORT CHILDCARE INITIATIVES</DialogTitle>
+                <DialogDescription>
+                    Choose a specific initiative or make a general donation to childcare.
+                </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 py-12">
+                <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
+                    <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a specific childcare initiative to support" />
+                    </SelectTrigger>
+                    <SelectContent position="popper" side="bottom">
+                    {childcareInitiatives.map((initiative) => (
+                        <SelectItem key={initiative.value} value={initiative.value}>
+                        {initiative.label}
+                        </SelectItem>
+                    ))}
+                    </SelectContent>
+                </Select>
+                </div>
+                <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
+                <Button variant="outline" onClick={handleBack}>
+                    Back
+                </Button>
+                <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
+                    Proceed
+                </Button>
+                </DialogFooter>
+            </>
+        )}
       </div>
 
       <Dialog
@@ -408,3 +456,5 @@ export default function CauseSelectionForm() {
     </>
   );
 }
+
+    
