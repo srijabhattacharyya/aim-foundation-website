@@ -1,6 +1,8 @@
 
 import type { Metadata } from 'next';
 import ChildFirstClientPage from './ChildFirstClientPage';
+import { Suspense } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
   title: 'ChildFirst - AIM Foundation',
@@ -12,5 +14,9 @@ export const metadata: Metadata = {
 
 export default function ChildFirstPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const from = typeof searchParams.from === 'string' ? searchParams.from : 'healthcare';
-  return <ChildFirstClientPage from={from} />;
+  return (
+    <Suspense fallback={<Skeleton className="h-screen w-full" />}>
+      <ChildFirstClientPage from={from} />
+    </Suspense>
+  );
 }

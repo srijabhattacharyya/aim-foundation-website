@@ -1,6 +1,8 @@
 
 import type { Metadata } from 'next';
 import CycleSafeClientPage from './CycleSafeClientPage';
+import { Suspense } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
   title: 'CycleSafe - AIM Foundation',
@@ -12,5 +14,9 @@ export const metadata: Metadata = {
 
 export default function CycleSafePage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const from = typeof searchParams.from === 'string' ? searchParams.from : 'healthcare';
-  return <CycleSafeClientPage from={from} />;
+  return (
+    <Suspense fallback={<Skeleton className="h-screen w-full" />}>
+      <CycleSafeClientPage from={from} />
+    </Suspense>
+  );
 }
