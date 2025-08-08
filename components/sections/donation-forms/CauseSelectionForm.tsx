@@ -47,17 +47,17 @@ const educationalInitiatives = [
 
 export default function CauseSelectionForm() {
   const [step, setStep] = useState(1);
-  const [selectedCause, setSelectedCause] = useState<string | null>(null);
-  const [selectedSubCause, setSelectedSubCause] = useState<string | null>(null);
+  const [selectedCause, setSelectedCause] = useState<string | undefined>(undefined);
+  const [selectedSubCause, setSelectedSubCause] = useState<string | undefined>(undefined);
 
   const handleCauseProceed = () => {
     if (selectedCause) {
       if (selectedCause === 'general') {
-        setStep(3); // Go straight to form
+        setStep(3);
       } else if (selectedCause === 'educational') {
+        setSelectedSubCause(undefined); // Reset sub-cause when entering step 2
         setStep(2);
       } else {
-        // For other causes, show placeholder for now
         setStep(4);
       }
     }
@@ -71,7 +71,7 @@ export default function CauseSelectionForm() {
 
   const handleBack = () => {
       setStep(1);
-      setSelectedSubCause(null);
+      setSelectedSubCause(undefined);
   }
 
   const renderForm = () => {
@@ -100,7 +100,7 @@ export default function CauseSelectionForm() {
             return (
                 <div className="text-center p-8">
                     <p>Donation form for '{causes.find(c => c.value === selectedCause)?.label}' is coming soon.</p>
-                    <Button onClick={() => { setStep(1); setSelectedCause(null); }} className="mt-4">Back</Button>
+                    <Button onClick={() => { setStep(1); setSelectedCause(undefined); }} className="mt-4">Back</Button>
                 </div>
             );
     }
@@ -115,7 +115,7 @@ export default function CauseSelectionForm() {
           </CardHeader>
           <CardContent>
               <div className="space-y-6">
-                  <Select onValueChange={setSelectedCause} value={selectedCause ?? undefined}>
+                  <Select onValueChange={setSelectedCause} value={selectedCause}>
                       <SelectTrigger className="w-full">
                           <SelectValue placeholder="Select a cause to support" />
                       </SelectTrigger>
@@ -144,7 +144,7 @@ export default function CauseSelectionForm() {
             </CardHeader>
             <CardContent>
                 <div className="space-y-6">
-                    <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
+                    <Select onValueChange={setSelectedSubCause} value={selectedSubCause}>
                         <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select a specific educational initiative to support" />
                         </SelectTrigger>
@@ -176,7 +176,7 @@ export default function CauseSelectionForm() {
       return (
           <div className="text-center p-8">
               <p>Donation form for '{causes.find(c => c.value === selectedCause)?.label}' is coming soon.</p>
-              <Button onClick={() => { setStep(1); setSelectedCause(null); }} className="mt-4">Back</Button>
+              <Button onClick={() => { setStep(1); setSelectedCause(undefined); }} className="mt-4">Back</Button>
           </div>
       );
   }
