@@ -4,8 +4,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, ChevronDown, LogIn } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '../ui/sheet';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import Image from 'next/image';
 import {
   DropdownMenu,
@@ -16,19 +16,19 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuPortal,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../ui/accordion";
-import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog';
+} from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import dynamic from 'next/dynamic';
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from '@/components/ui/skeleton';
 
-const DynamicIndividualDonationForm = dynamic(
-  () => import('../sections/donation-forms/IndividualDonationForm'),
+const CauseSelectionForm = dynamic(
+  () => import('../sections/donation-forms/CauseSelectionForm'),
   {
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
@@ -36,13 +36,12 @@ const DynamicIndividualDonationForm = dynamic(
 );
 
 const DynamicSponsorChildDonationForm = dynamic(
-  () => import('../sections/donation-forms/SponsorChildDonationForm'),
+  () => import('@/components/sections/donation-forms/SponsorChildDonationForm'),
   {
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
   }
 );
-
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -179,22 +178,22 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const [sponsorDialogOpen, setSponsorDialogOpen] = useState(false);
-  const [donateDialogOpen, setDonateDialogOpen] = useState(false);
+    const [sponsorDialogOpen, setSponsorDialogOpen] = useState(false);
+    const [donateDialogOpen, setDonateDialogOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex h-[100px] items-center px-4 md:px-6">
           <div className="flex h-full items-center mr-auto">
             <Link href="/" className="flex items-center" aria-label="AIM Foundation Home">
-              <Image src="/images/logo.png" alt="AIM Foundation Logo" width={150} height={60} />
+              <Image src="/images/logo.png" alt="AIM Foundation Logo" width={150} height={60} className="w-auto h-auto"/>
             </Link>
           </div>
           <div className="hidden md:flex flex-col h-full">
               <div className="flex justify-end items-center h-1/2 border-b">
                   <div className="flex items-center gap-2">
                     <Button asChild variant="ghost" size="sm">
-                        <Link href="/admin/login" target="_blank" rel="noopener noreferrer">
+                        <Link href="/admin/login">
                         <LogIn className="mr-2 h-4 w-4" /> Login
                         </Link>
                     </Button>
@@ -211,7 +210,7 @@ const Navbar = () => {
                             <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
                         </DialogTrigger>
                         <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                            <DynamicIndividualDonationForm />
+                           <CauseSelectionForm />
                         </DialogContent>
                     </Dialog>
                   </div>
@@ -268,7 +267,7 @@ const Navbar = () => {
                     <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
                 </DialogTrigger>
                  <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                    <DynamicIndividualDonationForm />
+                    <CauseSelectionForm />
                 </DialogContent>
             </Dialog>
             <Sheet>
@@ -282,7 +281,7 @@ const Navbar = () => {
                 <div className="flex flex-col p-6">
                   <div className="flex justify-between items-center mb-6">
                     <Link href="/" className="flex items-center gap-2" aria-label="AIM Foundation Home">
-                      <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
+                      <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} className="w-auto h-auto"/>
                     </Link>
                     <SheetClose asChild>
                       <Button variant="ghost" size="icon">
@@ -347,8 +346,8 @@ const Navbar = () => {
                         </SheetClose>
                       )
                     ))}
-                     <SheetClose asChild>
-                      <Link href="/admin/login" target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-foreground transition-colors hover:text-primary flex items-center">
+                    <SheetClose asChild>
+                      <Link href="/admin/login" className="text-lg font-medium text-foreground transition-colors hover:text-primary flex items-center">
                           <LogIn className="mr-2 h-5 w-5" /> Login
                       </Link>
                     </SheetClose>
@@ -373,8 +372,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-    
-    
-
-    
