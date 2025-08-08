@@ -278,7 +278,7 @@ const Navbar = () => {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
+              <SheetContent side="right" className="overflow-y-auto">
                 <div className="flex flex-col p-6">
                   <div className="flex justify-between items-center mb-6">
                     <Link href="/" className="flex items-center gap-2" aria-label="AIM Foundation Home">
