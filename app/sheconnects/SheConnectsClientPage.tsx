@@ -5,12 +5,13 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SheConnectsDonationForm'), { 
     ssr: false,
@@ -18,14 +19,22 @@ const DynamicDonationForm = dynamic(() => import('../../components/sections/dona
 });
 
 const educationalInitiatives = [
-  { href: '/innocent-smiles', label: 'Innocent Smiles' },
-  { href: '/inspire-eduLab', label: 'Inspire EduLab' },
-  { href: '/eduaccess', label: 'EduAccess' },
-  { href: '/empower-english', label: 'Empower English' },
-  { href: '/digiempower', label: 'DigiEmpower' },
-  { href: '/sheconnects', label: 'SheConnects' },
-  { href: '/milieu', label: 'Milieu' },
-  { href: '/vidyashakti', label: 'VidyaShakti' },
+  { href: '/innocent-smiles?from=educational', label: 'Innocent Smiles' },
+  { href: '/inspire-eduLab?from=educational', label: 'Inspire EduLab' },
+  { href: '/eduaccess?from=educational', label: 'EduAccess' },
+  { href: '/empower-english?from=educational', label: 'Empower English'},
+  { href: '/digiempower?from=educational', label: 'DigiEmpower' },
+  { href: '/sheconnects?from=educational', label: 'SheConnects' },
+  { href: '/milieu?from=educational', label: 'Milieu' },
+  { href: '/vidyashakti?from=educational', label: 'VidyaShakti' },
+];
+
+const genderEqualityInitiatives = [
+    { href: '/sheconnects?from=gender-equality', label: 'SheConnects' },
+    { href: '/cyclesafe?from=gender-equality', label: 'CycleSafe' },
+    { href: '/detect?from=gender-equality', label: 'Detect' },
+    { href: '/suidhaga?from=gender-equality', label: 'SuiDhaga' },
+    { href: '/krishti?from=gender-equality', label: 'Krishti' },
 ];
 
 const otherInitiatives = [
@@ -37,6 +46,66 @@ const otherInitiatives = [
     { href: '/disaster-management', label: 'Disaster Management' },
     { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
 ];
+
+function SidebarContent() {
+    const searchParams = useSearchParams();
+    const from = searchParams.get('from');
+
+    let mainInitiatives, title;
+
+    if (from === 'gender-equality') {
+        mainInitiatives = genderEqualityInitiatives;
+        title = "Gender Equality";
+    } else { // Default to educational
+        mainInitiatives = educationalInitiatives;
+        title = "Educational Initiatives";
+    }
+
+    return (
+        <aside className="md:col-span-1 space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle>{title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ul className="space-y-2">
+                    {mainInitiatives.map((item) => (
+                        <li key={item.href}>
+                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                            {item.label}
+                        </Link>
+                        </li>
+                    ))}
+                    </ul>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Related Resources</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Skeleton className="h-40 w-full" />
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Other Initiatives</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ul className="space-y-2">
+                        {otherInitiatives.map((item) => (
+                            <li key={item.href}>
+                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                                    {item.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </CardContent>
+            </Card>
+        </aside>
+    );
+}
 
 export default function SheConnectsClientPage() {
   const [showForm, setShowForm] = useState(false);
@@ -71,48 +140,9 @@ export default function SheConnectsClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
              <div className="grid md:grid-cols-3 gap-12">
-                <aside className="md:col-span-1 space-y-8">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Educational Initiatives</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-2">
-                            {educationalInitiatives.map((item) => (
-                                <li key={item.href}>
-                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
-                                    {item.label}
-                                </Link>
-                                </li>
-                            ))}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Related Resources</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <Skeleton className="h-40 w-full" />
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Other Initiatives</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-2">
-                                {otherInitiatives.map((item) => (
-                                    <li key={item.href}>
-                                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
-                                            {item.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                </aside>
+                <Suspense fallback={<Skeleton className="h-full w-full md:col-span-1" />}>
+                    <SidebarContent />
+                </Suspense>
                 <div className="md:col-span-2">
                     <div className="space-y-6">
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Women Through Technology.</h2>
