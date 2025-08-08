@@ -141,6 +141,7 @@ export default function CauseSelectionForm() {
         <Card className="w-full border-0 shadow-none rounded-none">
             <CardHeader className="text-center">
                 <CardTitle className="text-2xl font-bold font-headline">THANKS FOR YOUR SUPPORT IN OUR EDUCATIONAL INITIATIVES</CardTitle>
+                <CardDescription>Choose a specific educational initiative to support.</CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="space-y-6">
