@@ -10,8 +10,8 @@ import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
-  title: 'AIM Foundation Hub - Building a Brighter Future, Together',
-  description: 'We are committed to empowering communities through education, healthcare, and sustainable development.',
+  title: 'AIM Foundation | Leading NGO in Kolkata for Education, Healthcare & Empowerment',
+  description: 'AIM Foundation is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development for underprivileged communities across India.',
   alternates: {
     canonical: '/',
   },
