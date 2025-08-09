@@ -4,6 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
+import Image from "next/image";
 
 const healthcareInitiatives = [
     { href: '/cureline?from=healthcare', label: 'CureLine' },
@@ -100,6 +101,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         'childcare': { title: "Childcare Initiatives", initiatives: childcareInitiatives },
         'sustainability': { title: "Sustainability Initiatives", initiatives: sustainabilityInitiatives },
         'healthcare': { title: "Healthcare Initiatives", initiatives: healthcareInitiatives },
+        'relief': { title: "Our Initiatives", initiatives: ourInitiatives },
     };
     
     const renderMainLists = () => {
@@ -116,98 +118,103 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         }
 
         // Fallback for pages not in the config or with a 'from' not in the list
-        return <InitiativeList title="Healthcare Initiatives" initiatives={healthcareInitiatives} />;
+        return <InitiativeList title="Our Initiatives" initiatives={ourInitiatives} />;
     }
 
     const renderRelatedResources = () => {
         let content;
+        let image;
+
         if (pathname.includes('/detect')) {
             content = (
                 <Link href="/blog/the-quiet-revolution-in-womens-health" className="text-muted-foreground hover:text-primary transition-colors">
                     The Quiet Revolution in Women’s Health
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "Detect initiative", hint: "women health rural"};
         } else if (pathname.includes('/milieu')) {
             content = (
                 <Link href="/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu" className="text-muted-foreground hover:text-primary transition-colors">
                     Nurturing a Kinder Tomorrow: The Story of Milieu
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "Milieu initiative", hint: "children collaboration"};
         } else if (pathname.includes('/suidhaga')) {
             content = (
                 <Link href="/blog/threading-changes-the-suidhaga-story" className="text-muted-foreground hover:text-primary transition-colors">
                     Threading Changes: The SuiDhaga Story
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "SuiDhaga initiative", hint: "women tailoring"};
         } else if (pathname.includes('/inspire-eduLab')) {
             content = (
                 <Link href="/blog/redefining-classrooms-for-a-digital-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
                     Redefining Classrooms for a Digital Tomorrow
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "Inspire EduLab initiative", hint: "smart classroom children"};
         } else if (pathname.includes('/eduaccess')) {
              content = (
                 <Link href="/blog/teaching-beyond-boundaries" className="text-muted-foreground hover:text-primary transition-colors">
                     Teaching Beyond Boundaries
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "EduAccess initiative", hint: "online learning rural"};
         } else if (pathname.includes('/krishti')) {
             content = (
                 <Link href="/blog/crafting-futures-the-krishti-story" className="text-muted-foreground hover:text-primary transition-colors">
                     Crafted by Her. Backed by Krishti.
                 </Link>
             );
+             image = { src: "https://placehold.co/600x400.png", alt: "Krishti initiative", hint: "women entrepreneurship"};
         } else if (pathname.includes('/surgireach')) {
             content = (
                 <Link href="/blog/surgery-shouldnt-be-a-luxury" className="text-muted-foreground hover:text-primary transition-colors">
                     Surgery Shouldn’t Be a Luxury
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "SurgiReach initiative", hint: "operating room surgery"};
         } else if (pathname.includes('/oralscan')) {
             content = (
                 <Link href="/blog/screening-today-for-a-healthier-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
                     Screening Today for a Healthier Tomorrow
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "OralScan initiative", hint: "oral cancer screening"};
         } else if (pathname.includes('/green-roots')) {
             content = (
                 <Link href="/blog/planting-hope-growing-futures" className="text-muted-foreground hover:text-primary transition-colors">
                     Planting Hope, Growing Futures
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "GreenRoots initiative", hint: "community planting trees"};
         } else if (pathname.includes('/empower-english')) {
             content = (
                 <Link href="/blog/empower-english-story" className="text-muted-foreground hover:text-primary transition-colors">
                     Confidence Begins with Conversation
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "Empower English initiative", hint: "english speaking class"};
         } else if (pathname.includes('/sighthope')) {
              content = (
                 <Link href="/blog/restoring-sight-rekindling-dreams" className="text-muted-foreground hover:text-primary transition-colors">
                     Restoring Sight, Rekindling Dreams
                 </Link>
             );
+            image = { src: "https://placehold.co/600x400.png", alt: "SightHope initiative", hint: "vision eye exam"};
         } else {
-            return (
-                 <Card>
-                    <CardHeader>
-                        <CardTitle>Related Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-muted-foreground text-sm">No related resources for this initiative.</p>
-                    </CardContent>
-                </Card>
-            );
+            image = { src: "https://placehold.co/600x400.png", alt: "Related resource image", hint: "community" };
         }
 
         return (
-            <Card>
-                <CardHeader>
-                    <CardTitle>Related Resources</CardTitle>
+             <Card>
+                <CardHeader className="p-0">
+                   {image && <Image src={image.src} alt={image.alt} width={600} height={400} data-ai-hint={image.hint} className="w-full h-auto object-cover" />}
                 </CardHeader>
-                <CardContent>
-                    <ul className="space-y-2">
-                        <li>{content}</li>
+                <CardContent className="p-4">
+                    <CardTitle>Related Resources</CardTitle>
+                    <ul className="space-y-2 mt-2">
+                        <li>{content ? content : <p className="text-muted-foreground text-sm">No related resources for this initiative.</p>}</li>
                     </ul>
                 </CardContent>
             </Card>
@@ -218,7 +225,6 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         <aside className="md:col-span-1 space-y-8">
             {renderRelatedResources()}
             {renderMainLists()}
-            <InitiativeList title="Our Initiatives" initiatives={ourInitiatives} />
         </aside>
     );
 }

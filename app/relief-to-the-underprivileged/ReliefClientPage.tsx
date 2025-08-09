@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/ReliefDonationForm'), { 
     ssr: false,
@@ -48,32 +49,35 @@ export default function ReliefClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Extending a Helping Hand, Restoring Dignity.</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    Our Relief to the Underprivileged program is a cornerstone of our commitment to immediate and compassionate action. We provide essential support to individuals and families facing extreme hardship due to poverty, lack of resources, or sudden crises. This initiative is about more than just aid; it's about restoring hope and dignity.
-                  </p>
-                  <p>
-                    We work to address the most urgent needs of marginalized communities, including those in remote villages, urban slums, and areas often overlooked by mainstream support systems.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Our relief efforts include:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Distribution of nutritious food and ration kits.</li>
-                    <li>Provision of clean drinking water and sanitation supplies.</li>
-                    <li>Distribution of clothing, blankets, and essential household items.</li>
-                    <li>Support for shelter and basic living necessities.</li>
-                  </ul>
-                  <p>
-                    By providing this crucial support, we help alleviate immediate suffering and create a foundation from which families can begin to rebuild their lives. Our goal is to ensure that no one is left behind and that everyone has access to the basic necessities required for a dignified life.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Be the Lifeline for Someone in Need</h3>
-                  <p>
-                    For many, a single meal, a warm blanket, or access to clean water can be a lifeline. Your donation provides immediate, tangible relief to those who have the least. You can help us reach more families, provide more meals, and offer a glimmer of hope in the darkest of times. Your support ensures that our helping hand can extend to every person who needs it.
-                  </p>
+             <div className="grid md:grid-cols-3 gap-12">
+                <InitiativeSidebar from="relief" />
+                <div className="md:col-span-2">
+                    <div className="space-y-6">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Extending a Helping Hand, Restoring Dignity.</h2>
+                        <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                           <p>
+                            Our Relief to the Underprivileged program is a cornerstone of our commitment to immediate and compassionate action. We provide essential support to individuals and families facing extreme hardship due to poverty, lack of resources, or sudden crises. This initiative is about more than just aid; it's about restoring hope and dignity.
+                          </p>
+                          <p>
+                            We work to address the most urgent needs of marginalized communities, including those in remote villages, urban slums, and areas often overlooked by mainstream support systems.
+                          </p>
+                          <h3 className="text-2xl font-bold font-headline pt-4">Our relief efforts include:</h3>
+                          <ul className="list-disc list-inside space-y-2">
+                            <li>Distribution of nutritious food and ration kits.</li>
+                            <li>Provision of clean drinking water and sanitation supplies.</li>
+                            <li>Distribution of clothing, blankets, and essential household items.</li>
+                            <li>Support for shelter and basic living necessities.</li>
+                          </ul>
+                          <p>
+                            By providing this crucial support, we help alleviate immediate suffering and create a foundation from which families can begin to rebuild their lives. Our goal is to ensure that no one is left behind and that everyone has access to the basic necessities required for a dignified life.
+                          </p>
+                          <h3 className="text-2xl font-bold font-headline pt-4">Be the Lifeline for Someone in Need</h3>
+                          <p>
+                            For many, a single meal, a warm blanket, or access to clean water can be a lifeline. Your donation provides immediate, tangible relief to those who have the least. You can help us reach more families, provide more meals, and offer a glimmer of hope in the darkest of times. Your support ensures that our helping hand can extend to every person who needs it.
+                          </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
               <Dialog open={showForm} onOpenChange={setShowForm}>
