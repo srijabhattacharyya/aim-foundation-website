@@ -119,6 +119,14 @@ const blogPosts = [
     hint: 'environmental awareness education',
     excerpt: 'Discover how the Roots of Change initiative is cultivating environmental awareness and inspiring sustainable action from the ground up.',
     date: 'January 16, 2024',
+  },
+  {
+    slug: 'project-sheconnects',
+    title: 'Project SheConnects: Empowering Women Through Technology',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'women technology',
+    excerpt: 'Discover how SheConnects is bridging the digital gender gap and empowering women to build sustainable livelihoods online.',
+    date: 'January 23, 2024',
   }
 ];
 

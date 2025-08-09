@@ -218,6 +218,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "Roots of Change initiative", hint: "environmental awareness education"};
+        } else if (pathname.includes('/sheconnects')) {
+            content = (
+                <Link href="/blog/project-sheconnects" className="text-muted-foreground hover:text-primary transition-colors">
+                    Project SheConnects: Empowering Women Through Technology
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "SheConnects initiative", hint: "women technology"};
         }
 
 

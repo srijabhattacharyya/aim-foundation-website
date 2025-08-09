@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/restoring-sight-rekindling-dreams',
     '/blog/relief-to-the-underprivileged',
     '/blog/roots-of-change',
+    '/blog/project-sheconnects',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
