@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DisasterManagementDonationForm'), { 
     ssr: false,
@@ -47,30 +48,33 @@ export default function DisasterManagementClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Standing Strong in Times of Crisis.</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    When disaster strikes, AIM Foundation is on the front lines, providing swift and effective relief to affected communities. Our disaster management program is designed to address the immediate needs of those impacted by natural calamities like floods, cyclones, and earthquakes, as well as other emergencies.
-                  </p>
-                  <p>
-                    Our rapid response teams work tirelessly to deliver critical aid where it's needed most, ensuring that vulnerable populations receive the support necessary to survive and recover.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Our Emergency Relief Services Include:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Distribution of emergency food, clean water, and hygiene kits.</li>
-                    <li>Provision of temporary shelter and essential supplies like blankets and clothing.</li>
-                    <li>Deployment of mobile medical units to provide first aid and essential healthcare.</li>
-                    <li>Psychosocial support to help individuals cope with trauma and stress.</li>
-                  </ul>
-                  <p>
-                    Beyond immediate relief, we are committed to long-term recovery and resilience-building. We work with communities to rebuild infrastructure, restore livelihoods, and implement disaster preparedness programs to mitigate the impact of future crises. Our goal is not just to help people survive, but to help them rebuild their lives with dignity and hope.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Be a Beacon of Hope in the Storm</h3>
-                  <p>
-                    Your contribution can provide life-saving assistance to a family devastated by disaster. A donation today can provide emergency shelter, a week's worth of food, or critical medical supplies. Stand with us as we stand with them. <strong>Your support can turn despair into hope and help communities rebuild stronger than before.</strong>
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+              <InitiativeSidebar from="disaster-management" />
+              <div className="md:col-span-2">
+                <div className="space-y-6">
+                  <h2 className="text-3xl md:text-4xl font-bold font-headline">Standing Strong in Times of Crisis.</h2>
+                  <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                    <p>
+                      When disaster strikes, AIM Foundation is on the front lines, providing swift and effective relief to affected communities. Our disaster management program is designed to address the immediate needs of those impacted by natural calamities like floods, cyclones, and earthquakes, as well as other emergencies.
+                    </p>
+                    <p>
+                      Our rapid response teams work tirelessly to deliver critical aid where it's needed most, ensuring that vulnerable populations receive the support necessary to survive and recover.
+                    </p>
+                    <h3 className="text-2xl font-bold font-headline pt-4">Our Emergency Relief Services Include:</h3>
+                    <ul className="list-disc list-inside space-y-2">
+                      <li>Distribution of emergency food, clean water, and hygiene kits.</li>
+                      <li>Provision of temporary shelter and essential supplies like blankets and clothing.</li>
+                      <li>Deployment of mobile medical units to provide first aid and essential healthcare.</li>
+                      <li>Psychosocial support to help individuals cope with trauma and stress.</li>
+                    </ul>
+                    <p>
+                      Beyond immediate relief, we are committed to long-term recovery and resilience-building. We work with communities to rebuild infrastructure, restore livelihoods, and implement disaster preparedness programs to mitigate the impact of future crises. Our goal is not just to help people survive, but to help them rebuild their lives with dignity and hope.
+                    </p>
+                    <h3 className="text-2xl font-bold font-headline pt-4">Be a Beacon of Hope in the Storm</h3>
+                    <p>
+                      Your contribution can provide life-saving assistance to a family devastated by disaster. A donation today can provide emergency shelter, a week's worth of food, or critical medical supplies. Stand with us as we stand with them. <strong>Your support can turn despair into hope and help communities rebuild stronger than before.</strong>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
