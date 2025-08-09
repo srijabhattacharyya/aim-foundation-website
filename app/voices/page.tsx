@@ -56,6 +56,14 @@ const blogPosts = [
     excerpt: "Discover how AIM Foundation's EduAccess initiative is delivering quality education to rural West Bengal through expert-led online classes.",
     date: 'November 28, 2023',
   },
+  {
+    slug: 'crafting-futures-the-krishti-story',
+    title: 'Crafted by Her. Backed by Krishti.',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'women entrepreneurship',
+    excerpt: 'Discover how Krishti bridges the gap between learning and earning, transforming skilled women into thriving entrepreneurs.',
+    date: 'December 5, 2023',
+  },
 ];
 
 export default function VoicesPage() {

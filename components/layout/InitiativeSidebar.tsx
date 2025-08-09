@@ -107,6 +107,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
     const isSuiDhagaPage = pathname.includes('/suidhaga');
     const isInspireEduLabPage = pathname.includes('/inspire-eduLab');
     const isEduAccessPage = pathname.includes('/eduaccess');
+    const isKrishtiPage = pathname.includes('/krishti');
 
     const renderMainLists = () => {
         const currentPageConfig = pageConfig[pathname];
@@ -125,61 +126,75 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         return <InitiativeList title="Healthcare Initiatives" initiatives={healthcareInitiatives} />;
     }
 
-    return (
-        <aside className="md:col-span-1 space-y-8">
+    const renderRelatedResources = () => {
+        let content;
+        if (isDetectPage) {
+            content = (
+                <Link href="/blog/the-quiet-revolution-in-womens-health" className="text-muted-foreground hover:text-primary transition-colors">
+                    The Quiet Revolution in Women’s Health
+                </Link>
+            );
+        } else if (isMilieuPage) {
+            content = (
+                <Link href="/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu" className="text-muted-foreground hover:text-primary transition-colors">
+                    Nurturing a Kinder Tomorrow: The Story of Milieu
+                </Link>
+            );
+        } else if (isSuiDhagaPage) {
+            content = (
+                <Link href="/blog/threading-changes-the-suidhaga-story" className="text-muted-foreground hover:text-primary transition-colors">
+                    Threading Changes: The SuiDhaga Story
+                </Link>
+            );
+        } else if (isInspireEduLabPage) {
+            content = (
+                <Link href="/blog/redefining-classrooms-for-a-digital-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
+                    Redefining Classrooms for a Digital Tomorrow
+                </Link>
+            );
+        } else if (isEduAccessPage) {
+             content = (
+                <Link href="/blog/teaching-beyond-boundaries" className="text-muted-foreground hover:text-primary transition-colors">
+                    Teaching Beyond Boundaries
+                </Link>
+            );
+        } else if (isKrishtiPage) {
+            content = (
+                <Link href="/blog/crafting-futures-the-krishti-story" className="text-muted-foreground hover:text-primary transition-colors">
+                    Crafted by Her. Backed by Krishti.
+                </Link>
+            );
+        } else {
+            return (
+                 <Card>
+                    <CardHeader>
+                        <CardTitle>Related Resources</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground text-sm">No related resources for this initiative.</p>
+                    </CardContent>
+                </Card>
+            );
+        }
+
+        return (
             <Card>
                 <CardHeader>
                     <CardTitle>Related Resources</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    {isDetectPage ? (
-                        <ul className="space-y-2">
-                            <li>
-                                <Link href="/blog/the-quiet-revolution-in-womens-health" className="text-muted-foreground hover:text-primary transition-colors">
-                                The Quiet Revolution in Women’s Health
-                                </Link>
-                            </li>
-                        </ul>
-                    ) : isMilieuPage ? (
-                         <ul className="space-y-2">
-                            <li>
-                                <Link href="/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu" className="text-muted-foreground hover:text-primary transition-colors">
-                                Nurturing a Kinder Tomorrow: The Story of Milieu
-                                </Link>
-                            </li>
-                        </ul>
-                    ) : isSuiDhagaPage ? (
-                         <ul className="space-y-2">
-                            <li>
-                                <Link href="/blog/threading-changes-the-suidhaga-story" className="text-muted-foreground hover:text-primary transition-colors">
-                                Threading Changes: The SuiDhaga Story
-                                </Link>
-                            </li>
-                        </ul>
-                    ) : isInspireEduLabPage ? (
-                        <ul className="space-y-2">
-                           <li>
-                               <Link href="/blog/redefining-classrooms-for-a-digital-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
-                               Redefining Classrooms for a Digital Tomorrow
-                               </Link>
-                           </li>
-                       </ul>
-                   ) : isEduAccessPage ? (
-                        <ul className="space-y-2">
-                           <li>
-                               <Link href="/blog/teaching-beyond-boundaries" className="text-muted-foreground hover:text-primary transition-colors">
-                               Teaching Beyond Boundaries
-                               </Link>
-                           </li>
-                       </ul>
-                   ) : (
-                        <p className="text-muted-foreground text-sm">No related resources for this initiative.</p>
-                    )}
+                    <ul className="space-y-2">
+                        <li>{content}</li>
+                    </ul>
                 </CardContent>
             </Card>
+        );
+    }
 
+    return (
+        <aside className="md:col-span-1 space-y-8">
+            {renderRelatedResources()}
             {renderMainLists()}
-            
             <InitiativeList title="Our Initiatives" initiatives={ourInitiatives} />
         </aside>
     );

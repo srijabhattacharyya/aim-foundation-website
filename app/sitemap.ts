@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/the-quiet-revolution-in-womens-health',
     '/blog/redefining-classrooms-for-a-digital-tomorrow',
     '/blog/teaching-beyond-boundaries',
+    '/blog/crafting-futures-the-krishti-story',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
