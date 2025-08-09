@@ -29,7 +29,7 @@ export default function DisasterReliefBlogPage() {
               <div className="container mx-auto px-4 md:px-6 text-white">
                 <Badge variant="secondary" className="mb-4">Blog Post</Badge>
                 <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                  Standing Strong in Times of Crisis: AIM Foundation’s Disaster Relief Mission
+                  From Despair to Recovery: Rebuilding Lives After Disaster
                 </h1>
               </div>
             </div>

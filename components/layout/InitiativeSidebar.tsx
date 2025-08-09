@@ -235,7 +235,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         } else if (pathname.includes('/disaster-management')) {
             content = (
                 <Link href="/blog/standing-strong-in-times-of-crisis" className="text-muted-foreground hover:text-primary transition-colors">
-                    Standing Strong in Times of Crisis
+                    From Despair to Recovery: Rebuilding Lives After Disaster
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "Disaster Management initiative", hint: "disaster relief team"};

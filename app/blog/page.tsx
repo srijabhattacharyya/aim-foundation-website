@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const blogPosts = [
   {
     slug: 'standing-strong-in-times-of-crisis',
-    title: 'Standing Strong in Times of Crisis: AIM Foundation’s Disaster Relief Mission',
+    title: 'From Despair to Recovery: Rebuilding Lives After Disaster',
     image: 'https://placehold.co/600x400.png',
     hint: 'disaster relief team',
     excerpt: 'Learn how AIM Foundation’s Disaster Relief Program provides swift, compassionate, and effective assistance to communities affected by natural calamities.',
