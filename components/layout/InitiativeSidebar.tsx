@@ -92,6 +92,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const isDetectPage = pathname.includes('/detect');
     const isMilieuPage = pathname.includes('/milieu');
+    const isSuiDhagaPage = pathname.includes('/suidhaga');
 
     return (
         <aside className="md:col-span-1 space-y-8">
@@ -113,6 +114,14 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                             <li>
                                 <Link href="/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu" className="text-muted-foreground hover:text-primary transition-colors">
                                 Nurturing a Kinder Tomorrow: The Story of Milieu
+                                </Link>
+                            </li>
+                        </ul>
+                    ) : isSuiDhagaPage ? (
+                        <ul className="space-y-2">
+                            <li>
+                                <Link href="/blog/threading-changes-the-suidhaga-story" className="text-muted-foreground hover:text-primary transition-colors">
+                                Threading Changes: The SuiDhaga Story
                                 </Link>
                             </li>
                         </ul>
