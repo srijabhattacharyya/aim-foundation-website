@@ -48,7 +48,7 @@ const sustainabilityInitiatives = [
     { href: '/roots-of-change?from=sustainability', label: 'Roots of Change' },
 ];
 
-const otherInitiatives = [
+const ourInitiatives = [
     { href: '/educational-initiatives', label: 'Educational Initiatives' },
     { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
     { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
@@ -63,10 +63,31 @@ interface InitiativeSidebarProps {
     from: string;
 }
 
+const InitiativeList: React.FC<{ title: string; initiatives: { href: string; label: string }[] }> = ({ title, initiatives }) => (
+    <Card>
+        <CardHeader>
+            <CardTitle>{title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+            <ul className="space-y-2">
+                {initiatives.map((item) => (
+                    <li key={item.href}>
+                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
+                            {item.label}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </CardContent>
+    </Card>
+);
+
 export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
     const pathname = usePathname();
     let mainInitiatives;
     let title;
+
+    const isInnocentSmilesPage = pathname.includes('/innocent-smiles');
 
     switch (from) {
         case 'educational':
@@ -110,7 +131,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                             </li>
                         </ul>
                     ) : isMilieuPage ? (
-                        <ul className="space-y-2">
+                         <ul className="space-y-2">
                             <li>
                                 <Link href="/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu" className="text-muted-foreground hover:text-primary transition-colors">
                                 Nurturing a Kinder Tomorrow: The Story of Milieu
@@ -118,7 +139,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                             </li>
                         </ul>
                     ) : isSuiDhagaPage ? (
-                        <ul className="space-y-2">
+                         <ul className="space-y-2">
                             <li>
                                 <Link href="/blog/threading-changes-the-suidhaga-story" className="text-muted-foreground hover:text-primary transition-colors">
                                 Threading Changes: The SuiDhaga Story
@@ -130,38 +151,17 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     )}
                 </CardContent>
             </Card>
-            <Card>
-                <CardHeader>
-                    <CardTitle>{title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <ul className="space-y-2">
-                    {mainInitiatives.map((item) => (
-                        <li key={item.href}>
-                        <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
-                            {item.label}
-                        </Link>
-                        </li>
-                    ))}
-                    </ul>
-                </CardContent>
-            </Card>
-            <Card>
-                <CardHeader>
-                    <CardTitle>Our Initiatives</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <ul className="space-y-2">
-                        {otherInitiatives.map((item) => (
-                            <li key={item.href}>
-                                <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
-                                    {item.label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
+
+            {isInnocentSmilesPage ? (
+                <>
+                    <InitiativeList title="Educational Initiatives" initiatives={educationalInitiatives} />
+                    <InitiativeList title="Childcare Initiatives" initiatives={childcareInitiatives} />
+                </>
+            ) : (
+                <InitiativeList title={title} initiatives={mainInitiatives} />
+            )}
+            
+            <InitiativeList title="Our Initiatives" initiatives={ourInitiatives} />
         </aside>
     );
 }
