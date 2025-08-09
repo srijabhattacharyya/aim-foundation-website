@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/threading-changes-the-suidhaga-story',
     '/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu',
     '/blog/the-quiet-revolution-in-womens-health',
+    '/blog/redefining-classrooms-for-a-digital-tomorrow',
     '/carecircle',
     '/career',
     '/cause-marketing-events',

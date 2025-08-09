@@ -40,6 +40,14 @@ const blogPosts = [
     excerpt: 'Discover how AIM Foundation\'s SuiDhaga initiative is empowering women, stitching dignity into livelihoods, and creating new patterns of possibility through tailoring and embroidery skills.',
     date: 'October 28, 2023',
   },
+  {
+    slug: 'redefining-classrooms-for-a-digital-tomorrow',
+    title: 'Redefining Classrooms for a Digital Tomorrow: The Story of Inspire EduLab',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'smart classroom children',
+    excerpt: "Discover how AIM Foundation's Inspire EduLab is transforming learning with smart, internet-enabled classrooms, bridging the digital divide for children across India.",
+    date: 'October 21, 2023',
+  },
 ];
 
 export default function BlogPage() {
