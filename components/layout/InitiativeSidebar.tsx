@@ -102,6 +102,8 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         'sustainability': { title: "Sustainability Initiatives", initiatives: sustainabilityInitiatives },
         'healthcare': { title: "Healthcare Initiatives", initiatives: healthcareInitiatives },
         'relief': { title: "Our Initiatives", initiatives: ourInitiatives },
+        'disaster-management': { title: "Our Initiatives", initiatives: ourInitiatives },
+        'ignite-change': { title: "Our Initiatives", initiatives: ourInitiatives },
     };
     
     const renderMainLists = () => {
@@ -121,9 +123,9 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         return <InitiativeList title="Our Initiatives" initiatives={ourInitiatives} />;
     }
 
-    const renderRelatedResources = () => {
-        let content;
-        let image;
+    const getRelatedResource = () => {
+        let content = null;
+        let image = { src: "https://placehold.co/600x400.png", alt: "Related resource image", hint: "community" };
 
         if (pathname.includes('/detect')) {
             content = (
@@ -202,28 +204,28 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "SightHope initiative", hint: "vision eye exam"};
-        } else {
-            image = { src: "https://placehold.co/600x400.png", alt: "Related resource image", hint: "community" };
         }
 
-        return (
-             <Card>
-                <CardHeader className="p-0">
-                   {image && <Image src={image.src} alt={image.alt} width={600} height={400} data-ai-hint={image.hint} className="w-full h-auto object-cover" />}
-                </CardHeader>
-                <CardContent className="p-4">
+        return { content, image };
+    }
+
+    const { content, image } = getRelatedResource();
+
+    return (
+        <aside className="md:col-span-1 space-y-8">
+            <Card className="overflow-hidden">
+                 <Image src={image.src} alt={image.alt} width={600} height={400} data-ai-hint={image.hint} className="w-full h-auto object-cover" />
+            </Card>
+            <Card>
+                <CardHeader>
                     <CardTitle>Related Resources</CardTitle>
-                    <ul className="space-y-2 mt-2">
+                </CardHeader>
+                <CardContent>
+                    <ul className="space-y-2">
                         <li>{content ? content : <p className="text-muted-foreground text-sm">No related resources for this initiative.</p>}</li>
                     </ul>
                 </CardContent>
             </Card>
-        );
-    }
-
-    return (
-        <aside className="md:col-span-1 space-y-8">
-            {renderRelatedResources()}
             {renderMainLists()}
         </aside>
     );
