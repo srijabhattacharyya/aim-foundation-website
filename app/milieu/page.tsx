@@ -12,11 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MilieuPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-  const from = typeof searchParams.from === 'string' ? searchParams.from : 'educational';
+export default function MilieuPage() {
   return (
     <Suspense fallback={<Skeleton className="h-screen w-full" />}>
-      <MilieuClientPage from={from} />
+      <MilieuClientPage />
     </Suspense>
   );
 }

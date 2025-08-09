@@ -12,11 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function InnocentSmilesPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-  const from = typeof searchParams.from === 'string' ? searchParams.from : 'educational';
+export default function InnocentSmilesPage() {
   return (
     <Suspense fallback={<Skeleton className="h-screen w-full" />}>
-      <InnocentSmilesClientPage from={from} />
+      <InnocentSmilesClientPage />
     </Suspense>
   );
 }

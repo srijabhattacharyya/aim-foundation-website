@@ -12,12 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DetectPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-  const from = typeof searchParams.from === 'string' ? searchParams.from : 'healthcare';
-
+export default function DetectPage() {
   return (
     <Suspense fallback={<Skeleton className="h-screen w-full" />}>
-      <DetectClientPage from={from} />
+      <DetectClientPage />
     </Suspense>
   );
 }

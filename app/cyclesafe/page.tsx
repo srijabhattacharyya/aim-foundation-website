@@ -12,11 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CycleSafePage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-  const from = typeof searchParams.from === 'string' ? searchParams.from : 'healthcare';
+export default function CycleSafePage() {
   return (
     <Suspense fallback={<Skeleton className="h-screen w-full" />}>
-      <CycleSafeClientPage from={from} />
+      <CycleSafeClientPage />
     </Suspense>
   );
 }

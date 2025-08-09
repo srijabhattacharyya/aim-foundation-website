@@ -10,14 +10,17 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import { useSearchParams } from 'next/navigation';
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DetectDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
-export default function DetectClientPage({ from }: { from: string }) {
+export default function DetectClientPage() {
     const [showForm, setShowForm] = useState(false);
+    const searchParams = useSearchParams();
+    const from = searchParams.get('from') || 'healthcare';
 
     return (
         <div className="flex flex-col min-h-screen">

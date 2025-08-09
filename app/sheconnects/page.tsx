@@ -12,11 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SheConnectsPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-  const from = typeof searchParams.from === 'string' ? searchParams.from : 'educational';
+export default function SheConnectsPage() {
   return (
     <Suspense fallback={<Skeleton className="h-screen w-full" />}>
-      <SheConnectsClientPage from={from} />
+      <SheConnectsClientPage />
     </Suspense>
   );
 }

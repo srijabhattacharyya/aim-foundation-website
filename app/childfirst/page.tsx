@@ -12,11 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ChildFirstPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-  const from = typeof searchParams.from === 'string' ? searchParams.from : 'healthcare';
+export default function ChildFirstPage() {
   return (
     <Suspense fallback={<Skeleton className="h-screen w-full" />}>
-      <ChildFirstClientPage from={from} />
+      <ChildFirstClientPage />
     </Suspense>
   );
 }
