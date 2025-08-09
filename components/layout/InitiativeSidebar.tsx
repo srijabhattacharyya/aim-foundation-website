@@ -148,7 +148,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
             </Card>
             <Card>
                 <CardHeader>
-                    <CardTitle>Other Initiatives</CardTitle>
+                    <CardTitle>Our Initiatives</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <ul className="space-y-2">
