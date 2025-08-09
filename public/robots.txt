@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block admin and backend pages
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login/
+
+# Sitemap location
+Sitemap: https://www.aimindia.org.in/sitemap.xml
