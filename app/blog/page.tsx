@@ -111,6 +111,14 @@ const blogPosts = [
     hint: 'community relief support',
     excerpt: "Learn how AIM Foundation provides a lifeline of hope, delivering immediate and compassionate aid to those facing extreme hardship.",
     date: 'January 9, 2024',
+  },
+  {
+    slug: 'roots-of-change',
+    title: 'Roots of Change: Planting Awareness, Growing a Greener Tomorrow',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'environmental awareness education',
+    excerpt: 'Discover how the Roots of Change initiative is cultivating environmental awareness and inspiring sustainable action from the ground up.',
+    date: 'January 16, 2024',
   }
 ];
 

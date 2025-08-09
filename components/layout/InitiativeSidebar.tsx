@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -210,7 +211,15 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "Relief initiative", hint: "community relief support"};
+        } else if (pathname.includes('/roots-of-change')) {
+            content = (
+                <Link href="/blog/roots-of-change" className="text-muted-foreground hover:text-primary transition-colors">
+                    Roots of Change: Planting Awareness, Growing a Greener Tomorrow
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "Roots of Change initiative", hint: "environmental awareness education"};
         }
+
 
         return { content, image };
     }
