@@ -49,10 +49,13 @@ export default function IndividualDonationClientPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">AIM Foundation is a people-driven organization.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    We run on the generosity of individuals like you. Your contribution, no matter the size, fuels our mission to bring healthcare, education, and hope to underserved communities. By becoming a donor, you become a Smile Warrior—an essential part of a movement creating lasting change.
+                    Your contribution—no matter the amount—helps us bring healthcare, education, and hope to communities that need it most.
                   </p>
                   <p>
-                    Your donation can provide a child with books, fund a life-saving surgery, support a woman's journey to financial independence, or help us plant trees for a greener tomorrow. Every rupee is a step towards a more equitable and compassionate world.
+                    When you choose to donate, you become an integral part of a movement that creates lasting change. Your support can put books in a child’s hands, fund a life-saving surgery, empower a woman to achieve financial independence, or help us plant trees for a healthier planet.
+                  </p>
+                  <p>
+                    Every rupee you give takes us one step closer to building a more equitable, compassionate, and sustainable world.
                   </p>
                 </div>
                 <Dialog open={showForm} onOpenChange={setShowForm}>
