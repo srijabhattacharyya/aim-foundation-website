@@ -64,6 +64,14 @@ const blogPosts = [
     excerpt: 'Discover how Krishti bridges the gap between learning and earning, transforming skilled women into thriving entrepreneurs.',
     date: 'December 5, 2023',
   },
+  {
+    slug: 'surgery-shouldnt-be-a-luxury',
+    title: 'Surgery Shouldn’t Be a Luxury: The SurgiReach Story',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'operating room surgery',
+    excerpt: 'Learn how SurgiReach provides free, life-saving surgeries to economically disadvantaged individuals, restoring health and hope.',
+    date: 'December 12, 2023',
+  }
 ];
 
 export default function VoicesPage() {

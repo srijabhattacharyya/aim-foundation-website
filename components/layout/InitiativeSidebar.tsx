@@ -108,6 +108,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
     const isInspireEduLabPage = pathname.includes('/inspire-eduLab');
     const isEduAccessPage = pathname.includes('/eduaccess');
     const isKrishtiPage = pathname.includes('/krishti');
+    const isSurgiReachPage = pathname.includes('/surgireach');
 
     const renderMainLists = () => {
         const currentPageConfig = pageConfig[pathname];
@@ -162,6 +163,12 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
             content = (
                 <Link href="/blog/crafting-futures-the-krishti-story" className="text-muted-foreground hover:text-primary transition-colors">
                     Crafted by Her. Backed by Krishti.
+                </Link>
+            );
+        } else if (isSurgiReachPage) {
+            content = (
+                <Link href="/blog/surgery-shouldnt-be-a-luxury" className="text-muted-foreground hover:text-primary transition-colors">
+                    Surgery Shouldn’t Be a Luxury
                 </Link>
             );
         } else {

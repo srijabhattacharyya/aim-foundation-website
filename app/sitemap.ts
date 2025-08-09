@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/redefining-classrooms-for-a-digital-tomorrow',
     '/blog/teaching-beyond-boundaries',
     '/blog/crafting-futures-the-krishti-story',
+    '/blog/surgery-shouldnt-be-a-luxury',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
