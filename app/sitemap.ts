@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/tideshield-restoring-mangroves',
     '/blog/carecircle-bringing-healing-to-the-city',
     '/blog/vidyashakti-ai-learning',
+    '/blog/soulcircle-24-7-mental-health-support',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
@@ -103,3 +104,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return sitemapEntries;
 }
+
+    

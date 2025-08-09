@@ -288,6 +288,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "VidyaShakti initiative", hint: "learning app student"};
+        } else if (pathname.includes('/soulcircle')) {
+            content = (
+                 <Link href="/blog/soulcircle-24-7-mental-health-support" className="text-muted-foreground hover:text-primary transition-colors">
+                    SoulCircle: 24/7 Compassionate Mental Health Support
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "SoulCircle initiative", hint: "mental health peace"};
         }
 
 
@@ -315,3 +322,5 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         </aside>
     );
 }
+
+    
