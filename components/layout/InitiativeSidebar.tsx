@@ -109,6 +109,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
     const isEduAccessPage = pathname.includes('/eduaccess');
     const isKrishtiPage = pathname.includes('/krishti');
     const isSurgiReachPage = pathname.includes('/surgireach');
+    const isOralScanPage = pathname.includes('/oralscan');
 
     const renderMainLists = () => {
         const currentPageConfig = pageConfig[pathname];
@@ -169,6 +170,12 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
             content = (
                 <Link href="/blog/surgery-shouldnt-be-a-luxury" className="text-muted-foreground hover:text-primary transition-colors">
                     Surgery Shouldn’t Be a Luxury
+                </Link>
+            );
+        } else if (isOralScanPage) {
+            content = (
+                <Link href="/blog/screening-today-for-a-healthier-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
+                    Screening Today for a Healthier Tomorrow
                 </Link>
             );
         } else {

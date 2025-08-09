@@ -71,6 +71,14 @@ const blogPosts = [
     hint: 'operating room surgery',
     excerpt: 'Learn how SurgiReach provides free, life-saving surgeries to economically disadvantaged individuals, restoring health and hope.',
     date: 'December 12, 2023',
+  },
+  {
+    slug: 'screening-today-for-a-healthier-tomorrow',
+    title: 'Screening Today for a Healthier Tomorrow: The OralScan Story',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'oral cancer screening',
+    excerpt: 'Learn how OralScan is fighting oral cancer in India through early detection and awareness.',
+    date: 'December 19, 2023',
   }
 ];
 
