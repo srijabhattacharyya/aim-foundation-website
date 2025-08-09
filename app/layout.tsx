@@ -56,9 +56,66 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "AIM Foundation",
+    "alternateName": "Associated Initiative for Mankind Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "description":
+      "AIM Foundation is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development for underprivileged communities across India.",
+    "foundingDate": "2016",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Kolkata, West Bengal, India"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "41, Ballygaunge Terrace, Kolkata 700029",
+      "addressLocality": "Kolkata",
+      "addressRegion": "West Bengal",
+      "postalCode": "700029",
+      "addressCountry": "IN"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-6290022813",
+        "contactType": "Customer Service",
+        "areaServed": "IN",
+        "availableLanguage": ["English", "Bengali", "Hindi"]
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/"
+    ],
+    "knowsAbout": [
+      "Education",
+      "Healthcare",
+      "Women Empowerment",
+      "Environmental Conservation",
+      "Community Development",
+      "Child Welfare",
+      "Skill Development",
+      "Plantation Drives",
+      "Hygiene Awareness",
+      "Rural Development"
+    ]
+  };
+
   return (
     <html lang="en" className={`${bricolage.variable}`}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaMarkup),
+          }}
+        />
       </head>
       <body className="font-body antialiased">
         {children}
