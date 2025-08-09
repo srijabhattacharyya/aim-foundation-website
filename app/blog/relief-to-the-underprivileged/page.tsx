@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import ReliefBlogPage from './ReliefBlogPage';
 
@@ -12,3 +13,4 @@ export const metadata: Metadata = {
 export default function Page() {
   return <ReliefBlogPage />;
 }
+
