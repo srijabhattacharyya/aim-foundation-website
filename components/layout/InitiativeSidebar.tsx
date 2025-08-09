@@ -274,6 +274,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "ChildFirst initiative", hint: "child healthcare"};
+        } else if (pathname.includes('/carecircle')) {
+            content = (
+                <Link href="/blog/carecircle-bringing-healing-to-the-city" className="text-muted-foreground hover:text-primary transition-colors">
+                    CareCircle: Bringing Healing to the Heart of the City
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "CareCircle initiative", hint: "urban health camp"};
         }
 
 

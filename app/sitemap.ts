@@ -29,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/no-child-left-offline',
     '/blog/cureline-bringing-healthcare-to-the-last-mile',
     '/blog/tideshield-restoring-mangroves',
+    '/blog/carecircle-bringing-healing-to-the-city',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
