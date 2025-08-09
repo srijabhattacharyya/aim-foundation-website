@@ -95,6 +95,14 @@ const blogPosts = [
     hint: 'community planting trees',
     excerpt: 'Discover how GreenRoots is empowering communities to plant trees and restore green cover in their own backyards.',
     date: 'December 26, 2023',
+  },
+  {
+    slug: 'restoring-sight-rekindling-dreams',
+    title: 'Restoring Sight, Rekindling Dreams: The Journey of SightHope',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'vision eye exam',
+    excerpt: "Learn how AIM Foundation's SightHope initiative provides free, life-changing eye care and surgeries to underserved communities.",
+    date: 'January 2, 2024',
   }
 ];
 

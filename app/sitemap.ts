@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/surgery-shouldnt-be-a-luxury',
     '/blog/screening-today-for-a-healthier-tomorrow',
     '/blog/planting-hope-growing-futures',
+    '/blog/restoring-sight-rekindling-dreams',
     '/carecircle',
     '/career',
     '/cause-marketing-events',

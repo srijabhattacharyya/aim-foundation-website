@@ -181,6 +181,12 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Confidence Begins with Conversation
                 </Link>
             );
+        } else if (pathname.includes('/sighthope')) {
+             content = (
+                <Link href="/blog/restoring-sight-rekindling-dreams" className="text-muted-foreground hover:text-primary transition-colors">
+                    Restoring Sight, Rekindling Dreams
+                </Link>
+            );
         } else {
             return (
                  <Card>
