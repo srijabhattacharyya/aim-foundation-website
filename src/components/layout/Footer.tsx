@@ -1,5 +1,5 @@
 
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, X } from 'lucide-react';
 import Link from 'next/link';
 import ContactEmail from './ContactEmail';
 
@@ -46,7 +46,7 @@ const Footer = () => {
             <h5 className="font-semibold text-md mb-4">Follow Us</h5>
             <div className="flex space-x-4">
               <Link href="https://www.facebook.com/aimindiango/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors"><Facebook size={24} /></Link>
-              <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors"><Twitter size={24} /></Link>
+              <Link href="https://x.com/AimFoundation" target="_blank" rel="noopener noreferrer" aria-label="X" className="text-muted-foreground hover:text-primary transition-colors"><X size={24} /></Link>
               <Link href="https://www.instagram.com/aimfoundation_ngo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors"><Instagram size={24} /></Link>
               <Link href="https://www.linkedin.com/in/aim-foundation-ngo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
             </div>
