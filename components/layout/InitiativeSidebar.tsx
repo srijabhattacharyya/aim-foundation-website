@@ -101,10 +101,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         'sustainability': { title: "Sustainability Initiatives", initiatives: sustainabilityInitiatives },
         'healthcare': { title: "Healthcare Initiatives", initiatives: healthcareInitiatives },
     };
-    const isSurgiReachPage = pathname.includes('/surgireach');
-    const isOralScanPage = pathname.includes('/oralscan');
-    const isGreenRootsPage = pathname.includes('/green-roots');
-
+    
     const renderMainLists = () => {
         const currentPageConfig = pageConfig[pathname];
         if (currentPageConfig && currentPageConfig.from.includes(from)) {
@@ -160,22 +157,28 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Crafted by Her. Backed by Krishti.
                 </Link>
             );
-        } else if (isSurgiReachPage) {
+        } else if (pathname.includes('/surgireach')) {
             content = (
                 <Link href="/blog/surgery-shouldnt-be-a-luxury" className="text-muted-foreground hover:text-primary transition-colors">
                     Surgery Shouldn’t Be a Luxury
                 </Link>
             );
-        } else if (isOralScanPage) {
+        } else if (pathname.includes('/oralscan')) {
             content = (
                 <Link href="/blog/screening-today-for-a-healthier-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
                     Screening Today for a Healthier Tomorrow
                 </Link>
             );
-        } else if (isGreenRootsPage) {
+        } else if (pathname.includes('/green-roots')) {
             content = (
                 <Link href="/blog/planting-hope-growing-futures" className="text-muted-foreground hover:text-primary transition-colors">
                     Planting Hope, Growing Futures
+                </Link>
+            );
+        } else if (pathname.includes('/empower-english')) {
+            content = (
+                <Link href="/blog/empower-english-story" className="text-muted-foreground hover:text-primary transition-colors">
+                    Confidence Begins with Conversation
                 </Link>
             );
         } else {

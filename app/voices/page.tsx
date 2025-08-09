@@ -56,6 +56,14 @@ const blogPosts = [
     excerpt: "Discover how AIM Foundation's EduAccess initiative is delivering quality education to rural West Bengal through expert-led online classes.",
     date: 'November 28, 2023',
   },
+   {
+    slug: 'empower-english-story',
+    title: 'Confidence Begins with Conversation: The Empower English Story',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'english speaking class',
+    excerpt: "Discover how AIM Foundation's Empower English initiative is helping students in West Bengal find their voice, confidence, and a world of new opportunities.",
+    date: 'December 1, 2023',
+  },
   {
     slug: 'crafting-futures-the-krishti-story',
     title: 'Crafted by Her. Backed by Krishti.',
