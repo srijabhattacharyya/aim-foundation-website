@@ -127,6 +127,14 @@ const blogPosts = [
     hint: 'women technology',
     excerpt: 'Discover how SheConnects is bridging the digital gender gap and empowering women to build sustainable livelihoods online.',
     date: 'January 23, 2024',
+  },
+  {
+    slug: 'from-stigma-to-strength',
+    title: 'From Stigma to Strength: The CycleSafe Story',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'menstrual health awareness',
+    excerpt: 'Learn how CycleSafe is breaking the silence around menstrual health and empowering adolescent girls with dignity and education.',
+    date: 'January 30, 2024',
   }
 ];
 

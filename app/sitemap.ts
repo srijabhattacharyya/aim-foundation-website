@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/relief-to-the-underprivileged',
     '/blog/roots-of-change',
     '/blog/project-sheconnects',
+    '/blog/from-stigma-to-strength',
     '/carecircle',
     '/career',
     '/cause-marketing-events',

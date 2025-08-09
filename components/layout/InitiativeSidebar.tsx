@@ -225,6 +225,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "SheConnects initiative", hint: "women technology"};
+        } else if (pathname.includes('/cyclesafe')) {
+            content = (
+                <Link href="/blog/from-stigma-to-strength" className="text-muted-foreground hover:text-primary transition-colors">
+                    From Stigma to Strength: The CycleSafe Story
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "CycleSafe initiative", hint: "menstrual health awareness"};
         }
 
 
