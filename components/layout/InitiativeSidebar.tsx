@@ -106,6 +106,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
     const isMilieuPage = pathname.includes('/milieu');
     const isSuiDhagaPage = pathname.includes('/suidhaga');
     const isInspireEduLabPage = pathname.includes('/inspire-eduLab');
+    const isEduAccessPage = pathname.includes('/eduaccess');
 
     const renderMainLists = () => {
         const currentPageConfig = pageConfig[pathname];
@@ -160,6 +161,14 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                            <li>
                                <Link href="/blog/redefining-classrooms-for-a-digital-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
                                Redefining Classrooms for a Digital Tomorrow
+                               </Link>
+                           </li>
+                       </ul>
+                   ) : isEduAccessPage ? (
+                        <ul className="space-y-2">
+                           <li>
+                               <Link href="/blog/teaching-beyond-boundaries" className="text-muted-foreground hover:text-primary transition-colors">
+                               Teaching Beyond Boundaries
                                </Link>
                            </li>
                        </ul>

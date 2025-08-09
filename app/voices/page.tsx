@@ -48,6 +48,14 @@ const blogPosts = [
     excerpt: "Discover how AIM Foundation's Inspire EduLab is transforming learning with smart, internet-enabled classrooms, bridging the digital divide for children across India.",
     date: 'November 20, 2023',
   },
+  {
+    slug: 'teaching-beyond-boundaries',
+    title: 'Teaching Beyond Boundaries: How EduAccess is Bringing Quality Education to Rural West Bengal',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'online learning rural',
+    excerpt: "Discover how AIM Foundation's EduAccess initiative is delivering quality education to rural West Bengal through expert-led online classes.",
+    date: 'November 28, 2023',
+  },
 ];
 
 export default function VoicesPage() {
