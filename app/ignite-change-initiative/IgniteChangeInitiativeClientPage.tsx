@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/IgniteChangeDonationForm'), { 
     ssr: false,
@@ -47,32 +48,35 @@ export default function IgniteChangeInitiativeClientPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Be the Spark. Fuel the Movement.</h2>
-                <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                   <p>
-                    The Ignite Change Initiative is our dynamic platform for mobilizing communities and fostering a culture of proactive social responsibility. This initiative is designed to support a wide range of grassroots projects, from local awareness campaigns to volunteer-driven community improvements. It's about empowering individuals to become agents of change in their own neighborhoods.
-                  </p>
-                  <p>
-                    We believe that small actions, when multiplied by many, can lead to transformative outcomes. Ignite Change provides the resources, mentorship, and framework for passionate individuals and groups to launch and sustain their own social good projects.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Our Support Includes:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Seed funding for innovative community projects.</li>
-                    <li>Volunteer recruitment and management support.</li>
-                    <li>Training workshops on project management and community outreach.</li>
-                    <li>A network of like-minded changemakers to share ideas and resources.</li>
-                  </ul>
-                  <p>
-                    Whether it's a neighborhood cleanup drive, a local literacy program, or a campaign for public health, Ignite Change is here to help turn passion into impactful action. We are dedicated to building a more engaged, compassionate, and proactive society from the ground up.
-                  </p>
-                  <h3 className="text-2xl font-bold font-headline pt-4">Fuel a Grassroots Movement</h3>
-                  <p>
-                    Your donation to the Ignite Change Initiative provides the critical seed funding that allows local heroes to get their ideas off the ground. Support a community-led project and empower passionate individuals to create the change they want to see. Your contribution can help launch a new campaign, train volunteers, or provide essential materials. Be the spark that ignites a wave of positive action.
-                  </p>
+            <div className="grid md:grid-cols-3 gap-12">
+                <InitiativeSidebar from="ignite-change" />
+                <div className="md:col-span-2">
+                    <div className="space-y-6">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Be the Spark. Fuel the Movement.</h2>
+                        <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                        <p>
+                            The Ignite Change Initiative is our dynamic platform for mobilizing communities and fostering a culture of proactive social responsibility. This initiative is designed to support a wide range of grassroots projects, from local awareness campaigns to volunteer-driven community improvements. It's about empowering individuals to become agents of change in their own neighborhoods.
+                        </p>
+                        <p>
+                            We believe that small actions, when multiplied by many, can lead to transformative outcomes. Ignite Change provides the resources, mentorship, and framework for passionate individuals and groups to launch and sustain their own social good projects.
+                        </p>
+                        <h3 className="text-2xl font-bold font-headline pt-4">Our Support Includes:</h3>
+                        <ul className="list-disc list-inside space-y-2">
+                            <li>Seed funding for innovative community projects.</li>
+                            <li>Volunteer recruitment and management support.</li>
+                            <li>Training workshops on project management and community outreach.</li>
+                            <li>A network of like-minded changemakers to share ideas and resources.</li>
+                        </ul>
+                        <p>
+                            Whether it's a neighborhood cleanup drive, a local literacy program, or a campaign for public health, Ignite Change is here to help turn passion into impactful action. We are dedicated to building a more engaged, compassionate, and proactive society from the ground up.
+                        </p>
+                        <h3 className="text-2xl font-bold font-headline pt-4">Fuel a Grassroots Movement</h3>
+                        <p>
+                            Your donation to the Ignite Change Initiative provides the critical seed funding that allows local heroes to get their ideas off the ground. Support a community-led project and empower passionate individuals to create the change they want to see. Your contribution can help launch a new campaign, train volunteers, or provide essential materials. Be the spark that ignites a wave of positive action.
+                        </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
               <Dialog open={showForm} onOpenChange={setShowForm}>
