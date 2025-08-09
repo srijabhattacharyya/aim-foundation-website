@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/from-stigma-to-strength',
     '/blog/standing-strong-in-times-of-crisis',
     '/blog/igniting-change-transforming-communities',
+    '/blog/no-child-left-offline',
     '/carecircle',
     '/career',
     '/cause-marketing-events',

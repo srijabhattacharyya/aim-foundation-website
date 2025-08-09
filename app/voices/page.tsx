@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'no-child-left-offline',
+    title: 'No Child Left Offline: How DigiEmpower is Bridging the Digital Divide',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'digital literacy children',
+    excerpt: 'Discover how DigiEmpower is bridging the digital divide for underprivileged and Adivasi children in West Bengal.',
+    date: 'February 20, 2024',
+  },
+  {
     slug: 'igniting-change-transforming-communities',
     title: 'Igniting Change: How Grassroots Action Transforms Communities',
     image: 'https://placehold.co/600x400.png',

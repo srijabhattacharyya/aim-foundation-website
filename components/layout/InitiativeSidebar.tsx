@@ -246,6 +246,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "Ignite Change initiative", hint: "community action group"};
+        } else if (pathname.includes('/digiempower')) {
+            content = (
+                <Link href="/blog/no-child-left-offline" className="text-muted-foreground hover:text-primary transition-colors">
+                    No Child Left Offline: How DigiEmpower is Bridging the Digital Divide
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "DigiEmpower initiative", hint: "digital literacy children"};
         }
 
 
