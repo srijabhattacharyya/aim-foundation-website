@@ -1,8 +1,9 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
 
 const healthcareInitiatives = [
     { href: '/cureline?from=healthcare', label: 'CureLine' },
@@ -63,6 +64,7 @@ interface InitiativeSidebarProps {
 }
 
 export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
+    const pathname = usePathname();
     let mainInitiatives;
     let title;
 
@@ -88,6 +90,8 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
             title = "Healthcare Initiatives";
     }
 
+    const isDetectPage = pathname.includes('/detect');
+
     return (
         <aside className="md:col-span-1 space-y-8">
             <Card>
@@ -111,7 +115,15 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     <CardTitle>Related Resources</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <Skeleton className="h-40 w-full" />
+                    {isDetectPage && (
+                        <ul className="space-y-2">
+                            <li>
+                                <Link href="/blog/the-quiet-revolution-in-womens-health" className="text-muted-foreground hover:text-primary transition-colors">
+                                The Quiet Revolution in Women’s Health
+                                </Link>
+                            </li>
+                        </ul>
+                    )}
                 </CardContent>
             </Card>
             <Card>
