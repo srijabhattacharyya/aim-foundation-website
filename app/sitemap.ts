@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/roots-of-change',
     '/blog/project-sheconnects',
     '/blog/from-stigma-to-strength',
+    '/blog/standing-strong-in-times-of-crisis',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
