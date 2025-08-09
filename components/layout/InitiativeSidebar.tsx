@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -204,6 +203,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "SightHope initiative", hint: "vision eye exam"};
+        } else if (pathname.includes('/relief-to-the-underprivileged')) {
+            content = (
+                <Link href="/blog/relief-to-the-underprivileged" className="text-muted-foreground hover:text-primary transition-colors">
+                    Relief to the Underprivileged – AIM Foundation’s Lifeline of Hope
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "Relief initiative", hint: "community relief support"};
         }
 
         return { content, image };

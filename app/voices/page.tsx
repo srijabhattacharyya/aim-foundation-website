@@ -103,6 +103,14 @@ const blogPosts = [
     hint: 'vision eye exam',
     excerpt: "Learn how AIM Foundation's SightHope initiative provides free, life-changing eye care and surgeries to underserved communities.",
     date: 'January 2, 2024',
+  },
+  {
+    slug: 'relief-to-the-underprivileged',
+    title: 'Relief to the Underprivileged – AIM Foundation’s Lifeline of Hope',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'community relief support',
+    excerpt: "Learn how AIM Foundation provides a lifeline of hope, delivering immediate and compassionate aid to those facing extreme hardship.",
+    date: 'January 9, 2024',
   }
 ];
 

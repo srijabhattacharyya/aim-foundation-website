@@ -1,4 +1,3 @@
-
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -19,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/screening-today-for-a-healthier-tomorrow',
     '/blog/planting-hope-growing-futures',
     '/blog/restoring-sight-rekindling-dreams',
+    '/blog/relief-to-the-underprivileged',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
