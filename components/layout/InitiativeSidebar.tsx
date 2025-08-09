@@ -234,7 +234,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
             image = { src: "https://placehold.co/600x400.png", alt: "CycleSafe initiative", hint: "menstrual health awareness"};
         } else if (pathname.includes('/disaster-management')) {
             content = (
-                <Link href="/blog/standing-strong-in-times-of-crisis" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/blog/from-despair-to-recovery-rebuilding-lives-after-disaster" className="text-muted-foreground hover:text-primary transition-colors">
                     From Despair to Recovery: Rebuilding Lives After Disaster
                 </Link>
             );
@@ -253,6 +253,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "DigiEmpower initiative", hint: "digital literacy children"};
+        } else if (pathname.includes('/cureline')) {
+            content = (
+                <Link href="/blog/cureline-bringing-healthcare-to-the-last-mile" className="text-muted-foreground hover:text-primary transition-colors">
+                    CureLine: Bringing Healthcare to the Last Mile
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "CureLine initiative", hint: "rural healthcare camp"};
         }
 
 

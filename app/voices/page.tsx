@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'cureline-bringing-healthcare-to-the-last-mile',
+    title: 'CureLine: Bringing Healthcare to the Last Mile',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'rural healthcare camp',
+    excerpt: 'Learn how AIM Foundation\'s CureLine initiative is delivering essential medical services to underserved communities, bridging critical care gaps, and ensuring health access for all.',
+    date: 'February 27, 2024',
+  },
+  {
     slug: 'no-child-left-offline',
     title: 'No Child Left Offline: How DigiEmpower is Bridging the Digital Divide',
     image: 'https://placehold.co/600x400.png',
@@ -33,7 +41,7 @@ const blogPosts = [
     date: 'February 13, 2024',
   },
   {
-    slug: 'standing-strong-in-times-of-crisis',
+    slug: 'from-despair-to-recovery-rebuilding-lives-after-disaster',
     title: 'From Despair to Recovery: Rebuilding Lives After Disaster',
     image: 'https://placehold.co/600x400.png',
     hint: 'disaster relief team',
