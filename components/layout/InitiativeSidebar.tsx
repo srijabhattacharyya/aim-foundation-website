@@ -84,36 +84,44 @@ const InitiativeList: React.FC<{ title: string; initiatives: { href: string; lab
 
 export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
     const pathname = usePathname();
-    let mainInitiatives;
-    let title;
+    
+    const pageConfig: { [key: string]: { from: string[]; lists: {title: string, initiatives: any[]}[] } } = {
+        '/innocent-smiles': { from: ['educational', 'childcare'], lists: [{title: "Educational Initiatives", initiatives: educationalInitiatives}, {title: "Childcare Initiatives", initiatives: childcareInitiatives}] },
+        '/milieu': { from: ['educational', 'childcare'], lists: [{title: "Educational Initiatives", initiatives: educationalInitiatives}, {title: "Childcare Initiatives", initiatives: childcareInitiatives}] },
+        '/childfirst': { from: ['childcare', 'healthcare'], lists: [{title: "Childcare Initiatives", initiatives: childcareInitiatives}, {title: "Healthcare Initiatives", initiatives: healthcareInitiatives}] },
+        '/sheconnects': { from: ['educational', 'gender-equality'], lists: [{title: "Educational Initiatives", initiatives: educationalInitiatives}, {title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives}] },
+        '/cyclesafe': { from: ['gender-equality', 'healthcare'], lists: [{title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives}, {title: "Healthcare Initiatives", initiatives: healthcareInitiatives}] },
+        '/detect': { from: ['gender-equality', 'healthcare'], lists: [{title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives}, {title: "Healthcare Initiatives", initiatives: healthcareInitiatives}] },
+    };
 
-    const isInnocentSmilesPage = pathname.includes('/innocent-smiles');
-
-    switch (from) {
-        case 'educational':
-            mainInitiatives = educationalInitiatives;
-            title = "Educational Initiatives";
-            break;
-        case 'gender-equality':
-            mainInitiatives = genderEqualityInitiatives;
-            title = "Gender Equality";
-            break;
-        case 'childcare':
-            mainInitiatives = childcareInitiatives;
-            title = "Childcare Initiatives";
-            break;
-        case 'sustainability':
-            mainInitiatives = sustainabilityInitiatives;
-            title = "Sustainability Initiatives";
-            break;
-        default:
-            mainInitiatives = healthcareInitiatives;
-            title = "Healthcare Initiatives";
-    }
+    const singleCategoryPages: { [key: string]: { title: string, initiatives: any[]} } = {
+        'educational': { title: "Educational Initiatives", initiatives: educationalInitiatives },
+        'gender-equality': { title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives },
+        'childcare': { title: "Childcare Initiatives", initiatives: childcareInitiatives },
+        'sustainability': { title: "Sustainability Initiatives", initiatives: sustainabilityInitiatives },
+        'healthcare': { title: "Healthcare Initiatives", initiatives: healthcareInitiatives },
+    };
 
     const isDetectPage = pathname.includes('/detect');
     const isMilieuPage = pathname.includes('/milieu');
     const isSuiDhagaPage = pathname.includes('/suidhaga');
+
+    const renderMainLists = () => {
+        const currentPageConfig = pageConfig[pathname];
+        if (currentPageConfig && currentPageConfig.from.includes(from)) {
+            return currentPageConfig.lists.map(list => (
+                <InitiativeList key={list.title} title={list.title} initiatives={list.initiatives} />
+            ));
+        }
+        
+        const singleCatConfig = singleCategoryPages[from];
+        if(singleCatConfig) {
+            return <InitiativeList title={singleCatConfig.title} initiatives={singleCatConfig.initiatives} />;
+        }
+
+        // Fallback for pages not in the config or with a 'from' not in the list
+        return <InitiativeList title="Healthcare Initiatives" initiatives={healthcareInitiatives} />;
+    }
 
     return (
         <aside className="md:col-span-1 space-y-8">
@@ -152,14 +160,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </CardContent>
             </Card>
 
-            {isInnocentSmilesPage ? (
-                <>
-                    <InitiativeList title="Educational Initiatives" initiatives={educationalInitiatives} />
-                    <InitiativeList title="Childcare Initiatives" initiatives={childcareInitiatives} />
-                </>
-            ) : (
-                <InitiativeList title={title} initiatives={mainInitiatives} />
-            )}
+            {renderMainLists()}
             
             <InitiativeList title="Our Initiatives" initiatives={ourInitiatives} />
         </aside>
