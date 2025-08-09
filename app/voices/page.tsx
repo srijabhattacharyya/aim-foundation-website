@@ -46,7 +46,7 @@ const blogPosts = [
     image: 'https://placehold.co/600x400.png',
     hint: 'smart classroom children',
     excerpt: "Discover how AIM Foundation's Inspire EduLab is transforming learning with smart, internet-enabled classrooms, bridging the digital divide for children across India.",
-    date: 'October 21, 2023',
+    date: 'November 20, 2023',
   },
 ];
 
