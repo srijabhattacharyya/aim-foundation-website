@@ -239,6 +239,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "Disaster Management initiative", hint: "disaster relief team"};
+        } else if (pathname.includes('/ignite-change-initiative')) {
+            content = (
+                <Link href="/blog/igniting-change-transforming-communities" className="text-muted-foreground hover:text-primary transition-colors">
+                    Igniting Change: How Grassroots Action Transforms Communities
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "Ignite Change initiative", hint: "community action group"};
         }
 
 

@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'igniting-change-transforming-communities',
+    title: 'Igniting Change: How Grassroots Action Transforms Communities',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'community action group',
+    excerpt: 'Discover how our Ignite Change Initiative empowers local communities to create sustainable solutions and drive their own transformation.',
+    date: 'February 13, 2024',
+  },
+  {
     slug: 'standing-strong-in-times-of-crisis',
     title: 'From Despair to Recovery: Rebuilding Lives After Disaster',
     image: 'https://placehold.co/600x400.png',
