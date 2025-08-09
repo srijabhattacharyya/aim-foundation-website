@@ -96,6 +96,24 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         <aside className="md:col-span-1 space-y-8">
             <Card>
                 <CardHeader>
+                    <CardTitle>Related Resources</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    {isDetectPage ? (
+                        <ul className="space-y-2">
+                            <li>
+                                <Link href="/blog/the-quiet-revolution-in-womens-health" className="text-muted-foreground hover:text-primary transition-colors">
+                                The Quiet Revolution in Women’s Health
+                                </Link>
+                            </li>
+                        </ul>
+                    ) : (
+                        <p className="text-muted-foreground text-sm">No related resources for this initiative.</p>
+                    )}
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
                     <CardTitle>{title}</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -108,22 +126,6 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                         </li>
                     ))}
                     </ul>
-                </CardContent>
-            </Card>
-            <Card>
-                <CardHeader>
-                    <CardTitle>Related Resources</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    {isDetectPage && (
-                        <ul className="space-y-2">
-                            <li>
-                                <Link href="/blog/the-quiet-revolution-in-womens-health" className="text-muted-foreground hover:text-primary transition-colors">
-                                The Quiet Revolution in Women’s Health
-                                </Link>
-                            </li>
-                        </ul>
-                    )}
                 </CardContent>
             </Card>
             <Card>
