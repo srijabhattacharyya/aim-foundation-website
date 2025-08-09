@@ -79,6 +79,14 @@ const blogPosts = [
     hint: 'oral cancer screening',
     excerpt: 'Learn how OralScan is fighting oral cancer in India through early detection and awareness.',
     date: 'December 19, 2023',
+  },
+  {
+    slug: 'planting-hope-growing-futures',
+    title: 'Planting Hope, Growing Futures: The GreenRoots Journey',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'community planting trees',
+    excerpt: 'Discover how GreenRoots is empowering communities to plant trees and restore green cover in their own backyards.',
+    date: 'December 26, 2023',
   }
 ];
 

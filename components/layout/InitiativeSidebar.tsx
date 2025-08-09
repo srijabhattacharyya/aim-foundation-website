@@ -101,15 +101,9 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         'sustainability': { title: "Sustainability Initiatives", initiatives: sustainabilityInitiatives },
         'healthcare': { title: "Healthcare Initiatives", initiatives: healthcareInitiatives },
     };
-
-    const isDetectPage = pathname.includes('/detect');
-    const isMilieuPage = pathname.includes('/milieu');
-    const isSuiDhagaPage = pathname.includes('/suidhaga');
-    const isInspireEduLabPage = pathname.includes('/inspire-eduLab');
-    const isEduAccessPage = pathname.includes('/eduaccess');
-    const isKrishtiPage = pathname.includes('/krishti');
     const isSurgiReachPage = pathname.includes('/surgireach');
     const isOralScanPage = pathname.includes('/oralscan');
+    const isGreenRootsPage = pathname.includes('/green-roots');
 
     const renderMainLists = () => {
         const currentPageConfig = pageConfig[pathname];
@@ -130,37 +124,37 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const renderRelatedResources = () => {
         let content;
-        if (isDetectPage) {
+        if (pathname.includes('/detect')) {
             content = (
                 <Link href="/blog/the-quiet-revolution-in-womens-health" className="text-muted-foreground hover:text-primary transition-colors">
                     The Quiet Revolution in Women’s Health
                 </Link>
             );
-        } else if (isMilieuPage) {
+        } else if (pathname.includes('/milieu')) {
             content = (
                 <Link href="/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu" className="text-muted-foreground hover:text-primary transition-colors">
                     Nurturing a Kinder Tomorrow: The Story of Milieu
                 </Link>
             );
-        } else if (isSuiDhagaPage) {
+        } else if (pathname.includes('/suidhaga')) {
             content = (
                 <Link href="/blog/threading-changes-the-suidhaga-story" className="text-muted-foreground hover:text-primary transition-colors">
                     Threading Changes: The SuiDhaga Story
                 </Link>
             );
-        } else if (isInspireEduLabPage) {
+        } else if (pathname.includes('/inspire-eduLab')) {
             content = (
                 <Link href="/blog/redefining-classrooms-for-a-digital-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
                     Redefining Classrooms for a Digital Tomorrow
                 </Link>
             );
-        } else if (isEduAccessPage) {
+        } else if (pathname.includes('/eduaccess')) {
              content = (
                 <Link href="/blog/teaching-beyond-boundaries" className="text-muted-foreground hover:text-primary transition-colors">
                     Teaching Beyond Boundaries
                 </Link>
             );
-        } else if (isKrishtiPage) {
+        } else if (pathname.includes('/krishti')) {
             content = (
                 <Link href="/blog/crafting-futures-the-krishti-story" className="text-muted-foreground hover:text-primary transition-colors">
                     Crafted by Her. Backed by Krishti.
@@ -176,6 +170,12 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
             content = (
                 <Link href="/blog/screening-today-for-a-healthier-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
                     Screening Today for a Healthier Tomorrow
+                </Link>
+            );
+        } else if (isGreenRootsPage) {
+            content = (
+                <Link href="/blog/planting-hope-growing-futures" className="text-muted-foreground hover:text-primary transition-colors">
+                    Planting Hope, Growing Futures
                 </Link>
             );
         } else {

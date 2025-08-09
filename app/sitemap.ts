@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/crafting-futures-the-krishti-story',
     '/blog/surgery-shouldnt-be-a-luxury',
     '/blog/screening-today-for-a-healthier-tomorrow',
+    '/blog/planting-hope-growing-futures',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
