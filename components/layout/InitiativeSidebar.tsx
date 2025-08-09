@@ -267,6 +267,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "TideShield initiative", hint: "mangrove restoration"};
+        } else if (pathname.includes('/childfirst')) {
+            content = (
+                <Link href="/blog/childfirst-health-hope-dignity" className="text-muted-foreground hover:text-primary transition-colors">
+                    ChildFirst: Bringing Health, Hope, and Dignity
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "ChildFirst initiative", hint: "child healthcare"};
         }
 
 

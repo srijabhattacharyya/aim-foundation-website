@@ -16,6 +16,14 @@ export const metadata: Metadata = {
 };
 
 const blogPosts = [
+    {
+    slug: 'childfirst-health-hope-dignity',
+    title: 'ChildFirst: Bringing Health, Hope, and Dignity',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'child healthcare',
+    excerpt: 'Learn how ChildFirst provides free pediatric and general healthcare to children in Kolkata\'s red-light districts.',
+    date: 'March 12, 2024',
+  },
   {
     slug: 'tideshield-restoring-mangroves',
     title: 'TideShield: Restoring the Mangrove Heartbeat of the Sundarbans',

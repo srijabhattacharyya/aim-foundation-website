@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/',
     '/annual-report',
     '/blog',
+    '/blog/childfirst-health-hope-dignity',
     '/blog/threading-changes-the-suidhaga-story',
     '/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu',
     '/blog/the-quiet-revolution-in-womens-health',
