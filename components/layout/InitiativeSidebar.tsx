@@ -91,6 +91,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
     }
 
     const isDetectPage = pathname.includes('/detect');
+    const isMilieuPage = pathname.includes('/milieu');
 
     return (
         <aside className="md:col-span-1 space-y-8">
@@ -104,6 +105,14 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                             <li>
                                 <Link href="/blog/the-quiet-revolution-in-womens-health" className="text-muted-foreground hover:text-primary transition-colors">
                                 The Quiet Revolution in Women’s Health
+                                </Link>
+                            </li>
+                        </ul>
+                    ) : isMilieuPage ? (
+                        <ul className="space-y-2">
+                            <li>
+                                <Link href="/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu" className="text-muted-foreground hover:text-primary transition-colors">
+                                Nurturing a Kinder Tomorrow: The Story of Milieu
                                 </Link>
                             </li>
                         </ul>
