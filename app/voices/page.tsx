@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'vidyashakti-ai-learning',
+    title: 'VidyaShakti: AI-Powered Learning for Rural Classrooms',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'learning app student',
+    excerpt: 'Discover how our VidyaShakti app provides AI-powered, multilingual academic support to rural and first-generation learners.',
+    date: 'April 2, 2024',
+  },
+  {
     slug: 'carecircle-bringing-healing-to-the-city',
     title: 'CareCircle: Bringing Healing to the Heart of the City',
     image: 'https://placehold.co/600x400.png',

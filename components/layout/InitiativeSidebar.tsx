@@ -281,6 +281,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "CareCircle initiative", hint: "urban health camp"};
+        } else if (pathname.includes('/vidyashakti')) {
+            content = (
+                <Link href="/blog/vidyashakti-ai-learning" className="text-muted-foreground hover:text-primary transition-colors">
+                    VidyaShakti: AI-Powered Learning for Rural Classrooms
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "VidyaShakti initiative", hint: "learning app student"};
         }
 
 

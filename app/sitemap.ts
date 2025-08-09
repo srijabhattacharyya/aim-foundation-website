@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/cureline-bringing-healthcare-to-the-last-mile',
     '/blog/tideshield-restoring-mangroves',
     '/blog/carecircle-bringing-healing-to-the-city',
+    '/blog/vidyashakti-ai-learning',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
