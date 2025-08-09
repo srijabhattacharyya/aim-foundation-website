@@ -8,8 +8,19 @@ import Link from "next/link";
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Lightbulb, BookOpen, MessageSquareHeart } from 'lucide-react';
+import { useState } from "react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/VidyaShaktiDonationForm'), { 
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
+});
 
 export default function VidyaShaktiBlogPage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -42,7 +53,7 @@ export default function VidyaShaktiBlogPage() {
                   When the Classroom Fits in Your Pocket
                 </p>
                 <p>
-                  In the heart of rural India, countless children wake up each morning with the same curiosity and dreams as their peers in cities. But while urban students step into classrooms equipped with trained teachers, well-stocked libraries, and digital tools, many rural children have no such access. For some, the nearest school is miles away. For others, even if the school is nearby, overcrowded classrooms, lack of qualified teachers, and outdated resources make quality education an elusive dream.
+                  In the heart of rural India, countless children wake up each morning with the same curiosity and dreams as their peers in cities. But while urban students step into classrooms equipped with trained teachers, well-stocked libraries, and digital tools, many rural children have no such access.
                 </p>
                 <p>
                   Yet, there is a powerful equalizer in their homes—a small device that has quietly revolutionized communication: the smartphone. What if this very phone could become a classroom? What if every child could have a personal tutor, speaking in their own language, ready to explain any concept at any time?
@@ -108,6 +119,16 @@ export default function VidyaShaktiBlogPage() {
           </div>
         </article>
       </main>
+      <div className="fixed bottom-8 right-8 z-50">
+        <Dialog open={showForm} onOpenChange={setShowForm}>
+          <DialogTrigger asChild>
+            <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to VidyaShakti</Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+            <DynamicDonationForm />
+          </DialogContent>
+        </Dialog>
+      </div>
       <Footer />
     </div>
   );

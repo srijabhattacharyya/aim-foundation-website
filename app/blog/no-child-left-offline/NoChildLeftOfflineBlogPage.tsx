@@ -8,8 +8,19 @@ import Link from "next/link";
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Wifi } from 'lucide-react';
+import { useState } from "react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DigiEmpowerDonationForm'), { 
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
+});
 
 export default function NoChildLeftOfflineBlogPage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -98,6 +109,16 @@ export default function NoChildLeftOfflineBlogPage() {
           </div>
         </article>
       </main>
+      <div className="fixed bottom-8 right-8 z-50">
+        <Dialog open={showForm} onOpenChange={setShowForm}>
+          <DialogTrigger asChild>
+            <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to DigiEmpower</Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+            <DynamicDonationForm />
+          </DialogContent>
+        </Dialog>
+      </div>
       <Footer />
     </div>
   );
