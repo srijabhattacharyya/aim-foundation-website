@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'tideshield-restoring-mangroves',
+    title: 'TideShield: Restoring the Mangrove Heartbeat of the Sundarbans',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'mangrove restoration',
+    excerpt: 'Learn how TideShield is restoring the vital mangrove ecosystem of the Sundarbans, protecting communities and biodiversity from the impacts of climate change.',
+    date: 'March 5, 2024',
+  },
+  {
     slug: 'cureline-bringing-healthcare-to-the-last-mile',
     title: 'CureLine: Bringing Healthcare to the Last Mile',
     image: 'https://placehold.co/600x400.png',

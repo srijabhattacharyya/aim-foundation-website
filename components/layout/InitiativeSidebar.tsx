@@ -260,6 +260,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "CureLine initiative", hint: "rural healthcare camp"};
+        } else if (pathname.includes('/tideshield')) {
+            content = (
+                <Link href="/blog/tideshield-restoring-mangroves" className="text-muted-foreground hover:text-primary transition-colors">
+                    TideShield: Restoring the Mangrove Heartbeat of the Sundarbans
+                </Link>
+            );
+            image = { src: "https://placehold.co/600x400.png", alt: "TideShield initiative", hint: "mangrove restoration"};
         }
 
 
