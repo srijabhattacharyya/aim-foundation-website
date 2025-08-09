@@ -35,7 +35,7 @@ const donationSchema = z.object({
   fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
-  dob: z.string().nonempty({ message: "Date of birth is required." }),
+  dob: z.string().optional(),
   pan: z.string().optional(),
   passport: z.string().optional(),
   country: z.string().nonempty({ message: "Country is required." }),
@@ -291,7 +291,7 @@ export default function SponsorChildDonationForm() {
                     name="dob"
                     render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Date of Birth</FormLabel>
+                        <FormLabel>Date of Birth (Optional)</FormLabel>
                         <FormControl>
                             <Input type="date" {...field} />
                         </FormControl>
