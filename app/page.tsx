@@ -11,7 +11,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation | Leading NGO in Kolkata for Education, Healthcare & Empowerment',
-  description: 'AIM Foundation is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development for underprivileged communities across India.',
+  description: 'We empower lives with education, healthcare, and sustainable initiatives, building stronger communities and a brighter future for those who need it most.',
   alternates: {
     canonical: '/',
   },
