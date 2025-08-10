@@ -5,21 +5,27 @@ import { adminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
 export async function addDonation(data: any) {
-  if (!adminDb.collection) {
-    console.error("Firebase Admin SDK is not initialized. Please ensure the service account key is set in your environment variables.");
+  console.log("addDonation server action started.");
+
+  if (!adminDb || !adminDb.collection) {
+    console.error("Firebase Admin SDK is not initialized correctly. adminDb or adminDb.collection is not available.");
     return { success: false, error: "Server configuration error." };
   }
+  console.log("Firebase Admin SDK seems to be initialized.");
     
   try {
     const { recaptcha, ...donationData } = data;
+    console.log("Attempting to add document to 'donations' collection with data:", donationData);
+    
     const docRef = await adminDb.collection("donations").add({
       ...donationData,
       createdAt: FieldValue.serverTimestamp(),
     });
-    console.log("Document written with ID: ", docRef.id);
+
+    console.log("Document successfully written with ID: ", docRef.id);
     return { success: true, id: docRef.id };
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error("Error adding document to Firestore: ", e);
     // Return a generic error to the client for security
     return { success: false, error: "Could not record donation. Please try again." };
   }
