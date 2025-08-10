@@ -49,7 +49,10 @@ export async function getDonations(): Promise<{ success: boolean; data?: Donatio
     }
 
     try {
+        console.log("Attempting to fetch 'donations' collection...");
         const donationsSnapshot = await adminDb.collection('donations').orderBy('createdAt', 'desc').get();
+        console.log(`Successfully fetched ${donationsSnapshot.docs.length} documents.`);
+
         const donations: Donation[] = donationsSnapshot.docs.map(doc => {
             const data = doc.data();
             // Safely handle the createdAt field to prevent crashes
@@ -67,7 +70,7 @@ export async function getDonations(): Promise<{ success: boolean; data?: Donatio
                 cause: data.cause || 'N/A',
             };
         });
-        console.log(`Fetched ${donations.length} donations.`);
+        console.log(`Successfully processed ${donations.length} donations.`);
         return { success: true, data: donations };
     } catch (e: any) {
         console.error("Error fetching documents from Firestore: ", e);
