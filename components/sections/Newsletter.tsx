@@ -3,18 +3,26 @@
 
 import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useRef } from 'react';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
-import { useToast } from '../../hooks/use-toast';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 import { addSubscriber } from '@/app/actions/newsletterActions';
 
-const initialState = {
-  success: false,
+// Define the shape of the state
+interface FormState {
+  success: boolean;
   error: {
-    _form: [],
-    email: [],
-   }
+    _form?: string[];
+    email?: string[];
+  };
+}
+
+// Correctly initialize the state object with valid JavaScript
+const initialState: FormState = {
+  success: false,
+  error: {},
 };
+
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -33,11 +41,11 @@ const Newsletter = () => {
   useEffect(() => {
     if (state.success) {
       toast({
-        title: "Thank you for subscribe to our Impact Mail",
-        description: "We will stay connected",
+        title: "Thank you for subscribing to our Impact Mail",
+        description: "We will stay connected.",
       });
       formRef.current?.reset();
-    } else if (state.error?._form?.length) {
+    } else if (state.error?._form && state.error._form.length > 0) {
       toast({
         variant: "destructive",
         title: 'Subscription Failed',
@@ -70,8 +78,8 @@ const Newsletter = () => {
             />
             <SubmitButton />
           </form>
-          {state?.error?._form && <p className="text-sm font-medium text-destructive mt-2">{state.error._form.join(', ')}</p>}
-          {state?.error?.email && <p className="text-sm font-medium text-destructive mt-2">{state.error.email.join(', ')}</p>}
+          {state?.error?.email && state.error.email.length > 0 && <p className="text-sm font-medium text-destructive mt-2">{state.error.email.join(', ')}</p>}
+          {state?.error?._form && state.error._form.length > 0 && !state.error.email && <p className="text-sm font-medium text-destructive mt-2">{state.error._form.join(', ')}</p>}
         </div>
       </div>
     </section>
