@@ -45,8 +45,8 @@ const Newsletter = () => {
                 createdAt: serverTimestamp(),
             });
             toast({
-                title: 'Subscribed!',
-                description: `Thank you for subscribing, ${email}!`,
+                title: "Thank you for subscribe to our Impact Mail",
+                description: "We will stay connected",
             });
             (event.target as HTMLFormElement).reset();
         }
