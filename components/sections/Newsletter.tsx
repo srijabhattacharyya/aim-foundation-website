@@ -4,23 +4,47 @@
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { useToast } from '../../hooks/use-toast';
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
+import { addSubscriber } from '@/app/actions/newsletterActions';
 
 const Newsletter = () => {
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get('email');
-    
-    // Reset form
-    (event.target as HTMLFormElement).reset();
+    setIsLoading(true);
 
-    toast({
-      title: 'Subscribed!',
-      description: `Thank you for subscribing, ${email}!`,
-    });
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get('email') as string;
+    
+    if (!email) {
+      toast({
+        variant: "destructive",
+        title: 'Error',
+        description: 'Please enter a valid email address.',
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    const result = await addSubscriber(email);
+
+    if (result.success) {
+        toast({
+            title: 'Subscribed!',
+            description: `Thank you for subscribing, ${email}!`,
+        });
+        (event.target as HTMLFormElement).reset();
+    } else {
+        toast({
+            variant: "destructive",
+            title: 'Subscription Failed',
+            description: result.error || 'An unexpected error occurred.',
+        });
+    }
+    
+    setIsLoading(false);
   };
 
   return (
@@ -44,9 +68,10 @@ const Newsletter = () => {
               required
               className="flex-grow text-base w-full sm:w-auto"
               aria-label="Email for newsletter"
+              disabled={isLoading}
             />
-            <Button type="submit" size="lg" className="flex-shrink-0 w-full sm:w-auto transition-transform transform hover:scale-105">
-              Subscribe
+            <Button type="submit" size="lg" className="flex-shrink-0 w-full sm:w-auto transition-transform transform hover:scale-105" disabled={isLoading}>
+              {isLoading ? 'Subscribing...' : 'Subscribe'}
             </Button>
           </form>
         </div>

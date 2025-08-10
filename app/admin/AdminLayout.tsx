@@ -7,7 +7,7 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { LayoutDashboard, LogOut, Loader2, HandHeart } from 'lucide-react';
+import { LayoutDashboard, LogOut, Loader2, HandHeart, Mail } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -64,6 +64,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
              <Link href="/admin/donations">
                 <HandHeart className="mr-2 h-4 w-4" />
                 Donations
+             </Link>
+           </Button>
+            <Button variant="ghost" className="w-full justify-start" asChild>
+             <Link href="/admin/subscribers">
+                <Mail className="mr-2 h-4 w-4" />
+                Subscribers
              </Link>
            </Button>
         </nav>
