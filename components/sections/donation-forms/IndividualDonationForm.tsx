@@ -132,8 +132,8 @@ export default function IndividualDonationForm() {
       };
       await addDonation(donationData);
       toast({
-        title: "Thank you for being a Smile Warrior!",
-        description: "Your individual donation makes a huge impact.",
+        title: "Thank you for supporting AIM Foundation",
+        description: "Your donation makes a huge impact.",
       });
       recaptchaRef.current?.reset();
       form.reset();
