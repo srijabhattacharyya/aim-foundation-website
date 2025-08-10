@@ -3,12 +3,24 @@
 
 import { useEffect, useState } from 'react';
 import { db } from '@/lib/firebase';
-import { collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, Timestamp, deleteDoc, doc } from 'firebase/firestore';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Loader2, Download } from 'lucide-react';
+import { Loader2, Download, Trash2 } from 'lucide-react';
 import AdminLayout from '../AdminLayout';
 import { Button } from '@/components/ui/button';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { useToast } from '@/hooks/use-toast';
 import Papa from 'papaparse';
 
 interface Subscriber {
@@ -51,6 +63,7 @@ export default function SubscribersPage() {
     const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const { toast } = useToast();
 
     useEffect(() => {
         async function getSubscribers() {
@@ -65,6 +78,29 @@ export default function SubscribersPage() {
         }
         getSubscribers();
     }, []);
+
+    const handleDelete = async (id: string) => {
+        try {
+          await deleteDoc(doc(db, "subscribers", id));
+          const newSubscribers = subscribers.filter((subscriber) => subscriber.id !== id);
+          setSubscribers(newSubscribers);
+          toast({
+            title: "Subscriber deleted",
+            description: "The subscriber has been successfully removed.",
+          });
+        } catch (e: any) {
+            console.error("Error deleting document from Firestore on client: ", e);
+            let errorMessage = "Could not delete the subscriber. Please try again.";
+            if (e.code === 'permission-denied') {
+                errorMessage = "Deletion failed. You do not have permission to delete records. Please check your Firestore security rules.";
+            }
+            toast({
+                variant: "destructive",
+                title: "Deletion failed",
+                description: errorMessage,
+            });
+        }
+    };
     
     const handleDownload = () => {
         const csv = Papa.unparse(subscribers.map(s => ({ email: s.email, subscribed_at: s.createdAt })));
@@ -112,6 +148,7 @@ export default function SubscribersPage() {
                             <TableRow>
                                 <TableHead>Email</TableHead>
                                 <TableHead>Subscription Date</TableHead>
+                                <TableHead>Actions</TableHead>
                             </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -119,6 +156,29 @@ export default function SubscribersPage() {
                                 <TableRow key={subscriber.id}>
                                     <TableCell>{subscriber.email}</TableCell>
                                     <TableCell>{new Date(subscriber.createdAt).toLocaleDateString()}</TableCell>
+                                    <TableCell>
+                                        <AlertDialog>
+                                            <AlertDialogTrigger asChild>
+                                                <Button variant="destructive" size="icon">
+                                                    <Trash2 className="h-4 w-4" />
+                                                </Button>
+                                            </AlertDialogTrigger>
+                                            <AlertDialogContent>
+                                                <AlertDialogHeader>
+                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                <AlertDialogDescription>
+                                                    This action cannot be undone. This will permanently delete the subscriber record.
+                                                </AlertDialogDescription>
+                                                </AlertDialogHeader>
+                                                <AlertDialogFooter>
+                                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                                <AlertDialogAction onClick={() => handleDelete(subscriber.id)}>
+                                                    Delete
+                                                </AlertDialogAction>
+                                                </AlertDialogFooter>
+                                            </AlertDialogContent>
+                                        </AlertDialog>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                             </TableBody>
