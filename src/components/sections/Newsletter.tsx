@@ -23,8 +23,7 @@ const Newsletter = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get('email') as string;
+    const email = emailInputRef.current?.value;
     
     if (!email) {
       toast({
@@ -36,10 +35,9 @@ const Newsletter = () => {
       return;
     }
 
-    recaptchaRef.current?.execute();
-  };
-  
-  const onReCAPTCHAChange = async (token: string | null) => {
+    const token = await recaptchaRef.current?.executeAsync();
+    recaptchaRef.current?.reset();
+    
     if (!token) {
         toast({
             variant: "destructive",
@@ -50,8 +48,7 @@ const Newsletter = () => {
         return;
     }
 
-    const email = emailInputRef.current?.value || '';
-    const result = await addSubscriber(email, token);
+    const result = await addSubscriber({ email, token });
 
     if (result.success) {
         toast({
@@ -67,7 +64,6 @@ const Newsletter = () => {
         });
     }
     
-    recaptchaRef.current?.reset();
     setIsLoading(false);
   }
 
@@ -96,17 +92,16 @@ const Newsletter = () => {
               disabled={isLoading}
             />
             <Button type="submit" size="lg" className="flex-shrink-0 w-full sm:w-auto transition-transform transform hover:scale-105" disabled={isLoading}>
-              {isLoading ? 'Verifying...' : 'Subscribe'}
+              {isLoading ? 'Subscribing...' : 'Subscribe'}
             </Button>
-          </form>
-           <div className="flex justify-center mt-4">
+             <div className="hidden">
               <DynamicReCAPTCHA
                 ref={recaptchaRef}
                 size="invisible"
                 sitekey={recaptchaSiteKey}
-                onChange={onReCAPTCHAChange}
               />
             </div>
+          </form>
         </div>
       </div>
     </section>

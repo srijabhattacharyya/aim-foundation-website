@@ -4,7 +4,9 @@
 import { adminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
-export async function addSubscriber(email: string, token: string) {
+export async function addSubscriber(data: { email: string; token: string }) {
+  const { email, token } = data;
+
   if (!email) {
     return { success: false, error: 'Email is required.' };
   }
@@ -19,6 +21,7 @@ export async function addSubscriber(email: string, token: string) {
     });
     const recaptchaData = await response.json();
     if (!recaptchaData.success) {
+        console.error("reCAPTCHA verification failed with data:", recaptchaData);
         return { success: false, error: 'reCAPTCHA verification failed. Please try again.' };
     }
   } catch (e: any) {
