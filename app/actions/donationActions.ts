@@ -4,6 +4,16 @@
 import { adminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
+export interface Donation {
+    id: string;
+    createdAt: string;
+    fullName: string;
+    email: string;
+    amount: string;
+    otherAmount?: string;
+    cause: string;
+}
+
 export async function addDonation(data: any) {
   console.log("addDonation server action started.");
 
@@ -29,4 +39,33 @@ export async function addDonation(data: any) {
     // Return a generic error to the client for security
     return { success: false, error: "Could not record donation. Please try again." };
   }
+}
+
+export async function getDonations(): Promise<{ success: boolean; data?: Donation[]; error?: string }> {
+    console.log("getDonations server action started.");
+    if (!adminDb || !adminDb.collection) {
+        console.error("Firebase Admin SDK is not initialized correctly.");
+        return { success: false, error: "Server configuration error." };
+    }
+
+    try {
+        const donationsSnapshot = await adminDb.collection('donations').orderBy('createdAt', 'desc').get();
+        const donations: Donation[] = donationsSnapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+                id: doc.id,
+                createdAt: data.createdAt?.toDate().toISOString() || new Date().toISOString(),
+                fullName: data.fullName || '',
+                email: data.email || '',
+                amount: data.amount || '',
+                otherAmount: data.otherAmount || '',
+                cause: data.cause || 'N/A',
+            };
+        });
+        console.log(`Fetched ${donations.length} donations.`);
+        return { success: true, data: donations };
+    } catch (e) {
+        console.error("Error fetching documents from Firestore: ", e);
+        return { success: false, error: "Could not retrieve donations." };
+    }
 }

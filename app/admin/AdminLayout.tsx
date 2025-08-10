@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { LayoutDashboard, LogOut, Loader2, HandHeart } from 'lucide-react';
 
-export default function AdminDashboardPage() {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -24,7 +24,6 @@ export default function AdminDashboardPage() {
       setLoading(false);
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [router]);
 
@@ -41,13 +40,12 @@ export default function AdminDashboardPage() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-muted">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        <p className="ml-4 text-lg">Loading Dashboard...</p>
+        <p className="ml-4 text-lg">Loading...</p>
       </div>
     );
   }
 
   if (!user) {
-    // This is a fallback, but the redirect in useEffect should handle it.
     return null;
   }
 
@@ -77,13 +75,7 @@ export default function AdminDashboardPage() {
         </div>
       </aside>
       <main className="flex-grow p-8 bg-muted">
-        <h1 className="text-4xl font-bold font-headline mb-8">Admin Dashboard</h1>
-        <div className="bg-card p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold font-headline">Welcome, Admin!</h2>
-            <p className="text-muted-foreground mt-2">
-                You are logged in as {user.email}. You can now manage your application from here.
-            </p>
-        </div>
+        {children}
       </main>
     </div>
   );
