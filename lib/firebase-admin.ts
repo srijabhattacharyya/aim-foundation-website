@@ -1,3 +1,4 @@
+
 import admin from 'firebase-admin';
 import { getApps } from 'firebase-admin/app';
 
@@ -20,7 +21,7 @@ if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
       );
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
-        storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+        databaseURL: `https://aim-foundation-website-default-rtdb.firebaseio.com`,
       });
     } catch (e) {
       console.error('CRITICAL: Failed to parse FIREBASE_SERVICE_ACCOUNT_KEY. Admin SDK will not be initialized.', e);
@@ -28,8 +29,12 @@ if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
   }
 }
 
-// We export the initialized services or a placeholder that will cause a controlled failure.
-// This prevents the entire application from crashing on import.
-export const adminAuth = getApps().length ? admin.auth() : ({} as admin.auth.Auth);
-export const adminDb = getApps().length ? admin.firestore() : ({} as admin.firestore.Firestore);
-export const adminStorage = getApps().length ? admin.storage() : ({} as admin.storage.Storage);
+const adminDb = getApps().length ? admin.firestore() : ({} as admin.firestore.Firestore);
+
+// This ensures we're connecting to the correct database instance.
+const db = getApps().length ? admin.firestore().settings({
+    databaseId: 'aim-foundation-website'
+}) : ({} as admin.firestore.Firestore);
+
+
+export { adminDb };
