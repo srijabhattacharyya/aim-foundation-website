@@ -6,8 +6,22 @@ import { db } from '@/lib/firebase';
 import { collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Trash2 } from 'lucide-react';
 import AdminLayout from '../AdminLayout';
+import { Button } from '@/components/ui/button';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { deleteDonation } from '@/app/actions/donationActions';
+import { useToast } from '@/hooks/use-toast';
 
 export interface Donation {
     id: string;
@@ -57,6 +71,7 @@ export default function DonationsPage() {
   const [donations, setDonations] = useState<Donation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     async function fetchDonations() {
@@ -72,6 +87,23 @@ export default function DonationsPage() {
 
     fetchDonations();
   }, []);
+
+  const handleDelete = async (id: string) => {
+    const result = await deleteDonation(id);
+    if (result.success) {
+      setDonations(donations.filter((donation) => donation.id !== id));
+      toast({
+        title: "Donation deleted",
+        description: "The donation record has been successfully removed.",
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Deletion failed",
+        description: result.error || "Could not delete the donation.",
+      });
+    }
+  };
 
   return (
     <AdminLayout>
@@ -103,6 +135,7 @@ export default function DonationsPage() {
                             <TableHead>Email</TableHead>
                             <TableHead>Amount</TableHead>
                             <TableHead>Cause</TableHead>
+                            <TableHead>Actions</TableHead>
                         </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -113,6 +146,29 @@ export default function DonationsPage() {
                                 <TableCell>{donation.email}</TableCell>
                                 <TableCell>{donation.otherAmount || donation.amount}</TableCell>
                                 <TableCell>{donation.cause}</TableCell>
+                                <TableCell>
+                                    <AlertDialog>
+                                        <AlertDialogTrigger asChild>
+                                            <Button variant="destructive" size="icon">
+                                                <Trash2 className="h-4 w-4" />
+                                            </Button>
+                                        </AlertDialogTrigger>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>
+                                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                            <AlertDialogDescription>
+                                                This action cannot be undone. This will permanently delete the donation record.
+                                            </AlertDialogDescription>
+                                            </AlertDialogHeader>
+                                            <AlertDialogFooter>
+                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                            <AlertDialogAction onClick={() => handleDelete(donation.id)}>
+                                                Delete
+                                            </AlertDialogAction>
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialog>
+                                </TableCell>
                             </TableRow>
                         ))}
                         </TableBody>

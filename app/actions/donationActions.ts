@@ -40,3 +40,19 @@ export async function addDonation(data: any) {
     return { success: false, error: "Could not record donation. Please try again." };
   }
 }
+
+export async function deleteDonation(id: string) {
+  if (!adminDb || !adminDb.collection) {
+    console.error("Firebase Admin SDK is not initialized correctly.");
+    return { success: false, error: "Server configuration error." };
+  }
+    
+  try {
+    await adminDb.collection("donations").doc(id).delete();
+    console.log("Document successfully deleted with ID: ", id);
+    return { success: true };
+  } catch (e) {
+    console.error("Error deleting document from Firestore: ", e);
+    return { success: false, error: "Could not delete donation. Please try again." };
+  }
+}
