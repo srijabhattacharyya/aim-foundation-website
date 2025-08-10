@@ -7,13 +7,11 @@ import { z } from 'zod';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'A valid email is required.' }),
-  recaptcha: z.string().min(1, { message: 'Please complete the reCAPTCHA.' }),
 });
 
 export async function addSubscriber(prevState: any, formData: FormData) {
   const validatedFields = formSchema.safeParse({
     email: formData.get('email'),
-    recaptcha: formData.get('g-recaptcha-response'),
   });
 
   if (!validatedFields.success) {
@@ -23,22 +21,7 @@ export async function addSubscriber(prevState: any, formData: FormData) {
     };
   }
 
-  const { email, recaptcha } = validatedFields.data;
-
-  // Verify reCAPTCHA token
-  try {
-    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`, {
-        method: 'POST',
-    });
-    const recaptchaData = await response.json();
-    if (!recaptchaData.success) {
-        console.error("reCAPTCHA verification failed with data:", recaptchaData);
-        return { success: false, error: { _form: ['reCAPTCHA verification failed. Please try again.'] } };
-    }
-  } catch (e: any) {
-    console.error("reCAPTCHA verification request failed: ", e.message);
-    return { success: false, error: { _form: ["Could not verify reCAPTCHA. Please try again."] } };
-  }
+  const { email } = validatedFields.data;
 
   if (!adminDb || !adminDb.collection) {
     console.error("Firebase Admin SDK is not initialized correctly for addSubscriber.");

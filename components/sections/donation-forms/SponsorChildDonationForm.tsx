@@ -19,14 +19,8 @@ import { Checkbox } from "../../../components/ui/checkbox";
 import { useToast } from "../../../hooks/use-toast";
 import { Card, CardContent } from "../../../components/ui/card";
 import React from "react";
-import dynamic from "next/dynamic";
-import { Skeleton } from "@/components/ui/skeleton";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-
-const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
-  ssr: false,
-  loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md" />
-});
+import { addDonation } from "@/app/actions/donationActions";
 
 const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
@@ -46,7 +40,6 @@ const donationSchema = z.object({
   agree: z.boolean().refine((val) => val === true, {
     message: "You must agree to the terms.",
   }),
-  recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
 }).refine(data => {
     if (data.nationality === "Indian") {
         return !!data.pan && data.pan.length === 10;
@@ -81,6 +74,7 @@ const donationAmountsNonIndian = [
 
 export default function SponsorChildDonationForm() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -99,12 +93,8 @@ export default function SponsorChildDonationForm() {
       address: "",
       pincode: "",
       agree: false,
-      recaptcha: "",
     },
   });
-
-  const recaptchaRef = React.createRef<ReCAPTCHA>();
-  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
@@ -127,14 +117,25 @@ export default function SponsorChildDonationForm() {
   }, [nationality, form]);
 
 
-  function onSubmit(values: z.infer<typeof donationSchema>) {
-    console.log(values);
-    toast({
-      title: "Thank you for sponsoring a child!",
-      description: `Your generous donation will change a life.`,
-    });
-    recaptchaRef.current?.reset();
-    form.reset();
+  async function onSubmit(values: z.infer<typeof donationSchema>) {
+    setIsSubmitting(true);
+    try {
+      const donationData = { ...values, cause: "Sponsor a Child" };
+      await addDonation(donationData);
+      toast({
+        title: "Thank you for sponsoring a child!",
+        description: `Your generous donation will change a life.`,
+      });
+      form.reset();
+    } catch(e) {
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "There was a problem saving your donation. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -387,26 +388,7 @@ export default function SponsorChildDonationForm() {
                     )}
                 />
 
-                <FormField
-                  control={form.control}
-                  name="recaptcha"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <div className="flex justify-center">
-                            <DynamicReCAPTCHA
-                              ref={recaptchaRef}
-                              sitekey={recaptchaSiteKey}
-                              onChange={field.onChange}
-                            />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Sponsor Now</Button>
+                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>Sponsor Now</Button>
                 </form>
             </Form>
         </CardContent>

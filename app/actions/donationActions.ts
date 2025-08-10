@@ -2,7 +2,7 @@
 'use server';
 
 import { adminDb } from '@/lib/firebase-admin';
-import { FieldValue, Timestamp } from 'firebase-admin/firestore';
+import { FieldValue } from 'firebase-admin/firestore';
 
 export interface Donation {
     id: string;
@@ -35,7 +35,7 @@ export async function addDonation(data: any) {
   console.log("Firebase Admin SDK seems to be initialized for addDonation.");
     
   try {
-    const { recaptcha, ...donationData } = data;
+    const donationData = data;
     console.log("Attempting to add document to 'donations' collection with data:", donationData);
     
     const docRef = await adminDb.collection("donations").add({

@@ -7,7 +7,6 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { useToast } from '../../hooks/use-toast';
 import { addSubscriber } from '@/app/actions/newsletterActions';
-import ReCAPTCHA from 'react-google-recaptcha';
 
 const initialState = {
   success: false,
@@ -27,8 +26,6 @@ const Newsletter = () => {
   const [state, formAction] = useFormState(addSubscriber, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
-
-  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   useEffect(() => {
     if (state.success) {
@@ -60,27 +57,18 @@ const Newsletter = () => {
               <em className="italic">Let every update remind you that</em> <strong className="italic">together, we’re making a difference.</strong>
             </p>
           </div>
-          <form ref={formRef} action={formAction} className="mt-8 flex flex-col gap-4 max-w-md mx-auto">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                required
-                className="flex-grow text-base w-full sm:w-auto"
-                aria-label="Email for newsletter"
-              />
-              <SubmitButton />
-            </div>
-            <div className="flex justify-center">
-              <ReCAPTCHA
-                sitekey={recaptchaSiteKey}
-                name="g-recaptcha-response"
-              />
-            </div>
-            {state.error?.email && <p className="text-sm font-medium text-destructive">{state.error.email}</p>}
-            {state.error?.recaptcha && <p className="text-sm font-medium text-destructive">{state.error.recaptcha}</p>}
+          <form ref={formRef} action={formAction} className="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <Input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+              className="flex-grow text-base w-full sm:w-auto"
+              aria-label="Email for newsletter"
+            />
+            <SubmitButton />
           </form>
+          {state.error?.email && <p className="text-sm font-medium text-destructive mt-2">{state.error.email}</p>}
         </div>
       </div>
     </section>
