@@ -22,14 +22,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
-
+import { addDonation } from "@/app/actions/donationActions";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
@@ -86,6 +79,7 @@ const donationAmountsNonIndian = [
 
 export default function IndividualDonationForm() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -128,14 +122,30 @@ export default function IndividualDonationForm() {
   }, [nationality, form]);
 
 
-  function onSubmit(values: z.infer<typeof donationSchema>) {
-    console.log(values);
-    toast({
-      title: "Thank you for being a Smile Warrior!",
-      description: "Your individual donation makes a huge impact.",
-    });
-    recaptchaRef.current?.reset();
-    form.reset();
+  async function onSubmit(values: z.infer<typeof donationSchema>) {
+    setIsSubmitting(true);
+    try {
+      const donationData = {
+        ...values,
+        cause: "Individual Donation",
+        donationDate: new Date().toISOString(),
+      };
+      await addDonation(donationData);
+      toast({
+        title: "Thank you for being a Smile Warrior!",
+        description: "Your individual donation makes a huge impact.",
+      });
+      recaptchaRef.current?.reset();
+      form.reset();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "There was a problem saving your donation. Please try again.",
+      });
+    } finally {
+        setIsSubmitting(false);
+    }
   }
 
   return (
@@ -405,7 +415,9 @@ export default function IndividualDonationForm() {
                   )}
                 />
 
-                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
+                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Submit"}
+                </Button>
                 </form>
             </Form>
         </CardContent>
