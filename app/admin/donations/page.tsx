@@ -30,6 +30,17 @@ export interface Donation {
     amount: string;
     otherAmount?: string;
     cause: string;
+    nationality?: string;
+    mobile?: string;
+    dob?: string;
+    pan?: string;
+    passport?: string;
+    country?: string;
+    state?: string;
+    city?: string;
+    address?: string;
+    pincode?: string;
+    initiative?: string;
 }
 
 async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Donation[]; error?: string }> {
@@ -52,6 +63,17 @@ async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Do
                 amount: data.amount || '',
                 otherAmount: data.otherAmount || '',
                 cause: data.cause || 'N/A',
+                nationality: data.nationality || '',
+                mobile: data.mobile || '',
+                dob: data.dob || '',
+                pan: data.pan || '',
+                passport: data.passport || '',
+                country: data.country || '',
+                state: data.state || '',
+                city: data.city || '',
+                address: data.address || '',
+                pincode: data.pincode || '',
+                initiative: data.initiative || '',
             };
         });
         
@@ -137,8 +159,15 @@ export default function DonationsPage() {
                             <TableHead>Date</TableHead>
                             <TableHead>Name</TableHead>
                             <TableHead>Email</TableHead>
+                            <TableHead>Mobile</TableHead>
                             <TableHead>Amount</TableHead>
                             <TableHead>Cause</TableHead>
+                            <TableHead>Nationality</TableHead>
+                            <TableHead>Country</TableHead>
+                            <TableHead>State</TableHead>
+                            <TableHead>City</TableHead>
+                            <TableHead>PAN</TableHead>
+                            <TableHead>Passport</TableHead>
                             <TableHead>Actions</TableHead>
                         </TableRow>
                         </TableHeader>
@@ -148,8 +177,15 @@ export default function DonationsPage() {
                                 <TableCell>{donation.createdAt ? new Date(donation.createdAt).toLocaleDateString() : 'N/A'}</TableCell>
                                 <TableCell>{donation.fullName}</TableCell>
                                 <TableCell>{donation.email}</TableCell>
+                                <TableCell>{donation.mobile}</TableCell>
                                 <TableCell>{donation.otherAmount || donation.amount}</TableCell>
                                 <TableCell>{donation.cause}</TableCell>
+                                <TableCell>{donation.nationality}</TableCell>
+                                <TableCell>{donation.country}</TableCell>
+                                <TableCell>{donation.state}</TableCell>
+                                <TableCell>{donation.city}</TableCell>
+                                <TableCell>{donation.pan}</TableCell>
+                                <TableCell>{donation.passport}</TableCell>
                                 <TableCell>
                                     <AlertDialog>
                                         <AlertDialogTrigger asChild>

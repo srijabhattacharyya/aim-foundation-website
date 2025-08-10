@@ -2,7 +2,7 @@
 'use server';
 
 import { adminDb } from '@/lib/firebase-admin';
-import { FieldValue } from 'firebase-admin/firestore';
+import { FieldValue, Timestamp } from 'firebase-admin/firestore';
 
 export interface Donation {
     id: string;
@@ -12,6 +12,17 @@ export interface Donation {
     amount: string;
     otherAmount?: string;
     cause: string;
+    nationality?: string;
+    mobile?: string;
+    dob?: string;
+    pan?: string;
+    passport?: string;
+    country?: string;
+    state?: string;
+    city?: string;
+    address?: string;
+    pincode?: string;
+    initiative?: string;
 }
 
 export async function addDonation(data: any) {
@@ -36,7 +47,6 @@ export async function addDonation(data: any) {
     return { success: true, id: docRef.id };
   } catch (e: any) {
     console.error("Error adding document to Firestore: ", e.message);
-    // Return a generic error to the client for security
     return { success: false, error: "Could not record donation. Please try again." };
   }
 }
