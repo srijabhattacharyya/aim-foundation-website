@@ -71,6 +71,10 @@ export async function getDonations(): Promise<{ success: boolean; data?: Donatio
         return { success: true, data: donations };
     } catch (e: any) {
         console.error("Error fetching documents from Firestore: ", e);
+        // Provide a more specific error message for permission issues.
+        if (e.code === 'permission-denied' || (e.message && e.message.includes('access token'))) {
+            return { success: false, error: "Could not retrieve donations. Please check server permissions." };
+        }
         return { success: false, error: "Could not retrieve donations. " + e.message };
     }
 }
