@@ -8,22 +8,11 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { addSubscriber } from '@/app/actions/newsletterActions';
 
-// Define the type for the state
-interface FormState {
-  success: boolean;
-  error: {
-    _form: string[];
-    email?: string[];
-  };
-}
-
-// Initialize the state object correctly
-const initialState: FormState = {
+const initialState = {
   success: false,
   error: {
     _form: [],
-    email: [],
-   }
+  }
 };
 
 function SubmitButton() {
@@ -80,8 +69,8 @@ const Newsletter = () => {
             />
             <SubmitButton />
           </form>
-          {state?.error?._form && <p className="text-sm font-medium text-destructive mt-2">{state.error._form.join(', ')}</p>}
-          {state?.error?.email && <p className="text-sm font-medium text-destructive mt-2">{state.error.email.join(', ')}</p>}
+          {state?.error?._form && state.error._form.length > 0 && <p className="text-sm font-medium text-destructive mt-2">{state.error._form.join(', ')}</p>}
+          {state?.error?.email && state.error.email.length > 0 && <p className="text-sm font-medium text-destructive mt-2">{state.error.email.join(', ')}</p>}
         </div>
       </div>
     </section>
