@@ -5,15 +5,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
-import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { LayoutDashboard, LogOut, Loader2 } from 'lucide-react';
-
-// Note: Metadata is not used in Client Components, but we'll keep it for reference
-// export const metadata: Metadata = {
-//   title: 'Admin Dashboard - AIM Foundation',
-// };
 
 export default function AdminDashboardPage() {
   const [user, setUser] = useState<User | null>(null);
