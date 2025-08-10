@@ -23,9 +23,9 @@ export async function addSubscriber(prevState: any, formData: FormData) {
 
   const { email } = validatedFields.data;
 
-  if (!adminDb || !adminDb.collection) {
+  if (!adminDb || typeof adminDb.collection !== 'function') {
     console.error("Firebase Admin SDK is not initialized correctly for addSubscriber.");
-    return { success: false, error: { _form: ["Server configuration error."] } };
+    return { success: false, error: { _form: ["Server configuration error. Please try again later."] } };
   }
   
   try {
@@ -43,10 +43,12 @@ export async function addSubscriber(prevState: any, formData: FormData) {
 
     return { success: true };
   } catch (e: any) {
-    console.error("Error adding subscriber to Firestore: ", e.message);
+    console.error("Error adding subscriber to Firestore:", e);
     let errorMessage = "Could not subscribe. Please try again.";
     if (e.code === 'permission-denied') {
         errorMessage = "Permission denied. Please check server permissions.";
+    } else if (e.message) {
+        errorMessage = `A server error occurred: ${e.message}`;
     }
     return { success: false, error: { _form: [errorMessage] } };
   }

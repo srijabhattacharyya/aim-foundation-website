@@ -68,7 +68,8 @@ const Newsletter = () => {
             />
             <SubmitButton />
           </form>
-          {state?.error?.email && <p className="text-sm font-medium text-destructive mt-2">{state.error.email}</p>}
+          {state?.error?._form && <p className="text-sm font-medium text-destructive mt-2">{state.error._form.join(', ')}</p>}
+          {state?.error?.email && <p className="text-sm font-medium text-destructive mt-2">{state.error.email.join(', ')}</p>}
         </div>
       </div>
     </section>
