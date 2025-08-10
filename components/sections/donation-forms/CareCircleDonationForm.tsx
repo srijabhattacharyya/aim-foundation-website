@@ -21,6 +21,9 @@ import { Card, CardContent } from "../../../components/ui/card";
 import React from "react";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDonation } from "@/app/actions/donationActions";
+import dynamic from "next/dynamic";
+
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
@@ -40,6 +43,7 @@ const donationSchema = z.object({
   agree: z.boolean().refine((val) => val === true, {
     message: "You must agree to the terms.",
   }),
+  recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
 }).refine(data => {
     if (data.nationality === "Indian") {
         return !!data.pan && data.pan.length === 10;
@@ -93,8 +97,12 @@ export default function CareCircleDonationForm() {
       address: "",
       pincode: "",
       agree: false,
+      recaptcha: "",
     },
   });
+
+  const recaptchaRef = React.createRef<DynamicReCAPTCHA>();
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
@@ -127,6 +135,7 @@ export default function CareCircleDonationForm() {
         title: "Thank you for supporting CareCircle!",
         description: "Your support makes a difference.",
       });
+      recaptchaRef.current?.reset();
       form.reset();
     } catch (error) {
        toast({
@@ -384,6 +393,25 @@ export default function CareCircleDonationForm() {
                         </div>
                         </FormItem>
                     )}
+                />
+                
+                 <FormField
+                  control={form.control}
+                  name="recaptcha"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <div className="flex justify-center">
+                            <DynamicReCAPTCHA
+                              ref={recaptchaRef as React.RefObject<ReCAPTCHA>}
+                              sitekey={recaptchaSiteKey}
+                              onChange={field.onChange}
+                            />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>

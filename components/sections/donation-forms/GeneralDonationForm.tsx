@@ -22,6 +22,13 @@ import React from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDonation } from "@/app/actions/donationActions";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
+  ssr: false,
+  loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md" />
+});
 
 const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
@@ -42,6 +49,7 @@ const donationSchema = z.object({
   agree: z.boolean().refine((val) => val === true, {
     message: "You must agree to the terms.",
   }),
+  recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
 }).refine(data => {
     if (data.nationality === "Indian") {
         return !!data.pan && data.pan.length === 10;
@@ -119,9 +127,13 @@ export default function GeneralDonationForm() {
       address: "",
       pincode: "",
       agree: false,
+      recaptcha: "",
     },
   });
 
+  const recaptchaRef = React.createRef<DynamicReCAPTCHA>();
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+  
   const nationality = form.watch("nationality");
 
   React.useEffect(() => {
@@ -142,13 +154,13 @@ export default function GeneralDonationForm() {
       const donationData = {
         ...values,
         cause: initiatives.find(i => i.value === values.initiative)?.label || "General Donation",
-        donationDate: new Date().toISOString(),
       };
       await addDonation(donationData);
       toast({
         title: "Thank you for your donation!",
         description: `Your support for the ${initiatives.find(i => i.value === values.initiative)?.label} program is greatly appreciated.`,
       });
+      recaptchaRef.current?.reset();
       form.reset();
     } catch (error) {
        toast({
@@ -431,6 +443,25 @@ export default function GeneralDonationForm() {
                         </div>
                         </FormItem>
                     )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="recaptcha"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <div className="flex justify-center">
+                            <DynamicReCAPTCHA
+                              ref={recaptchaRef as React.RefObject<any>}
+                              sitekey={recaptchaSiteKey}
+                              onChange={field.onChange}
+                            />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>

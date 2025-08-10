@@ -18,7 +18,6 @@ import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
 import { Checkbox } from "../../ui/checkbox";
 import { useToast } from "../../../hooks/use-toast";
 import { Card, CardContent } from "../../ui/card";
-import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
@@ -103,7 +102,7 @@ export default function ChildcareDonationForm() {
     },
   });
 
-  const recaptchaRef = React.createRef<ReCAPTCHA>();
+  const recaptchaRef = React.createRef<DynamicReCAPTCHA>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
   
   const nationality = form.watch("nationality");
@@ -405,7 +404,7 @@ export default function ChildcareDonationForm() {
                       <FormControl>
                         <div className="flex justify-center">
                             <DynamicReCAPTCHA
-                              ref={recaptchaRef}
+                              ref={recaptchaRef as React.RefObject<any>}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
                             />
