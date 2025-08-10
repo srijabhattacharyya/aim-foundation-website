@@ -52,9 +52,10 @@ export async function getDonations(): Promise<{ success: boolean; data?: Donatio
         const donationsSnapshot = await adminDb.collection('donations').orderBy('createdAt', 'desc').get();
         const donations: Donation[] = donationsSnapshot.docs.map(doc => {
             const data = doc.data();
-            // Firestore Timestamps need to be converted to a serializable format (e.g., ISO string)
-            // Safely handle the case where createdAt might be null or undefined
-            const createdAt = data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : new Date().toISOString();
+            // Safely handle the createdAt field to prevent crashes
+            const createdAt = data.createdAt && typeof data.createdAt.toDate === 'function' 
+                ? data.createdAt.toDate().toISOString() 
+                : new Date().toISOString();
             
             return {
                 id: doc.id,
@@ -68,8 +69,8 @@ export async function getDonations(): Promise<{ success: boolean; data?: Donatio
         });
         console.log(`Fetched ${donations.length} donations.`);
         return { success: true, data: donations };
-    } catch (e) {
+    } catch (e: any) {
         console.error("Error fetching documents from Firestore: ", e);
-        return { success: false, error: "Could not retrieve donations." };
+        return { success: false, error: "Could not retrieve donations. " + e.message };
     }
 }
