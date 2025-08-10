@@ -21,7 +21,7 @@ export async function addDonation(data: any) {
     console.error("Firebase Admin SDK is not initialized correctly. adminDb or adminDb.collection is not available.");
     return { success: false, error: "Server configuration error." };
   }
-  console.log("Firebase Admin SDK seems to be initialized.");
+  console.log("Firebase Admin SDK seems to be initialized for addDonation.");
     
   try {
     const { recaptcha, ...donationData } = data;
@@ -34,8 +34,8 @@ export async function addDonation(data: any) {
 
     console.log("Document successfully written with ID: ", docRef.id);
     return { success: true, id: docRef.id };
-  } catch (e) {
-    console.error("Error adding document to Firestore: ", e);
+  } catch (e: any) {
+    console.error("Error adding document to Firestore: ", e.message);
     // Return a generic error to the client for security
     return { success: false, error: "Could not record donation. Please try again." };
   }
@@ -51,8 +51,11 @@ export async function deleteDonation(id: string) {
     await adminDb.collection("donations").doc(id).delete();
     console.log("Document successfully deleted with ID: ", id);
     return { success: true };
-  } catch (e) {
-    console.error("Error deleting document from Firestore: ", e);
+  } catch (e: any) {
+    console.error("Error deleting document from Firestore: ", e.message);
+    if (e.code === 'permission-denied') {
+        return { success: false, error: "Permission denied. Please check Firestore security rules for admin delete access." };
+    }
     return { success: false, error: "Could not delete donation. Please try again." };
   }
 }
