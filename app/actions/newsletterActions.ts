@@ -10,7 +10,7 @@ export async function addSubscriber(email: string) {
   }
 
   if (!adminDb || !adminDb.collection) {
-    console.error("Firebase Admin SDK is not initialized correctly.");
+    console.error("Firebase Admin SDK is not initialized correctly for addSubscriber.");
     return { success: false, error: "Server configuration error." };
   }
   
@@ -30,6 +30,10 @@ export async function addSubscriber(email: string) {
     return { success: true };
   } catch (e: any) {
     console.error("Error adding subscriber to Firestore: ", e.message);
-    return { success: false, error: "Could not subscribe. Please try again." };
+    let errorMessage = "Could not subscribe. Please try again.";
+    if (e.code === 'permission-denied') {
+        errorMessage = "Permission denied. Please check server permissions.";
+    }
+    return { success: false, error: errorMessage };
   }
 }

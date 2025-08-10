@@ -5,7 +5,8 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { useToast } from '../../hooks/use-toast';
 import { FormEvent, useState } from 'react';
-import { addSubscriber } from '@/app/actions/newsletterActions';
+import { db } from '@/lib/firebase';
+import { doc, setDoc, serverTimestamp, getDoc } from 'firebase/firestore';
 
 const Newsletter = () => {
   const { toast } = useToast();
@@ -28,19 +29,33 @@ const Newsletter = () => {
       return;
     }
 
-    const result = await addSubscriber(email);
+    try {
+        const subscriberRef = doc(db, 'subscribers', email);
+        const docSnap = await getDoc(subscriberRef);
 
-    if (result.success) {
-        toast({
-            title: 'Subscribed!',
-            description: `Thank you for subscribing, ${email}!`,
-        });
-        (event.target as HTMLFormElement).reset();
-    } else {
+        if (docSnap.exists()) {
+            toast({
+                variant: "destructive",
+                title: 'Already Subscribed',
+                description: 'This email address is already on our list.',
+            });
+        } else {
+            await setDoc(subscriberRef, {
+                email: email,
+                createdAt: serverTimestamp(),
+            });
+            toast({
+                title: 'Subscribed!',
+                description: `Thank you for subscribing, ${email}!`,
+            });
+            (event.target as HTMLFormElement).reset();
+        }
+    } catch (error) {
+        console.error("Error adding subscriber to Firestore: ", error);
         toast({
             variant: "destructive",
             title: 'Subscription Failed',
-            description: result.error || 'An unexpected error occurred.',
+            description: 'Could not subscribe. Please try again.',
         });
     }
     
