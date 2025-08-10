@@ -22,6 +22,7 @@ import React from "react";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDonation } from "@/app/actions/donationActions";
 import dynamic from "next/dynamic";
+import { Loader2 } from "lucide-react";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
@@ -101,7 +102,7 @@ export default function CareCircleDonationForm() {
     },
   });
 
-  const recaptchaRef = React.createRef<DynamicReCAPTCHA>();
+  const recaptchaRef = React.createRef<any>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const nationality = form.watch("nationality");
@@ -130,18 +131,27 @@ export default function CareCircleDonationForm() {
     setIsSubmitting(true);
     try {
       const donationData = { ...values, cause: 'CareCircle' };
-      await addDonation(donationData);
-      toast({
-        title: "Thank you for supporting CareCircle!",
-        description: "Your support makes a difference.",
-      });
-      recaptchaRef.current?.reset();
-      form.reset();
+      const result = await addDonation(donationData);
+      
+      if (result.success) {
+        toast({
+            title: "Thank you for supporting CareCircle!",
+            description: "Your support makes a difference.",
+        });
+        recaptchaRef.current?.reset();
+        form.reset();
+      } else {
+        toast({
+            variant: "destructive",
+            title: "Submission Failed",
+            description: result.error || "There was a problem saving your donation. Please try again.",
+        });
+      }
     } catch (error) {
        toast({
         variant: "destructive",
         title: "Submission Failed",
-        description: "There was a problem saving your donation. Please try again.",
+        description: "An unexpected error occurred. Please try again.",
       });
     } finally {
         setIsSubmitting(false);
@@ -403,7 +413,7 @@ export default function CareCircleDonationForm() {
                       <FormControl>
                         <div className="flex justify-center">
                             <DynamicReCAPTCHA
-                              ref={recaptchaRef as React.RefObject<ReCAPTCHA>}
+                              ref={recaptchaRef}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
                             />
@@ -415,7 +425,7 @@ export default function CareCircleDonationForm() {
                 />
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
-                    {isSubmitting ? "Submitting..." : "Submit"}
+                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
                 </Button>
                 </form>
             </Form>
