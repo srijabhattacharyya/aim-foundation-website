@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,8 +11,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { Shield } from 'lucide-react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { Shield, Loader2 } from 'lucide-react';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
 const formSchema = z.object({
@@ -24,6 +24,18 @@ export default function AdminLoginPage() {
   const router = useRouter();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        router.push('/admin/dashboard');
+      } else {
+        setCheckingAuth(false);
+      }
+    });
+    return () => unsubscribe();
+  }, [router]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,7 +53,7 @@ export default function AdminLoginPage() {
         title: 'Login Successful',
         description: 'Redirecting to dashboard...',
       });
-      router.push('/admin/dashboard');
+      // The onAuthStateChanged listener will handle the redirect
     } catch (error) {
         let errorMessage = 'An unexpected error occurred.';
         if (error instanceof Error) {
@@ -63,8 +75,18 @@ export default function AdminLoginPage() {
         title: 'Login Failed',
         description: errorMessage,
       });
+    } finally {
       setLoading(false);
     }
+  }
+
+  if (checkingAuth) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-muted">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <p className="ml-4 text-lg">Checking authentication...</p>
+      </div>
+    );
   }
 
   return (
@@ -107,7 +129,7 @@ export default function AdminLoginPage() {
                 )}
               />
               <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? 'Logging in...' : 'Login'}
+                {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Logging in...</> : 'Login'}
               </Button>
             </form>
           </Form>
