@@ -3,16 +3,27 @@
 
 import { adminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
+import { z } from 'zod';
 
-export async function addSubscriber(data: { email: string; recaptcha: string }) {
-  const { email, recaptcha } = data;
+const formSchema = z.object({
+  email: z.string().email({ message: 'A valid email is required.' }),
+  recaptcha: z.string().min(1, { message: 'Please complete the reCAPTCHA.' }),
+});
 
-  if (!email) {
-    return { success: false, error: 'Email is required.' };
+export async function addSubscriber(prevState: any, formData: FormData) {
+  const validatedFields = formSchema.safeParse({
+    email: formData.get('email'),
+    recaptcha: formData.get('g-recaptcha-response'),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      success: false,
+      error: validatedFields.error.flatten().fieldErrors,
+    };
   }
-  if (!recaptcha) {
-    return { success: false, error: 'reCAPTCHA verification failed. Please try again.' };
-  }
+
+  const { email, recaptcha } = validatedFields.data;
 
   // Verify reCAPTCHA token
   try {
@@ -22,17 +33,16 @@ export async function addSubscriber(data: { email: string; recaptcha: string }) 
     const recaptchaData = await response.json();
     if (!recaptchaData.success) {
         console.error("reCAPTCHA verification failed with data:", recaptchaData);
-        return { success: false, error: 'reCAPTCHA verification failed. Please try again.' };
+        return { success: false, error: { _form: ['reCAPTCHA verification failed. Please try again.'] } };
     }
   } catch (e: any) {
     console.error("reCAPTCHA verification request failed: ", e.message);
-    return { success: false, error: "Could not verify reCAPTCHA. Please try again." };
+    return { success: false, error: { _form: ["Could not verify reCAPTCHA. Please try again."] } };
   }
-
 
   if (!adminDb || !adminDb.collection) {
     console.error("Firebase Admin SDK is not initialized correctly for addSubscriber.");
-    return { success: false, error: "Server configuration error." };
+    return { success: false, error: { _form: ["Server configuration error."] } };
   }
   
   try {
@@ -40,7 +50,7 @@ export async function addSubscriber(data: { email: string; recaptcha: string }) 
     const doc = await subscriberRef.get();
 
     if (doc.exists) {
-        return { success: false, error: "This email is already subscribed." };
+        return { success: false, error: { _form: ["This email is already subscribed."] } };
     }
 
     await subscriberRef.set({
@@ -55,6 +65,6 @@ export async function addSubscriber(data: { email: string; recaptcha: string }) 
     if (e.code === 'permission-denied') {
         errorMessage = "Permission denied. Please check server permissions.";
     }
-    return { success: false, error: errorMessage };
+    return { success: false, error: { _form: [errorMessage] } };
   }
 }
