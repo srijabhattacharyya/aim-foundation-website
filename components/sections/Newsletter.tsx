@@ -10,7 +10,10 @@ import { addSubscriber } from '@/app/actions/newsletterActions';
 
 const initialState = {
   success: false,
-  error: null as { _form?: string[]; email?: string[] } | null,
+  error: {
+    _form: [] as string[],
+    email?: string[],
+   }
 };
 
 function SubmitButton() {
@@ -34,12 +37,11 @@ const Newsletter = () => {
         description: "We will stay connected",
       });
       formRef.current?.reset();
-    } else if (state.error) {
-      const errorMessage = state.error._form ? state.error._form.join(', ') : (state.error.email ? state.error.email.join(', ') : 'An unknown error occurred.');
+    } else if (state.error?._form?.length) {
       toast({
         variant: "destructive",
         title: 'Subscription Failed',
-        description: errorMessage,
+        description: state.error._form.join(', '),
       });
     }
   }, [state, toast]);

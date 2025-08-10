@@ -10,11 +10,14 @@ const formSchema = z.object({
 });
 
 export async function addSubscriber(prevState: any, formData: FormData) {
+  console.log("addSubscriber server action started.");
+
   const validatedFields = formSchema.safeParse({
     email: formData.get('email'),
   });
 
   if (!validatedFields.success) {
+    console.log("Validation failed:", validatedFields.error.flatten().fieldErrors);
     return {
       success: false,
       error: validatedFields.error.flatten().fieldErrors,
@@ -24,30 +27,33 @@ export async function addSubscriber(prevState: any, formData: FormData) {
   const { email } = validatedFields.data;
 
   if (!adminDb || typeof adminDb.collection !== 'function') {
-    console.error("Firebase Admin SDK is not initialized correctly for addSubscriber.");
-    return { success: false, error: { _form: ["Server configuration error. Please try again later."] } };
+    const errorMsg = "Firebase Admin SDK is not initialized correctly for addSubscriber.";
+    console.error(errorMsg);
+    return { success: false, error: { _form: [errorMsg] } };
   }
   
   try {
+    console.log(`Attempting to access subscribers collection for email: ${email}`);
     const subscriberRef = adminDb.collection('subscribers').doc(email);
     const doc = await subscriberRef.get();
 
     if (doc.exists) {
+        console.log(`Email ${email} is already subscribed.`);
         return { success: false, error: { _form: ["This email is already subscribed."] } };
     }
 
+    console.log(`Adding new subscriber: ${email}`);
     await subscriberRef.set({
       email: email,
       createdAt: FieldValue.serverTimestamp(),
     });
+    console.log(`Successfully added subscriber: ${email}`);
 
-    return { success: true };
+    return { success: true, error: null };
   } catch (e: any) {
-    console.error("Error adding subscriber to Firestore:", e);
+    console.error("Error in addSubscriber server action: ", e);
     let errorMessage = "Could not subscribe. Please try again.";
-    if (e.code === 'permission-denied') {
-        errorMessage = "Permission denied. Please check server permissions.";
-    } else if (e.message) {
+    if (e.message) {
         errorMessage = `A server error occurred: ${e.message}`;
     }
     return { success: false, error: { _form: [errorMessage] } };
