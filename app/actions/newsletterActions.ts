@@ -4,19 +4,19 @@
 import { adminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
-export async function addSubscriber(data: { email: string; token: string }) {
-  const { email, token } = data;
+export async function addSubscriber(data: { email: string; recaptcha: string }) {
+  const { email, recaptcha } = data;
 
   if (!email) {
     return { success: false, error: 'Email is required.' };
   }
-  if (!token) {
+  if (!recaptcha) {
     return { success: false, error: 'reCAPTCHA verification failed. Please try again.' };
   }
 
   // Verify reCAPTCHA token
   try {
-    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`, {
+    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`, {
         method: 'POST',
     });
     const recaptchaData = await response.json();
