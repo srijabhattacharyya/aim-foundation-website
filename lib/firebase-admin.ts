@@ -16,12 +16,4 @@ if (!getApps().length) {
 
 const adminDb = getApps().length ? admin.firestore() : ({} as admin.firestore.Firestore);
 
-// This ensures we're connecting to the correct database instance.
-if (getApps().length) {
-    admin.firestore().settings({
-        databaseId: 'aim-foundation-website'
-    });
-}
-
-
 export { adminDb };
