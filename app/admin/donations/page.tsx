@@ -94,13 +94,15 @@ async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Do
         return { success: true, data: donations };
     } catch (err: any) {
         console.error("Error fetching documents from Firestore on client: ", err);
+        let errorMessage = "Could not retrieve donations.";
         if (err.code === 'permission-denied') {
-            return { success: false, error: "Permission denied. Please check Firestore security rules for admin access." };
+            errorMessage = "Permission denied. Please check your Firestore security rules.";
+        } else {
+            errorMessage += ` ${err.message}`;
         }
-        return { success: false, error: "Could not retrieve donations. " + err.message };
+        return { success: false, error: errorMessage };
     }
 }
-
 
 export default function DonationsPage() {
   const [donations, setDonations] = useState<Donation[]>([]);
@@ -109,8 +111,8 @@ export default function DonationsPage() {
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
 
-  const [causeFilter, setCauseFilter] = useState<string>('');
-  const [nationalityFilter, setNationalityFilter] = useState<string>('');
+  const [causeFilter, setCauseFilter] = useState<string>('all');
+  const [nationalityFilter, setNationalityFilter] = useState<string>('all');
   const [countryFilter, setCountryFilter] = useState<string>('');
   const [stateFilter, setStateFilter] = useState<string>('');
   const [cityFilter, setCityFilter] = useState<string>('');
@@ -143,10 +145,10 @@ export default function DonationsPage() {
         adjustedEndDate.setHours(23, 59, 59, 999);
         result = result.filter(d => new Date(d.createdAt) <= adjustedEndDate);
     }
-    if (causeFilter) {
+    if (causeFilter && causeFilter !== 'all') {
         result = result.filter(d => d.cause === causeFilter);
     }
-    if (nationalityFilter) {
+    if (nationalityFilter && nationalityFilter !== 'all') {
         result = result.filter(d => d.nationality === nationalityFilter);
     }
     if (countryFilter) {
@@ -176,7 +178,7 @@ export default function DonationsPage() {
         console.error("Error deleting document from Firestore on client: ", e);
         let errorMessage = "Could not delete the donation. Please try again.";
         if (e.code === 'permission-denied') {
-            errorMessage = "Deletion failed. You do not have permission to delete records.";
+            errorMessage = "Deletion failed. You do not have permission to delete records. Please check your Firestore security rules.";
         }
         toast({
             variant: "destructive",
@@ -256,14 +258,14 @@ export default function DonationsPage() {
                     <Select onValueChange={setCauseFilter} value={causeFilter}>
                         <SelectTrigger><SelectValue placeholder="Filter by Cause" /></SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="">All Causes</SelectItem>
+                            <SelectItem value="all">All Causes</SelectItem>
                             {causes.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                         </SelectContent>
                     </Select>
                      <Select onValueChange={setNationalityFilter} value={nationalityFilter}>
                         <SelectTrigger><SelectValue placeholder="Filter by Nationality" /></SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="">All Nationalities</SelectItem>
+                            <SelectItem value="all">All Nationalities</SelectItem>
                             <SelectItem value="Indian">Indian</SelectItem>
                             <SelectItem value="Non-Indian">Non-Indian</SelectItem>
                         </SelectContent>
