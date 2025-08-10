@@ -23,6 +23,7 @@ import dynamic from "next/dynamic";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
+import { addDonation } from "@/app/actions/donationActions";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
   ssr: false,
@@ -106,6 +107,7 @@ const initiatives = [
 
 export default function GeneralDonationForm() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -146,14 +148,30 @@ export default function GeneralDonationForm() {
   }, [nationality, form]);
 
 
-  function onSubmit(values: z.infer<typeof donationSchema>) {
-    console.log(values);
-    toast({
-      title: "Thank you for your donation!",
-      description: `Your support for the ${initiatives.find(i => i.value === values.initiative)?.label} program is greatly appreciated.`,
-    });
-    recaptchaRef.current?.reset();
-    form.reset();
+  async function onSubmit(values: z.infer<typeof donationSchema>) {
+    setIsSubmitting(true);
+    try {
+      const donationData = {
+        ...values,
+        cause: initiatives.find(i => i.value === values.initiative)?.label || "General Donation",
+        donationDate: new Date().toISOString(),
+      };
+      await addDonation(donationData);
+      toast({
+        title: "Thank you for your donation!",
+        description: `Your support for the ${initiatives.find(i => i.value === values.initiative)?.label} program is greatly appreciated.`,
+      });
+      recaptchaRef.current?.reset();
+      form.reset();
+    } catch (error) {
+       toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "There was a problem saving your donation. Please try again.",
+      });
+    } finally {
+        setIsSubmitting(false);
+    }
   }
 
   return (
@@ -447,7 +465,9 @@ export default function GeneralDonationForm() {
                   )}
                 />
 
-                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
+                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Submit"}
+                </Button>
                 </form>
             </Form>
         </CardContent>
