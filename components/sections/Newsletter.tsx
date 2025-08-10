@@ -11,8 +11,8 @@ import { addSubscriber } from '@/app/actions/newsletterActions';
 const initialState = {
   success: false,
   error: {
-    _form: [] as string[],
-    email?: string[],
+    _form: [],
+    email: [],
    }
 };
 
