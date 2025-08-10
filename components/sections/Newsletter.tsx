@@ -10,7 +10,7 @@ import { addSubscriber } from '@/app/actions/newsletterActions';
 
 const initialState = {
   success: false,
-  error: null,
+  error: null as { _form?: string[]; email?: string[] } | null,
 };
 
 function SubmitButton() {
@@ -35,7 +35,7 @@ const Newsletter = () => {
       });
       formRef.current?.reset();
     } else if (state.error) {
-      const errorMessage = state.error._form ? state.error._form.join(', ') : 'An unknown error occurred.';
+      const errorMessage = state.error._form ? state.error._form.join(', ') : (state.error.email ? state.error.email.join(', ') : 'An unknown error occurred.');
       toast({
         variant: "destructive",
         title: 'Subscription Failed',
@@ -68,7 +68,7 @@ const Newsletter = () => {
             />
             <SubmitButton />
           </form>
-          {state.error?.email && <p className="text-sm font-medium text-destructive mt-2">{state.error.email}</p>}
+          {state?.error?.email && <p className="text-sm font-medium text-destructive mt-2">{state.error.email}</p>}
         </div>
       </div>
     </section>
