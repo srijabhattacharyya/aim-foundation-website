@@ -160,6 +160,7 @@ export default function DonationsPage() {
                             <TableHead>Name</TableHead>
                             <TableHead>Email</TableHead>
                             <TableHead>Mobile</TableHead>
+                            <TableHead>DOB</TableHead>
                             <TableHead>Amount</TableHead>
                             <TableHead>Cause</TableHead>
                             <TableHead>Nationality</TableHead>
@@ -180,6 +181,7 @@ export default function DonationsPage() {
                                 <TableCell>{donation.fullName}</TableCell>
                                 <TableCell>{donation.email}</TableCell>
                                 <TableCell>{donation.mobile}</TableCell>
+                                <TableCell>{donation.dob}</TableCell>
                                 <TableCell>{donation.otherAmount || donation.amount}</TableCell>
                                 <TableCell>{donation.cause}</TableCell>
                                 <TableCell>{donation.nationality}</TableCell>
