@@ -164,8 +164,10 @@ export default function DonationsPage() {
                             <TableHead>Cause</TableHead>
                             <TableHead>Nationality</TableHead>
                             <TableHead>Country</TableHead>
-                            <TableHead>State</TableHead>
+                            <TableHead>Address</TableHead>
                             <TableHead>City</TableHead>
+                            <TableHead>State</TableHead>
+                            <TableHead>Pincode</TableHead>
                             <TableHead>PAN</TableHead>
                             <TableHead>Passport</TableHead>
                             <TableHead>Actions</TableHead>
@@ -182,8 +184,10 @@ export default function DonationsPage() {
                                 <TableCell>{donation.cause}</TableCell>
                                 <TableCell>{donation.nationality}</TableCell>
                                 <TableCell>{donation.country}</TableCell>
-                                <TableCell>{donation.state}</TableCell>
+                                <TableCell>{donation.address}</TableCell>
                                 <TableCell>{donation.city}</TableCell>
+                                <TableCell>{donation.state}</TableCell>
+                                <TableCell>{donation.pincode}</TableCell>
                                 <TableCell>{donation.pan}</TableCell>
                                 <TableCell>{donation.passport}</TableCell>
                                 <TableCell>
