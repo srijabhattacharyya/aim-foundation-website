@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { db } from '@/lib/firebase';
-import { collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, Timestamp, deleteDoc, doc } from 'firebase/firestore';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Trash2 } from 'lucide-react';
@@ -20,7 +20,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { deleteDonation } from '@/app/actions/donationActions';
 import { useToast } from '@/hooks/use-toast';
 
 export interface Donation {
@@ -89,19 +88,24 @@ export default function DonationsPage() {
   }, []);
 
   const handleDelete = async (id: string) => {
-    const result = await deleteDonation(id);
-    if (result.success) {
+    try {
+      await deleteDoc(doc(db, "donations", id));
       setDonations(donations.filter((donation) => donation.id !== id));
       toast({
         title: "Donation deleted",
         description: "The donation record has been successfully removed.",
       });
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Deletion failed",
-        description: result.error || "Could not delete the donation.",
-      });
+    } catch (e: any) {
+        console.error("Error deleting document from Firestore on client: ", e);
+        let errorMessage = "Could not delete the donation. Please try again.";
+        if (e.code === 'permission-denied') {
+            errorMessage = "Deletion failed. You do not have permission to delete records.";
+        }
+        toast({
+            variant: "destructive",
+            title: "Deletion failed",
+            description: errorMessage,
+        });
     }
   };
 

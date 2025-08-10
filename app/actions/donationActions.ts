@@ -40,22 +40,3 @@ export async function addDonation(data: any) {
     return { success: false, error: "Could not record donation. Please try again." };
   }
 }
-
-export async function deleteDonation(id: string) {
-  if (!adminDb || !adminDb.collection) {
-    console.error("Firebase Admin SDK is not initialized correctly.");
-    return { success: false, error: "Server configuration error." };
-  }
-    
-  try {
-    await adminDb.collection("donations").doc(id).delete();
-    console.log("Document successfully deleted with ID: ", id);
-    return { success: true };
-  } catch (e: any) {
-    console.error("Error deleting document from Firestore: ", e.message);
-    if (e.code === 'permission-denied') {
-        return { success: false, error: "Permission denied. Please check Firestore security rules for admin delete access." };
-    }
-    return { success: false, error: "Could not delete donation. Please try again." };
-  }
-}
