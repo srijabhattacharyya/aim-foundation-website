@@ -4,13 +4,19 @@
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { useToast } from '../../hooks/use-toast';
-import { FormEvent, useState } from 'react';
-import { db } from '@/lib/firebase';
-import { doc, setDoc, serverTimestamp, getDoc } from 'firebase/firestore';
+import { FormEvent, useState, useRef } from 'react';
+import { addSubscriber } from '@/app/actions/newsletterActions';
+import ReCAPTCHA from 'react-google-recaptcha';
+import dynamic from 'next/dynamic';
+
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 const Newsletter = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -18,7 +24,8 @@ const Newsletter = () => {
 
     const formData = new FormData(event.currentTarget);
     const email = formData.get('email') as string;
-    
+    const token = await recaptchaRef.current?.executeAsync();
+
     if (!email) {
       toast({
         variant: "destructive",
@@ -28,37 +35,34 @@ const Newsletter = () => {
       setIsLoading(false);
       return;
     }
+    
+    if (!token) {
+        toast({
+            variant: "destructive",
+            title: 'Error',
+            description: 'reCAPTCHA challenge failed. Please try again.',
+        });
+        setIsLoading(false);
+        return;
+    }
 
-    try {
-        const subscriberRef = doc(db, 'subscribers', email);
-        const docSnap = await getDoc(subscriberRef);
+    const result = await addSubscriber(email, token);
 
-        if (docSnap.exists()) {
-            toast({
-                variant: "destructive",
-                title: 'Already Subscribed',
-                description: 'This email address is already on our list.',
-            });
-        } else {
-            await setDoc(subscriberRef, {
-                email: email,
-                createdAt: serverTimestamp(),
-            });
-            toast({
-                title: "Thank you for subscribe to our Impact Mail",
-                description: "We will stay connected",
-            });
-            (event.target as HTMLFormElement).reset();
-        }
-    } catch (error) {
-        console.error("Error adding subscriber to Firestore: ", error);
+    if (result.success) {
+        toast({
+            title: "Thank you for subscribe to our Impact Mail",
+            description: "We will stay connected",
+        });
+        (event.target as HTMLFormElement).reset();
+    } else {
         toast({
             variant: "destructive",
             title: 'Subscription Failed',
-            description: 'Could not subscribe. Please try again.',
+            description: result.error || 'An unknown error occurred.',
         });
     }
-    
+
+    recaptchaRef.current?.reset();
     setIsLoading(false);
   };
 
@@ -88,6 +92,13 @@ const Newsletter = () => {
             <Button type="submit" size="lg" className="flex-shrink-0 w-full sm:w-auto transition-transform transform hover:scale-105" disabled={isLoading}>
               {isLoading ? 'Subscribing...' : 'Subscribe'}
             </Button>
+            <div className="hidden">
+                 <DynamicReCAPTCHA
+                    ref={recaptchaRef}
+                    size="invisible"
+                    sitekey={recaptchaSiteKey}
+                />
+            </div>
           </form>
         </div>
       </div>

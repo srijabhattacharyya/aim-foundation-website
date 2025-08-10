@@ -4,10 +4,28 @@
 import { adminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
-export async function addSubscriber(email: string) {
+export async function addSubscriber(email: string, token: string) {
   if (!email) {
     return { success: false, error: 'Email is required.' };
   }
+  if (!token) {
+    return { success: false, error: 'reCAPTCHA verification failed. Please try again.' };
+  }
+
+  // Verify reCAPTCHA token
+  try {
+    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`, {
+        method: 'POST',
+    });
+    const recaptchaData = await response.json();
+    if (!recaptchaData.success) {
+        return { success: false, error: 'reCAPTCHA verification failed. Please try again.' };
+    }
+  } catch (e: any) {
+    console.error("reCAPTCHA verification request failed: ", e.message);
+    return { success: false, error: "Could not verify reCAPTCHA. Please try again." };
+  }
+
 
   if (!adminDb || !adminDb.collection) {
     console.error("Firebase Admin SDK is not initialized correctly for addSubscriber.");
