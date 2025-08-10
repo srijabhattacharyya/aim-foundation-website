@@ -52,9 +52,13 @@ export async function getDonations(): Promise<{ success: boolean; data?: Donatio
         const donationsSnapshot = await adminDb.collection('donations').orderBy('createdAt', 'desc').get();
         const donations: Donation[] = donationsSnapshot.docs.map(doc => {
             const data = doc.data();
+            // Firestore Timestamps need to be converted to a serializable format (e.g., ISO string)
+            // Safely handle the case where createdAt might be null or undefined
+            const createdAt = data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : new Date().toISOString();
+            
             return {
                 id: doc.id,
-                createdAt: data.createdAt?.toDate().toISOString() || new Date().toISOString(),
+                createdAt: createdAt,
                 fullName: data.fullName || '',
                 email: data.email || '',
                 amount: data.amount || '',
