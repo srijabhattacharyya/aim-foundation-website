@@ -20,8 +20,10 @@ import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDonation } from "@/app/actions/donationActions";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import dynamic from "next/dynamic";
+import { Loader2 } from "lucide-react";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
@@ -102,7 +104,7 @@ export default function ChildFirstDonationForm() {
     },
   });
 
-  const recaptchaRef = React.createRef<DynamicReCAPTCHA>();
+  const recaptchaRef = React.createRef<any>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const nationality = form.watch("nationality");
@@ -130,8 +132,9 @@ export default function ChildFirstDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'ChildFirst' };
-      await addDonation(donationData);
+      const donationData = { ...values, cause: 'ChildFirst', createdAt: serverTimestamp() };
+      await addDoc(collection(db, "donations"), donationData);
+
       toast({
         title: "Thank you for supporting ChildFirst!",
         description: "Your support makes a difference.",
@@ -419,7 +422,7 @@ export default function ChildFirstDonationForm() {
 
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
-                    {isSubmitting ? "Submitting..." : "Submit"}
+                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
                 </Button>
                 </form>
             </Form>
@@ -427,3 +430,4 @@ export default function ChildFirstDonationForm() {
     </Card>
   );
 }
+

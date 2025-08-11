@@ -21,7 +21,9 @@ import { Card, CardContent } from "../../ui/card";
 import React from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDonation } from "@/app/actions/donationActions";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { Loader2 } from "lucide-react";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
@@ -102,7 +104,7 @@ export default function ChildcareDonationForm() {
     },
   });
 
-  const recaptchaRef = React.createRef<DynamicReCAPTCHA>();
+  const recaptchaRef = React.createRef<any>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
   
   const nationality = form.watch("nationality");
@@ -130,8 +132,8 @@ export default function ChildcareDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'Childcare' };
-      await addDonation(donationData);
+      const donationData = { ...values, cause: 'Childcare', createdAt: serverTimestamp() };
+      await addDoc(collection(db, "donations"), donationData);
       toast({
         title: "Thank you for supporting our Childcare Initiatives!",
         description: "Your donation helps nurture the next generation.",
@@ -322,7 +324,7 @@ export default function ChildcareDonationForm() {
                             </FormItem>
                         )}
                     />
-                     {nationality === 'Indian' && (
+                    {nationality === 'Indian' && (
                         <FormField
                             control={form.control}
                             name="state"
@@ -416,7 +418,7 @@ export default function ChildcareDonationForm() {
                 />
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
-                    {isSubmitting ? "Submitting..." : "Submit"}
+                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
                 </Button>
                 </form>
             </Form>
@@ -424,3 +426,4 @@ export default function ChildcareDonationForm() {
     </Card>
   );
 }
+
