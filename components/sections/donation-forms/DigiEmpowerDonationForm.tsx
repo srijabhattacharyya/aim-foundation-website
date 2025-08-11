@@ -340,7 +340,11 @@ export default function DigiEmpowerDonationForm() {
                         />
                     )}
                 </div>
-                
+                 {nationality === 'Indian' && (
+                    <p className="text-xs text-center text-muted-foreground -mt-2">
+                        PAN or AADHAR No. is Mandatory as per Law
+                    </p>
+                )}
                  <FormField
                     control={form.control}
                     name="dob"

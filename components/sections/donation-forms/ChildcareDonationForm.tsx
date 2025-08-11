@@ -36,6 +36,7 @@ const donationSchema = z.object({
   mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
   dob: z.string().optional(),
   pan: z.string().optional(),
+  aadhar: z.string().optional(),
   passport: z.string().optional(),
   country: z.string().nonempty({ message: "Country is required." }),
   state: z.string().optional(),
@@ -46,22 +47,47 @@ const donationSchema = z.object({
     message: "You must agree to the terms.",
   }),
   recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
-}).refine(data => {
-    if (data.nationality === "Indian") {
-        return !!data.pan && data.pan.length === 10;
+}).superRefine((data, ctx) => {
+    if (data.nationality === 'Indian') {
+      if (!data.pan && !data.aadhar) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "PAN or Aadhar is required for Indian nationals.",
+          path: ["pan"],
+        });
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "PAN or Aadhar is required for Indian nationals.",
+            path: ["aadhar"],
+          });
+      } else if (data.pan && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(data.pan)) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Invalid PAN format.",
+            path: ["pan"],
+          });
+      } else if (data.aadhar && !/^[0-9]{12}$/.test(data.aadhar)) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Aadhar must be 12 digits.",
+            path: ["aadhar"],
+          });
+      }
+      if (!data.state) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "State is required for Indian nationals.",
+            path: ["state"],
+          });
+      }
     }
-    return true;
-}, {
-    message: "PAN must be 10 characters for Indian nationals.",
-    path: ["pan"],
-}).refine(data => {
-    if (data.nationality === "Indian") {
-        return !!data.state;
+    if (data.nationality === 'Non-Indian' && !data.passport) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Passport is required for Non-Indian nationals.",
+            path: ["passport"],
+        });
     }
-    return true;
-}, {
-    message: "State is required for Indian nationals.",
-    path: ["state"],
 });
 
 const donationAmountsIndian = [
@@ -93,6 +119,7 @@ export default function ChildcareDonationForm() {
       mobile: "",
       dob: "",
       pan: "",
+      aadhar: "",
       passport: "",
       country: "India",
       state: "",
@@ -123,6 +150,7 @@ export default function ChildcareDonationForm() {
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
+      form.setValue("aadhar", "");
       form.setValue("state", "");
       form.setValue("amount", "30");
     }
@@ -269,18 +297,32 @@ export default function ChildcareDonationForm() {
                         )}
                     />
                      {nationality === 'Indian' ? (
-                        <FormField
-                            control={form.control}
-                            name="pan"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Pan No" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        <>
+                            <FormField
+                                control={form.control}
+                                name="pan"
+                                render={({ field }) => (
+                                    <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="PAN No." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                             <FormField
+                                control={form.control}
+                                name="aadhar"
+                                render={({ field }) => (
+                                    <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="Aadhar No." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </>
                     ) : (
                          <FormField
                             control={form.control}
@@ -296,7 +338,11 @@ export default function ChildcareDonationForm() {
                         />
                     )}
                 </div>
-                
+                 {nationality === 'Indian' && (
+                    <p className="text-xs text-center text-muted-foreground -mt-2">
+                        PAN or AADHAR No. is Mandatory as per Law
+                    </p>
+                )}
                  <FormField
                     control={form.control}
                     name="dob"
@@ -426,4 +472,3 @@ export default function ChildcareDonationForm() {
     </Card>
   );
 }
-
