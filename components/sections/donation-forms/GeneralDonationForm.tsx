@@ -24,6 +24,7 @@ import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDonation } from "@/app/actions/donationActions";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Loader2 } from "lucide-react";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
   ssr: false,
@@ -131,7 +132,7 @@ export default function GeneralDonationForm() {
     },
   });
 
-  const recaptchaRef = React.createRef<DynamicReCAPTCHA>();
+  const recaptchaRef = React.createRef<any>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
   
   const nationality = form.watch("nationality");
@@ -453,7 +454,7 @@ export default function GeneralDonationForm() {
                       <FormControl>
                         <div className="flex justify-center">
                             <DynamicReCAPTCHA
-                              ref={recaptchaRef as React.RefObject<any>}
+                              ref={recaptchaRef}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
                             />
@@ -465,7 +466,7 @@ export default function GeneralDonationForm() {
                 />
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
-                    {isSubmitting ? "Submitting..." : "Submit"}
+                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
                 </Button>
                 </form>
             </Form>
@@ -473,3 +474,5 @@ export default function GeneralDonationForm() {
     </Card>
   );
 }
+
+    
