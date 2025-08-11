@@ -52,24 +52,47 @@ const donationSchema = z.object({
     message: "You must agree to the terms.",
   }),
   recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
-}).refine(data => {
-    if (data.nationality === "Indian") {
-        const panIsValid = data.pan && data.pan.length === 10;
-        const aadharIsValid = data.aadhar && data.aadhar.length === 12;
-        return panIsValid || aadharIsValid;
+}).superRefine((data, ctx) => {
+    if (data.nationality === 'Indian') {
+      if (!data.pan && !data.aadhar) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "PAN or Aadhar is required for Indian nationals.",
+          path: ["pan"],
+        });
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "PAN or Aadhar is required for Indian nationals.",
+            path: ["aadhar"],
+          });
+      } else if (data.pan && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(data.pan)) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Invalid PAN format.",
+            path: ["pan"],
+          });
+      } else if (data.aadhar && !/^[0-9]{12}$/.test(data.aadhar)) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Aadhar must be 12 digits.",
+            path: ["aadhar"],
+          });
+      }
+      if (!data.state) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "State is required for Indian nationals.",
+            path: ["state"],
+          });
+      }
     }
-    return true;
-}, {
-    message: "For Indian nationals, either a 10-character PAN or a 12-digit Aadhar is required.",
-    path: ["pan"], 
-}).refine(data => {
-    if (data.nationality === "Indian") {
-        return !!data.state;
+    if (data.nationality === 'Non-Indian' && !data.passport) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Passport is required for Non-Indian nationals.",
+            path: ["passport"],
+        });
     }
-    return true;
-}, {
-    message: "State is required for Indian nationals.",
-    path: ["state"],
 });
 
 const donationAmounts = [
@@ -493,3 +516,5 @@ export default function GeneralDonationForm() {
     </Card>
   );
 }
+
+    
