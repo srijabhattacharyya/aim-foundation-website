@@ -79,7 +79,7 @@ export default function VolunteeringPage() {
                 <div className="bg-card p-6 rounded-lg shadow-md mt-10 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">Ready to Get Involved?</h2>
                     <p className="mt-4">
-                    Before applying, please explore our <Link href="https://drive.google.com/file/d/19mRFXZ8nxvQI0xkrHUlKz0DYKfIipKwe/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Volunteer Orientation Handbook</Link> and review our <Link href="/code-of-conduct" className="underline hover:text-primary">Code of Conduct for Working with Children & Young People</Link>.
+                    Before applying, please explore our <Link href="https://drive.google.com/file/d/19mRFXZ8nxvQI0xkrHUlKz0DYKfIipKwe/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Volunteer Orientation Handbook</Link> and review our <Link href="https://drive.google.com/file/d/1W_-oJZuCIOfPbbMqpA5dVDzYL1l0udN5/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Code of Conduct for Working with Children & Young People</Link>.
                     </p>
                     <p className="mt-4 font-semibold">
                     Join Us & Be the Change You Wish to See!
