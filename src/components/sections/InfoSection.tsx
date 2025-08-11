@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { PlayCircle } from 'lucide-react';
 import Link from 'next/link';
@@ -15,7 +14,7 @@ const InfoSection = () => {
             <p>
                 Since its inception, the Associated Initiative for Mankind Foundation (AIM Foundation) has stood beside marginalized communities — nurturing children, healing the sick, empowering women, restoring dignity where it's been lost, and protecting the environment that sustains us all.
             </p>
-            <p>
+            <p className="font-semibold text-center">
                 Together, we’re not just reaching lives — we’re transforming them.
             </p>
           </div>

@@ -1,50 +1,68 @@
-
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
-import { useEffect, useRef } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { addSubscriber } from '@/app/actions/newsletterActions';
+import { db } from '@/lib/firebase';
+import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
 
-const initialState = {
-  success: false,
-  error: {
-    _form: [],
-    email: [],
-  }
-};
+const formSchema = z.object({
+  email: z.string().email({ message: 'A valid email is required.' }),
+});
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" size="lg" className="flex-shrink-0 w-full sm:w-auto transition-transform transform hover:scale-105" disabled={pending}>
-      {pending ? 'Subscribing...' : 'Subscribe'}
-    </Button>
-  );
-}
+type FormData = z.infer<typeof formSchema>;
 
-const Newsletter = () => {
-  const [state, formAction] = useFormState(addSubscriber, initialState);
+export default function Newsletter() {
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement>(null);
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  });
 
-  useEffect(() => {
-    if (state.success) {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    setLoading(true);
+    const { email } = data;
+
+    try {
+      const subscriberRef = doc(db, 'subscribers', email);
+      const docSnap = await getDoc(subscriberRef);
+
+      if (docSnap.exists()) {
+        toast({
+          variant: "destructive",
+          title: 'Subscription Failed',
+          description: "This email is already subscribed.",
+        });
+        setLoading(false);
+        return;
+      }
+
+      await setDoc(subscriberRef, {
+        email: email,
+        createdAt: serverTimestamp(),
+      });
+
       toast({
-        title: "Thank you for subscribing to our Impact Mail",
+        title: "Thank you for subscribing!",
         description: "We will stay connected.",
       });
-      formRef.current?.reset();
-    } else if (state.error?._form && state.error._form.length > 0) {
+      reset();
+    } catch (e: any) {
+      console.error("Error subscribing:", e);
       toast({
         variant: "destructive",
         title: 'Subscription Failed',
-        description: state.error._form.join(', '),
+        description: "Could not subscribe. Please try again later.",
       });
+    } finally {
+      setLoading(false);
     }
-  }, [state, toast]);
+  };
 
   return (
     <section id="contact" className="bg-muted py-12 md:py-20 lg:py-24 border-t">
@@ -59,23 +77,23 @@ const Newsletter = () => {
               <em className="italic">Let every update remind you that</em> <strong className="italic">together, we’re making a difference.</strong>
             </p>
           </div>
-          <form ref={formRef} action={formAction} className="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <Input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-              className="flex-grow text-base w-full sm:w-auto"
-              aria-label="Email for newsletter"
-            />
-            <SubmitButton />
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <div className="flex-grow w-full">
+              <Input
+                {...register("email")}
+                type="email"
+                placeholder="Enter your email"
+                className="text-base w-full"
+                aria-label="Email for newsletter"
+              />
+              {errors.email && <p className="text-sm font-medium text-destructive mt-2">{errors.email.message}</p>}
+            </div>
+            <Button type="submit" size="lg" className="flex-shrink-0 w-full sm:w-auto transition-transform transform hover:scale-105" disabled={loading}>
+              {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...</> : 'Subscribe'}
+            </Button>
           </form>
-          {state?.error?.email && state.error.email.length > 0 && <p className="text-sm font-medium text-destructive mt-2">{state.error.email.join(', ')}</p>}
-          {state?.error?._form && state.error._form.length > 0 && !state.error.email && <p className="text-sm font-medium text-destructive mt-2">{state.error._form.join(', ')}</p>}
         </div>
       </div>
     </section>
   );
-};
-
-export default Newsletter;
+}
