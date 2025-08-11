@@ -335,6 +335,7 @@ export default function ChildFirstDonationForm() {
                             </div>
                         </>
                     ) : (
+                        <>
                          <FormField
                             control={form.control}
                             name="passport"
@@ -347,6 +348,12 @@ export default function ChildFirstDonationForm() {
                                 </FormItem>
                             )}
                         />
+                         <div className="flex items-center justify-center md:col-span-2">
+                            <p className="text-xs text-center text-muted-foreground mt-1">
+                                Passport No. is Mandatory as per Indian Law for Foreign Individual Donation
+                            </p>
+                        </div>
+                        </>
                     )}
                 </div>
                  <FormField
