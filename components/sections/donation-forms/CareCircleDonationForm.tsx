@@ -24,6 +24,9 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import dynamic from "next/dynamic";
 import { Loader2 } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
@@ -34,8 +37,9 @@ const donationSchema = z.object({
   fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
-  dob: z.string().optional(),
+  dob: z.date().optional(),
   pan: z.string().optional(),
+  aadhar: z.string().optional(),
   passport: z.string().optional(),
   country: z.string().nonempty({ message: "Country is required." }),
   state: z.string().optional(),
@@ -46,23 +50,49 @@ const donationSchema = z.object({
     message: "You must agree to the terms.",
   }),
   recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
-}).refine(data => {
-    if (data.nationality === "Indian") {
-        return !!data.pan && data.pan.length === 10;
+}).superRefine((data, ctx) => {
+    if (data.nationality === 'Indian') {
+      if (!data.pan && !data.aadhar) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "PAN or Aadhar is required for Indian nationals.",
+          path: ["pan"],
+        });
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "PAN or Aadhar is required for Indian nationals.",
+            path: ["aadhar"],
+          });
+      } else if (data.pan && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(data.pan)) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Invalid PAN format.",
+            path: ["pan"],
+          });
+      } else if (data.aadhar && !/^[0-9]{12}$/.test(data.aadhar)) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Aadhar must be 12 digits.",
+            path: ["aadhar"],
+          });
+      }
+      if (!data.state) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "State is required for Indian nationals.",
+            path: ["state"],
+          });
+      }
     }
-    return true;
-}, {
-    message: "PAN must be 10 characters for Indian nationals.",
-    path: ["pan"],
-}).refine(data => {
-    if (data.nationality === "Indian") {
-        return !!data.state;
+    if (data.nationality === 'Non-Indian' && !data.passport) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Passport is required for Non-Indian nationals.",
+            path: ["passport"],
+        });
     }
-    return true;
-}, {
-    message: "State is required for Indian nationals.",
-    path: ["state"],
 });
+
 
 const donationAmountsIndian = [
     { value: "1500", label: "₹1500", description: "MEDICINES FOR 5 PEOPLE" },
@@ -90,8 +120,9 @@ export default function CareCircleDonationForm() {
       fullName: "",
       email: "",
       mobile: "",
-      dob: "",
+      dob: undefined,
       pan: "",
+      aadhar: "",
       passport: "",
       country: "India",
       state: "",
@@ -122,6 +153,7 @@ export default function CareCircleDonationForm() {
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
+      form.setValue("aadhar", "");
       form.setValue("state", "");
       form.setValue("amount", "18");
     }
@@ -271,18 +303,32 @@ export default function CareCircleDonationForm() {
                         )}
                     />
                     {nationality === 'Indian' ? (
-                        <FormField
-                            control={form.control}
-                            name="pan"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Pan No" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        <>
+                            <FormField
+                                control={form.control}
+                                name="pan"
+                                render={({ field }) => (
+                                    <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="PAN No." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                             <FormField
+                                control={form.control}
+                                name="aadhar"
+                                render={({ field }) => (
+                                    <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="Aadhar No." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </>
                     ) : (
                          <FormField
                             control={form.control}
@@ -302,11 +348,36 @@ export default function CareCircleDonationForm() {
                     control={form.control}
                     name="dob"
                     render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>Date of Birth (Optional)</FormLabel>
-                        <FormControl>
-                            <Input type="date" {...field} />
-                        </FormControl>
+                        <FormItem className="flex flex-col">
+                        <FormLabel>Date of Birth</FormLabel>
+                         <Popover>
+                            <PopoverTrigger asChild>
+                                <FormControl>
+                                <Button
+                                    variant={"outline"}
+                                    className="w-full pl-3 text-left font-normal"
+                                >
+                                    {field.value ? (
+                                    format(field.value, "PPP")
+                                    ) : (
+                                    <span>Pick a date</span>
+                                    )}
+                                </Button>
+                                </FormControl>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0" align="start">
+                                <Calendar
+                                mode="single"
+                                selected={field.value}
+                                onSelect={field.onChange}
+                                disabled={(date) =>
+                                    date > new Date() || date < new Date("1900-01-01")
+                                }
+                                toDate={new Date()}
+                                initialFocus
+                                />
+                            </PopoverContent>
+                        </Popover>
                         <FormMessage />
                         </FormItem>
                     )}
