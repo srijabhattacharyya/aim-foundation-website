@@ -54,12 +54,6 @@ const Footer = () => {
               <Link href="https://www.instagram.com/aimfoundation_ngo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors"><Instagram size={24} /></Link>
               <Link href="https://www.linkedin.com/in/aim-foundation-ngo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
             </div>
-            <div className='mt-4'>
-                <h6 className='font-semibold text-md mb-4'><Link href="/newsletter">Newsletter</Link></h6>
-                <p className='text-muted-foreground'>Subscribe to our newsletter for updates.</p>
-                <h6 className='font-semibold text-md mb-4 mt-2'><Link href="/annual-report">Annual Report</Link></h6>
-                 <h6 className='font-semibold text-md mb-4 mt-2'><Link href="/library">Library</Link></h6>
-            </div>
           </div>
         </div>
         <div className="mt-12 border-t pt-8 text-center text-muted-foreground text-sm">
