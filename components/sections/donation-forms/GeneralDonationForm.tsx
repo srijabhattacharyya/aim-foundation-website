@@ -41,6 +41,7 @@ const donationSchema = z.object({
   mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
   dob: z.string().optional(),
   pan: z.string().optional(),
+  aadhar: z.string().optional(),
   passport: z.string().optional(),
   country: z.string().nonempty({ message: "Country is required." }),
   state: z.string().optional(),
@@ -53,12 +54,14 @@ const donationSchema = z.object({
   recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
 }).refine(data => {
     if (data.nationality === "Indian") {
-        return !!data.pan && data.pan.length === 10;
+        const panIsValid = data.pan && data.pan.length === 10;
+        const aadharIsValid = data.aadhar && data.aadhar.length === 12;
+        return panIsValid || aadharIsValid;
     }
     return true;
 }, {
-    message: "PAN must be 10 characters for Indian nationals.",
-    path: ["pan"],
+    message: "For Indian nationals, either a 10-character PAN or a 12-digit Aadhar is required.",
+    path: ["pan"], 
 }).refine(data => {
     if (data.nationality === "Indian") {
         return !!data.state;
@@ -121,6 +124,7 @@ export default function GeneralDonationForm() {
       mobile: "",
       dob: "",
       pan: "",
+      aadhar: "",
       passport: "",
       country: "India",
       state: "",
@@ -144,6 +148,7 @@ export default function GeneralDonationForm() {
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
+      form.setValue("aadhar", "");
       form.setValue("state", "");
     }
   }, [nationality, form]);
@@ -317,18 +322,32 @@ export default function GeneralDonationForm() {
                         )}
                     />
                     {nationality === 'Indian' ? (
-                        <FormField
-                            control={form.control}
-                            name="pan"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Pan No" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        <>
+                            <FormField
+                                control={form.control}
+                                name="pan"
+                                render={({ field }) => (
+                                    <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="PAN No." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="aadhar"
+                                render={({ field }) => (
+                                    <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="Aadhar No." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </>
                     ) : (
                          <FormField
                             control={form.control}
@@ -474,5 +493,3 @@ export default function GeneralDonationForm() {
     </Card>
   );
 }
-
-    

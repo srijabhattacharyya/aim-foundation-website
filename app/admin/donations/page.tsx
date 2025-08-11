@@ -40,6 +40,7 @@ export interface Donation {
     mobile?: string;
     dob?: string;
     pan?: string;
+    aadhar?: string;
     passport?: string;
     country?: string;
     state?: string;
@@ -101,6 +102,7 @@ async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Do
                 mobile: data.mobile || '',
                 dob: data.dob || '',
                 pan: data.pan || '',
+                aadhar: data.aadhar || '',
                 passport: data.passport || '',
                 country: data.country || '',
                 state: data.state || '',
@@ -351,6 +353,7 @@ export default function DonationsPage() {
                                 <TableHead>State</TableHead>
                                 <TableHead>Pincode</TableHead>
                                 <TableHead>PAN</TableHead>
+                                <TableHead>Aadhar</TableHead>
                                 <TableHead>Passport</TableHead>
                                 <TableHead>Actions</TableHead>
                             </TableRow>
@@ -372,6 +375,7 @@ export default function DonationsPage() {
                                     <TableCell>{donation.state}</TableCell>
                                     <TableCell>{donation.pincode}</TableCell>
                                     <TableCell>{donation.pan}</TableCell>
+                                    <TableCell>{donation.aadhar}</TableCell>
                                     <TableCell>{donation.passport}</TableCell>
                                     <TableCell>
                                         <AlertDialog>
@@ -399,7 +403,7 @@ export default function DonationsPage() {
                                 </TableRow>
                             )) : (
                                 <TableRow>
-                                    <TableCell colSpan={16} className="text-center py-12">
+                                    <TableCell colSpan={17} className="text-center py-12">
                                         No donations match the current filters.
                                     </TableCell>
                                 </TableRow>
