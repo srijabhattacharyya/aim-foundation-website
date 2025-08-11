@@ -24,6 +24,9 @@ import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
@@ -34,7 +37,7 @@ const donationSchema = z.object({
   fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
-  dob: z.string().optional(),
+  dob: z.date().optional(),
   pan: z.string().optional(),
   aadhar: z.string().optional(),
   passport: z.string().optional(),
@@ -117,7 +120,7 @@ export default function ChildcareDonationForm() {
       fullName: "",
       email: "",
       mobile: "",
-      dob: "",
+      dob: undefined,
       pan: "",
       aadhar: "",
       passport: "",
@@ -322,6 +325,11 @@ export default function ChildcareDonationForm() {
                                     </FormItem>
                                 )}
                             />
+                            <div className="flex items-center justify-center md:col-span-2">
+                                <p className="text-xs text-center text-muted-foreground mt-1">
+                                    PAN or AADHAR No. is Mandatory as per Law
+                                </p>
+                            </div>
                         </>
                     ) : (
                          <FormField
@@ -338,20 +346,40 @@ export default function ChildcareDonationForm() {
                         />
                     )}
                 </div>
-                 {nationality === 'Indian' && (
-                    <p className="text-xs text-center text-muted-foreground -mt-2">
-                        PAN or AADHAR No. is Mandatory as per Law
-                    </p>
-                )}
                  <FormField
                     control={form.control}
                     name="dob"
                     render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>Date of Birth (Optional)</FormLabel>
-                        <FormControl>
-                            <Input type="date" {...field} />
-                        </FormControl>
+                        <FormItem className="flex flex-col">
+                        <FormLabel>Date of Birth</FormLabel>
+                         <Popover>
+                            <PopoverTrigger asChild>
+                                <FormControl>
+                                <Button
+                                    variant={"outline"}
+                                    className="w-full pl-3 text-left font-normal"
+                                >
+                                    {field.value ? (
+                                    format(field.value, "PPP")
+                                    ) : (
+                                    <span>Pick a date</span>
+                                    )}
+                                </Button>
+                                </FormControl>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0" align="start">
+                                <Calendar
+                                mode="single"
+                                selected={field.value}
+                                onSelect={field.onChange}
+                                disabled={(date) =>
+                                    date > new Date() || date < new Date("1900-01-01")
+                                }
+                                toDate={new Date()}
+                                initialFocus
+                                />
+                            </PopoverContent>
+                        </Popover>
                         <FormMessage />
                         </FormItem>
                     )}
@@ -452,7 +480,7 @@ export default function ChildcareDonationForm() {
                       <FormControl>
                         <div className="flex justify-center">
                             <DynamicReCAPTCHA
-                              ref={recaptchaRef as React.RefObject<any>}
+                              ref={recaptchaRef}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
                             />

@@ -325,6 +325,11 @@ export default function SustainabilityDonationForm() {
                                     </FormItem>
                                 )}
                             />
+                            <div className="flex items-center justify-center md:col-span-2">
+                                <p className="text-xs text-center text-muted-foreground mt-1">
+                                    PAN or AADHAR No. is Mandatory as per Law
+                                </p>
+                            </div>
                         </>
                     ) : (
                          <FormField

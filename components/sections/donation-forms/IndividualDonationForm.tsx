@@ -328,6 +328,11 @@ export default function IndividualDonationForm() {
                                     </FormItem>
                                 )}
                             />
+                             <div className="flex items-center justify-center md:col-span-2">
+                                <p className="text-xs text-center text-muted-foreground mt-1">
+                                    PAN or AADHAR No. is Mandatory as per Law
+                                </p>
+                            </div>
                         </>
                     ) : (
                          <FormField
@@ -383,7 +388,7 @@ export default function IndividualDonationForm() {
                         </FormItem>
                     )}
                 />
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <FormField
                         control={form.control}

@@ -328,6 +328,11 @@ export default function ChildFirstDonationForm() {
                                     </FormItem>
                                 )}
                             />
+                            <div className="flex items-center justify-center md:col-span-2">
+                                <p className="text-xs text-center text-muted-foreground mt-1">
+                                    PAN or AADHAR No. is Mandatory as per Law
+                                </p>
+                            </div>
                         </>
                     ) : (
                          <FormField
@@ -344,12 +349,7 @@ export default function ChildFirstDonationForm() {
                         />
                     )}
                 </div>
-                 {nationality === 'Indian' && (
-                    <p className="text-xs text-center text-muted-foreground -mt-2">
-                        PAN or AADHAR No. is Mandatory as per Law
-                    </p>
-                )}
-                <FormField
+                 <FormField
                     control={form.control}
                     name="dob"
                     render={({ field }) => (
