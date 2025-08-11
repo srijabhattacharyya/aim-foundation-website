@@ -164,7 +164,7 @@ const navLinks = [
     ]
   },
   { 
-    label: 'Resources',
+    label: 'Resource Centre',
     isDropdown: true,
     items: [
         { href: '/voices', label: 'Voices of Change' },
