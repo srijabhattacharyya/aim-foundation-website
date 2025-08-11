@@ -27,8 +27,8 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 
-const DynamicIndividualDonationForm = dynamic(
-  () => import('@/components/sections/donation-forms/IndividualDonationForm'),
+const CauseSelectionForm = dynamic(
+  () => import('@/components/sections/donation-forms/CauseSelectionForm'),
   {
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
@@ -153,7 +153,6 @@ const navLinks = [
       },
     ]
   },
-  { href: '/gallery', label: 'Gallery' },
   { 
     label: 'Media Room',
     isDropdown: true,
@@ -169,6 +168,7 @@ const navLinks = [
     items: [
         { href: '/voices', label: 'Voices of Change' },
         { href: '/films', label: 'Films' },
+        { href: '/gallery', label: 'Gallery' },
         { href: '/newsletter', label: 'Newsletter' },
         { href: '/annual-report', label: 'Annual Report' },
         { href: '/library', label: 'Library' },
@@ -210,7 +210,7 @@ const Navbar = () => {
                             <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
                         </DialogTrigger>
                         <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                            <DynamicIndividualDonationForm />
+                           <CauseSelectionForm />
                         </DialogContent>
                     </Dialog>
                   </div>
@@ -267,7 +267,7 @@ const Navbar = () => {
                     <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
                 </DialogTrigger>
                  <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                    <DynamicIndividualDonationForm />
+                    <CauseSelectionForm />
                 </DialogContent>
             </Dialog>
             <Sheet>
@@ -277,7 +277,7 @@ const Navbar = () => {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
+              <SheetContent side="right" className="overflow-y-auto">
                 <div className="flex flex-col p-6">
                   <div className="flex justify-between items-center mb-6">
                     <Link href="/" className="flex items-center gap-2" aria-label="AIM Foundation Home">

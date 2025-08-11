@@ -153,7 +153,6 @@ const navLinks = [
       },
     ]
   },
-  { href: '/gallery', label: 'Gallery' },
   { 
     label: 'Media Room',
     isDropdown: true,
@@ -169,6 +168,7 @@ const navLinks = [
     items: [
         { href: '/voices', label: 'Voices of Change' },
         { href: '/films', label: 'Films' },
+        { href: '/gallery', label: 'Gallery' },
         { href: '/newsletter', label: 'Newsletter' },
         { href: '/annual-report', label: 'Annual Report' },
         { href: '/library', label: 'Library' },
