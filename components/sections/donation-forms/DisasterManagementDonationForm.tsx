@@ -18,10 +18,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
-import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
+import { addDonation } from "@/app/actions/donationActions";
+import { Loader2 } from "lucide-react";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
@@ -78,6 +79,7 @@ const donationAmountsNonIndian = [
 
 export default function DisasterManagementDonationForm() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -100,7 +102,7 @@ export default function DisasterManagementDonationForm() {
     },
   });
 
-  const recaptchaRef = React.createRef<ReCAPTCHA>();
+  const recaptchaRef = React.createRef<any>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const nationality = form.watch("nationality");
@@ -125,14 +127,35 @@ export default function DisasterManagementDonationForm() {
   }, [nationality, form]);
 
 
-  function onSubmit(values: z.infer<typeof donationSchema>) {
-    console.log(values);
-    toast({
-      title: "Thank you for supporting our Disaster Relief efforts!",
-      description: "Your support provides urgent aid to those in need.",
-    });
-    recaptchaRef.current?.reset();
-    form.reset();
+  async function onSubmit(values: z.infer<typeof donationSchema>) {
+    setIsSubmitting(true);
+    try {
+      const donationData = { ...values, cause: 'Disaster Management' };
+      const result = await addDonation(donationData);
+      
+      if (result.success) {
+        toast({
+          title: "Thank you for supporting our Disaster Relief efforts!",
+          description: "Your support provides urgent aid to those in need.",
+        });
+        recaptchaRef.current?.reset();
+        form.reset();
+      } else {
+        toast({
+            variant: "destructive",
+            title: "Submission Failed",
+            description: result.error || "There was a problem saving your donation. Please try again.",
+        });
+      }
+    } catch (error) {
+       toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "An unexpected error occurred. Please try again.",
+      });
+    } finally {
+        setIsSubmitting(false);
+    }
   }
 
   return (
@@ -403,10 +426,14 @@ export default function DisasterManagementDonationForm() {
                   )}
                 />
 
-                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
+                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
+                </Button>
                 </form>
             </Form>
         </CardContent>
     </Card>
   );
 }
+
+    
