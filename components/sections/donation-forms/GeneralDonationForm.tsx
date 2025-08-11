@@ -21,7 +21,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDonation } from "@/app/actions/donationActions";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Loader2 } from "lucide-react";
@@ -183,17 +184,18 @@ export default function GeneralDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = {
-        ...values,
-        cause: initiatives.find(i => i.value === values.initiative)?.label || "General Donation",
-      };
-      await addDonation(donationData);
-      toast({
-        title: "Thank you for your donation!",
-        description: `Your support for the ${initiatives.find(i => i.value === values.initiative)?.label} program is greatly appreciated.`,
-      });
-      recaptchaRef.current?.reset();
-      form.reset();
+        const donationData = {
+            ...values,
+            cause: initiatives.find(i => i.value === values.initiative)?.label || "General Donation",
+            createdAt: serverTimestamp()
+        };
+        await addDoc(collection(db, "donations"), donationData);
+        toast({
+            title: "Thank you for your donation!",
+            description: `Your support for the ${initiatives.find(i => i.value === values.initiative)?.label} program is greatly appreciated.`,
+        });
+        recaptchaRef.current?.reset();
+        form.reset();
     } catch (error) {
        toast({
         variant: "destructive",
