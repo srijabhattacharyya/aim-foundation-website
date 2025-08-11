@@ -72,11 +72,22 @@ async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Do
 
         const donations: Donation[] = querySnapshot.docs.map(doc => {
             const data = doc.data();
-            const createdAt = data.createdAt instanceof Timestamp 
-                ? data.createdAt.toDate().toISOString()
-                : (data.createdAt && data.createdAt.toDate) 
-                    ? data.createdAt.toDate().toISOString()
-                    : new Date().toISOString();
+            // Handle both Firestore Timestamp and potential string dates
+            const createdAtData = data.createdAt;
+            let createdAt: string;
+            if (createdAtData instanceof Timestamp) {
+                createdAt = createdAtData.toDate().toISOString();
+            } else if (createdAtData && typeof createdAtData.toDate === 'function') {
+                // Handle cases where it's a Firestore-like timestamp object but not a direct instance
+                createdAt = createdAtData.toDate().toISOString();
+            } else if (typeof createdAtData === 'string') {
+                createdAt = createdAtData;
+            } else if (createdAtData) {
+                // Fallback for other potential date-like objects, or just convert to string
+                createdAt = new Date(createdAtData).toISOString();
+            } else {
+                 createdAt = new Date().toISOString(); // Fallback to now if undefined
+            }
             
             const donationRecord = {
                 id: doc.id,
@@ -98,7 +109,6 @@ async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Do
                 pincode: data.pincode || '',
                 initiative: data.initiative || '',
             };
-            console.log("Mapped donation:", donationRecord);
             return donationRecord;
         });
         
@@ -115,6 +125,7 @@ async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Do
         return { success: false, error: errorMessage };
     }
 }
+
 
 export default function DonationsPage() {
   const [donations, setDonations] = useState<Donation[]>([]);
@@ -260,6 +271,7 @@ export default function DonationsPage() {
                             mode="single"
                             selected={startDate}
                             onSelect={setStartDate}
+                            toDate={new Date()}
                             initialFocus
                         />
                         </PopoverContent>
@@ -279,6 +291,7 @@ export default function DonationsPage() {
                             mode="single"
                             selected={endDate}
                             onSelect={setEndDate}
+                            toDate={new Date()}
                             initialFocus
                         />
                         </PopoverContent>
