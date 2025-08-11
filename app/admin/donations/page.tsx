@@ -58,18 +58,27 @@ const causes = [
 ];
 
 async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Donation[]; error?: string }> {
+    console.log("Attempting to fetch donations from client...");
     try {
         const donationsRef = collection(db, 'donations');
         const q = query(donationsRef, orderBy('createdAt', 'desc'));
         const querySnapshot = await getDocs(q);
         
+        console.log(`Found ${querySnapshot.docs.length} documents.`);
+
+        if (querySnapshot.empty) {
+            console.log("No documents found in 'donations' collection.");
+        }
+
         const donations: Donation[] = querySnapshot.docs.map(doc => {
             const data = doc.data();
             const createdAt = data.createdAt instanceof Timestamp 
                 ? data.createdAt.toDate().toISOString()
-                : new Date().toISOString();
-
-            return {
+                : (data.createdAt && data.createdAt.toDate) 
+                    ? data.createdAt.toDate().toISOString()
+                    : new Date().toISOString();
+            
+            const donationRecord = {
                 id: doc.id,
                 createdAt: createdAt,
                 fullName: data.fullName || '',
@@ -89,6 +98,8 @@ async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Do
                 pincode: data.pincode || '',
                 initiative: data.initiative || '',
             };
+            console.log("Mapped donation:", donationRecord);
+            return donationRecord;
         });
         
         return { success: true, data: donations };
@@ -100,6 +111,7 @@ async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Do
         } else {
             errorMessage += ` ${err.message}`;
         }
+        console.error("Final error message:", errorMessage);
         return { success: false, error: errorMessage };
     }
 }
@@ -122,6 +134,7 @@ export default function DonationsPage() {
   useEffect(() => {
     async function getDonations() {
       setLoading(true);
+      setError(null);
       const result = await fetchDonationsFromClient();
       if (result.success && result.data) {
         setDonations(result.data);
@@ -138,12 +151,14 @@ export default function DonationsPage() {
     let result = donations;
 
     if (startDate) {
-        result = result.filter(d => new Date(d.createdAt) >= startDate);
+        const startOfDay = new Date(startDate);
+        startOfDay.setHours(0, 0, 0, 0);
+        result = result.filter(d => new Date(d.createdAt) >= startOfDay);
     }
     if (endDate) {
-        const adjustedEndDate = new Date(endDate);
-        adjustedEndDate.setHours(23, 59, 59, 999);
-        result = result.filter(d => new Date(d.createdAt) <= adjustedEndDate);
+        const endOfDay = new Date(endDate);
+        endOfDay.setHours(23, 59, 59, 999);
+        result = result.filter(d => new Date(d.createdAt) <= endOfDay);
     }
     if (causeFilter && causeFilter !== 'all') {
         result = result.filter(d => d.cause === causeFilter);
@@ -169,7 +184,6 @@ export default function DonationsPage() {
       await deleteDoc(doc(db, "donations", id));
       const newDonations = donations.filter((donation) => donation.id !== id);
       setDonations(newDonations);
-      setFilteredDonations(newDonations);
       toast({
         title: "Donation deleted",
         description: "The donation record has been successfully removed.",
@@ -200,15 +214,29 @@ export default function DonationsPage() {
     link.click();
     document.body.removeChild(link);
   };
+  
+  const clearFilters = () => {
+    setStartDate(undefined);
+    setEndDate(undefined);
+    setCauseFilter('all');
+    setNationalityFilter('all');
+    setCountryFilter('');
+    setStateFilter('');
+    setCityFilter('');
+  };
+
 
   return (
     <AdminLayout>
         <div className="flex justify-between items-center mb-8">
             <h1 className="text-4xl font-bold font-headline">Donations</h1>
-            <Button onClick={handleDownload} disabled={filteredDonations.length === 0}>
-                <Download className="mr-2 h-4 w-4" />
-                Download CSV
-            </Button>
+            <div className="flex items-center gap-2">
+                <Button onClick={clearFilters} variant="outline">Clear Filters</Button>
+                <Button onClick={handleDownload} disabled={filteredDonations.length === 0}>
+                    <Download className="mr-2 h-4 w-4" />
+                    Download CSV
+                </Button>
+            </div>
         </div>
 
         <Card className="mb-8">
@@ -279,7 +307,7 @@ export default function DonationsPage() {
 
         <Card>
             <CardHeader>
-                <CardTitle>Donation Records</CardTitle>
+                <CardTitle>Donation Records ({filteredDonations.length})</CardTitle>
             </CardHeader>
             <CardContent>
                 {loading ? (
@@ -291,77 +319,81 @@ export default function DonationsPage() {
                     <div className="text-center py-12 text-destructive">
                         <p>{error}</p>
                     </div>
-                ) : filteredDonations.length === 0 ? (
-                    <div className="text-center py-12">
-                        <p>No donations match the current filters.</p>
-                    </div>
                 ) : (
-                    <Table>
-                        <TableHeader>
-                        <TableRow>
-                            <TableHead>Date</TableHead>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Email</TableHead>
-                            <TableHead>Mobile</TableHead>
-                            <TableHead>DOB</TableHead>
-                            <TableHead>Amount</TableHead>
-                            <TableHead>Cause</TableHead>
-                            <TableHead>Nationality</TableHead>
-                            <TableHead>Country</TableHead>
-                            <TableHead>Address</TableHead>
-                            <TableHead>City</TableHead>
-                            <TableHead>State</TableHead>
-                            <TableHead>Pincode</TableHead>
-                            <TableHead>PAN</TableHead>
-                            <TableHead>Passport</TableHead>
-                            <TableHead>Actions</TableHead>
-                        </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                        {filteredDonations.map((donation) => (
-                            <TableRow key={donation.id}>
-                                <TableCell>{donation.createdAt ? new Date(donation.createdAt).toLocaleDateString() : 'N/A'}</TableCell>
-                                <TableCell>{donation.fullName}</TableCell>
-                                <TableCell>{donation.email}</TableCell>
-                                <TableCell>{donation.mobile}</TableCell>
-                                <TableCell>{donation.dob}</TableCell>
-                                <TableCell>{donation.otherAmount || donation.amount}</TableCell>
-                                <TableCell>{donation.cause}</TableCell>
-                                <TableCell>{donation.nationality}</TableCell>
-                                <TableCell>{donation.country}</TableCell>
-                                <TableCell>{donation.address}</TableCell>
-                                <TableCell>{donation.city}</TableCell>
-                                <TableCell>{donation.state}</TableCell>
-                                <TableCell>{donation.pincode}</TableCell>
-                                <TableCell>{donation.pan}</TableCell>
-                                <TableCell>{donation.passport}</TableCell>
-                                <TableCell>
-                                    <AlertDialog>
-                                        <AlertDialogTrigger asChild>
-                                            <Button variant="destructive" size="icon">
-                                                <Trash2 className="h-4 w-4" />
-                                            </Button>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent>
-                                            <AlertDialogHeader>
-                                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                            <AlertDialogDescription>
-                                                This action cannot be undone. This will permanently delete the donation record.
-                                            </AlertDialogDescription>
-                                            </AlertDialogHeader>
-                                            <AlertDialogFooter>
-                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                            <AlertDialogAction onClick={() => handleDelete(donation.id)}>
-                                                Delete
-                                            </AlertDialogAction>
-                                            </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                    </AlertDialog>
-                                </TableCell>
+                    <div className="overflow-x-auto">
+                        <Table>
+                            <TableHeader>
+                            <TableRow>
+                                <TableHead>Date</TableHead>
+                                <TableHead>Name</TableHead>
+                                <TableHead>Email</TableHead>
+                                <TableHead>Mobile</TableHead>
+                                <TableHead>DOB</TableHead>
+                                <TableHead>Amount</TableHead>
+                                <TableHead>Cause</TableHead>
+                                <TableHead>Nationality</TableHead>
+                                <TableHead>Country</TableHead>
+                                <TableHead>Address</TableHead>
+                                <TableHead>City</TableHead>
+                                <TableHead>State</TableHead>
+                                <TableHead>Pincode</TableHead>
+                                <TableHead>PAN</TableHead>
+                                <TableHead>Passport</TableHead>
+                                <TableHead>Actions</TableHead>
                             </TableRow>
-                        ))}
-                        </TableBody>
-                    </Table>
+                            </TableHeader>
+                            <TableBody>
+                            {filteredDonations.length > 0 ? filteredDonations.map((donation) => (
+                                <TableRow key={donation.id}>
+                                    <TableCell>{donation.createdAt ? new Date(donation.createdAt).toLocaleDateString() : 'N/A'}</TableCell>
+                                    <TableCell>{donation.fullName}</TableCell>
+                                    <TableCell>{donation.email}</TableCell>
+                                    <TableCell>{donation.mobile}</TableCell>
+                                    <TableCell>{donation.dob}</TableCell>
+                                    <TableCell>{donation.otherAmount || donation.amount}</TableCell>
+                                    <TableCell>{donation.cause}</TableCell>
+                                    <TableCell>{donation.nationality}</TableCell>
+                                    <TableCell>{donation.country}</TableCell>
+                                    <TableCell>{donation.address}</TableCell>
+                                    <TableCell>{donation.city}</TableCell>
+                                    <TableCell>{donation.state}</TableCell>
+                                    <TableCell>{donation.pincode}</TableCell>
+                                    <TableCell>{donation.pan}</TableCell>
+                                    <TableCell>{donation.passport}</TableCell>
+                                    <TableCell>
+                                        <AlertDialog>
+                                            <AlertDialogTrigger asChild>
+                                                <Button variant="destructive" size="icon">
+                                                    <Trash2 className="h-4 w-4" />
+                                                </Button>
+                                            </AlertDialogTrigger>
+                                            <AlertDialogContent>
+                                                <AlertDialogHeader>
+                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                <AlertDialogDescription>
+                                                    This action cannot be undone. This will permanently delete the donation record.
+                                                </AlertDialogDescription>
+                                                </AlertDialogHeader>
+                                                <AlertDialogFooter>
+                                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                                <AlertDialogAction onClick={() => handleDelete(donation.id)}>
+                                                    Delete
+                                                </AlertDialogAction>
+                                                </AlertDialogFooter>
+                                            </AlertDialogContent>
+                                        </AlertDialog>
+                                    </TableCell>
+                                </TableRow>
+                            )) : (
+                                <TableRow>
+                                    <TableCell colSpan={16} className="text-center py-12">
+                                        No donations match the current filters.
+                                    </TableCell>
+                                </TableRow>
+                            )}
+                            </TableBody>
+                        </Table>
+                    </div>
                 )}
             </CardContent>
         </Card>
