@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -152,6 +153,7 @@ const navLinks = [
       },
     ]
   },
+  { href: '/workshops-events', label: 'Workshops & Events' },
   { 
     label: 'Media Room',
     isDropdown: true,
@@ -160,7 +162,6 @@ const navLinks = [
       { href: '/media', label: 'Media' },
     ]
   },
-  { href: '/workshops-events', label: 'Workshops & Events' },
   { 
     label: 'Resource Centre',
     isDropdown: true,
