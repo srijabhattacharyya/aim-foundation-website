@@ -63,6 +63,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-12 border-t pt-8 text-center text-muted-foreground text-sm">
+           <p className="text-xs mb-4">Website developed by Srija Bhattacharyya, 3rd-year CSE student at KIIT University and dedicated AIM Foundation volunteer for over 7 years.</p>
            <p>&copy; {new Date().getFullYear()} Associated Initiative for Mankind Foundation. All Rights Reserved. | <Link href="/policies" className="hover:text-primary transition-colors">Policies</Link></p>
         </div>
       </div>
