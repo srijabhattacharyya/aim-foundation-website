@@ -22,6 +22,11 @@ import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
+import { addDonation } from "@/app/actions/donationActions";
+import { Loader2 } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
@@ -32,8 +37,9 @@ const donationSchema = z.object({
   fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
-  dob: z.string().optional(),
+  dob: z.date().optional(),
   pan: z.string().optional(),
+  aadhar: z.string().optional(),
   passport: z.string().optional(),
   country: z.string().nonempty({ message: "Country is required." }),
   state: z.string().optional(),
@@ -44,23 +50,49 @@ const donationSchema = z.object({
     message: "You must agree to the terms.",
   }),
   recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
-}).refine(data => {
-    if (data.nationality === "Indian") {
-        return !!data.pan && data.pan.length === 10;
+}).superRefine((data, ctx) => {
+    if (data.nationality === 'Indian') {
+      if (!data.pan && !data.aadhar) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "PAN or Aadhar is required for Indian nationals.",
+          path: ["pan"],
+        });
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "PAN or Aadhar is required for Indian nationals.",
+            path: ["aadhar"],
+          });
+      } else if (data.pan && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(data.pan)) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Invalid PAN format.",
+            path: ["pan"],
+          });
+      } else if (data.aadhar && !/^[0-9]{12}$/.test(data.aadhar)) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Aadhar must be 12 digits.",
+            path: ["aadhar"],
+          });
+      }
+      if (!data.state) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "State is required for Indian nationals.",
+            path: ["state"],
+          });
+      }
     }
-    return true;
-}, {
-    message: "PAN must be 10 characters for Indian nationals.",
-    path: ["pan"],
-}).refine(data => {
-    if (data.nationality === "Indian") {
-        return !!data.state;
+    if (data.nationality === 'Non-Indian' && !data.passport) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Passport is required for Non-Indian nationals.",
+            path: ["passport"],
+        });
     }
-    return true;
-}, {
-    message: "State is required for Indian nationals.",
-    path: ["state"],
 });
+
 
 const donationAmountsIndian = [
     { value: "5000", label: "₹5000", description: "SPONSOR ONE SURGERY" },
@@ -78,6 +110,7 @@ const donationAmountsNonIndian = [
 
 export default function SurgiReachDonationForm() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -87,8 +120,9 @@ export default function SurgiReachDonationForm() {
       fullName: "",
       email: "",
       mobile: "",
-      dob: "",
+      dob: undefined,
       pan: "",
+      aadhar: "",
       passport: "",
       country: "India",
       state: "",
@@ -100,9 +134,9 @@ export default function SurgiReachDonationForm() {
     },
   });
 
-  const recaptchaRef = React.createRef<ReCAPTCHA>();
+  const recaptchaRef = React.createRef<any>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-
+  
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
   const selectedAmountValue = form.watch("amount");
@@ -119,20 +153,33 @@ export default function SurgiReachDonationForm() {
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
+      form.setValue("aadhar", "");
       form.setValue("state", "");
       form.setValue("amount", "60");
     }
   }, [nationality, form]);
 
 
-  function onSubmit(values: z.infer<typeof donationSchema>) {
-    console.log(values);
-    toast({
-      title: "Thank you for supporting SurgiReach!",
-      description: "Your support makes a difference.",
-    });
-    recaptchaRef.current?.reset();
-    form.reset();
+  async function onSubmit(values: z.infer<typeof donationSchema>) {
+    setIsSubmitting(true);
+    try {
+        const donationData = { ...values, cause: 'SurgiReach' };
+        await addDonation(donationData);
+        toast({
+        title: "Thank you for supporting SurgiReach!",
+        description: "Your support makes a difference.",
+        });
+        recaptchaRef.current?.reset();
+        form.reset();
+    } catch (error) {
+        toast({
+            variant: "destructive",
+            title: "Submission Failed",
+            description: "Could not record donation. Please try again.",
+        });
+    } finally {
+        setIsSubmitting(false);
+    }
   }
 
   return (
@@ -253,18 +300,37 @@ export default function SurgiReachDonationForm() {
                         )}
                     />
                      {nationality === 'Indian' ? (
-                        <FormField
-                            control={form.control}
-                            name="pan"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Pan No" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        <>
+                            <FormField
+                                control={form.control}
+                                name="pan"
+                                render={({ field }) => (
+                                    <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="PAN No." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                             <FormField
+                                control={form.control}
+                                name="aadhar"
+                                render={({ field }) => (
+                                    <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="Aadhar No." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                             <div className="flex items-center justify-center md:col-span-2">
+                                <p className="text-xs text-center text-muted-foreground mt-1">
+                                    PAN or AADHAR No. is Mandatory as per Law
+                                </p>
+                            </div>
+                        </>
                     ) : (
                          <FormField
                             control={form.control}
@@ -285,11 +351,36 @@ export default function SurgiReachDonationForm() {
                     control={form.control}
                     name="dob"
                     render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>Date of Birth (Optional)</FormLabel>
-                        <FormControl>
-                            <Input type="date" {...field} />
-                        </FormControl>
+                        <FormItem className="flex flex-col">
+                        <FormLabel>Date of Birth</FormLabel>
+                         <Popover>
+                            <PopoverTrigger asChild>
+                                <FormControl>
+                                <Button
+                                    variant={"outline"}
+                                    className="w-full pl-3 text-left font-normal"
+                                >
+                                    {field.value ? (
+                                    format(field.value, "PPP")
+                                    ) : (
+                                    <span>Pick a date</span>
+                                    )}
+                                </Button>
+                                </FormControl>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0" align="start">
+                                <Calendar
+                                mode="single"
+                                selected={field.value}
+                                onSelect={field.onChange}
+                                disabled={(date) =>
+                                    date > new Date() || date < new Date("1900-01-01")
+                                }
+                                toDate={new Date()}
+                                initialFocus
+                                />
+                            </PopoverContent>
+                        </Popover>
                         <FormMessage />
                         </FormItem>
                     )}
@@ -401,7 +492,9 @@ export default function SurgiReachDonationForm() {
                   )}
                 />
 
-                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
+                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
+                   {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
+                </Button>
                 </form>
             </Form>
         </CardContent>
