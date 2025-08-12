@@ -10,13 +10,17 @@ import Ethos from "@/components/sections/Ethos";
 import LegalRecognitions from "@/components/sections/LegalRecognitions";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import FootprintCarousel from "@/components/sections/FootprintCarousel"; // Eager import for desktop
 
-const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
+const LazyFootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
     ssr: false,
-    loading: () => <Skeleton className="h-[400px] w-full" />,
+    loading: () => <Skeleton className="h-[400px] w-[512px] max-w-lg" />,
 });
 
 export default function OrganisationPage() {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -63,7 +67,7 @@ export default function OrganisationPage() {
                 </div>
               </div>
               <div className="w-full md:w-1/2 max-w-lg mx-auto">
-                <FootprintCarousel />
+                {isDesktop ? <FootprintCarousel /> : <LazyFootprintCarousel />}
               </div>
             </div>
           </div>
