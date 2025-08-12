@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -230,6 +229,7 @@ export default function GalleryAdminPage() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
+                           <SelectItem value="">None</SelectItem>
                            {initiatives.map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}
                         </SelectContent>
                       </Select>
