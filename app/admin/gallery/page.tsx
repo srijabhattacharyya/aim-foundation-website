@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { storage } from '@/lib/firebase';
+import { storage, db } from '@/lib/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { collection, getDocs, query, orderBy, where } from 'firebase/firestore';
 import AdminLayout from '../AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -19,7 +20,7 @@ import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import imageCompression from 'browser-image-compression';
-import { addGalleryItem, getGalleryItems, deleteGalleryItem } from '@/app/actions/galleryActions';
+import { addGalleryItem, deleteGalleryItem } from '@/app/actions/galleryActions';
 
 const initiatives = [
     "General",
@@ -72,16 +73,28 @@ export default function GalleryAdminPage() {
     },
   });
 
-  const fetchImages = async () => {
+ const fetchImages = async () => {
     setLoading(true);
-    const result = await getGalleryItems();
-    if (result.success && result.data) {
-        setImages(result.data as GalleryImage[]);
-    } else {
-        toast({ variant: 'destructive', title: 'Error', description: result.error });
+    try {
+      const q = query(collection(db, 'gallery'), orderBy('sequence', 'asc'));
+      const querySnapshot = await getDocs(q);
+      const fetchedImages: GalleryImage[] = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      } as GalleryImage));
+      setImages(fetchedImages);
+    } catch (error) {
+      console.error("Error fetching gallery items from client: ", error);
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'Failed to fetch gallery items. Please check permissions and network.',
+      });
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
+
 
   useEffect(() => {
     fetchImages();

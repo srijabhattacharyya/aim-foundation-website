@@ -51,30 +51,6 @@ export async function addGalleryItem(
   }
 }
 
-export async function getGalleryItems() {
-    try {
-        const snapshot = await adminDb.collection('gallery').orderBy('sequence', 'asc').get();
-        if (snapshot.empty) {
-            return { success: true, data: [] };
-        }
-        const items = snapshot.docs.map(doc => {
-            const data = doc.data();
-            return {
-                id: doc.id,
-                description: data.description,
-                imageUrl: data.imageUrl,
-                status: data.status,
-                sequence: data.sequence,
-                initiatives: data.initiatives,
-            };
-        });
-        return { success: true, data: items };
-    } catch (error) {
-        console.error("Error fetching gallery items: ", error);
-        return { success: false, error: "Failed to fetch gallery items." };
-    }
-}
-
 export async function deleteGalleryItem(id: string) {
     try {
         await adminDb.collection('gallery').doc(id).delete();
