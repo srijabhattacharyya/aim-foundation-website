@@ -76,7 +76,7 @@ export default function GalleryAdminPage() {
     setLoading(true);
     const result = await getGalleryItems();
     if (result.success && result.data) {
-        setImages(result.data);
+        setImages(result.data as GalleryImage[]);
     } else {
         toast({ variant: 'destructive', title: 'Error', description: result.error });
     }

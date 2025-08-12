@@ -57,10 +57,17 @@ export async function getGalleryItems() {
         if (snapshot.empty) {
             return { success: true, data: [] };
         }
-        const items = snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
+        const items = snapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+                id: doc.id,
+                description: data.description,
+                imageUrl: data.imageUrl,
+                status: data.status,
+                sequence: data.sequence,
+                initiatives: data.initiatives,
+            };
+        });
         return { success: true, data: items };
     } catch (error) {
         console.error("Error fetching gallery items: ", error);
