@@ -19,7 +19,6 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import imageCompression from 'browser-image-compression';
 import { addGalleryItem, deleteGalleryItem } from '@/app/actions/galleryActions';
 
 const initiatives = [
@@ -98,7 +97,7 @@ export default function GalleryAdminPage() {
 
   useEffect(() => {
     fetchImages();
-  }, []);
+  }, [toast]);
 
   const handleEdit = (image: GalleryImage) => {
     setEditingImage(image);
@@ -129,16 +128,8 @@ export default function GalleryAdminPage() {
       
       if (data.image && typeof data.image !== 'string' && data.image.length > 0) {
         const imageFile = data.image[0];
-
-        const options = {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 600,
-            useWebWorker: true,
-        }
-        const compressedFile = await imageCompression(imageFile, options);
-        
-        const storageRef = ref(storage, `gallery/${Date.now()}_${compressedFile.name}`);
-        const snapshot = await uploadBytes(storageRef, compressedFile);
+        const storageRef = ref(storage, `gallery/${Date.now()}_${imageFile.name}`);
+        const snapshot = await uploadBytes(storageRef, imageFile);
         imageUrl = await getDownloadURL(snapshot.ref);
       }
       
@@ -175,7 +166,7 @@ export default function GalleryAdminPage() {
 
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast({ variant: 'destructive', title: 'Error', description: 'A client-side error occurred.' });
+      toast({ variant: 'destructive', title: 'Error', description: 'An unexpected client-side error occurred.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -255,7 +246,7 @@ export default function GalleryAdminPage() {
                     name="image"
                     render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Image (600x400 recommended)</FormLabel>
+                        <FormLabel>Image</FormLabel>
                         <FormControl>
                             <Input
                             type="file"
