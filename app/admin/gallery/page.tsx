@@ -41,8 +41,10 @@ const imageSchema = z.object({
   sequence: z.coerce.number().min(0, 'Sequence must be a positive number'),
   initiative1: z.string().min(1, 'At least one initiative is required'),
   initiative2: z.string().optional(),
-  image: z.any().refine(files => files?.length > 0 || typeof files === 'string', 'Image is required.'),
+  image: z.any().refine(files => (editingImageId && typeof files === 'string') || (files && files.length > 0), 'Image is required.'),
 });
+
+let editingImageId: string | null = null;
 
 export interface GalleryImage {
   id: string;
@@ -72,7 +74,7 @@ export default function GalleryAdminPage() {
     },
   });
 
- const fetchImages = async () => {
+  const fetchImages = async () => {
     setLoading(true);
     try {
       const q = query(collection(db, 'gallery'), orderBy('sequence', 'asc'));
@@ -94,13 +96,13 @@ export default function GalleryAdminPage() {
     }
   };
 
-
   useEffect(() => {
     fetchImages();
-  }, [toast]);
+  }, []);
 
   const handleEdit = (image: GalleryImage) => {
     setEditingImage(image);
+    editingImageId = image.id;
     form.reset({
       description: image.description,
       status: image.status,
@@ -119,6 +121,19 @@ export default function GalleryAdminPage() {
     } else {
         toast({ variant: 'destructive', title: 'Error', description: result.error });
     }
+  };
+
+  const cancelEdit = () => {
+    setEditingImage(null);
+    editingImageId = null;
+    form.reset({
+      description: '',
+      status: 'Active',
+      sequence: 0,
+      initiative1: 'General',
+      initiative2: 'None',
+      image: undefined,
+    });
   };
 
   const onSubmit: SubmitHandler<z.infer<typeof imageSchema>> = async (data) => {
@@ -150,15 +165,7 @@ export default function GalleryAdminPage() {
 
       if (result.success) {
         toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });
-        form.reset({
-            description: '',
-            status: 'Active',
-            sequence: 0,
-            initiative1: 'General',
-            initiative2: 'None',
-            image: undefined,
-        });
-        setEditingImage(null);
+        cancelEdit();
         fetchImages();
       } else {
          toast({ variant: 'destructive', title: 'Error', description: result.error });
@@ -255,6 +262,9 @@ export default function GalleryAdminPage() {
                             />
                         </FormControl>
                         <FormMessage />
+                        {editingImage && (
+                            <p className="text-sm text-muted-foreground mt-2">Leave empty to keep the existing image.</p>
+                        )}
                         </FormItem>
                     )}
                 />
@@ -296,9 +306,7 @@ export default function GalleryAdminPage() {
               </div>
               <div className="flex justify-end gap-4 mt-6">
                 {editingImage && (
-                    <Button type="button" variant="outline" onClick={() => { setEditingImage(null); form.reset({
-                      description: '', status: 'Active', sequence: 0, initiative1: 'General', initiative2: 'None', image: undefined,
-                    }); }}>Cancel Edit</Button>
+                    <Button type="button" variant="outline" onClick={cancelEdit}>Cancel Edit</Button>
                 )}
                 <Button type="submit" disabled={isSubmitting}>
                   {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : ''}
