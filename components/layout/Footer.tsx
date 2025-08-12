@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import Link from 'next/link';
 import ContactEmail from './ContactEmail';
 import dynamic from 'next/dynamic';
@@ -71,6 +71,7 @@ const Footer = () => {
               </Link>
               <Link href="https://www.instagram.com/aimfoundation_ngo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors"><Instagram size={24} /></Link>
               <Link href="https://www.linkedin.com/in/aim-foundation-ngo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
+              <Link href="https://www.youtube.com/@aimfoundation2604" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-muted-foreground hover:text-primary transition-colors"><Youtube size={24} /></Link>
             </div>
              <div className='mt-4'>
                 <h6 className='font-semibold text-md mb-2'>Subscribe to our Impact Mails for updates</h6>
