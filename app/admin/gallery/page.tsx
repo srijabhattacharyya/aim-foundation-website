@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { db, storage } from '@/lib/firebase';
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, serverTimestamp, query, orderBy } from 'firebase/firestore';
+import { storage } from '@/lib/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import AdminLayout from '../AdminLayout';
 import { Button } from '@/components/ui/button';
@@ -20,6 +19,7 @@ import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import imageCompression from 'browser-image-compression';
+import { addGalleryItem, getGalleryItems, deleteGalleryItem } from '@/app/actions/galleryActions';
 
 const initiatives = [
     "General",
@@ -44,7 +44,7 @@ const imageSchema = z.object({
   image: z.any().refine(files => files?.length > 0 || typeof files === 'string', 'Image is required.'),
 });
 
-interface GalleryImage {
+export interface GalleryImage {
   id: string;
   description: string;
   imageUrl: string;
@@ -74,10 +74,12 @@ export default function GalleryAdminPage() {
 
   const fetchImages = async () => {
     setLoading(true);
-    const q = query(collection(db, 'gallery'), orderBy('sequence', 'asc'));
-    const querySnapshot = await getDocs(q);
-    const fetchedImages = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as GalleryImage));
-    setImages(fetchedImages);
+    const result = await getGalleryItems();
+    if (result.success && result.data) {
+        setImages(result.data);
+    } else {
+        toast({ variant: 'destructive', title: 'Error', description: result.error });
+    }
     setLoading(false);
   };
 
@@ -98,13 +100,12 @@ export default function GalleryAdminPage() {
   };
 
   const handleDelete = async (id: string) => {
-    try {
-      await deleteDoc(doc(db, 'gallery', id));
-      toast({ title: 'Success', description: 'Image deleted successfully.' });
-      fetchImages();
-    } catch (error) {
-      console.error('Error deleting image:', error);
-      toast({ variant: 'destructive', title: 'Error', description: 'Failed to delete image.' });
+    const result = await deleteGalleryItem(id);
+    if (result.success) {
+        toast({ title: 'Success', description: 'Image deleted successfully.' });
+        fetchImages();
+    } else {
+        toast({ variant: 'destructive', title: 'Error', description: result.error });
     }
   };
 
@@ -112,7 +113,8 @@ export default function GalleryAdminPage() {
     setIsSubmitting(true);
     try {
       let imageUrl = editingImage ? editingImage.imageUrl : '';
-      if (data.image && typeof data.image !== 'string') {
+      
+      if (data.image && typeof data.image !== 'string' && data.image.length > 0) {
         const imageFile = data.image[0];
 
         const options = {
@@ -121,7 +123,7 @@ export default function GalleryAdminPage() {
             useWebWorker: true,
         }
         const compressedFile = await imageCompression(imageFile, options);
-
+        
         const storageRef = ref(storage, `gallery/${Date.now()}_${compressedFile.name}`);
         const snapshot = await uploadBytes(storageRef, compressedFile);
         imageUrl = await getDownloadURL(snapshot.ref);
@@ -138,33 +140,29 @@ export default function GalleryAdminPage() {
         sequence: data.sequence,
         initiatives: imageInitiatives,
         imageUrl: imageUrl,
-        updatedAt: serverTimestamp(),
       };
 
-      if (editingImage) {
-        await updateDoc(doc(db, 'gallery', editingImage.id), docData);
-        toast({ title: 'Success', description: 'Image updated successfully.' });
-      } else {
-        await addDoc(collection(db, 'gallery'), {
-            ...docData,
-            createdAt: serverTimestamp(),
+      const result = await addGalleryItem(docData, editingImage ? editingImage.id : null);
+
+      if (result.success) {
+        toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });
+        form.reset({
+            description: '',
+            status: 'Active',
+            sequence: 0,
+            initiative1: 'General',
+            initiative2: 'None',
+            image: undefined,
         });
-        toast({ title: 'Success', description: 'Image uploaded successfully.' });
+        setEditingImage(null);
+        fetchImages();
+      } else {
+         toast({ variant: 'destructive', title: 'Error', description: result.error });
       }
 
-      form.reset({
-          description: '',
-          status: 'Active',
-          sequence: 0,
-          initiative1: 'General',
-          initiative2: 'None',
-          image: undefined,
-      });
-      setEditingImage(null);
-      fetchImages();
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast({ variant: 'destructive', title: 'Error', description: 'Failed to save image.' });
+      toast({ variant: 'destructive', title: 'Error', description: 'A client-side error occurred.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -224,7 +222,7 @@ export default function GalleryAdminPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Initiative 2 (Optional)</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value || 'None'}>
+                      <Select onValueChange={field.onChange} value={field.value || undefined}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select second initiative" />
@@ -294,7 +292,9 @@ export default function GalleryAdminPage() {
               </div>
               <div className="flex justify-end gap-4 mt-6">
                 {editingImage && (
-                    <Button type="button" variant="outline" onClick={() => { setEditingImage(null); form.reset(); }}>Cancel Edit</Button>
+                    <Button type="button" variant="outline" onClick={() => { setEditingImage(null); form.reset({
+                      description: '', status: 'Active', sequence: 0, initiative1: 'General', initiative2: 'None', image: undefined,
+                    }); }}>Cancel Edit</Button>
                 )}
                 <Button type="submit" disabled={isSubmitting}>
                   {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : ''}
