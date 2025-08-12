@@ -280,7 +280,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     CareCircle: Bringing Healing to the Heart of the City
                 </Link>
             );
-            image = { src: "/public/images/projects/carecircle/carecircle1.webp", alt: "CareCircle initiative", hint: "urban health camp"};
+            image = { src: "/images/projects/carecircle/carecircle1.webp", alt: "CareCircle initiative", hint: "urban health camp"};
         } else if (pathname.includes('/vidyashakti')) {
             content = (
                 <Link href="/blog/vidyashakti-ai-learning" className="text-muted-foreground hover:text-primary transition-colors">
