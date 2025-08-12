@@ -26,7 +26,7 @@ export default function CareCircleClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/projects/carecircle/carecircle1.webp"
+              src="https://placehold.co/1920x580.png"
               alt="CareCircle Banner"
               width={1920}
               height={580}
