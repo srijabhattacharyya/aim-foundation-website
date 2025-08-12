@@ -18,7 +18,7 @@ import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
 import { Checkbox } from "../../../components/ui/checkbox";
 import { useToast } from "../../../hooks/use-toast";
 import { Card, CardContent } from "../../../components/ui/card";
-import React from "react";
+import React, { useState } from "react";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -31,7 +31,7 @@ import { format } from "date-fns";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
   ssr: false,
-  loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md" />
+  loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md mx-auto" />
 });
 
 const donationSchema = z.object({
@@ -114,6 +114,7 @@ const donationAmountsNonIndian = [
 export default function SponsorChildDonationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [showRecaptcha, setShowRecaptcha] = useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -175,6 +176,7 @@ export default function SponsorChildDonationForm() {
       });
       recaptchaRef.current?.reset();
       form.reset();
+      setShowRecaptcha(false);
     } catch (e) {
       console.error("Error adding document: ", e);
       toast({
@@ -189,7 +191,7 @@ export default function SponsorChildDonationForm() {
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
-        <CardContent className="p-6 md:p-8">
+        <CardContent className="p-6 md:p-8" onFocus={() => setShowRecaptcha(true)} onClick={() => setShowRecaptcha(true)}>
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold font-headline">SPONSOR A CHILD</h2>
                 <p className="text-muted-foreground">GIVE A CHILD THE GIFT OF A FUTURE</p>
@@ -481,24 +483,26 @@ export default function SponsorChildDonationForm() {
                     )}
                 />
                 
-                <FormField
-                  control={form.control}
-                  name="recaptcha"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <div className="flex justify-center">
-                            <DynamicReCAPTCHA
-                              ref={recaptchaRef}
-                              sitekey={recaptchaSiteKey}
-                              onChange={field.onChange}
-                            />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                {showRecaptcha && (
+                    <FormField
+                      control={form.control}
+                      name="recaptcha"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="flex justify-center">
+                                <DynamicReCAPTCHA
+                                  ref={recaptchaRef}
+                                  sitekey={recaptchaSiteKey}
+                                  onChange={field.onChange}
+                                />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                )}
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
                     {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sponsoring...</> : "Sponsor Now"}
@@ -509,3 +513,4 @@ export default function SponsorChildDonationForm() {
     </Card>
   );
 }
+

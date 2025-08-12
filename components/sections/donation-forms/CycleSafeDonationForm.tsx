@@ -18,7 +18,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -27,8 +27,12 @@ import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
+import { Skeleton } from "@/components/ui/skeleton";
 
-const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
+    ssr: false,
+    loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md mx-auto" />
+});
 
 const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
@@ -110,6 +114,7 @@ const donationAmountsNonIndian = [
 export default function CycleSafeDonationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [showRecaptcha, setShowRecaptcha] = useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -170,6 +175,7 @@ export default function CycleSafeDonationForm() {
       });
       recaptchaRef.current?.reset();
       form.reset();
+      setShowRecaptcha(false);
     } catch (error) {
       toast({
         variant: "destructive",
@@ -183,7 +189,7 @@ export default function CycleSafeDonationForm() {
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
-        <CardContent className="p-6 md:p-8">
+        <CardContent className="p-6 md:p-8" onFocus={() => setShowRecaptcha(true)} onClick={() => setShowRecaptcha(true)}>
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT CYCLESAFE</h2>
                 <p className="text-muted-foreground">GIFT DIGNITY & HEALTH</p>
@@ -473,24 +479,26 @@ export default function CycleSafeDonationForm() {
                     )}
                 />
 
-                <FormField
-                  control={form.control}
-                  name="recaptcha"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <div className="flex justify-center">
-                            <DynamicReCAPTCHA
-                              ref={recaptchaRef}
-                              sitekey={recaptchaSiteKey}
-                              onChange={field.onChange}
-                            />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                {showRecaptcha && (
+                    <FormField
+                      control={form.control}
+                      name="recaptcha"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="flex justify-center">
+                                <DynamicReCAPTCHA
+                                  ref={recaptchaRef}
+                                  sitekey={recaptchaSiteKey}
+                                  onChange={field.onChange}
+                                />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                )}
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
@@ -501,3 +509,4 @@ export default function CycleSafeDonationForm() {
     </Card>
   );
 }
+
