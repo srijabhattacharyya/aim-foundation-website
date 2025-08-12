@@ -6,8 +6,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Ethos from "@/components/sections/Ethos";
 import LegalRecognitions from "@/components/sections/LegalRecognitions";
-import FootprintCarousel from "@/components/sections/FootprintCarousel";
-
 
 export default function OrganisationPage() {
   return (
@@ -42,7 +40,15 @@ export default function OrganisationPage() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <FootprintCarousel />
+                <Image
+                    src="/images/home-scrolling/hs1.jpg"
+                    alt="Garments Distribution to Sabar Community"
+                    width={800}
+                    height={500}
+                    className="shadow-lg rounded-lg w-full h-auto object-cover"
+                    data-ai-hint="garments distribution"
+                    priority
+                />
               </div>
               <div className="animate-fade-in-up">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">About Us</h2>
