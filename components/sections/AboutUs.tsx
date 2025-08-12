@@ -1,17 +1,20 @@
 
 'use client';
 
-import FootprintCarousel from '@/components/sections/FootprintCarousel';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
+    loading: () => <Skeleton className="h-[400px] w-full" />,
+    ssr: false
+});
 
 const AboutUs = () => {
   return (
     <section id="about" className="py-12 md:py-20 lg:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="w-full max-w-lg mx-auto">
-                <FootprintCarousel />
-            </div>
-            <div>
+        <div className="flex flex-col md:flex-row gap-12 items-center">
+            <div className="md:w-1/2">
                 <h2 className="text-2xl md:text-3xl font-semibold font-headline text-primary mb-6">Building Dignity. Inspiring Change.</h2>
                 <div className="mt-4 text-base text-muted-foreground space-y-4 text-justify">
                     <p>
@@ -27,6 +30,9 @@ const AboutUs = () => {
                         We're not just delivering aid. We’re building futures — one life, one village, one step at a time.
                     </p>
                 </div>
+            </div>
+            <div className="w-full md:w-1/2 max-w-lg mx-auto">
+                <FootprintCarousel />
             </div>
         </div>
       </div>
