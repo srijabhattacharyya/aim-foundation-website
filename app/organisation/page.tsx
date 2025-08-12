@@ -41,7 +41,7 @@ export default function OrganisationPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-card">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="flex flex-col-reverse md:flex-row gap-12 items-center">
+            <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/2">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">About Us</h2>
                 <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
