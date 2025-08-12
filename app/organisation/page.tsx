@@ -1,4 +1,6 @@
 
+'use client';
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +8,13 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Ethos from "@/components/sections/Ethos";
 import LegalRecognitions from "@/components/sections/LegalRecognitions";
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
+    loading: () => <Skeleton className="h-[400px] w-full" />,
+    ssr: false
+});
 
 export default function OrganisationPage() {
   return (
@@ -38,19 +47,8 @@ export default function OrganisationPage() {
 
         <section className="py-12 md:py-20 lg:py-24 bg-card">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <Image
-                    src="/images/home-scrolling/hs1.jpg"
-                    alt="Garments Distribution to Sabar Community"
-                    width={800}
-                    height={500}
-                    className="shadow-lg rounded-lg w-full h-auto object-cover"
-                    data-ai-hint="garments distribution"
-                    priority
-                />
-              </div>
-              <div className="animate-fade-in-up">
+            <div className="flex flex-col md:flex-row gap-12 items-center">
+              <div className="md:w-1/2 animate-fade-in-up">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">About Us</h2>
                 <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
@@ -63,6 +61,9 @@ export default function OrganisationPage() {
                         <Link href="#legal-recognitions">Our Recognitions</Link>
                     </Button>
                 </div>
+              </div>
+              <div className="w-full md:w-1/2 max-w-lg mx-auto">
+                <FootprintCarousel />
               </div>
             </div>
           </div>
