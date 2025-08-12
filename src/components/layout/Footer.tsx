@@ -1,4 +1,6 @@
 
+"use client";
+
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 import ContactEmail from './ContactEmail';
@@ -55,10 +57,10 @@ const Footer = () => {
               <Link href="https://www.linkedin.com/in/aim-foundation-ngo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={24} /></Link>
             </div>
             <div className='mt-4'>
-                <h6 className='font-semibold text-md mb-4'><Link href="/newsletter">Newsletter</Link></h6>
-                <p className='text-muted-foreground'>Subscribe to our newsletter for updates.</p>
-                <h6 className='font-semibold text-md mb-4 mt-2'><Link href="/annual-report">Annual Report</Link></h6>
-                 <h6 className='font-semibold text-md mb-4 mt-2'><Link href="/library">Library</Link></h6>
+                <h6 className='font-semibold text-md mb-2'><Link href="/newsletter" className="text-muted-foreground hover:text-primary transition-colors">Newsletter</Link></h6>
+                <p className='text-muted-foreground text-sm'>Subscribe to our newsletter for updates.</p>
+                <h6 className='font-semibold text-md mb-2 mt-2'><Link href="/annual-report" className="text-muted-foreground hover:text-primary transition-colors">Annual Report</Link></h6>
+                 <h6 className='font-semibold text-md mb-2 mt-2'><Link href="/library" className="text-muted-foreground hover:text-primary transition-colors">Library</Link></h6>
             </div>
           </div>
         </div>
