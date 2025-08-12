@@ -234,6 +234,7 @@ export default function BlogPage() {
                       height={400}
                       data-ai-hint={post.hint}
                       className="w-full h-56 object-cover"
+                      loading={index > 2 ? 'lazy' : 'eager'}
                     />
                   </Link>
                   <CardContent className="p-6 flex flex-col flex-grow">

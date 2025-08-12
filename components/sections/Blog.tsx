@@ -49,6 +49,7 @@ const Blog = () => {
                     height={400}
                     data-ai-hint={post.hint}
                     className="w-full h-48 object-cover"
+                    loading="lazy"
                   />
               </Link>
               <CardContent className="p-6">

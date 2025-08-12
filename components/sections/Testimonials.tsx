@@ -65,6 +65,7 @@ const Testimonials = () => {
                                                 height={100}
                                                 data-ai-hint={testimonial.hint}
                                                 className="rounded-full mb-4 border-4 border-primary/20"
+                                                loading="lazy"
                                             />
                                             <p className="text-muted-foreground italic mb-4">"{testimonial.quote}"</p>
                                             <p className="font-bold text-lg font-headline">{testimonial.name}</p>
