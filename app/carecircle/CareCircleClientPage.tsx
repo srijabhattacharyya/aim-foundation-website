@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "../../components/layout/Navbar";
@@ -25,7 +26,7 @@ export default function CareCircleClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/projects/carecircle/carecircle1.webp"
               alt="CareCircle Banner"
               width={1920}
               height={580}
@@ -80,7 +81,6 @@ export default function CareCircleClientPage() {
                     </div>
                   </div>
                 </div>
-            </div>
              <div className="fixed bottom-8 right-8 z-50">
               <Dialog open={showForm} onOpenChange={setShowForm}>
                 <DialogTrigger asChild>
