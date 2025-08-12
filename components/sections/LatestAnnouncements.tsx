@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -9,7 +10,7 @@ const announcements = [
   {
     title: 'Community Health Camp',
     date: 'October 26, 2023',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/carecircle/carecircle1.webp',
     hint: 'health camp',
     description: 'A successful health camp providing free check-ups and medicines to over 500 people in rural areas.',
     link: '#'
