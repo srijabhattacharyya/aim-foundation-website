@@ -34,7 +34,8 @@ const imageSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   status: z.enum(['Active', 'Inactive']),
   sequence: z.coerce.number().min(0, 'Sequence must be a positive number'),
-  initiative: z.string().min(1, 'Initiative is required'),
+  initiative1: z.string().min(1, 'At least one initiative is required'),
+  initiative2: z.string().optional(),
   image: z.any().refine(files => files?.length > 0 || typeof files === 'string', 'Image is required.'),
 });
 
@@ -44,7 +45,7 @@ interface GalleryImage {
   imageUrl: string;
   status: 'Active' | 'Inactive';
   sequence: number;
-  initiative: string;
+  initiatives: string[];
 }
 
 export default function GalleryAdminPage() {
@@ -60,7 +61,8 @@ export default function GalleryAdminPage() {
       description: '',
       status: 'Active',
       sequence: 0,
-      initiative: 'General',
+      initiative1: 'General',
+      initiative2: '',
       image: undefined,
     },
   });
@@ -84,7 +86,8 @@ export default function GalleryAdminPage() {
       description: image.description,
       status: image.status,
       sequence: image.sequence,
-      initiative: image.initiative,
+      initiative1: image.initiatives[0] || 'General',
+      initiative2: image.initiatives[1] || '',
       image: image.imageUrl,
     });
   };
@@ -119,11 +122,16 @@ export default function GalleryAdminPage() {
         imageUrl = await getDownloadURL(snapshot.ref);
       }
       
+      const imageInitiatives = [data.initiative1];
+      if (data.initiative2) {
+          imageInitiatives.push(data.initiative2);
+      }
+
       const docData = {
         description: data.description,
         status: data.status,
         sequence: data.sequence,
-        initiative: data.initiative,
+        initiatives: imageInitiatives,
         imageUrl: imageUrl,
         updatedAt: serverTimestamp(),
       };
@@ -143,7 +151,8 @@ export default function GalleryAdminPage() {
           description: '',
           status: 'Active',
           sequence: 0,
-          initiative: 'General',
+          initiative1: 'General',
+          initiative2: '',
           image: undefined,
       });
       setEditingImage(null);
@@ -170,11 +179,11 @@ export default function GalleryAdminPage() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField
+                 <FormField
                   control={form.control}
                   name="description"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="md:col-span-2">
                       <FormLabel>Description</FormLabel>
                       <FormControl>
                         <Textarea placeholder="Enter a short description for the image" {...field} />
@@ -183,17 +192,17 @@ export default function GalleryAdminPage() {
                     </FormItem>
                   )}
                 />
-                <div className='space-y-6'>
+
                 <FormField
                   control={form.control}
-                  name="initiative"
+                  name="initiative1"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Initiative</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormLabel>Initiative 1 (Required)</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select an initiative" />
+                            <SelectValue placeholder="Select first initiative" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -204,6 +213,28 @@ export default function GalleryAdminPage() {
                     </FormItem>
                   )}
                 />
+                 <FormField
+                  control={form.control}
+                  name="initiative2"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Initiative 2 (Optional)</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select second initiative" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="">None</SelectItem>
+                          {initiatives.map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+               
                 <FormField
                     control={form.control}
                     name="image"
@@ -221,7 +252,7 @@ export default function GalleryAdminPage() {
                         </FormItem>
                     )}
                 />
-                </div>
+                
                  <FormField
                   control={form.control}
                   name="sequence"
@@ -241,7 +272,7 @@ export default function GalleryAdminPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Status</FormLabel>
-                       <Select onValueChange={field.onChange} defaultValue={field.value}>
+                       <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select status" />
@@ -287,7 +318,7 @@ export default function GalleryAdminPage() {
                   <TableRow>
                     <TableHead>Image</TableHead>
                     <TableHead>Description</TableHead>
-                    <TableHead>Initiative</TableHead>
+                    <TableHead>Initiatives</TableHead>
                     <TableHead>Sequence</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Actions</TableHead>
@@ -300,7 +331,7 @@ export default function GalleryAdminPage() {
                         <Image src={image.imageUrl} alt={image.description} width={100} height={67} className="rounded-md object-cover" />
                       </TableCell>
                       <TableCell>{image.description}</TableCell>
-                      <TableCell>{image.initiative}</TableCell>
+                      <TableCell>{image.initiatives.join(', ')}</TableCell>
                       <TableCell>{image.sequence}</TableCell>
                       <TableCell>{image.status}</TableCell>
                       <TableCell className="space-x-2">
@@ -344,3 +375,4 @@ export default function GalleryAdminPage() {
     </AdminLayout>
   );
 }
+
