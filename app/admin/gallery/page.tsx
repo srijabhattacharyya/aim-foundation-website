@@ -222,7 +222,7 @@ export default function GalleryAdminPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Initiative 2 (Optional)</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value || undefined}>
+                      <Select onValueChange={field.onChange} value={field.value || 'None'}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select second initiative" />
