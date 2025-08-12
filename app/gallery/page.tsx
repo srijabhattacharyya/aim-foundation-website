@@ -19,11 +19,15 @@ interface GalleryImage {
 }
 
 const initiatives = [
-    "General", "CureLine", "SurgiReach", "CareCircle", "ChildFirst", "Detect", "SightHope",
-    "OralScan", "CycleSafe", "SoulCircle", "Innocent Smiles", "Inspire EduLab", "EduAccess",
-    "Empower English", "DigiEmpower", "SheConnects", "Milieu", "VidyaShakti", "SuiDhaga",
-    "Krishti", "GreenRoots", "TideShield", "Roots of Change", "Relief to the Underprivileged",
-    "Disaster Management", "Ignite Change Initiative"
+    "General",
+    "Educational Initiatives",
+    "Healthcare Initiatives",
+    "Gender Equality Initiatives",
+    "Childcare Initiatives",
+    "Sustainability Initiatives",
+    "Relief to the underprivileged",
+    "Disaster Management",
+    "Ignite Change Initiative"
 ];
 
 export default function GalleryPage() {
