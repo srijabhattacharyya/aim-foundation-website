@@ -134,6 +134,7 @@ export default function GalleryAdminPage() {
             maxSizeMB: 1,
             maxWidthOrHeight: 600,
             useWebWorker: true,
+            fileType: 'image/jpeg',
         }
         const compressedFile = await imageCompression(imageFile, options);
         
