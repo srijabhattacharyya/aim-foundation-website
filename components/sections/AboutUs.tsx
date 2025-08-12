@@ -1,4 +1,3 @@
-
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -15,8 +14,8 @@ const AboutUs = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/2">
-                <h2 className="text-2xl md:text-3xl font-semibold font-headline text-primary mb-6">Building Dignity. Inspiring Change.</h2>
-                <div className="mt-4 text-base text-muted-foreground space-y-4 text-justify">
+                <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary mb-6">Building Dignity. Inspiring Change.</h2>
+                <div className="mt-4 text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
                         Since 2016, AIM Foundation has stood for one unwavering belief — that every life deserves dignity, opportunity, and hope.
                     </p>
