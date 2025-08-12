@@ -6,11 +6,11 @@ import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.aimindia.org.in'),
-  title: 'AIM Foundation | Leading NGO in Kolkata for Education, Healthcare & Empowerment',
+  title: 'AIM Foundation | Leading NGO Uplifting the Underprivileged',
   description: 'AIM Foundation is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development for underprivileged communities across India.',
   keywords: ['ngo in kolkata', 'best ngo in kolkata', 'top ngo in kolkata', 'ngo in india', 'top ngo in india', 'charity in kolkata', 'education ngo', 'healthcare ngo', 'women empowerment ngo', 'environment ngo', 'plantation drives', 'skill development ngo', 'community development', 'hygiene awareness', 'rural development', 'child welfare ngo', 'free health camps', 'vocational training', 'ngo volunteer kolkata', 'donate to ngo'],
   openGraph: {
-    title: 'AIM Foundation | Leading NGO in Kolkata for Education, Healthcare & Empowerment',
+    title: 'AIM Foundation | Leading NGO Uplifting the Underprivileged',
     description: 'Join AIM Foundation in transforming lives through education, healthcare, environmental action, and women’s empowerment in Kolkata and beyond.',
     type: 'website',
     url: 'https://www.aimindia.org.in/',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AIM Foundation | Leading NGO in Kolkata for Education, Healthcare & Empowerment',
+    title: 'AIM Foundation | Leading NGO Uplifting the Underprivileged',
     description: 'Transforming lives through education, healthcare, environmental action, and women’s empowerment in Kolkata and beyond.',
     images: ['https://www.aimindia.org.in/og-image.jpg'], // Replace with your actual Twitter image URL
     site: '@aimindiango',
