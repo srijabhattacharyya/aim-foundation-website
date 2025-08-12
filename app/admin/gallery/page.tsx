@@ -33,6 +33,8 @@ const initiatives = [
     "Ignite Change Initiative"
 ];
 
+const initiative2Options = ["None", ...initiatives];
+
 const imageSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   status: z.enum(['Active', 'Inactive']),
@@ -65,7 +67,7 @@ export default function GalleryAdminPage() {
       status: 'Active',
       sequence: 0,
       initiative1: 'General',
-      initiative2: '',
+      initiative2: 'None',
       image: undefined,
     },
   });
@@ -90,7 +92,7 @@ export default function GalleryAdminPage() {
       status: image.status,
       sequence: image.sequence,
       initiative1: image.initiatives[0] || 'General',
-      initiative2: image.initiatives[1] || '',
+      initiative2: image.initiatives[1] || 'None',
       image: image.imageUrl,
     });
   };
@@ -126,7 +128,7 @@ export default function GalleryAdminPage() {
       }
       
       const imageInitiatives = [data.initiative1];
-      if (data.initiative2) {
+      if (data.initiative2 && data.initiative2 !== 'None') {
           imageInitiatives.push(data.initiative2);
       }
 
@@ -155,7 +157,7 @@ export default function GalleryAdminPage() {
           status: 'Active',
           sequence: 0,
           initiative1: 'General',
-          initiative2: '',
+          initiative2: 'None',
           image: undefined,
       });
       setEditingImage(null);
@@ -222,14 +224,14 @@ export default function GalleryAdminPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Initiative 2 (Optional)</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value || ''}>
+                      <Select onValueChange={field.onChange} value={field.value || 'None'}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select second initiative" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                           {initiatives.map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}
+                           {initiative2Options.map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -292,7 +294,7 @@ export default function GalleryAdminPage() {
               </div>
               <div className="flex justify-end gap-4 mt-6">
                 {editingImage && (
-                    <Button variant="outline" onClick={() => { setEditingImage(null); form.reset(); }}>Cancel Edit</Button>
+                    <Button type="button" variant="outline" onClick={() => { setEditingImage(null); form.reset(); }}>Cancel Edit</Button>
                 )}
                 <Button type="submit" disabled={isSubmitting}>
                   {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : ''}
