@@ -1,12 +1,7 @@
 
 'use client';
 
-import dynamic from 'next/dynamic';
-import { Skeleton } from '@/components/ui/skeleton';
-
-const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
-    loading: () => <Skeleton className="h-[400px] w-full" />,
-});
+import FootprintCarousel from '@/components/sections/FootprintCarousel';
 
 const AboutUs = () => {
   return (
