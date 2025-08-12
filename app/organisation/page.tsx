@@ -8,7 +8,13 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Ethos from "@/components/sections/Ethos";
 import LegalRecognitions from "@/components/sections/LegalRecognitions";
-import FootprintCarousel from "@/components/sections/FootprintCarousel";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
+    ssr: false,
+    loading: () => <Skeleton className="h-[400px] w-full" />,
+});
 
 export default function OrganisationPage() {
   return (
