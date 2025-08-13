@@ -21,26 +21,10 @@ import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { addGalleryItem, deleteGalleryItem } from '@/app/actions/galleryActions';
 
-const initiatives = [
-    "General",
-    "Educational Initiatives",
-    "Healthcare Initiatives",
-    "Gender Equality Initiatives",
-    "Childcare Initiatives",
-    "Sustainability Initiatives",
-    "Relief to the underprivileged",
-    "Disaster Management",
-    "Ignite Change Initiative"
-];
-
-const initiative2Options = ["None", ...initiatives];
-
 const imageSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   status: z.enum(['Active', 'Inactive']),
   sequence: z.coerce.number().min(0, 'Sequence must be a positive number'),
-  initiative1: z.string().min(1, 'At least one initiative is required'),
-  initiative2: z.string().optional(),
   image: z.any().refine(files => (editingImageId && typeof files === 'string') || (files && files.length > 0), 'Image is required.'),
 });
 
@@ -52,7 +36,6 @@ export interface GalleryImage {
   imageUrl: string;
   status: 'Active' | 'Inactive';
   sequence: number;
-  initiatives: string[];
 }
 
 export default function GalleryAdminPage() {
@@ -68,8 +51,6 @@ export default function GalleryAdminPage() {
       description: '',
       status: 'Active',
       sequence: 0,
-      initiative1: 'General',
-      initiative2: 'None',
       image: undefined,
     },
   });
@@ -98,7 +79,7 @@ export default function GalleryAdminPage() {
 
   useEffect(() => {
     fetchImages();
-  }, []);
+  }, [toast]);
 
   const handleEdit = (image: GalleryImage) => {
     setEditingImage(image);
@@ -107,8 +88,6 @@ export default function GalleryAdminPage() {
       description: image.description,
       status: image.status,
       sequence: image.sequence,
-      initiative1: image.initiatives[0] || 'General',
-      initiative2: image.initiatives[1] || 'None',
       image: image.imageUrl,
     });
   };
@@ -130,8 +109,6 @@ export default function GalleryAdminPage() {
       description: '',
       status: 'Active',
       sequence: 0,
-      initiative1: 'General',
-      initiative2: 'None',
       image: undefined,
     });
   };
@@ -148,16 +125,10 @@ export default function GalleryAdminPage() {
         imageUrl = await getDownloadURL(snapshot.ref);
       }
       
-      const imageInitiatives = [data.initiative1];
-      if (data.initiative2 && data.initiative2 !== 'None') {
-          imageInitiatives.push(data.initiative2);
-      }
-
       const docData = {
         description: data.description,
         status: data.status,
         sequence: data.sequence,
-        initiatives: imageInitiatives,
         imageUrl: imageUrl,
       };
 
@@ -202,47 +173,6 @@ export default function GalleryAdminPage() {
                       <FormControl>
                         <Textarea placeholder="Enter a short description for the image" {...field} />
                       </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="initiative1"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Initiative 1 (Required)</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select first initiative" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {initiatives.map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                 <FormField
-                  control={form.control}
-                  name="initiative2"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Initiative 2 (Optional)</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value || 'None'}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select second initiative" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                           {initiative2Options.map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}
-                        </SelectContent>
-                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -334,7 +264,6 @@ export default function GalleryAdminPage() {
                   <TableRow>
                     <TableHead>Image</TableHead>
                     <TableHead>Description</TableHead>
-                    <TableHead>Initiatives</TableHead>
                     <TableHead>Sequence</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Actions</TableHead>
@@ -347,7 +276,6 @@ export default function GalleryAdminPage() {
                         <Image src={image.imageUrl} alt={image.description} width={100} height={67} className="rounded-md object-cover" />
                       </TableCell>
                       <TableCell>{image.description}</TableCell>
-                      <TableCell>{image.initiatives.join(', ')}</TableCell>
                       <TableCell>{image.sequence}</TableCell>
                       <TableCell>{image.status}</TableCell>
                       <TableCell className="space-x-2">
@@ -379,7 +307,7 @@ export default function GalleryAdminPage() {
                     </TableRow>
                   )) : (
                      <TableRow>
-                        <TableCell colSpan={6} className="text-center py-12">No images uploaded yet.</TableCell>
+                        <TableCell colSpan={5} className="text-center py-12">No images uploaded yet.</TableCell>
                      </TableRow>
                   )}
                 </TableBody>

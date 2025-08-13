@@ -10,7 +10,6 @@ const galleryItemSchema = z.object({
   description: z.string(),
   status: z.enum(['Active', 'Inactive']),
   sequence: z.number(),
-  initiatives: z.array(z.string()),
   imageUrl: z.string().url(),
 });
 
