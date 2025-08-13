@@ -23,23 +23,13 @@ export default function SuiDhagaClientPage() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <section className="relative w-full">
-          <div className="relative w-full">
-            <Image
-              src="/images/projects/suidhaga/suidhaga1.webp"
-              alt="SuiDhaga Banner"
-              width={1920}
-              height={580}
-              className="w-full h-auto object-cover brightness-50"
-              data-ai-hint="women tailoring"
-            />
-          </div>
-          <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
-            <div className="relative z-10 text-left">
-              <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+        <section className="relative w-full bg-primary/10 py-20 md:py-32">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="relative z-10 text-left text-foreground">
+              <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down">
                 SuiDhaga
               </h1>
-              <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+              <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up">
                 Stitching Dreams, Weaving Futures.
               </p>
             </div>

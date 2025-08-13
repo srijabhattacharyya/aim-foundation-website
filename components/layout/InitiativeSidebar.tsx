@@ -147,7 +147,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Threading Changes: The SuiDhaga Story
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "SuiDhaga initiative", hint: "women tailoring", description: "Women learning new skills at a SuiDhaga center"};
+            image = { src: "/images/projects/suidhaga/suidhaga1.webp", alt: "SuiDhaga initiative", hint: "women tailoring", description: "Women learning new skills at a SuiDhaga center"};
         } else if (pathname.includes('/inspire-eduLab')) {
             content = (
                 <Link href="/blog/redefining-classrooms-for-a-digital-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
