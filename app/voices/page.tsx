@@ -171,7 +171,7 @@ const blogPosts = [
   {
     slug: 'teaching-beyond-boundaries',
     title: 'Teaching Beyond Boundaries: How EduAccess is Bringing Quality Education to Rural West Bengal',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/eduaccess/eduaccess1.avif',
     hint: 'online learning rural',
     excerpt: "Discover how AIM Foundation's EduAccess initiative is delivering quality education to rural West Bengal through expert-led online classes.",
     date: 'August 28, 2020',
