@@ -302,7 +302,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Restoring Natural Habitats with Forest Cleaning
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Forest Cleaning initiative", hint: "forest cleanup", description: "Volunteers cleaning up a forest area"};
+            image = { src: "/images/projects/forest-cleaning/forest-cleaning1.avif", alt: "Forest Cleaning initiative", hint: "forest cleanup", description: "Volunteers cleaning up a forest area"};
         }
 
 
