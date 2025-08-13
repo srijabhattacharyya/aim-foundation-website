@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -21,14 +22,21 @@ import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { addGalleryItem, deleteGalleryItem } from '@/app/actions/galleryActions';
 
-const imageSchema = z.object({
+const formSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   status: z.enum(['Active', 'Inactive']),
   sequence: z.coerce.number().min(0, 'Sequence must be a positive number'),
-  image: z.any().refine(files => (editingImageId && typeof files === 'string') || (files && files.length > 0), 'Image is required.'),
+  image: z.any().refine(files => {
+    // If we are editing, an image is not required
+    if (editingImageId) return true;
+    // If we are creating, an image is required
+    return files && files.length > 0;
+  }, 'Image is required when adding a new item.'),
 });
 
+// A variable to hold the ID of the image being edited, accessible in the module scope
 let editingImageId: string | null = null;
+
 
 export interface GalleryImage {
   id: string;
@@ -45,8 +53,8 @@ export default function GalleryAdminPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingImage, setEditingImage] = useState<GalleryImage | null>(null);
 
-  const form = useForm<z.infer<typeof imageSchema>>({
-    resolver: zodResolver(imageSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       description: '',
       status: 'Active',
@@ -79,16 +87,16 @@ export default function GalleryAdminPage() {
 
   useEffect(() => {
     fetchImages();
-  }, [toast]);
+  }, []);
 
   const handleEdit = (image: GalleryImage) => {
     setEditingImage(image);
-    editingImageId = image.id;
+    editingImageId = image.id; // Set the module-level variable
     form.reset({
       description: image.description,
       status: image.status,
       sequence: image.sequence,
-      image: image.imageUrl,
+      image: undefined, // Clear the image input for editing
     });
   };
 
@@ -104,7 +112,7 @@ export default function GalleryAdminPage() {
 
   const cancelEdit = () => {
     setEditingImage(null);
-    editingImageId = null;
+    editingImageId = null; // Clear the module-level variable
     form.reset({
       description: '',
       status: 'Active',
@@ -113,12 +121,13 @@ export default function GalleryAdminPage() {
     });
   };
 
-  const onSubmit: SubmitHandler<z.infer<typeof imageSchema>> = async (data) => {
+  const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (data) => {
     setIsSubmitting(true);
     try {
       let imageUrl = editingImage ? editingImage.imageUrl : '';
       
-      if (data.image && typeof data.image !== 'string' && data.image.length > 0) {
+      // If a new image file is selected, upload it
+      if (data.image && data.image.length > 0) {
         const imageFile = data.image[0];
         const storageRef = ref(storage, `gallery/${Date.now()}_${imageFile.name}`);
         const snapshot = await uploadBytes(storageRef, imageFile);
@@ -137,7 +146,7 @@ export default function GalleryAdminPage() {
       if (result.success) {
         toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });
         cancelEdit();
-        fetchImages();
+        fetchImages(); // Refresh the list
       } else {
          toast({ variant: 'destructive', title: 'Error', description: result.error });
       }
@@ -181,14 +190,15 @@ export default function GalleryAdminPage() {
                 <FormField
                     control={form.control}
                     name="image"
-                    render={({ field }) => (
+                    render={({ field: { onChange, value, ...rest } }) => (
                         <FormItem>
                         <FormLabel>Image</FormLabel>
                         <FormControl>
                             <Input
                             type="file"
                             accept="image/*"
-                            onChange={(e) => field.onChange(e.target.files)}
+                            onChange={(e) => onChange(e.target.files)}
+                            {...rest}
                             />
                         </FormControl>
                         <FormMessage />
