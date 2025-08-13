@@ -18,7 +18,7 @@ const announcements = [
   {
     title: 'Book Distribution',
     date: 'October 15, 2023',
-    image: '/image/projects/projects/suidhaga/book-distribution.avif',
+    image: '/image/projects/book/book-distribution.avif',
     hint: 'book distribution',
     description: 'We distributed books to underprivileged students to support their education and foster a love for reading.',
     link: '#'
