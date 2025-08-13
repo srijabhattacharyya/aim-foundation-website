@@ -10,7 +10,7 @@ const announcements = [
   {
     title: 'Community Health Camp',
     date: 'October 26, 2023',
-    image: '/images/projects/carecircle/carecircle1.webp',
+    image: '/images/projects/carecircle/carecircle2.avif',
     hint: 'health camp',
     description: 'A successful health camp providing free check-ups and medicines to over 500 people in rural areas.',
     link: '#'
@@ -18,7 +18,7 @@ const announcements = [
   {
     title: 'Book Distribution',
     date: 'October 15, 2023',
-    image: '/image/projects/book/book-distribution.avif',
+    image: '/images/projects/book/book-distribution.avif',
     hint: 'book distribution',
     description: 'We distributed books to underprivileged students to support their education and foster a love for reading.',
     link: '#'
