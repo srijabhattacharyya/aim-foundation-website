@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "../../components/layout/Navbar";
@@ -25,7 +26,7 @@ export default function SuiDhagaClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/projects/suidhaga/suidhaga1.webp"
               alt="SuiDhaga Banner"
               width={1920}
               height={580}
