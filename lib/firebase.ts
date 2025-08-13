@@ -1,9 +1,8 @@
-
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { getAuth } from "firebase/auth";
+import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,8 +17,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const db = getFirestore(app, 'aim-foundation-website');
+const db = getFirestore(app);
 const storage = getStorage(app);
 const auth = getAuth(app);
+
+// Set persistence to local to avoid auth state race conditions
+setPersistence(auth, browserLocalPersistence);
 
 export { app, db, storage, auth };

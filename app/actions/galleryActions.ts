@@ -6,14 +6,6 @@ import { adminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { revalidatePath } from 'next/cache';
 import { getStorage } from 'firebase-admin/storage';
-import { Buffer } from 'buffer';
-
-const galleryItemSchema = z.object({
-  description: z.string(),
-  status: z.enum(['Active', 'Inactive']),
-  sequence: z.number(),
-  imageUrl: z.string().url(),
-});
 
 const addGalleryItemSchema = z.object({
     description: z.string().min(1, 'Description is required'),

@@ -26,10 +26,8 @@ const formSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   status: z.enum(['Active', 'Inactive']),
   sequence: z.coerce.number().min(0, 'Sequence must be a positive number'),
-  image: z.any().refine(files => {
-    // If we are editing, an image is not required
+  image: z.any().refine((files) => {
     if (editingImageId) return true;
-    // If we are creating, an image is required
     return files && files.length > 0;
   }, 'Image is required when adding a new item.'),
 });
@@ -126,7 +124,6 @@ export default function GalleryAdminPage() {
     try {
       let imageUrl = editingImage ? editingImage.imageUrl : '';
       
-      // If a new image file is selected, upload it
       if (data.image && data.image.length > 0) {
         const imageFile = data.image[0];
         const storageRef = ref(storage, `gallery/${Date.now()}_${imageFile.name}`);
