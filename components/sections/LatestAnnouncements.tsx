@@ -16,11 +16,11 @@ const announcements = [
     link: '#'
   },
   {
-    title: 'Educational Material Distribution',
+    title: 'Book Distribution',
     date: 'October 15, 2023',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'education charity',
-    description: 'We distributed books, bags, and stationery to underprivileged students to support their education.',
+    image: '/image/projects/projects/suidhaga/book-distribution.avif',
+    hint: 'book distribution',
+    description: 'We distributed books to underprivileged students to support their education and foster a love for reading.',
     link: '#'
   },
   {
