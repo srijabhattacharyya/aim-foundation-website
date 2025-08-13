@@ -146,6 +146,10 @@ const DynamicRootsOfChangeDonationForm = dynamic(
     () => import('./RootsOfChangeDonationForm'),
     { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
+const DynamicForestCleaningDonationForm = dynamic(
+    () => import('./ForestCleaningDonationForm'),
+    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
+);
 
 
 // Cause definitions
@@ -207,6 +211,7 @@ const sustainabilityInitiatives = [
     { value: "green-roots", label: "GreenRoots" },
     { value: "tideshield", label: "TideShield" },
     { value: "roots-of-change", label: "Roots of Change" },
+    { value: "forest-cleaning", label: "Forest Cleaning" },
 ];
 
 // Map sub-cause values to their corresponding form components
@@ -244,6 +249,7 @@ const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "green-roots": DynamicGreenRootsDonationForm,
   "tideshield": DynamicTideShieldDonationForm,
   "roots-of-change": DynamicRootsOfChangeDonationForm,
+  "forest-cleaning": DynamicForestCleaningDonationForm,
   "relief": DynamicReliefDonationForm,
   "disaster-management": DynamicDisasterManagementDonationForm,
   "ignite-change": DynamicIgniteChangeDonationForm,
@@ -529,5 +535,3 @@ export default function CauseSelectionForm() {
     </>
   );
 }
-
-    

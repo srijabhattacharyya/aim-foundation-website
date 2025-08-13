@@ -32,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/carecircle-bringing-healing-to-the-city',
     '/blog/vidyashakti-ai-learning',
     '/blog/soulcircle-24-7-mental-health-support',
+    '/blog/forest-cleaning-restoring-natural-habitats',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
@@ -52,6 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/employee-engagement',
     '/empower-english',
     '/films',
+    '/forest-cleaning',
     '/gallery',
     '/gender-equality-initiative',
     '/green-roots',
@@ -104,5 +106,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return sitemapEntries;
 }
-
-    

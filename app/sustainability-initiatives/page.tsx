@@ -28,6 +28,13 @@ const initiatives = [
     hint: "environmental education",
     link: "/roots-of-change?from=sustainability"
   },
+  {
+    title: "Forest Cleaning",
+    description: "is our hands-on initiative to restore natural habitats by organizing large-scale forest cleaning drives. We mobilize volunteers to remove plastic and other non-biodegradable waste, helping to preserve biodiversity and protect wildlife from the harmful effects of pollution.",
+    image: "https://placehold.co/600x400.png",
+    hint: "forest cleaning volunteer",
+    link: "/forest-cleaning?from=sustainability"
+  }
 ];
 
 export default function SustainabilityInitiativesPage() {

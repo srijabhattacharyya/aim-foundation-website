@@ -28,7 +28,7 @@ import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const CauseSelectionForm = dynamic(
-  () => import('../sections/donation-forms/CauseSelectionForm'),
+  () => import('@/components/sections/donation-forms/CauseSelectionForm'),
   {
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
@@ -118,6 +118,7 @@ const navLinks = [
           { href: '/green-roots', label: 'GreenRoots' },
           { href: '/tideshield', label: 'TideShield' },
           { href: '/roots-of-change', label: 'Roots of Change' },
+          { href: '/forest-cleaning', label: 'Forest Cleaning' },
         ]
       },
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
@@ -153,7 +154,6 @@ const navLinks = [
       },
     ]
   },
-  { href: '/workshops-events', label: 'Workshops & Events' },
   { 
     label: 'Media Room',
     isDropdown: true,
@@ -162,6 +162,7 @@ const navLinks = [
       { href: '/media', label: 'Media' },
     ]
   },
+  { href: '/workshops-events', label: 'Workshops & Events' },
   { 
     label: 'Resource Centre',
     isDropdown: true,
