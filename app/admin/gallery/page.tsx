@@ -5,8 +5,7 @@ import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { storage, db } from '@/lib/firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { db } from '@/lib/firebase';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import AdminLayout from '../AdminLayout';
 import { Button } from '@/components/ui/button';
@@ -26,15 +25,8 @@ const formSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   status: z.enum(['Active', 'Inactive']),
   sequence: z.coerce.number().min(0, 'Sequence must be a positive number'),
-  image: z.any().refine((files) => {
-    if (editingImageId) return true;
-    return files && files.length > 0;
-  }, 'Image is required when adding a new item.'),
+  image: z.any(),
 });
-
-// A variable to hold the ID of the image being edited, accessible in the module scope
-let editingImageId: string | null = null;
-
 
 export interface GalleryImage {
   id: string;
@@ -43,6 +35,15 @@ export interface GalleryImage {
   status: 'Active' | 'Inactive';
   sequence: number;
 }
+
+const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = error => reject(error);
+    });
+};
 
 export default function GalleryAdminPage() {
   const { toast } = useToast();
@@ -60,6 +61,17 @@ export default function GalleryAdminPage() {
       image: undefined,
     },
   });
+
+   // Refine schema based on whether we are editing or not
+   const refinedFormSchema = formSchema.refine((data) => {
+    if (editingImage) return true; // if editing, image is not required
+    return data.image && data.image.length > 0;
+  }, {
+    message: 'Image is required when adding a new item.',
+    path: ['image'],
+  });
+
+  form.trigger(); // to re-validate the form based on new schema logic if needed
 
   const fetchImages = async () => {
     setLoading(true);
@@ -89,12 +101,11 @@ export default function GalleryAdminPage() {
 
   const handleEdit = (image: GalleryImage) => {
     setEditingImage(image);
-    editingImageId = image.id; // Set the module-level variable
     form.reset({
       description: image.description,
       status: image.status,
       sequence: image.sequence,
-      image: undefined, // Clear the image input for editing
+      image: undefined,
     });
   };
 
@@ -110,7 +121,6 @@ export default function GalleryAdminPage() {
 
   const cancelEdit = () => {
     setEditingImage(null);
-    editingImageId = null; // Clear the module-level variable
     form.reset({
       description: '',
       status: 'Active',
@@ -122,20 +132,19 @@ export default function GalleryAdminPage() {
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (data) => {
     setIsSubmitting(true);
     try {
-      let imageUrl = editingImage ? editingImage.imageUrl : '';
+      let imageFileBase64: string | undefined = undefined;
       
       if (data.image && data.image.length > 0) {
         const imageFile = data.image[0];
-        const storageRef = ref(storage, `gallery/${Date.now()}_${imageFile.name}`);
-        const snapshot = await uploadBytes(storageRef, imageFile);
-        imageUrl = await getDownloadURL(snapshot.ref);
+        imageFileBase64 = await fileToBase64(imageFile);
       }
       
       const docData = {
         description: data.description,
         status: data.status,
         sequence: data.sequence,
-        imageUrl: imageUrl,
+        imageUrl: editingImage && !imageFileBase64 ? editingImage.imageUrl : undefined,
+        imageFile: imageFileBase64,
       };
 
       const result = await addGalleryItem(docData, editingImage ? editingImage.id : null);
@@ -143,14 +152,15 @@ export default function GalleryAdminPage() {
       if (result.success) {
         toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });
         cancelEdit();
-        fetchImages(); // Refresh the list
+        fetchImages();
       } else {
          toast({ variant: 'destructive', title: 'Error', description: result.error });
       }
 
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast({ variant: 'destructive', title: 'Error', description: 'An unexpected client-side error occurred.' });
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected client-side error occurred.';
+      toast({ variant: 'destructive', title: 'Error', description: errorMessage });
     } finally {
       setIsSubmitting(false);
     }
