@@ -86,10 +86,10 @@ const galleryImages = [
     hint: 'community event'
   },
   {
-    id: '32',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'volunteer work'
+    id: '29',
+    imageUrl: '/images/projects/detect/detect3.avif',
+    description: 'Cervical Cancer Awareness.',
+    hint: 'cervical cancer awareness'
   },
   {
     id: '28',

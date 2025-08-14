@@ -134,7 +134,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     The Quiet Revolution in Women’s Health
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Detect initiative", hint: "women health rural", description: "A health awareness session for rural women"};
+            image = { src: "/images/projects/detect/detect3.avif", alt: "Detect initiative", hint: "women health rural", description: "Cervical Cancer Awareness."};
         } else if (pathname.includes('/milieu')) {
             content = (
                 <Link href="/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu" className="text-muted-foreground hover:text-primary transition-colors">
