@@ -8,9 +8,9 @@ const InfoSection = () => {
     <section id="about" className="py-12 md:py-20 lg:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold font-headline">
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">
             Lighting the Way for Those Left Behind
-          </h1>
+          </h2>
           <div className="mt-6 text-lg text-muted-foreground space-y-4 text-justify">
             <p>
                 Since its inception, the Associated Initiative for Mankind Foundation (AIM Foundation) has stood beside marginalized communities — nurturing children, healing the sick, empowering women, restoring dignity where it's been lost, and protecting the environment that sustains us all.
