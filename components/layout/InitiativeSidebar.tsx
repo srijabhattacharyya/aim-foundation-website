@@ -274,7 +274,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     ChildFirst: Bringing Health, Hope, and Dignity
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "ChildFirst initiative", hint: "child healthcare", description: "A doctor providing care to a young child"};
+            image = { src: "/images/projects/childfirst/childfirst3.avif", alt: "ChildFirst initiative", hint: "paediatric camp", description: "Specialised Paediatric Camp at Kolkata."};
         } else if (pathname.includes('/carecircle')) {
             content = (
                 <Link href="/blog/carecircle-bringing-healing-to-the-city" className="text-muted-foreground hover:text-primary transition-colors">

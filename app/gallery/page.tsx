@@ -8,13 +8,13 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const galleryImages = [
   {
-    id: '43',
+    id: '41',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'community event'
   },
   {
-    id: '44',
+    id: '40',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'volunteer work'
@@ -26,43 +26,43 @@ const galleryImages = [
     hint: 'children smiling'
   },
   {
-    id: '46',
+    id: '39',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'health camp'
   },
   {
-    id: '47',
+    id: '38',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'education program'
   },
   {
-    id: '48',
+    id: '37',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'sustainability project'
   },
   {
-    id: '37',
+    id: '36',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'community event'
   },
   {
-    id: '38',
+    id: '35',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'volunteer work'
   },
   {
-    id: '39',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'children smiling'
+    id: '34',
+    imageUrl: '/images/projects/childfirst/childfirst3.avif',
+    description: 'Specialised Paediatric Camp at Kolkata.',
+    hint: 'paediatric camp'
   },
   {
-    id: '40',
+    id: '33',
     imageUrl: '/images/projects/cureline/cureline3.avif',
     description: 'Health Camp at Kumirmari Island, Sundarbans, 24 Parganas (S), West Bengal.',
     hint: 'health camp'
