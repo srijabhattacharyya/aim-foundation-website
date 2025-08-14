@@ -35,13 +35,13 @@ const galleryImages = [
     id: '5',
     imageUrl: '/images/projects/relief/relief2.avif',
     description: 'Distributing blankets to footpath dwellers during winter.',
-    hint: 'disaster relief'
+    hint: 'winter relief'
   },
   {
     id: '6',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A successful eye care camp restoring sight and hope.',
-    hint: 'eye care'
+    imageUrl: '/images/projects/cyclesafe/cyclesafe1.avif',
+    description: 'Menstrual Hygiene Awareness Camp for the adolescent girls.',
+    hint: 'menstrual hygiene awareness '
   }
 ];
 
