@@ -104,15 +104,15 @@ const galleryImages = [
     hint: 'health camp'
   },
   {
-    id: '35',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'education program'
+    id: '26',
+    imageUrl: '/images/projects/sustainability/sustainability5.avif',
+    description: 'Sapling Distribution at Ranaghat, Nadia, West Bengal.',
+    hint: 'sapling distribution'
   },
   {
     id: '25',
-    imageUrl: '/images/projects/innocent-smiles/innocent-smiles1.avif',
-    description: 'A new gallery image placeholder.',
+    imageUrl: '/images/projects/sustainability/sustainablity4.avif',
+    description: 'Community members planting saplings',
     hint: 'sustainability project'
   },
   {

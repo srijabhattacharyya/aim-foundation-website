@@ -10,9 +10,9 @@ const initiatives = [
   {
     title: "GreenRoots",
     description: "aims to promote reforestation in areas where land acquisition is not feasible. By distributing saplings directly to villagers, the project overcomes space constraints and fosters active community involvement in afforestation efforts. This grassroots approach helps expand local green cover in a sustainable and inclusive manner.",
-    image: "https://placehold.co/600x400.png",
-    hint: "urban garden",
-    link: "/green-roots?from=sustainability"
+    image: "/images/projects/sustainability/sustainablity4.avif",
+    hint: "Tree Plantation and Distribution",
+    link: "/green-roots"
   },
   {
     title: "TideShield",
