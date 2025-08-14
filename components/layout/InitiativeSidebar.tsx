@@ -218,7 +218,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Roots of Change: Planting Awareness, Growing a Greener Tomorrow
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Roots of Change initiative", hint: "environmental awareness education", description: "An interactive session on environmental conservation"};
+            image = { src: "/images/projects/sustainability/sustainability5.avif", alt: "Roots of Change initiative", hint: "environmental awareness education", description: "An interactive session on environmental conservation"};
         } else if (pathname.includes('/sheconnects')) {
             content = (
                 <Link href="/blog/project-sheconnects" className="text-muted-foreground hover:text-primary transition-colors">
