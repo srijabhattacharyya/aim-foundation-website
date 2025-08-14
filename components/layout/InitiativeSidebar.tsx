@@ -303,6 +303,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "/images/projects/forest-cleaning/forest-cleaning1.avif", alt: "Forest Cleaning initiative", hint: "forest cleanup", description: "Volunteers cleaning up a forest area"};
+        } else if (pathname.includes('/innocent-smiles')) {
+            content = (
+                 <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    Read more about Innocent Smiles
+                </Link>
+            );
+            image = { src: "/images/projects/innocent-smiles/innocent-smiles1.avif", alt: "Innocent Smiles initiative", hint: "children art class", description: "Children participating in an art class."};
         }
 
 
