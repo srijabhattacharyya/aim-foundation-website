@@ -9,32 +9,32 @@ import { Card, CardContent } from '@/components/ui/card';
 const galleryImages = [
   {
     id: '1',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A moment of joy and learning at our educational center.',
+    imageUrl: '/images/projects/book/book-distribution.avif',
+    description: 'Book diistribution to underprivileged children.',
     hint: 'children learning'
   },
   {
     id: '2',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Our dedicated team providing healthcare services in a remote village.',
+    imageUrl: '/images/projects/cureline/cureline1.avif',
+    description: 'Our dedicated doctor providing healthcare services in a remote village.',
     hint: 'healthcare camp'
   },
   {
     id: '3',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: '/images/projects/suidhaga/suidhaga1.avif',
     description: 'Empowering women through our skill development programs.',
     hint: 'women empowerment'
   },
   {
     id: '4',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: '/images/projects/sustainability/sustainability2.avif',
     description: 'Community members participating in a tree plantation drive.',
     hint: 'tree plantation'
   },
   {
     id: '5',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Distributing essential supplies during a relief operation.',
+    imageUrl: '/images/projects/relief/relief2.avif',
+    description: 'Distributing blankets to footpath dwellers during winter.',
     hint: 'disaster relief'
   },
   {
@@ -61,14 +61,14 @@ export default function GalleryPage() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {galleryImages.map((image) => (
-                <Card key={image.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <CardContent className="relative aspect-[3/2] w-full p-0">
+                <Card key={image.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                  <CardContent className="relative aspect-[3/2] w-full p-0 overflow-hidden">
                     <Image
                       src={image.imageUrl}
                       alt={image.description}
                       fill
                       data-ai-hint={image.hint}
-                      className="object-cover"
+                      className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       loading="lazy"
                     />
