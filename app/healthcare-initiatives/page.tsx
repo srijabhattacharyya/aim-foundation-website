@@ -57,7 +57,7 @@ const initiatives = [
   {
     title: "SightHope",
     description: "in partnership with leading eye hospitals like Sushrut Eye Foundation, B. B. Eye Foundation, and Hope Foundation, brings free eye care to underserved communities. Through screenings, treatments, and cataract surgeries, it restores vision, dignity, and independence—offering new possibilities to those without access to quality eye health services.",
-    image: "/images/projects/sighthope/spectacles-distribution.avif",
+    image: "/images/projects/sighthope/sighthope1.avif",
     hint: "vision eye exam",
     link: "/sighthope?from=healthcare",
     specialText: "(Eye Camp)"
@@ -65,10 +65,10 @@ const initiatives = [
   {
     title: "OralScan",
     description: "is a crucial initiative offering free oral cancer screening camps in underserved communities. By focusing on early detection and public awareness, it identifies potential risks at the outset, improving treatment outcomes. The program promotes oral hygiene, educates on risk factors, and helps save lives through timely medical intervention.",
-    image: "https://placehold.co/600x400.png",
-    hint: "dental checkup",
+    image: "/images/projects/oralscan/oranscan2.avif",
+    hint: "oral cancer screening",
     link: "/oralscan?from=healthcare",
-    specialText: "(Oral Cancer Detection)"
+    specialText: "(Oral Cancer Screening)"
   },
   {
     title: "CycleSafe",

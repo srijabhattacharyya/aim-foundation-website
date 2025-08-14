@@ -47,6 +47,7 @@ const sustainabilityInitiatives = [
     { href: '/green-roots?from=sustainability', label: 'GreenRoots' },
     { href: '/tideshield?from=sustainability', label: 'TideShield' },
     { href: '/roots-of-change?from=sustainability', label: 'Roots of Change' },
+    { href: '/forest-cleaning?from=sustainability', label: 'Forest Cleaning' },
 ];
 
 const ourInitiatives = [
@@ -295,6 +296,20 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
             image = { src: "https://placehold.co/600x400.png", alt: "SoulCircle initiative", hint: "mental health peace", description: "Finding peace and support with SoulCircle"};
+        } else if (pathname.includes('/forest-cleaning')) {
+            content = (
+                 <Link href="/blog/forest-cleaning-restoring-natural-habitats" className="text-muted-foreground hover:text-primary transition-colors">
+                    Restoring Natural Habitats with Forest Cleaning
+                </Link>
+            );
+            image = { src: "/images/projects/forest-cleaning/forest-cleaning1.avif", alt: "Forest Cleaning initiative", hint: "forest cleanup", description: "Volunteers cleaning up a forest area"};
+        } else if (pathname.includes('/innocent-smiles')) {
+            content = (
+                 <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    Read more about Innocent Smiles
+                </Link>
+            );
+            image = { src: "/images/projects/innocent-smiles/innocent-smiles1.avif", alt: "Innocent Smiles initiative", hint: "children art class", description: "Children participating in an art class."};
         }
 
 

@@ -110,43 +110,43 @@ const galleryImages = [
     hint: 'education program'
   },
   {
-    id: '36',
-    imageUrl: 'https://placehold.co/600x400.png',
+    id: '25',
+    imageUrl: '/images/projects/innocent-smiles/innocent-smiles1.avif',
     description: 'A new gallery image placeholder.',
     hint: 'sustainability project'
   },
   {
-    id: '25',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'community event'
+    id: '24',
+    imageUrl: '/images/projects/innocent-smiles/innocent-smiles1.avif',
+    description: 'Drawing Class for the underprivileged children at Sarala Punyashram, Kolkata.',
+    hint: 'drawing class'
   },
   {
-    id: '26',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'volunteer work'
+    id: '23',
+    imageUrl: '/images/projects/digiempower/digiempower2.avif',
+    description: 'Computer Classes at Dakshin Dhupjhora, Jalpaiguri, West Bengal.',
+    hint: 'computer centre'
   },
   {
-    id: '27',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'children smiling'
+    id: '22',
+    imageUrl: '/images/projects/oralscan/oranscan2.avif',
+    description: 'Oral Cancer Detection Camp.',
+    hint: 'oral cancer screening'
   },
   {
-    id: '28',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'health camp'
+    id: '21',
+    imageUrl: '/images/projects/relief/relief3.avif',
+    description: 'Blanket Distribution to Adivasi people of Shalboni, West Bengal in association with Muthoot Finance.',
+    hint: 'blanket distribution'
   },
   {
-    id: '29',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'education program'
+    id: '20',
+    imageUrl: '/images/projects/sustainability/sustainability3.avif',
+    description: 'Environment Awareness Programme.',
+    hint: 'environment awareness programme'
   },
   {
-    id: '30',
+    id: '19',
     imageUrl: '/images/projects/sighthope/sighthope1.avif',
     description: 'Eye Camp at Sarala Punyashram, Kolkata in association with Susrut Eye Foundation.',
     hint: 'eye camp'

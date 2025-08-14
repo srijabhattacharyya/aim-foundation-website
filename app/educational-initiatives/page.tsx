@@ -49,7 +49,7 @@ const initiatives = [
   {
     title: "DigiEmpower",
     description: "Promotes digital literacy among underprivileged and Adivasi children. It provides hands-on computer training, equipping them with essential skills for today’s technology-driven world.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/digiempower/digiempower2.avif",
     hint: "computer literacy",
     link: "/digiempower?from=educational",
     specialText: "(Digital Literacy for Children)"

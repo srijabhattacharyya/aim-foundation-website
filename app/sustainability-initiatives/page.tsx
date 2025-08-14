@@ -24,7 +24,7 @@ const initiatives = [
   {
     title: "Roots of Change",
     description: "is AIM Foundation’s environmental education initiative aimed at cultivating awareness and sustainable habits. Through expert-led seminars, engaging workshops, and impactful learning materials, we empower students, communities, and leaders to take informed action for a greener, more resilient future—starting from the roots.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/sustainability/sustainability3.avif",
     hint: "environmental education",
     link: "/roots-of-change?from=sustainability"
   },
