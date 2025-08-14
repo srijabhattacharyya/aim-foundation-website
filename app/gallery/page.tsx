@@ -8,6 +8,78 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const galleryImages = [
   {
+    id: '43',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'community event'
+  },
+  {
+    id: '44',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'volunteer work'
+  },
+  {
+    id: '45',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'children smiling'
+  },
+  {
+    id: '46',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'health camp'
+  },
+  {
+    id: '47',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'education program'
+  },
+  {
+    id: '48',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'sustainability project'
+  },
+  {
+    id: '37',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'community event'
+  },
+  {
+    id: '38',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'volunteer work'
+  },
+  {
+    id: '39',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'children smiling'
+  },
+  {
+    id: '40',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'health camp'
+  },
+  {
+    id: '41',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'education program'
+  },
+  {
+    id: '42',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'sustainability project'
+  },
+  {
     id: '31',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
@@ -75,9 +147,9 @@ const galleryImages = [
   },
   {
     id: '30',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'sustainability project'
+    imageUrl: '/images/projects/sighthope/sighthope1.avif',
+    description: 'Eye Camp at Sarala Punyashram, Kolkata in association with Susrut Eye Foundation.',
+    hint: 'eye camp'
   },
   {
     id: '18',
