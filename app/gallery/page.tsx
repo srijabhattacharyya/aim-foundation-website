@@ -8,40 +8,76 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const galleryImages = [
   {
-    id: '12',
+    id: '18',
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'New initiative launch event.',
-    hint: 'event launch'
+    description: 'A new community initiative launch.',
+    hint: 'community launch'
+  },
+  {
+    id: '17',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Volunteers distributing relief supplies.',
+    hint: 'volunteer relief'
+  },
+  {
+    id: '16',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Educational workshop for children.',
+    hint: 'education workshop'
+  },
+  {
+    id: '15',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A successful health camp in a rural village.',
+    hint: 'health camp'
+  },
+  {
+    id: '14',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Women empowerment session in progress.',
+    hint: 'women empowerment'
+  },
+  {
+    id: '13',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Tree plantation drive for a greener future.',
+    hint: 'tree plantation'
+  },
+  {
+    id: '12',
+    imageUrl: '/images/projects/detect/detect2.avif',
+    description: 'A cervical cancer awareness session for rural women.',
+    hint: 'cervical cancer awareness'
   },
   {
     id: '11',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Volunteers distributing food packets.',
-    hint: 'food distribution'
+    imageUrl: '/images/projects/childfirst/childfirst1.avif',
+    description: 'A doctor providing care to a young child.',
+    hint: 'child health'
   },
   {
     id: '10',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Children participating in an art workshop.',
-    hint: 'art workshop'
+    imageUrl: '/images/projects/edulab/edulab1.avif',
+    description: 'Smart Classroom',
+    hint: 'smart classroom'
   },
   {
     id: '9',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A successful community health screening.',
-    hint: 'health screening'
+    imageUrl: '/images/projects/forest-cleaning/forest-cleaning1.avif',
+    description: 'Cleaning of Garumara National Park.',
+    hint: 'forest cleaning'
   },
   {
     id: '8',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Women entrepreneurs showcasing their products.',
+    imageUrl: '/images/projects/milieu/milieu1.avif',
+    description: 'Children from diverse backgrounds learning together.',
     hint: 'women entrepreneurship'
   },
   {
     id: '7',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Aforestation drive in a rural area.',
-    hint: 'tree planting'
+    imageUrl: '/images/projects/oralscan/oralscan1.avif',
+    description: 'Oral Cancer Screening in association with Narayana Health.',
+    hint: 'oral cancer screening'
   },
   {
     id: '6',
