@@ -203,7 +203,7 @@ const blogPosts = [
   {
     slug: 'threading-changes-the-suidhaga-story',
     title: 'Threading Changes: The SuiDhaga Story by AIM Foundation',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/suidhaga/suidhaga1.avif',
     hint: 'women tailoring',
     excerpt: 'Discover how AIM Foundation\'s SuiDhaga initiative is empowering women, stitching dignity into livelihoods, and creating new patterns of possibility through tailoring and embroidery skills.',
     date: 'August 28, 2019',
