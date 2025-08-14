@@ -190,7 +190,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Planting Hope, Growing Futures
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "GreenRoots initiative", hint: "community planting trees", description: "Community members planting saplings"};
+            image = { src: "/images/projects/sustainability/sustainability5.avif", alt: "GreenRoots initiative", hint: "community planting trees", description: "Community members planting saplings"};
         } else if (pathname.includes('/empower-english')) {
             content = (
                 <Link href="/blog/empower-english-story" className="text-muted-foreground hover:text-primary transition-colors">
