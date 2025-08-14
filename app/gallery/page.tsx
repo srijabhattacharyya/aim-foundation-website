@@ -8,6 +8,42 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const galleryImages = [
   {
+    id: '12',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'New initiative launch event.',
+    hint: 'event launch'
+  },
+  {
+    id: '11',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Volunteers distributing food packets.',
+    hint: 'food distribution'
+  },
+  {
+    id: '10',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Children participating in an art workshop.',
+    hint: 'art workshop'
+  },
+  {
+    id: '9',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A successful community health screening.',
+    hint: 'health screening'
+  },
+  {
+    id: '8',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Women entrepreneurs showcasing their products.',
+    hint: 'women entrepreneurship'
+  },
+  {
+    id: '7',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Aforestation drive in a rural area.',
+    hint: 'tree planting'
+  },
+  {
     id: '6',
     imageUrl: '/images/projects/cyclesafe/cyclesafe1.avif',
     description: 'Menstrual Hygiene Awareness Camp for the adolescent girls.',
