@@ -63,27 +63,27 @@ const galleryImages = [
   },
   {
     id: '40',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
+    imageUrl: '/images/projects/cureline/cureline3.avif',
+    description: 'Health Camp at Kumirmari Island, Sundarbans, 24 Parganas (S), West Bengal.',
     hint: 'health camp'
   },
   {
-    id: '41',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
+    id: '32',
+    imageUrl: '/images/projects/cureline/cureline2.avif',
+    description: 'Health Camp at Bali Island, Sundarbans, @4 Parganas (S), West Bengal.',
     hint: 'education program'
   },
   {
-    id: '42',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'sustainability project'
+    id: '31',
+    imageUrl: '/images/projects/cyclesafe/cyclesafe3.avif',
+    description: 'Sanitary Napkin Distribution to underprivileged adolescent girls of Kolkata.',
+    hint: 'sanitary napkin distribution'
   },
   {
-    id: '31',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'community event'
+    id: '30',
+    imageUrl: '/images/projects/cyclesafe/cyclesafe2.avif',
+    description: 'Reproductive Health Awareness Camp.',
+    hint: 'reproductive health awarenes'
   },
   {
     id: '29',

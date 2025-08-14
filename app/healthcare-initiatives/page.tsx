@@ -17,9 +17,9 @@ const initiatives = [
   {
     title: "CureLine",
     description: "is AIM Foundation’s rural and remote healthcare outreach program that delivers essential medical services to underserved communities. Through regular health camps, it offers free check-ups, consultations, medicines, and health education in villages, forest-fringe settlements, and disaster-hit areas—bridging critical care gaps and ensuring health access regardless of location or income.",
-    image: "https://placehold.co/600x400.png",
-    hint: "mobile health clinic",
-    link: "/cureline?from=healthcare",
+    image: "/images/projects/cureline/cureline3.avif",
+    hint: "rural health camp",
+    link: "/cureline",
     specialText: "(Rural Healthcare)"
   },
   {
@@ -40,7 +40,7 @@ const initiatives = [
   },
   {
     title: "ChildFirst",
-    description: " is a compassionate healthcare initiative by AIM Foundation offering pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.",
+    description: "is a compassionate healthcare initiative by AIM Foundation offering pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.",
     image: "https://placehold.co/600x400.png",
     hint: "mental health support",
     link: "/childfirst?from=healthcare",
@@ -73,7 +73,7 @@ const initiatives = [
   {
     title: "CycleSafe",
     description: "empowers underprivileged adolescent girls in and around Kolkata by promoting menstrual hygiene, cervical health awareness, and reproductive well-being. Through monthly sanitary napkin distribution and educational sessions, the initiative breaks taboos, builds knowledge, and fosters confidence—ensuring dignity, health, and equal opportunities for young girls to thrive.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/cyclesafe/cyclesafe2.avif",
     hint: "menstrual hygiene",
     link: "/cyclesafe?from=healthcare",
     specialText: "(Reproductive Health)"
