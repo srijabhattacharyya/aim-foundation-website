@@ -4,8 +4,8 @@
     "public": "public",
     "redirects": [
       {
-        "source": "/",
-        "destination": "https://aimindia.org.in",
+        "source": "/:path*",
+        "destination": "https://aimindia.org.in/:path*",
         "type": 301
       }
     ]
