@@ -218,7 +218,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Roots of Change: Planting Awareness, Growing a Greener Tomorrow
                 </Link>
             );
-            image = { src: "/images/projects/sustainability/sustainability5.avif", alt: "Roots of Change initiative", hint: "environmental awareness education", description: "An interactive session on environmental conservation"};
+            image = { src: "https://placehold.co/600x400.png", alt: "Roots of Change initiative", hint: "environmental awareness education", description: "An interactive session on environmental conservation"};
         } else if (pathname.includes('/sheconnects')) {
             content = (
                 <Link href="/blog/project-sheconnects" className="text-muted-foreground hover:text-primary transition-colors">
@@ -239,7 +239,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     From Despair to Recovery: Rebuilding Lives After Disaster
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Disaster Management initiative", hint: "disaster relief team", description: "Our team providing relief during a natural disaster"};
+            image = { src: "/images/projects/relief/relief4.avif", alt: "Disaster relief efforts", hint: "disaster relief team", description: "Relief distribution in Sundarbans."};
         } else if (pathname.includes('/ignite-change-initiative')) {
             content = (
                 <Link href="/blog/igniting-change-transforming-communities" className="text-muted-foreground hover:text-primary transition-colors">

@@ -92,16 +92,16 @@ const galleryImages = [
     hint: 'volunteer work'
   },
   {
-    id: '33',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'children smiling'
+    id: '28',
+    imageUrl: '/images/projects/relief/relief4.avif',
+    description: 'Relief distribution in Sundarbans.',
+    hint: 'relief distribution'
   },
   {
-    id: '34',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'health camp'
+    id: '27',
+    imageUrl: '/images/projects/eduaccess/eduaccess2.avif',
+    description: 'Online Classes for the students of Sundarbans.',
+    hint: 'online class'
   },
   {
     id: '26',
