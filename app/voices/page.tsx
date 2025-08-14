@@ -107,7 +107,7 @@ const blogPosts = [
   {
     slug: 'roots-of-change',
     title: 'Roots of Change: Planting Awareness, Growing a Greener Tomorrow',
-    image: '/images/projects/sustainability/sustainability2.avif',
+    image: '/images/projects/sustainability/sustainability3.avif',
     hint: 'environmental awarenes and tree plantation',
     excerpt: 'Discover how the Roots of Change initiative is cultivating environmental awareness and inspiring sustainable action from the ground up.',
     date: 'August 16, 2022',
@@ -131,7 +131,7 @@ const blogPosts = [
   {
     slug: 'planting-hope-growing-futures',
     title: 'Planting Hope, Growing Futures: The GreenRoots Journey',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/sustainability/sustainability2.avif',
     hint: 'community planting trees',
     excerpt: 'Discover how GreenRoots is empowering communities to plant trees and restore green cover in their own backyards.',
     date: 'November 26, 2021',
