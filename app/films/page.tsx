@@ -24,11 +24,11 @@ const videos = [
     hint: "foundation story"
   },
   {
-    title: "Empowering Women through SuiDhaga",
-    description: "See how skill-building in tailoring transforms lives and builds futures.",
+    title: "Bringing Lifelines to the Heart of the Sundarbans",
+    description: "See how AIM Foundation is working for the healthcare of remote Sundarbans.",
     imageUrl: "https://placehold.co/600x400.png",
-    videoUrl: "https://www.youtube.com/watch?v=example2",
-    hint: "women tailoring"
+    videoUrl: "https://www.youtube.com/watch?v=574dd1HX2Ik",
+    hint: "healthcare in sundarbans by aim foundation"
   },
   {
     title: "Restoring Hope with CureLine",
