@@ -26,7 +26,7 @@ const videos = [
   {
     title: "Bringing Lifelines to the Heart of the Sundarbans",
     description: "See how AIM Foundation is working for the healthcare of remote Sundarbans.",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "/images/projects/cureline/cureline1.avif",
     videoUrl: "https://www.youtube.com/watch?v=574dd1HX2Ik",
     hint: "healthcare in sundarbans by aim foundation"
   },

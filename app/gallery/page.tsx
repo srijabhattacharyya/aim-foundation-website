@@ -8,28 +8,10 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const galleryImages = [
   {
-    id: '1',
-    imageUrl: '/images/projects/book/book-distribution.avif',
-    description: 'Book diistribution to underprivileged children.',
-    hint: 'children learning'
-  },
-  {
-    id: '2',
-    imageUrl: '/images/projects/cureline/cureline1.avif',
-    description: 'Our dedicated doctor providing healthcare services in a remote village.',
-    hint: 'healthcare camp'
-  },
-  {
-    id: '3',
-    imageUrl: '/images/projects/suidhaga/suidhaga1.avif',
-    description: 'Empowering women through our skill development programs.',
-    hint: 'women empowerment'
-  },
-  {
-    id: '4',
-    imageUrl: '/images/projects/sustainability/sustainability2.avif',
-    description: 'Community members participating in a tree plantation drive.',
-    hint: 'tree plantation'
+    id: '6',
+    imageUrl: '/images/projects/cyclesafe/cyclesafe1.avif',
+    description: 'Menstrual Hygiene Awareness Camp for the adolescent girls.',
+    hint: 'menstrual hygiene awareness '
   },
   {
     id: '5',
@@ -38,10 +20,28 @@ const galleryImages = [
     hint: 'winter relief'
   },
   {
-    id: '6',
-    imageUrl: '/images/projects/cyclesafe/cyclesafe1.avif',
-    description: 'Menstrual Hygiene Awareness Camp for the adolescent girls.',
-    hint: 'menstrual hygiene awareness '
+    id: '4',
+    imageUrl: '/images/projects/sustainability/sustainability2.avif',
+    description: 'Community members participating in a tree plantation drive.',
+    hint: 'tree plantation'
+  },
+  {
+    id: '3',
+    imageUrl: '/images/projects/suidhaga/suidhaga1.avif',
+    description: 'Empowering women through our skill development programs.',
+    hint: 'women empowerment'
+  },
+  {
+    id: '2',
+    imageUrl: '/images/projects/cureline/cureline1.avif',
+    description: 'Our dedicated doctor providing healthcare services in a remote village.',
+    hint: 'healthcare camp'
+  },
+  {
+    id: '1',
+    imageUrl: '/images/projects/book/book-distribution.avif',
+    description: 'Book diistribution to underprivileged children.',
+    hint: 'children learning'
   }
 ];
 
