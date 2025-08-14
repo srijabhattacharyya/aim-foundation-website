@@ -8,40 +8,112 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const galleryImages = [
   {
-    id: '18',
+    id: '31',
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new community initiative launch.',
-    hint: 'community launch'
+    description: 'A new gallery image placeholder.',
+    hint: 'community event'
+  },
+  {
+    id: '32',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'volunteer work'
+  },
+  {
+    id: '33',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'children smiling'
+  },
+  {
+    id: '34',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'health camp'
+  },
+  {
+    id: '35',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'education program'
+  },
+  {
+    id: '36',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'sustainability project'
+  },
+  {
+    id: '25',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'community event'
+  },
+  {
+    id: '26',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'volunteer work'
+  },
+  {
+    id: '27',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'children smiling'
+  },
+  {
+    id: '28',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'health camp'
+  },
+  {
+    id: '29',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'education program'
+  },
+  {
+    id: '30',
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'A new gallery image placeholder.',
+    hint: 'sustainability project'
+  },
+  {
+    id: '18',
+    imageUrl: '/images/projects/detect/detect1.avif',
+    description: 'Cervical Cancer Screening Camp in association with Chittaranjan National Cancer Institute.',
+    hint: 'cervical cancer screening'
   },
   {
     id: '17',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Volunteers distributing relief supplies.',
-    hint: 'volunteer relief'
+    imageUrl: '/images/projects/eduaccess/eduaccess1.avif',
+    description: 'Online Class from Kolkata for the students of Sundarbans.',
+    hint: 'online classes'
   },
   {
     id: '16',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Educational workshop for children.',
-    hint: 'education workshop'
+    imageUrl: '/images/projects/carecircle/carecircle2.avif',
+    description: 'Medical Camp at Mallickpur, near Kolkata.',
+    hint: 'medical camp'
   },
   {
     id: '15',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A successful health camp in a rural village.',
+    imageUrl: '/images/projects/digiempower/digiempower1.avif',
+    description: 'Digital Literacy Class at Rangakhila village, East Bardhaman District of West Bengal',
     hint: 'health camp'
   },
   {
     id: '14',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Women empowerment session in progress.',
-    hint: 'women empowerment'
+    imageUrl: '/images/projects/carecircle/carecircle1.webp',
+    description: 'Health Camp at Sarala Punyashram, Kolkata, in association with bhagirathi Neotia Women and Childcare Centre.',
+    hint: 'health Camp'
   },
   {
     id: '13',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Tree plantation drive for a greener future.',
-    hint: 'tree plantation'
+    imageUrl: '/images/projects/sustainability/sustainability1.avif',
+    description: 'Mangrove Plantation in Sundarbans.',
+    hint: 'mangrove plantation'
   },
   {
     id: '12',
