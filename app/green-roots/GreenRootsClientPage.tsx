@@ -25,7 +25,7 @@ export default function GreenRootsClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/greenroots.avif"
               alt="GreenRoots Banner"
               width={1920}
               height={580}

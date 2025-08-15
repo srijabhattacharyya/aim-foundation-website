@@ -8,15 +8,30 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
   return (
     <section className="relative w-full">
       <div className="relative w-full h-auto">
-        <Image
-          src="/images/banner/home.png"
-          alt="Home Banner"
-          width={1920}
-          height={1080}
-          className="w-full h-auto object-cover"
-          sizes="100vw"
-          loading="eager"
-        />
+        {/* Mobile Banner */}
+        <div className="block md:hidden">
+          <Image
+            src="/images/banner/home.png"
+            alt="Home Banner"
+            width={1920}
+            height={1080}
+            className="w-full h-auto object-cover"
+            sizes="100vw"
+            priority
+          />
+        </div>
+        {/* Desktop Banner */}
+        <div className="hidden md:block">
+          <Image
+            src="/images/banner/home.avif"
+            alt="Home Banner"
+            width={1920}
+            height={1080}
+            className="w-full h-auto object-cover"
+            sizes="100vw"
+            priority
+          />
+        </div>
         <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
           <div className="container mx-auto px-4 md:px-6 text-white pb-8 md:pb-16">
             <div className="text-center">
