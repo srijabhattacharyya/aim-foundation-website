@@ -6,7 +6,7 @@ import { adminDb } from '@/lib/firebase-admin';
 import { getVectorStore } from '@/lib/vector-store';
 import { chatFlow } from '@/ai/flows/chat-flow';
 import { Document } from 'genkit/document';
-import { Message, Part } from 'genkit';
+import { Message } from 'genkit';
 
 export async function POST(req: NextRequest) {
   try {
