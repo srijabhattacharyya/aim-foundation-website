@@ -2,7 +2,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { collection, getDocs, orderBy, query, Timestamp, deleteDoc, doc, getFirestore } from 'firebase/firestore';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Trash2, Filter, Download, Calendar as CalendarIcon } from 'lucide-react';
@@ -26,31 +25,8 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import Papa from 'papaparse';
-import { app } from '@/lib/firebase';
-
-const db = getFirestore(app);
-
-export interface Donation {
-    id: string;
-    createdAt: string;
-    fullName: string;
-    email: string;
-    amount: string;
-    otherAmount?: string;
-    cause: string;
-    nationality?: string;
-    mobile?: string;
-    dob?: string;
-    pan?: string;
-    aadhar?: string;
-    passport?: string;
-    country?: string;
-    state?: string;
-    city?: string;
-    address?: string;
-    pincode?: string;
-    initiative?: string;
-}
+import { fetchDonations, deleteDonation } from '@/app/actions/adminActions';
+import type { Donation } from '@/app/actions/adminActions';
 
 const causes = [
     "General Fund", "CureLine", "SurgiReach", "CareCircle", "ChildFirst", "Detect", "SightHope",
@@ -59,76 +35,6 @@ const causes = [
     "Krishti", "GreenRoots", "TideShield", "Roots of Change", "Relief to the Underprivileged",
     "Disaster Management", "Ignite Change Initiative", "Individual Donation", "Sponsor a Child"
 ];
-
-async function fetchDonationsFromClient(): Promise<{ success: boolean; data?: Donation[]; error?: string }> {
-    console.log("Attempting to fetch donations from client...");
-    try {
-        const donationsRef = collection(db, 'donations');
-        const q = query(donationsRef, orderBy('createdAt', 'desc'));
-        const querySnapshot = await getDocs(q);
-        
-        console.log(`Found ${querySnapshot.docs.length} documents.`);
-
-        if (querySnapshot.empty) {
-            console.log("No documents found in 'donations' collection.");
-        }
-
-        const donations: Donation[] = querySnapshot.docs.map(doc => {
-            const data = doc.data();
-            // Handle both Firestore Timestamp and potential string dates
-            const createdAtData = data.createdAt;
-            let createdAt: string;
-            if (createdAtData instanceof Timestamp) {
-                createdAt = createdAtData.toDate().toISOString();
-            } else if (createdAtData && typeof createdAtData.toDate === 'function') {
-                // Handle cases where it's a Firestore-like timestamp object but not a direct instance
-                createdAt = createdAtData.toDate().toISOString();
-            } else if (typeof createdAtData === 'string') {
-                createdAt = createdAtData;
-            } else if (createdAtData) {
-                // Fallback for other potential date-like objects, or just convert to string
-                createdAt = new Date(createdAtData).toISOString();
-            } else {
-                 createdAt = new Date().toISOString(); // Fallback to now if undefined
-            }
-            
-            const donationRecord = {
-                id: doc.id,
-                createdAt: createdAt,
-                fullName: data.fullName || '',
-                email: data.email || '',
-                amount: data.amount || '',
-                otherAmount: data.otherAmount || '',
-                cause: data.cause || 'N/A',
-                nationality: data.nationality || '',
-                mobile: data.mobile || '',
-                dob: data.dob || '',
-                pan: data.pan || '',
-                aadhar: data.aadhar || '',
-                passport: data.passport || '',
-                country: data.country || '',
-                state: data.state || '',
-                city: data.city || '',
-                address: data.address || '',
-                pincode: data.pincode || '',
-                initiative: data.initiative || '',
-            };
-            return donationRecord;
-        });
-        
-        return { success: true, data: donations };
-    } catch (err: any) {
-        console.error("Error fetching documents from Firestore on client: ", err);
-        let errorMessage = "Could not retrieve donations.";
-        if (err.code === 'permission-denied') {
-            errorMessage = "Permission denied. Please check your Firestore security rules.";
-        } else {
-            errorMessage += ` ${err.message}`;
-        }
-        console.error("Final error message:", errorMessage);
-        return { success: false, error: errorMessage };
-    }
-}
 
 
 export default function DonationsPage() {
@@ -150,7 +56,7 @@ export default function DonationsPage() {
     async function getDonations() {
       setLoading(true);
       setError(null);
-      const result = await fetchDonationsFromClient();
+      const result = await fetchDonations();
       if (result.success && result.data) {
         setDonations(result.data);
         setFilteredDonations(result.data);
@@ -195,24 +101,19 @@ export default function DonationsPage() {
   }, [donations, startDate, endDate, causeFilter, nationalityFilter, countryFilter, stateFilter, cityFilter]);
 
   const handleDelete = async (id: string) => {
-    try {
-      await deleteDoc(doc(db, "donations", id));
+    const result = await deleteDonation(id);
+    if (result.success) {
       const newDonations = donations.filter((donation) => donation.id !== id);
       setDonations(newDonations);
       toast({
         title: "Donation deleted",
         description: "The donation record has been successfully removed.",
       });
-    } catch (e: any) {
-        console.error("Error deleting document from Firestore on client: ", e);
-        let errorMessage = "Could not delete the donation. Please try again.";
-        if (e.code === 'permission-denied') {
-            errorMessage = "Deletion failed. You do not have permission to delete records. Please check your Firestore security rules.";
-        }
+    } else {
         toast({
             variant: "destructive",
             title: "Deletion failed",
-            description: errorMessage,
+            description: result.error || "Could not delete the donation.",
         });
     }
   };

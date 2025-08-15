@@ -2,7 +2,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { collection, getDocs, orderBy, query, Timestamp, deleteDoc, doc, getFirestore } from 'firebase/firestore';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Download, Trash2 } from 'lucide-react';
@@ -21,45 +20,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from '@/hooks/use-toast';
 import Papa from 'papaparse';
-import { app } from '@/lib/firebase';
-
-const db = getFirestore(app);
-
-interface Subscriber {
-    id: string;
-    email: string;
-    createdAt: string;
-}
-
-async function fetchSubscribers(): Promise<{ success: boolean; data?: Subscriber[]; error?: string }> {
-    try {
-        const subscribersRef = collection(db, 'subscribers');
-        const q = query(subscribersRef, orderBy('createdAt', 'desc'));
-        const querySnapshot = await getDocs(q);
-        
-        const subscribers: Subscriber[] = querySnapshot.docs.map(doc => {
-            const data = doc.data();
-            const createdAt = data.createdAt instanceof Timestamp 
-                ? data.createdAt.toDate().toISOString()
-                : new Date().toISOString();
-
-            return {
-                id: doc.id,
-                email: data.email || 'N/A',
-                createdAt: createdAt,
-            };
-        });
-        
-        return { success: true, data: subscribers };
-    } catch (err: any) {
-        console.error("Error fetching subscribers from Firestore: ", err);
-        let errorMessage = "Could not retrieve subscribers.";
-        if (err.code === 'permission-denied') {
-            errorMessage = "Permission denied. Please check your Firestore security rules.";
-        }
-        return { success: false, error: errorMessage };
-    }
-}
+import { fetchSubscribers, deleteSubscriber } from '@/app/actions/adminActions';
+import type { Subscriber } from '@/app/actions/adminActions';
 
 export default function SubscribersPage() {
     const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
@@ -67,23 +29,24 @@ export default function SubscribersPage() {
     const [error, setError] = useState<string | null>(null);
     const { toast } = useToast();
 
-    useEffect(() => {
-        async function getSubscribers() {
-            setLoading(true);
-            const result = await fetchSubscribers();
-            if (result.success && result.data) {
-                setSubscribers(result.data);
-            } else {
-                setError(result.error || 'Failed to fetch subscribers.');
-            }
-            setLoading(false);
+    const getSubscribers = async () => {
+        setLoading(true);
+        const result = await fetchSubscribers();
+        if (result.success && result.data) {
+            setSubscribers(result.data);
+        } else {
+            setError(result.error || 'Failed to fetch subscribers.');
         }
+        setLoading(false);
+    }
+
+    useEffect(() => {
         getSubscribers();
     }, []);
 
     const handleDelete = async (id: string) => {
-        try {
-          await deleteDoc(doc(db, "subscribers", id));
+        const result = await deleteSubscriber(id);
+        if (result.success) {
           const newSubscribers = subscribers.filter((subscriber) => subscriber.id !== id);
           setSubscribers(newSubscribers);
           toast({
@@ -91,15 +54,10 @@ export default function SubscribersPage() {
             description: "The subscriber has been successfully removed.",
           });
         } catch (e: any) {
-            console.error("Error deleting document from Firestore on client: ", e);
-            let errorMessage = "Could not delete the subscriber. Please try again.";
-            if (e.code === 'permission-denied') {
-                errorMessage = "Deletion failed. You do not have permission to delete records. Please check your Firestore security rules.";
-            }
             toast({
                 variant: "destructive",
                 title: "Deletion failed",
-                description: errorMessage,
+                description: result.error || "Could not delete the subscriber.",
             });
         }
     };

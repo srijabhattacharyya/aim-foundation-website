@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { collection, getDocs, query, orderBy, getFirestore } from 'firebase/firestore';
 import AdminLayout from '../AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -19,9 +18,8 @@ import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { addGalleryItem, deleteGalleryItem } from '@/app/actions/galleryActions';
-import { app } from '@/lib/firebase';
-
-const db = getFirestore(app);
+import { fetchGalleryImages } from '@/app/actions/adminActions';
+import type { GalleryImage } from '@/app/actions/adminActions';
 
 const formSchema = z.object({
   description: z.string().min(1, 'Description is required'),
@@ -29,14 +27,6 @@ const formSchema = z.object({
   sequence: z.coerce.number().min(0, 'Sequence must be a positive number'),
   image: z.any(),
 });
-
-export interface GalleryImage {
-  id: string;
-  description: string;
-  imageUrl: string;
-  status: 'Active' | 'Inactive';
-  sequence: number;
-}
 
 const fileToBase64 = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -75,30 +65,23 @@ export default function GalleryAdminPage() {
 
   form.trigger(); // to re-validate the form based on new schema logic if needed
 
-  const fetchImages = async () => {
+  const getImages = async () => {
     setLoading(true);
-    try {
-      const q = query(collection(db, 'gallery'), orderBy('sequence', 'asc'));
-      const querySnapshot = await getDocs(q);
-      const fetchedImages: GalleryImage[] = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      } as GalleryImage));
-      setImages(fetchedImages);
-    } catch (error) {
-      console.error("Error fetching gallery items from client: ", error);
+    const result = await fetchGalleryImages();
+    if (result.success && result.data) {
+      setImages(result.data);
+    } else {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Failed to fetch gallery items. Please check permissions and network.',
+        description: result.error || 'Failed to fetch gallery items.',
       });
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
-    fetchImages();
+    getImages();
   }, []);
 
   const handleEdit = (image: GalleryImage) => {
@@ -115,7 +98,7 @@ export default function GalleryAdminPage() {
     const result = await deleteGalleryItem(id);
     if (result.success) {
         toast({ title: 'Success', description: 'Image deleted successfully.' });
-        fetchImages();
+        getImages();
     } else {
         toast({ variant: 'destructive', title: 'Error', description: result.error });
     }
@@ -154,7 +137,7 @@ export default function GalleryAdminPage() {
       if (result.success) {
         toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });
         cancelEdit();
-        fetchImages();
+        getImages();
       } else {
          toast({ variant: 'destructive', title: 'Error', description: result.error });
       }
