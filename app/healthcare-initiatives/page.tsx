@@ -98,12 +98,12 @@ export default function HealthCareInitiativesPage() {
               alt="Healthcare Initiatives Banner"
               width={1920}
               height={580}
-              className="w-full h-auto object-cover brightness-50"
+              className="w-full h-auto object-cover"
               data-ai-hint="doctor patient care"
               priority
             />
           </div>
-          <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
+          <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
             <div className="relative z-10 text-left">
               <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Healthcare is a right, not merely a privilege!

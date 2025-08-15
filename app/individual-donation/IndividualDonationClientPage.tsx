@@ -29,11 +29,11 @@ export default function IndividualDonationClientPage() {
               alt="Smile Warriors"
               width={1920}
               height={334}
-              className="w-full h-auto object-cover brightness-75"
+              className="w-full h-auto object-cover"
               data-ai-hint="volunteer children education"
             />
           </div>
-          <div className="absolute inset-0 flex items-center justify-center text-white p-8 md:p-12">
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
             <div className="relative z-10 text-center">
               <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 THE WORLD NEEDS SMILE WARRIORS
