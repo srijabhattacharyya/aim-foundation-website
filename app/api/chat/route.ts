@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       .map((r: Document) => r.content[0].text)
       .join('\n\n');
 
-    // Fetch chat history
+    // Fetch chat history and order it by timestamp
     const chatHistoryRef = adminDb.collection('chats').doc(chatId).collection('messages').orderBy('timestamp', 'asc');
     const historySnapshot = await chatHistoryRef.get();
     const chatHistory: Message[] = [];
