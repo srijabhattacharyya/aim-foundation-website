@@ -37,18 +37,14 @@ export const chatFlow = ai.defineFlow(
     outputSchema: z.string(),
   },
   async (input) => {
-    const history: Message[] = [
-        ...input.chatHistory,
-        { role: 'user', content: [{ text: input.question }] }
-    ];
-
     const llmResponse = await ai.generate({
       prompt: await prompt.renderText(input),
-      history: history,
+      history: input.chatHistory,
       model: 'googleai/gemini-1.5-pro',
       config: {
         temperature: 0.3,
       },
+      tools: [],
     });
 
     return llmResponse.text;

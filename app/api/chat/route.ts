@@ -30,7 +30,6 @@ export async function POST(req: NextRequest) {
     const historySnapshot = await chatHistoryRef.get();
     const chatHistory: Message[] = historySnapshot.docs.flatMap(doc => {
         const data = doc.data();
-        // Recreate the message structure for Genkit
         const userMessage: Message = {
           role: 'user',
           content: [{ text: data.question }],
@@ -42,11 +41,13 @@ export async function POST(req: NextRequest) {
         return [userMessage, modelMessage];
     });
 
+    // Add the current question to the history for the AI call
+    const historyForFlow = [...chatHistory, { role: 'user', content: [{ text: question }] }];
 
     const answer = await chatFlow({
         question: question,
         context: context,
-        chatHistory: chatHistory,
+        chatHistory: historyForFlow,
     });
     
     // Log interaction to Firestore
@@ -57,7 +58,6 @@ export async function POST(req: NextRequest) {
         context,
         timestamp: new Date(),
     });
-
 
     return NextResponse.json({ answer });
   } catch (error) {
