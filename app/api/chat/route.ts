@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase-admin';
 import { getVectorStore } from '@/lib/vector-store';
 import { chatFlow } from '@/ai/flows/chat-flow';
+import { Document } from 'genkit/document';
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,7 +20,9 @@ export async function POST(req: NextRequest) {
 
     const vectorStore = getVectorStore();
     const searchResults = await vectorStore.retrieve(question, 3);
-    const context = searchResults.map(r => r.document.content.text).join('\n\n');
+    const context = searchResults
+      .map((r: Document) => r.content[0].text)
+      .join('\n\n');
 
     const answer = await chatFlow({
         question: question,

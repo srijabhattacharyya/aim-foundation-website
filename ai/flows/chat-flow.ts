@@ -40,8 +40,10 @@ export const chatFlow = ai.defineFlow(
     outputSchema: z.string(),
   },
   async (input) => {
-    const { history } = await ai.generate({
-      prompt: prompt,
+    const llmResponse = await ai.generate({
+      prompt: {
+        text: await prompt.renderText(input),
+      },
       history: [...input.chatHistory, new HumanMessage(input.question)],
       model: 'googleai/gemini-1.5-pro',
       config: {
@@ -49,11 +51,6 @@ export const chatFlow = ai.defineFlow(
       },
     });
 
-    const last = history.at(-1);
-    if (!last || !last.message.isAi()) {
-        throw new Error("Expected AI response");
-    }
-
-    return last.message.text;
+    return llmResponse.text;
   }
 );
