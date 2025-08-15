@@ -28,26 +28,18 @@ export async function POST(req: NextRequest) {
     // Fetch chat history
     const chatHistoryRef = adminDb.collection('chats').doc(chatId).collection('messages').orderBy('timestamp', 'asc');
     const historySnapshot = await chatHistoryRef.get();
-    const chatHistory: Message[] = historySnapshot.docs.flatMap(doc => {
+    const chatHistory: Message[] = [];
+    historySnapshot.forEach(doc => {
         const data = doc.data();
-        const userMessage: Message = {
-          role: 'user',
-          content: [{ text: data.question }],
-        };
-        const modelMessage: Message = {
-          role: 'model',
-          content: [{ text: data.answer }],
-        };
-        return [userMessage, modelMessage];
+        chatHistory.push({ role: 'user', content: [{ text: data.question }] });
+        chatHistory.push({ role: 'model', content: [{ text: data.answer }] });
     });
 
-    // Add the current question to the history for the AI call
-    const historyForFlow = [...chatHistory, { role: 'user', content: [{ text: question }] }];
 
     const answer = await chatFlow({
         question: question,
         context: context,
-        chatHistory: historyForFlow,
+        chatHistory: chatHistory,
     });
     
     // Log interaction to Firestore

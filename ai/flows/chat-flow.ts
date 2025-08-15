@@ -19,16 +19,11 @@ export const ChatFlowInputSchema = z.object({
 
 export type ChatFlowInput = z.infer<typeof ChatFlowInputSchema>;
 
-const prompt = ai.definePrompt({
-  name: 'chatPrompt',
-  input: { schema: ChatFlowInputSchema },
-  prompt: `You are a helpful assistant for the AIM Foundation. Your role is to answer visitor questions based ONLY on the provided website content.
+const systemPrompt = `You are a helpful assistant for the AIM Foundation. Your role is to answer visitor questions based ONLY on the provided website content.
 If the answer is not available in the content you are given, you MUST say: "I’m sorry, I don’t have that information yet." Do not make up answers or use external knowledge.
 
 ## Website Content Context:
-{{{context}}}
-`,
-});
+{{{context}}}`;
 
 export const chatFlow = ai.defineFlow(
   {
@@ -37,9 +32,15 @@ export const chatFlow = ai.defineFlow(
     outputSchema: z.string(),
   },
   async (input) => {
+    const { question, context, chatHistory } = input;
+
     const llmResponse = await ai.generate({
-      prompt: await prompt.renderText(input),
-      history: input.chatHistory,
+      prompt: {
+        text: question,
+        context,
+      },
+      system: systemPrompt,
+      history: chatHistory,
       model: 'googleai/gemini-1.5-pro',
       config: {
         temperature: 0.3,
