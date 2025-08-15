@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from "next/image";
@@ -66,7 +67,7 @@ export default function FootprintCarousel() {
                             height={500}
                             className="shadow-lg w-full h-auto object-cover"
                             data-ai-hint={image.hint}
-                            priority={index === 0}
+                            loading="lazy"
                         />
                         {image.description && (
                             <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-center text-sm">

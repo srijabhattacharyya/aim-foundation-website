@@ -54,6 +54,7 @@ const LatestAnnouncements = () => {
                   height={400}
                   data-ai-hint={item.hint}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
                 />
               </CardHeader>
               <CardContent className="p-6 flex-grow flex flex-col">
