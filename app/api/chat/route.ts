@@ -6,6 +6,7 @@ import { adminDb } from '@/lib/firebase-admin';
 import { getVectorStore } from '@/lib/vector-store';
 import { chatFlow } from '@/ai/flows/chat-flow';
 import { Document } from 'genkit/document';
+import { AIMessage, HumanMessage } from 'genkit/message';
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,10 +25,22 @@ export async function POST(req: NextRequest) {
       .map((r: Document) => r.content[0].text)
       .join('\n\n');
 
+    // Fetch chat history
+    const chatHistoryRef = adminDb.collection('chats').doc(chatId).collection('messages').orderBy('timestamp', 'asc');
+    const historySnapshot = await chatHistoryRef.get();
+    const chatHistory = historySnapshot.docs.map(doc => {
+        const data = doc.data();
+        // Recreate AIMessage and HumanMessage instances
+        if (data.answer) {
+            return [new HumanMessage(data.question), new AIMessage(data.answer)];
+        }
+        return new HumanMessage(data.question);
+    }).flat();
+
     const answer = await chatFlow({
         question: question,
         context: context,
-        chatHistory: [], // Not implemented yet
+        chatHistory: chatHistory,
     });
     
     // Log interaction to Firestore
