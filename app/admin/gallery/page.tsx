@@ -5,8 +5,7 @@ import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { db } from '@/lib/firebase';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, getFirestore } from 'firebase/firestore';
 import AdminLayout from '../AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,6 +19,9 @@ import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { addGalleryItem, deleteGalleryItem } from '@/app/actions/galleryActions';
+import { app } from '@/lib/firebase';
+
+const db = getFirestore(app);
 
 const formSchema = z.object({
   description: z.string().min(1, 'Description is required'),

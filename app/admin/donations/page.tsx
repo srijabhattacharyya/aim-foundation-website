@@ -2,8 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { db } from '@/lib/firebase';
-import { collection, getDocs, orderBy, query, Timestamp, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, Timestamp, deleteDoc, doc, getFirestore } from 'firebase/firestore';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Trash2, Filter, Download, Calendar as CalendarIcon } from 'lucide-react';
@@ -27,6 +26,9 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import Papa from 'papaparse';
+import { app } from '@/lib/firebase';
+
+const db = getFirestore(app);
 
 export interface Donation {
     id: string;

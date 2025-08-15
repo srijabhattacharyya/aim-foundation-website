@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -7,10 +6,12 @@ import { z } from 'zod';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { db } from '@/lib/firebase';
-import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, getDoc, serverTimestamp, getFirestore } from 'firebase/firestore';
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
+import { app } from '@/lib/firebase';
+
+const db = getFirestore(app);
 
 const formSchema = z.object({
   email: z.string().email({ message: 'A valid email is required.' }),

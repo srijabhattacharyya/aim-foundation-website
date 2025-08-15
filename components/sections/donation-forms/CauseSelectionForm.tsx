@@ -126,14 +126,6 @@ const DynamicSoulCircleDonationForm = dynamic(
   () => import("./SoulCircleDonationForm"),
   { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
-const DynamicSuiDhagaDonationForm = dynamic(
-    () => import('./SuiDhagaDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicKrishtiDonationForm = dynamic(
-    () => import('./KrishtiDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
 const DynamicGreenRootsDonationForm = dynamic(
     () => import('./GreenRootsDonationForm'),
     { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
