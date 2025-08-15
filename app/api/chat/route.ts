@@ -25,6 +25,10 @@ export async function POST(req: NextRequest) {
       .map((r: Document) => r.content[0]?.text || '')
       .join('\n\n');
 
+    if (!context.trim()) {
+        return NextResponse.json({ answer: "I’m sorry, I don’t have that information yet." });
+    }
+
     // Fetch chat history and order it by timestamp
     const chatHistoryRef = adminDb.collection('chats').doc(chatId).collection('messages').orderBy('timestamp', 'asc');
     const historySnapshot = await chatHistoryRef.get();
@@ -39,7 +43,6 @@ export async function POST(req: NextRequest) {
         }
     });
 
-
     const answer = await chatFlow({
         question: question,
         context: context,
@@ -51,7 +54,7 @@ export async function POST(req: NextRequest) {
     await chatRef.collection('messages').add({
         question,
         answer,
-        context,
+        context, // Log the context for debugging
         timestamp: new Date(),
     });
 
