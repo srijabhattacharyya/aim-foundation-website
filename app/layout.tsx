@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import Chatbot from '@/components/chatbot/Chatbot';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.aimindia.org.in'),
@@ -119,6 +120,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         {children}
+        <Chatbot />
         <Toaster />
       </body>
     </html>
