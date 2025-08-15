@@ -10,14 +10,13 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import {
-  AIMessage,
-  HumanMessage,
-} from 'genkit/message';
+  Message
+} from 'genkit';
 
 export const ChatFlowInputSchema = z.object({
   question: z.string(),
   context: z.string(),
-  chatHistory: z.array(z.custom<HumanMessage | AIMessage>()),
+  chatHistory: z.array(z.custom<Message>()),
 });
 
 export type ChatFlowInput = z.infer<typeof ChatFlowInputSchema>;
@@ -40,11 +39,14 @@ export const chatFlow = ai.defineFlow(
     outputSchema: z.string(),
   },
   async (input) => {
+    const history: Message[] = [
+        ...input.chatHistory,
+        { role: 'user', content: [{ text: input.question }] }
+    ];
+
     const llmResponse = await ai.generate({
-      prompt: {
-        text: await prompt.renderText(input),
-      },
-      history: [...input.chatHistory, new HumanMessage(input.question)],
+      prompt: await prompt.renderText(input),
+      history: history,
       model: 'googleai/gemini-1.5-pro',
       config: {
         temperature: 0.3,
