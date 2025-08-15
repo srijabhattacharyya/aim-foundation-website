@@ -35,17 +35,13 @@ export const chatFlow = ai.defineFlow(
     const { question, context, chatHistory } = input;
 
     const llmResponse = await ai.generate({
-      prompt: {
-        text: question,
-        context,
-      },
-      system: systemPrompt,
+      prompt: question,
+      system: systemPrompt.replace('{{{context}}}', context),
       history: chatHistory,
       model: 'googleai/gemini-1.5-pro',
       config: {
         temperature: 0.3,
       },
-      tools: [],
     });
 
     return llmResponse.text;

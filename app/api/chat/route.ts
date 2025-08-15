@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     const vectorStore = getVectorStore();
     const searchResults = await vectorStore.retrieve(question, 3);
     const context = searchResults
-      .map((r: Document) => r.content[0].text)
+      .map((r: Document) => r.content[0]?.text || '')
       .join('\n\n');
 
     // Fetch chat history and order it by timestamp
@@ -31,8 +31,12 @@ export async function POST(req: NextRequest) {
     const chatHistory: Message[] = [];
     historySnapshot.forEach(doc => {
         const data = doc.data();
-        chatHistory.push({ role: 'user', content: [{ text: data.question }] });
-        chatHistory.push({ role: 'model', content: [{ text: data.answer }] });
+        if (data.question) {
+          chatHistory.push({ role: 'user', content: [{ text: data.question }] });
+        }
+        if (data.answer) {
+          chatHistory.push({ role: 'model', content: [{ text: data.answer }] });
+        }
     });
 
 
