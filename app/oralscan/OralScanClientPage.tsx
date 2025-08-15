@@ -11,7 +11,7 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/OralScanDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/OralScanDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
@@ -32,6 +32,8 @@ export default function OralScanClientPage() {
               height={580}
               className="w-full h-auto object-cover brightness-50"
               data-ai-hint="dental health checkup"
+              quality={100}
+              priority
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
