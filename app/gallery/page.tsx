@@ -45,15 +45,15 @@ const galleryImages = [
   },
   {
     id: '36',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'community event'
+    imageUrl: '/images/projects/childfirst/childfirst2.avif',
+    description: 'Medical Camp for Children.',
+    hint: 'medical camp'
   },
   {
     id: '35',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'volunteer work'
+    imageUrl: '/images/projects/carecircle/carecircle3.avif',
+    description: 'Health Camp at Sarala Punyashram, Kolkata.',
+    hint: 'health camp'
   },
   {
     id: '34',

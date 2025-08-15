@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "../../components/layout/Navbar";
@@ -10,7 +11,7 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/OralScanDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/OralScanDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
@@ -25,7 +26,7 @@ export default function OralScanClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/oralscan.avif"
               alt="OralScan Banner"
               width={1920}
               height={580}

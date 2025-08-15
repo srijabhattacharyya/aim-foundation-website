@@ -33,7 +33,7 @@ const initiatives = [
   {
     title: "CareCircle",
     description: "is an urban health initiative by AIM Foundation that organizes healthcare camps through partnerships at Kolkata centres like Sarala Punyashram, Sarat Bose Road, and Boral Natunhat. These camps deliver free check-ups, medicines, and consultations to underserved populations, ensuring inclusive, accessible healthcare for those often overlooked in city life.",
-    image: "/images/projects/carecircle/carecircle1.webp",
+    image: "/images/projects/carecircle/carecircle3.avif",
     hint: "hygiene awareness session",
     link: "/carecircle?from=healthcare",
     specialText: "(Urban Healthcare)"
@@ -41,8 +41,8 @@ const initiatives = [
   {
     title: "ChildFirst",
     description: "is a compassionate healthcare initiative by AIM Foundation offering pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.",
-    image: "https://placehold.co/600x400.png",
-    hint: "mental health support",
+    image: "/images/projects/childfirst/childfirst2.avif",
+    hint: "paediatric  health support",
     link: "/childfirst?from=healthcare",
     specialText: "(Child Health)"
   },
