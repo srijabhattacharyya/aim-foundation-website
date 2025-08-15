@@ -8,22 +8,22 @@ import Autoplay from "embla-carousel-autoplay";
 
 const footprintImages = [
     {
-        src: "/images/home-scrolling/hs1.jpg",
-        alt: "Garments Distribution to Sabar Community",
-        hint: "garments distribution",
-        description: "Garments Distribution to Sabar Community"
+        src: "/images/projects/childfirst/childfirst2.avif",
+        alt: "Medical Camp for Children",
+        hint: "medical camp",
+        description: "Medical Camp for Children"
     },
     {
-        src: "/images/home-scrolling/hs2.jpg",
-        alt: "Healthcare camp in a rural area",
-        hint: "rural healthcare",
-        description: "Healthcare camp in a rural area"
+        src: "/images/projects/digiempower/digiempower1.avif",
+        alt: "Digital Literacy Class at Rangakhila village",
+        hint: "digital literacy",
+        description: "Digital Literacy Class"
     },
     {
-        src: "/images/home-scrolling/hs3.jpg",
-        alt: "Award by Sundarbans Tiger Reserve",
-        hint: "award",
-        description: "Award by Sundarbans Tiger Reserve"
+        src: "/images/projects/digiempower/digiempower1.avif",
+        alt: "Digital Literacy Class",
+        hint: "digital literacy",
+        description: "Digital Literacy Class"
     },
     {
         src: "/images/home-scrolling/hs4.jpg",
