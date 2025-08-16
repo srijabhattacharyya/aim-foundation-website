@@ -34,7 +34,7 @@ export default function EduAccessClientPage() {
               data-ai-hint="online learning student"
             />
           </div>
-          <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/60 to-transparent text-white p-8 md:p-12">
+          <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
             <div className="relative z-10 text-left">
               <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 EduAccess
