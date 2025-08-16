@@ -28,12 +28,11 @@ export default function GreenRootsBlogPage() {
         <article>
           <header className="relative w-full h-[580px]">
             <Image
-              src="https://placehold.co/1920x580.png"
-              alt="Community members planting saplings"
+              src="/images/banner/green-root1.avif"
+              alt="Community members planting saplings for the GreenRoots initiative"
               fill
               objectFit="cover"
               className="brightness-50"
-              data-ai-hint="community planting trees"
               priority
             />
             <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-8 md:p-16">
