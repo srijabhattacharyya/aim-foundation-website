@@ -26,16 +26,18 @@ export default function GreenRootsBlogPage() {
       <Navbar />
       <main className="flex-grow">
         <article>
-          <header className="relative w-full h-[580px]">
-            <Image
-              src="https://placehold.co/1920x580.png"
-              alt="Community members planting saplings for the GreenRoots initiative"
-              fill
-              objectFit="cover"
-              data-ai-hint="community planting trees"
-              className=""
-              priority
-            />
+          <header className="relative w-full">
+             <div className="relative w-full h-auto">
+                <Image
+                src="https://placehold.co/1920x580.png"
+                alt="Community members planting saplings for the GreenRoots initiative"
+                width={1920}
+                height={580}
+                className="w-full h-auto object-cover"
+                data-ai-hint="community planting trees"
+                priority
+                />
+            </div>
             <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/30 to-transparent p-8 md:p-16">
               <div className="container mx-auto px-4 md:px-6 text-white">
                 <Badge variant="secondary" className="mb-4">Blog Post</Badge>
