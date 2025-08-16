@@ -12,7 +12,7 @@ import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/MilieuDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/MilieuDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
@@ -37,12 +37,12 @@ export default function MilieuClientPage() {
                   data-ai-hint="diverse children interacting"
                 />
               </div>
-              <div className="absolute inset-0 flex items-end justify-start p-8 md:p-12">
-                <div className="relative z-10 text-left bg-background/80 p-6 rounded-lg">
-                  <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down text-primary">
+              <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
+                <div className="relative z-10 text-left">
+                  <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                     Milieu
                   </h1>
-                  <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up text-foreground">
+                  <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                     Bridging Backgrounds, Building Bonds.
                   </p>
                 </div>
