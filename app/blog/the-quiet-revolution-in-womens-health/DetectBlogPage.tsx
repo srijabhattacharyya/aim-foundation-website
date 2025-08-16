@@ -16,18 +16,18 @@ export default function DetectBlogPage() {
       <main className="flex-grow">
         <article>
           <header className="relative w-full">
-            <div className="relative w-full h-[580px]">
+            <div className="relative w-full h-auto">
                 <Image
                 src="/images/banner/detect1.avif"
                 alt="Health awareness session for women"
                 width={1920}
                 height={580}
-                className="object-cover w-full h-full"
+                className="w-full h-auto object-cover"
                 data-ai-hint="women health rural"
                 priority
                 />
             </div>
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-8 md:p-16">
+            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/30 to-transparent p-8 md:p-16">
               <div className="container mx-auto px-4 md:px-6 text-white">
                 <Badge variant="secondary" className="mb-4">Blog Post</Badge>
                 <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
