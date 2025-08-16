@@ -9,13 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "seed": "node --loader ts-node/esm scripts/seed-firestore.mjs",
-    "postinstall": "patch-package && npx update-browserslist-db@latest"
+    "seed": "node --loader ts-node/esm scripts/seed-firestore.mjs"
   },
-  "browserslist": [
-    "> 0.5%",
-    "not dead"
-  ],
   "dependencies": {
     "@google/generative-ai": "^0.16.0",
     "@hookform/resolvers": "^3.9.0",
@@ -75,9 +70,5 @@
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4"
-  },
-  "overrides": {
-    "caniuse-lite": "latest",
-    "browserslist": "latest"
   }
 }
