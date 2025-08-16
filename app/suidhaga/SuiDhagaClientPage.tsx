@@ -11,7 +11,7 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SuiDhagaDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SuiDhagaDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
