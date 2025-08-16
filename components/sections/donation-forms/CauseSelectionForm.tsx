@@ -94,10 +94,6 @@ const DynamicCureLineDonationForm = dynamic(
   () => import("./CureLineDonationForm"),
   { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
 );
-const DynamicSurgiReachDonationForm = dynamic(
-  () => import("./SurgiReachDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
 const DynamicCareCircleDonationForm = dynamic(
   () => import("./CareCircleDonationForm"),
   { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
@@ -172,7 +168,6 @@ const educationalInitiatives = [
 const healthcareInitiatives = [
     { value: "healthcare-general", label: "General Donation to support Healthcare Initiatives" },
     { value: "cureline", label: "CureLine" },
-    { value: "surgireach", label: "SurgiReach" },
     { value: "carecircle", label: "CareCircle" },
     { value: "childfirst", label: "ChildFirst" },
     { value: "detect", label: "Detect" },
@@ -226,7 +221,6 @@ const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
   "healthcare": DynamicHealthcareDonationForm,
   "healthcare-general": DynamicHealthcareDonationForm,
   "cureline": DynamicCureLineDonationForm,
-  "surgireach": DynamicSurgiReachDonationForm,
   "carecircle": DynamicCareCircleDonationForm,
   "childfirst": DynamicChildFirstDonationForm,
   "detect": DynamicDetectDonationForm,

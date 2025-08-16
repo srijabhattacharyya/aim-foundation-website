@@ -18,7 +18,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
-import React from "react";
+import React, { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -109,7 +109,6 @@ const donationAmounts = [
 const initiatives = [
     { value: "general", label: "General Fund" },
     { value: "cureline", label: "CureLine" },
-    { value: "surgireach", label: "SurgiReach" },
     { value: "carecircle", label: "CareCircle" },
     { value: "childfirst", label: "ChildFirst" },
     { value: "detect", label: "Detect" },

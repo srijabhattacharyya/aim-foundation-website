@@ -23,14 +23,6 @@ const initiatives = [
     specialText: "(Rural Healthcare)"
   },
   {
-    title: "SurgiReach",
-    description: "is AIM Foundation’s hospital partnership initiative providing free surgeries to economically disadvantaged individuals. Children aged 5 months to 14 years receive life-changing pediatric operations, while adults access essential procedures like kidney transplants and knee replacements. The program ensures critical medical care is available, regardless of financial limitations.",
-    image: "https://placehold.co/600x400.png",
-    hint: "child nutrition program",
-    link: "/surgireach?from=healthcare",
-    specialText: "(Free Operation)"
-  },
-  {
     title: "CareCircle",
     description: "is an urban health initiative by AIM Foundation that organizes healthcare camps through partnerships at Kolkata centres like Sarala Punyashram, Sarat Bose Road, and Boral Natunhat. These camps deliver free check-ups, medicines, and consultations to underserved populations, ensuring inclusive, accessible healthcare for those often overlooked in city life.",
     image: "/images/projects/carecircle/carecircle3.avif",

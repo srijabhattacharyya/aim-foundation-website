@@ -145,14 +145,6 @@ const blogPosts = [
     date: 'August 19, 2021',
   },
   {
-    slug: 'surgery-shouldnt-be-a-luxury',
-    title: 'Surgery Shouldn’t Be a Luxury: The SurgiReach Story',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'operating room surgery',
-    excerpt: 'Learn how SurgiReach provides free, life-saving surgeries to economically disadvantaged individuals, restoring health and hope.',
-    date: 'May 12, 2021',
-  },
-  {
     slug: 'crafting-futures-the-krishti-story',
     title: 'Crafted by Her. Backed by Krishti.',
     image: 'https://placehold.co/600x400.png',
