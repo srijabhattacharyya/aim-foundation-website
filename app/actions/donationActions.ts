@@ -12,7 +12,7 @@ const donationSchema = z.object({
   fullName: z.string(),
   email: z.string().email(),
   mobile: z.string(),
-  dob: z.string().optional(),
+  dob: z.date().optional(),
   pan: z.string().optional(),
   aadhar: z.string().optional(),
   passport: z.string().optional(),
@@ -34,6 +34,10 @@ export async function addDonation(donationData: z.infer<typeof donationSchema>) 
       ...validatedData,
       createdAt: FieldValue.serverTimestamp(),
     };
+
+    if (validatedData.dob) {
+      donationPayload.dob = validatedData.dob.toISOString().split('T')[0];
+    }
 
     const docRef = await adminDb.collection('donations').add(donationPayload);
     

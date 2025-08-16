@@ -4,7 +4,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,32 +12,25 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "@/hooks/use-toast";
-import { Card, CardContent } from "@/components/ui/card";
+} from "../../../components/ui/form";
+import { Input } from "../../../components/ui/input";
+import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
+import { Checkbox } from "../../../components/ui/checkbox";
+import { useToast } from "../../../hooks/use-toast";
+import { Card, CardContent } from "../../../components/ui/card";
 import React from "react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 import dynamic from "next/dynamic";
-import { Skeleton } from "@/components/ui/skeleton";
+import StatesAndUTs from "@/components/layout/StatesAndUTs";
+import { addDonation } from "@/app/actions/donationActions";
 import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 
-const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
-  ssr: false,
-  loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md" />
-});
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
-  initiative: z.string().nonempty({ message: "Please select an initiative." }),
   amount: z.string().nonempty({ message: "Please select a donation amount." }),
   otherAmount: z.string().optional(),
   fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
@@ -99,52 +92,30 @@ const donationSchema = z.object({
     }
 });
 
-const donationAmounts = [
-    { value: "1000", label: "₹1000" },
-    { value: "2500", label: "₹2500" },
-    { value: "5000", label: "₹5000" },
-    { value: "10000", label: "₹10000" },
+
+const donationAmountsIndian = [
+    { value: "1000", label: "₹1000", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "2500", label: "₹2500", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "5000", label: "₹5000", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "10000", label: "₹10000", description: "FUND AWARENESS WORKSHOPS" },
 ];
 
-const initiatives = [
-    { value: "general", label: "General Fund" },
-    { value: "cureline", label: "CureLine" },
-    { value: "surgireach", label: "SurgiReach" },
-    { value: "carecircle", label: "CareCircle" },
-    { value: "childfirst", label: "ChildFirst" },
-    { value: "detect", label: "Detect" },
-    { value: "sighthope", label: "SightHope" },
-    { value: "oralscan", label: "OralScan" },
-    { value: "cyclesafe", label: "CycleSafe" },
-    { value: "soulcircle", label: "SoulCircle" },
-    { value: "innocent-smiles", label: "Innocent Smiles" },
-    { value: "inspire-edulab", label: "Inspire EduLab" },
-    { value: "eduaccess", label: "EduAccess" },
-    { value: "empower-english", label: "Empower English" },
-    { value: "digiempower", label: "DigiEmpower" },
-    { value: "sheconnects", label: "SheConnects" },
-    { value: "milieu", label: "Milieu" },
-    { value: "vidyashakti", label: "VidyaShakti" },
-    { value: "suidhaga", label: "SuiDhaga" },
-    { value: "krishti", label: "Krishti" },
-    { value: "green-roots", label: "GreenRoots" },
-    { value: "tideshield", label: "TideShield" },
-    { value: "roots-of-change", label: "Roots of Change" },
-    { value: "relief-underprivileged", label: "Relief to the Underprivileged" },
-    { value: "disaster-management", label: "Disaster Management" },
-    { value: "ignite-change", label: "Ignite Change Initiative" },
+const donationAmountsNonIndian = [
+    { value: "12", label: "$12", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "30", label: "$30", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "60", label: "$60", description: "FUND AWARENESS WORKSHOPS" },
+    { value: "120", label: "$120", description: "FUND AWARENESS WORKSHOPS" },
 ];
 
 
-export default function GeneralDonationForm() {
+export default function RootsOfChangeDonationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      initiative: "general",
-      amount: "2500",
+      amount: "1000",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -165,18 +136,26 @@ export default function GeneralDonationForm() {
 
   const recaptchaRef = React.createRef<any>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-  
+
   const nationality = form.watch("nationality");
+  const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+  
+  const selectedAmountValue = form.watch("amount");
+  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+  const description = selectedAmount ? selectedAmount.description : "FUND AWARENESS WORKSHOPS";
+
 
   React.useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
+      form.setValue("amount", "1000");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("aadhar", "");
       form.setValue("state", "");
+      form.setValue("amount", "12");
     }
   }, [nationality, form]);
 
@@ -184,24 +163,20 @@ export default function GeneralDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-        const donationData = {
-            ...values,
-            cause: initiatives.find(i => i.value === values.initiative)?.label || "General Donation",
-            createdAt: serverTimestamp()
-        };
-        await addDoc(collection(db, "donations"), donationData);
+        const donationData = { ...values, cause: 'Roots of Change' };
+        await addDonation(donationData);
         toast({
-            title: "Thank you for your donation!",
-            description: `Your support for the ${initiatives.find(i => i.value === values.initiative)?.label} program is greatly appreciated.`,
+        title: "Thank you for supporting Roots of Change!",
+        description: "Your support makes a difference.",
         });
         recaptchaRef.current?.reset();
         form.reset();
     } catch (error) {
-       toast({
-        variant: "destructive",
-        title: "Submission Failed",
-        description: "There was a problem saving your donation. Please try again.",
-      });
+        toast({
+            variant: "destructive",
+            title: "Submission Failed",
+            description: "Could not record donation. Please try again.",
+        });
     } finally {
         setIsSubmitting(false);
     }
@@ -211,13 +186,13 @@ export default function GeneralDonationForm() {
     <Card className="w-full border-0 shadow-none rounded-none">
         <CardContent className="p-6 md:p-8">
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold font-headline">DONATE TO A CAUSE</h2>
-                <p className="text-muted-foreground">Your support makes a difference.</p>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT ROOTS OF CHANGE</h2>
+                <p className="text-muted-foreground">EMPOWER THROUGH EDUCATION</p>
             </div>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-
+                
                 <FormField
                     control={form.control}
                     name="nationality"
@@ -251,37 +226,13 @@ export default function GeneralDonationForm() {
 
                 <FormField
                     control={form.control}
-                    name="initiative"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>Select an Initiative</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Choose a cause to support" />
-                            </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                            {initiatives.map(item => (
-                                <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
-                            ))}
-                            </SelectContent>
-                        </Select>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
                     name="amount"
                     render={({ field }) => (
                     <FormItem className="space-y-3">
-                        <FormLabel>Select an Amount</FormLabel>
                         <FormControl>
                         <RadioGroup
                             onValueChange={field.onChange}
-                            defaultValue={field.value}
+                            value={field.value}
                             className="flex flex-wrap justify-center gap-4 md:gap-8"
                         >
                             {donationAmounts.map((item) => (
@@ -295,6 +246,7 @@ export default function GeneralDonationForm() {
                         </RadioGroup>
                         </FormControl>
                         <FormMessage />
+                        {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                     </FormItem>
                     )}
                 />
@@ -305,7 +257,7 @@ export default function GeneralDonationForm() {
                     render={({ field }) => (
                         <FormItem>
                         <FormControl>
-                            <Input placeholder="Or Enter a Custom Amount" {...field} />
+                            <Input placeholder="Other Amount" {...field} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>
@@ -375,6 +327,11 @@ export default function GeneralDonationForm() {
                                     </FormItem>
                                 )}
                             />
+                             <div className="flex items-center justify-center md:col-span-2">
+                                <p className="text-xs text-center text-muted-foreground mt-1">
+                                    PAN or AADHAR No. is Mandatory as per Law
+                                </p>
+                            </div>
                         </>
                     ) : (
                          <FormField
@@ -391,12 +348,8 @@ export default function GeneralDonationForm() {
                         />
                     )}
                 </div>
-                 {nationality === 'Indian' && (
-                    <p className="text-xs text-center text-muted-foreground -mt-2">
-                        PAN or AADHAR No. is Mandatory as per Law
-                    </p>
-                )}
-                 <FormField
+                
+                <FormField
                     control={form.control}
                     name="dob"
                     render={({ field }) => (
@@ -542,7 +495,7 @@ export default function GeneralDonationForm() {
                 />
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
-                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
+                   {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
                 </Button>
                 </form>
             </Form>
@@ -550,3 +503,5 @@ export default function GeneralDonationForm() {
     </Card>
   );
 }
+
+    
