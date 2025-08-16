@@ -17,8 +17,8 @@ export default function DetectBlogPage() {
         <article>
           <header className="relative w-full h-[580px]">
             <Image
-              src="https://placehold.co/1920x580.png"
-              alt="Rural women attending a health awareness session"
+              src="/images/banner/detect1.avif"
+              alt="Health awareness session for women"
               width={1920}
               height={580}
               className="brightness-50 object-cover w-full h-full"
