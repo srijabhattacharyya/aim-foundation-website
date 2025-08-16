@@ -25,16 +25,13 @@ export async function POST(req: NextRequest) {
       .map((r: Document) => r.content[0]?.text || '')
       .join('\n\n');
 
-    if (!context.trim()) {
-        return NextResponse.json({ answer: "I’m sorry, I don’t have that information yet." });
-    }
-
     // Fetch chat history and order it by timestamp
     const chatHistoryRef = adminDb.collection('chats').doc(chatId).collection('messages').orderBy('timestamp', 'asc');
     const historySnapshot = await chatHistoryRef.get();
     const chatHistory: Message[] = [];
     historySnapshot.forEach(doc => {
         const data = doc.data();
+        // Correctly push user and model messages into the history array
         if (data.question) {
           chatHistory.push({ role: 'user', content: [{ text: data.question }] });
         }

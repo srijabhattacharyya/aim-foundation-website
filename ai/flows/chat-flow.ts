@@ -34,6 +34,11 @@ export const chatFlow = ai.defineFlow(
   async (input) => {
     const { question, context, chatHistory } = input;
 
+    // If there's no context, return a default message without calling the AI
+    if (!context.trim()) {
+        return "I’m sorry, I don’t have that information yet.";
+    }
+
     const llmResponse = await ai.generate({
       system: systemPrompt.replace('{{{context}}}', context),
       history: [
