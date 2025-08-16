@@ -37,7 +37,7 @@ export default function KrishtiBlogPage() {
                 priority
                 />
             </div>
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/30 to-transparent p-8 md:p-16">
+            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
               <div className="container mx-auto px-4 md:px-6 text-white">
                 <Badge variant="secondary" className="mb-4">Blog Post</Badge>
                 <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
