@@ -19,9 +19,9 @@ export default function DetectBlogPage() {
             <Image
               src="https://placehold.co/1920x580.png"
               alt="Rural women attending a health awareness session"
-              fill
-              objectFit="cover"
-              className="brightness-50"
+              width={1920}
+              height={580}
+              className="brightness-50 object-cover w-full h-full"
               data-ai-hint="women health rural"
               priority
             />
