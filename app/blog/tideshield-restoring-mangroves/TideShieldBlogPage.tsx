@@ -72,7 +72,7 @@ export default function TideShieldBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Cyclones Amphan & Yaas: Turning Points for Bali Island</h2>
                 <p>
-                    Before Cyclone Amphan struck in May 2020, Bali Island’s mangrove belt was already thinning. Years of gradual erosion had weakened its natural defenses. Amphan arrived like a sledgehammer—winds topping 185 km/h, storm surges swallowing embankments, and thousands of trees uprooted overnight. Then, less than a year later, Cyclone Yaas delivered another blow. Communities barely recovering from one disaster were plunged back into crisis. Saline water flooded rice paddies, freshwater ponds turned brackish, and once-thriving fishing grounds suffered irreversible damage. The loss was not just ecological—it was deeply personal. Families who had lived on the island for generations faced the impossible choice of rebuilding or migrating. For many, the absence of mangroves meant living without nature’s most reliable shield.
+                    Before Cyclone Amphan struck in May 2020, Bali Island’s mangrove belt was already thinning. Years of gradual erosion had weakened its natural defences. Amphan arrived like a sledgehammer—winds topping 185 km/h, storm surges swallowing embankments, and thousands of trees uprooted overnight. Then, less than a year later, Cyclone Yaas delivered another blow. Communities barely recovering from one disaster were plunged back into crisis. Saline water flooded rice paddies, freshwater ponds turned brackish, and once-thriving fishing grounds suffered irreversible damage. The loss was not just ecological—it was deeply personal. Families who had lived on the island for generations faced the impossible choice of rebuilding or migrating. For many, the absence of mangroves meant living without nature’s most reliable shield.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Birth of TideShield</h2>
@@ -118,7 +118,7 @@ export default function TideShieldBlogPage() {
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Conclusion: Let Your Generosity Take Root</h2>
                 <p>
-                  The Sundarbans is a place where the line between land and water is ever-shifting, where life balances delicately between abundance and destruction. Mangroves are the quiet guardians of this world. And right now, they need us as much as we need them. TideShield is more than an environmental project—it’s a promise to future generations that we will not stand by as nature’s defenses crumble. With your help, the mangroves of Bali Island can rise again, stronger than before, ready to meet the tides head-on.
+                  The Sundarbans is a place where the line between land and water is ever-shifting, where life balances delicately between abundance and destruction. Mangroves are the quiet guardians of this world. And right now, they need us as much as we need them. TideShield is more than an environmental project—it’s a promise to future generations that we will not stand by as nature’s defences crumble. With your help, the mangroves of Bali Island can rise again, stronger than before, ready to meet the tides head-on.
                 </p>
 
                 <div className="text-center pt-8">

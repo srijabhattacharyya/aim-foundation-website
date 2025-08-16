@@ -58,7 +58,7 @@ export default function IgniteChangeBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Power of Grassroots Action</h2>
                 <p>
-                  Grassroots action is more than just community involvement — it is community leadership. It’s about people stepping up to take ownership of their challenges and solutions. Whether it’s a group of women starting a self-help group to improve livelihoods, youth launching an environmental awareness campaign, or a neighborhood banding together to clean up their local park, grassroots initiatives are driven by those who live and breathe the issues every day.
+                  Grassroots action is more than just community involvement — it is community leadership. It’s about people stepping up to take ownership of their challenges and solutions. Whether it’s a group of women starting a self-help group to improve livelihoods, youth launching an environmental awareness campaign, or a neighbourhood banding together to clean up their local park, grassroots initiatives are driven by those who live and breathe the issues every day.
                 </p>
                 <p>The power of grassroots action lies in its authenticity and immediacy:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">

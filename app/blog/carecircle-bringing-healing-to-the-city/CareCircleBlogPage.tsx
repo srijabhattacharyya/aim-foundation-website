@@ -61,12 +61,12 @@ export default function CareCircleBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Vision Behind CareCircle</h2>
                 <p>
-                  CareCircle was born out of a simple but profound belief: health is not a privilege—it is a shared right. In a city where gleaming hospitals stand just a few kilometers away from sprawling slums, the stark disparity in healthcare access is impossible to ignore.
+                  CareCircle was born out of a simple but profound belief: health is not a privilege—it is a shared right. In a city where gleaming hospitals stand just a few kilometres away from sprawling slums, the stark disparity in healthcare access is impossible to ignore.
                 </p>
                 <p>
                   Recognizing this gap, AIM Foundation envisioned CareCircle as a mobile, community-based healthcare network—one that removes the barriers of distance, affordability, and bureaucracy, and instead delivers essential medical services to the very doorsteps of those in need.
                 </p>
-                <p>The initiative operates through regular health camps set up in key outreach centers such as:</p>
+                <p>The initiative operates through regular health camps set up in key outreach centres such as:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Sarala Punyashram</li>
                   <li>Sarat Bose Road</li>
@@ -79,7 +79,7 @@ export default function CareCircleBlogPage() {
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Daily wage workers, who cannot afford to lose a day’s income for a hospital visit.</li>
                   <li>Senior citizens without financial security or family support.</li>
-                  <li>Migrants from rural Bengal and neighboring states, navigating life in an unfamiliar city.</li>
+                  <li>Migrants from rural Bengal and neighbouring states, navigating life in an unfamiliar city.</li>
                   <li>Single mothers, balancing multiple jobs while raising children.</li>
                   <li>Homeless individuals who have no permanent address to register at a clinic.</li>
                 </ul>
@@ -116,7 +116,7 @@ export default function CareCircleBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Conclusion: Be Part of the Circle</h2>
                 <p>
-                  In a world where healthcare inequality is a pressing challenge, CareCircle is proof that compassion, when combined with action, can transform lives. Every camp is a reminder that healing the city starts with healing its people—one neighborhood at a time. Join us. Be the reason someone receives the care they’ve been waiting for. Help us keep the circle unbroken.
+                  In a world where healthcare inequality is a pressing challenge, CareCircle is proof that compassion, when combined with action, can transform lives. Every camp is a reminder that healing the city starts with healing its people—one neighbourhood at a time. Join us. Be the reason someone receives the care they’ve been waiting for. Help us keep the circle unbroken.
                 </p>
 
                 <div className="text-center pt-8">

@@ -95,7 +95,7 @@ export default function KrishtiBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories That Inspire</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Meet Anjali – From Housewife to Entrepreneur</h3>
-                <p>Anjali had been stitching clothes for neighbors for years, but it was always for minimal payment. After training with SuiDhaga, she joined Krishti’s production unit. Today, she runs her own small clothing brand, supplying kurtas and saree blouses to boutiques in Kolkata. Her income now covers her children’s school fees entirely.</p>
+                <p>Anjali had been stitching clothes for neighbours for years, but it was always for minimal payment. After training with SuiDhaga, she joined Krishti’s production unit. Today, she runs her own small clothing brand, supplying kurtas and saree blouses to boutiques in Kolkata. Her income now covers her children’s school fees entirely.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Meet Parveen – A Master of Embroidery</h3>
                 <p>Parveen’s embroidery work is exquisite, but her reach was limited to local fairs. Through Krishti, she learned about product photography, pricing for online markets, and quality control for bulk orders. She now sells her work to buyers in Delhi, Mumbai, and even overseas.</p>
 

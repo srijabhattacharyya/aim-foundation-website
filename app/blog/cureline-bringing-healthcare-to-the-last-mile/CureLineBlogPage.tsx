@@ -50,7 +50,7 @@ export default function CureLineBlogPage() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <p>
-                  In a quiet corner of rural West Bengal, far from the bustling streets of Kolkata, an elderly woman sits on the steps of a village school, clutching her chest and breathing heavily. She has walked several kilometers from her home in the hopes of seeing a doctor. For weeks, the pain has kept her awake at night, but the nearest health center is more than 20 kilometers away. Transport is expensive, and she can’t afford to take a day’s wage loss just to stand in a long queue—if the doctor even happens to be there that day.
+                  In a quiet corner of rural West Bengal, far from the bustling streets of Kolkata, an elderly woman sits on the steps of a village school, clutching her chest and breathing heavily. She has walked several kilometres from her home in the hopes of seeing a doctor. For weeks, the pain has kept her awake at night, but the nearest health centre is more than 20 kilometres away. Transport is expensive, and she can’t afford to take a day’s wage loss just to stand in a long queue—if the doctor even happens to be there that day.
                 </p>
                 <p>
                   Today is different. A small team of doctors, nurses, and volunteers arrives in her village with medical kits, diagnostic tools, and a simple promise: “We are here for you.” This is CureLine, AIM Foundation’s frontline healthcare initiative, designed to bridge the gap between underserved communities and essential medical care.
@@ -82,7 +82,7 @@ export default function CureLineBlogPage() {
                     <li>General health check-ups and consultations – For both acute and long-standing health issues.</li>
                     <li>Diagnosis and treatment – For common illnesses like fever, infections, skin diseases, and seasonal ailments.</li>
                     <li>Chronic disease management – Regular monitoring of diabetes, hypertension, and other lifestyle-related conditions.</li>
-                    <li>Maternal and child healthcare – Antenatal care, nutrition advice, and pediatric consultations.</li>
+                    <li>Maternal and child healthcare – Antenatal care, nutrition advice, and paediatric consultations.</li>
                     <li>Free distribution of medicines and supplements – Ensuring affordability is never an obstacle.</li>
                     <li>Health education – Practical guidance on hygiene, nutrition, and disease prevention.</li>
                 </ul>

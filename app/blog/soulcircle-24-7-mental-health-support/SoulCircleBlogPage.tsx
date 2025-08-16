@@ -77,7 +77,7 @@ export default function SoulCircleBlogPage() {
                 </p>
                 <p>Key features include:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
-                    <li><strong>Private, Confidential Conversations:</strong> Users can talk to the AI counselor anytime, anywhere. Conversations are encrypted and kept strictly confidential.</li>
+                    <li><strong>Private, Confidential Conversations:</strong> Users can talk to the AI counsellor anytime, anywhere. Conversations are encrypted and kept strictly confidential.</li>
                     <li><strong>Multilingual Support:</strong> SoulCircle can converse in multiple languages, making emotional support more inclusive for non-English speakers.</li>
                     <li><strong>Mood Tracking & Journaling:</strong> Users can log their daily emotions, triggers, and experiences, helping them understand patterns in their mental well-being.</li>
                     <li><strong>Mindfulness & Stress-Relief Exercises:</strong> Guided breathing, meditation prompts, and grounding techniques help manage anxiety and stress in the moment.</li>
@@ -88,7 +88,7 @@ export default function SoulCircleBlogPage() {
                  <p>While SoulCircle is designed for everyone, it is especially helpful for:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li><strong>Students & Youth:</strong> Navigating academic pressure, peer relationships, and self-identity.</li>
-                  <li><strong>People in Remote or Underserved Areas:</strong> Where mental health resources are scarce or nonexistent.</li>
+                  <li><strong>People in Remote or Underserved Areas:</strong> Where mental health resources are scarce or non-existent.</li>
                   <li><strong>Those Hesitant to Seek Traditional Therapy:</strong> Due to stigma, cost, or fear of judgment.</li>
                   <li><strong>Individuals Needing Immediate Support:</strong> For moments when emotional distress can’t wait for an appointment.</li>
                   <li><strong>Professionals Facing Burnout:</strong> Looking for stress-management tools and a listening ear at any hour.</li>
@@ -100,7 +100,7 @@ export default function SoulCircleBlogPage() {
                 </p>
                 <p>SoulCircle’s AI is trained on evidence-based therapeutic approaches like:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
-                    <li>CBT (Cognitive Behavioral Therapy) techniques to challenge negative thinking patterns.</li>
+                    <li>CBT (Cognitive Behavioural Therapy) techniques to challenge negative thinking patterns.</li>
                     <li>Mindfulness-based strategies to help users stay grounded in the present.</li>
                     <li>Active listening frameworks to ensure responses are empathetic and validating.</li>
                 </ul>
@@ -119,14 +119,14 @@ export default function SoulCircleBlogPage() {
                 <p>Arjun works 12-hour shifts in a high-pressure corporate job. At night, he feels anxious and restless. Instead of bottling it up, he uses SoulCircle to journal his thoughts and practice guided breathing before bed.</p>
 
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Scenario 3 – A Young Person in a Remote Village</h3>
-                <p>Meena, living in a rural area with no access to a counselor, uses her basic smartphone and internet connection to chat with SoulCircle in her native language. She finds relief in being heard and learns self-help exercises she can practice daily.</p>
+                <p>Meena, living in a rural area with no access to a counsellor, uses her basic smartphone and internet connection to chat with SoulCircle in her native language. She finds relief in being heard and learns self-help exercises she can practice daily.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Science Behind Emotional Support</h2>
                 <p>Decades of research show that being listened to with empathy can significantly reduce emotional distress. While AI cannot replace deep therapeutic work, even short conversations where a person feels validated and understood can have measurable positive effects on mood and resilience.</p>
                 <p>In psychological terms, this works because:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>Venting emotions helps regulate the nervous system.</li>
-                    <li>Naming feelings reduces their intensity (a process known as affect labeling).</li>
+                    <li>Naming feelings reduces their intensity (a process known as affect labelling).</li>
                     <li>Receiving coping strategies increases a sense of control over one’s mental state.</li>
                 </ul>
                 <p>SoulCircle’s responses are designed to mirror these evidence-based principles.</p>

@@ -61,7 +61,7 @@ export default function NoChildLeftOfflineBlogPage() {
                     The concept of a “digital divide” refers to the gap between those who have ready access to computers, the internet, and digital knowledge, and those who do not. While India has made massive strides in mobile phone adoption and internet connectivity, the reality is that many rural and marginalized communities still struggle to access even the most basic digital tools.
                 </p>
                 <p>
-                    In areas such as Kolkata’s underserved neighborhoods, Rangakhila in Purba Bardhaman, and Dakshin Dhupjhora in Jalpaiguri, many children grow up without ever touching a computer. Even in urban areas, economic challenges often mean that families cannot afford laptops, broadband internet, or even basic mobile devices capable of educational use.
+                    In areas such as Kolkata’s underserved neighbourhoods, Rangakhila in Purba Bardhaman, and Dakshin Dhupjhora in Jalpaiguri, many children grow up without ever touching a computer. Even in urban areas, economic challenges often mean that families cannot afford laptops, broadband internet, or even basic mobile devices capable of educational use.
                 </p>
                  <p>
                     The consequences of this divide are severe. Children without digital skills are at a disadvantage in education, as many schools and colleges increasingly integrate online learning platforms into their curriculum. They face limited career options in an economy where most jobs—from banking to farming—require some form of digital competence. Most importantly, they risk being excluded from the conversations, resources, and opportunities that define 21st-century life.

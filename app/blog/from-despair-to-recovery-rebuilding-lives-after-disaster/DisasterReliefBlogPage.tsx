@@ -67,7 +67,7 @@ export default function DisasterReliefBlogPage() {
                   <li><strong>Clean Water and Hygiene Kits:</strong> We provide clean drinking water, purification tablets, and hygiene kits to prevent disease.</li>
                   <li><strong>Temporary Shelter and Essential Supplies:</strong> We distribute tarpaulins, tents, blankets, and clothing to offer safety and dignity.</li>
                   <li><strong>Mobile Medical Units and First Aid:</strong> Our teams offer first aid, essential medicines, and maternal healthcare in affected areas.</li>
-                  <li><strong>Psychosocial Support:</strong> Our counselors help survivors, especially children, process grief and trauma.</li>
+                  <li><strong>Psychosocial Support:</strong> Our counsellors help survivors, especially children, process grief and trauma.</li>
                 </ol>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Beyond Immediate Relief – Building Resilience</h2>

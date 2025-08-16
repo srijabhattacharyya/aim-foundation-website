@@ -88,7 +88,7 @@ export default function RootsOfChangeBlogPage() {
                 <p>We work with local organizations, women’s self-help groups, youth clubs, and municipal bodies to keep the momentum alive.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories from the Roots</h2>
-                <p>Change is best understood through stories. In a small village outside Kolkata, we met Anita, a mother of two who attended one of our waste management workshops. She learned how burning plastic releases toxic fumes that can harm her children’s lungs. Within weeks, she organized her neighborhood to collect and send recyclable waste to a nearby center.</p>
+                <p>Change is best understood through stories. In a small village outside Kolkata, we met Anita, a mother of two who attended one of our waste management workshops. She learned how burning plastic releases toxic fumes that can harm her children’s lungs. Within weeks, she organized her neighbourhood to collect and send recyclable waste to a nearby centre.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">How You Can Be Part of the Roots of Change</h2>
                 <p>Planting awareness is a community effort. Your donation funds workshops, educational materials, and sustainability projects in vulnerable communities.</p>

@@ -53,7 +53,7 @@ export default function ChildFirstBlogPage() {
                   In the bustling lanes of Rambagan and Sonagachi—two of Kolkata’s oldest red-light districts—life is a constant struggle for survival. For the children born here, innocence is often overshadowed by the harsh realities of poverty, stigma, and neglect. Many of these children live in cramped, unsafe quarters, surrounded by environments that threaten not only their physical health but also their emotional well-being. While the city around them continues to grow and modernize, they remain invisible to most. Their dreams are small—often just a hope for one full meal, freedom from recurring illness, and the comfort of someone who cares.
                 </p>
                 <p className="font-semibold text-primary text-center text-xl">
-                    This is where ChildFirst, an initiative by AIM Foundation, steps in. Guided by compassion and committed to justice, ChildFirst brings free pediatric and general healthcare camps directly to these communities—offering medical care, dignity, and hope to those who need it most.
+                    This is where ChildFirst, an initiative by AIM Foundation, steps in. Guided by compassion and committed to justice, ChildFirst brings free paediatric and general healthcare camps directly to these communities—offering medical care, dignity, and hope to those who need it most.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why ChildFirst Exists: The Urgent Need for Intervention</h2>
@@ -69,7 +69,7 @@ export default function ChildFirstBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">How ChildFirst Works: Health Camps That Change Lives</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">1. Accessible Healthcare in a Safe Space</h3>
-                <p>ChildFirst organizes regular pediatric and general health camps within walking distance of the children’s homes. These camps are set up in community halls, school courtyards, or NGO partner spaces—safe, familiar places where children and their caregivers feel welcome.</p>
+                <p>ChildFirst organizes regular paediatric and general health camps within walking distance of the children’s homes. These camps are set up in community halls, school courtyards, or NGO partner spaces—safe, familiar places where children and their caregivers feel welcome.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">2. Medical Services Provided</h3>
                 <p>At each camp, children receive:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">

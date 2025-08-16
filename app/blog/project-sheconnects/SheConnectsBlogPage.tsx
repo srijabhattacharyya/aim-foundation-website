@@ -52,7 +52,7 @@ export default function SheConnectsBlogPage() {
                 <p>Digital access is the modern equalizer. It bridges the gap between opportunity and reality. A woman with a smartphone and internet access can:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>Start and grow a business from home</li>
-                    <li>Market products to customers beyond her neighborhood</li>
+                    <li>Market products to customers beyond her neighbourhood</li>
                     <li>Access government schemes and benefits directly</li>
                     <li>Learn new skills that open income opportunities</li>
                     <li>Stay informed on health, education, and safety</li>

@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -64,7 +63,7 @@ export default function GreenRootsBlogPage() {
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Challenge: Where Do We Plant When There’s No Land?</h2>
-                 <p>In India, land is not just a piece of earth—it’s deeply tied to livelihoods, traditions, and identity. In many villages, every inch of land is privately owned or used for cultivation. Common lands that can host afforestation drives are scarce, and government-owned plots are often located far from population centers, making maintenance difficult.</p>
+                 <p>In India, land is not just a piece of earth—it’s deeply tied to livelihoods, traditions, and identity. In many villages, every inch of land is privately owned or used for cultivation. Common lands that can host afforestation drives are scarce, and government-owned plots are often located far from population centres, making maintenance difficult.</p>
                 <p>This poses a unique challenge to traditional reforestation projects:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Centralized plantations require large tracts of land, which are rare in densely populated areas.</li>
@@ -102,9 +101,9 @@ export default function GreenRootsBlogPage() {
                 <p>A village temple that had only concrete and tiles now boasts flowering trees that attract birds. Festivals are celebrated amidst natural beauty, and visitors are inspired to plant in their own spaces.</p>
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
-                  <h2 className="text-3xl font-bold font-headline text-foreground">A Future Stitched with Dignity and Dreams</h2>
-                  <p className="mt-4">The future of women’s empowerment lies not just in training but in turning that training into sustainable livelihoods. Krishti is proof that with the right resources, women can create their own opportunities and lift entire communities along with them.</p>
-                  <p className="mt-4 italic">When you donate to Krishti, you’re not giving charity—you’re making an investment. An investment in women’s potential, in handcrafted artistry, and in a future where every woman has the chance to earn with dignity.</p>
+                  <h2 className="text-3xl font-bold font-headline text-foreground">Let Your Support Take Root</h2>
+                  <p className="mt-4">Your contribution can help provide more saplings, expand outreach, and support communities in nurturing our planet. Donate today and help GreenRoots grow stronger, deeper, and greener—one tree, one family, one village at a time.</p>
+                  <p className="mt-4 italic">Every donation helps us reach more communities, host impactful seminars, and inspire lasting change. Together, let’s grow minds that protect the Earth. Donate today—and let your support become the root of real change.</p>
                   <Button asChild size="lg" className="mt-6 transition-transform transform hover:scale-105">
                     <Link href="/green-roots">Support GreenRoots Today</Link>
                   </Button>
