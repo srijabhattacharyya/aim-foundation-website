@@ -12,7 +12,7 @@ import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/InnocentSmilesDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
@@ -38,7 +38,7 @@ export default function InnocentSmilesClientPage() {
                   priority
                 />
               </div>
-              <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
+              <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
                 <div className="relative z-10 text-left">
                   <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                     Innocent Smiles
