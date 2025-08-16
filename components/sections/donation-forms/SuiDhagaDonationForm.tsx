@@ -4,7 +4,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "../../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,12 +12,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../ui/form";
-import { Input } from "../../ui/input";
-import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
-import { Checkbox } from "../../ui/checkbox";
-import { useToast } from "../../../hooks/use-toast";
-import { Card, CardContent } from "../../ui/card";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/hooks/use-toast";
+import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
@@ -161,19 +161,28 @@ export default function SuiDhagaDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'SuiDhaga' };
-      await addDonation(donationData);
-      toast({
-        title: "Thank you for supporting SuiDhaga!",
-        description: "Your support makes a difference.",
-      });
-      recaptchaRef.current?.reset();
-      form.reset();
+      const donationData = { ...values, cause: 'SuiDhaga', initiative: 'SuiDhaga' };
+      const result = await addDonation(donationData);
+
+      if (result.success) {
+        toast({
+            title: "Thank you for supporting SuiDhaga!",
+            description: "Your support makes a difference.",
+        });
+        recaptchaRef.current?.reset();
+        form.reset();
+      } else {
+        toast({
+            variant: "destructive",
+            title: "Submission Failed",
+            description: result.error || "Could not record donation. Please try again.",
+        });
+      }
     } catch (error) {
         toast({
             variant: "destructive",
             title: "Submission Failed",
-            description: "There was a problem saving your donation. Please try again.",
+            description: "An unexpected error occurred. Please try again.",
         });
     } finally {
         setIsSubmitting(false);
@@ -481,7 +490,7 @@ export default function SuiDhagaDonationForm() {
                       <FormControl>
                         <div className="flex justify-center">
                             <DynamicReCAPTCHA
-                              ref={recaptchaRef}
+                              ref={recaptchaRef as React.RefObject<any>}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
                             />
