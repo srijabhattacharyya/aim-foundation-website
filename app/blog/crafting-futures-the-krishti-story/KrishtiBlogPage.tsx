@@ -28,7 +28,7 @@ export default function KrishtiBlogPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
                 <Image
-                src="https://placehold.co/1920x580.png"
+                src="/images/banner/krishti1.avif"
                 alt="Women entrepreneurs working in a production unit"
                 width={1920}
                 height={580}
