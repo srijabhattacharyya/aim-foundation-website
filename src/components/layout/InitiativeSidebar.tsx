@@ -133,7 +133,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     The Quiet Revolution in Women’s Health
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Detect initiative", hint: "women health rural", description: "A health awareness session for rural women"};
+            image = { src: "/images/projects/detect/detect3.avif", alt: "Detect initiative", hint: "women health rural", description: "Cervical Cancer Awareness."};
         } else if (pathname.includes('/milieu')) {
             content = (
                 <Link href="/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu" className="text-muted-foreground hover:text-primary transition-colors">
@@ -182,14 +182,14 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Planting Hope, Growing Futures
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "GreenRoots initiative", hint: "community planting trees", description: "Community members planting saplings"};
+            image = { src: "/images/projects/sustainability/sustainability5.avif", alt: "GreenRoots initiative", hint: "community planting trees", description: "Sapling Distribution to community members"};
         } else if (pathname.includes('/empower-english')) {
             content = (
                 <Link href="/blog/empower-english-story" className="text-muted-foreground hover:text-primary transition-colors">
                     Confidence Begins with Conversation
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Empower English initiative", hint: "english speaking class", description: "Students practicing their English speaking skills"};
+            image = { src: "/images/projects/empower-english.avif", alt: "Empower English initiative", hint: "english speaking class", description: "Underprivileged students getting health drink during English classes"};
         } else if (pathname.includes('/sighthope')) {
              content = (
                 <Link href="/blog/restoring-sight-rekindling-dreams" className="text-muted-foreground hover:text-primary transition-colors">
@@ -210,7 +210,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Roots of Change: Planting Awareness, Growing a Greener Tomorrow
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Roots of Change initiative", hint: "environmental awareness education", description: "An interactive session on environmental conservation"};
+            image = { src: "/images/projects/sustainability/sustainability3.avif", alt: "Roots of Change initiative", hint: "environmental awareness education", description: "An interactive session on environmental conservation"};
         } else if (pathname.includes('/sheconnects')) {
             content = (
                 <Link href="/blog/project-sheconnects" className="text-muted-foreground hover:text-primary transition-colors">
@@ -231,7 +231,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     From Despair to Recovery: Rebuilding Lives After Disaster
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Disaster Management initiative", hint: "disaster relief team", description: "Our team providing relief during a natural disaster"};
+            image = { src: "/images/projects/relief/relief4.avif", alt: "Disaster relief efforts", hint: "disaster relief team", description: "Relief distribution in Sundarbans."};
         } else if (pathname.includes('/ignite-change-initiative')) {
             content = (
                 <Link href="/blog/igniting-change-transforming-communities" className="text-muted-foreground hover:text-primary transition-colors">
@@ -252,7 +252,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     CureLine: Bringing Healthcare to the Last Mile
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "CureLine initiative", hint: "rural healthcare camp", description: "A doctor examining a patient at a rural health camp"};
+            image = { src: "/images/projects/cureline/cureline2.avif", alt: "CureLine initiative", hint: "rural healthcare camp", description: "Health Camp at Bali Island, Sundarbans"};
         } else if (pathname.includes('/tideshield')) {
             content = (
                 <Link href="/blog/tideshield-restoring-mangroves" className="text-muted-foreground hover:text-primary transition-colors">
@@ -266,7 +266,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     ChildFirst: Bringing Health, Hope, and Dignity
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "ChildFirst initiative", hint: "child healthcare", description: "A doctor providing care to a young child"};
+            image = { src: "/images/projects/childfirst/childfirst3.avif", alt: "ChildFirst initiative", hint: "paediatric camp", description: "Specialised Paediatric Camp at Kolkata."};
         } else if (pathname.includes('/carecircle')) {
             content = (
                 <Link href="/blog/carecircle-bringing-healing-to-the-city" className="text-muted-foreground hover:text-primary transition-colors">
