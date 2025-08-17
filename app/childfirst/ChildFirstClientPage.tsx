@@ -59,7 +59,7 @@ export default function ChildFirstClientPage() {
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Every Child Deserves a Healthy Start.</h2>
                         <div className="text-lg text-muted-foreground space-y-4 text-justify">
                           <p>
-                            ChildFirst is a compassionate healthcare initiative offering pediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.
+                            ChildFirst is a compassionate healthcare initiative offering paediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.
                           </p>
                           <p>
                             These camps offer free consultations, essential medicines, and nutritional support, ensuring that every child receives the care they need to thrive.

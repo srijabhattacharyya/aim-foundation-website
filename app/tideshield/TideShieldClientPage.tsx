@@ -62,7 +62,7 @@ export default function TideShieldClientPage() {
                         </p>
                         <h3 className="text-2xl font-bold font-headline pt-4">Be the hope that coastal families are waiting for.</h3>
                          <p>
-                          Every contribution helps us provide more saplings, train local volunteers, and monitor the growth and survival of planted trees. With just a small donation, you can directly help protect coastal families, restore biodiversity, and rebuild nature’s defenses against climate disasters.
+                          Every contribution helps us provide more saplings, train local volunteers, and monitor the growth and survival of planted trees. With just a small donation, you can directly help protect coastal families, restore biodiversity, and rebuild nature’s defences against climate disasters.
                          </p>
                          <p>
                           Help us shield the Sundarbans. Donate to TideShield today—and let your generosity take root in the world’s most vital coastal forest.

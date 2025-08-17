@@ -73,7 +73,7 @@ export default function SightHopeClientPage() {
                       <li><strong>Referrals to partner hospitals for specialized care</strong></li>
                     </ul>
                     <p>
-                      Each camp is conducted by qualified ophthalmologists and healthcare staff from our partner hospitals, ensuring trusted expertise and continuity of care. Camps are held at accessible community hubs, including schools, health centers, and even temporary rural setups—bringing care directly to the doorstep of marginalized communities.
+                      Each camp is conducted by qualified ophthalmologists and healthcare staff from our partner hospitals, ensuring trusted expertise and continuity of care. Camps are held at accessible community hubs, including schools, health centres, and even temporary rural setups—bringing care directly to the doorstep of marginalized communities.
                     </p>
                     <p>
                       By restoring sight, SightHope restores much more:

@@ -102,7 +102,7 @@ export default function DetectBlogPage() {
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Real Stories. Real Impact.</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Sabita’s Second Chance</h3>
-                <p>Sabita Devi, a 39-year-old farm laborer, attended a Detect camp out of curiosity. During screening, early signs of cervical cell changes were spotted. She was referred for further tests and treated before cancer could take hold. “I didn’t know I was sick. They told me in time. I feel like I’ve been given a new life,” she says.</p>
+                <p>Sabita Devi, a 39-year-old farm labourer, attended a Detect camp out of curiosity. During screening, early signs of cervical cell changes were spotted. She was referred for further tests and treated before cancer could take hold. “I didn’t know I was sick. They told me in time. I feel like I’ve been given a new life,” she says.</p>
 
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Mina Becomes a Health Champion</h3>
                 <p>Mina, an ASHA worker, participated in a training session by AIM Foundation and CNCI. Armed with new knowledge, she began visiting homes in her village—explaining cervical cancer in simple terms and convincing women to attend camps. “Before, even I was afraid to talk about these things. Now I help other women understand their bodies,” Mina proudly shares.</p>
@@ -115,7 +115,7 @@ export default function DetectBlogPage() {
                 </ul>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Challenges We Face—and Why We Keep Going</h2>
-                <p>The path is not easy. Project Detect works against deep-rooted taboos, misinformation, logistical barriers, and restrictive gender norms. Yet, the team continues—village by village, camp by camp, fueled by the belief that every woman deserves to live a full, healthy life. And each time a woman walks in fearful, and walks out relieved and informed—we are reminded: This matters. This is saving lives.</p>
+                <p>The path is not easy. Project Detect works against deep-rooted taboos, misinformation, logistical barriers, and restrictive gender norms. Yet, the team continues—village by village, camp by camp, fuelled by the belief that every woman deserves to live a full, healthy life. And each time a woman walks in fearful, and walks out relieved and informed—we are reminded: This matters. This is saving lives.</p>
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">How You Can Help: Your ₹500 Could Save a Life</h2>

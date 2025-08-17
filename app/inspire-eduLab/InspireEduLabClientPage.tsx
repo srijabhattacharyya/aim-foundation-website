@@ -61,7 +61,7 @@ export default function InspireEduLabClientPage() {
                             Our approach bridges the gap between conventional education and modern technology, empowering students with the skills they need for tomorrow. By creating immersive and interactive learning experiences, Inspire EduLab fosters a love for learning and prepares students to thrive in a digital world. We believe in providing the tools that not only educate but also inspire innovation and critical thinking.
                         </p>
                         <p>
-                            The program focuses on creating a level playing field, ensuring that students from all backgrounds have access to high-quality digital education. From rural villages to urban centers, Inspire EduLab is dedicated to building a brighter, more equitable future through the power of technology.
+                            The program focuses on creating a level playing field, ensuring that students from all backgrounds have access to high-quality digital education. From rural villages to urban centres, Inspire EduLab is dedicated to building a brighter, more equitable future through the power of technology.
                         </p>
                         <h3 className="text-2xl font-bold font-headline pt-4">Help Spark a Child’s Curiosity</h3>
                         <p>

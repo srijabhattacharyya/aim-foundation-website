@@ -50,7 +50,7 @@ export default function OralScanBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">What Is OralScan?</h2>
                 <p>
-                  OralScan is AIM Foundation’s community-based program dedicated to the early detection of oral cancer through free screening camps. We focus on reaching populations that are at the highest risk yet have the least access to preventive care—small villages, low-income neighborhoods, and communities where tobacco use is culturally entrenched.
+                  OralScan is AIM Foundation’s community-based program dedicated to the early detection of oral cancer through free screening camps. We focus on reaching populations that are at the highest risk yet have the least access to preventive care—small villages, low-income neighbourhoods, and communities where tobacco use is culturally entrenched.
                 </p>
                 <p>
                   The program is not just about diagnosis—it’s about prevention, awareness, and follow-through. Our approach is simple yet powerful: bring the doctors to the people, educate them about risk factors, screen them in a comfortable and familiar setting, and connect those at risk to the next steps of care.
@@ -80,7 +80,7 @@ export default function OralScanBlogPage() {
                 <p>Each patient’s details are documented, and those with suspicious findings are referred for further tests.</p>
 
                 <h3 className="text-2xl font-semibold font-headline text-foreground">2. Awareness and Education</h3>
-                <p>We believe that knowledge is the first line of defense. Every camp includes a short awareness session that covers:</p>
+                <p>We believe that knowledge is the first line of defence. Every camp includes a short awareness session that covers:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>The dangers of tobacco in all forms—smoking, chewing, gutkha, khaini, etc.</li>
                   <li>The role of alcohol as a risk multiplier.</li>
@@ -90,13 +90,13 @@ export default function OralScanBlogPage() {
                 <p>We use posters, leaflets, and local language storytelling so that the message resonates deeply with the community.</p>
 
                 <h3 className="text-2xl font-semibold font-headline text-foreground">3. Counseling and Follow-Up</h3>
-                <p>Being told that you may have cancer is overwhelming. That’s why we provide on-the-spot counseling, explaining what the screening means, and guiding patients through the next steps. For high-risk or suspected cases, we coordinate referrals to government or charitable hospitals that can offer affordable or free treatment.</p>
+                <p>Being told that you may have cancer is overwhelming. That’s why we provide on-the-spot counselling, explaining what the screening means, and guiding patients through the next steps. For high-risk or suspected cases, we coordinate referrals to government or charitable hospitals that can offer affordable or free treatment.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Communities We Serve</h2>
                 <p>OralScan primarily targets:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Rural villages where healthcare infrastructure is minimal.</li>
-                  <li>Urban slums where tobacco use is high and dental care is almost nonexistent.</li>
+                  <li>Urban slums where tobacco use is high and dental care is almost non-existent.</li>
                   <li>Tribal belts where traditional chewing habits like betel nut make oral cancer more prevalent.</li>
                 </ul>
 
@@ -104,7 +104,7 @@ export default function OralScanBlogPage() {
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Ramesh’s Turning Point</h3>
                 <p>Ramesh, a 42-year-old tea stall owner in a West Bengal village, had been chewing tobacco for over 20 years. He ignored a small sore in his mouth until he attended an OralScan camp. Our doctors flagged it as a potential precancerous lesion. With our referral, Ramesh received treatment at a charitable hospital. Today, he is cancer-free and has quit tobacco completely.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Mita’s Second Chance</h3>
-                <p>Mita, a 35-year-old mother of two, attended our camp reluctantly after neighbors persuaded her. She had no symptoms but was screened as part of the general check-up. A tiny white patch was discovered—an early warning sign. Early treatment meant she avoided a major surgery, and she now works with OralScan as a community volunteer.</p>
+                <p>Mita, a 35-year-old mother of two, attended our camp reluctantly after neighbours persuaded her. She had no symptoms but was screened as part of the general check-up. A tiny white patch was discovered—an early warning sign. Early treatment meant she avoided a major surgery, and she now works with OralScan as a community volunteer.</p>
                 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Your Donation is Critical</h2>

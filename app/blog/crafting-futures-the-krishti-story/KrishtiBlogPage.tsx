@@ -111,7 +111,7 @@ export default function KrishtiBlogPage() {
                 <p>Every contribution directly fuels a woman’s path to independence. For example:</p>
                 <ul className="list-none space-y-2 pl-4">
                     <li><strong>₹1,000</strong> can provide high-quality fabric for one woman’s first product line.</li>
-                    <li><strong>₹5,000</strong> can cover the cost of a sewing machine for shared use.</li>
+                    <li><strong>₹8,000</strong> can cover the cost of a sewing machine for shared use.</li>
                     <li><strong>₹10,000</strong> can sponsor a marketing campaign to take products online.</li>
                 </ul>
                 

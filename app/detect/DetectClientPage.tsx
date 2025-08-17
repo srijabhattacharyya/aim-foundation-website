@@ -65,7 +65,7 @@ export default function DetectClientPage() {
                             Cervical cancer is one of the leading causes of cancer-related deaths among women in India, especially in rural areas where <strong>lack of awareness, stigma, and poor access to healthcare</strong> hinder early diagnosis. Project Detect addresses this gap through:
                           </p>
                           <ul className="list-disc list-inside space-y-2">
-                            <li><strong>Community-based screening camps</strong>, especially for women with limited access to gynecological care</li>
+                            <li><strong>Community-based screening camps</strong>, especially for women with limited access to gynaecological care</li>
                             <li><strong>Awareness sessions</strong> on HPV, cervical cancer symptoms, menstrual health, and preventive care</li>
                             <li><strong>Training and sensitization of ASHA and Anganwadi workers</strong> district-by-district, starting with Howrah, to ensure sustainable, local outreach</li>
                             <li><strong>Encouraging open dialogue</strong> to break myths and cultural barriers around reproductive health</li>
@@ -78,7 +78,7 @@ export default function DetectClientPage() {
                           </p>
                           <h3 className="text-2xl font-bold font-headline pt-4">Help Her Live—Not Just Survive</h3>
                           <p>
-                            In rural India, too many women are losing their lives to a disease that’s preventable. <strong>Your donation to Project Detect can fund life-saving cervical cancer screenings, awareness workshops, and training for frontline health workers.</strong> Just ₹500 can help screen a woman who’s never had access to gynecological care. With early detection comes hope, dignity, and a future. Stand with us to protect mothers, daughters, sisters—and <strong>ensure that no woman is left behind simply because she was unaware</strong>. Donate today and help us detect before it’s too late.
+                            In rural India, too many women are losing their lives to a disease that’s preventable. <strong>Your donation to Project Detect can fund life-saving cervical cancer screenings, awareness workshops, and training for frontline health workers.</strong> Just ₹500 can help screen a woman who’s never had access to gynaecological care. With early detection comes hope, dignity, and a future. Stand with us to protect mothers, daughters, sisters—and <strong>ensure that no woman is left behind simply because she was unaware</strong>. Donate today and help us detect before it’s too late.
                           </p>
                         </div>
                       </div>

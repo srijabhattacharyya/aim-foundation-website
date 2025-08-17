@@ -98,7 +98,7 @@ export default function InspireEduLabBlogPage() {
                 <p>Without exposure to these skills, children risk being excluded from opportunities that could change their lives. Inspire EduLab ensures they get that exposure, regardless of their socio-economic background.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Breaking Barriers Across Geographies</h2>
-                <p>One of the most powerful aspects of Inspire EduLab is its reach. Whether it’s a school in a Himalayan village, an urban slum learning center, or a tribal community school, Inspire EduLab creates a level playing field. Every student, no matter where they are, deserves access to the same quality of digital education.</p>
+                <p>One of the most powerful aspects of Inspire EduLab is its reach. Whether it’s a school in a Himalayan village, an urban slum learning centre, or a tribal community school, Inspire EduLab creates a level playing field. Every student, no matter where they are, deserves access to the same quality of digital education.</p>
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories of Change</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Rani’s First Science Experiment</h3>

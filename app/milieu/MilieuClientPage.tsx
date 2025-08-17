@@ -64,7 +64,7 @@ export default function MilieuClientPage() {
                                     Through interactive sessions, collaborative activities, and open conversations, children engage with one another in ways that go beyond textbooks. These exchanges create opportunities for students to see the world through different lenses—helping privileged children develop humility and social awareness, while underprivileged children gain confidence and a sense of inclusion.
                                 </p>
                                 <p>
-                                    Milieu helps to break down socio-economic barriers, replacing stereotypes with understanding and compassion. It instills values of respect, equality, and inclusivity in young minds at an early age—planting the seeds for a more united and empathetic future.
+                                    Milieu helps to break down socio-economic barriers, replacing stereotypes with understanding and compassion. It instils values of respect, equality, and inclusivity in young minds at an early age—planting the seeds for a more united and empathetic future.
                                 </p>
                                 <p>
                                     By promoting emotional intelligence, communication, and shared learning, Milieu builds a sense of community and connectedness, empowering all children involved to grow into open-minded, socially responsible individuals who value diversity and collective well-being.

@@ -58,7 +58,7 @@ export default function RootsOfChangeClientPage() {
                         Roots of Change is AIM Foundation’s flagship environmental education initiative, rooted in the belief that lasting transformation begins with knowledge. Our mission is to cultivate deep environmental awareness and nurture sustainable habits in communities that are most vulnerable to climate change.
                       </p>
                       <p>
-                        Through <strong>expert-led seminars, interactive workshops, and engaging educational materials</strong>, Roots of Change empowers students, local leaders, and everyday citizens to become informed stewards of the planet. We work closely with schools, community centers, and local organizations to spark conversations, build understanding, and inspire action—from reducing plastic use to protecting local ecosystems.
+                        Through <strong>expert-led seminars, interactive workshops, and engaging educational materials</strong>, Roots of Change empowers students, local leaders, and everyday citizens to become informed stewards of the planet. We work closely with schools, community centres, and local organizations to spark conversations, build understanding, and inspire action—from reducing plastic use to protecting local ecosystems.
                       </p>
                       <p>
                         This is more than just education—it’s about planting the seeds of responsibility and hope, and watching them grow into a greener, more resilient tomorrow. By starting at the grassroots level, we aim to build a future where environmental care is second nature, and every individual sees themselves as part of the solution.

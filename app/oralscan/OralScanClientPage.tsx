@@ -66,7 +66,7 @@ export default function OralScanClientPage() {
                       <li><strong>Free, non-invasive oral cancer screenings</strong> conducted by healthcare professionals.</li>
                       <li><strong>Public awareness campaigns</strong> to educate on the risk factors, including tobacco and alcohol consumption.</li>
                       <li><strong>Guidance on oral hygiene</strong> practices to promote long-term health.</li>
-                      <li><strong>Counseling and support</strong> for individuals identified with potential risks.</li>
+                      <li><strong>•	Counselling and support</strong> for individuals identified with potential risks.</li>
                       <li><strong>Referrals for further diagnosis and treatment</strong>, ensuring a continuum of care.</li>
                     </ul>
                     <p>

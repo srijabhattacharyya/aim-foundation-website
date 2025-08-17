@@ -56,7 +56,7 @@ export default function SuiDhagaClientPage() {
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">Threads of Hope, Dreams in Every Stitch</h2>
                     <div className="text-lg text-muted-foreground space-y-4 text-justify">
                       <p>
-                        SuiDhaga is AIM Foundation’s skill development initiative dedicated to empowering women from underserved communities. By offering structured training in tailoring and embroidery, this program helps women turn time-honored domestic crafts into meaningful livelihood opportunities.
+                        SuiDhaga is AIM Foundation’s skill development initiative dedicated to empowering women from underserved communities. By offering structured training in tailoring and embroidery, this program helps women turn time-honoured domestic crafts into meaningful livelihood opportunities.
                       </p>
                       <p>
                         Many of these women have immense potential but lack access to formal employment or financial resources. SuiDhaga bridges that gap by providing them with practical, hands-on instruction, experienced trainers, and supportive learning environments. The focus is not on entrepreneurship but on enabling immediate, income-generating skills that women can use to support their families—whether by stitching from home or working in local tailoring units.

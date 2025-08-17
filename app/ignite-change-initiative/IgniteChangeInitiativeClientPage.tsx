@@ -55,7 +55,7 @@ export default function IgniteChangeInitiativeClientPage() {
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Be the Spark. Fuel the Movement.</h2>
                         <div className="text-lg text-muted-foreground space-y-4 text-justify">
                         <p>
-                            The Ignite Change Initiative is our dynamic platform for mobilizing communities and fostering a culture of proactive social responsibility. This initiative is designed to support a wide range of grassroots projects, from local awareness campaigns to volunteer-driven community improvements. It's about empowering individuals to become agents of change in their own neighborhoods.
+                            The Ignite Change Initiative is our dynamic platform for mobilizing communities and fostering a culture of proactive social responsibility. This initiative is designed to support a wide range of grassroots projects, from local awareness campaigns to volunteer-driven community improvements. It's about empowering individuals to become agents of change in their own neighbourhoods.
                         </p>
                         <p>
                             We believe that small actions, when multiplied by many, can lead to transformative outcomes. Ignite Change provides the resources, mentorship, and framework for passionate individuals and groups to launch and sustain their own social good projects.
@@ -68,7 +68,7 @@ export default function IgniteChangeInitiativeClientPage() {
                             <li>A network of like-minded changemakers to share ideas and resources.</li>
                         </ul>
                         <p>
-                            Whether it's a neighborhood cleanup drive, a local literacy program, or a campaign for public health, Ignite Change is here to help turn passion into impactful action. We are dedicated to building a more engaged, compassionate, and proactive society from the ground up.
+                            Whether it's a neighbourhood cleanup drive, a local literacy program, or a campaign for public health, Ignite Change is here to help turn passion into impactful action. We are dedicated to building a more engaged, compassionate, and proactive society from the ground up.
                         </p>
                         <h3 className="text-2xl font-bold font-headline pt-4">Fuel a Grassroots Movement</h3>
                         <p>

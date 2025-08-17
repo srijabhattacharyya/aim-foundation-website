@@ -63,7 +63,7 @@ export default function EduAccessBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">EduAccess: A Bridge Between Talent and Opportunity</h2>
                 <p>EduAccess was born from a simple question: <strong>What if distance didn’t determine destiny?</strong></p>
-                <p>From our Kolkata studio, experienced teachers conduct live, interactive classes for students in rural schools and learning centers. Using high-speed internet, audio-visual equipment, and real-time communication tools, we deliver lessons that are:</p>
+                <p>From our Kolkata studio, experienced teachers conduct live, interactive classes for students in rural schools and learning centres. Using high-speed internet, audio-visual equipment, and real-time communication tools, we deliver lessons that are:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li><strong>Engaging</strong> – with visuals, examples, and real-world connections.</li>
                   <li><strong>Interactive</strong> – students can ask questions, solve problems together, and share their ideas.</li>
@@ -108,7 +108,7 @@ export default function EduAccessBlogPage() {
                 <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>Soham logs in for his EduAccess class three times a week.</li>
                     <li>He participates in group discussions about global warming, watching videos that explain climate change in ways a textbook never could.</li>
-                    <li>He asks questions to a teacher sitting 300 kilometers away in Kolkata — and gets an immediate, thoughtful response.</li>
+                    <li>He asks questions to a teacher sitting 300 kilometres away in Kolkata — and gets an immediate, thoughtful response.</li>
                     <li>His confidence has soared, and he now dreams of becoming an environmental scientist.</li>
                 </ul>
 
@@ -173,7 +173,7 @@ export default function EduAccessBlogPage() {
                 </div>
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Join Us</h2>
-                <p>The distance between a remote village and a thriving city may be hundreds of kilometers — but with EduAccess, it’s just a click away.</p>
+                <p>The distance between a remote village and a thriving city may be hundreds of kilometres — but with EduAccess, it’s just a click away.</p>
                 <p>Be the reason a child discovers their potential. Be the link between talent and opportunity.</p>
                 <p><strong>Donate today and help us bring classrooms without borders to the children who need them most.</strong></p>
                 

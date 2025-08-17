@@ -71,13 +71,13 @@ export default function CureLineClientPage() {
                       <li>Health education sessions on hygiene, nutrition, and disease prevention</li>
                     </ul>
                     <p>
-                      Camps are conducted at local community hubs such as schools, village centers, and makeshift clinics—often in challenging terrains like the Sundarbans delta, the tribal villages near Gorumara, and flood-prone areas.
+                      Camps are conducted at local community hubs such as schools, village centres, and makeshift clinics—often in challenging terrains like the Sundarbans delta, the tribal villages near Gorumara, and flood-prone areas.
                     </p>
                     <p>
                       In times of crisis, such as cyclones, floods, or epidemics, CureLine plays a crucial role in offering emergency medical relief, first aid, and recovery care. It works in tandem with local volunteers, health workers, and panchayat leaders to ensure every camp is tailored to the community’s specific health needs.
                     </p>
                     <p>
-                      More than just treatment, CureLine builds trust. It promotes regular health-seeking behavior, improves awareness, and helps communities take ownership of their well-being. With each outreach, the initiative strengthens the belief that quality healthcare is a right—not a privilege.
+                      More than just treatment, CureLine builds trust. It promotes regular health-seeking behaviour, improves awareness, and helps communities take ownership of their well-being. With each outreach, the initiative strengthens the belief that quality healthcare is a right—not a privilege.
                     </p>
                     <h3 className="text-2xl font-bold font-headline pt-4">Be the Lifeline Where Healthcare Doesn’t Reach</h3>
                     <p>
