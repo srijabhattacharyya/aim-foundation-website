@@ -10,7 +10,7 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
         {/* Mobile Banner */}
         <div className="block md:hidden">
           <Image
-            src="/images/banner/home.png"
+            src="/images/banner/home-mobile.avif"
             alt="Home Banner"
             width={1920}
             height={1080}
