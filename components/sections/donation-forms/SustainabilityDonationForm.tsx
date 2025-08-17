@@ -164,22 +164,14 @@ export default function SustainabilityDonationForm() {
     setIsSubmitting(true);
     try {
         const donationData = { ...values, cause: 'Sustainability', initiative: 'Sustainability', createdAt: serverTimestamp() };
-        const result = await addDonation(donationData);
+        await addDoc(collection(db, "donations"), donationData);
         
-        if (result.success) {
-            toast({
-                title: "Thank you for supporting our Sustainability Initiatives!",
-                description: "Your donation helps nurture our planet.",
-            });
-            recaptchaRef.current?.reset();
-            form.reset();
-        } else {
-            toast({
-                variant: "destructive",
-                title: "Submission Failed",
-                description: result.error || "Could not record donation. Please try again.",
-            });
-        }
+        toast({
+            title: "Thank you for supporting our Sustainability Initiatives!",
+            description: "Your donation helps nurture our planet.",
+        });
+        recaptchaRef.current?.reset();
+        form.reset();
     } catch (error) {
         toast({
             variant: "destructive",
@@ -490,7 +482,7 @@ export default function SustainabilityDonationForm() {
                       <FormControl>
                         <div className="flex justify-center">
                             <DynamicReCAPTCHA
-                              ref={recaptchaRef as React.RefObject<any>}
+                              ref={recaptchaRef}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
                             />
@@ -510,3 +502,4 @@ export default function SustainabilityDonationForm() {
     </Card>
   );
 }
+

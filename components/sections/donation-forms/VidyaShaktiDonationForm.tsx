@@ -21,7 +21,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDonation } from "@/app/actions/donationActions";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
@@ -162,8 +163,8 @@ export default function VidyaShaktiDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-        const donationData = { ...values, cause: 'VidyaShakti' };
-        await addDonation(donationData);
+        const donationData = { ...values, cause: 'VidyaShakti', createdAt: serverTimestamp() };
+        await addDoc(collection(db, "donations"), donationData);
         toast({
         title: "Thank you for supporting VidyaShakti!",
         description: "Your support makes a difference.",
@@ -504,3 +505,4 @@ export default function VidyaShaktiDonationForm() {
 }
 
     
+
