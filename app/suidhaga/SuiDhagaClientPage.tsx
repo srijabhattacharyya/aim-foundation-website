@@ -11,7 +11,7 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SuiDhagaDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SuiDhagaDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
@@ -26,12 +26,13 @@ export default function SuiDhagaClientPage() {
         <section className="relative w-full">
             <div className="relative w-full">
                 <Image
-                    src="https://placehold.co/1920x580.png"
+                    src="/images/banner/suidhaga.avif"
                     alt="SuiDhaga Banner"
                     width={1920}
                     height={580}
                     className="w-full h-auto object-cover"
                     data-ai-hint="women tailoring skills"
+                    priority
                 />
             </div>
             <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
