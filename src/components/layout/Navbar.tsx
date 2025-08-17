@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -77,7 +78,6 @@ const navLinks = [
         href: '/healthcare-initiatives', 
         subItems: [
           { href: '/cureline', label: 'CureLine' },
-          { href: '/surgireach', label: 'SurgiReach' },
           { href: '/carecircle', label: 'CareCircle' },
           { href: '/childfirst', label: 'ChildFirst' },
           { href: '/detect', label: 'Detect' },

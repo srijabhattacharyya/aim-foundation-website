@@ -8,7 +8,6 @@ import Image from "next/image";
 
 const healthcareInitiatives = [
     { href: '/cureline?from=healthcare', label: 'CureLine' },
-    { href: '/surgireach?from=healthcare', label: 'SurgiReach' },
     { href: '/carecircle?from=healthcare', label: 'CareCircle' },
     { href: '/childfirst?from=healthcare', label: 'ChildFirst' },
     { href: '/detect?from=healthcare', label: 'Detect' },
@@ -170,13 +169,6 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                 </Link>
             );
              image = { src: "https://placehold.co/600x400.png", alt: "Krishti initiative", hint: "women entrepreneurship", description: "An empowered woman showcasing her handcrafted products"};
-        } else if (pathname.includes('/surgireach')) {
-            content = (
-                <Link href="/blog/surgery-shouldnt-be-a-luxury" className="text-muted-foreground hover:text-primary transition-colors">
-                    Surgery Shouldn’t Be a Luxury
-                </Link>
-            );
-            image = { src: "https://placehold.co/600x400.png", alt: "SurgiReach initiative", hint: "operating room surgery", description: "A successful life-saving surgery through SurgiReach"};
         } else if (pathname.includes('/oralscan')) {
             content = (
                 <Link href="/blog/screening-today-for-a-healthier-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
