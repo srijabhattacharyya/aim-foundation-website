@@ -18,7 +18,7 @@ export default function RootsOfChangeBlogPage() {
           <header className="relative w-full">
             <div className="relative w-full h-auto">
                 <Image
-                src="https://placehold.co/1920x580.png"
+                src="/images/banner/roots-of-change1.avif"
                 alt="Community discussing environmental issues"
                 width={1920}
                 height={580}
