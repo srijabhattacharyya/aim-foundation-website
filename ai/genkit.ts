@@ -1,6 +1,6 @@
 
 import { genkit, GenerationCommon, ModelArgument } from 'genkit';
-import { googleAI, GoogleAIVectorStore } from '@genkit-ai/googleai';
+import { googleAI } from '@genkit-ai/googleai';
 import { configureGenkit } from 'genkit';
 
 configureGenkit({
