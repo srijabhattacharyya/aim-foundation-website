@@ -29,7 +29,7 @@ import { fetchDonations, deleteDonation } from '@/app/actions/adminActions';
 import type { Donation } from '@/app/actions/adminActions';
 
 const causes = [
-    "General Fund", "CureLine", "SurgiReach", "CareCircle", "ChildFirst", "Detect", "SightHope",
+    "General Fund", "CureLine", "CareCircle", "ChildFirst", "Detect", "SightHope",
     "OralScan", "CycleSafe", "SoulCircle", "Innocent Smiles", "Inspire EduLab", "EduAccess",
     "Empower English", "DigiEmpower", "SheConnects", "Milieu", "VidyaShakti", "SuiDhaga",
     "Krishti", "GreenRoots", "TideShield", "Roots of Change", "Relief to the Underprivileged",
