@@ -142,7 +142,7 @@ const DynamicForestCleaningDonationForm = dynamic(
 
 // Cause definitions
 const mainCauses = [
-  { value: "general", label: "General Donation to support any cause" },
+  { value: "general", label: "General Fund" },
   { value: "educational", label: "Educational Initiatives" },
   { value: "healthcare", label: "Healthcare Initiatives" },
   { value: "gender-equality", label: "Gender Equality Initiatives" },

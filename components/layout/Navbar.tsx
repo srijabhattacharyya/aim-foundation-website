@@ -117,6 +117,7 @@ const navLinks = [
           { href: '/green-roots', label: 'GreenRoots' },
           { href: '/tideshield', label: 'TideShield' },
           { href: '/roots-of-change', label: 'Roots of Change' },
+          { href: '/forest-cleaning', label: 'Forest Cleaning' },
         ]
       },
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
