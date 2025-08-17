@@ -189,7 +189,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Confidence Begins with Conversation
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Empower English initiative", hint: "english speaking class", description: "Students practicing their English speaking skills"};
+            image = { src: "/images/projects/empower-english.avif", alt: "Empower English initiative", hint: "english class", description: "Underprivileged students getting health drink during English classes"};
         } else if (pathname.includes('/sighthope')) {
              content = (
                 <Link href="/blog/restoring-sight-rekindling-dreams" className="text-muted-foreground hover:text-primary transition-colors">
