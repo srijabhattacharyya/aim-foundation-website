@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -32,7 +31,7 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
             priority
           />
         </div>
-        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/30 to-transparent">
+        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
           <div className="container mx-auto px-4 md:px-6 text-white pb-8 md:pb-16">
             <div className="text-center">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
