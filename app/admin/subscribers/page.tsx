@@ -45,19 +45,27 @@ export default function SubscribersPage() {
     }, []);
 
     const handleDelete = async (id: string) => {
-        const result = await deleteSubscriber(id);
-        if (result.success) {
-          const newSubscribers = subscribers.filter((subscriber) => subscriber.id !== id);
-          setSubscribers(newSubscribers);
-          toast({
-            title: "Subscriber deleted",
-            description: "The subscriber has been successfully removed.",
-          });
+        try {
+            const result = await deleteSubscriber(id);
+            if (result.success) {
+              const newSubscribers = subscribers.filter((subscriber) => subscriber.id !== id);
+              setSubscribers(newSubscribers);
+              toast({
+                title: "Subscriber deleted",
+                description: "The subscriber has been successfully removed.",
+              });
+            } else {
+                 toast({
+                    variant: "destructive",
+                    title: "Deletion failed",
+                    description: result.error || "Could not delete the subscriber.",
+                });
+            }
         } catch (e: any) {
             toast({
                 variant: "destructive",
                 title: "Deletion failed",
-                description: result.error || "Could not delete the subscriber.",
+                description: "An unexpected error occurred.",
             });
         }
     };
