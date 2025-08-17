@@ -1,5 +1,5 @@
 
-import { genkit, GenerationCommon, ModelArgument } from 'genkit';
+import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/googleai';
 import { configureGenkit } from 'genkit';
 
