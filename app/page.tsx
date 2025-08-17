@@ -1,5 +1,6 @@
 
-import type { Metadata } from 'next';
+'use client';
+
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/sections/Hero";
@@ -9,14 +10,6 @@ import AboutUs from '../components/sections/AboutUs';
 import Impact from '../components/sections/Impact';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
-
-export const metadata: Metadata = {
-  title: 'AIM Foundation | Leading NGO Uplifting the Underprivileged',
-  description: 'We empower lives with education, healthcare, and sustainable initiatives, building stronger communities and a brighter future for those who need it most.',
-  alternates: {
-    canonical: '/',
-  },
-};
 
 const LatestAnnouncements = dynamic(() => import('@/components/sections/LatestAnnouncements'), { loading: () => <Skeleton className="h-[500px] w-full" /> });
 const DonateSection = dynamic(() => import('@/components/sections/DonateSection'), { loading: () => <Skeleton className="h-[250px] w-full" /> });
