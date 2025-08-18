@@ -65,7 +65,7 @@ const initiatives = [
   {
     title: "Milieu",
     description: "Fosters holistic development by connecting children from diverse backgrounds. Through interactive sessions, students learn together, building empathy, respect, and social awareness.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/milieu/milieu1.avif",
     hint: "children collaboration",
     link: "/milieu?from=educational",
     specialText: "(Learn Beyond Boundaries)"
