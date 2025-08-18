@@ -154,7 +154,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Redefining Classrooms for a Digital Tomorrow
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Students engaged in a smart classroom"};
+            image = { src: "/images/projects/edulab/edulab1.avif", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Students engaged in a smart classroom"};
         } else if (pathname.includes('/eduaccess')) {
              content = (
                 <Link href="/blog/teaching-beyond-boundaries" className="text-muted-foreground hover:text-primary transition-colors">
