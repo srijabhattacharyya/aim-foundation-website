@@ -154,7 +154,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Redefining Classrooms for a Digital Tomorrow
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Students engaged in a smart classroom"};
+            image = { src: "/images/projects/edulab/edulab1.avif", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Students engaged in a smart classroom"};
         } else if (pathname.includes('/eduaccess')) {
              content = (
                 <Link href="/blog/teaching-beyond-boundaries" className="text-muted-foreground hover:text-primary transition-colors">
@@ -189,7 +189,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Confidence Begins with Conversation
                 </Link>
             );
-            image = { src: "/images/projects/empower-english.avif", alt: "Empower English initiative", hint: "english speaking class", description: "Underprivileged students getting health drink during English classes"};
+            image = { src: "/images/projects/empower-english/empower-english.avif", alt: "Empower English initiative", hint: "english speaking class", description: "Underprivileged students getting health drink during English classes"};
         } else if (pathname.includes('/sighthope')) {
              content = (
                 <Link href="/blog/restoring-sight-rekindling-dreams" className="text-muted-foreground hover:text-primary transition-colors">
