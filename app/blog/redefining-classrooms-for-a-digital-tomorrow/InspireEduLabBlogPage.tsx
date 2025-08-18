@@ -15,17 +15,19 @@ export default function InspireEduLabBlogPage() {
       <Navbar />
       <main className="flex-grow">
         <article>
-          <header className="relative w-full h-[580px]">
-            <Image
-              src="https://placehold.co/1920x580.png"
-              alt="A smart classroom with students engaged"
-              fill
-              objectFit="cover"
-              className="brightness-50"
-              data-ai-hint="smart classroom children"
-              priority
-            />
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-8 md:p-16">
+          <header className="relative w-full h-auto">
+            <div className="relative w-full">
+                <Image
+                    src="https://placehold.co/1920x580.png"
+                    alt="A smart classroom with students engaged"
+                    width={1920}
+                    height={580}
+                    className="w-full h-auto object-cover"
+                    data-ai-hint="smart classroom children"
+                    priority
+                />
+            </div>
+            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/30 to-transparent p-8 md:p-16">
               <div className="container mx-auto px-4 md:px-6 text-white">
                 <Badge variant="secondary" className="mb-4">Blog Post</Badge>
                 <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
