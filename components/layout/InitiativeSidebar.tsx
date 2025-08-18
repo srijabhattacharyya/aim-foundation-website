@@ -154,7 +154,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Redefining Classrooms for a Digital Tomorrow
                 </Link>
             );
-            image = { src: "/images/projects/edulab/edulab1.avif", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Students engaged in a smart classroom"};
+            image = { src: "/images/projects/edulab/edulab1.avif", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Smart Classroom"};
         } else if (pathname.includes('/eduaccess')) {
              content = (
                 <Link href="/blog/teaching-beyond-boundaries" className="text-muted-foreground hover:text-primary transition-colors">
@@ -259,7 +259,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     TideShield: Restoring the Mangrove Heartbeat of the Sundarbans
                 </Link>
             );
-            image = { src: "/images/projects/sustainability/sustainability1.avif", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
+            image = { src: "https://placehold.co/600x400.png", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
         } else if (pathname.includes('/childfirst')) {
             content = (
                 <Link href="/blog/childfirst-health-hope-dignity" className="text-muted-foreground hover:text-primary transition-colors">
