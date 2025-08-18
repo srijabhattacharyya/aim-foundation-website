@@ -26,7 +26,7 @@ export default function TideShieldClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/banner/tideshield.avif"
+              src="/images/banner/tide-shield.avif"
               alt="TideShield Banner"
               width={1920}
               height={580}
