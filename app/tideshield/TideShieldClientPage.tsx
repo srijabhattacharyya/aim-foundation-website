@@ -11,7 +11,7 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/TideShieldDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/TideShieldDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
@@ -26,7 +26,7 @@ export default function TideShieldClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/tideshield.avif"
               alt="TideShield Banner"
               width={1920}
               height={580}
