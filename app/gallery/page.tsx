@@ -8,19 +8,19 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const galleryImages = [
   {
-    id: '41',
+    id: '42',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'community event'
   },
   {
-    id: '40',
+    id: '41',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'volunteer work'
   },
   {
-    id: '45',
+    id: '40',
     imageUrl: 'https://placehold.co/600x400.png',
     description: 'A new gallery image placeholder.',
     hint: 'children smiling'
@@ -39,9 +39,9 @@ const galleryImages = [
   },
   {
     id: '37',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'sustainability project'
+    imageUrl: '/images/projects/innocent-smiles/innocent-smiles2.avif',
+    description: 'Childern are in art class.',
+    hint: 'innocent smiles'
   },
   {
     id: '36',

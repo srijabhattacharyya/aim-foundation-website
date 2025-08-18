@@ -17,8 +17,8 @@ const initiatives = [
   {
     title: "Innocent Smiles",
     description: "Empowers children by combining education with art, dance, and music, nurturing both creativity and academics. It offers a supportive space where young minds gain confidence, express themselves, and grow holistically.",
-    image: "https://placehold.co/600x400.png",
-    hint: "classroom children",
+    image: "/images/projects/innocent-smiles/innocent-smiles2.avif",
+    hint: "children art class",
     link: "/innocent-smiles?from=educational",
     specialText: "(Art & Music Class)"
   },
