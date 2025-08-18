@@ -140,7 +140,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Nurturing a Kinder Tomorrow: The Story of Milieu
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Milieu initiative", hint: "children collaboration", description: "Children from diverse backgrounds learning together"};
+            image = { src: "/images/projects/milieu/milieu1.avif", alt: "Milieu initiative", hint: "children collaboration", description: "Children from diverse backgrounds learning together"};
         } else if (pathname.includes('/suidhaga')) {
             content = (
                 <Link href="/blog/threading-changes-the-suidhaga-story" className="text-muted-foreground hover:text-primary transition-colors">
@@ -154,7 +154,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Redefining Classrooms for a Digital Tomorrow
                 </Link>
             );
-            image = { src: "/images/projects/edulab/edulab1.avif", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Students engaged in a smart classroom"};
+            image = { src: "/images/projects/edulab/edulab1.avif", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Smart Classroom"};
         } else if (pathname.includes('/eduaccess')) {
              content = (
                 <Link href="/blog/teaching-beyond-boundaries" className="text-muted-foreground hover:text-primary transition-colors">
