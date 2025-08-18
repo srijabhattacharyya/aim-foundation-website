@@ -189,7 +189,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Confidence Begins with Conversation
                 </Link>
             );
-            image = { src: "/images/projects/empower-english/empower-english.avif", alt: "Empower English initiative", hint: "english class", description: "Underprivileged students getting health drink during English classes"};
+            image = { src: "/images/projects/empower-english/empower-english.avif", alt: "Empower English initiative", hint: "english speaking class", description: "Underprivileged students getting health drink during English classes"};
         } else if (pathname.includes('/sighthope')) {
              content = (
                 <Link href="/blog/restoring-sight-rekindling-dreams" className="text-muted-foreground hover:text-primary transition-colors">
@@ -259,7 +259,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     TideShield: Restoring the Mangrove Heartbeat of the Sundarbans
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
+            image = { src: "/images/projects/sustainability/sustainability1.avif", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
         } else if (pathname.includes('/childfirst')) {
             content = (
                 <Link href="/blog/childfirst-health-hope-dignity" className="text-muted-foreground hover:text-primary transition-colors">
