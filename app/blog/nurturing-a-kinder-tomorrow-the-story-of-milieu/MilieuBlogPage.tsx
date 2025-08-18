@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -18,7 +17,7 @@ export default function MilieuBlogPage() {
           <header className="relative w-full">
             <div className="relative w-full h-auto">
                 <Image
-                    src="https://placehold.co/1920x580.png"
+                    src="/images/banner/milieu.avif"
                     alt="Diverse group of children learning together"
                     width={1920}
                     height={580}
