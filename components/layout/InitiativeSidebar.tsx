@@ -140,7 +140,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Nurturing a Kinder Tomorrow: The Story of Milieu
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Milieu initiative", hint: "children collaboration", description: "Children from diverse backgrounds learning together"};
+            image = { src: "/images/projects/milieu/milieu1.avif", alt: "Milieu initiative", hint: "children collaboration", description: "Children from diverse backgrounds learning together"};
         } else if (pathname.includes('/suidhaga')) {
             content = (
                 <Link href="/blog/threading-changes-the-suidhaga-story" className="text-muted-foreground hover:text-primary transition-colors">
@@ -259,7 +259,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     TideShield: Restoring the Mangrove Heartbeat of the Sundarbans
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
+            image = { src: "/images/projects/sustainability/sustainability1.avif", alt: "TideShield initiative", hint: "mangrove restoration", description: "Mangrove Plantation in Sundarbans."};
         } else if (pathname.includes('/childfirst')) {
             content = (
                 <Link href="/blog/childfirst-health-hope-dignity" className="text-muted-foreground hover:text-primary transition-colors">
