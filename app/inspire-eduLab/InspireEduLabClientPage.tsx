@@ -34,12 +34,12 @@ export default function InspireEduLabClientPage() {
               data-ai-hint="modern classroom technology"
             />
           </div>
-          <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
-            <div className="relative z-10 text-left">
-              <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+          <div className="absolute inset-0 flex items-end justify-start p-8 md:p-12">
+            <div className="relative z-10 text-left text-white">
+              <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.8)]">
                 Inspire EduLab
               </h1>
-              <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+              <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.8)]">
                 Transforming Learning, Empowering Minds
               </p>
             </div>
