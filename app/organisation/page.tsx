@@ -25,7 +25,7 @@ export default function OrganisationPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/banner/organisation.jpg"
+              src="/images/banner/organisation.avif"
               alt="Our Organisation Banner"
               width={1920}
               height={334}
