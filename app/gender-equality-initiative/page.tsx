@@ -26,14 +26,14 @@ const initiatives = [
   {
     title: "CycleSafe",
     description: "empowers underprivileged adolescent girls in and around Kolkata by promoting menstrual hygiene, cervical health awareness, and reproductive well-being. Through monthly sanitary napkin distribution and educational sessions, the initiative breaks taboos, builds knowledge, and fosters confidence—ensuring dignity, health, and equal opportunities for young girls to thrive.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/cyclesafe/cyclesafe3.avif",
     hint: "menstrual hygiene",
     link: "/cyclesafe?from=gender-equality"
   },
   {
     title: "Detect",
     description: "empowers rural women through cervical health education and cancer screenings. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/detect/detect2.avif",
     hint: "mother child health",
     link: "/detect?from=gender-equality"
   },
