@@ -20,7 +20,7 @@ export default function SheConnectsBlogPage() {
               src="https://placehold.co/1920x580.png"
               alt="Women learning digital skills"
               fill
-              objectFit="cover"
+              style={{objectFit: "cover"}}
               className="brightness-50"
               data-ai-hint="women technology"
               priority

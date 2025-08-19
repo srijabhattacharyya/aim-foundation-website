@@ -31,7 +31,7 @@ export default function EmpowerEnglishBlogPage() {
               src="https://placehold.co/1920x580.png"
               alt="Students in an english speaking class"
               fill
-              objectFit="cover"
+              style={{objectFit: "cover"}}
               className=""
               data-ai-hint="english speaking class"
               priority
@@ -145,3 +145,4 @@ export default function EmpowerEnglishBlogPage() {
     </div>
   );
 }
+

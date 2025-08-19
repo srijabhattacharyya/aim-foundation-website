@@ -20,7 +20,7 @@ export default function EduAccessBlogPage() {
               src="https://placehold.co/1920x580.png"
               alt="An online class in a rural setting"
               fill
-              objectFit="cover"
+              style={{objectFit: "cover"}}
               className="brightness-50"
               data-ai-hint="online learning rural"
               priority
@@ -197,3 +197,4 @@ export default function EduAccessBlogPage() {
     </div>
   );
 }
+

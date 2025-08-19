@@ -31,7 +31,7 @@ export default function VidyaShaktiBlogPage() {
               src="https://placehold.co/1920x580.png"
               alt="A student using a learning app on a smartphone"
               fill
-              objectFit="cover"
+              style={{objectFit: "cover"}}
               className="brightness-50"
               data-ai-hint="learning app student"
               priority
@@ -133,3 +133,4 @@ export default function VidyaShaktiBlogPage() {
     </div>
   );
 }
+

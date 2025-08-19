@@ -31,7 +31,7 @@ export default function NoChildLeftOfflineBlogPage() {
               src="https://placehold.co/1920x580.png"
               alt="Children learning on computers"
               fill
-              objectFit="cover"
+              style={{objectFit: "cover"}}
               className="brightness-50"
               data-ai-hint="digital literacy children"
               priority
@@ -123,3 +123,4 @@ export default function NoChildLeftOfflineBlogPage() {
     </div>
   );
 }
+

@@ -31,7 +31,7 @@ export default function IgniteChangeBlogPage() {
               src="https://placehold.co/1920x580.png"
               alt="Community members working together on a project"
               fill
-              objectFit="cover"
+              style={{objectFit: "cover"}}
               className="brightness-50"
               data-ai-hint="community action group"
               priority
@@ -135,3 +135,4 @@ export default function IgniteChangeBlogPage() {
     </div>
   );
 }
+

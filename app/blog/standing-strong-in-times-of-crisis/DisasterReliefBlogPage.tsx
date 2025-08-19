@@ -31,7 +31,7 @@ export default function DisasterReliefBlogPage() {
               src="https://placehold.co/1920x580.png"
               alt="Disaster relief efforts"
               fill
-              objectFit="cover"
+              style={{objectFit: "cover"}}
               className="brightness-50"
               data-ai-hint="disaster relief team"
               priority
