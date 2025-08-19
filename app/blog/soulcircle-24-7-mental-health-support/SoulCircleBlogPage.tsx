@@ -27,7 +27,7 @@ export default function SoulCircleBlogPage() {
         <article>
           <header className="relative w-full h-auto">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/soulcircle.avif"
               alt="A person finding mental peace"
               width={1920}
               height={580}
