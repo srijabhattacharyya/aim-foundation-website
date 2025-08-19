@@ -25,18 +25,16 @@ export default function SoulCircleBlogPage() {
       <Navbar />
       <main className="flex-grow">
         <article>
-          <header className="relative w-full h-auto">
-            <div className="relative w-full">
-              <Image
-                src="/images/banner/soulcircle.avif"
-                alt="A person finding mental peace"
-                width={1920}
-                height={580}
-                className="w-full h-auto object-cover"
-                data-ai-hint="mental health peace"
-                priority
-              />
-            </div>
+          <header className="relative w-full h-[580px]">
+            <Image
+              src="/images/banner/soulcircle.avif"
+              alt="A person finding mental peace"
+              fill
+              style={{objectFit: "cover"}}
+              className=""
+              data-ai-hint="mental health peace"
+              priority
+            />
             <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-8 md:p-16">
               <div className="container mx-auto px-4 md:px-6 text-white">
                 <Badge variant="secondary" className="mb-4">Blog Post</Badge>
