@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -26,17 +25,19 @@ export default function DisasterReliefBlogPage() {
       <Navbar />
       <main className="flex-grow">
         <article>
-          <header className="relative w-full h-[580px]">
-            <Image
-              src="https://placehold.co/1920x580.png"
-              alt="Disaster relief efforts"
-              fill
-              objectFit="cover"
-              className=""
-              data-ai-hint="disaster relief team"
-              priority
-            />
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/30 to-transparent p-8 md:p-16">
+          <header className="relative w-full h-auto">
+            <div className="relative w-full">
+                <Image
+                src="/images/banner/awareness.avif"
+                alt="Disaster relief efforts"
+                width={1920}
+                height={580}
+                className="w-full h-auto object-cover"
+                data-ai-hint="disaster relief team"
+                priority
+                />
+            </div>
+            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
               <div className="container mx-auto px-4 md:px-6 text-white">
                 <Badge variant="secondary" className="mb-4">Blog Post</Badge>
                 <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
@@ -67,7 +68,7 @@ export default function DisasterReliefBlogPage() {
                   <li><strong>Clean Water and Hygiene Kits:</strong> We provide clean drinking water, purification tablets, and hygiene kits to prevent disease.</li>
                   <li><strong>Temporary Shelter and Essential Supplies:</strong> We distribute tarpaulins, tents, blankets, and clothing to offer safety and dignity.</li>
                   <li><strong>Mobile Medical Units and First Aid:</strong> Our teams offer first aid, essential medicines, and maternal healthcare in affected areas.</li>
-                  <li><strong>Psychosocial Support:</strong> Our counsellors help survivors, especially children, process grief and trauma.</li>
+                  <li><strong>Psychosocial Support:</strong> Our counselors help survivors, especially children, process grief and trauma.</li>
                 </ol>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Beyond Immediate Relief – Building Resilience</h2>
