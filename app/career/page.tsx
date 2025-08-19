@@ -21,7 +21,7 @@ export default function CareerPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x334.png"
+              src="/images/banner/pg.avif"
               alt="Careers at AIM Foundation"
               width={1920}
               height={334}
