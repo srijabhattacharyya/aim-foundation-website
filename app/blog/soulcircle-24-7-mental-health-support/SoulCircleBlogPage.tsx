@@ -25,13 +25,13 @@ export default function SoulCircleBlogPage() {
       <Navbar />
       <main className="flex-grow">
         <article>
-          <header className="relative w-full h-[580px]">
+          <header className="relative w-full h-auto">
             <Image
-              src="/images/banner/soulcircle.avif"
+              src="https://placehold.co/1920x580.png"
               alt="A person finding mental peace"
               width={1920}
               height={580}
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-cover"
               data-ai-hint="mental health peace"
               priority
             />
