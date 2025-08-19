@@ -14,7 +14,7 @@ export default function VolunteeringPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/banner/volunteer.jpg"
+              src="/images/banner/volunteer.avif"
               alt="Volunteers Banner"
               width={1920}
               height={334}
