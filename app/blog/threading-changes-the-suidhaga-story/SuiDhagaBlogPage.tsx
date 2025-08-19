@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -15,17 +14,19 @@ export default function SuiDhagaBlogPage() {
       <Navbar />
       <main className="flex-grow">
         <article>
-          <header className="relative w-full h-[580px]">
-            <Image
-              src="https://placehold.co/1920x580.png"
-              alt="Women learning to sew with sewing machines"
-              fill
-              objectFit="cover"
-              className="brightness-50"
-              data-ai-hint="women tailoring"
-              priority
-            />
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-8 md:p-16">
+          <header className="relative w-full h-auto">
+            <div className="relative w-full">
+                <Image
+                    src="/images/banner/suidhaga.avif"
+                    alt="Women learning to sew with sewing machines"
+                    width={1920}
+                    height={580}
+                    className="w-full h-auto object-cover"
+                    data-ai-hint="women tailoring"
+                    priority
+                />
+            </div>
+            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
               <div className="container mx-auto px-4 md:px-6 text-white">
                 <Badge variant="secondary" className="mb-4">Blog Post</Badge>
                 <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
@@ -122,7 +123,7 @@ export default function SuiDhagaBlogPage() {
                 <h2 className="text-3xl font-bold font-headline text-foreground">Real Stories of Threaded Change</h2>
                 
                 <blockquote className="border-l-4 border-primary pl-4 italic">
-                  <p>“I never thought I could earn. Now I do. My children are proud of me. I feel proud of myself too.”</p>
+                  <p>“I never thought I could earn. Now I do. My children are proud of me. I feel I am proud of myself too.”</p>
                   <cite className="not-italic font-semibold">- Rina, 28, Homemaker turned Earner</cite>
                 </blockquote>
                 <blockquote className="border-l-4 border-primary pl-4 italic">
