@@ -26,7 +26,7 @@ export default function SoulCircleClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/soulcircle.avif"
               alt="SoulCircle Banner"
               width={1920}
               height={580}
