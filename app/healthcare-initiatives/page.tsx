@@ -86,7 +86,7 @@ export default function HealthCareInitiativesPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/banner/health.jpg"
+              src="/images/banner/health.avif"
               alt="Healthcare Initiatives Banner"
               width={1920}
               height={580}
