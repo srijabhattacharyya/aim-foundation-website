@@ -26,7 +26,7 @@ export default function IgniteChangeInitiativeClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/banner/awareness.jpg"
+              src="/images/banner/awareness.avif"
               alt="Ignite Change Initiative Banner"
               width={1920}
               height={580}
