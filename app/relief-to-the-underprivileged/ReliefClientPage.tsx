@@ -27,12 +27,12 @@ export default function ReliefClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/banner/relief.jpg"
+              src="/images/banner/relief.avif"
               alt="Relief for the Underprivileged Banner"
               width={1920}
               height={580}
               className="w-full h-auto object-cover"
-              data-ai-hint="community support food"
+              data-ai-hint="community relief support"
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
