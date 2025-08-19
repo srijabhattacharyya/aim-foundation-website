@@ -33,11 +33,14 @@ export default function IndividualDonationClientPage() {
               data-ai-hint="volunteer children education"
             />
           </div>
-          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
-            <div className="relative z-10 text-center">
+          <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
+            <div className="relative z-10 text-left">
               <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Give hope. Share smiles.
               </h1>
+              <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                Donate Generously
+              </p>
             </div>
           </div>
         </section>
