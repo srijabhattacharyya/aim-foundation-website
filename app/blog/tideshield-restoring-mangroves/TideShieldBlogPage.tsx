@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -29,7 +28,7 @@ export default function TideShieldBlogPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
                 <Image
-                src="/images/banner/tide-shield1.avif"
+                src="/images/banner/tide-shield.avif"
                 alt="Mangrove forest in the Sundarbans"
                 width={1920}
                 height={580}
