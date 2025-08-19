@@ -29,9 +29,9 @@ export default function SoulCircleBlogPage() {
             <Image
               src="/images/banner/soulcircle.avif"
               alt="A person finding mental peace"
-              fill
-              style={{objectFit: "cover"}}
-              className=""
+              width={1920}
+              height={580}
+              className="w-full h-full object-cover"
               data-ai-hint="mental health peace"
               priority
             />
