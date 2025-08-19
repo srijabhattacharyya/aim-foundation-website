@@ -45,7 +45,7 @@ export default function SustainabilityInitiativesPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/banner/environment.jpg"
+              src="/images/banner/environment.avif"
               alt="Sustainability Initiatives Banner"
               width={1920}
               height={580}
