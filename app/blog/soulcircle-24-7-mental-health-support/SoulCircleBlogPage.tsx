@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -27,7 +28,7 @@ export default function SoulCircleBlogPage() {
         <article>
           <header className="relative w-full h-auto">
             <Image
-              src="/images/banner/soulcircle.avif"
+              src="/images/banner/soulcircles.avif"
               alt="A person finding mental peace"
               width={1920}
               height={580}
