@@ -29,7 +29,7 @@ export default function ForestCleaningBlogPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
                 <Image
-                src="/images/banner/tide-shield1.avif"
+                src="/images/banner/roots-of-change1.avif"
                 alt="Volunteers cleaning a forest"
                 width={1920}
                 height={580}
