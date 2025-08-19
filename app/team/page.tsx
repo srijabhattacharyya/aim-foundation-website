@@ -14,7 +14,7 @@ export default function TeamPage() {
         <section className="relative w-full">
             <div className="relative w-full">
                 <Image
-                src="/images/team/team-banner.jpg"
+                src="/images/banner/team.avif"
                 alt="Our Team Banner"
                 width={1920}
                 height={334}
