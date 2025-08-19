@@ -26,7 +26,7 @@ export default function DisasterManagementClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="/images/banner/disuster.jpg"
+              src="/images/banner/disuster.avif"
               alt="Disaster Management Banner"
               width={1920}
               height={580}
