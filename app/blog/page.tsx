@@ -19,7 +19,7 @@ const blogPosts = [
   {
     slug: 'soulcircle-24-7-mental-health-support',
     title: 'SoulCircle: 24/7 Compassionate Mental Health Support',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/soulcircle.avif',
     hint: 'mental health peace',
     excerpt: 'Learn how our SoulCircle app offers AI-powered, accessible, and compassionate mental health support.',
     date: 'April 9, 2025',
