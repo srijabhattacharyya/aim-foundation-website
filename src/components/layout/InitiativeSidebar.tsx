@@ -315,7 +315,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
             <Card className="overflow-hidden relative">
                  <Image src={image.src} alt={image.alt} width={600} height={400} data-ai-hint={image.hint} className="w-full h-auto object-cover" />
                  {image.description && (
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-center text-sm">
+                    <div className="absolute bottom-0 left-0 right-0 p-2 text-center text-sm">
                         <p>{image.description}</p>
                     </div>
                 )}
