@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -16,7 +17,7 @@ export default function ReliefBlogPage() {
         <article>
           <header className="relative w-full h-[580px]">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/relief.avif"
               alt="Community receiving relief supplies"
               fill
               objectFit="cover"
