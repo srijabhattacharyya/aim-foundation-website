@@ -33,7 +33,7 @@ const initiatives = [
   {
     title: "ChildFirst",
     description: "A compassionate healthcare initiative offering pediatric and general health camps for children of sex workers. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health and dignity.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/childfirst/childfirst3.avif",
     hint: "mental health support",
     link: "/childfirst?from=childcare"
   },
