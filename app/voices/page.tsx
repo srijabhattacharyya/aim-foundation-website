@@ -8,8 +8,35 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Voices of Change - AIM Foundation',
-  description: 'Read stories of change, impact reports, and updates from AIM Foundation.',
+  title: 'Voices of Change Stories | AIM Foundation India Impact',
+  description: 'Explore Voices of Change by AIM Foundation—real stories of hope, resilience, and impact in education, healthcare, women empowerment, and environment.',
+  keywords: ["AIM Foundation Voices of Change", "AIM Foundation impact stories", "NGO success stories India", "social change stories AIM Foundation", "AIM Foundation real impact", "NGO community transformation India", "education healthcare empowerment AIM Foundation", "women empowerment stories NGO", "environmental change AIM Foundation", "grassroots stories of hope India"],
+  robots: 'index, follow',
+  authors: [{ name: 'AIM Foundation' }],
+  openGraph: {
+    type: 'website',
+    url: 'https://aimindia.org.in/voices',
+    title: 'Voices of Change Stories | AIM Foundation India Impact',
+    description: 'Explore Voices of Change by AIM Foundation—real stories of hope, resilience, and impact in education, healthcare, women empowerment, and environment.',
+    images: [
+      {
+        url: 'https://aimindia.org.in/home.avif',
+        width: 1200,
+        height: 630,
+        alt: 'Voices of Change by AIM Foundation',
+      },
+    ],
+    siteName: 'AIM Foundation',
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@aimindiango',
+    url: 'https://aimindia.org.in/voices',
+    title: 'Voices of Change Stories | AIM Foundation India Impact',
+    description: 'Explore Voices of Change by AIM Foundation—real stories of hope, resilience, and impact in education, healthcare, women empowerment, and environment.',
+    images: ['https://aimindia.org.in/home.avif'],
+  },
   alternates: {
     canonical: '/voices',
   },
@@ -211,8 +238,30 @@ const blogPosts = [
 ];
 
 export default function VoicesPage() {
+    const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIM Foundation",
+    "url": "https://aimindia.org.in/",
+    "logo": "https://aimindia.org.in/logo.png",
+    "sameAs": [
+        "https://www.facebook.com/aimindiango/",
+        "https://x.com/aimindiango",
+        "https://www.instagram.com/aimfoundation_ngo/",
+        "https://www.linkedin.com/in/aim-foundation-ngo/",
+        "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "Explore Voices of Change by AIM Foundation—real stories of hope, resilience, and impact in education, healthcare, women empowerment, and environment."
+    };
   return (
     <div className="flex flex-col min-h-screen">
+       <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaMarkup),
+        }}
+        key="org-schema-voices"
+        />
       <Navbar />
       <main className="flex-grow">
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
