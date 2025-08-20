@@ -5,7 +5,7 @@ import SoulCircleClientPage from './SoulCircleClientPage';
 export const metadata: Metadata = {
   title: 'SoulCircle by AIM Foundation: 24/7 Mental Health Support',
   description: 'AIM Foundation’s SoulCircle offers 24/7 AI-powered emotional support, mood tracking, and mindfulness tools to make mental health care accessible to all.',
-  keywords: ['AIM Foundation SoulCircle', '24/7 mental health support', 'AI mental health app', 'emotional support app', 'mindfulness tools', 'mood tracking app', 'accessible mental healthcare', 'mental wellness NGO'],
+  keywords: ['AIM Foundation', 'SoulCircle', 'AI mental health support', '24/7 emotional care', 'online counselling India', 'AI therapy app', 'stress and anxiety relief', 'mental health chatbot', 'mood tracking app', 'mindfulness AI', 'youth mental health support', 'digital emotional wellness'],
   authors: [{ name: 'AIM Foundation' }],
   robots: 'index, follow',
   openGraph: {
