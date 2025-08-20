@@ -1,15 +1,42 @@
 
 import type { Metadata } from 'next';
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: 'Childcare Initiatives - AIM Foundation',
-  description: 'Our initiatives are focused on creating a safe, healthy, and inspiring start for every child.',
+  title: 'Childcare Programs by AIM Foundation: Nurturing Futures',
+  description: 'AIM Foundation’s Childcare Programs support children through education, creativity, health camps, and safe spaces, fostering growth, dignity, and well-being.',
+  keywords: ['AIM Foundation', 'childcare programs', 'Innocent Smiles AIM Foundation', 'Milieu AIM Foundation', 'ChildFirst AIM Foundation', 'children education Kolkata NGO', 'pediatric health camps', 'creative learning for children', 'NGO child support India', 'holistic child development', 'safe space for children', 'support for children of sex workers'],
+  authors: [{ name: 'AIM Foundation' }],
+  robots: 'index, follow',
+  openGraph: {
+    type: 'website',
+    url: 'https://aimindia.org.in/childcare-initiatives',
+    title: 'Childcare Programs by AIM Foundation: Nurturing Futures',
+    description: 'AIM Foundation’s Childcare Programs support children through education, creativity, health camps, and safe spaces, fostering growth, dignity, and well-being.',
+    images: [
+      {
+        url: 'https://aimindia.org.in/home.avif',
+        width: 1200,
+        height: 630,
+        alt: 'AIM Foundation Childcare Programs',
+      },
+    ],
+    siteName: 'AIM Foundation',
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@aimindiango',
+    url: 'https://aimindia.org.in/childcare-initiatives',
+    title: 'Childcare Programs by AIM Foundation: Nurturing Futures',
+    description: 'AIM Foundation’s Childcare Programs support children through education, creativity, health camps, and safe spaces, fostering growth, dignity, and well-being.',
+    images: ['https://aimindia.org.in/home.avif'],
+  },
   alternates: {
     canonical: '/childcare-initiatives',
   },
@@ -40,7 +67,31 @@ const initiatives = [
 ];
 
 export default function ChildcareInitiativesPage() {
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "AIM Foundation’s Childcare Programs support children through education, creativity, health camps, and safe spaces, fostering growth, dignity, and well-being."
+  };
+
   return (
+    <>
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaMarkup),
+        }}
+        key="org-schema-childcare"
+      />
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
@@ -103,5 +154,6 @@ export default function ChildcareInitiativesPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }
