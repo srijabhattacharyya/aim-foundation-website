@@ -33,6 +33,14 @@ const blogPosts = [
     date: 'February 2, 2025',
   },
   {
+    slug: 'forest-cleaning-restoring-natural-habitats',
+    title: 'Restoring Natural Habitats: The Forest Cleaning Initiative',
+    image: '/images/projects/forest-cleaning/forest-cleaning1.avif',
+    hint: 'forest cleanup',
+    excerpt: "Learn how AIM Foundation's Forest Cleaning initiative mobilizes volunteers to remove waste and restore the health of our forests.",
+    date: 'January 15, 2025',
+  },
+  {
     slug: 'carecircle-bringing-healing-to-the-city',
     title: 'CareCircle: Bringing Healing to the Heart of the City',
     image: '/images/projects/carecircle/carecircle2.avif',
