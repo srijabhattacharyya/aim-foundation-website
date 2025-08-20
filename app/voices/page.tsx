@@ -35,7 +35,7 @@ const blogPosts = [
   {
     slug: 'forest-cleaning-restoring-natural-habitats',
     title: 'Restoring Natural Habitats: The Forest Cleaning Initiative',
-    image: '/images/projects/forest-cleaning/forest-cleaning1.avif',
+    image: '/images/projects/forest-cleaning/forest-cleaning2.avif',
     hint: 'forest cleanup',
     excerpt: "Learn how AIM Foundation's Forest Cleaning initiative mobilizes volunteers to remove waste and restore the health of our forests.",
     date: 'January 15, 2025',
