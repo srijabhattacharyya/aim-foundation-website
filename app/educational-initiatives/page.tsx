@@ -6,8 +6,35 @@ import { Button } from "../../components/ui/button";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Educational Initiatives - AIM Foundation',
-  description: 'Our educational programs are designed to inspire, empower, and create opportunities for every learner.',
+  title: 'AIM Foundation | Educational Initiatives for Brighter Futures',
+  description: 'Explore AIM Foundation’s educational initiatives empowering children and youth through digital literacy, English training, e-learning, creativity, and inclusive growth.',
+  keywords: ['AIM Foundation education', 'NGO education projects', 'digital literacy NGO', 'spoken English training Kolkata', 'e-learning Sundarbans', 'child development NGO', 'inclusive education West Bengal'],
+  robots: 'index, follow',
+  authors: [{ name: 'AIM Foundation' }],
+  openGraph: {
+    type: 'website',
+    url: 'https://aimindia.org.in/educational-initiatives',
+    title: 'AIM Foundation | Educational Initiatives for Brighter Futures',
+    description: 'Explore AIM Foundation’s educational initiatives empowering children and youth through digital literacy, English training, e-learning, creativity, and inclusive growth.',
+    images: [
+        {
+            url: 'https://aimindia.org.in/home.avif',
+            width: 1200,
+            height: 630,
+            alt: 'AIM Foundation Educational Initiatives',
+        },
+    ],
+    siteName: 'AIM Foundation',
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    url: 'https://aimindia.org.in/educational-initiatives',
+    title: 'AIM Foundation | Educational Initiatives for Brighter Futures',
+    description: 'Explore AIM Foundation’s educational initiatives empowering children and youth through digital literacy, English training, e-learning, creativity, and inclusive growth.',
+    images: ['https://aimindia.org.in/home.avif'],
+    site: '@aimindiango',
+  },
   alternates: {
     canonical: '/educational-initiatives',
   },
@@ -81,8 +108,30 @@ const initiatives = [
 ];
 
 export default function EducationalInitiativesPage() {
+    const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
+        "https://www.facebook.com/aimindiango/",
+        "https://x.com/aimindiango",
+        "https://www.instagram.com/aimfoundation_ngo/",
+        "https://www.linkedin.com/in/aim-foundation-ngo/",
+        "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "Explore AIM Foundation’s educational initiatives empowering children and youth through digital literacy, English training, e-learning, creativity, and inclusive growth."
+    };
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaMarkup),
+        }}
+        key="org-schema-edu"
+      />
       <section className="relative w-full">
         <div className="relative w-full">
           <Image
