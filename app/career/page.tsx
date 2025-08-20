@@ -6,15 +6,63 @@ import Image from "next/image";
 import HREmail from "@/components/layout/HREmail";
 
 export const metadata: Metadata = {
-  title: 'Careers - AIM Foundation',
-  description: 'Join AIM Foundation and be a catalyst for change. Explore career opportunities with purpose.',
+  title: 'Careers & Opportunities at AIM Foundation India',
+  description: 'Join AIM Foundation to create impact in education, healthcare, women empowerment, environment, and disaster relief. Build a career with purpose and value.',
+  keywords: ['AIM Foundation careers', 'NGO jobs Kolkata', 'NGO career opportunities India', 'AIM Foundation recruitment', 'social sector jobs India', 'non profit jobs Kolkata', 'work with AIM Foundation', 'NGO internships and careers', 'AIM Foundation HR', 'NGO employment opportunities India', 'jobs in education NGO India', 'healthcare NGO jobs Kolkata', 'AIM Foundation volunteer and career openings'],
+  robots: 'index, follow',
+  authors: [{ name: 'AIM Foundation' }],
+  openGraph: {
+    type: 'website',
+    url: 'https://aimindia.org.in/career',
+    title: 'Careers & Opportunities at AIM Foundation India',
+    description: 'Join AIM Foundation to create impact in education, healthcare, women empowerment, environment, and disaster relief. Build a career with purpose and value.',
+    images: [
+      {
+        url: 'https://aimindia.org.in/home.avif',
+        width: 1200,
+        height: 630,
+        alt: 'Careers at AIM Foundation',
+      },
+    ],
+    siteName: 'AIM Foundation',
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@aimindiango',
+    url: 'https://aimindia.org.in/career',
+    title: 'Careers & Opportunities at AIM Foundation India',
+    description: 'Join AIM Foundation to create impact in education, healthcare, women empowerment, environment, and disaster relief. Build a career with purpose and value.',
+    images: ['https://aimindia.org.in/home.avif'],
+  },
   alternates: {
     canonical: '/career',
   },
 };
 
 export default function CareerPage() {
+    const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "Join AIM Foundation to create impact in education, healthcare, women empowerment, environment, and disaster relief. Build a career with purpose and value."
+  };
   return (
+    <>
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-career"
+    />
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
@@ -87,5 +135,6 @@ export default function CareerPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }
