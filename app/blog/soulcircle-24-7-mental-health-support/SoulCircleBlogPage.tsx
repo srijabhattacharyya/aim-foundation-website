@@ -147,9 +147,9 @@ export default function SoulCircleBlogPage() {
                   </Button>
                 </div>
 
-                <h2 className="text-3xl font-bold font-headline text-foreground">Conclusion: A Vision for a Greener Tomorrow</h2>
+                <h2 className="text-3xl font-bold font-headline text-foreground">Conclusion: A Vision for Mental Well-being for All</h2>
                 <p>
-                    Our dream is to see every child grow up understanding the value of nature, every community protecting its resources, and every individual feeling responsible for the Earth’s well-being. We believe that real change always starts at the roots. And those roots grow stronger when we nurture them together.
+                  Our dream is to create a world where seeking emotional support is as normal as seeking help for a physical ailment. We envision a future where technology and compassion work hand-in-hand to ensure no one feels isolated in their struggle. SoulCircle is a step towards that future—a future where everyone has a safe space to turn to, and where mental well-being is recognized as a universal human right.
                 </p>
 
                  <div className="text-center pt-8">
