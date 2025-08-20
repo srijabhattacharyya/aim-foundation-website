@@ -5,10 +5,68 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ContactEmail from "@/components/layout/ContactEmail";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Volunteer with AIM Foundation in Kolkata & Beyond',
+  description: 'Join AIM Foundation’s volunteer programs in Kolkata or online. Support healthcare, education, women empowerment, and more. Make real impact, gain experience.',
+  keywords: ["AIM Foundation volunteer opportunities", "AIM Foundation internships", "NGO careers India", "join AIM Foundation", "social work internships India", "NGO volunteer programs", "careers with purpose NGO", "student internships NGO India", "non profit jobs India", "community service AIM Foundation"],
+  robots: 'index, follow',
+  authors: [{ name: 'AIM Foundation' }],
+  openGraph: {
+    type: 'website',
+    url: 'https://aimindia.org.in/volunteering',
+    title: 'Volunteer with AIM Foundation in Kolkata & Beyond',
+    description: 'Join AIM Foundation’s volunteer programs in Kolkata or online. Support healthcare, education, women empowerment, and more. Make real impact, gain experience.',
+    images: [
+      {
+        url: 'https://aimindia.org.in/home.avif',
+        width: 1200,
+        height: 630,
+        alt: 'Volunteer with AIM Foundation',
+      },
+    ],
+    siteName: 'AIM Foundation',
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@aimindiango',
+    url: 'https://aimindia.org.in/volunteering',
+    title: 'Volunteer with AIM Foundation in Kolkata & Beyond',
+    description: 'Join AIM Foundation’s volunteer programs in Kolkata or online. Support healthcare, education, women empowerment, and more. Make real impact, gain experience.',
+    images: ['https://aimindia.org.in/home.avif'],
+  },
+  alternates: {
+    canonical: '/volunteering',
+  },
+};
 
 export default function VolunteeringPage() {
+    const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://aimindia.org.in/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "Join AIM Foundation’s volunteer programs in Kolkata or online. Support healthcare, education, women empowerment, and more. Make real impact, gain experience."
+  };
   return (
     <div className="flex flex-col min-h-screen">
+       <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaMarkup),
+          }}
+          key="org-schema-volunteering"
+        />
       <Navbar />
       <main className="flex-grow">
         <section className="relative w-full">
