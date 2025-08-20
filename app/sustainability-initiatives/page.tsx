@@ -1,9 +1,9 @@
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
-import { Card, CardContent, CardTitle, CardDescription } from "../../components/ui/card";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import Image from "next/image";
-import { Button } from "../../components/ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const initiatives = [
@@ -31,7 +31,7 @@ const initiatives = [
   {
     title: "Forest Cleaning",
     description: "is our hands-on initiative to restore natural habitats by organizing large-scale forest cleaning drives. We mobilize volunteers to remove plastic and other non-biodegradable waste, helping to preserve biodiversity and protect wildlife from the harmful effects of pollution.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/forest-cleaning/forest-cleaning1.avif",
     hint: "forest cleaning volunteer",
     link: "/forest-cleaning?from=sustainability"
   }
