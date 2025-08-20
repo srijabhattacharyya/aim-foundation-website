@@ -4,11 +4,68 @@ import Image from "next/image";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import teamMembers from './team-data.json';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Meet Our Team | AIM Foundation Leaders & Change-Makers',
+    description: 'Discover the dedicated team behind AIM Foundation, working passionately to drive education, healthcare, women empowerment, and community change across West Bengal.',
+    keywords: ['AIM Foundation team', 'NGO leaders Kolkata', 'NGO staff West Bengal', 'AIM Foundation leadership', 'NGO volunteers Kolkata', 'education NGO team', 'healthcare NGO team'],
+    authors: [{ name: 'AIM Foundation' }],
+    robots: 'index, follow',
+    openGraph: {
+        type: 'website',
+        url: 'https://www.aimindia.org.in/team',
+        title: 'Meet Our Team | AIM Foundation Leaders & Change-Makers',
+        description: 'Discover the dedicated team behind AIM Foundation, working passionately to drive education, healthcare, women empowerment, and community change across West Bengal.',
+        images: [
+            {
+                url: 'https://www.aimindia.org.in/home.avif',
+                width: 1200,
+                height: 630,
+                alt: 'The team of AIM Foundation',
+            },
+        ],
+        siteName: 'AIM Foundation',
+        locale: 'en_IN',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        site: '@aimindiango',
+        title: 'Meet Our Team | AIM Foundation Leaders & Change-Makers',
+        description: 'Discover the dedicated team behind AIM Foundation, working passionately to drive education, healthcare, women empowerment, and community change across West Bengal.',
+        images: ['https://www.aimindia.org.in/home.avif'],
+    },
+    alternates: {
+        canonical: '/team',
+    },
+};
 
 
 export default function TeamPage() {
+    const schemaMarkup = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AIM Foundation",
+        "url": "https://www.aimindia.org.in/",
+        "logo": "https://www.aimindia.org.in/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/aimindiango/",
+            "https://x.com/aimindiango",
+            "https://www.instagram.com/aimfoundation_ngo/",
+            "https://www.linkedin.com/in/aim-foundation-ngo/",
+            "https://www.youtube.com/@aimfoundation2604"
+        ],
+        "description": "Discover the dedicated team behind AIM Foundation, working passionately to drive education, healthcare, women empowerment, and community change across West Bengal."
+    };
   return (
     <div className="flex flex-col min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaMarkup),
+        }}
+        key="org-schema-team"
+        />
       <Navbar />
       <main className="flex-grow">
         <section className="relative w-full">
