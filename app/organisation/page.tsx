@@ -10,6 +10,43 @@ import Ethos from "@/components/sections/Ethos";
 import LegalRecognitions from "@/components/sections/LegalRecognitions";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'AIM Foundation | Leading NGO in Kolkata for Community Development',
+    description: 'Since 2016, AIM Foundation has empowered underprivileged families in West Bengal through education, healthcare, women empowerment, and community development.',
+    keywords: ['AIM Foundation', 'NGO in Kolkata', 'West Bengal NGO', 'education NGO', 'healthcare NGO', 'women empowerment NGO', 'environment NGO', 'child development NGO', 'best NGO Kolkata', 'community development NGO'],
+    authors: [{ name: 'AIM Foundation' }],
+    robots: 'index, follow',
+    openGraph: {
+        type: 'website',
+        url: 'https://aimindia.org.in/organisation',
+        title: 'AIM Foundation | Leading NGO in Kolkata for Community Development',
+        description: 'Since 2016, AIM Foundation has empowered underprivileged families in West Bengal through education, healthcare, women empowerment, and community development.',
+        images: [
+            {
+                url: 'https://aimindia.org.in/home.avif',
+                width: 1200,
+                height: 630,
+                alt: 'AIM Foundation Community Development',
+            },
+        ],
+        siteName: 'AIM Foundation',
+        locale: 'en_IN',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        site: '@aimindiango',
+        url: 'https://aimindia.org.in/organisation',
+        title: 'AIM Foundation | Leading NGO in Kolkata for Community Development',
+        description: 'Since 2016, AIM Foundation has empowered underprivileged families in West Bengal through education, healthcare, women empowerment, and community development.',
+        images: ['https://aimindia.org.in/home.avif'],
+    },
+    alternates: {
+        canonical: '/organisation',
+    },
+};
+
 
 const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
     ssr: false,
@@ -18,8 +55,31 @@ const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintC
 
 
 export default function OrganisationPage() {
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIM Foundation",
+    "url": "https://aimindia.org.in/",
+    "logo": "https://aimindia.org.in/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "Since 2016, AIM Foundation has empowered underprivileged families in West Bengal through education, healthcare, women empowerment, and community development."
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
+       <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaMarkup),
+          }}
+          key="org-schema"
+        />
       <Navbar />
       <main className="flex-grow">
         <section className="relative w-full">
