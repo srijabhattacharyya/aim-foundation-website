@@ -47,7 +47,7 @@ export default function ChildcareInitiativesPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/childcare.avif"
               alt="Childcare Initiatives Banner"
               width={1920}
               height={580}
