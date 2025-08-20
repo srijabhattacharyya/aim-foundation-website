@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.aimindia.org.in'),
   title: 'AIM Foundation | Leading NGO Uplifting the Underprivileged',
-  description: 'AIM Foundation is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development for underprivileged communities across India.',
+  description: 'AIM Foundation works across West Bengal, uplifting communities with education, healthcare, women empowerment, environment care, and sustainable development',
   keywords: ['ngo in kolkata', 'best ngo in kolkata', 'top ngo in kolkata', 'ngo in india', 'top ngo in india', 'charity in kolkata', 'education ngo', 'healthcare ngo', 'women empowerment ngo', 'environment ngo', 'plantation drives', 'skill development ngo', 'community development', 'hygiene awareness', 'rural development', 'child welfare ngo', 'free health camps', 'vocational training', 'ngo volunteer kolkata', 'donate to ngo'],
   openGraph: {
     title: 'AIM Foundation | Leading NGO Uplifting the Underprivileged',
