@@ -17,7 +17,7 @@ const initiatives = [
   {
     title: "TideShield",
     description: "is a mangrove restoration initiative on Bali Island in the Sundarbans, launched to revive ecosystems damaged by cyclones Amphan and Yaas. By planting native mangrove species and involving local communities, the project strengthens coastal resilience, prevents erosion, and restores biodiversity along vulnerable shorelines.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/tide-shield/tide-shield2.avif",
     hint: "mangrove restoration",
     link: "/tideshield?from=sustainability"
   },
