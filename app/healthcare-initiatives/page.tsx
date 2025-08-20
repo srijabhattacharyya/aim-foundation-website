@@ -6,8 +6,35 @@ import { Button } from "../../components/ui/button";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Healthcare Initiatives - AIM Foundation',
-  description: 'Healthcare is a right, not merely a privilege! Our healthcare programs are dedicated to providing accessible and quality medical care to those in need.',
+  title: 'AIM Foundation | Healthcare Access for the Underserved',
+  description: 'AIM Foundation delivers healthcare to underserved communities through free camps, surgeries, awareness drives, and collaborations to ensure health equity for all.',
+  keywords: ['AIM Foundation healthcare', 'free medical camps India', 'rural healthcare services', 'Sundarbans health camps', 'free surgeries for poor', 'cervical cancer awareness', 'healthcare for underprivileged', 'AIM Foundation medical support', 'eye camps India', 'health equity NGO'],
+  authors: [{ name: 'AIM Foundation' }],
+  robots: 'index, follow',
+  openGraph: {
+    type: 'website',
+    url: 'https://aimindia.org.in/healthcare-initiatives',
+    title: 'AIM Foundation | Healthcare Access for the Underserved',
+    description: 'AIM Foundation delivers healthcare to underserved communities through free camps, surgeries, awareness drives, and collaborations to ensure health equity for all.',
+    images: [
+        {
+            url: 'https://aimindia.org.in/home.avif',
+            width: 1200,
+            height: 630,
+            alt: 'AIM Foundation Healthcare Initiatives',
+        },
+    ],
+    siteName: 'AIM Foundation',
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@aimindiango',
+    url: 'https://aimindia.org.in/healthcare-initiatives',
+    title: 'AIM Foundation | Healthcare Access for the Underserved',
+    description: 'AIM Foundation delivers healthcare to underserved communities through free camps, surgeries, awareness drives, and collaborations to ensure health equity for all.',
+    images: ['https://aimindia.org.in/home.avif'],
+  },
   alternates: {
     canonical: '/healthcare-initiatives',
   },
@@ -81,8 +108,30 @@ const initiatives = [
 ];
 
 export default function HealthCareInitiativesPage() {
+    const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
+        "https://www.facebook.com/aimindiango/",
+        "https://x.com/aimindiango",
+        "https://www.instagram.com/aimfoundation_ngo/",
+        "https://www.linkedin.com/in/aim-foundation-ngo/",
+        "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "AIM Foundation delivers healthcare to underserved communities through free camps, surgeries, awareness drives, and collaborations to ensure health equity for all."
+  };
   return (
     <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaMarkup),
+          }}
+          key="org-schema-healthcare"
+        />
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
