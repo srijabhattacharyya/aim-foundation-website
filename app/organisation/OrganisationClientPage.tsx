@@ -12,7 +12,6 @@ import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
-    ssr: false,
     loading: () => <Skeleton className="h-[400px] w-full max-w-lg" />,
 });
 
