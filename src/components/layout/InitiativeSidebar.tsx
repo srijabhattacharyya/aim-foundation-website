@@ -280,14 +280,14 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     VidyaShakti: AI-Powered Learning for Rural Classrooms
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "VidyaShakti initiative", hint: "learning app student", description: "A student using the VidyaShakti learning app"};
+            image = { src: "/images/projects/vidyashakti/vidyashakti1.avif", alt: "VidyaShakti initiative", hint: "learning app student", description: "A student using the VidyaShakti learning app"};
         } else if (pathname.includes('/soulcircle')) {
             content = (
                  <Link href="/blog/soulcircle-24-7-mental-health-support" className="text-muted-foreground hover:text-primary transition-colors">
                     SoulCircle: 24/7 Compassionate Mental Health Support
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "SoulCircle initiative", hint: "mental health peace", description: "Finding peace and support with SoulCircle"};
+            image = { src: "/images/projects/soulcircle/soulcircle1.avif", alt: "SoulCircle initiative", hint: "mental health peace", description: "Finding peace and support with SoulCircle"};
         } else if (pathname.includes('/forest-cleaning')) {
             content = (
                  <Link href="/blog/forest-cleaning-restoring-natural-habitats" className="text-muted-foreground hover:text-primary transition-colors">
@@ -315,8 +315,8 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
             <Card className="overflow-hidden relative">
                  <Image src={image.src} alt={image.alt} width={600} height={400} data-ai-hint={image.hint} className="w-full h-auto object-cover" />
                  {image.description && (
-                    <div className="absolute bottom-0 left-0 right-0 p-2 text-center text-sm">
-                        <p>{image.description}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent flex items-end justify-center p-4">
+                        <p className="text-white text-center text-sm font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">{image.description}</p>
                     </div>
                 )}
             </Card>
