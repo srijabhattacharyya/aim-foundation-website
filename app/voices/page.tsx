@@ -190,7 +190,7 @@ const blogPosts = [
    {
     slug: 'empower-english-story',
     title: 'Confidence Begins with Conversation: The Empower English Story',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/empower-english/empower-english2.avif',
     hint: 'english speaking class',
     excerpt: "Discover how AIM Foundation's Empower English initiative is helping students in West Bengal find their voice, confidence, and a world of new opportunities.",
     date: 'November 1, 2020',
