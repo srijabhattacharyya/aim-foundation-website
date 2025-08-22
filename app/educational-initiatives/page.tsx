@@ -68,7 +68,7 @@ const initiatives = [
    {
     title: "Empower English",
     description: "Offers spoken English training to students from underserved communities, strengthening communication skills and boosting self-confidence for academic and professional success.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/empower-english/empower-english2.avif",
     hint: "english class",
     link: "/empower-english?from=educational",
     specialText: "(Spoken English class)"
