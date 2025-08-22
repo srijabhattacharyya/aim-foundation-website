@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
 
 // Dynamically import all the specific donation forms
 const DynamicIndividualDonationForm = dynamic(
@@ -150,7 +151,7 @@ const DynamicKrishtiDonationForm = dynamic(
 
 // Cause definitions
 const mainCauses = [
-  { value: "general", label: "General Fund" },
+  { value: "general", label: "General Donation to support any cause" },
   { value: "educational", label: "Educational Initiatives" },
   { value: "healthcare", label: "Healthcare Initiatives" },
   { value: "gender-equality", label: "Gender Equality Initiatives" },
@@ -312,10 +313,13 @@ export default function CauseSelectionForm() {
 
   return (
     <>
-      <div className="bg-card p-8 rounded-lg">
+      <div className="bg-card p-8 rounded-lg relative">
+        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center">
+            <Image src="/images/logo.png" alt="AIM Foundation Logo" width={100} height={40} className="object-contain"/>
+        </div>
         {step === 1 && (
           <>
-            <DialogHeader className="text-center mb-8">
+            <DialogHeader className="text-center mb-8 pt-20">
               <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
               <DialogDescription>
                 Select a cause you are passionate about to make a donation.
@@ -345,7 +349,7 @@ export default function CauseSelectionForm() {
 
         {step === 2 && selectedCause === "educational" && (
           <>
-            <DialogHeader className="text-center mb-8">
+            <DialogHeader className="text-center mb-8 pt-20">
               <DialogTitle className="text-xl font-bold font-headline">SUPPORT OUR EDUCATIONAL INITIATIVES</DialogTitle>
                <DialogDescription>
                 Choose a specific initiative or make a general donation to education.
@@ -378,7 +382,7 @@ export default function CauseSelectionForm() {
 
         {step === 2 && selectedCause === "healthcare" && (
           <>
-            <DialogHeader className="text-center mb-8">
+            <DialogHeader className="text-center mb-8 pt-20">
               <DialogTitle className="text-xl font-bold font-headline">SUPPORT OUR HEALTHCARE INITIATIVES</DialogTitle>
                <DialogDescription>
                 Choose a specific initiative or make a general donation to healthcare.
@@ -411,7 +415,7 @@ export default function CauseSelectionForm() {
 
         {step === 2 && selectedCause === "gender-equality" && (
             <>
-                <DialogHeader className="text-center mb-8">
+                <DialogHeader className="text-center mb-8 pt-20">
                 <DialogTitle className="text-xl font-bold font-headline">SUPPORT GENDER EQUALITY INITIATIVES</DialogTitle>
                 <DialogDescription>
                     Choose a specific initiative or make a general donation to gender equality.
@@ -444,7 +448,7 @@ export default function CauseSelectionForm() {
 
         {step === 2 && selectedCause === "childcare" && (
             <>
-                <DialogHeader className="text-center mb-8">
+                <DialogHeader className="text-center mb-8 pt-20">
                 <DialogTitle className="text-xl font-bold font-headline">SUPPORT CHILDCARE INITIATIVES</DialogTitle>
                 <DialogDescription>
                     Choose a specific initiative or make a general donation to childcare.
@@ -477,7 +481,7 @@ export default function CauseSelectionForm() {
         
         {step === 2 && selectedCause === "sustainability" && (
             <>
-                <DialogHeader className="text-center mb-8">
+                <DialogHeader className="text-center mb-8 pt-20">
                 <DialogTitle className="text-xl font-bold font-headline">SUPPORT SUSTAINABILITY INITIATIVES</DialogTitle>
                 <DialogDescription>
                     Choose a specific initiative or make a general donation to sustainability.
