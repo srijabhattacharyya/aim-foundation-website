@@ -3,73 +3,79 @@
   {
     "name": "Prof. Amitabha Mookherjee",
     "designation": "Chairman",
-    "image": "/images/team/am.jpg",
-    "hint": "male leader portrait"
+    "image": "/images/team/am.avif",
+    "hint": "amitabha mookherjee"
+  },
+  {
+    "name": "Mr. Dhruba Narayan Datta",
+    "designation": "Vice Chairman",
+    "image": "/images/team/sc.avif",
+    "hint": "dhruba narayan datta"
   },
   {
     "name": "Mr. Santanu Chatterjee",
     "designation": "Vice Chairman",
-    "image": "https://placehold.co/270x270.png",
-    "hint": "male leader portrait"
+    "image": "/images/team/sc.avif",
+    "hint": "santanu chatterjee"
   },
   {
     "name": "Mr. Saibal Ganguly",
     "designation": "General Secretary",
-    "image": "/images/team/sg.jpg",
-    "hint": "male leader portrait"
+    "image": "/images/team/sg.avif",
+    "hint": "saibal ganguly"
   },
   {
     "name": "Mr. Chandan Roy",
     "designation": "Joint Secretary",
-    "image": "/images/team/cr.jpg",
-    "hint": "male professional portrait"
+    "image": "/images/team/cr.avif",
+    "hint": " chandan roy"
   },
   {
     "name": "Mr. Mridul Das",
     "designation": "Joint Secretary",
-    "image": "/images/team/md.jpg",
-    "hint": "male professional portrait"
+    "image": "/images/team/md.avif",
+    "hint": "mridul das"
   },
   {
     "name": "CA Banasri Bhattacharyya",
     "designation": "Treasurer",
-    "image": "/images/team/bb1.jpg",
-    "hint": "female professional portrait"
+    "image": "/images/team/bb1.avif",
+    "hint": "banasri bhattacharyya"
   },
   {
     "name": "Dr. Piyali Bhaduri",
     "designation": "Convenor - Health & Hygiene",
-    "image": "/images/team/pb.jpg",
-    "hint": "female doctor portrait"
+    "image": "/images/team/pb.avif",
+    "hint": "piyali bhaduri"
   },
   {
     "name": "Dr. Madhumita Mukherjee",
     "designation": "Convenor - Environment",
-    "image": "/images/team/mm.jpg",
-    "hint": "female communications portrait"
+    "image": "/images/team/mm.avif",
+    "hint": "madhumita mukherjee"
   },
   {
-    "name": "Prof Sushovon Sengupta",
+    "name": "Prof Sushabhan Sengupta",
     "designation": "Convenor - Awareness Initiative",
-    "image": "/images/team/ss.jpg",
-    "hint": "male professor portrait"
+    "image": "/images/team/ss.avif",
+    "hint": "sushabhan sengupta"
   },
   {
     "name": "Mr. Bhaskar Bhadra",
     "designation": "Convenors - Fund Raising",
-    "image": "/images/team/bb.jpg",
-    "hint": "male fundraiser portrait"
+    "image": "/images/team/bb.avif",
+    "hint": "bhaskar bhadra"
   },
   {
     "name": "Mrs. Sushmeli Dutta",
     "designation": "Eminant Writer",
-    "image": "/images/team/sd.jpg",
-    "hint": "female writer portrait"
+    "image": "/images/team/sd.avif",
+    "hint": "sushmeli dutta"
   },
   {
     "name": "Dr. Apurba Mukherjee",
     "designation": "Scientist & Entrepreneur, California",
-    "image": "/images/team/am1.jpg",
-    "hint": "male scientist portrait"
+    "image": "/images/team/am1.avif",
+    "hint": "apurba mukherjee"
   }
 ]
