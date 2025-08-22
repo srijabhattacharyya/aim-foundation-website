@@ -54,7 +54,7 @@ const blogPosts = [
   {
     slug: 'vidyashakti-ai-learning',
     title: 'VidyaShakti: AI-Powered Learning for Rural Classrooms',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/vidyashakti/vidyashakti1.avif',
     hint: 'learning app student',
     excerpt: 'Discover how our VidyaShakti app provides AI-powered, multilingual academic support to rural and first-generation learners.',
     date: 'February 2, 2025',
