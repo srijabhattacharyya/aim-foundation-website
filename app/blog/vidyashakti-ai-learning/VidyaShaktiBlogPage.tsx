@@ -29,7 +29,7 @@ export default function VidyaShaktiBlogPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
               <Image
-                src="https://placehold.co/1920x580.png"
+                src="/images/banner/vidyashakti.avif"
                 alt="A student using a learning app on a smartphone"
                 width={1920}
                 height={580}
@@ -135,4 +135,3 @@ export default function VidyaShaktiBlogPage() {
     </div>
   );
 }
-
