@@ -18,7 +18,7 @@ export default function EduAccessBlogPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
                 <Image
-                src="https://placehold.co/1920x580.png"
+                src="/images/banner/eduaccess.avif"
                 alt="An online class in a rural setting"
                 width={1920}
                 height={580}
