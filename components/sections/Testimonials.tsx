@@ -1,3 +1,4 @@
+
 "use client";
 import { Card, CardContent } from "../ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
@@ -8,7 +9,7 @@ const testimonials = [
         quote: "This foundation changed my life. I am forever grateful for their support.",
         name: "Priya Sharma",
         role: "Beneficiary",
-        image: "https://placehold.co/100x100.png",
+        image: "/images/testimonials/priya-sharma.avif",
         hint: "happy woman portrait"
     },
     {
