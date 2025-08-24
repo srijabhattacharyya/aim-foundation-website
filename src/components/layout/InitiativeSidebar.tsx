@@ -224,7 +224,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     From Stigma to Strength: The CycleSafe Story
                 </Link>
             );
-            image = { src: "/images/projects/cyclesafe/cyclesafe1.avif", alt: "CycleSafe initiative", hint: "menstrual health awareness", description: "Adolescent girls at a menstrual health workshop"};
+            image = { src: "/images/projects/cyclesafe/cyclesafe1.avif", alt: "CycleSafe initiative", hint: "menstrual hygiene awareness", description: "Adolescent girls at a menstrual health workshop"};
         } else if (pathname.includes('/disaster-management')) {
             content = (
                 <Link href="/blog/from-despair-to-recovery-rebuilding-lives-after-disaster" className="text-muted-foreground hover:text-primary transition-colors">
@@ -256,10 +256,10 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         } else if (pathname.includes('/tideshield')) {
             content = (
                 <Link href="/blog/tideshield-restoring-mangroves" className="text-muted-foreground hover:text-primary transition-colors">
-                    TideShield: Restoring the Mangrove Heartbeat of the Sundarbans
+                    Restoring the Mangrove Heartbeat of the Sundarbans
                 </Link>
             );
-            image = { src: "/images/projects/tideshield/tideshield2.avif", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
+            image = { src: "/images/projects/tide-shield/tide-shield2.avif", alt: "TideShield initiative", hint: "mangrove restoration", description: "Mangrove Plantation in Bali Island, Sundarbans"};
         } else if (pathname.includes('/childfirst')) {
             content = (
                 <Link href="/blog/childfirst-health-hope-dignity" className="text-muted-foreground hover:text-primary transition-colors">
@@ -310,7 +310,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const { content, image } = getRelatedResource();
 
-    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope', '/oralscan', '/cyclesafe', '/krishti', '/tideshield'].some(p => pathname.includes(p));
+    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope', '/oralscan', '/cyclesafe', '/krishti', '/tideshield', '/roots-of-change'].some(p => pathname.includes(p));
 
     return (
         <aside className="md:col-span-1 space-y-8">
@@ -321,6 +321,11 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                         <p className="text-white text-center text-sm font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">{image.description}</p>
                     </div>
                 )}
+                 {!showOverlay && image.description && (
+                    <div className="bg-background p-2 text-center">
+                        <p className="text-muted-foreground text-sm font-semibold">{image.description}</p>
+                    </div>
+                 )}
             </Card>
             <Card>
                 <CardHeader>
