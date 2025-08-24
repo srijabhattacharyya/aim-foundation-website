@@ -175,11 +175,11 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Screening Today for a Healthier Tomorrow
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "OralScan initiative", hint: "oral cancer screening", description: "An oral cancer screening camp in session"};
+            image = { src: "/images/projects/oralscan/oranscan2.avif", alt: "OralScan initiative", hint: "oral cancer screening", description: "An oral cancer screening camp in session"};
         } else if (pathname.includes('/green-roots')) {
             content = (
                 <Link href="/blog/planting-hope-growing-futures" className="text-muted-foreground hover:text-primary transition-colors">
-                    Planting Hope, Growing Futures
+                    The GreenRoots Journey
                 </Link>
             );
             image = { src: "/images/projects/sustainability/sustainability5.avif", alt: "GreenRoots initiative", hint: "community planting trees", description: "Sapling Distribution to community members"};
@@ -196,7 +196,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Restoring Sight, Rekindling Dreams
                 </Link>
             );
-            image = { src: "/images/projects/sighthope/spectacles-distribution.avif", alt: "SightHope initiative", hint: "spectacles distribution", description: "free spectacles distribution"};
+            image = { src: "/images/projects/sighthope/spectacles-distribution.avif", alt: "SightHope initiative", hint: "spectacles distribution", description: "Free Spectacles Distribution"};
         } else if (pathname.includes('/relief-to-the-underprivileged')) {
             content = (
                 <Link href="/blog/relief-to-the-underprivileged" className="text-muted-foreground hover:text-primary transition-colors">
@@ -224,7 +224,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     From Stigma to Strength: The CycleSafe Story
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "CycleSafe initiative", hint: "menstrual health awareness", description: "Adolescent girls at a menstrual health workshop"};
+            image = { src: "/images/projects/cyclesafe/cyclesafe1.avif", alt: "CycleSafe initiative", hint: "menstrual health awareness", description: "Adolescent girls at a menstrual health workshop"};
         } else if (pathname.includes('/disaster-management')) {
             content = (
                 <Link href="/blog/from-despair-to-recovery-rebuilding-lives-after-disaster" className="text-muted-foreground hover:text-primary transition-colors">
@@ -259,7 +259,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     TideShield: Restoring the Mangrove Heartbeat of the Sundarbans
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
+            image = { src: "/images/projects/tideshield/tideshield2.avif", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
         } else if (pathname.includes('/childfirst')) {
             content = (
                 <Link href="/blog/childfirst-health-hope-dignity" className="text-muted-foreground hover:text-primary transition-colors">
@@ -310,7 +310,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const { content, image } = getRelatedResource();
 
-    const showOverlay = !['/vidyashakti', '/digiempower'].some(p => pathname.includes(p));
+    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope', '/oralscan', '/cyclesafe', '/krishti', '/tideshield'].some(p => pathname.includes(p));
 
     return (
         <aside className="md:col-span-1 space-y-8">
