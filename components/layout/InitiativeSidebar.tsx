@@ -196,7 +196,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Restoring Sight, Rekindling Dreams
                 </Link>
             );
-            image = { src: "/images/projects/sighthope/spectacles-distribution.avif", alt: "SightHope initiative", hint: "spectacles distribution", description: "free spectacles distribution"};
+            image = { src: "/images/projects/sighthope/spectacles-distribution.avif", alt: "SightHope initiative", hint: "spectacles distribution", description: "Free Spectacles Distribution"};
         } else if (pathname.includes('/relief-to-the-underprivileged')) {
             content = (
                 <Link href="/blog/relief-to-the-underprivileged" className="text-muted-foreground hover:text-primary transition-colors">
@@ -310,7 +310,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const { content, image } = getRelatedResource();
 
-    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope'].some(p => pathname.includes(p));
+    const showOverlay = !['/vidyashakti', '/digiempower'].some(p => pathname.includes(p));
 
     return (
         <aside className="md:col-span-1 space-y-8">
@@ -336,3 +336,4 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         </aside>
     );
 }
+
