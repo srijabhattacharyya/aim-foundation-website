@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -29,7 +28,7 @@ export default function IgniteChangeBlogPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
                 <Image
-                src="https://placehold.co/1920x580.png"
+                src="/images/banner/awareness.avif"
                 alt="Community members working together on a project"
                 width={1920}
                 height={580}
