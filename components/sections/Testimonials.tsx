@@ -23,7 +23,7 @@ const testimonials = [
         quote: "A truly dedicated team making a tangible difference in our community.",
         name: "Nilisha Chatterjee",
         role: "Community Leader",
-        image: "https://placehold.co/100x100.png",
+        image: "/images/testimonials/nilisha-chatterjee.avif",
         hint: "professional woman portrait"
     },
      {
