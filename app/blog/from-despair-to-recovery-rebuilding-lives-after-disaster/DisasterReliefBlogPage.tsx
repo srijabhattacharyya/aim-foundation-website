@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -29,7 +28,7 @@ export default function DisasterReliefBlogPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
                 <Image
-                src="/images/banner/awareness.avif"
+                src="/images/banner/disuster.avif"
                 alt="Disaster relief efforts"
                 width={1920}
                 height={580}
