@@ -259,7 +259,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     TideShield: Restoring the Mangrove Heartbeat of the Sundarbans
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
+            image = { src: "/images/projects/tideshield/tideshield2.avif", alt: "TideShield initiative", hint: "mangrove restoration", description: "Volunteers planting mangrove saplings"};
         } else if (pathname.includes('/childfirst')) {
             content = (
                 <Link href="/blog/childfirst-health-hope-dignity" className="text-muted-foreground hover:text-primary transition-colors">
