@@ -18,7 +18,7 @@ export default function InspireEduLabBlogPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
                 <Image
-                    src="https://placehold.co/1920x580.png"
+                    src="/images/banner/edulab.avif"
                     alt="A smart classroom with students engaged"
                     width={1920}
                     height={580}
