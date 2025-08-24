@@ -168,7 +168,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Crafted by Her. Backed by Krishti.
                 </Link>
             );
-             image = { src: "https://placehold.co/600x400.png", alt: "Krishti initiative", hint: "women entrepreneurship", description: "An empowered woman showcasing her handcrafted products"};
+             image = { src: "/images/projects/krishti/krishti1.avif", alt: "Krishti initiative", hint: "women entrepreneurship", description: "An empowered woman showcasing her handcrafted products"};
         } else if (pathname.includes('/oralscan')) {
             content = (
                 <Link href="/blog/screening-today-for-a-healthier-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
@@ -203,7 +203,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Relief to the Underprivileged – AIM Foundation’s Lifeline of Hope
                 </Link>
             );
-            image = { src: "/images/projects/relief/relief1.avif", alt: "Relief initiative", hint: "community relief support", description: "Distribution of garments in Topsia, Kolkata"};
+            image = { src: "/images/projects/relief/relief1.avif", alt: "Relief initiative", hint: "community relief support", description: "Distributing essential supplies to families in need"};
         } else if (pathname.includes('/roots-of-change')) {
             content = (
                 <Link href="/blog/roots-of-change" className="text-muted-foreground hover:text-primary transition-colors">
