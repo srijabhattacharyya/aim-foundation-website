@@ -310,18 +310,11 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const { content, image } = getRelatedResource();
 
-    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope', '/oralscan', '/cyclesafe', '/krishti', '/tideshield', '/roots-of-change'].some(p => pathname.includes(p));
-
     return (
         <aside className="md:col-span-1 space-y-8">
-            <Card className="overflow-hidden relative">
+            <Card className="overflow-hidden">
                  <Image src={image.src} alt={image.alt} width={600} height={400} data-ai-hint={image.hint} className="w-full h-auto object-cover" />
-                 {image.description && showOverlay && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent flex items-end justify-center p-4">
-                        <p className="text-white text-center text-sm font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">{image.description}</p>
-                    </div>
-                )}
-                 {!showOverlay && image.description && (
+                 {image.description && (
                     <div className="bg-background p-2 text-center">
                         <p className="text-muted-foreground text-sm font-semibold">{image.description}</p>
                     </div>
