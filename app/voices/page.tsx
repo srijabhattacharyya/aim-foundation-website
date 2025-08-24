@@ -182,7 +182,7 @@ const blogPosts = [
   {
     slug: 'crafting-futures-the-krishti-story',
     title: 'Crafted by Her. Backed by Krishti.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/krishti/krishti1.avif',
     hint: 'women entrepreneurship',
     excerpt: 'Discover how Krishti bridges the gap between learning and earning, transforming skilled women into thriving entrepreneurs.',
     date: 'February 5, 2021',
