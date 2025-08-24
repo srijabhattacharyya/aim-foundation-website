@@ -14,7 +14,7 @@ const testimonials = [
     },
     {
         quote: "Volunteering here has been a transformative experience. The impact is real.",
-        name: "Rajesh Kumar",
+        name: "Rohit Bannerjee",
         role: "Volunteer",
         image: "https://placehold.co/100x100.png",
         hint: "smiling man portrait"
