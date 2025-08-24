@@ -9,7 +9,7 @@ import Link from 'next/link';
 const announcements = [
   {
     title: 'Community Health Camp',
-    date: 'August 8, 2026',
+    date: 'August 23, 2025',
     image: '/images/projects/carecircle/carecircle2.avif',
     hint: 'health camp',
     description: 'A successful health camp providing free check-ups and medicines to over 500 people in rural areas.',
