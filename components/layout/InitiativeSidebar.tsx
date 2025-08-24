@@ -203,7 +203,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Relief to the Underprivileged – AIM Foundation’s Lifeline of Hope
                 </Link>
             );
-            image = { src: "/images/projects/relief/relief1.avif", alt: "Relief initiative", hint: "community relief support", description: "Distributing essential supplies to families in need"};
+            image = { src: "/images/projects/relief/relief1.avif", alt: "Relief initiative", hint: "community relief support", description: "Distribution of garments in Topsia, Kolkata"};
         } else if (pathname.includes('/roots-of-change')) {
             content = (
                 <Link href="/blog/roots-of-change" className="text-muted-foreground hover:text-primary transition-colors">
@@ -314,9 +314,11 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         <aside className="md:col-span-1 space-y-8">
             <Card className="overflow-hidden">
                  <Image src={image.src} alt={image.alt} width={600} height={400} data-ai-hint={image.hint} className="w-full h-auto object-cover" />
-                 <div className="bg-background p-2 text-center">
-                    <p className="text-muted-foreground text-sm font-semibold">{image.description}</p>
-                 </div>
+                 {image.description && (
+                    <div className="bg-background p-2 text-center">
+                        <p className="text-muted-foreground text-sm font-semibold">{image.description}</p>
+                    </div>
+                 )}
             </Card>
             <Card>
                 <CardHeader>
