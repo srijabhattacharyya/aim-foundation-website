@@ -19,7 +19,7 @@ const videos = [
   {
     title: "A Glimpse into the Heart of AIM Foundation",
     description: "Watch the story of our mission, our people, and the lives we've touched.",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "/images/aim.avif",
     videoUrl: "https://www.youtube.com/watch?v=sG3BRIdRI3k",
     hint: "foundation story"
   },
