@@ -26,12 +26,13 @@ export default function RootsOfChangeClientPage() {
         <section className="relative w-full">
           <div className="relative w-full">
             <Image
-              src="https://placehold.co/1920x580.png"
+              src="/images/banner/roots-of-change.avif"
               alt="Roots of Change Banner"
               width={1920}
               height={580}
               className="w-full h-auto object-cover"
               data-ai-hint="environmental education"
+              priority
             />
           </div>
           <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
