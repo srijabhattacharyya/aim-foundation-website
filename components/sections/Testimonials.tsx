@@ -30,7 +30,7 @@ const testimonials = [
         quote: "The educational programs have given my children a future I could only dream of.",
         name: "Sunita Haldar",
         role: "Parent",
-        image: "https://placehold.co/100x100.png",
+        image: "/images/testimonials/sunita-haldar.avif",
         hint: "happy father portrait"
     }
 ];
