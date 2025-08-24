@@ -196,7 +196,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Restoring Sight, Rekindling Dreams
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "SightHope initiative", hint: "vision eye exam", description: "An elderly person receiving an eye check-up"};
+            image = { src: "/images/projects/sighthope/spectacles-distribution.avif", alt: "SightHope initiative", hint: "spectacles distribution", description: "free spectacles distribution"};
         } else if (pathname.includes('/relief-to-the-underprivileged')) {
             content = (
                 <Link href="/blog/relief-to-the-underprivileged" className="text-muted-foreground hover:text-primary transition-colors">
@@ -245,7 +245,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     No Child Left Offline: How DigiEmpower is Bridging the Digital Divide
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "DigiEmpower initiative", hint: "digital literacy children", description: "Children learning to use computers"};
+            image = { src: "https://placehold.co/1920x580.png", alt: "DigiEmpower initiative", hint: "digital literacy children", description: "Children learning to use computers"};
         } else if (pathname.includes('/cureline')) {
             content = (
                 <Link href="/blog/cureline-bringing-healthcare-to-the-last-mile" className="text-muted-foreground hover:text-primary transition-colors">
@@ -310,7 +310,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const { content, image } = getRelatedResource();
 
-    const showOverlay = !['/vidyashakti', '/digiempower'].some(p => pathname.includes(p));
+    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope'].some(p => pathname.includes(p));
 
     return (
         <aside className="md:col-span-1 space-y-8">
