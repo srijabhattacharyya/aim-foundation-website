@@ -74,7 +74,7 @@ const initiatives = [
   {
     title: "Krishti",
     description: "is the next step for women trained through SuiDhaga, nurturing their journey from skill to self-reliance. By providing access to modern production setups and marketing support, Krishti empowers women to become entrepreneurs—transforming their craft into livelihood, their passion into purpose, and their efforts into lasting financial independence.",
-    image: "https://placehold.co/600x400.png",
+    image: "/images/projects/krishti/krishti1.avif",
     hint: "women traditional art",
     link: "/krishti?from=gender-equality"
   },
