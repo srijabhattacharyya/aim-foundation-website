@@ -58,15 +58,20 @@ const Testimonials = () => {
                                 <div className="p-4 h-full">
                                     <Card className="h-full flex flex-col justify-center items-center text-center p-8 shadow-lg">
                                         <CardContent className="p-0 flex flex-col items-center">
-                                            <Image
-                                                src={testimonial.image}
-                                                alt={testimonial.name}
-                                                width={100}
-                                                height={100}
-                                                data-ai-hint={testimonial.hint}
-                                                className="rounded-full mb-4 border-4 border-primary/20"
-                                                loading="lazy"
-                                            />
+                                            <div className="relative">
+                                                <Image
+                                                    src={testimonial.image}
+                                                    alt={testimonial.name}
+                                                    width={100}
+                                                    height={100}
+                                                    data-ai-hint={testimonial.hint}
+                                                    className="rounded-full mb-4 border-4 border-primary/20"
+                                                    loading="lazy"
+                                                />
+                                                {testimonial.name === "Nilisha Chatterjee" && (
+                                                    <div className="absolute inset-0 rounded-full bg-black/20"></div>
+                                                )}
+                                            </div>
                                             <p className="text-muted-foreground italic mb-4">"{testimonial.quote}"</p>
                                             <p className="font-bold text-lg font-headline">{testimonial.name}</p>
                                             <p className="text-sm text-primary">{testimonial.role}</p>
