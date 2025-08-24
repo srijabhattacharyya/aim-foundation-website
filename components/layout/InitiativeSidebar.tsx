@@ -161,7 +161,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Teaching Beyond Boundaries
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "EduAccess initiative", hint: "online learning rural", description: "Rural students accessing online education"};
+            image = { src: "/images/projects/eduaccess/eduaccess2.avif", alt: "EduAccess initiative", hint: "online learning rural", description: "Rural students accessing online education"};
         } else if (pathname.includes('/krishti')) {
             content = (
                 <Link href="/blog/crafting-futures-the-krishti-story" className="text-muted-foreground hover:text-primary transition-colors">
@@ -334,5 +334,3 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         </aside>
     );
 }
-
-    
