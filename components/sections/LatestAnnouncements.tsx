@@ -25,7 +25,7 @@ const announcements = [
   },
   {
     title: 'Environmental Awareness Drive',
-    date: 'September 28, 2023',
+    date: 'September 25, 2025',
     image: 'https://placehold.co/600x400.png',
     hint: 'environment cleanup',
     description: 'Planted over 1000 saplings and conducted workshops on waste management in local communities.',
