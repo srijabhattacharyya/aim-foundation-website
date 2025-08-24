@@ -175,7 +175,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Screening Today for a Healthier Tomorrow
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "OralScan initiative", hint: "oral cancer screening", description: "An oral cancer screening camp in session"};
+            image = { src: "/images/projects/oralscan/oralscan1.avif", alt: "OralScan initiative", hint: "oral cancer screening", description: "Oral Cancer Screening in association with Narayana Health."};
         } else if (pathname.includes('/green-roots')) {
             content = (
                 <Link href="/blog/planting-hope-growing-futures" className="text-muted-foreground hover:text-primary transition-colors">
@@ -310,15 +310,23 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const { content, image } = getRelatedResource();
 
-    const showOverlay = !['/vidyashakti', '/digiempower'].some(p => pathname.includes(p));
+    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope', '/oralscan'].some(p => pathname.includes(p));
 
     return (
         <aside className="md:col-span-1 space-y-8">
             <Card className="overflow-hidden relative">
                  <Image src={image.src} alt={image.alt} width={600} height={400} data-ai-hint={image.hint} className="w-full h-auto object-cover" />
-                 {image.description && showOverlay && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent flex items-end justify-center p-4">
-                        <p className="text-white text-center text-sm font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">{image.description}</p>
+                 {image.description && (
+                    <div className={cn(
+                        "absolute inset-0 flex items-end justify-center p-4",
+                        showOverlay && "bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+                    )}>
+                        <p className={cn(
+                            "text-center text-sm font-semibold",
+                            showOverlay ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]" : "text-gray-900 bg-white/70 p-1 rounded"
+                        )}>
+                            {image.description}
+                        </p>
                     </div>
                 )}
             </Card>
@@ -336,4 +344,3 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
         </aside>
     );
 }
-
