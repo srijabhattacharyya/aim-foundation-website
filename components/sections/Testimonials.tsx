@@ -68,9 +68,6 @@ const Testimonials = () => {
                                                     className="rounded-full mb-4 border-4 border-primary/20"
                                                     loading="lazy"
                                                 />
-                                                {testimonial.name === "Nilisha Chatterjee" && (
-                                                    <div className="absolute inset-0 rounded-full bg-black/20"></div>
-                                                )}
                                             </div>
                                             <p className="text-muted-foreground italic mb-4">"{testimonial.quote}"</p>
                                             <p className="font-bold text-lg font-headline">{testimonial.name}</p>
