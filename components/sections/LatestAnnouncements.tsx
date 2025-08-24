@@ -17,7 +17,7 @@ const announcements = [
   },
   {
     title: 'Book Distribution',
-    date: 'October 15, 2023',
+    date: 'August 15, 2025',
     image: '/images/projects/book/book-distribution.avif',
     hint: 'book distribution',
     description: 'We distributed books to underprivileged students to support their education and foster a love for reading.',
