@@ -72,7 +72,7 @@ export default function PayrollGivingPage() {
           <section className="relative w-full">
             <div className="relative w-full">
               <Image
-                src="/images/banner/pg.jpg"
+                src="/images/banner/pg.avif"
                 alt="Payroll Giving"
                 width={1920}
                 height={334}
