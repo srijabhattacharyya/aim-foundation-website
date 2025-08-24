@@ -28,7 +28,7 @@ const testimonials = [
     },
      {
         quote: "The educational programs have given my children a future I could only dream of.",
-        name: "Amit Patel",
+        name: "Sunita Haldar",
         role: "Parent",
         image: "https://placehold.co/100x100.png",
         hint: "happy father portrait"
