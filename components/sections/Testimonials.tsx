@@ -16,7 +16,7 @@ const testimonials = [
         quote: "Volunteering here has been a transformative experience. The impact is real.",
         name: "Rohit Bannerjee",
         role: "Volunteer",
-        image: "https://placehold.co/100x100.png",
+        image: "/images/testimonials/rohit-bannerjee.avif",
         hint: "smiling man portrait"
     },
     {
