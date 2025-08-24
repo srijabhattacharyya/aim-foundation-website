@@ -161,7 +161,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Teaching Beyond Boundaries
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "EduAccess initiative", hint: "online learning rural", description: "Rural students accessing online education"};
+            image = { src: "/images/projects/eduaccess/eduaccess2.avif", alt: "EduAccess initiative", hint: "online learning rural", description: "Rural students accessing online education"};
         } else if (pathname.includes('/krishti')) {
             content = (
                 <Link href="/blog/crafting-futures-the-krishti-story" className="text-muted-foreground hover:text-primary transition-colors">
@@ -196,7 +196,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Restoring Sight, Rekindling Dreams
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "SightHope initiative", hint: "vision eye exam", description: "An elderly person receiving an eye check-up"};
+            image = { src: "/images/projects/sighthope/spectacles-distribution.avif", alt: "SightHope initiative", hint: "spectacles distribution", description: "free spectacles distribution"};
         } else if (pathname.includes('/relief-to-the-underprivileged')) {
             content = (
                 <Link href="/blog/relief-to-the-underprivileged" className="text-muted-foreground hover:text-primary transition-colors">
@@ -245,7 +245,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     No Child Left Offline: How DigiEmpower is Bridging the Digital Divide
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "DigiEmpower initiative", hint: "digital literacy children", description: "Children learning to use computers"};
+            image = { src: "https://placehold.co/1920x580.png", alt: "DigiEmpower initiative", hint: "digital literacy children", description: "Children learning to use computers"};
         } else if (pathname.includes('/cureline')) {
             content = (
                 <Link href="/blog/cureline-bringing-healthcare-to-the-last-mile" className="text-muted-foreground hover:text-primary transition-colors">
@@ -280,7 +280,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     VidyaShakti: AI-Powered Learning for Rural Classrooms
                 </Link>
             );
-            image = { src: "/images/projects/vidyashakti/vidyashakti1.avif", alt: "VidyaShakti initiative", hint: "learning app student", description: "A student using the VidyaShakti learning app"};
+            image = { src: "/images/projects/vidyashakti/vidyashakti2.avif", alt: "VidyaShakti initiative", hint: "learning app student", description: "A student engaging with the VidyaShakti learning app"};
         } else if (pathname.includes('/soulcircle')) {
             content = (
                  <Link href="/blog/soulcircle-24-7-mental-health-support" className="text-muted-foreground hover:text-primary transition-colors">
@@ -310,11 +310,13 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const { content, image } = getRelatedResource();
 
+    const showOverlay = !['/vidyashakti', '/digiempower'].some(p => pathname.includes(p));
+
     return (
         <aside className="md:col-span-1 space-y-8">
             <Card className="overflow-hidden relative">
                  <Image src={image.src} alt={image.alt} width={600} height={400} data-ai-hint={image.hint} className="w-full h-auto object-cover" />
-                 {image.description && (
+                 {image.description && showOverlay && (
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent flex items-end justify-center p-4">
                         <p className="text-white text-center text-sm font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">{image.description}</p>
                     </div>
