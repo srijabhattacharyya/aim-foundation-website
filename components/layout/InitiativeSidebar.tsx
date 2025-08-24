@@ -176,7 +176,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Screening Today for a Healthier Tomorrow
                 </Link>
             );
-            image = { src: "/images/projects/oralscan/oralscan2.avif", alt: "OralScan initiative", hint: "oral cancer screening", description: "Oral Cancer Screening in association with Narayana Health."};
+            image = { src: "/images/projects/oralscan/oranscan2.avif", alt: "OralScan initiative", hint: "oral cancer screening", description: "Oral Cancer Screening in association with Narayana Health."};
         } else if (pathname.includes('/green-roots')) {
             content = (
                 <Link href="/blog/planting-hope-growing-futures" className="text-muted-foreground hover:text-primary transition-colors">
