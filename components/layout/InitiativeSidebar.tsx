@@ -175,7 +175,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Screening Today for a Healthier Tomorrow
                 </Link>
             );
-            image = { src: "/images/projects/oralscan/oralscan2.avif", alt: "OralScan initiative", hint: "oral cancer screening", description: "An oral cancer screening camp in session"};
+            image = { src: "/images/projects/oralscan/oranscan2.avif", alt: "OralScan initiative", hint: "oral cancer screening", description: "An oral cancer screening camp in session"};
         } else if (pathname.includes('/green-roots')) {
             content = (
                 <Link href="/blog/planting-hope-growing-futures" className="text-muted-foreground hover:text-primary transition-colors">
@@ -224,7 +224,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     From Stigma to Strength: The CycleSafe Story
                 </Link>
             );
-            image = { src: "/images/projects/cyclesafe/cyclesafe1.avif", alt: "CycleSafe initiative", hint: "menstrual hygiene awareness", description: ""};
+            image = { src: "/images/projects/cyclesafe/cyclesafe1.avif", alt: "CycleSafe initiative", hint: "menstrual hygiene awareness", description: "Adolescent girls at a menstrual health workshop"};
         } else if (pathname.includes('/disaster-management')) {
             content = (
                 <Link href="/blog/from-despair-to-recovery-rebuilding-lives-after-disaster" className="text-muted-foreground hover:text-primary transition-colors">
@@ -310,7 +310,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const { content, image } = getRelatedResource();
 
-    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope', '/oralscan', '/cyclesafe', '/krishti'].some(p => pathname.includes(p));
+    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope', '/oralscan', '/cyclesafe', '/krishti', '/tideshield', '/roots-of-change'].some(p => pathname.includes(p));
 
     return (
         <aside className="md:col-span-1 space-y-8">
@@ -321,7 +321,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                         <p className="text-white text-center text-sm font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">{image.description}</p>
                     </div>
                 )}
-                 {image.description && !showOverlay && (
+                 {!showOverlay && image.description && (
                     <div className="bg-background p-2 text-center">
                         <p className="text-muted-foreground text-sm font-semibold">{image.description}</p>
                     </div>
