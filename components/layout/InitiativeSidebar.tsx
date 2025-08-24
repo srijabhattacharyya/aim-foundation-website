@@ -311,7 +311,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const { content, image } = getRelatedResource();
 
-    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope', '/oralscan'].some(p => pathname.includes(p));
+    const showOverlay = !['/vidyashakti', '/digiempower', '/sighthope', '/oralscan', '/cyclesafe'].some(p => pathname.includes(p));
 
     return (
         <aside className="md:col-span-1 space-y-8">
