@@ -197,7 +197,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Restoring Sight, Rekindling Dreams
                 </Link>
             );
-            image = { src: "/images/projects/sighthope/spectacles-distribution.avif", alt: "SightHope initiative", hint: "spectacles distribution", description: "Free Spectacles Distribution"};
+            image = { src: "/images/projects/sighthope/spectacles-distribution.avif", alt: "SightHope initiative", hint: "vision eye exam", description: "Free Spectacles Distribution"};
         } else if (pathname.includes('/relief-to-the-underprivileged')) {
             content = (
                 <Link href="/blog/relief-to-the-underprivileged" className="text-muted-foreground hover:text-primary transition-colors">
@@ -225,7 +225,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     From Stigma to Strength: The CycleSafe Story
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "CycleSafe initiative", hint: "menstrual health awareness", description: "Adolescent girls at a menstrual health workshop"};
+            image = { src: "/images/projects/cyclesafe/cyclesafe1.avif", alt: "CycleSafe initiative", hint: "menstrual hygiene awareness", description: "Menstrual Hygiene Awareness Camp for the adolescent girls."};
         } else if (pathname.includes('/disaster-management')) {
             content = (
                 <Link href="/blog/from-despair-to-recovery-rebuilding-lives-after-disaster" className="text-muted-foreground hover:text-primary transition-colors">
