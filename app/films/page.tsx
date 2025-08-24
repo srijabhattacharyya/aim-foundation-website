@@ -88,7 +88,7 @@ export default function FilmsPage() {
                                 className="w-full h-auto object-cover aspect-video transition-transform duration-300 group-hover:scale-105"
                                 data-ai-hint={video.hint}
                             />
-                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <PlayCircle className="h-16 w-16 text-white" />
                             </div>
                         </Link>
