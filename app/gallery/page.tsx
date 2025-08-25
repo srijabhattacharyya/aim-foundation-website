@@ -28,13 +28,13 @@ const galleryImages = [
   {
     id: '39',
     imageUrl: '/images/projects/sighthope/sighthope1.avif',
-    description: 'A new gallery image placeholder.',
+    description: 'Free Eye Screening Camp Hosted by AIM Foundation',
     hint: 'health camp'
   },
   {
     id: '38',
     imageUrl: '/images/projects/krishti/krishti1.avif',
-    description: 'Free Eye Check-up Camp organised by AIM Foundation',
+    description: 'Products created in Krishti are available for sale',
     hint: 'krishti program'
   },
   {
@@ -288,7 +288,7 @@ export default function GalleryPage() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       loading="lazy"
                     />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="p-4 absolute bottom-0 text-white">
                             <p className="font-semibold text-sm">{image.description}</p>
                         </div>
