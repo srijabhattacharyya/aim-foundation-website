@@ -4,7 +4,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,16 +12,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "@/hooks/use-toast";
-import { Card, CardContent } from "@/components/ui/card";
+} from "../../../components/ui/form";
+import { Input } from "../../../components/ui/input";
+import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
+import { Checkbox } from "../../../components/ui/checkbox";
+import { useToast } from "../../../hooks/use-toast";
+import { Card, CardContent } from "../../../components/ui/card";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDonation } from "@/app/actions/donationActions";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
@@ -97,22 +98,21 @@ const donationSchema = z.object({
     }
 });
 
-
 const donationAmountsIndian = [
-    { value: "3000", label: "₹3000", description: "INCLUSIVE WORKSHOP FOR 10 CHILDREN" },
-    { value: "6000", label: "₹6000", description: "INCLUSIVE WORKSHOP FOR 20 CHILDREN" },
-    { value: "12000", label: "₹12000", description: "INCLUSIVE WORKSHOP FOR 40 CHILDREN" },
-    { value: "24000", label: "₹24000", description: "SPONSOR AN ENTIRE MILIEU SESSION" },
+    { value: "3000", label: "₹3000", description: "EDUCATION & ART FOR 1 CHILD FOR 6 MONTHS" },
+    { value: "6000", label: "₹6000", description: "EDUCATION & ART FOR 1 CHILD FOR A YEAR" },
+    { value: "12000", label: "₹12000", description: "EDUCATION & ART FOR 2 CHILDREN FOR A YEAR" },
+    { value: "24000", label: "₹24000", description: "EDUCATION & ART FOR 4 CHILDREN FOR A YEAR" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "35", label: "$35", description: "INCLUSIVE WORKSHOP FOR 10 CHILDREN" },
-    { value: "70", label: "$70", description: "INCLUSIVE WORKSHOP FOR 20 CHILDREN" },
-    { value: "140", label: "$140", description: "INCLUSIVE WORKSHOP FOR 40 CHILDREN" },
-    { value: "280", label: "$280", description: "SPONSOR AN ENTIRE MILIEU SESSION" },
+    { value: "35", label: "$35", description: "EDUCATION & ART FOR 1 CHILD FOR 6 MONTHS" },
+    { value: "70", label: "$70", description: "EDUCATION & ART FOR 1 CHILD FOR A YEAR" },
+    { value: "140", label: "$140", description: "EDUCATION & ART FOR 2 CHILDREN FOR A YEAR" },
+    { value: "280", label: "$280", description: "EDUCATION & ART FOR 4 CHILDREN FOR A YEAR" },
 ];
 
-export default function MilieuDonationForm() {
+export default function InnocentSmilesDonationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [showRecaptcha, setShowRecaptcha] = useState(false);
@@ -168,29 +168,21 @@ export default function MilieuDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-        const donationData = { ...values, cause: 'Milieu', initiative: 'Milieu' };
-        const result = await addDonation(donationData);
-        if (result.success) {
-            toast({
-            title: "Thank you for supporting Milieu!",
-            description: "Your support makes a difference.",
-            });
-            recaptchaRef.current?.reset();
-            form.reset();
-            setShowRecaptcha(false);
-        } else {
-            toast({
-                variant: "destructive",
-                title: "Submission Failed",
-                description: result.error || "Could not record donation. Please try again.",
-            });
-        }
+      const donationData = { ...values, cause: 'Innocent Smiles', createdAt: serverTimestamp() };
+      await addDoc(collection(db, "donations"), donationData);
+      toast({
+        title: "Thank you for supporting Innocent Smiles!",
+        description: "Your support makes a difference.",
+      });
+      recaptchaRef.current?.reset();
+      form.reset();
+      setShowRecaptcha(false);
     } catch (error) {
-        toast({
-            variant: "destructive",
-            title: "Submission Failed",
-            description: "An unexpected error occurred. Please try again.",
-        });
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "Could not record donation. Please try again.",
+      });
     } finally {
         setIsSubmitting(false);
     }
@@ -203,7 +195,7 @@ export default function MilieuDonationForm() {
                 <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
             </div>
             <div className="text-center mb-8 pt-20">
-                <h2 className="text-3xl font-bold font-headline">SUPPORT MILIEU</h2>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT INNOCENT SMILES</h2>
                 <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
             </div>
 
@@ -344,11 +336,6 @@ export default function MilieuDonationForm() {
                                     </FormItem>
                                 )}
                             />
-                             <div className="flex items-center justify-center md:col-span-2">
-                                <p className="text-xs text-center text-muted-foreground mt-1">
-                                    PAN or AADHAR No. is Mandatory as per Law
-                                </p>
-                            </div>
                         </>
                     ) : (
                          <FormField
@@ -404,7 +391,7 @@ export default function MilieuDonationForm() {
                         </FormItem>
                     )}
                 />
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <FormField
                         control={form.control}
@@ -428,7 +415,8 @@ export default function MilieuDonationForm() {
                                 <FormMessage />
                                 </FormItem>
                             )}
-                        )}
+                        />
+                    )}
                     <FormField
                         control={form.control}
                         name="city"
@@ -492,7 +480,7 @@ export default function MilieuDonationForm() {
                 />
 
                 {showRecaptcha && (
-                    <FormField
+                     <FormField
                       control={form.control}
                       name="recaptcha"
                       render={({ field }) => (
@@ -521,3 +509,4 @@ export default function MilieuDonationForm() {
     </Card>
   );
 }
+
