@@ -34,7 +34,7 @@ const galleryImages = [
   {
     id: '38',
     imageUrl: '/images/projects/krishti/krishti1.avif',
-    description: 'Products created in Krishti are available for sale',
+    description: "Products created in Krishti are available for sale",
     hint: 'krishti program'
   },
   {
