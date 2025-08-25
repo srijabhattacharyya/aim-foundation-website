@@ -27,6 +27,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
     ssr: false,
@@ -197,7 +198,10 @@ export default function SheConnectsDonationForm() {
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
         <CardContent className="p-6 md:p-8" onFocus={() => setShowRecaptcha(true)} onClick={() => setShowRecaptcha(true)}>
-            <div className="text-center mb-8">
+            <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+                <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
+            </div>
+            <div className="text-center mb-8 pt-20">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT SHECONNECTS</h2>
                 <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
             </div>
@@ -437,7 +441,7 @@ export default function SheConnectsDonationForm() {
                             </FormItem>
                         )}
                     />
-                    <FormField
+                     <FormField
                         control={form.control}
                         name="pincode"
                         render={({ field }) => (
@@ -463,7 +467,7 @@ export default function SheConnectsDonationForm() {
                         </FormItem>
                     )}
                 />
-                
+
                 <div className="text-xs text-muted-foreground text-center space-y-1">
                     <p>YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT UNDER SECTION 80G AS ASSOCIATED INITIATIVE FOR MANKIND FOUNDATION IS REGISTERED AS NON PROFIT ORGANIZATION</p>
                     <p>PAN: AAFTA1983P | 80G NUMBER: AAFTA1983PF20221</p>
