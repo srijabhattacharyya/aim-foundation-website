@@ -18,7 +18,7 @@ import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
 import { Checkbox } from "../../../components/ui/checkbox";
 import { useToast } from "../../../hooks/use-toast";
 import { Card, CardContent } from "../../../components/ui/card";
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -27,8 +27,13 @@ import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
+import Image from "next/image";
+import { Skeleton } from "@/components/ui/skeleton";
 
-const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
+    ssr: false,
+    loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md mx-auto" />
+});
 
 const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
@@ -110,6 +115,7 @@ const donationAmountsNonIndian = [
 export default function InnocentSmilesDonationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [showRecaptcha, setShowRecaptcha] = useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -170,6 +176,7 @@ export default function InnocentSmilesDonationForm() {
       });
       recaptchaRef.current?.reset();
       form.reset();
+      setShowRecaptcha(false);
     } catch (error) {
       toast({
         variant: "destructive",
@@ -183,8 +190,11 @@ export default function InnocentSmilesDonationForm() {
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
-        <CardContent className="p-6 md:p-8">
-            <div className="text-center mb-8">
+        <CardContent className="p-6 md:p-8" onFocus={() => setShowRecaptcha(true)} onClick={() => setShowRecaptcha(true)}>
+            <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+                <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
+            </div>
+            <div className="text-center mb-8 pt-20">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT INNOCENT SMILES</h2>
                 <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
             </div>
@@ -469,24 +479,26 @@ export default function InnocentSmilesDonationForm() {
                     )}
                 />
 
-                <FormField
-                  control={form.control}
-                  name="recaptcha"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <div className="flex justify-center">
-                            <DynamicReCAPTCHA
-                              ref={recaptchaRef}
-                              sitekey={recaptchaSiteKey}
-                              onChange={field.onChange}
-                            />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                {showRecaptcha && (
+                     <FormField
+                      control={form.control}
+                      name="recaptcha"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="flex justify-center">
+                                <DynamicReCAPTCHA
+                                  ref={recaptchaRef as React.RefObject<any>}
+                                  sitekey={recaptchaSiteKey}
+                                  onChange={field.onChange}
+                                />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                )}
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
@@ -497,3 +509,4 @@ export default function InnocentSmilesDonationForm() {
     </Card>
   );
 }
+
