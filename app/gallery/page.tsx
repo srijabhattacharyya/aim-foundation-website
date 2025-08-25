@@ -27,86 +27,86 @@ const galleryImages = [
   },
   {
     id: '39',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: '/images/projects/sighthope/sighthope1.avif',
     description: 'A new gallery image placeholder.',
     hint: 'health camp'
   },
   {
     id: '38',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
-    hint: 'education program'
+    imageUrl: '/images/projects/krishti/krishti1.avif',
+    description: 'Free Eye Check-up Camp organised by AIM Foundation',
+    hint: 'krishti program'
   },
   {
     id: '37',
     imageUrl: '/images/projects/innocent-smiles/innocent-smiles2.avif',
-    description: 'Childern are in art class.',
+    description: 'Childern are in art class',
     hint: 'innocent smiles'
   },
   {
     id: '36',
     imageUrl: '/images/projects/childfirst/childfirst2.avif',
-    description: 'Medical Camp for Children.',
+    description: 'Medical Camp for Children',
     hint: 'medical camp'
   },
   {
     id: '35',
     imageUrl: '/images/projects/carecircle/carecircle3.avif',
-    description: 'Health Camp at Sarala Punyashram, Kolkata.',
+    description: 'Health Camp at Sarala Punyashram, Kolkata',
     hint: 'health camp'
   },
   {
     id: '34',
     imageUrl: '/images/projects/childfirst/childfirst3.avif',
-    description: 'Specialised Paediatric Camp at Kolkata.',
+    description: 'Specialised Paediatric Camp at Kolkata',
     hint: 'paediatric camp'
   },
   {
     id: '33',
     imageUrl: '/images/projects/cureline/cureline3.avif',
-    description: 'Health Camp at Kumirmari Island, Sundarbans, 24 Parganas (S), West Bengal.',
+    description: 'Health Camp at Kumirmari Island, Sundarbans, 24 Parganas (S), West Bengal',
     hint: 'health camp'
   },
   {
     id: '32',
     imageUrl: '/images/projects/cureline/cureline2.avif',
-    description: 'Health Camp at Bali Island, Sundarbans, @4 Parganas (S), West Bengal.',
+    description: 'Health Camp at Bali Island, Sundarbans, @4 Parganas (S), West Bengal',
     hint: 'education program'
   },
   {
     id: '31',
     imageUrl: '/images/projects/cyclesafe/cyclesafe3.avif',
-    description: 'Sanitary Napkin Distribution to underprivileged adolescent girls of Kolkata.',
+    description: 'Sanitary Napkin Distribution to underprivileged adolescent girls of Kolkata',
     hint: 'sanitary napkin distribution'
   },
   {
     id: '30',
     imageUrl: '/images/projects/cyclesafe/cyclesafe2.avif',
-    description: 'Reproductive Health Awareness Camp.',
+    description: 'Reproductive Health Awareness Camp',
     hint: 'reproductive health awarenes'
   },
   {
     id: '29',
     imageUrl: '/images/projects/detect/detect3.avif',
-    description: 'Cervical Cancer Awareness.',
+    description: 'Cervical Cancer Awareness',
     hint: 'cervical cancer awareness'
   },
   {
     id: '28',
     imageUrl: '/images/projects/relief/relief4.avif',
-    description: 'Relief distribution in Sundarbans.',
+    description: 'Relief distribution in Sundarbans',
     hint: 'relief distribution'
   },
   {
     id: '27',
     imageUrl: '/images/projects/eduaccess/eduaccess2.avif',
-    description: 'Online Classes for the students of Sundarbans.',
+    description: 'Online Classes for the students of Sundarbans',
     hint: 'online class'
   },
   {
     id: '26',
     imageUrl: '/images/projects/sustainability/sustainability5.avif',
-    description: 'Sapling Distribution at Ranaghat, Nadia, West Bengal.',
+    description: 'Sapling Distribution at Ranaghat, Nadia, West Bengal',
     hint: 'sapling distribution'
   },
   {
@@ -118,55 +118,55 @@ const galleryImages = [
   {
     id: '24',
     imageUrl: '/images/projects/innocent-smiles/innocent-smiles1.avif',
-    description: 'Drawing Class for the underprivileged children at Sarala Punyashram, Kolkata.',
+    description: 'Drawing Class for the underprivileged children at Sarala Punyashram, Kolkata',
     hint: 'drawing class'
   },
   {
     id: '23',
     imageUrl: '/images/projects/digiempower/digiempower2.avif',
-    description: 'Computer Classes at Dakshin Dhupjhora, Jalpaiguri, West Bengal.',
+    description: 'Computer Classes at Dakshin Dhupjhora, Jalpaiguri, West Bengal',
     hint: 'computer centre'
   },
   {
     id: '22',
     imageUrl: '/images/projects/oralscan/oranscan2.avif',
-    description: 'Oral Cancer Detection Camp.',
+    description: 'Oral Cancer Detection Camp',
     hint: 'oral cancer screening'
   },
   {
     id: '21',
     imageUrl: '/images/projects/relief/relief3.avif',
-    description: 'Blanket Distribution to Adivasi people of Shalboni, West Bengal in association with Muthoot Finance.',
+    description: 'Blanket Distribution to Adivasi people of Shalboni, West Bengal in association with Muthoot Finance',
     hint: 'blanket distribution'
   },
   {
     id: '20',
     imageUrl: '/images/projects/sustainability/sustainability3.avif',
-    description: 'Environment Awareness Programme.',
+    description: 'Environment Awareness Programme',
     hint: 'environment awareness programme'
   },
   {
     id: '19',
     imageUrl: '/images/projects/sighthope/sighthope1.avif',
-    description: 'Eye Camp at Sarala Punyashram, Kolkata in association with Susrut Eye Foundation.',
+    description: 'Eye Camp at Sarala Punyashram, Kolkata in association with Susrut Eye Foundation',
     hint: 'eye camp'
   },
   {
     id: '18',
     imageUrl: '/images/projects/detect/detect1.avif',
-    description: 'Cervical Cancer Screening Camp in association with Chittaranjan National Cancer Institute.',
+    description: 'Cervical Cancer Screening Camp in association with Chittaranjan National Cancer Institute',
     hint: 'cervical cancer screening'
   },
   {
     id: '17',
     imageUrl: '/images/projects/eduaccess/eduaccess1.avif',
-    description: 'Online Class from Kolkata for the students of Sundarbans.',
+    description: 'Online Class from Kolkata for the students of Sundarbans',
     hint: 'online classes'
   },
   {
     id: '16',
     imageUrl: '/images/projects/carecircle/carecircle2.avif',
-    description: 'Medical Camp at Mallickpur, near Kolkata.',
+    description: 'Medical Camp at Mallickpur, near Kolkata',
     hint: 'medical camp'
   },
   {
@@ -178,25 +178,25 @@ const galleryImages = [
   {
     id: '14',
     imageUrl: '/images/projects/carecircle/carecircle1.webp',
-    description: 'Health Camp at Sarala Punyashram, Kolkata, in association with bhagirathi Neotia Women and Childcare Centre.',
+    description: 'Health Camp at Sarala Punyashram, Kolkata, in association with bhagirathi Neotia Women and Childcare Centre',
     hint: 'health Camp'
   },
   {
     id: '13',
     imageUrl: '/images/projects/sustainability/sustainability1.avif',
-    description: 'Mangrove Plantation in Sundarbans.',
+    description: 'Mangrove Plantation in Sundarbans',
     hint: 'mangrove plantation'
   },
   {
     id: '12',
     imageUrl: '/images/projects/detect/detect2.avif',
-    description: 'A cervical cancer awareness session for rural women.',
+    description: 'A cervical cancer awareness session for rural women',
     hint: 'cervical cancer awareness'
   },
   {
     id: '11',
     imageUrl: '/images/projects/childfirst/childfirst1.avif',
-    description: 'A doctor providing care to a young child.',
+    description: 'A doctor providing care to a young child',
     hint: 'child health'
   },
   {
@@ -208,55 +208,55 @@ const galleryImages = [
   {
     id: '9',
     imageUrl: '/images/projects/forest-cleaning/forest-cleaning1.avif',
-    description: 'Cleaning of Garumara National Park.',
+    description: 'Cleaning of Garumara National Park',
     hint: 'forest cleaning'
   },
   {
     id: '8',
     imageUrl: '/images/projects/milieu/milieu1.avif',
-    description: 'Children from diverse backgrounds learning together.',
+    description: 'Children from diverse backgrounds learning together',
     hint: 'women entrepreneurship'
   },
   {
     id: '7',
     imageUrl: '/images/projects/oralscan/oralscan1.avif',
-    description: 'Oral Cancer Screening in association with Narayana Health.',
+    description: 'Oral Cancer Screening in association with Narayana Health',
     hint: 'oral cancer screening'
   },
   {
     id: '6',
     imageUrl: '/images/projects/cyclesafe/cyclesafe1.avif',
-    description: 'Menstrual Hygiene Awareness Camp for the adolescent girls.',
+    description: 'Menstrual Hygiene Awareness Camp for the adolescent girls',
     hint: 'menstrual hygiene awareness '
   },
   {
     id: '5',
     imageUrl: '/images/projects/relief/relief2.avif',
-    description: 'Distributing blankets to footpath dwellers during winter.',
+    description: 'Distributing blankets to footpath dwellers during winter',
     hint: 'winter relief'
   },
   {
     id: '4',
     imageUrl: '/images/projects/sustainability/sustainability2.avif',
-    description: 'Community members participating in a tree plantation drive.',
+    description: 'Community members participating in a tree plantation drive',
     hint: 'tree plantation'
   },
   {
     id: '3',
     imageUrl: '/images/projects/suidhaga/suidhaga1.avif',
-    description: 'Empowering women through our skill development programs.',
+    description: 'Empowering women through our skill development programs',
     hint: 'women empowerment'
   },
   {
     id: '2',
     imageUrl: '/images/projects/cureline/cureline1.avif',
-    description: 'Our dedicated doctor providing healthcare services in a remote village.',
+    description: 'Our dedicated doctor providing healthcare services in a remote village',
     hint: 'healthcare camp'
   },
   {
     id: '1',
     imageUrl: '/images/projects/book/book-distribution.avif',
-    description: 'Book diistribution to underprivileged children.',
+    description: 'Book diistribution to underprivileged children',
     hint: 'children learning'
   }
 ];
