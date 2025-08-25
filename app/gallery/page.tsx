@@ -9,26 +9,26 @@ import { Card, CardContent } from '@/components/ui/card';
 const galleryImages = [
   {
     id: '42',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
+    imageUrl: '/images/projects/innocent-smiles/innocent-smiles4.avif',
+    description: 'Our Sabar Children in Purulia, West Bengal',
     hint: 'community event'
   },
   {
     id: '41',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
+    imageUrl: '/images/projects/innocent-smiles/innocent-smiles3.avif',
+    description: 'Meeting with Sabar Community on Child Education',
     hint: 'volunteer work'
   },
   {
     id: '40',
-    imageUrl: 'https://placehold.co/600x400.png',
-    description: 'A new gallery image placeholder.',
+    imageUrl: '/images/projects/cureline/cureline4.avif',
+    description: 'AIM Foundation Hosts Free Health Camp at Bali Island, Sundarbans',
     hint: 'children smiling'
   },
   {
     id: '39',
-    imageUrl: '/images/projects/sighthope/sighthope1.avif',
-    description: 'Free Eye Screening Camp Hosted by AIM Foundation',
+    imageUrl: '/images/projects/sighthope/spectacles-distribution.avif',
+    description: 'Providing Free Spectacles – An Initiative by AIM Foundation',
     hint: 'health camp'
   },
   {

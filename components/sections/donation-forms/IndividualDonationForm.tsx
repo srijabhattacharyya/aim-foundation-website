@@ -28,6 +28,7 @@ import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
+import Image from "next/image";
 
 const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
   ssr: false,
@@ -189,7 +190,10 @@ export default function IndividualDonationForm() {
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
         <CardContent className="p-6 md:p-8" onFocus={() => setShowRecaptcha(true)} onClick={() => setShowRecaptcha(true)}>
-            <div className="text-center mb-8">
+            <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+                <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
+            </div>
+            <div className="text-center mb-8 pt-20">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT OUR MISSION</h2>
                 <p className="text-muted-foreground">YOUR CONTRIBUTION MATTERS</p>
             </div>
@@ -487,7 +491,7 @@ export default function IndividualDonationForm() {
                           <FormControl>
                             <div className="flex justify-center">
                                 <DynamicReCAPTCHA
-                                  ref={recaptchaRef}
+                                  ref={recaptchaRef as React.RefObject<any>}
                                   sitekey={recaptchaSiteKey}
                                   onChange={field.onChange}
                                 />
@@ -508,4 +512,3 @@ export default function IndividualDonationForm() {
     </Card>
   );
 }
-

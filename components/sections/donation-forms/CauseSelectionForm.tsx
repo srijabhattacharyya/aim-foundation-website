@@ -314,8 +314,8 @@ export default function CauseSelectionForm() {
   return (
     <>
       <div className="bg-card p-8 rounded-lg relative">
-        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center">
-            <Image src="/images/logo.png" alt="AIM Foundation Logo" width={100} height={40} className="object-contain"/>
+        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+            <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
         </div>
         {step === 1 && (
           <>

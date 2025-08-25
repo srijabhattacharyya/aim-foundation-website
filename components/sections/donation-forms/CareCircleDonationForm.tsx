@@ -500,7 +500,7 @@ export default function CareCircleDonationForm() {
                           <FormControl>
                             <div className="flex justify-center">
                                 <DynamicReCAPTCHA
-                                  ref={recaptchaRef}
+                                  ref={recaptchaRef as React.RefObject<any>}
                                   sitekey={recaptchaSiteKey}
                                   onChange={field.onChange}
                                 />
