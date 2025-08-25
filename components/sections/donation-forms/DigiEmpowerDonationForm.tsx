@@ -490,7 +490,7 @@ export default function DigiEmpowerDonationForm() {
                           <FormControl>
                             <div className="flex justify-center">
                                 <DynamicReCAPTCHA
-                                  ref={recaptchaRef}
+                                  ref={recaptchaRef as React.RefObject<any>}
                                   sitekey={recaptchaSiteKey}
                                   onChange={field.onChange}
                                 />
@@ -511,4 +511,3 @@ export default function DigiEmpowerDonationForm() {
     </Card>
   );
 }
-
