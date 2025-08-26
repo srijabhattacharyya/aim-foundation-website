@@ -11,13 +11,28 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/KrishtiDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/KrishtiDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const genderEqualityInitiatives = [
+    { href: '/sheconnects?from=gender-equality', label: 'SheConnects' },
+    { href: '/cyclesafe?from=gender-equality', label: 'CycleSafe' },
+    { href: '/detect?from=gender-equality', label: 'Detect' },
+    { href: '/suidhaga?from=gender-equality', label: 'SuiDhaga' },
+    { href: '/krishti?from=gender-equality', label: 'Krishti' },
+];
+
+const relatedResource = {
+    link: "/blog/crafting-futures-the-krishti-story",
+    text: "Crafted by Her. Backed by Krishti.",
+    image: { src: "/images/projects/krishti/krishti1.avif", alt: "Krishti initiative", hint: "women entrepreneurship", description: "An empowered woman showcasing her handcrafted products"}
+};
+
 export default function KrishtiClientPage() {
   const [showForm, setShowForm] = useState(false);
+  const initiativeLists = [{ title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -50,7 +65,7 @@ export default function KrishtiClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="grid md:grid-cols-3 gap-12">
-                 <InitiativeSidebar from="gender-equality" />
+                 <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                 <div className="md:col-span-2">
                   <div className="space-y-6">
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">Crafted by Her. Backed by Krishti.</h2>

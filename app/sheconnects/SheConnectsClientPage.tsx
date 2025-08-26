@@ -12,15 +12,44 @@ import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SheConnectsDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SheConnectsDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
+
+const educationalInitiatives = [
+  { href: '/innocent-smiles?from=educational', label: 'Innocent Smiles' },
+  { href: '/inspire-eduLab?from=educational', label: 'Inspire EduLab' },
+  { href: '/eduaccess?from=educational', label: 'EduAccess' },
+  { href: '/empower-english?from=educational', label: 'Empower English'},
+  { href: '/digiempower?from=educational', label: 'DigiEmpower' },
+  { href: '/sheconnects?from=educational', label: 'SheConnects' },
+  { href: '/milieu?from=educational', label: 'Milieu' },
+  { href: '/vidyashakti?from=educational', label: 'VidyaShakti' },
+];
+
+const genderEqualityInitiatives = [
+    { href: '/sheconnects?from=gender-equality', label: 'SheConnects' },
+    { href: '/cyclesafe?from=gender-equality', label: 'CycleSafe' },
+    { href: '/detect?from=gender-equality', label: 'Detect' },
+    { href: '/suidhaga?from=gender-equality', label: 'SuiDhaga' },
+    { href: '/krishti?from=gender-equality', label: 'Krishti' },
+];
+
+const relatedResource = {
+    link: "/blog/project-sheconnects",
+    text: "Project SheConnects: Empowering Women Through Technology",
+    image: { src: "/images/projects/sheconnects/sheconnects1.avif", alt: "SheConnects initiative", hint: "women technology", description: "Women learning digital skills in a SheConnects workshop"}
+};
 
 export default function SheConnectsClientPage() {
     const [showForm, setShowForm] = useState(false);
     const searchParams = useSearchParams();
     const from = searchParams.get('from') || 'educational';
+    
+    const initiativeLists = from === 'educational'
+        ? [{ title: "Educational Initiatives", initiatives: educationalInitiatives }]
+        : [{ title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }];
     
     return (
         <div className="flex flex-col min-h-screen">
@@ -52,7 +81,7 @@ export default function SheConnectsClientPage() {
             <section className="py-12 md:py-20 lg:py-24 bg-muted">
               <div className="container mx-auto px-4 md:px-6 relative">
                  <div className="grid md:grid-cols-3 gap-12">
-                    <InitiativeSidebar from={from} />
+                    <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                     <div className="md:col-span-2">
                         <div className="space-y-6">
                             <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Women Through Technology.</h2>

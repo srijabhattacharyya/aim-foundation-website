@@ -17,10 +17,39 @@ const DynamicDonationForm = dynamic(() => import('../../components/sections/dona
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const genderEqualityInitiatives = [
+    { href: '/sheconnects?from=gender-equality', label: 'SheConnects' },
+    { href: '/cyclesafe?from=gender-equality', label: 'CycleSafe' },
+    { href: '/detect?from=gender-equality', label: 'Detect' },
+    { href: '/suidhaga?from=gender-equality', label: 'SuiDhaga' },
+    { href: '/krishti?from=gender-equality', label: 'Krishti' },
+];
+
+const healthcareInitiatives = [
+    { href: '/cureline?from=healthcare', label: 'CureLine' },
+    { href: '/carecircle?from=healthcare', label: 'CareCircle' },
+    { href: '/childfirst?from=healthcare', label: 'ChildFirst' },
+    { href: '/detect?from=healthcare', label: 'Detect' },
+    { href: '/sighthope?from=healthcare', label: 'SightHope' },
+    { href: '/oralscan?from=healthcare', label: 'OralScan' },
+    { href: '/cyclesafe?from=healthcare', label: 'CycleSafe' },
+    { href: '/soulcircle?from=healthcare', label: 'SoulCircle' },
+];
+
+const relatedResource = {
+    link: "/blog/the-quiet-revolution-in-womens-health",
+    text: "The Quiet Revolution in Women’s Health",
+    image: { src: "/images/projects/detect/detect3.avif", alt: "Detect initiative", hint: "women health rural", description: "Cervical Cancer Awareness."}
+};
+
 export default function DetectClientPage() {
     const [showForm, setShowForm] = useState(false);
     const searchParams = useSearchParams();
     const from = searchParams.get('from') || 'healthcare';
+
+    const initiativeLists = from === 'gender-equality'
+        ? [{ title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }]
+        : [{ title: "Healthcare Initiatives", initiatives: healthcareInitiatives }];
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -53,7 +82,7 @@ export default function DetectClientPage() {
             <section className="py-12 md:py-20 lg:py-24 bg-muted">
               <div className="container mx-auto px-4 md:px-6 relative">
                 <div className="grid md:grid-cols-3 gap-12">
-                    <InitiativeSidebar from={from} />
+                    <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                     <div className="md:col-span-2">
                       <div className="space-y-6">
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Catching Cancer Before It Catches Her.</h2>

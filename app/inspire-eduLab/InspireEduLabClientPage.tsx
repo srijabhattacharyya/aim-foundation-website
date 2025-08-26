@@ -11,13 +11,31 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/InspireEduLabDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/InspireEduLabDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const educationalInitiatives = [
+  { href: '/innocent-smiles?from=educational', label: 'Innocent Smiles' },
+  { href: '/inspire-eduLab?from=educational', label: 'Inspire EduLab' },
+  { href: '/eduaccess?from=educational', label: 'EduAccess' },
+  { href: '/empower-english?from=educational', label: 'Empower English'},
+  { href: '/digiempower?from=educational', label: 'DigiEmpower' },
+  { href: '/sheconnects?from=educational', label: 'SheConnects' },
+  { href: '/milieu?from=educational', label: 'Milieu' },
+  { href: '/vidyashakti?from=educational', label: 'VidyaShakti' },
+];
+
+const relatedResource = {
+    link: "/blog/redefining-classrooms-for-a-digital-tomorrow",
+    text: "Redefining Classrooms for a Digital Tomorrow",
+    image: { src: "/images/projects/edulab/edulab1.avif", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Smart Classroom"}
+};
+
 export default function InspireEduLabClientPage() {
   const [showForm, setShowForm] = useState(false);
+  const initiativeLists = [{ title: "Educational Initiatives", initiatives: educationalInitiatives }];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -49,7 +67,7 @@ export default function InspireEduLabClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="grid md:grid-cols-3 gap-12">
-                <InitiativeSidebar from="educational" />
+                <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                 <div className="md:col-span-2">
                     <div className="space-y-6">
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Redefining Classrooms for a Digital Tomorrow</h2>

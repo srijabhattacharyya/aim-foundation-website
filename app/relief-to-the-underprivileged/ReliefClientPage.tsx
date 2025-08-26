@@ -11,14 +11,31 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/ReliefDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/ReliefDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const ourInitiatives = [
+    { href: '/educational-initiatives', label: 'Educational Initiatives' },
+    { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
+
+const relatedResource = {
+    link: "/blog/relief-to-the-underprivileged",
+    text: "Relief to the Underprivileged – AIM Foundation’s Lifeline of Hope",
+    image: { src: "/images/projects/relief/relief1.avif", alt: "Relief initiative", hint: "community relief support", description: "Distributing essential supplies to families in need"}
+};
 
 export default function ReliefClientPage() {
   const [showForm, setShowForm] = useState(false);
+  const initiativeLists = [{ title: "Our Initiatives", initiatives: ourInitiatives }];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -50,7 +67,7 @@ export default function ReliefClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
              <div className="grid md:grid-cols-3 gap-12">
-                <InitiativeSidebar from="relief" />
+                <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                 <div className="md:col-span-2">
                     <div className="space-y-6">
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Extending a Helping Hand, Restoring Dignity.</h2>

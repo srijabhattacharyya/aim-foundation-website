@@ -11,13 +11,27 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/TideShieldDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/TideShieldDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const sustainabilityInitiatives = [
+    { href: '/green-roots?from=sustainability', label: 'GreenRoots' },
+    { href: '/tideshield?from=sustainability', label: 'TideShield' },
+    { href: '/roots-of-change?from=sustainability', label: 'Roots of Change' },
+    { href: '/forest-cleaning?from=sustainability', label: 'Forest Cleaning' },
+];
+
+const relatedResource = {
+    link: "/blog/tideshield-restoring-mangroves",
+    text: "Restoring the Mangrove Heartbeat of the Sundarbans",
+    image: { src: "/images/projects/tide-shield/tide-shield2.avif", alt: "TideShield initiative", hint: "mangrove restoration", description: "Mangrove Plantation in Bali Island, Sundarbans"}
+};
+
 export default function TideShieldClientPage() {
   const [showForm, setShowForm] = useState(false);
+  const initiativeLists = [{ title: "Sustainability Initiatives", initiatives: sustainabilityInitiatives }];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -49,7 +63,7 @@ export default function TideShieldClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="grid md:grid-cols-3 gap-12">
-                <InitiativeSidebar from="sustainability" />
+                <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                 <div className="md:col-span-2">
                     <div className="space-y-6">
                       <h2 className="text-3xl md:text-4xl font-bold font-headline">Give the Sundarbans a fighting chance.</h2>

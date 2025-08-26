@@ -11,13 +11,31 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SoulCircleDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SoulCircleDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const healthcareInitiatives = [
+    { href: '/cureline?from=healthcare', label: 'CureLine' },
+    { href: '/carecircle?from=healthcare', label: 'CareCircle' },
+    { href: '/childfirst?from=healthcare', label: 'ChildFirst' },
+    { href: '/detect?from=healthcare', label: 'Detect' },
+    { href: '/sighthope?from=healthcare', label: 'SightHope' },
+    { href: '/oralscan?from=healthcare', label: 'OralScan' },
+    { href: '/cyclesafe?from=healthcare', label: 'CycleSafe' },
+    { href: '/soulcircle?from=healthcare', label: 'SoulCircle' },
+];
+
+const relatedResource = {
+    link: "/blog/soulcircle-24-7-mental-health-support",
+    text: "SoulCircle: 24/7 Compassionate Mental Health Support",
+    image: { src: "/images/projects/soulcircle/soulcircle1.avif", alt: "SoulCircle initiative", hint: "mental health peace", description: "Finding peace and support with SoulCircle"}
+};
+
 export default function SoulCircleClientPage() {
   const [showForm, setShowForm] = useState(false);
+  const initiativeLists = [{ title: "Healthcare Initiatives", initiatives: healthcareInitiatives }];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -49,7 +67,7 @@ export default function SoulCircleClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="grid md:grid-cols-3 gap-12">
-                <InitiativeSidebar from="healthcare" />
+                <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                 <div className="md:col-span-2">
                   <div className="space-y-6">
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">24/7 Emotional Support, Just a Chat Away</h2>

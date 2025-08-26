@@ -16,8 +16,26 @@ const DynamicDonationForm = dynamic(() => import('../../components/sections/dona
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const ourInitiatives = [
+    { href: '/educational-initiatives', label: 'Educational Initiatives' },
+    { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
+
+const relatedResource = {
+    link: "/blog/from-despair-to-recovery-rebuilding-lives-after-disaster",
+    text: "From Despair to Recovery: Rebuilding Lives After Disaster",
+    image: { src: "/images/projects/relief/relief4.avif", alt: "Disaster relief efforts", hint: "disaster relief team", description: "Relief distribution in Sundarbans."}
+};
+
 export default function DisasterManagementClientPage() {
   const [showForm, setShowForm] = useState(false);
+  const initiativeLists = [{ title: "Our Initiatives", initiatives: ourInitiatives }];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -49,7 +67,7 @@ export default function DisasterManagementClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="grid md:grid-cols-3 gap-12">
-              <InitiativeSidebar from="disaster-management" />
+              <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
               <div className="md:col-span-2">
                 <div className="space-y-6">
                   <h2 className="text-3xl md:text-4xl font-bold font-headline">Standing Strong in Times of Crisis.</h2>

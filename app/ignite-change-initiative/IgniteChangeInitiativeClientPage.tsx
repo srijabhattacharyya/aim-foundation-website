@@ -11,13 +11,31 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/IgniteChangeDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/IgniteChangeDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const ourInitiatives = [
+    { href: '/educational-initiatives', label: 'Educational Initiatives' },
+    { href: '/healthcare-initiatives', label: 'Healthcare Initiatives' },
+    { href: '/gender-equality-initiative', label: 'Gender Equality Initiatives' },
+    { href: '/childcare-initiatives', label: 'Childcare Initiatives' },
+    { href: '/sustainability-initiatives', label: 'Sustainability Initiatives' },
+    { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
+    { href: '/disaster-management', label: 'Disaster Management' },
+    { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+];
+
+const relatedResource = {
+    link: "/blog/igniting-change-transforming-communities",
+    text: "Igniting Change: How Grassroots Action Transforms Communities",
+    image: { src: "/images/projects/ignite-change/ignite-change1.avif", alt: "Ignite Change initiative", hint: "community awareness", description: "Community awareness campaign in action"}
+};
+
 export default function IgniteChangeInitiativeClientPage() {
   const [showForm, setShowForm] = useState(false);
+  const initiativeLists = [{ title: "Our Initiatives", initiatives: ourInitiatives }];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -49,7 +67,7 @@ export default function IgniteChangeInitiativeClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="grid md:grid-cols-3 gap-12">
-                <InitiativeSidebar from="ignite-change" />
+                <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                 <div className="md:col-span-2">
                     <div className="space-y-6">
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Be the Spark. Fuel the Movement.</h2>
