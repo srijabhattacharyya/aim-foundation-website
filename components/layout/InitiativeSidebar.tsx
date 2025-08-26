@@ -125,7 +125,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const getRelatedResource = () => {
         let content = null;
-        let image = { src: "https://placehold.co/600x400.png", alt: "Related resource image", hint: "community", description: "" };
+        let image = { src: "https://picsum.photos/600/400", alt: "Related resource image", hint: "community", description: "" };
 
         if (pathname.includes('/detect')) {
             content = (
@@ -210,14 +210,14 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Roots of Change: Planting Awareness, Growing a Greener Tomorrow
                 </Link>
             );
-            image = { src: "/images/banner/roots-of-change1.avif", alt: "Roots of Change initiative", hint: "environmental education", description: "An interactive session on environmental conservation"};
+            image = { src: "/images/banner/roots-of-change1.avif", alt: "Roots of Change initiative", hint: "environmental awareness education", description: "An interactive session on environmental conservation"};
         } else if (pathname.includes('/sheconnects')) {
             content = (
                 <Link href="/blog/project-sheconnects" className="text-muted-foreground hover:text-primary transition-colors">
                     Project SheConnects: Empowering Women Through Technology
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "SheConnects initiative", hint: "women technology", description: "Women learning digital skills in a SheConnects workshop"};
+            image = { src: "/images/projects/sheconnects/sheconnects1.avif", alt: "SheConnects initiative", hint: "women technology", description: "Women learning digital skills in a SheConnects workshop"};
         } else if (pathname.includes('/cyclesafe')) {
             content = (
                 <Link href="/blog/from-stigma-to-strength" className="text-muted-foreground hover:text-primary transition-colors">
@@ -245,7 +245,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     No Child Left Offline: How DigiEmpower is Bridging the Digital Divide
                 </Link>
             );
-            image = { src: "https://placehold.co/1920x580.png", alt: "DigiEmpower initiative", hint: "digital literacy children", description: "Children learning to use computers"};
+            image = { src: "/images/projects/digiempower/digiempower1.avif", alt: "DigiEmpower initiative", hint: "digital literacy children", description: "Children learning to use computers"};
         } else if (pathname.includes('/cureline')) {
             content = (
                 <Link href="/blog/cureline-bringing-healthcare-to-the-last-mile" className="text-muted-foreground hover:text-primary transition-colors">

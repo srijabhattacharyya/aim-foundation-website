@@ -125,7 +125,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
 
     const getRelatedResource = () => {
         let content = null;
-        let image = { src: "https://placehold.co/600x400.png", alt: "Related resource image", hint: "community", description: "" };
+        let image = { src: "https://picsum.photos/600/400", alt: "Related resource image", hint: "community", description: "" };
 
         if (pathname.includes('/detect')) {
             content = (
@@ -168,7 +168,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Crafted by Her. Backed by Krishti.
                 </Link>
             );
-             image = { src: "https://placehold.co/600x400.png", alt: "Krishti initiative", hint: "women entrepreneurship", description: "An empowered woman showcasing her handcrafted products"};
+             image = { src: "/images/projects/krishti/krishti1.avif", alt: "Krishti initiative", hint: "women entrepreneurship", description: "An empowered woman showcasing her handcrafted products"};
         } else if (pathname.includes('/oralscan')) {
             content = (
                 <Link href="/blog/screening-today-for-a-healthier-tomorrow" className="text-muted-foreground hover:text-primary transition-colors">
@@ -217,7 +217,7 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Project SheConnects: Empowering Women Through Technology
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "SheConnects initiative", hint: "women technology", description: "Women learning digital skills in a SheConnects workshop"};
+            image = { src: "/images/projects/sheconnects/sheconnects1.avif", alt: "SheConnects initiative", hint: "women technology", description: "Women learning digital skills in a SheConnects workshop"};
         } else if (pathname.includes('/cyclesafe')) {
             content = (
                 <Link href="/blog/from-stigma-to-strength" className="text-muted-foreground hover:text-primary transition-colors">
@@ -238,14 +238,14 @@ export default function InitiativeSidebar({ from }: InitiativeSidebarProps) {
                     Igniting Change: How Grassroots Action Transforms Communities
                 </Link>
             );
-            image = { src: "https://placehold.co/600x400.png", alt: "Ignite Change initiative", hint: "community action group", description: "A group of volunteers working on a community project"};
+            image = { src: "/images/projects/ignite-change/ignite-change1.avif", alt: "Ignite Change initiative", hint: "community awareness", description: "Community awareness campaign in action"};
         } else if (pathname.includes('/digiempower')) {
             content = (
                 <Link href="/blog/no-child-left-offline" className="text-muted-foreground hover:text-primary transition-colors">
                     No Child Left Offline: How DigiEmpower is Bridging the Digital Divide
                 </Link>
             );
-            image = { src: "https://placehold.co/1920x580.png", alt: "DigiEmpower initiative", hint: "digital literacy children", description: "Children learning to use computers"};
+            image = { src: "/images/projects/digiempower/digiempower1.avif", alt: "DigiEmpower initiative", hint: "digital literacy children", description: "Children learning to use computers"};
         } else if (pathname.includes('/cureline')) {
             content = (
                 <Link href="/blog/cureline-bringing-healthcare-to-the-last-mile" className="text-muted-foreground hover:text-primary transition-colors">

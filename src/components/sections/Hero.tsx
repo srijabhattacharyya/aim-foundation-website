@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -12,8 +13,8 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
           <Image
             src="/images/banner/home-mobile.avif"
             alt="Home Banner"
-            width={1920}
-            height={1080}
+            width={768}
+            height={1024}
             className="w-full h-auto object-cover"
             sizes="100vw"
             priority
