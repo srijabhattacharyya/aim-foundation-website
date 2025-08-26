@@ -36,6 +36,7 @@ export default function SubscribersPage() {
     const { toast } = useToast();
 
     async function fetchSubscribers() {
+        setLoading(true);
         try {
             const subscribersRef = collection(db, 'subscribers');
             const q = query(subscribersRef, orderBy('createdAt', 'desc'));
@@ -51,52 +52,33 @@ export default function SubscribersPage() {
                 };
             });
             
-            return { success: true, data: fetchedSubscribers };
+            setSubscribers(fetchedSubscribers);
         } catch (err: any) {
             console.error("Error fetching subscribers: ", err);
-            return { success: false, error: "Could not retrieve subscribers." };
+            setError("Could not retrieve subscribers.");
+        } finally {
+            setLoading(false);
         }
-    }
-
-    async function deleteSubscriber(id: string) {
-        try {
-            await deleteDoc(doc(db, 'subscribers', id));
-            return { success: true };
-        } catch (error: any) {
-            console.error("Error deleting subscriber:", error);
-            return { success: false, error: "Failed to delete subscriber." };
-        }
-    }
-
-    const getSubscribers = async () => {
-        setLoading(true);
-        const result = await fetchSubscribers();
-        if (result.success && result.data) {
-            setSubscribers(result.data);
-        } else {
-            setError(result.error || 'Failed to fetch subscribers.');
-        }
-        setLoading(false);
     }
 
     useEffect(() => {
-        getSubscribers();
+        fetchSubscribers();
     }, []);
 
     const handleDelete = async (id: string) => {
-        const result = await deleteSubscriber(id);
-        if (result.success) {
-            const newSubscribers = subscribers.filter((subscriber) => subscriber.id !== id);
-            setSubscribers(newSubscribers);
+        try {
+            await deleteDoc(doc(db, 'subscribers', id));
+            fetchSubscribers(); // Refresh data
             toast({
-            title: "Subscriber deleted",
-            description: "The subscriber has been successfully removed.",
+                title: "Subscriber deleted",
+                description: "The subscriber has been successfully removed.",
             });
-        } else {
-                toast({
+        } catch (error: any) {
+            console.error("Error deleting subscriber:", error);
+            toast({
                 variant: "destructive",
                 title: "Deletion failed",
-                description: result.error || "Could not delete the subscriber.",
+                description: "Failed to delete subscriber.",
             });
         }
     };
@@ -188,5 +170,3 @@ export default function SubscribersPage() {
         </AdminLayout>
     );
 }
-
-    

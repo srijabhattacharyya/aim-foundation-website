@@ -17,7 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { collection, getDocs, deleteDoc, doc, query, orderBy, Timestamp, addDoc, updateDoc, serverTimestamp, getDoc } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc, query, orderBy, Timestamp, addDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { db, storage } from '@/lib/firebase';
 import { ref, uploadString, getDownloadURL, deleteObject } from 'firebase/storage';
 
@@ -34,8 +34,8 @@ interface GalleryItemData {
     description: string;
     status: 'Active' | 'Inactive';
     sequence: number;
-    imageUrl?: string;
-    imageFile?: string;
+    imageUrl?: string; 
+    imageFile?: string; 
 }
 
 const formSchema = z.object({
@@ -71,7 +71,7 @@ export default function GalleryAdminPage() {
     },
   });
 
-  const refinedFormSchema = formSchema.refine((data) => {
+   const refinedFormSchema = formSchema.refine((data) => {
     if (editingImage) return true;
     return data.image && data.image.length > 0;
   }, {
@@ -90,7 +90,7 @@ export default function GalleryAdminPage() {
         const fetchedImages: GalleryImage[] = querySnapshot.docs.map(doc => {
             const data = doc.data();
             const createdAt = (data.createdAt as Timestamp)?.toDate().toISOString() || new Date().toISOString();
-            return {
+            return { 
                 id: doc.id,
                 description: data.description,
                 status: data.status,
@@ -99,107 +99,22 @@ export default function GalleryAdminPage() {
                 createdAt
             } as GalleryImage;
         });
-
-        return { success: true, data: fetchedImages };
+        
+        setImages(fetchedImages);
     } catch (err: any) {
         console.error("Error fetching gallery images: ", err);
-        return { success: false, error: "Could not retrieve gallery items." };
+        toast({
+            variant: 'destructive',
+            title: 'Error',
+            description: "Could not retrieve gallery items.",
+        });
+    } finally {
+        setLoading(false);
     }
   }
-
-  async function addGalleryItem(data: GalleryItemData, id: string | null) {
-      try {
-          let imageUrl = data.imageUrl;
-
-          if (data.imageFile) {
-              const imageRef = ref(storage, `gallery/${Date.now()}-${Math.random().toString(36).substring(2)}`);
-              await uploadString(imageRef, data.imageFile, 'data_url');
-              imageUrl = await getDownloadURL(imageRef);
-
-              if (id && editingImage?.imageUrl) {
-                  try {
-                      const oldImageRef = ref(storage, editingImage.imageUrl);
-                      await deleteObject(oldImageRef);
-                  } catch (storageError: any) {
-                      if (storageError.code !== 'storage/object-not-found') {
-                          console.error("Failed to delete old gallery image:", storageError);
-                      }
-                  }
-              }
-          }
-
-          if (!imageUrl) {
-              return { success: false, error: 'Image URL is missing.' };
-          }
-
-          const docData = {
-              description: data.description,
-              status: data.status,
-              sequence: data.sequence,
-              imageUrl: imageUrl,
-              createdAt: serverTimestamp(),
-              updatedAt: serverTimestamp(),
-          };
-
-          const docDataUpdate = {
-              description: data.description,
-              status: data.status,
-              sequence: data.sequence,
-              imageUrl: imageUrl,
-              updatedAt: serverTimestamp(),
-          };
-
-          if (id) {
-              await updateDoc(doc(db, 'gallery', id), docDataUpdate);
-          } else {
-              await addDoc(collection(db, 'gallery'), docData);
-          }
-
-          return { success: true };
-      } catch (e: any) {
-          console.error("Error adding/updating gallery item: ", e);
-          return { success: false, error: e.message || "An unexpected error occurred." };
-      }
-  }
-
-  async function deleteGalleryItem(image: GalleryImage) {
-      try {
-          // Delete the image from Firebase Storage first
-          if (image.imageUrl) {
-              const imageRef = ref(storage, image.imageUrl);
-              await deleteObject(imageRef).catch(error => {
-                  // Ignore object not found errors, as it might have been already deleted
-                  if (error.code !== 'storage/object-not-found') {
-                      throw error;
-                  }
-              });
-          }
-          // Then delete the document from Firestore
-          await deleteDoc(doc(db, 'gallery', image.id));
-          return { success: true };
-      } catch (e: any) {
-          console.error("Error deleting gallery item: ", e);
-          return { success: false, error: "Could not delete the gallery item." };
-      }
-  }
-
-  const getImages = async () => {
-    setLoading(true);
-    const result = await fetchGalleryImages();
-    if (result.success && result.data) {
-      setImages(result.data);
-    } else {
-      toast({
-        variant: 'destructive',
-        title: 'Error',
-        description: result.error || 'Failed to fetch gallery items.',
-      });
-    }
-    setLoading(false);
-  };
 
   useEffect(() => {
-    getImages();
+    fetchGalleryImages();
   }, []);
 
   const handleEdit = (image: GalleryImage) => {
@@ -213,12 +128,21 @@ export default function GalleryAdminPage() {
   };
 
   const handleDelete = async (image: GalleryImage) => {
-    const result = await deleteGalleryItem(image);
-    if (result.success) {
+    try {
+        if (image.imageUrl) {
+            const imageRef = ref(storage, image.imageUrl);
+            await deleteObject(imageRef).catch(error => {
+                if (error.code !== 'storage/object-not-found') {
+                    throw error;
+                }
+            });
+        }
+        await deleteDoc(doc(db, 'gallery', image.id));
         toast({ title: 'Success', description: 'Image deleted successfully.' });
-        getImages();
-    } else {
-        toast({ variant: 'destructive', title: 'Error', description: result.error });
+        fetchGalleryImages();
+    } catch (e: any) {
+        console.error("Error deleting gallery item: ", e);
+        toast({ variant: 'destructive', title: 'Error', description: "Could not delete the gallery item." });
     }
   };
 
@@ -235,30 +159,51 @@ export default function GalleryAdminPage() {
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (data) => {
     setIsSubmitting(true);
     try {
-      let imageFileBase64: string | undefined = undefined;
-      
+      let imageUrl = editingImage?.imageUrl;
+
       if (data.image && data.image[0]) {
         const imageFile = data.image[0];
-        imageFileBase64 = await fileToBase64(imageFile);
+        const imageFileBase64 = await fileToBase64(imageFile);
+        
+        const imageRef = ref(storage, `gallery/${Date.now()}-${imageFile.name}`);
+        await uploadString(imageRef, imageFileBase64, 'data_url');
+        imageUrl = await getDownloadURL(imageRef);
+
+        if (editingImage?.imageUrl) {
+          try {
+            const oldImageRef = ref(storage, editingImage.imageUrl);
+            await deleteObject(oldImageRef);
+          } catch (storageError: any) {
+            if (storageError.code !== 'storage/object-not-found') {
+              console.error("Failed to delete old gallery image:", storageError);
+            }
+          }
+        }
+      }
+
+      if (!imageUrl) {
+        toast({ variant: 'destructive', title: 'Error', description: 'Image is required.' });
+        setIsSubmitting(false);
+        return;
       }
       
       const docData = {
-        description: data.description,
-        status: data.status,
-        sequence: data.sequence,
-        imageUrl: editingImage && !imageFileBase64 ? editingImage.imageUrl : undefined,
-        imageFile: imageFileBase64,
+          description: data.description,
+          status: data.status,
+          sequence: data.sequence,
+          imageUrl: imageUrl,
+          updatedAt: serverTimestamp(),
       };
 
-      const result = await addGalleryItem(docData, editingImage ? editingImage.id : null);
-
-      if (result.success) {
-        toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });
-        cancelEdit();
-        getImages();
+      if (editingImage) {
+        await updateDoc(doc(db, 'gallery', editingImage.id), docData);
       } else {
-         toast({ variant: 'destructive', title: 'Error', description: result.error });
+        await addDoc(collection(db, 'gallery'), {...docData, createdAt: serverTimestamp()});
       }
+
+      toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });
+      cancelEdit();
+      fetchGalleryImages();
 
     } catch (error) {
       console.error('Error submitting form:', error);

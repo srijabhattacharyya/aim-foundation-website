@@ -86,37 +86,18 @@ export default function DonationsPage() {
             return { id: doc.id, ...data, createdAt } as Donation;
         });
         
-        return { success: true, data: fetchedDonations };
+        setDonations(fetchedDonations);
+        setFilteredDonations(fetchedDonations);
     } catch (err: any) {
         console.error("Error fetching donations: ", err);
-        return { success: false, error: "Could not retrieve donations." };
-    }
-  }
-  
-  async function deleteDonation(id: string) {
-    try {
-        await deleteDoc(doc(db, 'donations', id));
-        return { success: true };
-    } catch (e: any) {
-        console.error("Error deleting donation: ", e);
-        return { success: false, error: "Could not delete the donation." };
+        setError("Could not retrieve donations.");
+    } finally {
+        setLoading(false);
     }
   }
 
   useEffect(() => {
-    async function getDonations() {
-      setLoading(true);
-      setError(null);
-      const result = await fetchDonations();
-      if (result.success && result.data) {
-        setDonations(result.data);
-        setFilteredDonations(result.data);
-      } else {
-        setError(result.error || 'Failed to fetch donations.');
-      }
-      setLoading(false);
-    }
-    getDonations();
+    fetchDonations();
   }, []);
 
   useEffect(() => {
@@ -152,19 +133,19 @@ export default function DonationsPage() {
   }, [donations, startDate, endDate, causeFilter, nationalityFilter, countryFilter, stateFilter, cityFilter]);
 
   const handleDelete = async (id: string) => {
-    const result = await deleteDonation(id);
-    if (result.success) {
-      const newDonations = donations.filter((donation) => donation.id !== id);
-      setDonations(newDonations);
-      toast({
-        title: "Donation deleted",
-        description: "The donation record has been successfully removed.",
-      });
-    } else {
+    try {
+        await deleteDoc(doc(db, 'donations', id));
+        fetchDonations(); // Refresh data
+        toast({
+            title: "Donation deleted",
+            description: "The donation record has been successfully removed.",
+        });
+    } catch (e: any) {
+        console.error("Error deleting donation: ", e);
         toast({
             variant: "destructive",
             title: "Deletion failed",
-            description: result.error || "Could not delete the donation.",
+            description: "Could not delete the donation.",
         });
     }
   };
@@ -371,5 +352,3 @@ export default function DonationsPage() {
     </AdminLayout>
   );
 }
-
-    
