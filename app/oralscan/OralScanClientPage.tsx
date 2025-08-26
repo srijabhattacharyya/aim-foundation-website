@@ -1,14 +1,14 @@
 
 'use client';
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 import { useState } from "react";
-import { Button } from "../../components/ui/button";
-import { Skeleton } from "../../components/ui/skeleton";
-import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/OralScanDonationForm'), { 
@@ -84,7 +84,7 @@ export default function OralScanClientPage() {
                       <li><strong>Free, non-invasive oral cancer screenings</strong> conducted by healthcare professionals.</li>
                       <li><strong>Public awareness campaigns</strong> to educate on the risk factors, including tobacco and alcohol consumption.</li>
                       <li><strong>Guidance on oral hygiene</strong> practices to promote long-term health.</li>
-                      <li><strong>•	Counselling and support</strong> for individuals identified with potential risks.</li>
+                      <li><strong>Counselling and support</strong> for individuals identified with potential risks.</li>
                       <li><strong>Referrals for further diagnosis and treatment</strong>, ensuring a continuum of care.</li>
                     </ul>
                     <p>
