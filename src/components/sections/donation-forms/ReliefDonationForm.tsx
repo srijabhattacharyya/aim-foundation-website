@@ -4,7 +4,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "../../ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,13 +12,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../ui/form";
-import { Input } from "../../ui/input";
-import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
-import { Checkbox } from "../../ui/checkbox";
+} from "../../../components/ui/form";
+import { Input } from "../../../components/ui/input";
+import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
+import { Checkbox } from "../../../components/ui/checkbox";
 import { useToast } from "../../../hooks/use-toast";
-import { Card, CardContent } from "../../ui/card";
-import React, { useState } from "react";
+import { Card, CardContent } from "../../../components/ui/card";
+import React from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -28,12 +28,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import Image from "next/image";
-import { Skeleton } from "@/components/ui/skeleton";
 
-const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
-    ssr: false,
-    loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md mx-auto" />
-});
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
@@ -100,28 +96,27 @@ const donationSchema = z.object({
 
 
 const donationAmountsIndian = [
-    { value: "3500", label: "₹3500", description: "BASIC TAILORING TRAINING TO 1 WOMAN" },
-    { value: "7000", label: "₹7000", description: "ADVANCE TAILORING TRAINING FOR 1 WOMAN" },
-    { value: "14000", label: "₹14000", description: "SPONSOR A SEWING MACHINE & BASIC TAILORING TRAINING" },
-    { value: "21000", label: "₹21000", description: "SPONSOR A SEWING MACHINE & COMPLETE TRAINING" },
+    { value: "1000", label: "₹1000", description: "PROVIDE AN ESSENTIALS KIT" },
+    { value: "2500", label: "₹2500", description: "PROVIDE FOOD FOR A FAMILY FOR A WEEK" },
+    { value: "5000", label: "₹5000", description: "SUPPORT A SMALL RELIEF CAMP" },
+    { value: "10000", label: "₹10000", description: "SUPPORT A COMPREHENSIVE RELIEF CAMP" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "42", label: "$42", description: "BASIC TAILORING TRAINING TO 1 WOMAN" },
-    { value: "84", label: "$84", description: "ADVANCE TAILORING TRAINING FOR 1 WOMAN" },
-    { value: "168", label: "$168", description: "SPONSOR A SEWING MACHINE & BASIC TAILORING TRAINING" },
-    { value: "252", label: "$252", description: "SPONSOR A SEWING MACHINE & COMPLETE TRAINING" },
+    { value: "12", label: "$12", description: "PROVIDE AN ESSENTIALS KIT" },
+    { value: "30", label: "$30", description: "PROVIDE FOOD FOR A FAMILY FOR A WEEK" },
+    { value: "60", label: "$60", description: "SUPPORT A SMALL RELIEF CAMP" },
+    { value: "120", label: "$120", description: "SUPPORT A COMPREHENSIVE RELIEF CAMP" },
 ];
 
-export default function SuiDhagaDonationForm() {
+export default function ReliefDonationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [showRecaptcha, setShowRecaptcha] = useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: "3500",
+      amount: "1000",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -142,10 +137,11 @@ export default function SuiDhagaDonationForm() {
 
   const recaptchaRef = React.createRef<any>();
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-  
+
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
   const selectedAmountValue = form.watch("amount");
+
   const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
   const description = selectedAmount ? selectedAmount.description : "";
 
@@ -154,13 +150,13 @@ export default function SuiDhagaDonationForm() {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
-      form.setValue("amount", "3500");
+      form.setValue("amount", "1000");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("aadhar", "");
       form.setValue("state", "");
-      form.setValue("amount", "42");
+      form.setValue("amount", "12");
     }
   }, [nationality, form]);
 
@@ -168,22 +164,22 @@ export default function SuiDhagaDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'SuiDhaga', initiative: 'SuiDhaga', dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null, createdAt: serverTimestamp() };
+      const donationData = { ...values, cause: 'Relief to the Underprivileged', dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null, createdAt: serverTimestamp() };
       await addDoc(collection(db, "donations"), donationData);
-
+      
       toast({
-          title: "Thank you for supporting SuiDhaga!",
-          description: "Your support makes a difference.",
+        title: "Thank you for supporting our Relief Efforts!",
+        description: "Your support provides urgent aid to those in need.",
       });
       recaptchaRef.current?.reset();
       form.reset();
-      setShowRecaptcha(false);
-    } catch (error) {
-        toast({
-            variant: "destructive",
-            title: "Submission Failed",
-            description: "Could not record donation. Please try again.",
-        });
+    } catch (e) {
+       console.error("Error adding document: ", e);
+       toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "Could not record donation. Please try again.",
+      });
     } finally {
         setIsSubmitting(false);
     }
@@ -191,13 +187,13 @@ export default function SuiDhagaDonationForm() {
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
-        <CardContent className="p-6 md:p-8" onFocus={() => setShowRecaptcha(true)} onClick={() => setShowRecaptcha(true)}>
+        <CardContent className="p-6 md:p-8">
             <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
                 <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
             </div>
             <div className="text-center mb-8 pt-20">
-                <h2 className="text-3xl font-bold font-headline">SUPPORT SUIDHAGA</h2>
-                <p className="text-muted-foreground">EMPOWER THROUGH SKILL</p>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT RELIEF EFFORTS</h2>
+                <p className="text-muted-foreground">PROVIDE IMMEDIATE AID</p>
             </div>
 
             <Form {...form}>
@@ -337,11 +333,6 @@ export default function SuiDhagaDonationForm() {
                                     </FormItem>
                                 )}
                             />
-                            <div className="flex items-center justify-center md:col-span-2">
-                                <p className="text-xs text-center text-muted-foreground mt-1">
-                                    PAN or AADHAR No. is Mandatory as per Law
-                                </p>
-                            </div>
                         </>
                     ) : (
                          <FormField
@@ -358,8 +349,12 @@ export default function SuiDhagaDonationForm() {
                         />
                     )}
                 </div>
-
-                 <FormField
+                 {nationality === 'Indian' && (
+                    <p className="text-xs text-center text-muted-foreground -mt-2">
+                        PAN or AADHAR No. is Mandatory as per Law
+                    </p>
+                )}
+                <FormField
                     control={form.control}
                     name="dob"
                     render={({ field }) => (
@@ -411,7 +406,7 @@ export default function SuiDhagaDonationForm() {
                             </FormItem>
                         )}
                     />
-                     {nationality === 'Indian' && (
+                    {nationality === 'Indian' && (
                         <FormField
                             control={form.control}
                             name="state"
@@ -422,7 +417,7 @@ export default function SuiDhagaDonationForm() {
                                 </FormItem>
                             )}
                         />
-                     )}
+                    )}
                     <FormField
                         control={form.control}
                         name="city"
@@ -435,7 +430,7 @@ export default function SuiDhagaDonationForm() {
                             </FormItem>
                         )}
                     />
-                     <FormField
+                    <FormField
                         control={form.control}
                         name="pincode"
                         render={({ field }) => (
@@ -461,7 +456,7 @@ export default function SuiDhagaDonationForm() {
                         </FormItem>
                     )}
                 />
-
+                
                 <div className="text-xs text-muted-foreground text-center space-y-1">
                     <p>YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT UNDER SECTION 80G AS ASSOCIATED INITIATIVE FOR MANKIND FOUNDATION IS REGISTERED AS NON PROFIT ORGANIZATION</p>
                     <p>PAN: AAFTA1983P | 80G NUMBER: AAFTA1983PF20221</p>
@@ -485,29 +480,27 @@ export default function SuiDhagaDonationForm() {
                     )}
                 />
 
-                {showRecaptcha && (
-                    <FormField
-                      control={form.control}
-                      name="recaptcha"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <div className="flex justify-center">
-                                <DynamicReCAPTCHA
-                                  ref={recaptchaRef as React.RefObject<any>}
-                                  sitekey={recaptchaSiteKey}
-                                  onChange={field.onChange}
-                                />
-                            </div>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                )}
+                <FormField
+                  control={form.control}
+                  name="recaptcha"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <div className="flex justify-center">
+                            <DynamicReCAPTCHA
+                              ref={recaptchaRef}
+                              sitekey={recaptchaSiteKey}
+                              onChange={field.onChange}
+                            />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
-                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
+                   {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
                 </Button>
                 </form>
             </Form>
