@@ -5,10 +5,10 @@ import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import Link from 'next/link';
 import ContactEmail from './ContactEmail';
 import dynamic from 'next/dynamic';
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const NewsletterForm = dynamic(
-  () => import('../sections/NewsletterForm'),
+  () => import('@/components/sections/NewsletterForm'),
   { 
     ssr: false,
     loading: () => (

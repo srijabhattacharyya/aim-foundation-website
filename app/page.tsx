@@ -1,13 +1,13 @@
 
 'use client';
 
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import Hero from "../components/sections/Hero";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import Hero from "@/components/sections/Hero";
 import HeroCarousel from '@/components/sections/HeroCarousel';
-import InfoSection from '../components/sections/InfoSection';
-import AboutUs from '../components/sections/AboutUs';
-import Impact from '../components/sections/Impact';
+import InfoSection from '@/components/sections/InfoSection';
+import AboutUs from '@/components/sections/AboutUs';
+import Impact from '@/components/sections/Impact';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 
