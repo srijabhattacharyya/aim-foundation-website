@@ -34,8 +34,8 @@ interface GalleryItemData {
     description: string;
     status: 'Active' | 'Inactive';
     sequence: number;
-    imageUrl?: string; 
-    imageFile?: string; 
+    imageUrl?: string;
+    imageFile?: string;
 }
 
 const formSchema = z.object({
@@ -71,7 +71,7 @@ export default function GalleryAdminPage() {
     },
   });
 
-   const refinedFormSchema = formSchema.refine((data) => {
+  const refinedFormSchema = formSchema.refine((data) => {
     if (editingImage) return true;
     return data.image && data.image.length > 0;
   }, {
@@ -90,7 +90,7 @@ export default function GalleryAdminPage() {
         const fetchedImages: GalleryImage[] = querySnapshot.docs.map(doc => {
             const data = doc.data();
             const createdAt = (data.createdAt as Timestamp)?.toDate().toISOString() || new Date().toISOString();
-            return { 
+            return {
                 id: doc.id,
                 description: data.description,
                 status: data.status,
@@ -99,7 +99,7 @@ export default function GalleryAdminPage() {
                 createdAt
             } as GalleryImage;
         });
-        
+
         return { success: true, data: fetchedImages };
     } catch (err: any) {
         console.error("Error fetching gallery images: ", err);
@@ -127,7 +127,7 @@ export default function GalleryAdminPage() {
                   }
               }
           }
-          
+
           if (!imageUrl) {
               return { success: false, error: 'Image URL is missing.' };
           }
@@ -140,7 +140,7 @@ export default function GalleryAdminPage() {
               createdAt: serverTimestamp(),
               updatedAt: serverTimestamp(),
           };
-          
+
           const docDataUpdate = {
               description: data.description,
               status: data.status,
@@ -164,6 +164,20 @@ export default function GalleryAdminPage() {
 
   async function deleteGalleryItem(id: string) {
       try {
+          // First, get the document to retrieve the imageUrl
+        const imageDoc = await getDocs(query(collection(db, 'gallery'), doc.id === id ? orderBy('__name__') : undefined));
+        if (imageDoc.docs.length > 0) {
+            const imageUrl = imageDoc.docs[0].data().imageUrl;
+            if (imageUrl) {
+                const imageRef = ref(storage, imageUrl);
+                await deleteObject(imageRef).catch(error => {
+                    // Ignore object not found errors, as it might have been already deleted
+                    if (error.code !== 'storage/object-not-found') {
+                        throw error;
+                    }
+                });
+            }
+        }
           await deleteDoc(doc(db, 'gallery', id));
           return { success: true };
       } catch (e: any) {
@@ -429,5 +443,3 @@ export default function GalleryAdminPage() {
     </AdminLayout>
   );
 }
-
-    
