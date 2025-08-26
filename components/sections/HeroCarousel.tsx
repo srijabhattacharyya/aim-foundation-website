@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -12,56 +11,56 @@ const programs = [
   {
     title: 'Educational Initiatives',
     description: 'Fostering learning and growth for all ages.',
-    image: '/images/banner-card/education.png',
+    image: 'https://picsum.photos/200/200',
     hint: 'education',
     link: '/educational-initiatives',
   },
   {
     title: 'Healthcare Initiatives',
     description: 'Ensuring access to quality medical care for communities.',
-    image: '/images/banner-card/health.png',
+    image: 'https://picsum.photos/200/200',
     hint: 'healthcare',
     link: '/healthcare-initiatives',
   },
   {
     title: 'Sustainability Initiatives',
     description: 'Protecting and preserving our planet for future generations.',
-    image: '/images/banner-card/sustainability.png',
+    image: 'https://picsum.photos/200/200',
     hint: 'environment',
     link: '/sustainability-initiatives',
   },
   {
     title: 'Gender Equality Initiatives',
     description: 'Empowering women and girls to achieve their full potential.',
-    image: '/images/banner-card/gender.png',
+    image: 'https://picsum.photos/200/200',
     hint: 'women empowerment',
     link: '/gender-equality-initiative',
   },
   {
     title: 'Childcare Initiatives',
     description: 'Providing safe and nurturing environments for children.',
-    image: '/images/banner-card/child.png',
+    image: 'https://picsum.photos/200/200',
     hint: 'childcare',
     link: '/childcare-initiatives',
   },
   {
     title: 'Relief to the underprivileged',
     description: 'Offering support and resources to those in need.',
-    image: '/images/banner-card/reliefu.png',
+    image: 'https://picsum.photos/200/200',
     hint: 'underprivileged support',
     link: '/relief-to-the-underprivileged',
   },
   {
     title: 'Disaster Management',
     description: 'Providing timely aid and support during crises.',
-    image: '/images/banner-card/disasterm.png',
+    image: 'https://picsum.photos/200/200',
     hint: 'disaster relief',
     link: '/disaster-management',
   },
   {
     title: 'Ignite Change Initiatives',
     description: 'Inspiring and mobilizing communities for social good.',
-    image: '/images/banner-card/awareness.png',
+    image: 'https://picsum.photos/200/200',
     hint: 'community awareness',
     link: '/ignite-change-initiative',
   },
