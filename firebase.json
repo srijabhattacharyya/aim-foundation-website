@@ -1,21 +1,14 @@
 
 {
-  "hosting": [
-    {
-      "target": "www",
-      "public": "public",
-      "redirects": [
-        {
-          "source": "/:path*",
-          "destination": "https://aimindia.org.in/:path*",
-          "type": 301
-        }
-      ]
-    },
-    {
-      "target": "aimindia", 
-      "public": "public",
-      "frameworksBackend": {}
+  "hosting": {
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
     }
-  ]
+  }
 }
