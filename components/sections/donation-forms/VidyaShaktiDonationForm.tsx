@@ -18,7 +18,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -164,7 +164,7 @@ export default function VidyaShaktiDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-        const donationData = { ...values, cause: 'VidyaShakti', createdAt: serverTimestamp() };
+        const donationData = { ...values, cause: 'VidyaShakti', createdAt: serverTimestamp(), dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null };
         await addDoc(collection(db, "donations"), donationData);
         toast({
         title: "Thank you for supporting VidyaShakti!",
@@ -391,7 +391,7 @@ export default function VidyaShaktiDonationForm() {
                         </FormItem>
                     )}
                 />
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <FormField
                         control={form.control}
@@ -404,7 +404,7 @@ export default function VidyaShaktiDonationForm() {
                             <FormMessage />
                             </FormItem>
                         )}
-                     />
+                    />
                      {nationality === 'Indian' && (
                         <FormField
                             control={form.control}

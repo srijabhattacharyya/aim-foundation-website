@@ -166,7 +166,7 @@ export default function MilieuDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'Milieu', initiative: 'Milieu', createdAt: serverTimestamp() };
+      const donationData = { ...values, cause: 'Milieu', initiative: 'Milieu', createdAt: serverTimestamp(), dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null };
       await addDoc(collection(db, 'donations'), donationData);
       
       toast({

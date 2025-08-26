@@ -168,7 +168,7 @@ export default function SuiDhagaDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'SuiDhaga', initiative: 'SuiDhaga', dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null, createdAt: serverTimestamp() };
+      const donationData = { ...values, cause: 'SuiDhaga', createdAt: serverTimestamp(), dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null };
       await addDoc(collection(db, "donations"), donationData);
 
       toast({
@@ -515,4 +515,3 @@ export default function SuiDhagaDonationForm() {
     </Card>
   );
 }
-

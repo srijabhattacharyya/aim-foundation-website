@@ -169,7 +169,7 @@ export default function CareCircleDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'CareCircle', createdAt: serverTimestamp() };
+      const donationData = { ...values, cause: 'CareCircle', createdAt: serverTimestamp(), dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null };
       await addDoc(collection(db, "donations"), donationData);
       
       toast({
@@ -358,7 +358,7 @@ export default function CareCircleDonationForm() {
                                 </FormItem>
                             )}
                         />
-                        <div className="flex items-center justify-center md:col-span-2">
+                         <div className="flex items-center justify-center md:col-span-2">
                             <p className="text-xs text-center text-muted-foreground mt-1">
                                 Passport No. is Mandatory as per Indian Law for Foreign Individual Donation
                             </p>

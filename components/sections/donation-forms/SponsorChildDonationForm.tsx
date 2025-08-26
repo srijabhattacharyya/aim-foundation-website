@@ -167,7 +167,7 @@ export default function SponsorChildDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: "Sponsor a Child", createdAt: serverTimestamp() };
+      const donationData = { ...values, cause: "Sponsor a Child", createdAt: serverTimestamp(), dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null };
       
       await addDoc(collection(db, "donations"), donationData);
       
