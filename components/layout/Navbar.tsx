@@ -26,15 +26,133 @@ import {
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
+import CauseSelectionForm from '@/components/sections/donation-forms/CauseSelectionForm';
 
-const CauseSelectionForm = dynamic(
-  () => import('@/components/sections/donation-forms/CauseSelectionForm'),
-  {
-    ssr: false,
-    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
-  }
+// Dynamically import all the specific donation forms
+const DynamicIndividualDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/IndividualDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
 );
-
+const DynamicEducationalDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/EducationalDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicHealthcareDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/HealthcareDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicGenderEqualityDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/GenderEqualityDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicChildcareDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/ChildcareDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicSustainabilityDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/SustainabilityDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicReliefDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/ReliefDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicDisasterManagementDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/DisasterManagementDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicIgniteChangeDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/IgniteChangeDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicInnocentSmilesDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/InnocentSmilesDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicInspireEduLabDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/InspireEduLabDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicEduAccessDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/EduAccessDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicEmpowerEnglishDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/EmpowerEnglishDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicDigiEmpowerDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/DigiEmpowerDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicSheConnectsDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/SheConnectsDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicMilieuDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/MilieuDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicVidyaShaktiDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/VidyaShaktiDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicCureLineDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/CureLineDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicCareCircleDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/CareCircleDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicChildFirstDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/ChildFirstDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicDetectDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/DetectDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicSightHopeDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/SightHopeDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicOralScanDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/OralScanDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicCycleSafeDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/CycleSafeDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicSoulCircleDonationForm = dynamic(
+  () => import("@/components/sections/donation-forms/SoulCircleDonationForm"),
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicGreenRootsDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/GreenRootsDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicTideShieldDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/TideShieldDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicRootsOfChangeDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/RootsOfChangeDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicForestCleaningDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/ForestCleaningDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicSuiDhagaDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/SuiDhagaDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
+const DynamicKrishtiDonationForm = dynamic(
+    () => import('@/components/sections/donation-forms/KrishtiDonationForm'),
+    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+);
 const DynamicSponsorChildDonationForm = dynamic(
   () => import('@/components/sections/donation-forms/SponsorChildDonationForm'),
   {
@@ -177,9 +295,60 @@ const navLinks = [
   { href: '/connect', label: 'Connect' },
 ];
 
+const causeToFormComponent: { [key: string]: React.FC } = {
+  "general": DynamicIndividualDonationForm,
+  "educational": DynamicEducationalDonationForm,
+  "educational-general": DynamicEducationalDonationForm,
+  "innocent-smiles": DynamicInnocentSmilesDonationForm,
+  "inspire-edulab": DynamicInspireEduLabDonationForm,
+  "eduaccess": DynamicEduAccessDonationForm,
+  "empower-english": DynamicEmpowerEnglishDonationForm,
+  "digiempower": DynamicDigiEmpowerDonationForm,
+  "sheconnects": DynamicSheConnectsDonationForm,
+  "milieu": DynamicMilieuDonationForm,
+  "vidyashakti": DynamicVidyaShaktiDonationForm,
+  "gender-equality": DynamicGenderEqualityDonationForm,
+  "gender-equality-general": DynamicGenderEqualityDonationForm,
+  "suidhaga": DynamicSuiDhagaDonationForm,
+  "krishti": DynamicKrishtiDonationForm,
+  "healthcare": DynamicHealthcareDonationForm,
+  "healthcare-general": DynamicHealthcareDonationForm,
+  "cureline": DynamicCureLineDonationForm,
+  "carecircle": DynamicCareCircleDonationForm,
+  "childfirst": DynamicChildFirstDonationForm,
+  "detect": DynamicDetectDonationForm,
+  "sighthope": DynamicSightHopeDonationForm,
+  "oralscan": DynamicOralScanDonationForm,
+  "cyclesafe": DynamicCycleSafeDonationForm,
+  "soulcircle": DynamicSoulCircleDonationForm,
+  "childcare": DynamicChildcareDonationForm,
+  "childcare-general": DynamicChildcareDonationForm,
+  "sustainability": DynamicSustainabilityDonationForm,
+  "sustainability-general": DynamicSustainabilityDonationForm,
+  "green-roots": DynamicGreenRootsDonationForm,
+  "tideshield": DynamicTideShieldDonationForm,
+  "roots-of-change": DynamicRootsOfChangeDonationForm,
+  "forest-cleaning": DynamicForestCleaningDonationForm,
+  "relief": DynamicReliefDonationForm,
+  "disaster-management": DynamicDisasterManagementDonationForm,
+  "ignite-change": DynamicIgniteChangeDonationForm,
+};
+
 const Navbar = () => {
     const [sponsorDialogOpen, setSponsorDialogOpen] = useState(false);
     const [donateDialogOpen, setDonateDialogOpen] = useState(false);
+    const [selectedCause, setSelectedCause] = useState<string | null>(null);
+
+    const handleCauseSelection = (cause: string) => {
+        setSelectedCause(cause);
+    };
+
+    const handleDialogClose = () => {
+      setDonateDialogOpen(false);
+      setSelectedCause(null);
+    }
+
+    const FormComponent = selectedCause ? causeToFormComponent[selectedCause] : null;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -205,12 +374,12 @@ const Navbar = () => {
                             <DynamicSponsorChildDonationForm />
                         </DialogContent>
                     </Dialog>
-                    <Dialog open={donateDialogOpen} onOpenChange={setDonateDialogOpen}>
+                    <Dialog open={donateDialogOpen} onOpenChange={handleDialogClose}>
                         <DialogTrigger asChild>
-                            <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
+                            <Button size="sm" className="transition-transform transform hover:scale-105" onClick={() => setDonateDialogOpen(true)}>Donate Now</Button>
                         </DialogTrigger>
                         <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                           <CauseSelectionForm />
+                           {FormComponent ? <FormComponent /> : <CauseSelectionForm onCauseSelect={handleCauseSelection} />}
                         </DialogContent>
                     </Dialog>
                   </div>
@@ -262,12 +431,12 @@ const Navbar = () => {
               </div>
           </div>
           <div className="md:hidden flex items-center gap-2 ml-auto">
-            <Dialog open={donateDialogOpen} onOpenChange={setDonateDialogOpen}>
+            <Dialog open={donateDialogOpen} onOpenChange={handleDialogClose}>
                 <DialogTrigger asChild>
-                    <Button size="sm" className="transition-transform transform hover:scale-105">Donate Now</Button>
+                    <Button size="sm" className="transition-transform transform hover:scale-105" onClick={() => setDonateDialogOpen(true)}>Donate Now</Button>
                 </DialogTrigger>
                  <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
-                    <CauseSelectionForm />
+                    {FormComponent ? <FormComponent /> : <CauseSelectionForm onCauseSelect={handleCauseSelection} />}
                 </DialogContent>
             </Dialog>
             <Sheet>

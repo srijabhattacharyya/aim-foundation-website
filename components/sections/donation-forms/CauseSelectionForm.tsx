@@ -4,12 +4,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
+  DialogFooter,
 } from "@/components/ui/dialog";
 import {
   Select,
@@ -18,136 +16,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import dynamic from "next/dynamic";
-import { Skeleton } from "@/components/ui/skeleton";
-import Image from "next/image";
-
-// Dynamically import all the specific donation forms
-const DynamicIndividualDonationForm = dynamic(
-  () => import("./IndividualDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicEducationalDonationForm = dynamic(
-  () => import("./EducationalDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicHealthcareDonationForm = dynamic(
-  () => import("./HealthcareDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicGenderEqualityDonationForm = dynamic(
-    () => import('./GenderEqualityDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicChildcareDonationForm = dynamic(
-    () => import('./ChildcareDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicSustainabilityDonationForm = dynamic(
-    () => import('./SustainabilityDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicReliefDonationForm = dynamic(
-    () => import('./ReliefDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicDisasterManagementDonationForm = dynamic(
-    () => import('./DisasterManagementDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicIgniteChangeDonationForm = dynamic(
-    () => import('./IgniteChangeDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicInnocentSmilesDonationForm = dynamic(
-  () => import("./InnocentSmilesDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicInspireEduLabDonationForm = dynamic(
-  () => import("./InspireEduLabDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicEduAccessDonationForm = dynamic(
-  () => import("./EduAccessDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicEmpowerEnglishDonationForm = dynamic(
-  () => import("./EmpowerEnglishDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicDigiEmpowerDonationForm = dynamic(
-  () => import("./DigiEmpowerDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicSheConnectsDonationForm = dynamic(
-  () => import("./SheConnectsDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicMilieuDonationForm = dynamic(
-  () => import("./MilieuDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicVidyaShaktiDonationForm = dynamic(
-  () => import("./VidyaShaktiDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicCureLineDonationForm = dynamic(
-  () => import("./CureLineDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicCareCircleDonationForm = dynamic(
-  () => import("./CareCircleDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicChildFirstDonationForm = dynamic(
-  () => import("./ChildFirstDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicDetectDonationForm = dynamic(
-  () => import("./DetectDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicSightHopeDonationForm = dynamic(
-  () => import("./SightHopeDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicOralScanDonationForm = dynamic(
-  () => import("./OralScanDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicCycleSafeDonationForm = dynamic(
-  () => import("./CycleSafeDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicSoulCircleDonationForm = dynamic(
-  () => import("./SoulCircleDonationForm"),
-  { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicGreenRootsDonationForm = dynamic(
-    () => import('./GreenRootsDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicTideShieldDonationForm = dynamic(
-    () => import('./TideShieldDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicRootsOfChangeDonationForm = dynamic(
-    () => import('./RootsOfChangeDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicForestCleaningDonationForm = dynamic(
-    () => import('./ForestCleaningDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicSuiDhagaDonationForm = dynamic(
-    () => import('./SuiDhagaDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-const DynamicKrishtiDonationForm = dynamic(
-    () => import('./KrishtiDonationForm'),
-    { ssr: false, loading: () => <Skeleton className="h-[500px] w-full" /> }
-);
-
 
 // Cause definitions
 const mainCauses = [
@@ -210,92 +78,30 @@ const sustainabilityInitiatives = [
     { value: "forest-cleaning", label: "Forest Cleaning" },
 ];
 
-// Map sub-cause values to their corresponding form components
-const subCauseToFormComponent: { [key: string]: React.FC | undefined } = {
-  "general": DynamicIndividualDonationForm,
-  "educational": DynamicEducationalDonationForm,
-  "educational-general": DynamicEducationalDonationForm,
-  "innocent-smiles": DynamicInnocentSmilesDonationForm,
-  "inspire-edulab": DynamicInspireEduLabDonationForm,
-  "eduaccess": DynamicEduAccessDonationForm,
-  "empower-english": DynamicEmpowerEnglishDonationForm,
-  "digiempower": DynamicDigiEmpowerDonationForm,
-  "sheconnects": DynamicSheConnectsDonationForm,
-  "milieu": DynamicMilieuDonationForm,
-  "vidyashakti": DynamicVidyaShaktiDonationForm,
-  "gender-equality": DynamicGenderEqualityDonationForm,
-  "gender-equality-general": DynamicGenderEqualityDonationForm,
-  "suidhaga": DynamicSuiDhagaDonationForm,
-  "krishti": DynamicKrishtiDonationForm,
-  "healthcare": DynamicHealthcareDonationForm,
-  "healthcare-general": DynamicHealthcareDonationForm,
-  "cureline": DynamicCureLineDonationForm,
-  "carecircle": DynamicCareCircleDonationForm,
-  "childfirst": DynamicChildFirstDonationForm,
-  "detect": DynamicDetectDonationForm,
-  "sighthope": DynamicSightHopeDonationForm,
-  "oralscan": DynamicOralScanDonationForm,
-  "cyclesafe": DynamicCycleSafeDonationForm,
-  "soulcircle": DynamicSoulCircleDonationForm,
-  "childcare": DynamicChildcareDonationForm,
-  "childcare-general": DynamicChildcareDonationForm,
-  "sustainability": DynamicSustainabilityDonationForm,
-  "sustainability-general": DynamicSustainabilityDonationForm,
-  "green-roots": DynamicGreenRootsDonationForm,
-  "tideshield": DynamicTideShieldDonationForm,
-  "roots-of-change": DynamicRootsOfChangeDonationForm,
-  "forest-cleaning": DynamicForestCleaningDonationForm,
-  "relief": DynamicReliefDonationForm,
-  "disaster-management": DynamicDisasterManagementDonationForm,
-  "ignite-change": DynamicIgniteChangeDonationForm,
-};
 
-export default function CauseSelectionForm() {
+interface CauseSelectionFormProps {
+  onCauseSelect: (cause: string) => void;
+}
+
+export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionFormProps) {
   const [step, setStep] = useState(1);
   const [selectedCause, setSelectedCause] = useState<string | undefined>(undefined);
   const [selectedSubCause, setSelectedSubCause] = useState<string | undefined>(undefined);
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [FormComponent, setFormComponent] = useState<React.FC | null>(null);
 
   const handleCauseProceed = () => {
     if (selectedCause) {
         if (["general", "relief", "disaster-management", "ignite-change"].includes(selectedCause)) {
-            const formComponent = subCauseToFormComponent[selectedCause];
-            if (formComponent) {
-                setFormComponent(() => formComponent);
-                setIsFormOpen(true);
-            }
+            onCauseSelect(selectedCause);
         } else if (["educational", "healthcare", "gender-equality", "childcare", "sustainability"].includes(selectedCause)) {
             setSelectedSubCause(undefined); 
             setStep(2);
-        } else {
-            const formComponent = subCauseToFormComponent[selectedCause];
-            if (formComponent) {
-                setFormComponent(() => formComponent);
-                setIsFormOpen(true);
-            } else {
-                alert(`Donation form for "${mainCauses.find(c => c.value === selectedCause)?.label}" is coming soon!`);
-            }
         }
     }
   };
 
   const handleStep2Proceed = () => {
     if (selectedSubCause) {
-        const formComponent = subCauseToFormComponent[selectedSubCause];
-        if (formComponent) {
-            setFormComponent(() => formComponent);
-            setIsFormOpen(true);
-        } else {
-            let list;
-            if (selectedCause === 'educational') list = educationalInitiatives;
-            else if (selectedCause === 'healthcare') list = healthcareInitiatives;
-            else if (selectedCause === 'gender-equality') list = genderEqualityInitiatives;
-            else if (selectedCause === 'childcare') list = childcareInitiatives;
-            else list = sustainabilityInitiatives;
-            
-            alert(`Donation form for "${list.find(c => c.value === selectedSubCause)?.label}" is coming soon!`);
-        }
+        onCauseSelect(selectedSubCause);
     }
   };
 
@@ -304,22 +110,79 @@ export default function CauseSelectionForm() {
     setSelectedSubCause(undefined);
   };
 
-  const resetAll = () => {
-    setStep(1);
-    setSelectedCause(undefined);
-    setSelectedSubCause(undefined);
-    setFormComponent(null);
-  };
+  const renderSubCauseSelector = () => {
+    let initiatives = [];
+    let title = "";
+    let placeholder = "";
+
+    switch(selectedCause) {
+        case 'educational':
+            initiatives = educationalInitiatives;
+            title = "SUPPORT OUR EDUCATIONAL INITIATIVES";
+            placeholder = "Select a specific educational initiative";
+            break;
+        case 'healthcare':
+            initiatives = healthcareInitiatives;
+            title = "SUPPORT OUR HEALTHCARE INITIATIVES";
+            placeholder = "Select a specific healthcare initiative";
+            break;
+        case 'gender-equality':
+            initiatives = genderEqualityInitiatives;
+            title = "SUPPORT GENDER EQUALITY INITIATIVES";
+            placeholder = "Select a specific gender equality initiative";
+            break;
+        case 'childcare':
+            initiatives = childcareInitiatives;
+            title = "SUPPORT CHILDCARE INITIATIVES";
+            placeholder = "Select a specific childcare initiative";
+            break;
+        case 'sustainability':
+            initiatives = sustainabilityInitiatives;
+            title = "SUPPORT SUSTAINABILITY INITIATIVES";
+            placeholder = "Select a specific sustainability initiative";
+            break;
+    }
+    
+    return (
+        <>
+            <DialogHeader className="text-center mb-8">
+              <DialogTitle className="text-xl font-bold font-headline">{title}</DialogTitle>
+               <DialogDescription>
+                Choose a specific initiative or make a general donation.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4 py-8">
+               <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder={placeholder} />
+                </SelectTrigger>
+                <SelectContent position="popper" side="bottom">
+                  {initiatives.map((initiative) => (
+                    <SelectItem key={initiative.value} value={initiative.value}>
+                      {initiative.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
+              <Button variant="outline" onClick={handleBack}>
+                Back
+              </Button>
+              <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
+                Proceed
+              </Button>
+            </DialogFooter>
+          </>
+    )
+  }
 
   return (
     <>
-      <div className="bg-card p-8 rounded-lg relative">
-        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
-            <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
-        </div>
+      <div className="bg-card p-8 rounded-lg">
         {step === 1 && (
           <>
-            <DialogHeader className="text-center mb-8 pt-20">
+            <DialogHeader className="text-center mb-8">
               <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
               <DialogDescription>
                 Select a cause you are passionate about to make a donation.
@@ -347,189 +210,8 @@ export default function CauseSelectionForm() {
           </>
         )}
 
-        {step === 2 && selectedCause === "educational" && (
-          <>
-            <DialogHeader className="text-center mb-8 pt-20">
-              <DialogTitle className="text-xl font-bold font-headline">SUPPORT OUR EDUCATIONAL INITIATIVES</DialogTitle>
-               <DialogDescription>
-                Choose a specific initiative or make a general donation to education.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-4 py-8">
-               <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a specific educational initiative to support" />
-                </SelectTrigger>
-                <SelectContent position="popper" side="bottom">
-                  {educationalInitiatives.map((initiative) => (
-                    <SelectItem key={initiative.value} value={initiative.value}>
-                      {initiative.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
-              <Button variant="outline" onClick={handleBack}>
-                Back
-              </Button>
-              <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
-                Proceed
-              </Button>
-            </DialogFooter>
-          </>
-        )}
-
-        {step === 2 && selectedCause === "healthcare" && (
-          <>
-            <DialogHeader className="text-center mb-8 pt-20">
-              <DialogTitle className="text-xl font-bold font-headline">SUPPORT OUR HEALTHCARE INITIATIVES</DialogTitle>
-               <DialogDescription>
-                Choose a specific initiative or make a general donation to healthcare.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-4 py-12">
-               <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a specific healthcare initiative to support" />
-                </SelectTrigger>
-                <SelectContent position="popper" side="bottom">
-                  {healthcareInitiatives.map((initiative) => (
-                    <SelectItem key={initiative.value} value={initiative.value}>
-                      {initiative.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
-              <Button variant="outline" onClick={handleBack}>
-                Back
-              </Button>
-              <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
-                Proceed
-              </Button>
-            </DialogFooter>
-          </>
-        )}
-
-        {step === 2 && selectedCause === "gender-equality" && (
-            <>
-                <DialogHeader className="text-center mb-8 pt-20">
-                <DialogTitle className="text-xl font-bold font-headline">SUPPORT GENDER EQUALITY INITIATIVES</DialogTitle>
-                <DialogDescription>
-                    Choose a specific initiative or make a general donation to gender equality.
-                </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4 py-12">
-                <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
-                    <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a specific gender equality initiative to support" />
-                    </SelectTrigger>
-                    <SelectContent position="popper" side="bottom">
-                    {genderEqualityInitiatives.map((initiative) => (
-                        <SelectItem key={initiative.value} value={initiative.value}>
-                        {initiative.label}
-                        </SelectItem>
-                    ))}
-                    </SelectContent>
-                </Select>
-                </div>
-                <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
-                <Button variant="outline" onClick={handleBack}>
-                    Back
-                </Button>
-                <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
-                    Proceed
-                </Button>
-                </DialogFooter>
-            </>
-        )}
-
-        {step === 2 && selectedCause === "childcare" && (
-            <>
-                <DialogHeader className="text-center mb-8 pt-20">
-                <DialogTitle className="text-xl font-bold font-headline">SUPPORT CHILDCARE INITIATIVES</DialogTitle>
-                <DialogDescription>
-                    Choose a specific initiative or make a general donation to childcare.
-                </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4 py-12">
-                <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
-                    <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a specific childcare initiative to support" />
-                    </SelectTrigger>
-                    <SelectContent position="popper" side="bottom">
-                    {childcareInitiatives.map((initiative) => (
-                        <SelectItem key={initiative.value} value={initiative.value}>
-                        {initiative.label}
-                        </SelectItem>
-                    ))}
-                    </SelectContent>
-                </Select>
-                </div>
-                <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
-                <Button variant="outline" onClick={handleBack}>
-                    Back
-                </Button>
-                <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
-                    Proceed
-                </Button>
-                </DialogFooter>
-            </>
-        )}
-        
-        {step === 2 && selectedCause === "sustainability" && (
-            <>
-                <DialogHeader className="text-center mb-8 pt-20">
-                <DialogTitle className="text-xl font-bold font-headline">SUPPORT SUSTAINABILITY INITIATIVES</DialogTitle>
-                <DialogDescription>
-                    Choose a specific initiative or make a general donation to sustainability.
-                </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4 py-12">
-                <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
-                    <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a specific sustainability initiative to support" />
-                    </SelectTrigger>
-                    <SelectContent position="popper" side="bottom">
-                    {sustainabilityInitiatives.map((initiative) => (
-                        <SelectItem key={initiative.value} value={initiative.value}>
-                        {initiative.label}
-                        </SelectItem>
-                    ))}
-                    </SelectContent>
-                </Select>
-                </div>
-                <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
-                <Button variant="outline" onClick={handleBack}>
-                    Back
-                </Button>
-                <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
-                    Proceed
-                </Button>
-                </DialogFooter>
-            </>
-        )}
+        {step === 2 && renderSubCauseSelector()}
       </div>
-
-      <Dialog
-        open={isFormOpen}
-        onOpenChange={(isOpen) => {
-          setIsFormOpen(isOpen);
-          if (!isOpen) {
-            resetAll();
-          }
-        }}
-      >
-        <DialogContent className="sm:max-w-[800px] p-0 max-h-[90vh] overflow-y-auto">
-          {FormComponent ? (
-            <FormComponent />
-          ) : (
-            <div className="p-6">Loading form...</div>
-          )}
-        </DialogContent>
-      </Dialog>
     </>
   );
 }
