@@ -20,14 +20,53 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from '@/hooks/use-toast';
 import Papa from 'papaparse';
-import { fetchSubscribers, deleteSubscriber } from '@/app/actions/adminActions';
-import type { Subscriber } from '@/app/actions/adminActions';
+import { db } from '@/lib/firebase';
+import { collection, getDocs, deleteDoc, doc, query, orderBy, Timestamp } from 'firebase/firestore';
+
+export interface Subscriber {
+    id: string;
+    email: string;
+    createdAt: string;
+}
 
 export default function SubscribersPage() {
     const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const { toast } = useToast();
+
+    async function fetchSubscribers() {
+        try {
+            const subscribersRef = collection(db, 'subscribers');
+            const q = query(subscribersRef, orderBy('createdAt', 'desc'));
+            const querySnapshot = await getDocs(q);
+            
+            const fetchedSubscribers: Subscriber[] = querySnapshot.docs.map(doc => {
+                const data = doc.data();
+                const createdAt = (data.createdAt as Timestamp)?.toDate().toISOString() || new Date().toISOString();
+                return {
+                    id: doc.id,
+                    email: data.email || 'N/A',
+                    createdAt: createdAt,
+                };
+            });
+            
+            return { success: true, data: fetchedSubscribers };
+        } catch (err: any) {
+            console.error("Error fetching subscribers: ", err);
+            return { success: false, error: "Could not retrieve subscribers." };
+        }
+    }
+
+    async function deleteSubscriber(id: string) {
+        try {
+            await deleteDoc(doc(db, 'subscribers', id));
+            return { success: true };
+        } catch (error: any) {
+            console.error("Error deleting subscriber:", error);
+            return { success: false, error: "Failed to delete subscriber." };
+        }
+    }
 
     const getSubscribers = async () => {
         setLoading(true);
