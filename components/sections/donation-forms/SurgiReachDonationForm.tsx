@@ -314,7 +314,7 @@ export default function SurgiReachDonationForm() {
                       <FormControl>
                         <div className="flex justify-center">
                             <DynamicReCAPTCHA
-                              ref={recaptchaRef as React.RefObject<any>}
+                              ref={recaptchaRef as React.RefObject<ReCAPTCHA>}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
                             />

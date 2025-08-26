@@ -21,7 +21,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDonation } from "@/app/actions/donationActions";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
@@ -169,28 +170,20 @@ export default function RootsOfChangeDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-        const donationData = { ...values, cause: 'Roots of Change', initiative: 'Roots of Change' };
-        const result = await addDonation(donationData);
-        if(result.success) {
-            toast({
-                title: "Thank you for supporting Roots of Change!",
-                description: "Your support makes a difference.",
-            });
-            recaptchaRef.current?.reset();
-            form.reset();
-            setShowRecaptcha(false);
-        } else {
-            toast({
-                variant: "destructive",
-                title: "Submission Failed",
-                description: result.error || "Could not record donation. Please try again.",
-            });
-        }
+        const donationData = { ...values, cause: 'Roots of Change', initiative: 'Roots of Change', createdAt: serverTimestamp() };
+        await addDoc(collection(db, "donations"), donationData);
+        toast({
+        title: "Thank you for supporting Roots of Change!",
+        description: "Your support makes a difference.",
+        });
+        recaptchaRef.current?.reset();
+        form.reset();
+        setShowRecaptcha(false);
     } catch (error) {
         toast({
             variant: "destructive",
             title: "Submission Failed",
-            description: "An unexpected error occurred. Please try again.",
+            description: "Could not record donation. Please try again.",
         });
     } finally {
         setIsSubmitting(false);
@@ -502,7 +495,7 @@ export default function RootsOfChangeDonationForm() {
                           <FormControl>
                             <div className="flex justify-center">
                                 <DynamicReCAPTCHA
-                                  ref={recaptchaRef as React.RefObject<any>}
+                                  ref={recaptchaRef}
                                   sitekey={recaptchaSiteKey}
                                   onChange={field.onChange}
                                 />

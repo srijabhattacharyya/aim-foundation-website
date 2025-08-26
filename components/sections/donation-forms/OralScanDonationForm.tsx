@@ -21,7 +21,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDonation } from "@/app/actions/donationActions";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
@@ -168,24 +169,16 @@ export default function OralScanDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'OralScan', initiative: 'OralScan' };
-      const result = await addDonation(donationData);
+      const donationData = { ...values, cause: 'OralScan', initiative: 'OralScan', createdAt: serverTimestamp() };
+      await addDoc(collection(db, "donations"), donationData);
       
-      if (result.success) {
-        toast({
-          title: "Thank you for supporting OralScan!",
-          description: "Your donation helps save lives through early detection.",
-        });
-        recaptchaRef.current?.reset();
-        form.reset();
-        setShowRecaptcha(false);
-      } else {
-        toast({
-            variant: "destructive",
-            title: "Submission Failed",
-            description: result.error || "Could not record donation. Please try again.",
-        });
-      }
+      toast({
+        title: "Thank you for supporting OralScan!",
+        description: "Your donation helps save lives through early detection.",
+      });
+      recaptchaRef.current?.reset();
+      form.reset();
+      setShowRecaptcha(false);
     } catch (error) {
        toast({
         variant: "destructive",
@@ -522,5 +515,3 @@ export default function OralScanDonationForm() {
     </Card>
   );
 }
-
-    

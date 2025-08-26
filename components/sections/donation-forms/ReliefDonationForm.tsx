@@ -21,7 +21,8 @@ import { Card, CardContent } from "../../../components/ui/card";
 import React from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDonation } from "@/app/actions/donationActions";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
@@ -163,20 +164,22 @@ export default function ReliefDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-        const donationData = { ...values, cause: 'Relief to the Underprivileged' };
-        await addDonation(donationData);
-        toast({
+      const donationData = { ...values, cause: 'Relief to the Underprivileged', createdAt: serverTimestamp() };
+      await addDoc(collection(db, "donations"), donationData);
+      
+      toast({
         title: "Thank you for supporting our Relief Efforts!",
-        description: "Your support makes a difference.",
-        });
-        recaptchaRef.current?.reset();
-        form.reset();
-    } catch (error) {
-        toast({
-            variant: "destructive",
-            title: "Submission Failed",
-            description: "Could not record donation. Please try again.",
-        });
+        description: "Your support provides urgent aid to those in need.",
+      });
+      recaptchaRef.current?.reset();
+      form.reset();
+    } catch (e) {
+       console.error("Error adding document: ", e);
+       toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "Could not record donation. Please try again.",
+      });
     } finally {
         setIsSubmitting(false);
     }
@@ -330,11 +333,6 @@ export default function ReliefDonationForm() {
                                     </FormItem>
                                 )}
                             />
-                             <div className="flex items-center justify-center md:col-span-2">
-                                <p className="text-xs text-center text-muted-foreground mt-1">
-                                    PAN or AADHAR No. is Mandatory as per Law
-                                </p>
-                            </div>
                         </>
                     ) : (
                          <FormField
@@ -351,8 +349,12 @@ export default function ReliefDonationForm() {
                         />
                     )}
                 </div>
-                
-                 <FormField
+                 {nationality === 'Indian' && (
+                    <p className="text-xs text-center text-muted-foreground -mt-2">
+                        PAN or AADHAR No. is Mandatory as per Law
+                    </p>
+                )}
+                <FormField
                     control={form.control}
                     name="dob"
                     render={({ field }) => (
