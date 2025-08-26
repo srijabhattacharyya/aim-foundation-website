@@ -26,8 +26,13 @@ import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
+import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
 
-const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
+    ssr: false,
+    loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md mx-auto" />
+});
 
 const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
@@ -49,6 +54,7 @@ const donationSchema = z.object({
     message: "You must agree to the terms.",
   }),
   recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
+  initiative: z.string().optional(),
 }).superRefine((data, ctx) => {
     if (data.nationality === 'Indian') {
       if (!data.pan && !data.aadhar) {
@@ -110,6 +116,7 @@ const donationAmountsNonIndian = [
 export default function SightHopeDonationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [showRecaptcha, setShowRecaptcha] = useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -163,18 +170,27 @@ export default function SightHopeDonationForm() {
     setIsSubmitting(true);
     try {
         const donationData = { ...values, cause: 'SightHope' };
-        await addDonation(donationData);
-        toast({
-        title: "Thank you for supporting SightHope!",
-        description: "Your support makes a difference.",
-        });
-        recaptchaRef.current?.reset();
-        form.reset();
+        const result = await addDonation(donationData);
+        if (result.success) {
+            toast({
+                title: "Thank you for supporting SightHope!",
+                description: "Your support makes a difference.",
+            });
+            recaptchaRef.current?.reset();
+            form.reset();
+            setShowRecaptcha(false);
+        } else {
+             toast({
+                variant: "destructive",
+                title: "Submission Failed",
+                description: result.error || "Could not record donation. Please try again.",
+            });
+        }
     } catch (error) {
         toast({
             variant: "destructive",
             title: "Submission Failed",
-            description: "Could not record donation. Please try again.",
+            description: "An unexpected error occurred. Please try again.",
         });
     } finally {
         setIsSubmitting(false);
@@ -183,8 +199,11 @@ export default function SightHopeDonationForm() {
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
-        <CardContent className="p-6 md:p-8">
-            <div className="text-center mb-8">
+        <CardContent className="p-6 md:p-8" onFocus={() => setShowRecaptcha(true)} onClick={() => setShowRecaptcha(true)}>
+            <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+                <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
+            </div>
+            <div className="text-center mb-8 pt-20">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT SIGHTHOPE</h2>
                 <p className="text-muted-foreground">GIFT OF SIGHT</p>
             </div>
@@ -326,7 +345,7 @@ export default function SightHopeDonationForm() {
                                     </FormItem>
                                 )}
                             />
-                            <div className="flex items-center justify-center md:col-span-2">
+                             <div className="flex items-center justify-center md:col-span-2">
                                 <p className="text-xs text-center text-muted-foreground mt-1">
                                     PAN or AADHAR No. is Mandatory as per Law
                                 </p>
@@ -400,7 +419,7 @@ export default function SightHopeDonationForm() {
                             </FormItem>
                         )}
                     />
-                    {nationality === 'Indian' && (
+                     {nationality === 'Indian' && (
                         <FormField
                             control={form.control}
                             name="state"
@@ -411,7 +430,7 @@ export default function SightHopeDonationForm() {
                                 </FormItem>
                             )}
                         />
-                    )}
+                     )}
                     <FormField
                         control={form.control}
                         name="city"
@@ -474,24 +493,26 @@ export default function SightHopeDonationForm() {
                     )}
                 />
 
-                <FormField
-                  control={form.control}
-                  name="recaptcha"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <div className="flex justify-center">
-                            <DynamicReCAPTCHA
-                              ref={recaptchaRef}
-                              sitekey={recaptchaSiteKey}
-                              onChange={field.onChange}
-                            />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                {showRecaptcha && (
+                     <FormField
+                      control={form.control}
+                      name="recaptcha"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="flex justify-center">
+                                <DynamicReCAPTCHA
+                                  ref={recaptchaRef as React.RefObject<any>}
+                                  sitekey={recaptchaSiteKey}
+                                  onChange={field.onChange}
+                                />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                )}
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
