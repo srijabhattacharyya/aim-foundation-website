@@ -18,8 +18,12 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
-import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
+import { addDonation } from "@/app/actions/donationActions";
+import dynamic from "next/dynamic";
+import { Loader2 } from "lucide-react";
+
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 const donationSchema = z.object({
   amount: z.string().nonempty({ message: "Please select a donation amount." }),
@@ -48,6 +52,7 @@ const donationAmounts = [
 ];
 
 export default function SurgiReachDonationForm() {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { toast } = useToast();
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -73,14 +78,33 @@ export default function SurgiReachDonationForm() {
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
 
-  function onSubmit(values: z.infer<typeof donationSchema>) {
-    console.log(values);
-    toast({
-      title: "Thank you for supporting SurgiReach!",
-      description: "Your support makes a difference.",
-    });
-    recaptchaRef.current?.reset();
-    form.reset();
+  async function onSubmit(values: z.infer<typeof donationSchema>) {
+    setIsSubmitting(true);
+    try {
+        const result = await addDonation({ ...values, cause: 'SurgiReach' });
+        if (result.success) {
+            toast({
+                title: "Thank you for supporting SurgiReach!",
+                description: "Your support makes a difference.",
+            });
+            recaptchaRef.current?.reset();
+            form.reset();
+        } else {
+            toast({
+                variant: "destructive",
+                title: "Submission Failed",
+                description: result.error || "Could not record donation. Please try again.",
+            });
+        }
+    } catch (error) {
+        toast({
+            variant: "destructive",
+            title: "Submission Failed",
+            description: "An unexpected error occurred. Please try again.",
+        });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -248,7 +272,7 @@ export default function SurgiReachDonationForm() {
                         )}
                     />
                 </div>
-
+                
                 <FormField
                     control={form.control}
                     name="address"
@@ -284,7 +308,7 @@ export default function SurgiReachDonationForm() {
                         </FormItem>
                     )}
                 />
-                
+
                 <FormField
                   control={form.control}
                   name="recaptcha"
@@ -292,8 +316,8 @@ export default function SurgiReachDonationForm() {
                     <FormItem>
                       <FormControl>
                         <div className="flex justify-center">
-                            <ReCAPTCHA
-                              ref={recaptchaRef}
+                            <DynamicReCAPTCHA
+                              ref={recaptchaRef as React.RefObject<ReCAPTCHA>}
                               sitekey={recaptchaSiteKey}
                               onChange={field.onChange}
                             />
@@ -304,7 +328,9 @@ export default function SurgiReachDonationForm() {
                   )}
                 />
 
-                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">Submit</Button>
+                <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
+                </Button>
                 </form>
             </Form>
         </CardContent>
