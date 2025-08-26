@@ -166,8 +166,8 @@ export default function MilieuDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'Milieu', initiative: 'Milieu', dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : undefined, createdAt: serverTimestamp() };
-      await addDoc(collection(db, "donations"), donationData);
+      const donationData = { ...values, cause: 'Milieu', initiative: 'Milieu', createdAt: serverTimestamp() };
+      await addDoc(collection(db, 'donations'), donationData);
       
       toast({
       title: "Thank you for supporting Milieu!",
@@ -523,4 +523,3 @@ export default function MilieuDonationForm() {
     </Card>
   );
 }
-

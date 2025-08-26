@@ -17,7 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { collection, getDocs, deleteDoc, doc, query, orderBy, Timestamp, addDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc, query, orderBy, Timestamp, addDoc, updateDoc, serverTimestamp, getDoc } from 'firebase/firestore';
 import { db, storage } from '@/lib/firebase';
 import { ref, uploadString, getDownloadURL, deleteObject } from 'firebase/storage';
 
@@ -116,9 +116,9 @@ export default function GalleryAdminPage() {
               await uploadString(imageRef, data.imageFile, 'data_url');
               imageUrl = await getDownloadURL(imageRef);
 
-              if (id && data.imageUrl) {
+              if (id && editingImage?.imageUrl) {
                   try {
-                      const oldImageRef = ref(storage, data.imageUrl);
+                      const oldImageRef = ref(storage, editingImage.imageUrl);
                       await deleteObject(oldImageRef);
                   } catch (storageError: any) {
                       if (storageError.code !== 'storage/object-not-found') {
@@ -162,30 +162,26 @@ export default function GalleryAdminPage() {
       }
   }
 
-  async function deleteGalleryItem(id: string) {
+  async function deleteGalleryItem(image: GalleryImage) {
       try {
-          // First, get the document to retrieve the imageUrl
-        const imageDoc = await getDocs(query(collection(db, 'gallery'), doc.id === id ? orderBy('__name__') : undefined));
-        if (imageDoc.docs.length > 0) {
-            const imageUrl = imageDoc.docs[0].data().imageUrl;
-            if (imageUrl) {
-                const imageRef = ref(storage, imageUrl);
-                await deleteObject(imageRef).catch(error => {
-                    // Ignore object not found errors, as it might have been already deleted
-                    if (error.code !== 'storage/object-not-found') {
-                        throw error;
-                    }
-                });
-            }
-        }
-          await deleteDoc(doc(db, 'gallery', id));
+          // Delete the image from Firebase Storage first
+          if (image.imageUrl) {
+              const imageRef = ref(storage, image.imageUrl);
+              await deleteObject(imageRef).catch(error => {
+                  // Ignore object not found errors, as it might have been already deleted
+                  if (error.code !== 'storage/object-not-found') {
+                      throw error;
+                  }
+              });
+          }
+          // Then delete the document from Firestore
+          await deleteDoc(doc(db, 'gallery', image.id));
           return { success: true };
       } catch (e: any) {
           console.error("Error deleting gallery item: ", e);
           return { success: false, error: "Could not delete the gallery item." };
       }
   }
-
 
   const getImages = async () => {
     setLoading(true);
@@ -216,8 +212,8 @@ export default function GalleryAdminPage() {
     });
   };
 
-  const handleDelete = async (id: string) => {
-    const result = await deleteGalleryItem(id);
+  const handleDelete = async (image: GalleryImage) => {
+    const result = await deleteGalleryItem(image);
     if (result.success) {
         toast({ title: 'Success', description: 'Image deleted successfully.' });
         getImages();
@@ -421,7 +417,7 @@ export default function GalleryAdminPage() {
                                 </AlertDialogHeader>
                                 <AlertDialogFooter>
                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction onClick={() => handleDelete(image.id)}>
+                                <AlertDialogAction onClick={() => handleDelete(image)}>
                                     Delete
                                 </AlertDialogAction>
                                 </AlertDialogFooter>
