@@ -21,8 +21,7 @@ import { Card, CardContent } from "../../../components/ui/card";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { addDonation } from "@/app/actions/donationActions";
 import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
@@ -99,20 +98,20 @@ const donationSchema = z.object({
 });
 
 const donationAmountsIndian = [
-    { value: "3000", label: "₹3000", description: "EDUCATION & ART FOR 1 CHILD FOR 6 MONTHS" },
-    { value: "6000", label: "₹6000", description: "EDUCATION & ART FOR 1 CHILD FOR A YEAR" },
-    { value: "12000", label: "₹12000", description: "EDUCATION & ART FOR 2 CHILDREN FOR A YEAR" },
-    { value: "24000", label: "₹24000", description: "EDUCATION & ART FOR 4 CHILDREN FOR A YEAR" },
+    { value: "2500", label: "₹2500", description: "SUPPORT A WORKSHOP FOR 5 CHILDREN" },
+    { value: "5000", label: "₹5000", description: "SUPPORT A WORKSHOP FOR 10 CHILDREN" },
+    { value: "10000", label: "₹10000", description: "SPONSOR LEARNING MATERIALS" },
+    { value: "20000", label: "₹20000", description: "SPONSOR A FULL MILIEU SESSION" },
 ];
 
 const donationAmountsNonIndian = [
-    { value: "35", label: "$35", description: "EDUCATION & ART FOR 1 CHILD FOR 6 MONTHS" },
-    { value: "70", label: "$70", description: "EDUCATION & ART FOR 1 CHILD FOR A YEAR" },
-    { value: "140", label: "$140", description: "EDUCATION & ART FOR 2 CHILDREN FOR A YEAR" },
-    { value: "280", label: "$280", description: "EDUCATION & ART FOR 4 CHILDREN FOR A YEAR" },
+    { value: "30", label: "$30", description: "SUPPORT A WORKSHOP FOR 5 CHILDREN" },
+    { value: "60", label: "$60", description: "SUPPORT A WORKSHOP FOR 10 CHILDREN" },
+    { value: "120", label: "$120", description: "SPONSOR LEARNING MATERIALS" },
+    { value: "240", label: "$240", description: "SPONSOR A FULL MILIEU SESSION" },
 ];
 
-export default function InnocentSmilesDonationForm() {
+export default function MilieuDonationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [showRecaptcha, setShowRecaptcha] = useState(false);
@@ -120,7 +119,7 @@ export default function InnocentSmilesDonationForm() {
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: "3000",
+      amount: "2500",
       otherAmount: "",
       fullName: "",
       email: "",
@@ -154,13 +153,13 @@ export default function InnocentSmilesDonationForm() {
     if (nationality === "Indian") {
       form.setValue("country", "India");
       form.setValue("passport", "");
-      form.setValue("amount", "3000");
+      form.setValue("amount", "2500");
     } else {
       form.setValue("country", "");
       form.setValue("pan", "");
       form.setValue("aadhar", "");
       form.setValue("state", "");
-      form.setValue("amount", "35");
+      form.setValue("amount", "30");
     }
   }, [nationality, form]);
 
@@ -168,20 +167,28 @@ export default function InnocentSmilesDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'Innocent Smiles', createdAt: serverTimestamp() };
-      await addDoc(collection(db, "donations"), donationData);
-      toast({
-        title: "Thank you for supporting Innocent Smiles!",
-        description: "Your support makes a difference.",
-      });
-      recaptchaRef.current?.reset();
-      form.reset();
-      setShowRecaptcha(false);
+      const donationData = { ...values, cause: 'Milieu', initiative: 'Milieu' };
+      const result = await addDonation(donationData);
+      if (result.success) {
+          toast({
+          title: "Thank you for supporting Milieu!",
+          description: "Your donation helps build bridges of understanding.",
+          });
+          recaptchaRef.current?.reset();
+          form.reset();
+          setShowRecaptcha(false);
+      } else {
+          toast({
+              variant: "destructive",
+              title: "Submission Failed",
+              description: result.error || "Could not record donation. Please try again.",
+          });
+      }
     } catch (error) {
       toast({
         variant: "destructive",
         title: "Submission Failed",
-        description: "Could not record donation. Please try again.",
+        description: "An unexpected error occurred. Please try again.",
       });
     } finally {
         setIsSubmitting(false);
@@ -195,8 +202,8 @@ export default function InnocentSmilesDonationForm() {
                 <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
             </div>
             <div className="text-center mb-8 pt-20">
-                <h2 className="text-3xl font-bold font-headline">SUPPORT INNOCENT SMILES</h2>
-                <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
+                <h2 className="text-3xl font-bold font-headline">SUPPORT MILIEU</h2>
+                <p className="text-muted-foreground">BUILDING BRIDGES, NURTURING EMPATHY</p>
             </div>
 
             <Form {...form}>
@@ -336,6 +343,11 @@ export default function InnocentSmilesDonationForm() {
                                     </FormItem>
                                 )}
                             />
+                             <div className="flex items-center justify-center md:col-span-2">
+                                <p className="text-xs text-center text-muted-foreground mt-1">
+                                    PAN or AADHAR No. is Mandatory as per Law
+                                </p>
+                            </div>
                         </>
                     ) : (
                          <FormField
@@ -391,7 +403,7 @@ export default function InnocentSmilesDonationForm() {
                         </FormItem>
                     )}
                 />
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <FormField
                         control={form.control}
@@ -415,8 +427,7 @@ export default function InnocentSmilesDonationForm() {
                                 <FormMessage />
                                 </FormItem>
                             )}
-                        />
-                    )}
+                        )}
                     <FormField
                         control={form.control}
                         name="city"
@@ -480,7 +491,7 @@ export default function InnocentSmilesDonationForm() {
                 />
 
                 {showRecaptcha && (
-                     <FormField
+                    <FormField
                       control={form.control}
                       name="recaptcha"
                       render={({ field }) => (
@@ -509,4 +520,3 @@ export default function InnocentSmilesDonationForm() {
     </Card>
   );
 }
-
