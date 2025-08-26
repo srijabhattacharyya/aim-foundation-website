@@ -119,7 +119,7 @@ export default function GalleryAdminPage() {
     try {
       let imageFileBase64: string | undefined = undefined;
       
-      if (data.image && data.image.length > 0) {
+      if (data.image && data.image[0]) {
         const imageFile = data.image[0];
         imageFileBase64 = await fileToBase64(imageFile);
       }
