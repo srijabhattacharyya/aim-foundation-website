@@ -17,11 +17,38 @@ const DynamicDonationForm = dynamic(() => import('../../components/sections/dona
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const educationalInitiatives = [
+  { href: '/innocent-smiles?from=educational', label: 'Innocent Smiles' },
+  { href: '/inspire-eduLab?from=educational', label: 'Inspire EduLab' },
+  { href: '/eduaccess?from=educational', label: 'EduAccess' },
+  { href: '/empower-english?from=educational', label: 'Empower English'},
+  { href: '/digiempower?from=educational', label: 'DigiEmpower' },
+  { href: '/sheconnects?from=educational', label: 'SheConnects' },
+  { href: '/milieu?from=educational', label: 'Milieu' },
+  { href: '/vidyashakti?from=educational', label: 'VidyaShakti' },
+];
+
+const childcareInitiatives = [
+  { href: '/innocent-smiles?from=childcare', label: 'Innocent Smiles' },
+  { href: '/milieu?from=childcare', label: 'Milieu' },
+  { href: '/childfirst?from=childcare', label: 'ChildFirst' },
+];
+
+const relatedResource = {
+    link: "/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu",
+    text: "Nurturing a Kinder Tomorrow: The Story of Milieu",
+    image: { src: "/images/projects/milieu/milieu1.avif", alt: "Milieu initiative", hint: "children collaboration", description: "Children from diverse backgrounds learning together"},
+};
+
 export default function MilieuClientPage() {
     const [showForm, setShowForm] = useState(false);
     const searchParams = useSearchParams();
     const from = searchParams.get('from') || 'educational';
     
+    const initiativeLists = from === 'educational'
+        ? [{ title: "Educational Initiatives", initiatives: educationalInitiatives }]
+        : [{ title: "Childcare Initiatives", initiatives: childcareInitiatives }];
+
     return (
         <div className="flex flex-col min-h-screen">
           <Navbar />
@@ -52,7 +79,7 @@ export default function MilieuClientPage() {
             <section className="py-12 md:py-20 lg:py-24 bg-muted">
               <div className="container mx-auto px-4 md:px-6 relative">
                 <div className="grid md:grid-cols-3 gap-12">
-                    <InitiativeSidebar from={from} />
+                    <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                     <div className="md:col-span-2">
                         <div className="space-y-6">
                             <h2 className="text-3xl md:text-4xl font-bold font-headline">Shaping Conscious Citizens of Tomorrow.</h2>

@@ -166,16 +166,15 @@ export default function MilieuDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'Milieu', initiative: 'Milieu', createdAt: serverTimestamp(), dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null };
-      await addDoc(collection(db, 'donations'), donationData);
-      
-      toast({
-      title: "Thank you for supporting Milieu!",
-      description: "Your donation helps build bridges of understanding.",
-      });
-      recaptchaRef.current?.reset();
-      form.reset();
-      setShowRecaptcha(false);
+      const donationData = { ...values, cause: 'Milieu', createdAt: serverTimestamp(), dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null };
+      await addDoc(collection(db, "donations"), donationData);
+          toast({
+          title: "Thank you for supporting Milieu!",
+          description: "Your donation helps build bridges of understanding.",
+          });
+          recaptchaRef.current?.reset();
+          form.reset();
+          setShowRecaptcha(false);
     } catch (error) {
       toast({
         variant: "destructive",
