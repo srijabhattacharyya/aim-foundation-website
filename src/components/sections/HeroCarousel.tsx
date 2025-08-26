@@ -12,56 +12,56 @@ const programs = [
   {
     title: 'Educational Initiatives',
     description: 'Fostering learning and growth for all ages.',
-    image: '/images/banner-card/education.png',
+    image: '/images/initiatives/banners/education.png',
     hint: 'education',
     link: '/educational-initiatives',
   },
   {
     title: 'Healthcare Initiatives',
     description: 'Ensuring access to quality medical care for communities.',
-    image: '/images/banner-card/health.png',
+    image: '/images/initiatives/banners/health.png',
     hint: 'healthcare',
     link: '/healthcare-initiatives',
   },
   {
     title: 'Sustainability Initiatives',
     description: 'Protecting and preserving our planet for future generations.',
-    image: '/images/banner-card/sustainability.png',
+    image: '/images/initiatives/banners/sustainability.png',
     hint: 'environment',
     link: '/sustainability-initiatives',
   },
   {
     title: 'Gender Equality Initiatives',
     description: 'Empowering women and girls to achieve their full potential.',
-    image: '/images/banner-card/gender.png',
+    image: '/images/initiatives/banners/gender.png',
     hint: 'women empowerment',
     link: '/gender-equality-initiative',
   },
   {
     title: 'Childcare Initiatives',
     description: 'Providing safe and nurturing environments for children.',
-    image: '/images/banner-card/child.png',
+    image: '/images/initiatives/banners/child.png',
     hint: 'childcare',
     link: '/childcare-initiatives',
   },
   {
     title: 'Relief to the underprivileged',
     description: 'Offering support and resources to those in need.',
-    image: '/images/banner-card/reliefu.png',
+    image: '/images/initiatives/banners/reliefu.png',
     hint: 'underprivileged support',
     link: '/relief-to-the-underprivileged',
   },
   {
     title: 'Disaster Management',
     description: 'Providing timely aid and support during crises.',
-    image: '/images/banner-card/disasterm.png',
+    image: '/images/initiatives/banners/disasterm.png',
     hint: 'disaster relief',
     link: '/disaster-management',
   },
   {
     title: 'Ignite Change Initiatives',
     description: 'Inspiring and mobilizing communities for social good.',
-    image: '/images/banner-card/awareness.png',
+    image: '/images/initiatives/banners/awareness.png',
     hint: 'community awareness',
     link: '/ignite-change-initiative',
   },
@@ -88,7 +88,7 @@ export default function HeroCarousel() {
                 <div className="p-1 h-full">
                     <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full flex flex-col">
                     <CardContent className="flex flex-col items-center p-4 space-y-2 flex-grow">
-                        <Image src={program.image} alt={program.title} width={60} height={60} data-ai-hint={program.hint} className="rounded-full border-2 border-primary" />
+                        <Image src={program.image} alt={program.title} width={60} height={60} data-ai-hint={program.hint} className="rounded-full border-2 border-primary" loading="lazy" />
                         <h3 className="font-bold text-base font-headline text-center">{program.title}</h3>
                         <p className="text-xs text-center flex-grow">{program.description}</p>
                         <Button asChild variant="outline" size="sm" className="bg-transparent text-white border-white hover:bg-white hover:text-black mt-auto transition-transform transform hover:scale-105">
