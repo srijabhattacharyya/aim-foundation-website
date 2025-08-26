@@ -18,7 +18,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { addDonation } from "@/app/actions/donationActions";
