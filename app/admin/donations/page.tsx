@@ -25,9 +25,30 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import Papa from 'papaparse';
-import { fetchDonations, deleteDonation } from '@/app/actions/adminActions';
-import type { Donation } from '@/app/actions/adminActions';
+import { collection, getDocs, deleteDoc, doc, query, orderBy, Timestamp } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 
+export interface Donation {
+    id: string;
+    createdAt: string;
+    fullName: string;
+    email: string;
+    amount: string;
+    otherAmount?: string;
+    cause: string;
+    nationality?: string;
+    mobile?: string;
+    dob?: string;
+    pan?: string;
+    aadhar?: string;
+    passport?: string;
+    country?: string;
+    state?: string;
+    city?: string;
+    address?: string;
+    pincode?: string;
+    initiative?: string;
+}
 
 const causes = [
     "General Fund", "CureLine", "CareCircle", "ChildFirst", "Detect", "SightHope",
@@ -53,6 +74,34 @@ export default function DonationsPage() {
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
 
+  async function fetchDonations() {
+    try {
+        const donationsRef = collection(db, 'donations');
+        const q = query(donationsRef, orderBy('createdAt', 'desc'));
+        const querySnapshot = await getDocs(q);
+
+        const fetchedDonations: Donation[] = querySnapshot.docs.map(doc => {
+            const data = doc.data();
+            const createdAt = (data.createdAt as Timestamp)?.toDate().toISOString() || new Date().toISOString();
+            return { id: doc.id, ...data, createdAt } as Donation;
+        });
+        
+        return { success: true, data: fetchedDonations };
+    } catch (err: any) {
+        console.error("Error fetching donations: ", err);
+        return { success: false, error: "Could not retrieve donations." };
+    }
+  }
+  
+  async function deleteDonation(id: string) {
+    try {
+        await deleteDoc(doc(db, 'donations', id));
+        return { success: true };
+    } catch (e: any) {
+        console.error("Error deleting donation: ", e);
+        return { success: false, error: "Could not delete the donation." };
+    }
+  }
 
   useEffect(() => {
     async function getDonations() {
