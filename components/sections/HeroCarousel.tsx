@@ -12,7 +12,7 @@ const programs = [
   {
     title: 'Educational Initiatives',
     description: 'Fostering learning and growth for all ages.',
-    image: 'https://picsum.photos/200/200',
+    image: '/images/banner-card/education.png',
     hint: 'education',
     link: '/educational-initiatives',
   },
