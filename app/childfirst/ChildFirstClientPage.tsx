@@ -43,9 +43,9 @@ const relatedResource = {
 export default function ChildFirstClientPage() {
     const [showForm, setShowForm] = useState(false);
     const searchParams = useSearchParams();
-    const from = searchParams.get('from') || 'healthcare';
+    const fromQuery = searchParams.get('from') || 'healthcare';
 
-    const initiativeLists = from === 'childcare'
+    const initiativeLists = fromQuery === 'childcare'
         ? [{ title: "Childcare Initiatives", initiatives: childcareInitiatives }, { title: "Healthcare Initiatives", initiatives: healthcareInitiatives }]
         : [{ title: "Healthcare Initiatives", initiatives: healthcareInitiatives }, { title: "Childcare Initiatives", initiatives: childcareInitiatives }];
 

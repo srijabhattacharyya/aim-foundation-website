@@ -1,23 +1,41 @@
 
 'use client';
 
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 import { useState } from "react";
-import { Button } from "../../components/ui/button";
-import { Skeleton } from "../../components/ui/skeleton";
-import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 
-const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/SightHopeDonationForm'), { 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SightHopeDonationForm'), { 
     ssr: false,
     loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
 });
 
+const healthcareInitiatives = [
+    { href: '/cureline?from=healthcare', label: 'CureLine' },
+    { href: '/carecircle?from=healthcare', label: 'CareCircle' },
+    { href: '/childfirst?from=healthcare', label: 'ChildFirst' },
+    { href: '/detect?from=healthcare', label: 'Detect' },
+    { href: '/sighthope?from=healthcare', label: 'SightHope' },
+    { href: '/oralscan?from=healthcare', label: 'OralScan' },
+    { href: '/cyclesafe?from=healthcare', label: 'CycleSafe' },
+    { href: '/soulcircle?from=healthcare', label: 'SoulCircle' },
+];
+
+const relatedResource = {
+    link: "/blog/restoring-sight-rekindling-dreams",
+    text: "Restoring Sight, Rekindling Dreams",
+    image: { src: "/images/projects/sighthope/spectacles-distribution.avif", alt: "SightHope initiative", hint: "spectacles distribution", description: "Free Spectacles Distribution"}
+};
+
 export default function SightHopeClientPage() {
   const [showForm, setShowForm] = useState(false);
+  const initiativeLists = [{ title: "Healthcare Initiatives", initiatives: healthcareInitiatives }];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -50,7 +68,7 @@ export default function SightHopeClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="grid md:grid-cols-3 gap-12">
-              <InitiativeSidebar from="healthcare" />
+              <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
               <div className="md:col-span-2">
                 <div className="space-y-6">
                   <h2 className="text-3xl md:text-4xl font-bold font-headline">Restoring Sight, Rekindling Dreams.</h2>
