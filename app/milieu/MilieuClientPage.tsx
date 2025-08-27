@@ -46,8 +46,8 @@ export default function MilieuClientPage() {
     const from = searchParams.get('from') || 'educational';
     
     const initiativeLists = from === 'educational'
-        ? [{ title: "Educational Initiatives", initiatives: educationalInitiatives }]
-        : [{ title: "Childcare Initiatives", initiatives: childcareInitiatives }];
+        ? [{ title: "Educational Initiatives", initiatives: educationalInitiatives }, { title: "Childcare Initiatives", initiatives: childcareInitiatives }]
+        : [{ title: "Childcare Initiatives", initiatives: childcareInitiatives }, { title: "Educational Initiatives", initiatives: educationalInitiatives }];
 
     return (
         <div className="flex flex-col min-h-screen">
