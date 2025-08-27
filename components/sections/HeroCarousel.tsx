@@ -40,7 +40,7 @@ const programs = [
   {
     title: 'Childcare Initiatives',
     description: 'Providing safe and nurturing environments for children.',
-    image: 'https://picsum.photos/200/200',
+    image: '/images/banner-card/child.png',
     hint: 'childcare',
     link: '/childcare-initiatives',
   },
