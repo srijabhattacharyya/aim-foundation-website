@@ -33,7 +33,7 @@ const programs = [
   {
     title: 'Gender Equality Initiatives',
     description: 'Empowering women and girls to achieve their full potential.',
-    image: 'https://picsum.photos/200/200',
+    image: '/images/banner-card/gender.png',
     hint: 'women empowerment',
     link: '/gender-equality-initiative',
   },
