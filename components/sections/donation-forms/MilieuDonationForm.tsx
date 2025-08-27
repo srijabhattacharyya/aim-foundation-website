@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -18,11 +19,10 @@ import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
 import { Checkbox } from "../../../components/ui/checkbox";
 import { useToast } from "../../../hooks/use-toast";
 import { Card, CardContent } from "../../../components/ui/card";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { addDonation } from "@/app/actions/donationActions";
 import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
@@ -36,66 +36,23 @@ const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), {
 });
 
 const donationSchema = z.object({
-  nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
-  amount: z.string().nonempty({ message: "Please select a donation amount." }),
+  nationality: z.enum(["Indian", "Non-Indian"]),
+  amount: z.string(),
   otherAmount: z.string().optional(),
-  fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  mobile: z.string().min(10, { message: "Mobile number must be at least 10 digits." }),
+  fullName: z.string().min(2),
+  email: z.string().email(),
+  mobile: z.string().min(10),
   dob: z.date().optional(),
   pan: z.string().optional(),
   aadhar: z.string().optional(),
   passport: z.string().optional(),
-  country: z.string().nonempty({ message: "Country is required." }),
+  country: z.string(),
   state: z.string().optional(),
-  city: z.string().nonempty({ message: "City is required." }),
-  address: z.string().nonempty({ message: "Address is required." }),
-  pincode: z.string().min(6, { message: "Pincode must be 6 digits." }).max(6, { message: "Pincode must be 6 digits." }),
-  agree: z.boolean().refine((val) => val === true, {
-    message: "You must agree to the terms.",
-  }),
-  recaptcha: z.string().nonempty({ message: "Please complete the reCAPTCHA." }),
-}).superRefine((data, ctx) => {
-    if (data.nationality === 'Indian') {
-      if (!data.pan && !data.aadhar) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "PAN or Aadhar is required for Indian nationals.",
-          path: ["pan"],
-        });
-        ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: "PAN or Aadhar is required for Indian nationals.",
-            path: ["aadhar"],
-          });
-      } else if (data.pan && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(data.pan)) {
-        ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: "Invalid PAN format.",
-            path: ["pan"],
-          });
-      } else if (data.aadhar && !/^[0-9]{12}$/.test(data.aadhar)) {
-        ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: "Aadhar must be 12 digits.",
-            path: ["aadhar"],
-          });
-      }
-      if (!data.state) {
-        ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: "State is required for Indian nationals.",
-            path: ["state"],
-          });
-      }
-    }
-    if (data.nationality === 'Non-Indian' && !data.passport) {
-        ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: "Passport is required for Non-Indian nationals.",
-            path: ["passport"],
-        });
-    }
+  city: z.string(),
+  address: z.string(),
+  pincode: z.string().min(6),
+  agree: z.literal(true, { errorMap: () => ({ message: "You must agree to the terms." }) }),
+  recaptcha: z.string().min(1, { message: "Please complete the reCAPTCHA." }),
 });
 
 const donationAmountsIndian = [
@@ -112,10 +69,19 @@ const donationAmountsNonIndian = [
     { value: "240", label: "$240", description: "SPONSOR A FULL MILIEU SESSION" },
 ];
 
+const SubmitButton = () => {
+    return (
+        <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg">
+            Submit
+        </Button>
+    )
+}
+
 export default function MilieuDonationForm() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [showRecaptcha, setShowRecaptcha] = useState(false);
+  const [initialState, setInitialState] = useState({ success: false, message: "", errors: null });
+  const [state, formAction] = useFormState(addDonation, initialState);
+
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -138,9 +104,22 @@ export default function MilieuDonationForm() {
       recaptcha: "",
     },
   });
-
-  const recaptchaRef = React.createRef<any>();
-  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+  
+  useEffect(() => {
+    if (state?.success) {
+      toast({
+        title: "Thank you for supporting Milieu!",
+        description: "Your donation helps build bridges of understanding.",
+      });
+      form.reset();
+    } else if (state?.message && !state?.success) {
+       toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: state.message,
+      });
+    }
+  }, [state, toast, form]);
 
   const nationality = form.watch("nationality");
   const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
@@ -163,35 +142,10 @@ export default function MilieuDonationForm() {
     }
   }, [nationality, form]);
 
-  async function onSubmit(values: z.infer<typeof donationSchema>) {
-    setIsSubmitting(true);
-    try {
-      const donationData = { ...values, cause: 'Milieu', createdAt: serverTimestamp(), dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null };
-      await addDoc(collection(db, "donations"), donationData);
-          toast({
-          title: "Thank you for supporting Milieu!",
-          description: "Your donation helps build bridges of understanding.",
-          });
-          recaptchaRef.current?.reset();
-          form.reset();
-          setShowRecaptcha(false);
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Submission Failed",
-        description: "An unexpected error occurred. Please try again.",
-      });
-    } finally {
-        setIsSubmitting(false);
-    }
-  }
-
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
       <CardContent
         className="p-6 md:p-8"
-        onFocus={() => setShowRecaptcha(true)}
-        onClick={() => setShowRecaptcha(true)}
       >
         <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
           <Image
@@ -208,8 +162,10 @@ export default function MilieuDonationForm() {
         </div>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-
+          <form action={formAction} className="space-y-6">
+            <input type="hidden" name="cause" value="Milieu" />
+            <input type="hidden" name="initiative" value="Milieu" />
+            
             <FormField
               control={form.control}
               name="nationality"
@@ -221,6 +177,7 @@ export default function MilieuDonationForm() {
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                       className="flex items-center space-x-4"
+                      name={field.name}
                     >
                       <FormItem className="flex items-center space-x-2 space-y-0">
                         <FormControl>
@@ -236,49 +193,50 @@ export default function MilieuDonationForm() {
                       </FormItem>
                     </RadioGroup>
                   </FormControl>
-                  <FormMessage />
+                  {state.errors?.nationality && <p className="text-sm font-medium text-destructive">{state.errors.nationality[0]}</p>}
                 </FormItem>
               )}
             />
 
             <FormField
-              control={form.control}
-              name="amount"
-              render={({ field }) => (
+                control={form.control}
+                name="amount"
+                render={({ field }) => (
                 <FormItem className="space-y-3">
-                  <FormControl>
+                    <FormControl>
                     <RadioGroup
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      className="flex flex-wrap justify-center gap-4 md:gap-8"
+                        onValueChange={field.onChange}
+                        value={field.value}
+                        className="flex flex-wrap justify-center gap-4 md:gap-8"
+                        name={field.name}
                     >
-                      {donationAmounts.map((item) => (
+                        {donationAmounts.map((item) => (
                         <FormItem key={item.value} className="flex items-center space-x-2 space-y-0">
-                          <FormControl>
+                            <FormControl>
                             <RadioGroupItem value={item.value} />
-                          </FormControl>
-                          <FormLabel className="font-normal text-base">{item.label}</FormLabel>
+                            </FormControl>
+                            <FormLabel className="font-normal text-base">{item.label}</FormLabel>
                         </FormItem>
-                      ))}
+                        ))}
                     </RadioGroup>
-                  </FormControl>
-                  <FormMessage />
-                  {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
+                    </FormControl>
+                    {state.errors?.amount && <p className="text-sm font-medium text-destructive">{state.errors.amount[0]}</p>}
+                    {description && <p className="text-center text-muted-foreground pt-2">{description}</p>}
                 </FormItem>
-              )}
+                )}
             />
 
             <FormField
-              control={form.control}
-              name="otherAmount"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input placeholder="Other Amount" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+                control={form.control}
+                name="otherAmount"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormControl>
+                        <Input placeholder="Other Amount" {...field} name={field.name} />
+                    </FormControl>
+                    {state.errors?.otherAmount && <p className="text-sm font-medium text-destructive">{state.errors.otherAmount[0]}</p>}
+                    </FormItem>
+                )}
             />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -288,21 +246,21 @@ export default function MilieuDonationForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="Enter Full Name" {...field} />
+                      <Input placeholder="Enter Full Name" {...field} name={field.name}/>
                     </FormControl>
-                    <FormMessage />
+                    {state.errors?.fullName && <p className="text-sm font-medium text-destructive">{state.errors.fullName[0]}</p>}
                   </FormItem>
                 )}
               />
-              <FormField
+               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input type="email" placeholder="Enter Email ID" {...field} />
+                      <Input type="email" placeholder="Enter Email ID" {...field} name={field.name}/>
                     </FormControl>
-                    <FormMessage />
+                    {state.errors?.email && <p className="text-sm font-medium text-destructive">{state.errors.email[0]}</p>}
                   </FormItem>
                 )}
               />
@@ -312,9 +270,9 @@ export default function MilieuDonationForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input type="tel" placeholder="Enter Mobile No" {...field} />
+                      <Input type="tel" placeholder="Enter Mobile No" {...field} name={field.name}/>
                     </FormControl>
-                    <FormMessage />
+                    {state.errors?.mobile && <p className="text-sm font-medium text-destructive">{state.errors.mobile[0]}</p>}
                   </FormItem>
                 )}
               />
@@ -326,9 +284,9 @@ export default function MilieuDonationForm() {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input placeholder="PAN No." {...field} />
+                          <Input placeholder="PAN No." {...field} name={field.name}/>
                         </FormControl>
-                        <FormMessage />
+                        {state.errors?.pan && <p className="text-sm font-medium text-destructive">{state.errors.pan[0]}</p>}
                       </FormItem>
                     )}
                   />
@@ -338,17 +296,12 @@ export default function MilieuDonationForm() {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input placeholder="Aadhar No." {...field} />
+                          <Input placeholder="Aadhar No." {...field} name={field.name}/>
                         </FormControl>
-                        <FormMessage />
+                         {state.errors?.aadhar && <p className="text-sm font-medium text-destructive">{state.errors.aadhar[0]}</p>}
                       </FormItem>
                     )}
                   />
-                  <div className="flex items-center justify-center md:col-span-2">
-                    <p className="text-xs text-center text-muted-foreground mt-1">
-                      PAN or AADHAR No. is Mandatory as per Law
-                    </p>
-                  </div>
                 </>
               ) : (
                 <FormField
@@ -357,9 +310,9 @@ export default function MilieuDonationForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Passport Number" {...field} />
+                        <Input placeholder="Passport Number" {...field} name={field.name}/>
                       </FormControl>
-                      <FormMessage />
+                       {state.errors?.passport && <p className="text-sm font-medium text-destructive">{state.errors.passport[0]}</p>}
                     </FormItem>
                   )}
                 />
@@ -372,6 +325,7 @@ export default function MilieuDonationForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Date of Birth</FormLabel>
+                  <input type="hidden" name={field.name} value={field.value ? format(field.value, 'yyyy-MM-dd') : ''} />
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -400,7 +354,7 @@ export default function MilieuDonationForm() {
                       />
                     </PopoverContent>
                   </Popover>
-                  <FormMessage />
+                  {state.errors?.dob && <p className="text-sm font-medium text-destructive">{state.errors.dob[0]}</p>}
                 </FormItem>
               )}
             />
@@ -412,9 +366,9 @@ export default function MilieuDonationForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="Country" {...field} disabled={nationality === 'Indian'} />
+                      <Input placeholder="Country" {...field} name={field.name} disabled={nationality === 'Indian'} />
                     </FormControl>
-                    <FormMessage />
+                    {state.errors?.country && <p className="text-sm font-medium text-destructive">{state.errors.country[0]}</p>}
                   </FormItem>
                 )}
               />
@@ -424,8 +378,8 @@ export default function MilieuDonationForm() {
                   name="state"
                   render={({ field }) => (
                     <FormItem>
-                      <StatesAndUTs field={field} />
-                      <FormMessage />
+                      <StatesAndUTs field={{...field, name: "state"}} />
+                      {state.errors?.state && <p className="text-sm font-medium text-destructive">{state.errors.state[0]}</p>}
                     </FormItem>
                   )}
                 />
@@ -436,9 +390,9 @@ export default function MilieuDonationForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="City" {...field} />
+                      <Input placeholder="City" {...field} name={field.name}/>
                     </FormControl>
-                    <FormMessage />
+                    {state.errors?.city && <p className="text-sm font-medium text-destructive">{state.errors.city[0]}</p>}
                   </FormItem>
                 )}
               />
@@ -448,9 +402,9 @@ export default function MilieuDonationForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="Pincode" {...field} />
+                      <Input placeholder="Pincode" {...field} name={field.name}/>
                     </FormControl>
-                    <FormMessage />
+                     {state.errors?.pincode && <p className="text-sm font-medium text-destructive">{state.errors.pincode[0]}</p>}
                   </FormItem>
                 )}
               />
@@ -462,9 +416,9 @@ export default function MilieuDonationForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Address" {...field} />
+                    <Input placeholder="Address" {...field} name={field.name}/>
                   </FormControl>
-                  <FormMessage />
+                  {state.errors?.address && <p className="text-sm font-medium text-destructive">{state.errors.address[0]}</p>}
                 </FormItem>
               )}
             />
@@ -480,42 +434,19 @@ export default function MilieuDonationForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow-sm">
                   <FormControl>
-                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                    <Checkbox checked={field.value} onCheckedChange={field.onChange} name={field.name}/>
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormLabel className="text-xs text-muted-foreground">
                       You agree that Associated Initiative for Mankind Foundation can reach out to you through Whatsapp/email/SMS/Phone to provide information of your donation, campaigns, 80G receipt etc.
                     </FormLabel>
-                    <FormMessage />
+                    {state.errors?.agree && <p className="text-sm font-medium text-destructive">{state.errors.agree[0]}</p>}
                   </div>
                 </FormItem>
               )}
             />
-
-            {showRecaptcha && (
-              <FormField
-                control={form.control}
-                name="recaptcha"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className="flex justify-center">
-                        <DynamicReCAPTCHA
-                          ref={recaptchaRef as React.RefObject<any>}
-                          sitekey={recaptchaSiteKey}
-                          onChange={field.onChange}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            )}
-
-            <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
-              {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
-            </Button>
+            
+            <SubmitButton />
           </form>
         </Form>
       </CardContent>
