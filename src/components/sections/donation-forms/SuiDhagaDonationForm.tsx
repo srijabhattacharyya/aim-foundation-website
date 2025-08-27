@@ -4,7 +4,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "../../ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,22 +12,28 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../ui/form";
-import { Input } from "../../ui/input";
-import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
-import { Checkbox } from "../../ui/checkbox";
+} from "../../../components/ui/form";
+import { Input } from "../../../components/ui/input";
+import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
+import { Checkbox } from "../../../components/ui/checkbox";
 import { useToast } from "../../../hooks/use-toast";
-import { Card, CardContent } from "../../ui/card";
-import React from "react";
+import { Card, CardContent } from "../../../components/ui/card";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { addDonation } from "@/app/actions/donationActions";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
+import Image from "next/image";
+import { Skeleton } from "@/components/ui/skeleton";
 
-const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
+const DynamicReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { 
+    ssr: false,
+    loading: () => <Skeleton className="h-[78px] w-[304px] rounded-md mx-auto" />
+});
 
 const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"], { required_error: "Please select your nationality." }),
@@ -110,6 +116,7 @@ const donationAmountsNonIndian = [
 export default function SuiDhagaDonationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [showRecaptcha, setShowRecaptcha] = useState(false);
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -161,19 +168,21 @@ export default function SuiDhagaDonationForm() {
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const donationData = { ...values, cause: 'SuiDhaga' };
-      await addDonation(donationData);
+      const donationData = { ...values, cause: 'SuiDhaga', createdAt: serverTimestamp(), dob: values.dob ? format(values.dob, 'yyyy-MM-dd') : null };
+      await addDoc(collection(db, "donations"), donationData);
+
       toast({
-        title: "Thank you for supporting SuiDhaga!",
-        description: "Your support makes a difference.",
+          title: "Thank you for supporting SuiDhaga!",
+          description: "Your support makes a difference.",
       });
       recaptchaRef.current?.reset();
       form.reset();
+      setShowRecaptcha(false);
     } catch (error) {
         toast({
             variant: "destructive",
             title: "Submission Failed",
-            description: "There was a problem saving your donation. Please try again.",
+            description: "Could not record donation. Please try again.",
         });
     } finally {
         setIsSubmitting(false);
@@ -182,8 +191,11 @@ export default function SuiDhagaDonationForm() {
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
-        <CardContent className="p-6 md:p-8">
-            <div className="text-center mb-8">
+        <CardContent className="p-6 md:p-8" onFocus={() => setShowRecaptcha(true)} onClick={() => setShowRecaptcha(true)}>
+            <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+                <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
+            </div>
+            <div className="text-center mb-8 pt-20">
                 <h2 className="text-3xl font-bold font-headline">SUPPORT SUIDHAGA</h2>
                 <p className="text-muted-foreground">EMPOWER THROUGH SKILL</p>
             </div>
@@ -473,24 +485,26 @@ export default function SuiDhagaDonationForm() {
                     )}
                 />
 
-                <FormField
-                  control={form.control}
-                  name="recaptcha"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <div className="flex justify-center">
-                            <DynamicReCAPTCHA
-                              ref={recaptchaRef}
-                              sitekey={recaptchaSiteKey}
-                              onChange={field.onChange}
-                            />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                {showRecaptcha && (
+                    <FormField
+                      control={form.control}
+                      name="recaptcha"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="flex justify-center">
+                                <DynamicReCAPTCHA
+                                  ref={recaptchaRef as React.RefObject<any>}
+                                  sitekey={recaptchaSiteKey}
+                                  onChange={field.onChange}
+                                />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                )}
 
                 <Button type="submit" className="w-full bg-[#8bc34a] hover:bg-[#8bc34a]/90 text-white" size="lg" disabled={isSubmitting}>
                     {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Submit"}
