@@ -54,7 +54,7 @@ const programs = [
   {
     title: 'Disaster Management',
     description: 'Providing timely aid and support during crises.',
-    image: '/images/banner-card/disaster.png',
+    image: '/images/banner-card/disasterm.png',
     hint: 'disaster relief',
     link: '/disaster-management',
   },
