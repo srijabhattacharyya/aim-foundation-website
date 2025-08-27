@@ -29,130 +29,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import CauseSelectionForm from '@/components/sections/donation-forms/CauseSelectionForm';
 
 // Dynamically import all the specific donation forms
-const DynamicIndividualDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/IndividualDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicEducationalDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/EducationalDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicHealthcareDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/HealthcareDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicGenderEqualityDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/GenderEqualityDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicChildcareDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/ChildcareDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSustainabilityDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/SustainabilityDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicReliefDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/ReliefDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicDisasterManagementDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/DisasterManagementDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicIgniteChangeDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/IgniteChangeDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicInnocentSmilesDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/InnocentSmilesDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicInspireEduLabDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/InspireEduLabDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicEduAccessDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/EduAccessDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicEmpowerEnglishDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/EmpowerEnglishDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicDigiEmpowerDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/DigiEmpowerDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSheConnectsDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/SheConnectsDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicMilieuDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/MilieuDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicVidyaShaktiDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/VidyaShaktiDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicCureLineDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/CureLineDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicCareCircleDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/CareCircleDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicChildFirstDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/ChildFirstDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicDetectDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/DetectDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSightHopeDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/SightHopeDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicOralScanDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/OralScanDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicCycleSafeDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/CycleSafeDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSoulCircleDonationForm = dynamic(
-  () => import("@/components/sections/donation-forms/SoulCircleDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicGreenRootsDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/GreenRootsDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicTideShieldDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/TideShieldDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicRootsOfChangeDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/RootsOfChangeDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicForestCleaningDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/ForestCleaningDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSuiDhagaDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/SuiDhagaDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicKrishtiDonationForm = dynamic(
-    () => import('@/components/sections/donation-forms/KrishtiDonationForm'),
-    { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
 const DynamicSponsorChildDonationForm = dynamic(
   () => import('@/components/sections/donation-forms/SponsorChildDonationForm'),
   {
@@ -296,42 +172,42 @@ const navLinks = [
 ];
 
 const causeToFormComponent: { [key: string]: React.FC } = {
-  "general": DynamicIndividualDonationForm,
-  "educational": DynamicEducationalDonationForm,
-  "educational-general": DynamicEducationalDonationForm,
-  "innocent-smiles": DynamicInnocentSmilesDonationForm,
-  "inspire-edulab": DynamicInspireEduLabDonationForm,
-  "eduaccess": DynamicEduAccessDonationForm,
-  "empower-english": DynamicEmpowerEnglishDonationForm,
-  "digiempower": DynamicDigiEmpowerDonationForm,
-  "sheconnects": DynamicSheConnectsDonationForm,
-  "milieu": DynamicMilieuDonationForm,
-  "vidyashakti": DynamicVidyaShaktiDonationForm,
-  "gender-equality": DynamicGenderEqualityDonationForm,
-  "gender-equality-general": DynamicGenderEqualityDonationForm,
-  "suidhaga": DynamicSuiDhagaDonationForm,
-  "krishti": DynamicKrishtiDonationForm,
-  "healthcare": DynamicHealthcareDonationForm,
-  "healthcare-general": DynamicHealthcareDonationForm,
-  "cureline": DynamicCureLineDonationForm,
-  "carecircle": DynamicCareCircleDonationForm,
-  "childfirst": DynamicChildFirstDonationForm,
-  "detect": DynamicDetectDonationForm,
-  "sighthope": DynamicSightHopeDonationForm,
-  "oralscan": DynamicOralScanDonationForm,
-  "cyclesafe": DynamicCycleSafeDonationForm,
-  "soulcircle": DynamicSoulCircleDonationForm,
-  "childcare": DynamicChildcareDonationForm,
-  "childcare-general": DynamicChildcareDonationForm,
-  "sustainability": DynamicSustainabilityDonationForm,
-  "sustainability-general": DynamicSustainabilityDonationForm,
-  "green-roots": DynamicGreenRootsDonationForm,
-  "tideshield": DynamicTideShieldDonationForm,
-  "roots-of-change": DynamicRootsOfChangeDonationForm,
-  "forest-cleaning": DynamicForestCleaningDonationForm,
-  "relief": DynamicReliefDonationForm,
-  "disaster-management": DynamicDisasterManagementDonationForm,
-  "ignite-change": DynamicIgniteChangeDonationForm,
+  "general": dynamic(() => import('@/components/sections/donation-forms/IndividualDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "educational": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "educational-general": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "innocent-smiles": dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "inspire-edulab": dynamic(() => import('@/components/sections/donation-forms/InspireEduLabDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "eduaccess": dynamic(() => import('@/components/sections/donation-forms/EduAccessDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "empower-english": dynamic(() => import('@/components/sections/donation-forms/EmpowerEnglishDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "digiempower": dynamic(() => import('@/components/sections/donation-forms/DigiEmpowerDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "sheconnects": dynamic(() => import('@/components/sections/donation-forms/SheConnectsDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "milieu": dynamic(() => import('@/components/sections/donation-forms/MilieuDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "vidyashakti": dynamic(() => import('@/components/sections/donation-forms/VidyaShaktiDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "gender-equality": dynamic(() => import('@/components/sections/donation-forms/GenderEqualityDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "gender-equality-general": dynamic(() => import('@/components/sections/donation-forms/GenderEqualityDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "suidhaga": dynamic(() => import('@/components/sections/donation-forms/SuiDhagaDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "krishti": dynamic(() => import('@/components/sections/donation-forms/KrishtiDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "healthcare": dynamic(() => import('@/components/sections/donation-forms/HealthcareDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "healthcare-general": dynamic(() => import('@/components/sections/donation-forms/HealthcareDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "cureline": dynamic(() => import('@/components/sections/donation-forms/CureLineDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "carecircle": dynamic(() => import('@/components/sections/donation-forms/CareCircleDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "childfirst": dynamic(() => import('@/components/sections/donation-forms/ChildFirstDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "detect": dynamic(() => import('@/components/sections/donation-forms/DetectDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "sighthope": dynamic(() => import('@/components/sections/donation-forms/SightHopeDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "oralscan": dynamic(() => import('@/components/sections/donation-forms/OralScanDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "cyclesafe": dynamic(() => import('@/components/sections/donation-forms/CycleSafeDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "soulcircle": dynamic(() => import('@/components/sections/donation-forms/SoulCircleDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "childcare": dynamic(() => import('@/components/sections/donation-forms/ChildcareDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "childcare-general": dynamic(() => import('@/components/sections/donation-forms/ChildcareDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "sustainability": dynamic(() => import('@/components/sections/donation-forms/SustainabilityDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "sustainability-general": dynamic(() => import('@/components/sections/donation-forms/SustainabilityDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "green-roots": dynamic(() => import('@/components/sections/donation-forms/GreenRootsDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "tideshield": dynamic(() => import('@/components/sections/donation-forms/TideShieldDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "roots-of-change": dynamic(() => import('@/components/sections/donation-forms/RootsOfChangeDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "forest-cleaning": dynamic(() => import('@/components/sections/donation-forms/ForestCleaningDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "relief": dynamic(() => import('@/components/sections/donation-forms/ReliefDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "disaster-management": dynamic(() => import('@/components/sections/donation-forms/DisasterManagementDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "ignite-change": dynamic(() => import('@/components/sections/donation-forms/IgniteChangeDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
 };
 
 const Navbar = () => {
