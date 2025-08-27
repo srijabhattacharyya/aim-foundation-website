@@ -26,7 +26,7 @@ const programs = [
   {
     title: 'Sustainability Initiatives',
     description: 'Protecting and preserving our planet for future generations.',
-    image: 'https://picsum.photos/200/200',
+    image: '/images/banner-card/sustainability.png',
     hint: 'environment',
     link: '/sustainability-initiatives',
   },
