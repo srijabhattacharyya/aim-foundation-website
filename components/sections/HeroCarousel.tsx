@@ -61,7 +61,7 @@ const programs = [
   {
     title: 'Ignite Change Initiatives',
     description: 'Inspiring and mobilizing communities for social good.',
-    image: 'https://picsum.photos/200/200',
+    image: '/images/banner-card/awareness.png',
     hint: 'community awareness',
     link: '/ignite-change-initiative',
   },
