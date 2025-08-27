@@ -48,7 +48,7 @@ interface InitiativeSidebarProps {
 export default function InitiativeSidebar({ initiativeLists, relatedResource }: InitiativeSidebarProps) {
     return (
         <aside className="md:col-span-1 space-y-8">
-            {relatedResource && (
+            {relatedResource && relatedResource.link !== "#" && (
                 <>
                     <Card className="overflow-hidden">
                         <Image src={relatedResource.image.src} alt={relatedResource.image.alt} width={600} height={400} data-ai-hint={relatedResource.image.hint} className="w-full h-auto object-cover" />

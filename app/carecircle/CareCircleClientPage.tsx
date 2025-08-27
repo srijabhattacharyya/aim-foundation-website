@@ -17,14 +17,14 @@ const DynamicDonationForm = dynamic(() => import('@/components/sections/donation
 });
 
 const healthcareInitiatives = [
-    { href: '/cureline?from=healthcare', label: 'CureLine' },
-    { href: '/carecircle?from=healthcare', label: 'CareCircle' },
-    { href: '/childfirst?from=healthcare', label: 'ChildFirst' },
-    { href: '/detect?from=healthcare', label: 'Detect' },
-    { href: '/sighthope?from=healthcare', label: 'SightHope' },
-    { href: '/oralscan?from=healthcare', label: 'OralScan' },
-    { href: '/cyclesafe?from=healthcare', label: 'CycleSafe' },
-    { href: '/soulcircle?from=healthcare', label: 'SoulCircle' },
+    { href: '/cureline', label: 'CureLine' },
+    { href: '/carecircle', label: 'CareCircle' },
+    { href: '/childfirst', label: 'ChildFirst' },
+    { href: '/detect', label: 'Detect' },
+    { href: '/sighthope', label: 'SightHope' },
+    { href: '/oralscan', label: 'OralScan' },
+    { href: '/cyclesafe', label: 'CycleSafe' },
+    { href: '/soulcircle', label: 'SoulCircle' },
 ];
 
 const relatedResource = {
