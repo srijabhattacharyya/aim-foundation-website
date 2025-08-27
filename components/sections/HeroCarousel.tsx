@@ -19,7 +19,7 @@ const programs = [
   {
     title: 'Healthcare Initiatives',
     description: 'Ensuring access to quality medical care for communities.',
-    image: 'https://picsum.photos/200/200',
+    image: '/images/banner-card/health.png',
     hint: 'healthcare',
     link: '/healthcare-initiatives',
   },
