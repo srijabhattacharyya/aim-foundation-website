@@ -2,7 +2,7 @@
 'use server';
 
 import { z } from 'zod';
-import { adminDb } from '@/lib/firebase-admin';
+import { getAdminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
 const formSchema = z.object({
@@ -24,6 +24,7 @@ export async function subscribeToNewsletter(prevState: any, formData: FormData) 
   const { email } = validatedFields.data;
 
   try {
+    const adminDb = getAdminDb();
     const subscriberRef = adminDb.collection('subscribers').doc(email);
     const docSnap = await subscriberRef.get();
 

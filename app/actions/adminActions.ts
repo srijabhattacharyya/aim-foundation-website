@@ -1,11 +1,12 @@
 
 'use server';
 
-import { adminDb } from '@/lib/firebase-admin';
+import { getAdminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
 // Donations
 export async function fetchDonations() {
+    const adminDb = getAdminDb();
     const snapshot = await adminDb.collection('donations').orderBy('createdAt', 'desc').get();
     return snapshot.docs.map(doc => {
         const data = doc.data();
@@ -18,11 +19,13 @@ export async function fetchDonations() {
 }
 
 export async function deleteDonation(id: string) {
+    const adminDb = getAdminDb();
     await adminDb.collection('donations').doc(id).delete();
 }
 
 // Subscribers
 export async function fetchSubscribers() {
+    const adminDb = getAdminDb();
     const snapshot = await adminDb.collection('subscribers').orderBy('createdAt', 'desc').get();
     return snapshot.docs.map(doc => {
         const data = doc.data();
@@ -35,12 +38,14 @@ export async function fetchSubscribers() {
 }
 
 export async function deleteSubscriber(id: string) {
+    const adminDb = getAdminDb();
     await adminDb.collection('subscribers').doc(id).delete();
 }
 
 
 // Gallery
 export async function fetchGalleryImages() {
+    const adminDb = getAdminDb();
     const snapshot = await adminDb.collection('gallery').orderBy('sequence', 'asc').get();
     return snapshot.docs.map(doc => {
         const data = doc.data();
@@ -53,6 +58,7 @@ export async function fetchGalleryImages() {
 }
 
 export async function addGalleryImage(data: { description: string; status: 'Active' | 'Inactive'; sequence: number; imageUrl: string; }) {
+    const adminDb = getAdminDb();
     await adminDb.collection('gallery').add({
         ...data,
         createdAt: FieldValue.serverTimestamp(),
@@ -61,6 +67,7 @@ export async function addGalleryImage(data: { description: string; status: 'Acti
 }
 
 export async function updateGalleryImage(id: string, data: { description: string; status: 'Active' | 'Inactive'; sequence: number; imageUrl: string; }) {
+    const adminDb = getAdminDb();
     await adminDb.collection('gallery').doc(id).update({
         ...data,
         updatedAt: FieldValue.serverTimestamp(),
@@ -68,5 +75,6 @@ export async function updateGalleryImage(id: string, data: { description: string
 }
 
 export async function deleteGalleryImage(id: string) {
+    const adminDb = getAdminDb();
     await adminDb.collection('gallery').doc(id).delete();
 }

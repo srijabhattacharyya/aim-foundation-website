@@ -2,7 +2,7 @@
 'use server';
 
 import { z } from 'zod';
-import { adminDb } from '@/lib/firebase-admin';
+import { getAdminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { format } from 'date-fns';
 
@@ -84,6 +84,7 @@ export async function addDonation(prevState: any, formData: FormData) {
   }
 
   try {
+    const adminDb = getAdminDb();
     const { agree, ...donationData } = validatedFields.data;
 
     const finalData = {
