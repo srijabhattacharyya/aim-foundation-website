@@ -10,7 +10,7 @@ export async function addDonation(prevState: any, formData: FormData) {
   const refinedData = {
     ...data,
     agree: data.get('agree') === 'on',
-    amount: data.get('otherAmount') && (data.get('otherAmount') as string).trim() !== '' ? data.get('otherAmount') : data.get('amount'),
+    amount: data.get('otherAmount') && (data.get('otherAmount') as string).trim() !== '' ? '' : data.get('amount'),
   };
 
   const validatedFields = donationSchema.safeParse(refinedData);
@@ -21,9 +21,21 @@ export async function addDonation(prevState: any, formData: FormData) {
         success: false,
         message: 'Validation failed. Please check the fields.',
         errors: validatedFields.error.flatten().fieldErrors,
+        data: null,
     };
   }
   
-  // Only validation is done on the server. The client will handle the DB write.
-  return { success: true, message: "Validation successful.", data: validatedFields.data };
+  const finalAmount = validatedFields.data.otherAmount && validatedFields.data.otherAmount.trim() !== '' 
+    ? validatedFields.data.otherAmount 
+    : validatedFields.data.amount;
+  
+  const dataToReturn = {
+    ...validatedFields.data,
+    amount: finalAmount,
+  };
+
+  // @ts-ignore
+  delete dataToReturn.agree;
+  
+  return { success: true, message: "Validation successful.", data: dataToReturn, errors: {} };
 }

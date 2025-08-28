@@ -1,20 +1,20 @@
 
 "use client";
 
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { useFormState } from "react-dom";
 import { useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { addDonation } from "@/app/actions/donationActions";
-import DonationFormFields from "./DonationFormFields";
+import { DonationFormFields } from "./DonationFormFields";
 import { Form } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { donationSchema } from "./schemas";
-import { z } from "zod";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { donationSchema } from "./schemas";
 
 type DonationAmount = {
     value: string;
@@ -36,6 +36,7 @@ const initialState = {
     message: '',
     errors: {},
     success: false,
+    data: null,
 };
 
 export default function DonationForm({
@@ -76,10 +77,6 @@ export default function DonationForm({
     });
 
     const nationality = form.watch("nationality");
-    const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
-    const selectedAmountValue = form.watch("amount");
-    const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
-    const description = selectedAmount ? selectedAmount.description : "";
     
     useEffect(() => {
         if (nationality === "Indian") {
@@ -98,19 +95,19 @@ export default function DonationForm({
     useEffect(() => {
         async function handleServerResponse() {
             if (state.success && state.data) {
-                 try {
-                    const finalAmount = state.data.otherAmount && state.data.otherAmount.trim() !== '' ? state.data.otherAmount : state.data.amount;
-                    const docData = { ...state.data, amount: finalAmount, createdAt: serverTimestamp() };
-                    
-                    // @ts-ignore
-                    delete docData.agree; 
+                try {
+                    const finalData = {
+                        ...state.data,
+                        createdAt: serverTimestamp()
+                    };
 
-                    await addDoc(collection(db, "donations"), docData);
+                    await addDoc(collection(db, "donations"), finalData);
+
                     toast({
                         title: `Thank you for supporting ${cause}!`,
                         description: "Your generous donation will change a life.",
                     });
-                    form.reset(); 
+                    form.reset();
                     formRef.current?.reset();
                 } catch (dbError) {
                     console.error("Firestore write failed:", dbError);
@@ -123,18 +120,10 @@ export default function DonationForm({
             } else if (state.message && !state.success) {
                 toast({
                     variant: "destructive",
-                    title: "Submission Failed",
+                    title: "Validation Failed",
                     description: state.message,
                 });
             }
-            if (state.errors) {
-                Object.entries(state.errors).forEach(([key, value]) => {
-                   form.setError(key as keyof z.infer<typeof donationSchema>, {
-                       type: "manual",
-                       message: (value as string[])[0],
-                   });
-               });
-           }
         }
         handleServerResponse();
     }, [state, toast, form, cause]);
@@ -153,8 +142,8 @@ export default function DonationForm({
                  <Form {...form}>
                     <form ref={formRef} action={formAction} className="space-y-6">
                         <DonationFormFields
-                            donationAmounts={donationAmounts}
-                            description={description}
+                            donationAmountsIndian={donationAmountsIndian}
+                            donationAmountsNonIndian={donationAmountsNonIndian}
                         />
                     </form>
                 </Form>

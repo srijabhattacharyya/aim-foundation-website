@@ -1,6 +1,5 @@
 
-"use client";
-
+'use client';
 import DonationForm from "./DonationForm";
 
 const donationAmountsIndian = [

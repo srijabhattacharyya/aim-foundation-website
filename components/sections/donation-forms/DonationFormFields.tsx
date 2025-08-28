@@ -26,16 +26,20 @@ type DonationAmount = {
 };
 
 interface DonationFormFieldsProps {
-    donationAmounts: DonationAmount[];
-    description: string;
+    donationAmountsIndian: DonationAmount[];
+    donationAmountsNonIndian: DonationAmount[];
 }
 
-export default function DonationFormFields({
-    donationAmounts,
-    description,
+export function DonationFormFields({
+    donationAmountsIndian,
+    donationAmountsNonIndian,
 }: DonationFormFieldsProps) {
     const form = useFormContext();
     const nationality = form.watch("nationality");
+    const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+    const selectedAmountValue = form.watch("amount");
+    const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+    const description = selectedAmount ? selectedAmount.description : "";
 
     return (
         <div className="space-y-6">
@@ -87,9 +91,9 @@ export default function DonationFormFields({
                                 {donationAmounts.map((item) => (
                                     <FormItem key={item.value} className="flex items-center space-x-2 space-y-0">
                                         <FormControl>
-                                            <RadioGroupItem value={item.value} />
+                                            <RadioGroupItem value={item.value} id={`${item.value}-${field.name}`} />
                                         </FormControl>
-                                        <FormLabel className="font-normal text-base">{item.label}</FormLabel>
+                                        <FormLabel htmlFor={`${item.value}-${field.name}`} className="font-normal text-base">{item.label}</FormLabel>
                                     </FormItem>
                                 ))}
                             </RadioGroup>

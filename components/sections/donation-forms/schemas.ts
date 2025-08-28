@@ -17,7 +17,9 @@ export const donationSchema = z.object({
   city: z.string().nonempty('City is required'),
   address: z.string().nonempty('Address is required'),
   pincode: z.string().min(6, 'Pincode must be 6 digits'),
-  agree: z.literal(true, { errorMap: () => ({ message: "You must agree to the terms." }) }),
+  agree: z.literal(true, {
+    errorMap: () => ({ message: "You must agree to the terms." }),
+  }),
   cause: z.string(),
   initiative: z.string().optional(),
 }).superRefine((data, ctx) => {

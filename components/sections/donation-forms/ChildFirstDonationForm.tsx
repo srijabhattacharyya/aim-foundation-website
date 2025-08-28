@@ -1,6 +1,5 @@
 
-"use client";
-
+'use client';
 import DonationForm from "./DonationForm";
 
 const donationAmountsIndian = [
@@ -16,7 +15,6 @@ const donationAmountsNonIndian = [
     { value: "120", label: "$120", description: "HEALTH & NUTRITION FOR FOUR CHILDREN" },
     { value: "240", label: "$240", description: "SPONSOR A HEALTH CAMP FOR CHILDREN (EXCLUDING MEDICINE)" },
 ];
-
 
 export default function ChildFirstDonationForm() {
     return (
