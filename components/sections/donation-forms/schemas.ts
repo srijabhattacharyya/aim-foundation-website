@@ -21,6 +21,14 @@ export const donationSchema = z.object({
   cause: z.string(),
   initiative: z.string().optional(),
 }).superRefine((data, ctx) => {
+    if (data.amount.trim() === '' && (!data.otherAmount || data.otherAmount.trim() === '')) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Please select or enter a donation amount.",
+            path: ["amount"],
+        });
+    }
+
     if (data.nationality === 'Indian') {
       if (!data.pan && !data.aadhar) {
         ctx.addIssue({

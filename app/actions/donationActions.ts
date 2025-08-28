@@ -10,6 +10,7 @@ export async function addDonation(prevState: any, formData: FormData) {
   const refinedData = {
     ...data,
     agree: data.get('agree') === 'on',
+    amount: data.get('otherAmount') && (data.get('otherAmount') as string).trim() !== '' ? data.get('otherAmount') : data.get('amount'),
   };
 
   const validatedFields = donationSchema.safeParse(refinedData);
