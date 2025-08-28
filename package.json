@@ -41,6 +41,7 @@
     "embla-carousel-autoplay": "^8.2.0",
     "embla-carousel-react": "^8.2.0",
     "firebase": "^10.12.4",
+    "firebase-admin": "^12.2.0",
     "genkit": "^1.0.0",
     "glob": "^11.0.0",
     "lucide-react": "^0.417.0",

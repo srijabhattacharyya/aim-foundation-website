@@ -1,8 +1,9 @@
+
 'use server';
 
 import { z } from 'zod';
-import { db } from '@/lib/firebase';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { adminDb } from '@/lib/firebase-admin';
+import { FieldValue } from 'firebase-admin/firestore';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'A valid email is required.' }),
@@ -23,19 +24,19 @@ export async function subscribeToNewsletter(prevState: any, formData: FormData) 
   const { email } = validatedFields.data;
 
   try {
-    const subscriberRef = doc(db, 'subscribers', email);
-    const docSnap = await getDoc(subscriberRef);
+    const subscriberRef = adminDb.collection('subscribers').doc(email);
+    const docSnap = await subscriberRef.get();
 
-    if (docSnap.exists()) {
+    if (docSnap.exists) {
       return {
         success: false,
         message: 'This email is already subscribed.',
       };
     }
 
-    await setDoc(subscriberRef, {
+    await subscriberRef.set({
       email: email,
-      createdAt: serverTimestamp(),
+      createdAt: FieldValue.serverTimestamp(),
     });
 
     return {

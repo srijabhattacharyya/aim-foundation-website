@@ -17,8 +17,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { collection, getDocs, deleteDoc, doc, query, orderBy, Timestamp, addDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
-import { db, storage } from '@/lib/firebase';
+import { fetchGalleryImages, addGalleryImage, updateGalleryImage, deleteGalleryImage } from '@/app/actions/adminActions';
+import { storage } from '@/lib/firebase';
 import { ref, uploadString, getDownloadURL, deleteObject } from 'firebase/storage';
 
 export interface GalleryImage {
@@ -28,14 +28,6 @@ export interface GalleryImage {
     sequence: number;
     imageUrl: string;
     createdAt: string;
-}
-
-interface GalleryItemData {
-    description: string;
-    status: 'Active' | 'Inactive';
-    sequence: number;
-    imageUrl?: string; 
-    imageFile?: string; 
 }
 
 const formSchema = z.object({
@@ -81,25 +73,9 @@ export default function GalleryAdminPage() {
 
   form.trigger();
 
-  async function fetchGalleryImages() {
+  async function loadGalleryImages() {
     try {
-        const galleryRef = collection(db, 'gallery');
-        const q = query(galleryRef, orderBy('sequence', 'asc'));
-        const querySnapshot = await getDocs(q);
-
-        const fetchedImages: GalleryImage[] = querySnapshot.docs.map(doc => {
-            const data = doc.data();
-            const createdAt = (data.createdAt as Timestamp)?.toDate().toISOString() || new Date().toISOString();
-            return { 
-                id: doc.id,
-                description: data.description,
-                status: data.status,
-                sequence: data.sequence,
-                imageUrl: data.imageUrl,
-                createdAt
-            } as GalleryImage;
-        });
-        
+        const fetchedImages = await fetchGalleryImages();
         setImages(fetchedImages);
     } catch (err: any) {
         console.error("Error fetching gallery images: ", err);
@@ -114,7 +90,7 @@ export default function GalleryAdminPage() {
   }
 
   useEffect(() => {
-    fetchGalleryImages();
+    loadGalleryImages();
   }, []);
 
   const handleEdit = (image: GalleryImage) => {
@@ -137,9 +113,9 @@ export default function GalleryAdminPage() {
                 }
             });
         }
-        await deleteDoc(doc(db, 'gallery', image.id));
+        await deleteGalleryImage(image.id);
         toast({ title: 'Success', description: 'Image deleted successfully.' });
-        fetchGalleryImages();
+        loadGalleryImages();
     } catch (e: any) {
         console.error("Error deleting gallery item: ", e);
         toast({ variant: 'destructive', title: 'Error', description: "Could not delete the gallery item." });
@@ -192,18 +168,17 @@ export default function GalleryAdminPage() {
           status: data.status,
           sequence: data.sequence,
           imageUrl: imageUrl,
-          updatedAt: serverTimestamp(),
       };
 
       if (editingImage) {
-        await updateDoc(doc(db, 'gallery', editingImage.id), docData);
+        await updateGalleryImage(editingImage.id, docData);
       } else {
-        await addDoc(collection(db, 'gallery'), {...docData, createdAt: serverTimestamp()});
+        await addGalleryImage(docData);
       }
 
       toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });
       cancelEdit();
-      fetchGalleryImages();
+      loadGalleryImages();
 
     } catch (error) {
       console.error('Error submitting form:', error);

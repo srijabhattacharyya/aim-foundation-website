@@ -2,8 +2,8 @@
 'use server';
 
 import { z } from 'zod';
-import { db } from '@/lib/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { adminDb } from '@/lib/firebase-admin';
+import { FieldValue } from 'firebase-admin/firestore';
 import { format } from 'date-fns';
 
 const donationSchema = z.object({
@@ -83,13 +83,12 @@ export async function addDonation(prevState: any, formData: FormData) {
     const donationData = {
       ...validatedFields.data,
       dob: validatedFields.data.dob,
-      createdAt: serverTimestamp()
+      createdAt: FieldValue.serverTimestamp()
     };
     
-    // remove agree and recaptcha before saving
     const { agree, ...restOfData } = donationData;
     
-    await addDoc(collection(db, "donations"), restOfData);
+    await adminDb.collection("donations").add(restOfData);
 
     return { success: true, message: "Donation submitted successfully!" };
   } catch (error) {

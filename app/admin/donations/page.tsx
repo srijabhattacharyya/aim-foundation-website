@@ -25,8 +25,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import Papa from 'papaparse';
-import { collection, getDocs, deleteDoc, doc, query, orderBy, Timestamp } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { fetchDonations, deleteDonation } from '@/app/actions/adminActions';
 
 export interface Donation {
     id: string;
@@ -74,18 +73,9 @@ export default function DonationsPage() {
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
 
-  async function fetchDonations() {
+  async function loadDonations() {
     try {
-        const donationsRef = collection(db, 'donations');
-        const q = query(donationsRef, orderBy('createdAt', 'desc'));
-        const querySnapshot = await getDocs(q);
-
-        const fetchedDonations: Donation[] = querySnapshot.docs.map(doc => {
-            const data = doc.data();
-            const createdAt = (data.createdAt as Timestamp)?.toDate().toISOString() || new Date().toISOString();
-            return { id: doc.id, ...data, createdAt } as Donation;
-        });
-        
+        const fetchedDonations = await fetchDonations();
         setDonations(fetchedDonations);
         setFilteredDonations(fetchedDonations);
     } catch (err: any) {
@@ -97,7 +87,7 @@ export default function DonationsPage() {
   }
 
   useEffect(() => {
-    fetchDonations();
+    loadDonations();
   }, []);
 
   useEffect(() => {
@@ -134,8 +124,8 @@ export default function DonationsPage() {
 
   const handleDelete = async (id: string) => {
     try {
-        await deleteDoc(doc(db, 'donations', id));
-        fetchDonations(); // Refresh data
+        await deleteDonation(id);
+        loadDonations(); // Refresh data
         toast({
             title: "Donation deleted",
             description: "The donation record has been successfully removed.",

@@ -20,8 +20,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from '@/hooks/use-toast';
 import Papa from 'papaparse';
-import { collection, getDocs, deleteDoc, doc, query, orderBy, Timestamp } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { fetchSubscribers, deleteSubscriber } from '@/app/actions/adminActions';
 
 export interface Subscriber {
     id: string;
@@ -35,23 +34,10 @@ export default function SubscribersPage() {
     const [error, setError] = useState<string | null>(null);
     const { toast } = useToast();
 
-    async function fetchSubscribers() {
+    async function loadSubscribers() {
         setLoading(true);
         try {
-            const subscribersRef = collection(db, 'subscribers');
-            const q = query(subscribersRef, orderBy('createdAt', 'desc'));
-            const querySnapshot = await getDocs(q);
-            
-            const fetchedSubscribers: Subscriber[] = querySnapshot.docs.map(doc => {
-                const data = doc.data();
-                const createdAt = (data.createdAt as Timestamp)?.toDate().toISOString() || new Date().toISOString();
-                return {
-                    id: doc.id,
-                    email: data.email || 'N/A',
-                    createdAt: createdAt,
-                };
-            });
-            
+            const fetchedSubscribers = await fetchSubscribers();
             setSubscribers(fetchedSubscribers);
         } catch (err: any) {
             console.error("Error fetching subscribers: ", err);
@@ -62,13 +48,13 @@ export default function SubscribersPage() {
     }
 
     useEffect(() => {
-        fetchSubscribers();
+        loadSubscribers();
     }, []);
 
     const handleDelete = async (id: string) => {
         try {
-            await deleteDoc(doc(db, 'subscribers', id));
-            fetchSubscribers(); // Refresh data
+            await deleteSubscriber(id);
+            loadSubscribers(); // Refresh data
             toast({
                 title: "Subscriber deleted",
                 description: "The subscriber has been successfully removed.",
