@@ -13,7 +13,7 @@ const donationSchema = z.object({
   fullName: z.string().min(2, 'Full name is required'),
   email: z.string().email('Invalid email address'),
   mobile: z.string().min(10, 'Mobile number must be at least 10 digits'),
-  dob: z.date().optional(),
+  dob: z.string().optional(),
   pan: z.string().optional(),
   aadhar: z.string().optional(),
   passport: z.string().optional(),
@@ -32,6 +32,11 @@ const donationSchema = z.object({
           code: z.ZodIssueCode.custom,
           message: "PAN or Aadhar is required for Indian nationals.",
           path: ["pan"],
+        });
+         ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "PAN or Aadhar is required for Indian nationals.",
+          path: ["aadhar"],
         });
       }
       if (data.pan && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(data.pan)) {
@@ -53,18 +58,17 @@ const donationSchema = z.object({
 export async function addDonation(prevState: any, formData: FormData) {
   const data = Object.fromEntries(formData.entries());
 
-  // Manually handle date because FormData sends it as a string
-  let dobDate: Date | undefined = undefined;
+  let dobString: string | undefined = undefined;
   if (data.dob && typeof data.dob === 'string') {
     const parsedDate = new Date(data.dob);
     if (!isNaN(parsedDate.getTime())) {
-      dobDate = parsedDate;
+        dobString = format(parsedDate, 'yyyy-MM-dd');
     }
   }
 
   const validatedFields = donationSchema.safeParse({
     ...data,
-    dob: dobDate,
+    dob: dobString,
   });
 
   if (!validatedFields.success) {
@@ -78,7 +82,7 @@ export async function addDonation(prevState: any, formData: FormData) {
   try {
     const donationData = {
       ...validatedFields.data,
-      dob: validatedFields.data.dob ? format(validatedFields.data.dob, 'yyyy-MM-dd') : null,
+      dob: validatedFields.data.dob,
       createdAt: serverTimestamp()
     };
     
