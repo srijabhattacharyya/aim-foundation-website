@@ -76,83 +76,74 @@ const initialState = {
     success: false,
 };
 
-export default function CareCircleDonationForm() {
-  const { toast } = useToast();
-  const [showRecaptcha, setShowRecaptcha] = useState(false);
-  const [state, formAction] = useFormState(addDonation, initialState);
-  const formRef = useRef<HTMLFormElement>(null);
-  
-  const form = useForm<z.infer<typeof donationSchema>>({
-    resolver: zodResolver(donationSchema),
-    defaultValues: {
-      nationality: "Indian",
-      amount: "1500",
-      fullName: "",
-      email: "",
-      mobile: "",
-      country: "India",
-    },
-  });
+function CareCircleFormContent({
+    state,
+    formRef,
+}: {
+    state: typeof initialState;
+    formRef: React.RefObject<HTMLFormElement>;
+}) {
+    const { toast } = useToast();
+    const form = useForm<z.infer<typeof donationSchema>>({
+        resolver: zodResolver(donationSchema),
+        defaultValues: {
+            nationality: "Indian",
+            amount: "1500",
+            fullName: "",
+            email: "",
+            mobile: "",
+            country: "India",
+        },
+    });
 
-  const nationality = form.watch("nationality");
-  const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
-  const selectedAmountValue = form.watch("amount");
+    const nationality = form.watch("nationality");
+    const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+    const selectedAmountValue = form.watch("amount");
 
-  const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
-  const description = selectedAmount ? selectedAmount.description : "";
+    const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+    const description = selectedAmount ? selectedAmount.description : "";
 
-  useEffect(() => {
-    if (state.success) {
-      toast({
-        title: "Thank you for supporting CareCircle!",
-        description: "Your support makes a difference.",
-      });
-      formRef.current?.reset();
-      form.reset();
-    } else if (state.message && state.errors) {
-       Object.entries(state.errors).forEach(([key, value]) => {
-        form.setError(key as keyof z.infer<typeof donationSchema>, {
-          type: "manual",
-          message: (value as string[])[0],
-        });
-      });
-    } else if (state.message) {
-       toast({
-        variant: "destructive",
-        title: "Submission Failed",
-        description: state.message,
-      });
-    }
-  }, [state, toast, form]);
+    useEffect(() => {
+        if (state.success) {
+            toast({
+                title: "Thank you for supporting CareCircle!",
+                description: "Your support makes a difference.",
+            });
+            formRef.current?.reset();
+            form.reset();
+        } else if (state.message && state.errors) {
+            Object.entries(state.errors).forEach(([key, value]) => {
+                form.setError(key as keyof z.infer<typeof donationSchema>, {
+                    type: "manual",
+                    message: (value as string[])[0],
+                });
+            });
+        } else if (state.message) {
+            toast({
+                variant: "destructive",
+                title: "Submission Failed",
+                description: state.message,
+            });
+        }
+    }, [state, toast, form, formRef]);
 
-  useEffect(() => {
-    if (nationality === "Indian") {
-      form.setValue("country", "India");
-      form.setValue("passport", "");
-      form.setValue("amount", "1500");
-    } else {
-      form.setValue("country", "");
-      form.setValue("pan", "");
-      form.setValue("aadhar", "");
-      form.setValue("state", "");
-      form.setValue("amount", "18");
-    }
-  }, [nationality, form]);
-
-
-  return (
-    <Card className="w-full border-0 shadow-none rounded-none">
-        <CardContent className="p-6 md:p-8" onFocus={() => setShowRecaptcha(true)} onClick={() => setShowRecaptcha(true)}>
-            <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
-                <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
-            </div>
-            <div className="text-center mb-8 pt-20">
-                <h2 className="text-3xl font-bold font-headline">SUPPORT CARECIRCLE</h2>
-                <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
-            </div>
-
-            <Form {...form}>
-                <form ref={formRef} action={formAction} className="space-y-6">
+    useEffect(() => {
+        if (nationality === "Indian") {
+            form.setValue("country", "India");
+            form.setValue("passport", "");
+            form.setValue("amount", "1500");
+        } else {
+            form.setValue("country", "");
+            form.setValue("pan", "");
+            form.setValue("aadhar", "");
+            form.setValue("state", "");
+            form.setValue("amount", "18");
+        }
+    }, [nationality, form]);
+    
+    return (
+        <Form {...form}>
+            <form ref={formRef} action={addDonation} className="space-y-6">
                 <input type="hidden" name="cause" value="CareCircle" />
                 
                 <FormField
@@ -446,9 +437,26 @@ export default function CareCircleDonationForm() {
                 />
 
                 <SubmitButton />
-                </form>
-            </Form>
-        </CardContent>
-    </Card>
-  );
+            </form>
+        </Form>
+    );
+}
+
+export default function CareCircleDonationForm() {
+    const [state, formAction] = useFormState(addDonation, initialState);
+    const formRef = useRef<HTMLFormElement>(null);
+    return (
+        <Card className="w-full border-0 shadow-none rounded-none">
+            <CardContent className="p-6 md:p-8">
+                <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+                    <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={48} className="object-contain"/>
+                </div>
+                <div className="text-center mb-8 pt-20">
+                    <h2 className="text-3xl font-bold font-headline">SUPPORT CARECIRCLE</h2>
+                    <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
+                </div>
+                <CareCircleFormContent state={state} formRef={formRef} />
+            </CardContent>
+        </Card>
+    )
 }
