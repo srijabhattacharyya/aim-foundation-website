@@ -60,9 +60,13 @@ export async function addDonation(prevState: any, formData: FormData) {
 
   let dobString: string | undefined = undefined;
   if (data.dob && typeof data.dob === 'string') {
-    const parsedDate = new Date(data.dob);
-    if (!isNaN(parsedDate.getTime())) {
-        dobString = format(parsedDate, 'yyyy-MM-dd');
+    try {
+        const parsedDate = new Date(data.dob);
+        if (!isNaN(parsedDate.getTime())) {
+            dobString = format(parsedDate, 'yyyy-MM-dd');
+        }
+    } catch(e) {
+        // Ignore invalid date format, Zod will catch it
     }
   }
 
@@ -80,15 +84,14 @@ export async function addDonation(prevState: any, formData: FormData) {
   }
 
   try {
-    const donationData = {
-      ...validatedFields.data,
-      dob: validatedFields.data.dob,
-      createdAt: FieldValue.serverTimestamp()
+    const { agree, ...donationData } = validatedFields.data;
+
+    const finalData = {
+        ...donationData,
+        createdAt: FieldValue.serverTimestamp()
     };
     
-    const { agree, ...restOfData } = donationData;
-    
-    await adminDb.collection("donations").add(restOfData);
+    await adminDb.collection("donations").add(finalData);
 
     return { success: true, message: "Donation submitted successfully!" };
   } catch (error) {
