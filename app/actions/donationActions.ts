@@ -5,76 +5,19 @@ import { z } from 'zod';
 import { getAdminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { format } from 'date-fns';
-
-const donationSchema = z.object({
-  nationality: z.enum(["Indian", "Non-Indian"]),
-  amount: z.string(),
-  otherAmount: z.string().optional(),
-  fullName: z.string().min(2, 'Full name is required'),
-  email: z.string().email('Invalid email address'),
-  mobile: z.string().min(10, 'Mobile number must be at least 10 digits'),
-  dob: z.string().optional(),
-  pan: z.string().optional(),
-  aadhar: z.string().optional(),
-  passport: z.string().optional(),
-  country: z.string().nonempty('Country is required'),
-  state: z.string().optional(),
-  city: z.string().nonempty('City is required'),
-  address: z.string().nonempty('Address is required'),
-  pincode: z.string().min(6, 'Pincode must be 6 digits'),
-  cause: z.string(),
-  initiative: z.string().optional(),
-  agree: z.literal('on', { errorMap: () => ({ message: "You must agree to the terms." }) })
-}).superRefine((data, ctx) => {
-    if (data.nationality === 'Indian') {
-      if (!data.pan && !data.aadhar) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "PAN or Aadhar is required for Indian nationals.",
-          path: ["pan"],
-        });
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "PAN or Aadhar is required for Indian nationals.",
-          path: ["aadhar"],
-        });
-      }
-      if (data.pan && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(data.pan)) {
-        ctx.addIssue({ path: ["pan"], message: "Invalid PAN format." });
-      }
-      if (data.aadhar && !/^[0-9]{12}$/.test(data.aadhar)) {
-        ctx.addIssue({ path: ["aadhar"], message: "Aadhar must be 12 digits." });
-      }
-      if (!data.state) {
-        ctx.addIssue({ path: ["state"], message: "State is required for Indian nationals." });
-      }
-    }
-    if (data.nationality === 'Non-Indian' && !data.passport) {
-        ctx.addIssue({ path: ["passport"], message: "Passport is required for Non-Indian nationals." });
-    }
-});
-
+import { donationSchema } from '@/components/sections/donation-forms/schemas';
 
 export async function addDonation(prevState: any, formData: FormData) {
-
   const data = Object.fromEntries(formData.entries());
   
-  let dobString: string | undefined = undefined;
-  if (data.dob && typeof data.dob === 'string' && data.dob.length > 0) {
-    try {
-        const parsedDate = new Date(data.dob);
-        if (!isNaN(parsedDate.getTime())) {
-            dobString = format(parsedDate, 'yyyy-MM-dd');
-        }
-    } catch(e) {
-        // Zod will catch invalid date format if it's not parseable.
-    }
-  }
-
-  const validatedFields = donationSchema.safeParse({
+  // The 'agree' checkbox sends 'on' when checked, or is absent if not.
+  // Zod expects a literal 'on' or will fail validation.
+  const refinedData = {
     ...data,
-    dob: dobString,
-  });
+    agree: data.get('agree') === 'on' ? 'on' : undefined,
+  };
+
+  const validatedFields = donationSchema.safeParse(refinedData);
 
   if (!validatedFields.success) {
     console.error("Validation Errors:", validatedFields.error.flatten().fieldErrors);
@@ -90,10 +33,20 @@ export async function addDonation(prevState: any, formData: FormData) {
     const { agree, ...donationData } = validatedFields.data;
 
     const finalAmount = donationData.otherAmount && donationData.otherAmount.trim() !== '' ? donationData.otherAmount : donationData.amount;
+    
+    // Convert dob string to Firestore Timestamp if it exists
+    let dobTimestamp: FieldValue | null = null;
+    if (donationData.dob && donationData.dob.length > 0) {
+      const parsedDate = new Date(donationData.dob);
+      if (!isNaN(parsedDate.getTime())) {
+        dobTimestamp = FieldValue.serverTimestamp(); // Firestore handles conversion
+      }
+    }
 
     const finalData = {
         ...donationData,
         amount: finalAmount,
+        dob: dobTimestamp, // Send Timestamp or null
         createdAt: FieldValue.serverTimestamp()
     };
     
