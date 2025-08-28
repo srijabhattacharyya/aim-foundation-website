@@ -13,6 +13,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { donationSchema } from "./schemas";
 import { z } from "zod";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 const donationAmountsIndian = [
     { value: "6000", label: "₹6000", description: "SPONSOR A CHILD'S EDUCATION FOR 6 MONTHS" },
@@ -36,7 +38,6 @@ const initialState = {
 
 export default function SponsorChildDonationForm() {
     const { toast } = useToast();
-    const [state, formAction] = useFormState(addDonation, initialState);
     const formRef = useRef<HTMLFormElement>(null);
     const form = useForm<z.infer<typeof donationSchema>>({
         resolver: zodResolver(donationSchema),
@@ -62,6 +63,8 @@ export default function SponsorChildDonationForm() {
         },
     });
 
+    const [state, formAction] = useFormState(addDonation, initialState);
+
     const nationality = form.watch("nationality");
     const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
     const selectedAmountValue = form.watch("amount");
@@ -84,27 +87,42 @@ export default function SponsorChildDonationForm() {
 
 
     useEffect(() => {
-        if (state.success) {
-            toast({
-                title: "Thank you for sponsoring a child!",
-                description: "Your generous donation will change a life.",
-            });
-            formRef.current?.reset();
-        } else if (state.message && !state.errors) {
-            toast({
-                variant: "destructive",
-                title: "Submission Failed",
-                description: state.message,
-            });
-        }
-        if (state.errors) {
-            Object.entries(state.errors).forEach(([key, value]) => {
-               form.setError(key as keyof z.infer<typeof donationSchema>, {
-                   type: "manual",
-                   message: (value as string[])[0],
+        async function handleServerResponse() {
+            if (state.success && state.data) {
+                try {
+                    const finalAmount = state.data.otherAmount && state.data.otherAmount.trim() !== '' ? state.data.otherAmount : state.data.amount;
+                    const docData = { ...state.data, amount: finalAmount, createdAt: serverTimestamp() };
+                    await addDoc(collection(db, "donations"), docData);
+                    toast({
+                        title: "Thank you for sponsoring a child!",
+                        description: "Your generous donation will change a life.",
+                    });
+                    form.reset();
+                } catch (dbError) {
+                    console.error("Firestore write failed:", dbError);
+                    toast({
+                        variant: "destructive",
+                        title: "Database Error",
+                        description: "Could not save your donation. Please contact support.",
+                    });
+                }
+            } else if (state.message && !state.success) {
+                toast({
+                    variant: "destructive",
+                    title: "Submission Failed",
+                    description: state.message,
+                });
+            }
+            if (state.errors) {
+                Object.entries(state.errors).forEach(([key, value]) => {
+                   form.setError(key as keyof z.infer<typeof donationSchema>, {
+                       type: "manual",
+                       message: (value as string[])[0],
+                   });
                });
-           });
-       }
+           }
+        }
+        handleServerResponse();
     }, [state, toast, form]);
 
     return (
