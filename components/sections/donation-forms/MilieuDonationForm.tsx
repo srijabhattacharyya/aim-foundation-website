@@ -66,16 +66,16 @@ export default function MilieuDonationForm() {
           <h2 className="text-3xl font-bold font-headline">SUPPORT MILIEU</h2>
           <p className="text-muted-foreground">BUILDING BRIDGES, NURTURING EMPATHY</p>
         </div>
-        <DonationForm
-            formAction={formAction}
-            state={state}
-            cause="Milieu"
-            donationAmountsIndian={donationAmountsIndian}
-            donationAmountsNonIndian={donationAmountsNonIndian}
-            defaultIndianAmount="2500"
-            defaultNonIndianAmount="30"
-            formRef={formRef}
-        />
+        <form ref={formRef} action={formAction}>
+            <DonationForm
+                state={state}
+                cause="Milieu"
+                donationAmountsIndian={donationAmountsIndian}
+                donationAmountsNonIndian={donationAmountsNonIndian}
+                defaultIndianAmount="2500"
+                defaultNonIndianAmount="30"
+            />
+        </form>
       </CardContent>
     </Card>
   );

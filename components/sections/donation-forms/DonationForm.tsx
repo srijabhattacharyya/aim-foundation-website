@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
-import { useForm, FormProvider } from "react-hook-form";
+import { useEffect } from "react";
+import { useForm, useFormContext } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
@@ -31,25 +31,23 @@ type DonationAmount = {
 };
 
 interface DonationFormProps {
+    formAction: (payload: FormData) => void;
     state: any;
     cause: string;
     donationAmountsIndian: DonationAmount[];
     donationAmountsNonIndian: DonationAmount[];
     defaultIndianAmount: string;
     defaultNonIndianAmount: string;
-    formAction: (payload: FormData) => void;
-    formRef: React.RefObject<HTMLFormElement>;
 }
 
 export default function DonationForm({ 
+    formAction,
     state,
     cause, 
     donationAmountsIndian, 
     donationAmountsNonIndian, 
     defaultIndianAmount, 
-    defaultNonIndianAmount,
-    formAction,
-    formRef 
+    defaultNonIndianAmount
 }: DonationFormProps) {
     const form = useForm<z.infer<typeof donationSchema>>({
         resolver: zodResolver(donationSchema),
@@ -71,6 +69,7 @@ export default function DonationForm({
             pincode: "",
             agree: false,
             cause: cause,
+            initiative: cause,
         },
     });
 
@@ -88,8 +87,6 @@ export default function DonationForm({
                     message: (value as string[])[0],
                 });
             });
-        } else if (state?.success) {
-            form.reset();
         }
     }, [state, form]);
 
@@ -109,8 +106,9 @@ export default function DonationForm({
 
     return (
         <Form {...form}>
-            <form action={formAction} ref={formRef} className="space-y-6">
-                <input type="hidden" name="cause" value={cause} />
+             <form action={formAction} className="space-y-6">
+                 <input type="hidden" name="cause" value={cause} />
+                 <input type="hidden" name="initiative" value={cause} />
                 
                  <FormField
                     control={form.control}

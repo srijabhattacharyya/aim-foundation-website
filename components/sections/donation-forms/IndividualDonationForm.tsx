@@ -60,16 +60,16 @@ export default function IndividualDonationForm() {
                     <h2 className="text-3xl font-bold font-headline">SUPPORT OUR MISSION</h2>
                     <p className="text-muted-foreground">YOUR CONTRIBUTION MATTERS</p>
                 </div>
-                 <DonationForm
-                    formAction={formAction}
-                    state={state}
-                    cause="Individual Donation"
-                    donationAmountsIndian={donationAmountsIndian}
-                    donationAmountsNonIndian={donationAmountsNonIndian}
-                    defaultIndianAmount="2500"
-                    defaultNonIndianAmount="30"
-                    formRef={formRef}
-                />
+                <form ref={formRef} action={formAction}>
+                     <DonationForm
+                        state={state}
+                        cause="Individual Donation"
+                        donationAmountsIndian={donationAmountsIndian}
+                        donationAmountsNonIndian={donationAmountsNonIndian}
+                        defaultIndianAmount="2500"
+                        defaultNonIndianAmount="30"
+                    />
+                </form>
             </CardContent>
         </Card>
     );

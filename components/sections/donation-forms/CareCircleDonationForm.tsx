@@ -8,11 +8,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { addDonation } from "@/app/actions/donationActions";
 import DonationForm from "./DonationForm";
-import { Form } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { donationSchema } from "./schemas";
-
 
 const donationAmountsIndian = [
     { value: "1500", label: "₹1500", description: "MEDICINES FOR 5 PEOPLE" },
@@ -65,16 +60,16 @@ export default function CareCircleDonationForm() {
                     <h2 className="text-3xl font-bold font-headline">SUPPORT CARECIRCLE</h2>
                     <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
                 </div>
-                <DonationForm
-                    formAction={formAction}
-                    state={state}
-                    cause="CareCircle"
-                    donationAmountsIndian={donationAmountsIndian}
-                    donationAmountsNonIndian={donationAmountsNonIndian}
-                    defaultIndianAmount="1500"
-                    defaultNonIndianAmount="18"
-                    formRef={formRef}
-                />
+                <form ref={formRef} action={formAction}>
+                    <DonationForm
+                        state={state}
+                        cause="CareCircle"
+                        donationAmountsIndian={donationAmountsIndian}
+                        donationAmountsNonIndian={donationAmountsNonIndian}
+                        defaultIndianAmount="1500"
+                        defaultNonIndianAmount="18"
+                    />
+                </form>
             </CardContent>
         </Card>
     )

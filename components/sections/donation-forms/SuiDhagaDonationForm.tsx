@@ -60,16 +60,16 @@ export default function SuiDhagaDonationForm() {
                     <h2 className="text-3xl font-bold font-headline">SUPPORT SUIDHAGA</h2>
                     <p className="text-muted-foreground">EMPOWER THROUGH SKILL</p>
                 </div>
-                <DonationForm
-                    formAction={formAction}
-                    state={state}
-                    cause="SuiDhaga"
-                    donationAmountsIndian={donationAmountsIndian}
-                    donationAmountsNonIndian={donationAmountsNonIndian}
-                    defaultIndianAmount="3500"
-                    defaultNonIndianAmount="42"
-                    formRef={formRef}
-                />
+                 <form ref={formRef} action={formAction}>
+                    <DonationForm
+                        state={state}
+                        cause="SuiDhaga"
+                        donationAmountsIndian={donationAmountsIndian}
+                        donationAmountsNonIndian={donationAmountsNonIndian}
+                        defaultIndianAmount="3500"
+                        defaultNonIndianAmount="42"
+                    />
+                </form>
             </CardContent>
         </Card>
     );

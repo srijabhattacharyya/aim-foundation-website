@@ -60,16 +60,16 @@ export default function TideShieldDonationForm() {
                     <h2 className="text-3xl font-bold font-headline">SUPPORT TIDESHIELD</h2>
                     <p className="text-muted-foreground">PROTECT OUR COASTS</p>
                 </div>
-                 <DonationForm
-                    formAction={formAction}
-                    state={state}
-                    cause="TideShield"
-                    donationAmountsIndian={donationAmountsIndian}
-                    donationAmountsNonIndian={donationAmountsNonIndian}
-                    defaultIndianAmount="1000"
-                    defaultNonIndianAmount="12"
-                    formRef={formRef}
-                />
+                <form ref={formRef} action={formAction}>
+                    <DonationForm
+                        state={state}
+                        cause="TideShield"
+                        donationAmountsIndian={donationAmountsIndian}
+                        donationAmountsNonIndian={donationAmountsNonIndian}
+                        defaultIndianAmount="1000"
+                        defaultNonIndianAmount="12"
+                    />
+                </form>
             </CardContent>
         </Card>
     );

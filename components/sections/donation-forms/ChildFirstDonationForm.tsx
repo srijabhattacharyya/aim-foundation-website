@@ -60,16 +60,16 @@ export default function ChildFirstDonationForm() {
                     <h2 className="text-3xl font-bold font-headline">SUPPORT CHILDFIRST</h2>
                     <p className="text-muted-foreground">MAKE A DIFFERENCE</p>
                 </div>
-                 <DonationForm
-                    formAction={formAction}
-                    state={state}
-                    cause="ChildFirst"
-                    donationAmountsIndian={donationAmountsIndian}
-                    donationAmountsNonIndian={donationAmountsNonIndian}
-                    defaultIndianAmount="2500"
-                    defaultNonIndianAmount="30"
-                    formRef={formRef}
-                />
+                 <form ref={formRef} action={formAction}>
+                    <DonationForm
+                        state={state}
+                        cause="ChildFirst"
+                        donationAmountsIndian={donationAmountsIndian}
+                        donationAmountsNonIndian={donationAmountsNonIndian}
+                        defaultIndianAmount="2500"
+                        defaultNonIndianAmount="30"
+                    />
+                 </form>
             </CardContent>
         </Card>
     );

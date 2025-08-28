@@ -60,16 +60,16 @@ export default function SustainabilityDonationForm() {
                     <h2 className="text-3xl font-bold font-headline">SUPPORT SUSTAINABILITY INITIATIVES</h2>
                     <p className="text-muted-foreground">NURTURE OUR PLANET</p>
                 </div>
-                 <DonationForm
-                    formAction={formAction}
-                    state={state}
-                    cause="Sustainability"
-                    donationAmountsIndian={donationAmountsIndian}
-                    donationAmountsNonIndian={donationAmountsNonIndian}
-                    defaultIndianAmount="2000"
-                    defaultNonIndianAmount="25"
-                    formRef={formRef}
-                />
+                 <form ref={formRef} action={formAction}>
+                    <DonationForm
+                        state={state}
+                        cause="Sustainability"
+                        donationAmountsIndian={donationAmountsIndian}
+                        donationAmountsNonIndian={donationAmountsNonIndian}
+                        defaultIndianAmount="2000"
+                        defaultNonIndianAmount="25"
+                    />
+                </form>
             </CardContent>
         </Card>
     );
