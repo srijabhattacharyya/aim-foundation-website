@@ -60,7 +60,7 @@ export default function SustainabilityDonationForm() {
                     <h2 className="text-3xl font-bold font-headline">SUPPORT SUSTAINABILITY INITIATIVES</h2>
                     <p className="text-muted-foreground">NURTURE OUR PLANET</p>
                 </div>
-                 <form ref={formRef} action={formAction}>
+                 <form ref={formRef} action={formAction} className="space-y-6">
                     <DonationForm
                         state={state}
                         cause="Sustainability"
