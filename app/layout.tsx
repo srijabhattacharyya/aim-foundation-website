@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     site: '@aimindiango',
     creator: '@aimindiango',
   },
+  icons: {
+    icon: '/favicon.ico',
+  },
   other: {
     'geo.region': 'IN-WB',
     'geo.placename': 'Kolkata',
