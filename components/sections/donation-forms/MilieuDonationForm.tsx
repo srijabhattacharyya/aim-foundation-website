@@ -125,7 +125,6 @@ export default function MilieuDonationForm() {
         <Form {...form}>
             <form ref={formRef} action={formAction} className="space-y-6">
                 <DonationFormFields
-                    nationality={nationality}
                     donationAmounts={donationAmounts}
                     description={description}
                 />

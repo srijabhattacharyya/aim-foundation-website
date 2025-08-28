@@ -209,7 +209,7 @@ export default function DonationFormFields({
                                 className="w-full pl-3 text-left font-normal"
                             >
                                 {field.value ? (
-                                format(field.value, "PPP")
+                                format(new Date(field.value), "PPP")
                                 ) : (
                                 <span>Pick a date</span>
                                 )}
@@ -219,7 +219,7 @@ export default function DonationFormFields({
                         <PopoverContent className="w-auto p-0" align="start">
                             <Calendar
                             mode="single"
-                            selected={field.value as any}
+                            selected={field.value ? new Date(field.value) : undefined}
                             onSelect={field.onChange}
                             disabled={(date: Date) =>
                                 date > new Date() || date < new Date("1900-01-01")
@@ -320,9 +320,9 @@ export default function DonationFormFields({
                     </FormItem>
                 )}
             />
-
+            <input type="hidden" {...form.register("cause")} />
+            <input type="hidden" {...form.register("initiative")} />
             <SubmitButton />
         </div>
     );
 }
-
