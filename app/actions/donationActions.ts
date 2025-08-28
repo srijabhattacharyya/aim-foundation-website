@@ -7,6 +7,7 @@ import { donationSchema } from '@/components/sections/donation-forms/schemas';
 export async function addDonation(prevState: any, formData: FormData) {
   const data = Object.fromEntries(formData.entries());
 
+  // Manually handle checkbox value
   const refinedData = {
     ...data,
     agree: data.get('agree') === 'on',
