@@ -7,7 +7,12 @@ import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { addDonation } from "@/app/actions/donationActions";
-import DonationForm from "./DonationForm";
+import DonationFormFields from "./DonationForm";
+import { Form } from "@/components/ui/form";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { donationSchema } from "./schemas";
+import { z } from "zod";
 
 const donationAmountsIndian = [
     { value: "2000", label: "₹2000", description: "PLANT 20 TREES" },
@@ -33,7 +38,51 @@ export default function SustainabilityDonationForm() {
     const { toast } = useToast();
     const [state, formAction] = useFormState(addDonation, initialState);
     const formRef = useRef<HTMLFormElement>(null);
+    const form = useForm<z.infer<typeof donationSchema>>({
+        resolver: zodResolver(donationSchema),
+        defaultValues: {
+            nationality: "Indian",
+            amount: "2000",
+            otherAmount: "",
+            fullName: "",
+            email: "",
+            mobile: "",
+            dob: undefined,
+            pan: "",
+            aadhar: "",
+            passport: "",
+            country: "India",
+            state: "",
+            city: "",
+            address: "",
+            pincode: "",
+            agree: false,
+            cause: "Sustainability",
+            initiative: "Sustainability",
+        },
+    });
+
+    const nationality = form.watch("nationality");
+    const donationAmounts = nationality === 'Indian' ? donationAmountsIndian : donationAmountsNonIndian;
+    const selectedAmountValue = form.watch("amount");
+    const selectedAmount = donationAmounts.find(a => a.value === selectedAmountValue);
+    const description = selectedAmount ? selectedAmount.description : "";
     
+    useEffect(() => {
+        if (nationality === "Indian") {
+          form.setValue("country", "India");
+          form.setValue("passport", "");
+          form.setValue("amount", "2000");
+        } else {
+          form.setValue("country", "");
+          form.setValue("pan", "");
+          form.setValue("aadhar", "");
+          form.setValue("state", "");
+          form.setValue("amount", "25");
+        }
+    }, [nationality, form]);
+
+
     useEffect(() => {
         if (state.success) {
             toast({
@@ -48,7 +97,15 @@ export default function SustainabilityDonationForm() {
                 description: state.message,
             });
         }
-    }, [state, toast]);
+         if (state.errors) {
+             Object.entries(state.errors).forEach(([key, value]) => {
+                form.setError(key as keyof z.infer<typeof donationSchema>, {
+                    type: "manual",
+                    message: (value as string[])[0],
+                });
+            });
+        }
+    }, [state, toast, form]);
     
     return (
         <Card className="w-full border-0 shadow-none rounded-none">
@@ -60,16 +117,14 @@ export default function SustainabilityDonationForm() {
                     <h2 className="text-3xl font-bold font-headline">SUPPORT SUSTAINABILITY INITIATIVES</h2>
                     <p className="text-muted-foreground">NURTURE OUR PLANET</p>
                 </div>
-                 <form ref={formRef} action={formAction} className="space-y-6">
-                    <DonationForm
-                        state={state}
-                        cause="Sustainability"
-                        donationAmountsIndian={donationAmountsIndian}
-                        donationAmountsNonIndian={donationAmountsNonIndian}
-                        defaultIndianAmount="2000"
-                        defaultNonIndianAmount="25"
-                    />
-                </form>
+                 <Form {...form}>
+                    <form ref={formRef} action={formAction} className="space-y-6">
+                        <DonationFormFields
+                            donationAmounts={donationAmounts}
+                            description={description}
+                        />
+                    </form>
+                </Form>
             </CardContent>
         </Card>
     );

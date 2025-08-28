@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useForm, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import {
   FormControl,
@@ -26,17 +26,16 @@ type DonationAmount = {
 };
 
 interface DonationFormFieldsProps {
-    nationality: "Indian" | "Non-Indian";
     donationAmounts: DonationAmount[];
     description: string;
 }
 
 export default function DonationFormFields({
-    nationality,
     donationAmounts,
     description,
 }: DonationFormFieldsProps) {
     const form = useFormContext();
+    const nationality = form.watch("nationality");
 
     return (
         <div className="space-y-6">
@@ -220,7 +219,7 @@ export default function DonationFormFields({
                         <PopoverContent className="w-auto p-0" align="start">
                             <Calendar
                             mode="single"
-                            selected={field.value}
+                            selected={field.value as any}
                             onSelect={field.onChange}
                             disabled={(date: Date) =>
                                 date > new Date() || date < new Date("1900-01-01")
@@ -326,3 +325,4 @@ export default function DonationFormFields({
         </div>
     );
 }
+
