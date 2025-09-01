@@ -3,15 +3,16 @@
 
 import { z } from 'zod';
 import { donationSchema } from '@/components/sections/donation-forms/schemas';
+import { getAdminDb } from '@/lib/firebase-admin';
+import { FieldValue } from 'firebase-admin/firestore';
 
 export async function addDonation(prevState: any, formData: FormData) {
   const data = Object.fromEntries(formData.entries());
 
-  // Manually handle checkbox value
   const refinedData = {
     ...data,
     agree: data.get('agree') === 'on',
-    amount: data.get('otherAmount') && (data.get('otherAmount') as string).trim() !== '' ? '' : data.get('amount'),
+    amount: data.get('otherAmount') && (data.get('otherAmount') as string).trim() !== '' ? data.get('otherAmount') : data.get('amount'),
   };
 
   const validatedFields = donationSchema.safeParse(refinedData);
@@ -30,13 +31,28 @@ export async function addDonation(prevState: any, formData: FormData) {
     ? validatedFields.data.otherAmount 
     : validatedFields.data.amount;
   
-  const dataToReturn = {
+  const dataToSave = {
     ...validatedFields.data,
     amount: finalAmount,
+    createdAt: FieldValue.serverTimestamp()
   };
 
   // @ts-ignore
-  delete dataToReturn.agree;
-  
-  return { success: true, message: "Validation successful.", data: dataToReturn, errors: {} };
+  delete dataToSave.agree;
+  // @ts-ignore
+  delete dataToSave.otherAmount;
+
+  try {
+    const adminDb = getAdminDb();
+    await adminDb.collection('donations').add(dataToSave);
+    return { success: true, message: "Donation recorded successfully.", data: dataToSave, errors: {} };
+  } catch (e) {
+    console.error('Error recording donation:', e);
+    return {
+      success: false,
+      message: 'Could not record donation. Please try again later.',
+      errors: {},
+      data: null,
+    };
+  }
 }

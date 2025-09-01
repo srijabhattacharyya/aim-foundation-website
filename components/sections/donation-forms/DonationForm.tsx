@@ -12,8 +12,6 @@ import Image from "next/image";
 import { addDonation } from "@/app/actions/donationActions";
 import { DonationFormFields } from "./DonationFormFields";
 import { Form } from "@/components/ui/form";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 import { donationSchema } from "./schemas";
 
 type DonationAmount = {
@@ -93,39 +91,22 @@ export default function DonationForm({
     }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
     useEffect(() => {
-        async function handleServerResponse() {
-            if (state.success && state.data) {
-                try {
-                    const finalData = {
-                        ...state.data,
-                        createdAt: serverTimestamp()
-                    };
-
-                    await addDoc(collection(db, "donations"), finalData);
-
-                    toast({
-                        title: `Thank you for supporting ${cause}!`,
-                        description: "Your generous donation will change a life.",
-                    });
-                    form.reset();
-                    formRef.current?.reset();
-                } catch (dbError) {
-                    console.error("Firestore write failed:", dbError);
-                    toast({
-                        variant: "destructive",
-                        title: "Database Error",
-                        description: "Could not save your donation. Please contact support.",
-                    });
-                }
-            } else if (state.message && !state.success) {
+        if (state.message) {
+            if (state.success) {
                 toast({
+                    title: `Thank you for supporting ${cause}!`,
+                    description: "Your generous donation will change a life.",
+                });
+                form.reset();
+                formRef.current?.reset();
+            } else {
+                 toast({
                     variant: "destructive",
-                    title: "Validation Failed",
+                    title: "Submission Failed",
                     description: state.message,
                 });
             }
         }
-        handleServerResponse();
     }, [state, toast, form, cause]);
 
 
