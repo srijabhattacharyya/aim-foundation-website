@@ -4,14 +4,10 @@ import { getFirestore } from 'firebase-admin/firestore';
 
 const serviceAccountKey = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
 
-let adminDb: admin.firestore.Firestore;
-
 function parseServiceAccount(key: string): admin.ServiceAccount {
     try {
-        // First, try to parse it as a JSON string
         return JSON.parse(key);
     } catch (e) {
-        // If that fails, assume it might be a base64 encoded string
         try {
             const decodedKey = Buffer.from(key, 'base64').toString('utf-8');
             return JSON.parse(decodedKey);
@@ -24,7 +20,7 @@ function parseServiceAccount(key: string): admin.ServiceAccount {
 
 function initializeAdminApp() {
     if (admin.apps.length > 0) {
-        return admin.firestore();
+        return;
     }
 
     if (!serviceAccountKey) {
@@ -35,18 +31,17 @@ function initializeAdminApp() {
         const credentials = parseServiceAccount(serviceAccountKey);
         admin.initializeApp({
             credential: admin.credential.cert(credentials),
+            storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
         });
     } catch (error: any) {
         console.error('Firebase Admin Initialization Error:', error.message);
         throw new Error("Failed to initialize Firebase Admin SDK. Please check your service account credentials.");
     }
-
-    return admin.firestore();
 }
 
+// Initialize the app once at the module level
+initializeAdminApp();
+
 export function getAdminDb() {
-    if (!adminDb) {
-        adminDb = initializeAdminApp();
-    }
-    return adminDb;
+    return admin.firestore();
 }
