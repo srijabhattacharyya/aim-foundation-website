@@ -4,13 +4,11 @@
 import { z } from 'zod';
 import { getAdminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
+import { newsletterSchema } from '@/components/sections/donation-forms/schemas';
 
-const formSchema = z.object({
-  email: z.string().email({ message: 'A valid email is required.' }),
-});
 
 export async function subscribeToNewsletter(prevState: any, formData: FormData) {
-  const validatedFields = formSchema.safeParse({
+  const validatedFields = newsletterSchema.safeParse({
     email: formData.get('email'),
   });
 

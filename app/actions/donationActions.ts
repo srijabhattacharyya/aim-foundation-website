@@ -15,7 +15,10 @@ export async function addDonation(prevState: any, formData: FormData) {
     amount: data.get('otherAmount') && (data.get('otherAmount') as string).trim() !== '' ? data.get('otherAmount') : data.get('amount'),
   };
 
-  const validatedFields = donationSchema.safeParse(refinedData);
+  const validatedFields = donationSchema.safeParse({
+    ...refinedData,
+    agree: refinedData.agree,
+  });
 
   if (!validatedFields.success) {
     console.error("Validation Errors:", validatedFields.error.flatten().fieldErrors);
@@ -37,10 +40,8 @@ export async function addDonation(prevState: any, formData: FormData) {
     createdAt: FieldValue.serverTimestamp()
   };
 
-  // @ts-ignore
-  delete dataToSave.agree;
-  // @ts-ignore
-  delete dataToSave.otherAmount;
+  delete (dataToSave as any).agree;
+  delete (dataToSave as any).otherAmount;
 
   try {
     const adminDb = getAdminDb();
