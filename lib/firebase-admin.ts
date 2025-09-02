@@ -4,8 +4,8 @@ import { getFirestore, Firestore } from 'firebase-admin/firestore';
 import { getStorage, Storage } from 'firebase-admin/storage';
 
 // Cached instances
-let db: Firestore;
-let storage: Storage;
+let db: Firestore | null = null;
+let storage: Storage | null = null;
 
 function initializeAdminApp() {
     if (admin.apps.length > 0) {
@@ -44,7 +44,7 @@ function initializeAdminApp() {
     }
 }
 
-// Initialize the app once when the module is first loaded
+// Call initialization once
 initializeAdminApp();
 
 export function getAdminDb(): Firestore {
