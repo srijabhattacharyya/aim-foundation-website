@@ -18,8 +18,7 @@ import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { fetchGalleryImages, addGalleryImage, updateGalleryImage, deleteGalleryImage } from '@/app/actions/adminActions';
-import { storage } from '@/lib/firebase';
-import { ref, uploadString, getDownloadURL, deleteObject } from 'firebase/storage';
+
 
 export interface GalleryImage {
     id: string;
@@ -74,6 +73,7 @@ export default function GalleryAdminPage() {
   form.trigger();
 
   async function loadGalleryImages() {
+    setLoading(true);
     try {
         const fetchedImages = await fetchGalleryImages();
         setImages(fetchedImages);
@@ -105,15 +105,7 @@ export default function GalleryAdminPage() {
 
   const handleDelete = async (image: GalleryImage) => {
     try {
-        if (image.imageUrl) {
-            const imageRef = ref(storage, image.imageUrl);
-            await deleteObject(imageRef).catch(error => {
-                if (error.code !== 'storage/object-not-found') {
-                    throw error;
-                }
-            });
-        }
-        await deleteGalleryImage(image.id);
+        await deleteGalleryImage(image.id, image.imageUrl);
         toast({ title: 'Success', description: 'Image deleted successfully.' });
         loadGalleryImages();
     } catch (e: any) {
@@ -135,45 +127,40 @@ export default function GalleryAdminPage() {
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (data) => {
     setIsSubmitting(true);
     try {
-      let imageUrl = editingImage?.imageUrl;
+      if (editingImage) {
+        let imageFileBase64: string | undefined = undefined;
+        let imageFileName: string | undefined = undefined;
 
-      if (data.image && data.image[0]) {
+        if (data.image && data.image[0]) {
+            const imageFile = data.image[0];
+            imageFileBase64 = await fileToBase64(imageFile);
+            imageFileName = imageFile.name;
+        }
+
+        await updateGalleryImage(editingImage.id, {
+            description: data.description,
+            status: data.status,
+            sequence: data.sequence,
+            existingImageUrl: editingImage.imageUrl,
+            ...(imageFileBase64 && { imageFileBase64 }),
+            ...(imageFileName && { imageFileName }),
+        });
+      } else {
+        if (!data.image || !data.image[0]) {
+            toast({ variant: 'destructive', title: 'Error', description: 'Image is required.' });
+            setIsSubmitting(false);
+            return;
+        }
         const imageFile = data.image[0];
         const imageFileBase64 = await fileToBase64(imageFile);
-        
-        const imageRef = ref(storage, `gallery/${Date.now()}-${imageFile.name}`);
-        await uploadString(imageRef, imageFileBase64, 'data_url');
-        imageUrl = await getDownloadURL(imageRef);
 
-        if (editingImage?.imageUrl) {
-          try {
-            const oldImageRef = ref(storage, editingImage.imageUrl);
-            await deleteObject(oldImageRef);
-          } catch (storageError: any) {
-            if (storageError.code !== 'storage/object-not-found') {
-              console.error("Failed to delete old gallery image:", storageError);
-            }
-          }
-        }
-      }
-
-      if (!imageUrl) {
-        toast({ variant: 'destructive', title: 'Error', description: 'Image is required.' });
-        setIsSubmitting(false);
-        return;
-      }
-      
-      const docData = {
-          description: data.description,
-          status: data.status,
-          sequence: data.sequence,
-          imageUrl: imageUrl,
-      };
-
-      if (editingImage) {
-        await updateGalleryImage(editingImage.id, docData);
-      } else {
-        await addGalleryImage(docData);
+        await addGalleryImage({
+            description: data.description,
+            status: data.status,
+            sequence: data.sequence,
+            imageFileBase64,
+            imageFileName: imageFile.name,
+        });
       }
 
       toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });

@@ -3,6 +3,7 @@
 
 import { getAdminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
+import { getStorage } from 'firebase-admin/storage';
 
 // Donations
 export async function fetchDonations() {
@@ -57,24 +58,76 @@ export async function fetchGalleryImages() {
     });
 }
 
-export async function addGalleryImage(data: { description: string; status: 'Active' | 'Inactive'; sequence: number; imageUrl: string; }) {
+async function uploadImage(fileBase64: string, fileName: string): Promise<string> {
+    const storage = getStorage();
+    const bucket = storage.bucket(process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com');
+    const file = bucket.file(`gallery/${Date.now()}-${fileName}`);
+    
+    const buffer = Buffer.from(fileBase64.split(',')[1], 'base64');
+    
+    await file.save(buffer, {
+        metadata: {
+            contentType: fileBase64.split(';')[0].split(':')[1],
+        },
+    });
+
+    return file.publicUrl();
+}
+
+async function deleteImage(imageUrl: string) {
+    try {
+        const storage = getStorage();
+        const bucket = storage.bucket(process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com');
+        const url = new URL(imageUrl);
+        const path = decodeURIComponent(url.pathname).substring(1); 
+        const fileName = path.split('/').slice(2).join('/');
+        
+        await bucket.file(fileName).delete();
+    } catch (error: any) {
+         if (error.code !== 404) { 
+            console.error("Failed to delete old gallery image:", error);
+            throw error;
+         }
+    }
+}
+
+
+export async function addGalleryImage(data: { description: string; status: 'Active' | 'Inactive'; sequence: number; imageFileBase64: string; imageFileName: string; }) {
     const adminDb = getAdminDb();
+    const imageUrl = await uploadImage(data.imageFileBase64, data.imageFileName);
+
     await adminDb.collection('gallery').add({
-        ...data,
+        description: data.description,
+        status: data.status,
+        sequence: data.sequence,
+        imageUrl,
         createdAt: FieldValue.serverTimestamp(),
         updatedAt: FieldValue.serverTimestamp(),
     });
 }
 
-export async function updateGalleryImage(id: string, data: { description: string; status: 'Active' | 'Inactive'; sequence: number; imageUrl: string; }) {
+export async function updateGalleryImage(id: string, data: { description: string; status: 'Active' | 'Inactive'; sequence: number; imageFileBase64?: string; imageFileName?: string; existingImageUrl: string; }) {
     const adminDb = getAdminDb();
+    let imageUrl = data.existingImageUrl;
+
+    if (data.imageFileBase64 && data.imageFileName) {
+        if(data.existingImageUrl) {
+            await deleteImage(data.existingImageUrl);
+        }
+        imageUrl = await uploadImage(data.imageFileBase64, data.imageFileName);
+    }
+
     await adminDb.collection('gallery').doc(id).update({
-        ...data,
+        description: data.description,
+        status: data.status,
+        sequence: data.sequence,
+        imageUrl,
         updatedAt: FieldValue.serverTimestamp(),
     });
 }
 
-export async function deleteGalleryImage(id: string) {
+export async function deleteGalleryImage(id: string, imageUrl: string) {
     const adminDb = getAdminDb();
+    await deleteImage(imageUrl);
     await adminDb.collection('gallery').doc(id).delete();
 }

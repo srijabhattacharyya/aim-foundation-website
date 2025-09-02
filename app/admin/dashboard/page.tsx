@@ -3,27 +3,25 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
 import { Loader2 } from 'lucide-react';
 import AdminLayout from '../AdminLayout';
+import Cookies from 'js-cookie';
 
 export default function AdminDashboardPage() {
-  const [user, setUser] = useState<User | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        router.push('/admin/login');
-      }
-      setLoading(false);
-    });
+    const token = Cookies.get('firebaseAuthToken');
+    const userEmail = Cookies.get('firebaseUserEmail');
 
-    return () => unsubscribe();
+    if (token && userEmail) {
+      setEmail(userEmail);
+    } else {
+      router.push('/admin/login');
+    }
+    setLoading(false);
   }, [router]);
 
   if (loading) {
@@ -35,7 +33,7 @@ export default function AdminDashboardPage() {
     );
   }
 
-  if (!user) {
+  if (!email) {
     return null;
   }
 
@@ -45,7 +43,7 @@ export default function AdminDashboardPage() {
       <div className="bg-card p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold font-headline">Welcome, Admin!</h2>
           <p className="text-muted-foreground mt-2">
-              You are logged in as {user.email}. You can now manage your application from here.
+              You are logged in as {email}. You can now manage your application from here.
           </p>
       </div>
     </AdminLayout>

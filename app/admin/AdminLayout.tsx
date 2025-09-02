@@ -1,51 +1,34 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { LayoutDashboard, LogOut, Loader2, HandHeart, Mail, GalleryHorizontal } from 'lucide-react';
+import { LayoutDashboard, LogOut, HandHeart, Mail, GalleryHorizontal } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        router.push('/admin/login');
-      }
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
+    const token = Cookies.get('firebaseAuthToken');
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      router.push('/admin/login');
+    }
+    setLoading(false);
   }, [router]);
 
   const handleLogout = async () => {
-    try {
-      await auth.signOut();
-      router.push('/admin/login');
-    } catch (error) {
-      console.error('Logout failed', error);
-    }
+    Cookies.remove('firebaseAuthToken');
+    router.push('/admin/login');
   };
 
-  if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-muted">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        <p className="ml-4 text-lg">Loading...</p>
-      </div>
-    );
-  }
-
-  if (!user) {
+  if (loading || !isAuthenticated) {
     return null;
   }
 

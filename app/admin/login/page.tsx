@@ -12,13 +12,33 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Shield, Loader2 } from 'lucide-react';
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import Cookies from 'js-cookie';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
 });
+
+async function signInWithEmail(email: string, password: string): Promise<{ success: boolean; token?: string; error?: string }> {
+    try {
+        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_FIREBASE_API_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password, returnSecureToken: true }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            return { success: false, error: data.error.message };
+        }
+
+        return { success: true, token: data.idToken };
+    } catch (error) {
+        return { success: false, error: 'An unexpected error occurred.' };
+    }
+}
+
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -27,14 +47,12 @@ export default function AdminLoginPage() {
   const [checkingAuth, setCheckingAuth] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        router.push('/admin/dashboard');
-      } else {
-        setCheckingAuth(false);
-      }
-    });
-    return () => unsubscribe();
+    const token = Cookies.get('firebaseAuthToken');
+    if (token) {
+      router.push('/admin/dashboard');
+    } else {
+      setCheckingAuth(false);
+    }
   }, [router]);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -47,23 +65,26 @@ export default function AdminLoginPage() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
-    try {
-      await signInWithEmailAndPassword(auth, values.email, values.password);
-      toast({
-        title: 'Login Successful',
-        description: 'Redirecting to dashboard...',
-      });
-      // The onAuthStateChanged listener will handle the redirect
-    } catch (error) {
+    const result = await signInWithEmail(values.email, values.password);
+
+    if (result.success && result.token) {
+        Cookies.set('firebaseAuthToken', result.token, { expires: 1 }); // Expires in 1 day
+        Cookies.set('firebaseUserEmail', values.email, { expires: 1 });
+        toast({
+            title: 'Login Successful',
+            description: 'Redirecting to dashboard...',
+        });
+        router.push('/admin/dashboard');
+    } else {
         let errorMessage = 'An unexpected error occurred.';
-        if (error instanceof Error) {
-            switch ((error as any).code) {
-                case 'auth/user-not-found':
-                case 'auth/wrong-password':
-                case 'auth/invalid-credential':
+        if(result.error) {
+             switch (result.error) {
+                case 'INVALID_LOGIN_CREDENTIALS':
+                case 'INVALID_PASSWORD':
+                case 'USER_NOT_FOUND':
                     errorMessage = 'Invalid email or password.';
                     break;
-                case 'auth/invalid-email':
+                case 'INVALID_EMAIL':
                     errorMessage = 'Please enter a valid email address.';
                     break;
                 default:
@@ -75,7 +96,6 @@ export default function AdminLoginPage() {
         title: 'Login Failed',
         description: errorMessage,
       });
-    } finally {
       setLoading(false);
     }
   }
