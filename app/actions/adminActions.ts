@@ -1,9 +1,8 @@
 
 'use server';
 
-import { getAdminDb } from '@/lib/firebase-admin';
+import { getAdminDb, getAdminStorage } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
-import { getStorage } from 'firebase-admin/storage';
 
 // Donations
 export async function fetchDonations() {
@@ -59,7 +58,7 @@ export async function fetchGalleryImages() {
 }
 
 async function uploadImage(fileBase64: string, fileName: string): Promise<string> {
-    const storage = getStorage();
+    const storage = getAdminStorage();
     const bucket = storage.bucket(process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com');
     const file = bucket.file(`gallery/${Date.now()}-${fileName}`);
     
@@ -76,7 +75,7 @@ async function uploadImage(fileBase64: string, fileName: string): Promise<string
 
 async function deleteImage(imageUrl: string) {
     try {
-        const storage = getStorage();
+        const storage = getAdminStorage();
         const bucket = storage.bucket(process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com');
         const url = new URL(imageUrl);
         const path = decodeURIComponent(url.pathname).substring(1); 
