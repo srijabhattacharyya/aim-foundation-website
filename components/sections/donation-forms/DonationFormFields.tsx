@@ -14,9 +14,6 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { format } from "date-fns";
 import { SubmitButton } from "./SubmitButton";
 
 type DonationAmount = {
@@ -146,13 +143,25 @@ export function DonationFormFields({
                         </FormItem>
                     )}
                 />
-                <FormField
+                 <FormField
                     control={form.control}
                     name="mobile"
                     render={({ field }) => (
                         <FormItem>
                             <FormControl>
                                 <Input type="tel" placeholder="Enter Mobile No" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                 <FormField
+                    control={form.control}
+                    name="dob"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <Input placeholder="Date of Birth (DD-MM-YYYY)" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -205,45 +214,6 @@ export function DonationFormFields({
                     />
                 )}
             </div>
-
-            <FormField
-                control={form.control}
-                name="dob"
-                render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                    <FormLabel>Date of Birth</FormLabel>
-                        <Popover>
-                        <PopoverTrigger asChild>
-                            <FormControl>
-                            <Button
-                                variant={"outline"}
-                                className="w-full pl-3 text-left font-normal"
-                            >
-                                {field.value ? (
-                                format(new Date(field.value), "PPP")
-                                ) : (
-                                <span>Pick a date</span>
-                                )}
-                            </Button>
-                            </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                            <Calendar
-                            mode="single"
-                            selected={field.value ? new Date(field.value) : undefined}
-                            onSelect={(date) => field.onChange(date ? format(date, 'yyyy-MM-dd') : '')}
-                            disabled={(date: Date) =>
-                                date > new Date() || date < new Date("1900-01-01")
-                            }
-                            toDate={new Date()}
-                            initialFocus
-                            />
-                        </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                    </FormItem>
-                )}
-            />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
