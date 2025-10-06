@@ -19,11 +19,20 @@ export interface GalleryImage {
 
 // Mock fetch function (replace with your real API call)
 async function fetchGalleryImages(): Promise<Partial<GalleryImage>[]> {
-  // Example: API might only return id and createdAt
+  // Example: API might only return partial data
   return [
-    { id: "1", createdAt: new Date().toISOString(), imageUrl: "/images/projects/book/book-distribution.avif", description: "Book distribution to underprivileged children" },
-    { id: "2", createdAt: new Date().toISOString(), imageUrl: "/images/projects/cureline/cureline1.avif", description: "Healthcare camp in remote village" },
-    // Add more items or fetch from actual API
+    {
+      id: "1",
+      createdAt: new Date().toISOString(),
+      imageUrl: "/images/projects/book/book-distribution.avif",
+      description: "Book distribution to underprivileged children",
+    },
+    {
+      id: "2",
+      createdAt: new Date().toISOString(),
+      imageUrl: "/images/projects/cureline/cureline1.avif",
+      description: "Healthcare camp in remote village",
+    },
   ];
 }
 
@@ -37,14 +46,14 @@ export default function GalleryPage() {
       try {
         const fetchedImages = await fetchGalleryImages();
 
-        // Map API data to match GalleryImage type
-        const galleryImages: GalleryImage[] = fetchedImages.map(img => ({
-          id: img.id!,
-          createdAt: img.createdAt || new Date().toISOString(),
-          description: img.description || "",
-          status: img.status || "active",
-          sequence: img.sequence || 0,
-          imageUrl: img.imageUrl || "",
+        // ✅ Map API data to match GalleryImage type exactly
+        const galleryImages: GalleryImage[] = fetchedImages.map((img) => ({
+          id: img.id ?? "",
+          createdAt: img.createdAt ?? new Date().toISOString(),
+          description: img.description ?? "",
+          status: img.status ?? "active",
+          sequence: img.sequence ?? 0,
+          imageUrl: img.imageUrl ?? "",
         }));
 
         setImages(galleryImages);
@@ -81,11 +90,14 @@ export default function GalleryPage() {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {images.map((image) => (
-                  <Card key={image.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                  <Card
+                    key={image.id}
+                    className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group"
+                  >
                     <CardContent className="relative aspect-[3/2] w-full p-0 overflow-hidden">
                       <Image
                         src={image.imageUrl}
-                        alt={image.description}
+                        alt={image.description || "Gallery image"}
                         fill
                         className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
