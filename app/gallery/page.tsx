@@ -45,8 +45,7 @@ export default function GalleryPage() {
     const loadImages = async () => {
       try {
         const fetchedImages = await fetchGalleryImages();
-
-        // ✅ Map API data to match GalleryImage type exactly
+  
         const galleryImages: GalleryImage[] = fetchedImages.map((img) => ({
           id: img.id ?? "",
           createdAt: img.createdAt ?? new Date().toISOString(),
@@ -55,7 +54,7 @@ export default function GalleryPage() {
           sequence: img.sequence ?? 0,
           imageUrl: img.imageUrl ?? "",
         }));
-
+  
         setImages(galleryImages);
       } catch (err: any) {
         console.error("Error fetching gallery images:", err);
@@ -68,9 +67,9 @@ export default function GalleryPage() {
         setLoading(false);
       }
     };
-
+  
     loadImages();
-  }, [toast]);
+  }, [toast]);  
 
   return (
     <div className="flex flex-col min-h-screen">
