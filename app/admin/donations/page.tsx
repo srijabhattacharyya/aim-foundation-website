@@ -1,11 +1,9 @@
-
 'use client';
 
 import { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Trash2, Filter, Download, Calendar as CalendarIcon } from 'lucide-react';
-import AdminLayout from '../AdminLayout';
 import { Button } from '@/components/ui/button';
 import {
   AlertDialog,
@@ -57,7 +55,6 @@ const causes = [
     "Disaster Management", "Ignite Change Initiative", "Individual Donation", "Sponsor a Child"
 ];
 
-
 export default function DonationsPage() {
   const [donations, setDonations] = useState<Donation[]>([]);
   const [filteredDonations, setFilteredDonations] = useState<Donation[]>([]);
@@ -73,11 +70,19 @@ export default function DonationsPage() {
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
 
+  // ---- FIXED FUNCTION ----
   async function loadDonations() {
     try {
         const fetchedDonations = await fetchDonations();
-        setDonations(fetchedDonations);
-        setFilteredDonations(fetchedDonations);
+
+        // Convert amount to string to match Donation interface
+        const donationsWithStringAmount = fetchedDonations.map(donation => ({
+            ...donation,
+            amount: donation.amount.toString(),
+        }));
+
+        setDonations(donationsWithStringAmount);
+        setFilteredDonations(donationsWithStringAmount);
     } catch (err: any) {
         console.error("Error fetching donations: ", err);
         setError("Could not retrieve donations.");
@@ -125,7 +130,7 @@ export default function DonationsPage() {
   const handleDelete = async (id: string) => {
     try {
         await deleteDonation(id);
-        loadDonations(); // Refresh data
+        loadDonations();
         toast({
             title: "Donation deleted",
             description: "The donation record has been successfully removed.",
@@ -163,9 +168,8 @@ export default function DonationsPage() {
     setCityFilter('');
   };
 
-
   return (
-    <AdminLayout>
+    <div className="p-8">
         <div className="flex justify-between items-center mb-8">
             <h1 className="text-4xl font-bold font-headline">Donations</h1>
             <div className="flex items-center gap-2">
@@ -177,12 +181,14 @@ export default function DonationsPage() {
             </div>
         </div>
 
+        {/* Filters Card */}
         <Card className="mb-8">
             <CardHeader>
                 <CardTitle className="flex items-center gap-2"><Filter className="h-5 w-5" /> Filters</CardTitle>
             </CardHeader>
             <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {/* Start Date */}
                     <Popover>
                         <PopoverTrigger asChild>
                         <Button
@@ -203,6 +209,7 @@ export default function DonationsPage() {
                         />
                         </PopoverContent>
                     </Popover>
+                    {/* End Date */}
                     <Popover>
                         <PopoverTrigger asChild>
                         <Button
@@ -223,6 +230,7 @@ export default function DonationsPage() {
                         />
                         </PopoverContent>
                     </Popover>
+                    {/* Cause Filter */}
                     <Select onValueChange={setCauseFilter} value={causeFilter}>
                         <SelectTrigger><SelectValue placeholder="Filter by Cause" /></SelectTrigger>
                         <SelectContent>
@@ -230,6 +238,7 @@ export default function DonationsPage() {
                             {causes.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                         </SelectContent>
                     </Select>
+                    {/* Nationality Filter */}
                      <Select onValueChange={setNationalityFilter} value={nationalityFilter}>
                         <SelectTrigger><SelectValue placeholder="Filter by Nationality" /></SelectTrigger>
                         <SelectContent>
@@ -245,6 +254,7 @@ export default function DonationsPage() {
             </CardContent>
         </Card>
 
+        {/* Donations Table */}
         <Card>
             <CardHeader>
                 <CardTitle>Donation Records ({filteredDonations.length})</CardTitle>
@@ -339,6 +349,6 @@ export default function DonationsPage() {
                 )}
             </CardContent>
         </Card>
-    </AdminLayout>
+    </div>
   );
 }
