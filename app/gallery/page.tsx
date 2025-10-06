@@ -1,267 +1,68 @@
-
 'use client';
 
-import Image from 'next/image';
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
-const galleryImages = [
-  {
-    id: '42',
-    imageUrl: '/images/projects/innocent-smiles/innocent-smiles4.avif',
-    description: 'Our Sabar Children in Purulia, West Bengal',
-    hint: 'community event'
-  },
-  {
-    id: '41',
-    imageUrl: '/images/projects/innocent-smiles/innocent-smiles3.avif',
-    description: 'Meeting with Sabar Community on Child Education',
-    hint: 'volunteer work'
-  },
-  {
-    id: '40',
-    imageUrl: '/images/projects/cureline/cureline4.avif',
-    description: 'AIM Foundation Hosts Free Health Camp at Bali Island, Sundarbans',
-    hint: 'children smiling'
-  },
-  {
-    id: '39',
-    imageUrl: '/images/projects/sighthope/spectacles-distribution.avif',
-    description: 'Providing Free Spectacles – An Initiative by AIM Foundation',
-    hint: 'health camp'
-  },
-  {
-    id: '38',
-    imageUrl: '/images/projects/krishti/krishti1.avif',
-    description: "Products created in Krishti are available for sale",
-    hint: 'krishti program'
-  },
-  {
-    id: '37',
-    imageUrl: '/images/projects/innocent-smiles/innocent-smiles2.avif',
-    description: 'Childern are in art class',
-    hint: 'innocent smiles'
-  },
-  {
-    id: '36',
-    imageUrl: '/images/projects/childfirst/childfirst2.avif',
-    description: 'Medical Camp for Children',
-    hint: 'medical camp'
-  },
-  {
-    id: '35',
-    imageUrl: '/images/projects/carecircle/carecircle3.avif',
-    description: 'Health Camp at Sarala Punyashram, Kolkata',
-    hint: 'health camp'
-  },
-  {
-    id: '34',
-    imageUrl: '/images/projects/childfirst/childfirst3.avif',
-    description: 'Specialised Paediatric Camp at Kolkata',
-    hint: 'paediatric camp'
-  },
-  {
-    id: '33',
-    imageUrl: '/images/projects/cureline/cureline3.avif',
-    description: 'Health Camp at Kumirmari Island, Sundarbans, 24 Parganas (S), West Bengal',
-    hint: 'health camp'
-  },
-  {
-    id: '32',
-    imageUrl: '/images/projects/cureline/cureline2.avif',
-    description: 'Health Camp at Bali Island, Sundarbans, @4 Parganas (S), West Bengal',
-    hint: 'education program'
-  },
-  {
-    id: '31',
-    imageUrl: '/images/projects/cyclesafe/cyclesafe3.avif',
-    description: 'Sanitary Napkin Distribution to underprivileged adolescent girls of Kolkata',
-    hint: 'sanitary napkin distribution'
-  },
-  {
-    id: '30',
-    imageUrl: '/images/projects/cyclesafe/cyclesafe2.avif',
-    description: 'Reproductive Health Awareness Camp',
-    hint: 'reproductive health awarenes'
-  },
-  {
-    id: '29',
-    imageUrl: '/images/projects/detect/detect3.avif',
-    description: 'Cervical Cancer Awareness',
-    hint: 'cervical cancer awareness'
-  },
-  {
-    id: '28',
-    imageUrl: '/images/projects/relief/relief4.avif',
-    description: 'Relief distribution in Sundarbans',
-    hint: 'relief distribution'
-  },
-  {
-    id: '27',
-    imageUrl: '/images/projects/eduaccess/eduaccess2.avif',
-    description: 'Online Classes for the students of Sundarbans',
-    hint: 'online class'
-  },
-  {
-    id: '26',
-    imageUrl: '/images/projects/sustainability/sustainability5.avif',
-    description: 'Sapling Distribution at Ranaghat, Nadia, West Bengal',
-    hint: 'sapling distribution'
-  },
-  {
-    id: '25',
-    imageUrl: '/images/projects/sustainability/sustainablity4.avif',
-    description: 'Community members planting saplings',
-    hint: 'sustainability project'
-  },
-  {
-    id: '24',
-    imageUrl: '/images/projects/innocent-smiles/innocent-smiles1.avif',
-    description: 'Drawing Class for the underprivileged children at Sarala Punyashram, Kolkata',
-    hint: 'drawing class'
-  },
-  {
-    id: '23',
-    imageUrl: '/images/projects/digiempower/digiempower2.avif',
-    description: 'Computer Classes at Dakshin Dhupjhora, Jalpaiguri, West Bengal',
-    hint: 'computer centre'
-  },
-  {
-    id: '22',
-    imageUrl: '/images/projects/oralscan/oranscan2.avif',
-    description: 'Oral Cancer Detection Camp',
-    hint: 'oral cancer screening'
-  },
-  {
-    id: '21',
-    imageUrl: '/images/projects/relief/relief3.avif',
-    description: 'Blanket Distribution to Adivasi people of Shalboni, West Bengal in association with Muthoot Finance',
-    hint: 'blanket distribution'
-  },
-  {
-    id: '20',
-    imageUrl: '/images/projects/sustainability/sustainability3.avif',
-    description: 'Environment Awareness Programme',
-    hint: 'environment awareness programme'
-  },
-  {
-    id: '19',
-    imageUrl: '/images/projects/sighthope/sighthope1.avif',
-    description: 'Eye Camp at Sarala Punyashram, Kolkata in association with Susrut Eye Foundation',
-    hint: 'eye camp'
-  },
-  {
-    id: '18',
-    imageUrl: '/images/projects/detect/detect1.avif',
-    description: 'Cervical Cancer Screening Camp in association with Chittaranjan National Cancer Institute',
-    hint: 'cervical cancer screening'
-  },
-  {
-    id: '17',
-    imageUrl: '/images/projects/eduaccess/eduaccess1.avif',
-    description: 'Online Class from Kolkata for the students of Sundarbans',
-    hint: 'online classes'
-  },
-  {
-    id: '16',
-    imageUrl: '/images/projects/carecircle/carecircle2.avif',
-    description: 'Medical Camp at Mallickpur, near Kolkata',
-    hint: 'medical camp'
-  },
-  {
-    id: '15',
-    imageUrl: '/images/projects/digiempower/digiempower1.avif',
-    description: 'Digital Literacy Class at Rangakhila village, East Bardhaman District of West Bengal',
-    hint: 'health camp'
-  },
-  {
-    id: '14',
-    imageUrl: '/images/projects/carecircle/carecircle1.webp',
-    description: 'Health Camp at Sarala Punyashram, Kolkata, in association with bhagirathi Neotia Women and Childcare Centre',
-    hint: 'health Camp'
-  },
-  {
-    id: '13',
-    imageUrl: '/images/projects/sustainability/sustainability1.avif',
-    description: 'Mangrove Plantation in Sundarbans',
-    hint: 'mangrove plantation'
-  },
-  {
-    id: '12',
-    imageUrl: '/images/projects/detect/detect2.avif',
-    description: 'A cervical cancer awareness session for rural women',
-    hint: 'cervical cancer awareness'
-  },
-  {
-    id: '11',
-    imageUrl: '/images/projects/childfirst/childfirst1.avif',
-    description: 'A doctor providing care to a young child',
-    hint: 'child health'
-  },
-  {
-    id: '10',
-    imageUrl: '/images/projects/edulab/edulab1.avif',
-    description: 'Smart Classroom',
-    hint: 'smart classroom'
-  },
-  {
-    id: '9',
-    imageUrl: '/images/projects/forest-cleaning/forest-cleaning1.avif',
-    description: 'Cleaning of Garumara National Park',
-    hint: 'forest cleaning'
-  },
-  {
-    id: '8',
-    imageUrl: '/images/projects/milieu/milieu1.avif',
-    description: 'Children from diverse backgrounds learning together',
-    hint: 'women entrepreneurship'
-  },
-  {
-    id: '7',
-    imageUrl: '/images/projects/oralscan/oralscan1.avif',
-    description: 'Oral Cancer Screening in association with Narayana Health',
-    hint: 'oral cancer screening'
-  },
-  {
-    id: '6',
-    imageUrl: '/images/projects/cyclesafe/cyclesafe1.avif',
-    description: 'Menstrual Hygiene Awareness Camp for the adolescent girls',
-    hint: 'menstrual hygiene awareness '
-  },
-  {
-    id: '5',
-    imageUrl: '/images/projects/relief/relief2.avif',
-    description: 'Distributing blankets to footpath dwellers during winter',
-    hint: 'winter relief'
-  },
-  {
-    id: '4',
-    imageUrl: '/images/projects/sustainability/sustainability2.avif',
-    description: 'Community members participating in a tree plantation drive',
-    hint: 'tree plantation'
-  },
-  {
-    id: '3',
-    imageUrl: '/images/projects/suidhaga/suidhaga1.avif',
-    description: 'Empowering women through our skill development programs',
-    hint: 'women empowerment'
-  },
-  {
-    id: '2',
-    imageUrl: '/images/projects/cureline/cureline1.avif',
-    description: 'Our dedicated doctor providing healthcare services in a remote village',
-    hint: 'healthcare camp'
-  },
-  {
-    id: '1',
-    imageUrl: '/images/projects/book/book-distribution.avif',
-    description: 'Book diistribution to underprivileged children',
-    hint: 'children learning'
-  }
-];
+// Define GalleryImage type
+export interface GalleryImage {
+  id: string;
+  createdAt: string;
+  description: string;
+  status: string;
+  sequence: number;
+  imageUrl: string;
+}
+
+// Mock fetch function (replace with your real API call)
+async function fetchGalleryImages(): Promise<Partial<GalleryImage>[]> {
+  // Example: API might only return id and createdAt
+  return [
+    { id: "1", createdAt: new Date().toISOString(), imageUrl: "/images/projects/book/book-distribution.avif", description: "Book distribution to underprivileged children" },
+    { id: "2", createdAt: new Date().toISOString(), imageUrl: "/images/projects/cureline/cureline1.avif", description: "Healthcare camp in remote village" },
+    // Add more items or fetch from actual API
+  ];
+}
 
 export default function GalleryPage() {
+  const [images, setImages] = useState<GalleryImage[]>([]);
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadImages = async () => {
+      try {
+        const fetchedImages = await fetchGalleryImages();
+
+        // Map API data to match GalleryImage type
+        const galleryImages: GalleryImage[] = fetchedImages.map(img => ({
+          id: img.id!,
+          createdAt: img.createdAt || new Date().toISOString(),
+          description: img.description || "",
+          status: img.status || "active",
+          sequence: img.sequence || 0,
+          imageUrl: img.imageUrl || "",
+        }));
+
+        setImages(galleryImages);
+      } catch (err: any) {
+        console.error("Error fetching gallery images:", err);
+        toast({
+          title: "Error",
+          description: "Could not fetch gallery images",
+          variant: "destructive",
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadImages();
+  }, [toast]);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -274,29 +75,32 @@ export default function GalleryPage() {
                 Moments of impact, stories of change. Explore our journey through these images.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {galleryImages.map((image) => (
-                <Card key={image.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
-                  <CardContent className="relative aspect-[3/2] w-full p-0 overflow-hidden">
-                    <Image
-                      src={image.imageUrl}
-                      alt={image.description}
-                      fill
-                      data-ai-hint={image.hint}
-                      className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      loading="lazy"
-                    />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+            {loading ? (
+              <p className="text-center text-lg">Loading images...</p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {images.map((image) => (
+                  <Card key={image.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                    <CardContent className="relative aspect-[3/2] w-full p-0 overflow-hidden">
+                      <Image
+                        src={image.imageUrl}
+                        alt={image.description}
+                        fill
+                        className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="p-4 absolute bottom-0 text-white">
-                            <p className="font-semibold text-sm">{image.description}</p>
+                          <p className="font-semibold text-sm">{image.description}</p>
                         </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      </div>
+                    </CardContent>
+                  </Card>
                 ))}
-            </div>
+              </div>
+            )}
           </div>
         </section>
       </main>
