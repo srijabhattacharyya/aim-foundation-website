@@ -8,16 +8,52 @@ import AdminLayout from '../AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Trash2, Edit } from 'lucide-react';
 import Image from 'next/image';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { fetchGalleryImages, addGalleryImage, updateGalleryImage, deleteGalleryImage } from '@/app/actions/adminActions';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import {
+  fetchGalleryImages,
+  addGalleryImage,
+  updateGalleryImage,
+  deleteGalleryImage,
+} from '@/app/actions/adminActions';
 
+// ✅ Interface
 export interface GalleryImage {
   id: string;
   description: string;
@@ -27,19 +63,21 @@ export interface GalleryImage {
   createdAt: string;
 }
 
-const formSchema = z.object({
+// ✅ Base schema
+const baseFormSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   status: z.enum(['Active', 'Inactive']),
   sequence: z.coerce.number().min(0, 'Sequence must be a positive number'),
-  image: z.any(),
+  image: z.any().optional(),
 });
 
+// ✅ Helper to convert file to Base64
 const fileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result as string);
-    reader.onerror = error => reject(error);
+    reader.onerror = (error) => reject(error);
   });
 };
 
@@ -50,8 +88,9 @@ export default function GalleryAdminPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingImage, setEditingImage] = useState<GalleryImage | null>(null);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  // ✅ Use schema directly
+  const form = useForm<z.infer<typeof baseFormSchema>>({
+    resolver: zodResolver(baseFormSchema),
     defaultValues: {
       description: '',
       status: 'Active',
@@ -60,39 +99,28 @@ export default function GalleryAdminPage() {
     },
   });
 
-  const refinedFormSchema = formSchema.refine((data) => {
-    if (editingImage) return true;
-    return data.image && data.image.length > 0;
-  }, {
-    message: 'Image is required when adding a new item.',
-    path: ['image'],
-  });
-
-  form.trigger();
-
-  // ✅ FIXED FUNCTION
+  // ✅ Fetch all gallery images
   async function loadGalleryImages() {
     setLoading(true);
     try {
       const fetchedImages = await fetchGalleryImages();
 
-      // Map the response to match the GalleryImage interface
       const galleryImages: GalleryImage[] = fetchedImages.map((img: any) => ({
         id: img.id || crypto.randomUUID(),
-        description: img.description || "",
-        status: img.status || "Active",
+        description: img.description || '',
+        status: img.status || 'Active',
         sequence: img.sequence || 0,
-        imageUrl: img.imageUrl || "",
+        imageUrl: img.imageUrl || '',
         createdAt: img.createdAt || new Date().toISOString(),
       }));
 
       setImages(galleryImages);
     } catch (err: any) {
-      console.error("Error fetching gallery images: ", err);
+      console.error('Error fetching gallery images:', err);
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: "Could not retrieve gallery items.",
+        description: 'Could not retrieve gallery items.',
       });
     } finally {
       setLoading(false);
@@ -119,8 +147,12 @@ export default function GalleryAdminPage() {
       toast({ title: 'Success', description: 'Image deleted successfully.' });
       loadGalleryImages();
     } catch (e: any) {
-      console.error("Error deleting gallery item: ", e);
-      toast({ variant: 'destructive', title: 'Error', description: "Could not delete the gallery item." });
+      console.error('Error deleting gallery item:', e);
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'Could not delete the gallery item.',
+      });
     }
   };
 
@@ -134,12 +166,15 @@ export default function GalleryAdminPage() {
     });
   };
 
-  const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (data) => {
+  // ✅ Submit handler
+  const onSubmit: SubmitHandler<z.infer<typeof baseFormSchema>> = async (
+    data
+  ) => {
     setIsSubmitting(true);
     try {
       if (editingImage) {
-        let imageFileBase64: string | undefined = undefined;
-        let imageFileName: string | undefined = undefined;
+        let imageFileBase64: string | undefined;
+        let imageFileName: string | undefined;
 
         if (data.image && data.image[0]) {
           const imageFile = data.image[0];
@@ -157,10 +192,15 @@ export default function GalleryAdminPage() {
         });
       } else {
         if (!data.image || !data.image[0]) {
-          toast({ variant: 'destructive', title: 'Error', description: 'Image is required.' });
+          toast({
+            variant: 'destructive',
+            title: 'Error',
+            description: 'Image is required.',
+          });
           setIsSubmitting(false);
           return;
         }
+
         const imageFile = data.image[0];
         const imageFileBase64 = await fileToBase64(imageFile);
 
@@ -173,14 +213,23 @@ export default function GalleryAdminPage() {
         });
       }
 
-      toast({ title: 'Success', description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.` });
+      toast({
+        title: 'Success',
+        description: `Image ${editingImage ? 'updated' : 'uploaded'} successfully.`,
+      });
       cancelEdit();
       loadGalleryImages();
-
     } catch (error) {
       console.error('Error submitting form:', error);
-      const errorMessage = error instanceof Error ? error.message : 'An unexpected client-side error occurred.';
-      toast({ variant: 'destructive', title: 'Error', description: errorMessage });
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'An unexpected client-side error occurred.';
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: errorMessage,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -192,6 +241,7 @@ export default function GalleryAdminPage() {
         <h1 className="text-4xl font-bold font-headline">Manage Gallery</h1>
       </div>
 
+      {/* Upload/Edit Form */}
       <Card className="mb-8">
         <CardHeader>
           <CardTitle>{editingImage ? 'Edit Image' : 'Add New Image'}</CardTitle>
@@ -200,6 +250,7 @@ export default function GalleryAdminPage() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Description */}
                 <FormField
                   control={form.control}
                   name="description"
@@ -207,17 +258,21 @@ export default function GalleryAdminPage() {
                     <FormItem className="md:col-span-2">
                       <FormLabel>Description</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Enter a short description for the image" {...field} />
+                        <Textarea
+                          placeholder="Enter a short description for the image"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
 
+                {/* Image */}
                 <FormField
                   control={form.control}
                   name="image"
-                  render={({ field: { onChange, value, ...rest } }) => (
+                  render={({ field: { onChange, ...rest } }) => (
                     <FormItem>
                       <FormLabel>Image</FormLabel>
                       <FormControl>
@@ -230,12 +285,15 @@ export default function GalleryAdminPage() {
                       </FormControl>
                       <FormMessage />
                       {editingImage && (
-                        <p className="text-sm text-muted-foreground mt-2">Leave empty to keep the existing image.</p>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          Leave empty to keep the existing image.
+                        </p>
                       )}
                     </FormItem>
                   )}
                 />
 
+                {/* Sequence */}
                 <FormField
                   control={form.control}
                   name="sequence"
@@ -250,6 +308,7 @@ export default function GalleryAdminPage() {
                   )}
                 />
 
+                {/* Status */}
                 <FormField
                   control={form.control}
                   name="status"
@@ -275,10 +334,18 @@ export default function GalleryAdminPage() {
 
               <div className="flex justify-end gap-4 mt-6">
                 {editingImage && (
-                  <Button type="button" variant="outline" onClick={cancelEdit}>Cancel Edit</Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={cancelEdit}
+                  >
+                    Cancel Edit
+                  </Button>
                 )}
                 <Button type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : ''}
+                  {isSubmitting ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : null}
                   {editingImage ? 'Update' : 'Upload'} Image
                 </Button>
               </div>
@@ -287,6 +354,7 @@ export default function GalleryAdminPage() {
         </CardContent>
       </Card>
 
+      {/* Image Table */}
       <Card>
         <CardHeader>
           <CardTitle>Uploaded Images</CardTitle>
@@ -309,42 +377,56 @@ export default function GalleryAdminPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {images.length > 0 ? images.map((image) => (
-                    <TableRow key={image.id}>
-                      <TableCell>
-                        <Image src={image.imageUrl} alt={image.description} width={100} height={67} className="rounded-md object-cover" />
-                      </TableCell>
-                      <TableCell>{image.description}</TableCell>
-                      <TableCell>{image.sequence}</TableCell>
-                      <TableCell>{image.status}</TableCell>
-                      <TableCell className="space-x-2">
-                        <Button variant="outline" size="icon" onClick={() => handleEdit(image)}>
-                          <Edit className="h-4 w-4" />
-                        </Button>
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <Button variant="destructive" size="icon">
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
-                          </AlertDialogTrigger>
-                          <AlertDialogContent>
-                            <AlertDialogHeader>
-                              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                              <AlertDialogDescription>
-                                This will permanently delete the image from the gallery.
-                              </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <AlertDialogCancel>Cancel</AlertDialogCancel>
-                              <AlertDialogAction onClick={() => handleDelete(image)}>
-                                Delete
-                              </AlertDialogAction>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
-                      </TableCell>
-                    </TableRow>
-                  )) : (
+                  {images.length > 0 ? (
+                    images.map((image) => (
+                      <TableRow key={image.id}>
+                        <TableCell>
+                          <Image
+                            src={image.imageUrl}
+                            alt={image.description}
+                            width={100}
+                            height={67}
+                            className="rounded-md object-cover"
+                          />
+                        </TableCell>
+                        <TableCell>{image.description}</TableCell>
+                        <TableCell>{image.sequence}</TableCell>
+                        <TableCell>{image.status}</TableCell>
+                        <TableCell className="space-x-2">
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => handleEdit(image)}
+                          >
+                            <Edit className="h-4 w-4" />
+                          </Button>
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button variant="destructive" size="icon">
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  This will permanently delete the image from the gallery.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={() => handleDelete(image)}
+                                >
+                                  Delete
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
                     <TableRow>
                       <TableCell colSpan={5} className="text-center py-12">
                         No images uploaded yet.
