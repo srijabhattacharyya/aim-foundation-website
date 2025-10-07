@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -19,14 +18,13 @@ import Image from 'next/image';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { fetchGalleryImages, addGalleryImage, updateGalleryImage, deleteGalleryImage } from '@/app/actions/adminActions';
 
-
 export interface GalleryImage {
-    id: string;
-    description: string;
-    status: 'Active' | 'Inactive';
-    sequence: number;
-    imageUrl: string;
-    createdAt: string;
+  id: string;
+  description: string;
+  status: 'Active' | 'Inactive';
+  sequence: number;
+  imageUrl: string;
+  createdAt: string;
 }
 
 const formSchema = z.object({
@@ -37,12 +35,12 @@ const formSchema = z.object({
 });
 
 const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = error => reject(error);
-    });
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = error => reject(error);
+  });
 };
 
 export default function GalleryAdminPage() {
@@ -62,7 +60,7 @@ export default function GalleryAdminPage() {
     },
   });
 
-   const refinedFormSchema = formSchema.refine((data) => {
+  const refinedFormSchema = formSchema.refine((data) => {
     if (editingImage) return true;
     return data.image && data.image.length > 0;
   }, {
@@ -72,20 +70,32 @@ export default function GalleryAdminPage() {
 
   form.trigger();
 
+  // ✅ FIXED FUNCTION
   async function loadGalleryImages() {
     setLoading(true);
     try {
-        const fetchedImages = await fetchGalleryImages();
-        setImages(fetchedImages);
+      const fetchedImages = await fetchGalleryImages();
+
+      // Map the response to match the GalleryImage interface
+      const galleryImages: GalleryImage[] = fetchedImages.map((img: any) => ({
+        id: img.id || crypto.randomUUID(),
+        description: img.description || "",
+        status: img.status || "Active",
+        sequence: img.sequence || 0,
+        imageUrl: img.imageUrl || "",
+        createdAt: img.createdAt || new Date().toISOString(),
+      }));
+
+      setImages(galleryImages);
     } catch (err: any) {
-        console.error("Error fetching gallery images: ", err);
-        toast({
-            variant: 'destructive',
-            title: 'Error',
-            description: "Could not retrieve gallery items.",
-        });
+      console.error("Error fetching gallery images: ", err);
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: "Could not retrieve gallery items.",
+      });
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   }
 
@@ -105,12 +115,12 @@ export default function GalleryAdminPage() {
 
   const handleDelete = async (image: GalleryImage) => {
     try {
-        await deleteGalleryImage(image.id, image.imageUrl);
-        toast({ title: 'Success', description: 'Image deleted successfully.' });
-        loadGalleryImages();
+      await deleteGalleryImage(image.id, image.imageUrl);
+      toast({ title: 'Success', description: 'Image deleted successfully.' });
+      loadGalleryImages();
     } catch (e: any) {
-        console.error("Error deleting gallery item: ", e);
-        toast({ variant: 'destructive', title: 'Error', description: "Could not delete the gallery item." });
+      console.error("Error deleting gallery item: ", e);
+      toast({ variant: 'destructive', title: 'Error', description: "Could not delete the gallery item." });
     }
   };
 
@@ -132,34 +142,34 @@ export default function GalleryAdminPage() {
         let imageFileName: string | undefined = undefined;
 
         if (data.image && data.image[0]) {
-            const imageFile = data.image[0];
-            imageFileBase64 = await fileToBase64(imageFile);
-            imageFileName = imageFile.name;
+          const imageFile = data.image[0];
+          imageFileBase64 = await fileToBase64(imageFile);
+          imageFileName = imageFile.name;
         }
 
         await updateGalleryImage(editingImage.id, {
-            description: data.description,
-            status: data.status,
-            sequence: data.sequence,
-            existingImageUrl: editingImage.imageUrl,
-            ...(imageFileBase64 && { imageFileBase64 }),
-            ...(imageFileName && { imageFileName }),
+          description: data.description,
+          status: data.status,
+          sequence: data.sequence,
+          existingImageUrl: editingImage.imageUrl,
+          ...(imageFileBase64 && { imageFileBase64 }),
+          ...(imageFileName && { imageFileName }),
         });
       } else {
         if (!data.image || !data.image[0]) {
-            toast({ variant: 'destructive', title: 'Error', description: 'Image is required.' });
-            setIsSubmitting(false);
-            return;
+          toast({ variant: 'destructive', title: 'Error', description: 'Image is required.' });
+          setIsSubmitting(false);
+          return;
         }
         const imageFile = data.image[0];
         const imageFileBase64 = await fileToBase64(imageFile);
 
         await addGalleryImage({
-            description: data.description,
-            status: data.status,
-            sequence: data.sequence,
-            imageFileBase64,
-            imageFileName: imageFile.name,
+          description: data.description,
+          status: data.status,
+          sequence: data.sequence,
+          imageFileBase64,
+          imageFileName: imageFile.name,
         });
       }
 
@@ -190,7 +200,7 @@ export default function GalleryAdminPage() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <FormField
+                <FormField
                   control={form.control}
                   name="description"
                   render={({ field }) => (
@@ -203,30 +213,30 @@ export default function GalleryAdminPage() {
                     </FormItem>
                   )}
                 />
-               
+
                 <FormField
-                    control={form.control}
-                    name="image"
-                    render={({ field: { onChange, value, ...rest } }) => (
-                        <FormItem>
-                        <FormLabel>Image</FormLabel>
-                        <FormControl>
-                            <Input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => onChange(e.target.files)}
-                            {...rest}
-                            />
-                        </FormControl>
-                        <FormMessage />
-                        {editingImage && (
-                            <p className="text-sm text-muted-foreground mt-2">Leave empty to keep the existing image.</p>
-                        )}
-                        </FormItem>
-                    )}
+                  control={form.control}
+                  name="image"
+                  render={({ field: { onChange, value, ...rest } }) => (
+                    <FormItem>
+                      <FormLabel>Image</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => onChange(e.target.files)}
+                          {...rest}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                      {editingImage && (
+                        <p className="text-sm text-muted-foreground mt-2">Leave empty to keep the existing image.</p>
+                      )}
+                    </FormItem>
+                  )}
                 />
-                
-                 <FormField
+
+                <FormField
                   control={form.control}
                   name="sequence"
                   render={({ field }) => (
@@ -239,13 +249,14 @@ export default function GalleryAdminPage() {
                     </FormItem>
                   )}
                 />
-                 <FormField
+
+                <FormField
                   control={form.control}
                   name="status"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Status</FormLabel>
-                       <Select onValueChange={field.onChange} value={field.value}>
+                      <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select status" />
@@ -261,9 +272,10 @@ export default function GalleryAdminPage() {
                   )}
                 />
               </div>
+
               <div className="flex justify-end gap-4 mt-6">
                 {editingImage && (
-                    <Button type="button" variant="outline" onClick={cancelEdit}>Cancel Edit</Button>
+                  <Button type="button" variant="outline" onClick={cancelEdit}>Cancel Edit</Button>
                 )}
                 <Button type="submit" disabled={isSubmitting}>
                   {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : ''}
@@ -310,32 +322,34 @@ export default function GalleryAdminPage() {
                           <Edit className="h-4 w-4" />
                         </Button>
                         <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                                <Button variant="destructive" size="icon">
-                                    <Trash2 className="h-4 w-4" />
-                                </Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                                <AlertDialogHeader>
-                                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                    This will permanently delete the image from the gallery.
-                                </AlertDialogDescription>
-                                </AlertDialogHeader>
-                                <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction onClick={() => handleDelete(image)}>
-                                    Delete
-                                </AlertDialogAction>
-                                </AlertDialogFooter>
-                            </AlertDialogContent>
+                          <AlertDialogTrigger asChild>
+                            <Button variant="destructive" size="icon">
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                This will permanently delete the image from the gallery.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogAction onClick={() => handleDelete(image)}>
+                                Delete
+                              </AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
                         </AlertDialog>
                       </TableCell>
                     </TableRow>
                   )) : (
-                     <TableRow>
-                        <TableCell colSpan={5} className="text-center py-12">No images uploaded yet.</TableCell>
-                     </TableRow>
+                    <TableRow>
+                      <TableCell colSpan={5} className="text-center py-12">
+                        No images uploaded yet.
+                      </TableCell>
+                    </TableRow>
                   )}
                 </TableBody>
               </Table>
