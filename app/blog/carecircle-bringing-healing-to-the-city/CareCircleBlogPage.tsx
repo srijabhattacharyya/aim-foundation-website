@@ -1,36 +1,3 @@
-// app/blog/carecircle-bringing-healing-to-the-city/page.tsx
-
-export const metadata = {
-  title: 'CareCircle: Bringing Healing to the Heart of the City',
-  description:
-    'CareCircle by AIM Foundation delivers free check-ups, medicines, and screenings to underserved communities in Kolkata, ensuring healthcare for all.',
-  twitter: {
-    card: 'summary_large_image',
-    site: '@aimindiango',
-    title: 'CareCircle by AIM Foundation | Healthcare for Kolkata',
-    description:
-      'CareCircle by AIM Foundation delivers free check-ups, medicines, and screenings to underserved communities in Kolkata, ensuring healthcare for all.',
-    images: ['https://aimindia.org.in/home.avif'],
-  },
-  openGraph: {
-    title: 'CareCircle by AIM Foundation | Healthcare for Kolkata',
-    description:
-      'CareCircle by AIM Foundation delivers free check-ups, medicines, and screenings to underserved communities in Kolkata.',
-    url: 'https://aimindia.org.in/blog/carecircle-bringing-healing-to-the-city',
-    siteName: 'AIM Foundation',
-    images: [
-      {
-        url: 'https://aimindia.org.in/home.avif',
-        width: 1200,
-        height: 630,
-        alt: 'CareCircle Health Camp',
-      },
-    ],
-    locale: 'en_IN',
-    type: 'article',
-  },
-};
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -45,10 +12,13 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CareCircleDonationForm'), { 
-    ssr: false,
-    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> 
+const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CareCircleDonationForm'), {
+  ssr: false,
+  loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
 });
+
+// Optional: move metadata to a separate file if needed for static rendering.
+// Do not keep it in a Client Component file if using server features like generateMetadata.
 
 export default function CareCircleBlogPage() {
   const [showForm, setShowForm] = useState(false);
@@ -84,12 +54,11 @@ export default function CareCircleBlogPage() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
 
-                {/* --- Blog Content --- */}
+                {/* Blog content (shortened for brevity) */}
                 <p>
                   In the bustling metropolis of Kolkata—where the hum of traffic, the call of street vendors, and the rhythm of daily life form a vivid urban symphony—there exists another, quieter reality...
                 </p>
-                {/* Keep all your existing blog content here... */}
-                
+
                 {/* --- CTA Section --- */}
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Your Donation, Their Lifeline</h2>
