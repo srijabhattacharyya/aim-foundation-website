@@ -18,7 +18,10 @@ export const metadata: Metadata = {
     'healthcare access AIM Foundation',
     'NGO chronic disease screening',
   ],
-  robots: 'index, follow',
+  robots: {
+    index: true,
+    follow: true,
+  },
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
     type: 'website',
@@ -46,7 +49,7 @@ export const metadata: Metadata = {
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
-    canonical: '/blog/carecircle-bringing-healing-to-the-city',
+    canonical: 'https://aimindia.org.in/blog/carecircle-bringing-healing-to-the-city',
   },
 };
 
