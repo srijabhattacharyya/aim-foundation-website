@@ -1,11 +1,21 @@
-
 import type { Metadata } from 'next';
 import CycleSafeBlogPage from './CycleSafeBlogPage';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation CycleSafe: Menstrual Health & Dignity',
   description: 'AIM Foundation’s CycleSafe provides pads, health education, and awareness to empower girls, ensuring dignity, confidence, and uninterrupted schooling.',
-  keywords: ["AIM Foundation menstrual health", "NGO menstrual hygiene India", "CycleSafe AIM Foundation Kolkata", "menstrual hygiene awareness program", "sanitary pad distribution NGO", "support girls menstrual dignity India", "NGO keeping girls in school periods", "AIM Foundation reproductive health", "menstrual hygiene workshops NGO", "donate for menstrual health India"],
+  keywords: [
+    "AIM Foundation menstrual health",
+    "NGO menstrual hygiene India",
+    "CycleSafe AIM Foundation Kolkata",
+    "menstrual hygiene awareness program",
+    "sanitary pad distribution NGO",
+    "support girls menstrual dignity India",
+    "NGO keeping girls in school periods",
+    "AIM Foundation reproductive health",
+    "menstrual hygiene workshops NGO",
+    "donate for menstrual health India"
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -27,7 +37,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/from-stigma-to-strength',
     title: 'AIM Foundation CycleSafe: Menstrual Health & Dignity',
     description: 'AIM Foundation’s CycleSafe provides pads, health education, and awareness to empower girls, ensuring dignity, confidence, and uninterrupted schooling.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -53,6 +62,7 @@ export default function Page() {
     ],
     "description": "AIM Foundation’s CycleSafe provides pads, health education, and awareness to empower girls, ensuring dignity, confidence, and uninterrupted schooling."
   };
+
   return (
     <>
       <script
