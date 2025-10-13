@@ -1,5 +1,4 @@
-
-iimport type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import RedefiningClassroomsBlogPage from './RedefiningClassroomsBlogPage';
 
 export const metadata: Metadata = {
@@ -35,7 +34,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    // ✅ Remove url here
     title: 'Inspire EduLab by AIM Foundation | Digital Classrooms',
     description: 'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
     images: ['https://aimindia.org.in/home.avif'],
