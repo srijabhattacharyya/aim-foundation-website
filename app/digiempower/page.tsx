@@ -1,11 +1,17 @@
-
 import type { Metadata } from 'next';
 import DigiEmpowerClientPage from './DigiEmpowerClientPage';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation | DigiEmpower Digital Literacy Program',
   description: 'AIM Foundation’s DigiEmpower bridges the digital divide by training underprivileged and Adivasi children in West Bengal with essential computer and internet skills.',
-  keywords: ['AIM Foundation DigiEmpower', 'digital literacy NGO West Bengal', 'computer training for children', 'Adivasi education programs', 'bridge digital divide India', 'AIM Foundation education'],
+  keywords: [
+    'AIM Foundation DigiEmpower',
+    'digital literacy NGO West Bengal',
+    'computer training for children',
+    'Adivasi education programs',
+    'bridge digital divide India',
+    'AIM Foundation education'
+  ],
   authors: [{ name: 'AIM Foundation' }],
   robots: 'index, follow',
   openGraph: {
@@ -27,7 +33,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/digiempower',
     title: 'AIM Foundation | DigiEmpower Digital Literacy Program',
     description: 'AIM Foundation’s DigiEmpower bridges the digital divide by training underprivileged and Adivasi children in West Bengal with essential computer and internet skills.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -38,21 +43,22 @@ export const metadata: Metadata = {
 };
 
 export default function DigiEmpowerPage() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
     "logo": "https://www.aimindia.org.in/logo.png",
     "sameAs": [
-        "https://www.facebook.com/aimindiango/",
-        "https://x.com/aimindiango",
-        "https://www.instagram.com/aimfoundation_ngo/",
-        "https://www.linkedin.com/in/aim-foundation-ngo/",
-        "https://www.youtube.com/@aimfoundation2604"
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
     ],
     "description": "AIM Foundation’s DigiEmpower bridges the digital divide by training underprivileged and Adivasi children in West Bengal with essential computer and internet skills."
   };
+
   return (
     <>
       <script
