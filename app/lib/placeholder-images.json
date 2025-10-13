@@ -126,6 +126,150 @@
       "height": 400,
       "hint": "local artisan",
       "description": "Supporting local artisans and their craft."
+    },
+    {
+      "id": "14",
+      "src": "https://picsum.photos/seed/gal14/600/400",
+      "alt": "Placeholder Image 15",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder fifteen",
+      "description": "Placeholder Image 15"
+    },
+    {
+      "id": "15",
+      "src": "https://picsum.photos/seed/gal15/600/400",
+      "alt": "Placeholder Image 16",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder sixteen",
+      "description": "Placeholder Image 16"
+    },
+    {
+      "id": "16",
+      "src": "https://picsum.photos/seed/gal16/600/400",
+      "alt": "Placeholder Image 17",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder seventeen",
+      "description": "Placeholder Image 17"
+    },
+    {
+      "id": "17",
+      "src": "https://picsum.photos/seed/gal17/600/400",
+      "alt": "Placeholder Image 18",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder eighteen",
+      "description": "Placeholder Image 18"
+    },
+    {
+      "id": "18",
+      "src": "https://picsum.photos/seed/gal18/600/400",
+      "alt": "Placeholder Image 19",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder nineteen",
+      "description": "Placeholder Image 19"
+    },
+    {
+      "id": "19",
+      "src": "https://picsum.photos/seed/gal19/600/400",
+      "alt": "Placeholder Image 20",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twenty",
+      "description": "Placeholder Image 20"
+    },
+    {
+      "id": "20",
+      "src": "https://picsum.photos/seed/gal20/600/400",
+      "alt": "Placeholder Image 21",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twentyone",
+      "description": "Placeholder Image 21"
+    },
+    {
+      "id": "21",
+      "src": "https://picsum.photos/seed/gal21/600/400",
+      "alt": "Placeholder Image 22",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twentytwo",
+      "description": "Placeholder Image 22"
+    },
+    {
+      "id": "22",
+      "src": "https://picsum.photos/seed/gal22/600/400",
+      "alt": "Placeholder Image 23",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twentythree",
+      "description": "Placeholder Image 23"
+    },
+    {
+      "id": "23",
+      "src": "https://picsum.photos/seed/gal23/600/400",
+      "alt": "Placeholder Image 24",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twentyfour",
+      "description": "Placeholder Image 24"
+    },
+    {
+      "id": "24",
+      "src": "https://picsum.photos/seed/gal24/600/400",
+      "alt": "Placeholder Image 25",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twentyfive",
+      "description": "Placeholder Image 25"
+    },
+    {
+      "id": "25",
+      "src": "https://picsum.photos/seed/gal25/600/400",
+      "alt": "Placeholder Image 26",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twentysix",
+      "description": "Placeholder Image 26"
+    },
+    {
+      "id": "26",
+      "src": "https://picsum.photos/seed/gal26/600/400",
+      "alt": "Placeholder Image 27",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twentyseven",
+      "description": "Placeholder Image 27"
+    },
+    {
+      "id": "27",
+      "src": "https://picsum.photos/seed/gal27/600/400",
+      "alt": "Placeholder Image 28",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twentyeight",
+      "description": "Placeholder Image 28"
+    },
+    {
+      "id": "28",
+      "src": "https://picsum.photos/seed/gal28/600/400",
+      "alt": "Placeholder Image 29",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder twentynine",
+      "description": "Placeholder Image 29"
+    },
+    {
+      "id": "29",
+      "src": "https://picsum.photos/seed/gal29/600/400",
+      "alt": "Placeholder Image 30",
+      "width": 600,
+      "height": 400,
+      "hint": "placeholder thirty",
+      "description": "Placeholder Image 30"
     }
   ]
 }
