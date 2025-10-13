@@ -13,7 +13,8 @@ export async function fetchGalleryImages() {
     return {
       id: doc.id,
       ...data,
-      createdAt: data.createdAt.toDate().toISOString(),
+      // Convert timestamp to a serializable format (ISO string)
+      createdAt: data.createdAt?.toDate?.().toISOString() || new Date().toISOString(),
     };
   });
 }

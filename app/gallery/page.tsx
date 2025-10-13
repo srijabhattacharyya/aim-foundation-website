@@ -27,18 +27,11 @@ export default function GalleryPage() {
   useEffect(() => {
     const loadImages = async () => {
       try {
-        const fetchedImages = await fetchGalleryImages();
-  
-        const galleryImages: GalleryImage[] = fetchedImages.map((img: any) => ({
-          id: img.id ?? crypto.randomUUID(),
-          createdAt: img.createdAt ?? new Date().toISOString(),
-          description: img.description ?? "",
-          status: img.status ?? "Active",
-          sequence: img.sequence ?? 0,
-          imageUrl: img.imageUrl ?? "",
-        }));
-  
-        setImages(galleryImages.filter(img => img.status === 'Active').sort((a, b) => a.sequence - b.sequence));
+        const fetchedImages: GalleryImage[] = await fetchGalleryImages();
+        
+        // Filter for active images and sort by sequence
+        setImages(fetchedImages.filter(img => img.status === 'Active').sort((a, b) => a.sequence - b.sequence));
+
       } catch (err: any) {
         console.error("Error fetching gallery images:", err);
         toast({
