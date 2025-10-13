@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
@@ -29,11 +28,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    url: 'https://aimindia.org.in/educational-initiatives',
+    site: '@aimindiango',
     title: 'AIM Foundation | Educational Initiatives for Brighter Futures',
     description: 'Explore AIM Foundation’s educational initiatives empowering children and youth through digital literacy, English training, e-learning, creativity, and inclusive growth.',
     images: ['https://aimindia.org.in/home.avif'],
-    site: '@aimindiango',
   },
   alternates: {
     canonical: '/educational-initiatives',
@@ -65,7 +63,7 @@ const initiatives = [
     link: "/eduaccess",
     specialText: "(Online class)"
   },
-   {
+  {
     title: "Empower English",
     description: "Offers spoken English training to students from underserved communities, strengthening communication skills and boosting self-confidence for academic and professional success.",
     image: "/images/projects/empower-english/empower-english2.avif",
@@ -108,7 +106,7 @@ const initiatives = [
 ];
 
 export default function EducationalInitiativesPage() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
@@ -122,7 +120,8 @@ export default function EducationalInitiativesPage() {
         "https://www.youtube.com/@aimfoundation2604"
     ],
     "description": "Explore AIM Foundation’s educational initiatives empowering children and youth through digital literacy, English training, e-learning, creativity, and inclusive growth."
-    };
+  };
+
   return (
     <>
       <script
