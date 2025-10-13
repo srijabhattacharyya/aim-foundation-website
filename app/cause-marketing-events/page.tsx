@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -14,11 +13,16 @@ const WaysToPartner = dynamic(() => import('@/components/sections/WaysToPartner'
   loading: () => <Skeleton className="h-[250px] w-full" />,
 });
 
-
 export const metadata: Metadata = {
   title: 'Cause-Related Marketing with AIM Foundation | CRM India',
   description: 'Partner with AIM Foundation for impactful cause-related marketing campaigns. Build customer trust, drive social good, and enhance your brand reputation.',
-  keywords: ['cause-related marketing AIM Foundation', 'CRM AIM Foundation', 'NGO brand partnership India', 'AIM Foundation marketing collaboration', 'social impact marketing AIM Foundation', 'brand CSR campaign India', 'AIM Foundation co-branded campaigns', 'NGO corporate partnerships', 'AIM Foundation social cause marketing', 'ESG CRM partnership AIM Foundation', 'sustainable marketing NGO India'],
+  keywords: [
+    'cause-related marketing AIM Foundation', 'CRM AIM Foundation', 'NGO brand partnership India',
+    'AIM Foundation marketing collaboration', 'social impact marketing AIM Foundation',
+    'brand CSR campaign India', 'AIM Foundation co-branded campaigns',
+    'NGO corporate partnerships', 'AIM Foundation social cause marketing',
+    'ESG CRM partnership AIM Foundation', 'sustainable marketing NGO India'
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -40,10 +44,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/cause-marketing-events',
     title: 'Cause-Related Marketing with AIM Foundation | CRM India',
     description: 'Partner with AIM Foundation for impactful cause-related marketing campaigns. Build customer trust, drive social good, and enhance your brand reputation.',
-    images: ['https://aimindia.org.in/home.avif'],
+    images: ['https://aimindia.org.in/home.avif'], // Removed url property
   },
   alternates: {
     canonical: '/cause-marketing-events',
@@ -66,6 +69,7 @@ export default function CauseMarketingEventsPage() {
     ],
     "description": "Partner with AIM Foundation for impactful cause-related marketing campaigns. Build customer trust, drive social good, and enhance your brand reputation."
   };
+
   return (
     <>
       <script
@@ -125,54 +129,47 @@ export default function CauseMarketingEventsPage() {
 
           <WaysToPartner />
           <QuickFacts />
-          
+
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">
               <div className="max-w-4xl mx-auto">
-                  <div className="space-y-6 text-lg text-muted-foreground text-justify">
-                      <h3 className="text-2xl font-bold font-headline pt-6">Why Partner with AIM Foundation?</h3>
-                      <p>
-                      At AIM Foundation, we bring deep grassroots experience and a strong track record of working with vulnerable communities across India. When you collaborate with us on a CRM initiative, your brand directly contributes to:
-                      </p>
-                      <ul className="list-disc list-inside space-y-2 pl-4">
-                      <li>Improved access to education for underprivileged children</li>
-                      <li>Better healthcare and hygiene in underserved areas</li>
-                      <li>Skill development and entrepreneurship opportunities for women and youth</li>
-                      <li>Environmental protection and sustainability</li>
-                      <li>Livelihood enhancement through community-led initiatives</li>
-                      </ul>
-                      <p>
-                      Together, we design campaigns that are authentic, impactful, and inspiring—built on transparency, shared goals, and long-term vision.
-                      </p>
+                <div className="space-y-6 text-lg text-muted-foreground text-justify">
+                  <h3 className="text-2xl font-bold font-headline pt-6">Why Partner with AIM Foundation?</h3>
+                  <p>
+                    At AIM Foundation, we bring deep grassroots experience and a strong track record of working with vulnerable communities across India. When you collaborate with us on a CRM initiative, your brand directly contributes to:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 pl-4">
+                    <li>Improved access to education for underprivileged children</li>
+                    <li>Better healthcare and hygiene in underserved areas</li>
+                    <li>Skill development and entrepreneurship opportunities for women and youth</li>
+                    <li>Environmental protection and sustainability</li>
+                    <li>Livelihood enhancement through community-led initiatives</li>
+                  </ul>
 
-                      <h3 className="text-2xl font-bold font-headline pt-6">How Your Brand Benefits</h3>
-                      <ul className="list-disc list-inside space-y-2 pl-4">
-                          <li>Stronger brand reputation and emotional connection with consumers</li>
-                          <li>Increased customer loyalty and engagement</li>
-                          <li>Positive media coverage and public goodwill</li>
-                          <li>Contribution to your CSR, ESG, and SDG goals</li>
-                      </ul>
-                      <p>
-                          Whether it’s a product-linked donation, co-branded campaign, or a social media cause challenge, cause-related marketing with AIM Foundation creates a win-win: real change for communities and enhanced value for your brand.
-                      </p>
+                  <h3 className="text-2xl font-bold font-headline pt-6">How Your Brand Benefits</h3>
+                  <ul className="list-disc list-inside space-y-2 pl-4">
+                    <li>Stronger brand reputation and emotional connection with consumers</li>
+                    <li>Increased customer loyalty and engagement</li>
+                    <li>Positive media coverage and public goodwill</li>
+                    <li>Contribution to your CSR, ESG, and SDG goals</li>
+                  </ul>
 
-                      <div className="bg-card p-6 rounded-lg shadow-md mt-10 text-center">
-                          <h2 className="text-3xl md:text-4xl font-bold font-headline">Let’s Make Purpose Your Brand’s Superpower</h2>
-                          <p className="mt-4">
-                              Join hands with AIM Foundation to co-create meaningful campaigns that move hearts, inspire action, and transform lives.
-                          </p>
-                          <p className="mt-4">
-                          Connect with our Partnerships Team today: <TrusteeEmail />
-                          </p>
-                          <p className="mt-2">
-                              Because when your brand stands for something bigger, your customers stand with you.
-                          </p>
-                      </div>
+                  <div className="bg-card p-6 rounded-lg shadow-md mt-10 text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Let’s Make Purpose Your Brand’s Superpower</h2>
+                    <p className="mt-4">
+                      Join hands with AIM Foundation to co-create meaningful campaigns that move hearts, inspire action, and transform lives.
+                    </p>
+                    <p className="mt-4">
+                      Connect with our Partnerships Team today: <TrusteeEmail />
+                    </p>
+                    <p className="mt-2">
+                      Because when your brand stands for something bigger, your customers stand with you.
+                    </p>
                   </div>
+                </div>
               </div>
-             </div>
+            </div>
           </section>
-          
         </main>
         <Footer />
       </div>
