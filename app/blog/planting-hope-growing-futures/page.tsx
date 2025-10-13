@@ -1,11 +1,18 @@
-
 import type { Metadata } from 'next';
 import GreenRootsBlogPage from './GreenRootsBlogPage';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation GreenRoots: Community Tree Planting',
   description: "AIM Foundation’s GreenRoots empowers families, schools, and villages to plant trees in courtyards, farms, and temples, building climate resilience at the grassroots.",
-  keywords: ['AIM Foundation GreenRoots', 'community tree planting', 'reforestation India', 'grassroots environmental initiative', 'tree plantation drives', 'climate resilience NGO', 'sustainable environment AIM Foundation'],
+  keywords: [
+    'AIM Foundation GreenRoots',
+    'community tree planting',
+    'reforestation India',
+    'grassroots environmental initiative',
+    'tree plantation drives',
+    'climate resilience NGO',
+    'sustainable environment AIM Foundation'
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -27,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/planting-hope-growing-futures',
+    // ✅ Removed `url` here
     title: 'AIM Foundation GreenRoots: Community Tree Planting',
     description: "AIM Foundation’s GreenRoots empowers families, schools, and villages to plant trees in courtyards, farms, and temples, building climate resilience at the grassroots.",
     images: ['https://aimindia.org.in/home.avif'],
@@ -53,6 +60,7 @@ export default function Page() {
     ],
     "description": "AIM Foundation’s GreenRoots empowers families, schools, and villages to plant trees in courtyards, farms, and temples, building climate resilience at the grassroots."
   };
+
   return (
     <>
       <script
