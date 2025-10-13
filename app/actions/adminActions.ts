@@ -69,22 +69,6 @@ export async function deleteSubscriber(id: string) {
 // ------------------------------
 // Gallery Management
 // ------------------------------
-export async function fetchGalleryImages() {
-  const adminDb = getAdminDb();
-  const snapshot = await adminDb
-    .collection('gallery')
-    .orderBy('sequence', 'asc')
-    .get();
-  return snapshot.docs.map((doc) => {
-    const data = doc.data();
-    return {
-      id: doc.id,
-      ...data,
-      createdAt: data.createdAt.toDate().toISOString(),
-    };
-  });
-}
-
 async function uploadImage(fileBase64: string, fileName: string): Promise<string> {
   const storage = getAdminStorage();
   const bucket = storage.bucket(

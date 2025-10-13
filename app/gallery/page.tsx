@@ -6,7 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { fetchGalleryImages } from "@/app/actions/adminActions";
+import { fetchGalleryImages } from "@/app/actions/galleryActions";
 import { Skeleton } from "@/components/ui/skeleton";
 
 // Define GalleryImage type
