@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import EduAccessClientPage from './EduAccessClientPage';
 
@@ -27,7 +26,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/eduaccess',
     title: 'AIM Foundation | EduAccess, Rural Online Learning Program',
     description: 'AIM Foundation EduAccess, rural education West Bengal, online learning NGO, digital classrooms for villages, AIM Foundation online education, bridging education gap.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -53,6 +51,7 @@ export default function EduAccessPage() {
     ],
     "description": "AIM Foundation EduAccess, rural education West Bengal, online learning NGO, digital classrooms for villages, AIM Foundation online education, bridging education gap."
   };
+
   return (
     <>
       <script
@@ -66,4 +65,3 @@ export default function EduAccessPage() {
     </>
   );
 }
-
