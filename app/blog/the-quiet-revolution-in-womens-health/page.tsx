@@ -1,11 +1,21 @@
-
 import type { Metadata } from 'next';
 import DetectBlogPage from './DetectBlogPage';
 
 export const metadata: Metadata = {
   title: 'Project Detect by AIM Foundation | Cervical Cancer Care',
   description: 'Project Detect by AIM Foundation brings cervical cancer screening, awareness, and health education to rural India, empowering women with early detection and care.',
-  keywords: ["Project Detect AIM Foundation", "AIM Foundation health", "cervical cancer screening India", "rural women healthcare", "cervical cancer awareness West Bengal", "ASHA training cervical health", "CNCI partnership AIM Foundation", "women’s reproductive health India", "cancer early detection", "rural health empowerment"],
+  keywords: [
+    "Project Detect AIM Foundation",
+    "AIM Foundation health",
+    "cervical cancer screening India",
+    "rural women healthcare",
+    "cervical cancer awareness West Bengal",
+    "ASHA training cervical health",
+    "CNCI partnership AIM Foundation",
+    "women’s reproductive health India",
+    "cancer early detection",
+    "rural health empowerment"
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -27,7 +37,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/the-quiet-revolution-in-womens-health',
     title: 'Project Detect by AIM Foundation | Cervical Cancer Care',
     description: 'Project Detect by AIM Foundation brings cervical cancer screening, awareness, and health education to rural India, empowering women with early detection and care.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -38,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
@@ -58,9 +67,7 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-detect-blog"
       />
       <DetectBlogPage />
