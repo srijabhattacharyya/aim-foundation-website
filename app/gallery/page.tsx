@@ -25,7 +25,7 @@ export default function GalleryPage() {
 
   useEffect(() => {
     // In a real app, you might fetch this data. Here we use a local JSON.
-    setImages(imageData.gallery);
+    setImages(imageData.gallery.slice().reverse());
     setLoading(false);
   }, []);
 

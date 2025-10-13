@@ -3,7 +3,7 @@
   "gallery": [
     {
       "id": "0",
-      "src": "/images/projects/book-distribution.avif",
+      "src": "/images/projects/book/book-distribution.avif",
       "alt": "Distributing books to children",
       "width": 600,
       "height": 400,
@@ -12,25 +12,25 @@
     },
     {
       "id": "1",
-      "src": "https://picsum.photos/seed/gal1/600/400",
+      "src": "/images/projects/cureline/cureline1.avif",
       "alt": "Community health camp in a village",
       "width": 600,
       "height": 400,
       "hint": "health camp",
-      "description": "Providing free medical check-ups at a rural health camp."
+      "description": "Providing free medical check-ups at Bali Island, Sundarbans, 24 Parganas (S)"
     },
     {
       "id": "2",
-      "src": "https://picsum.photos/seed/gal2/600/400",
-      "alt": "Children learning in an outdoor classroom",
+      "src": "/images/projects/innocent-smiles/innocent-smiles4.avif",
+      "alt": "Children from Sabar Community",
       "width": 600,
       "height": 400,
       "hint": "children education",
-      "description": "Engaging students with interactive learning sessions."
+      "description": "Helping the children from Sabar Community, most underprivileged class of West Bengal"
     },
     {
       "id": "3",
-      "src": "https://picsum.photos/seed/gal3/600/400",
+      "src": "/images/projects/tide-shield/tide-shield2.avif",
       "alt": "Volunteers planting mangrove saplings",
       "width": 600,
       "height": 400,
@@ -39,8 +39,8 @@
     },
     {
       "id": "4",
-      "src": "https://picsum.photos/seed/gal4/600/400",
-      "alt": "Woman learning tailoring on a sewing machine",
+      "src": "/images/projects/suidhaga/suidhaga1.avif",
+      "alt": "Woman learning embroidary on a sewing machine",
       "width": 600,
       "height": 400,
       "hint": "women empowerment",
@@ -48,7 +48,7 @@
     },
     {
       "id": "5",
-      "src": "https://picsum.photos/seed/gal5/600/400",
+      "src": "/images/projects/sighthope/sighthope1.avif",
       "alt": "An elderly person getting an eye check-up",
       "width": 600,
       "height": 400,
@@ -57,16 +57,16 @@
     },
     {
       "id": "6",
-      "src": "https://picsum.photos/seed/gal6/600/400",
+      "src": "/images/projects/relief/relief4.avif",
       "alt": "Volunteers distributing relief kits during a flood",
       "width": 600,
       "height": 400,
       "hint": "disaster relief",
-      "description": "Providing immediate assistance to disaster-affected families."
+      "description": "Providing immediate assistance to flood-affected families."
     },
     {
       "id": "7",
-      "src": "https://picsum.photos/seed/gal7/600/400",
+      "src": "/images/projects/innocent-smiles/innocent-smiles2.avif",
       "alt": "Children participating in an art workshop",
       "width": 600,
       "height": 400,
@@ -75,16 +75,16 @@
     },
     {
       "id": "8",
-      "src": "https://picsum.photos/seed/gal8/600/400",
-      "alt": "A group of women in a digital literacy class",
+      "src": "/images/projects/detect/detect2.avif",
+      "alt": "A group of women in a cervical cancer awareness camp",
       "width": 600,
       "height": 400,
       "hint": "digital literacy",
-      "description": "Bridging the digital divide with our SheConnects program."
+      "description": "Cervical Cancer Awareness Camp for the underprivilegde"
     },
     {
       "id": "9",
-      "src": "https://picsum.photos/seed/gal9/600/400",
+      "src": "/images/projects/sustainability/sustainability3.avif",
       "alt": "Community members at an environmental awareness session",
       "width": 600,
       "height": 400,
@@ -93,16 +93,16 @@
     },
     {
       "id": "10",
-      "src": "https://picsum.photos/seed/gal10/600/400",
-      "alt": "Students in a classroom",
+      "src": "/images/projects/carecircle/carecircle3.avif",
+      "alt": "Free health Camp at Kolkata",
       "width": 600,
       "height": 400,
       "hint": "child reading",
-      "description": "Fostering a love for learning in our educational programs."
+      "description": "Free Health Camp with free Medicine at Sarala Punyashram, Kolkata"
     },
     {
       "id": "11",
-      "src": "https://picsum.photos/seed/gal11/600/400",
+      "src": "/images/projects/sustainability/sustainablity4.avif",
       "alt": "A group of volunteers posing together",
       "width": 600,
       "height": 400,
@@ -111,16 +111,16 @@
     },
     {
       "id": "12",
-      "src": "https://picsum.photos/seed/gal12/600/400",
-      "alt": "A nutritious meal being served",
+      "src": "/images/projects/empower-english/empower-english.avif",
+      "alt": "A nutritious health drink being served",
       "width": 600,
       "height": 400,
       "hint": "child nutrition",
-      "description": "Providing nutritious meals to combat malnutrition."
+      "description": "Providing nutritious health drink during class hours to combat malnutrition."
     },
     {
       "id": "13",
-      "src": "https://picsum.photos/seed/gal13/600/400",
+      "src": "/images/projects/krishti/krishti1.avif",
       "alt": "A woman proudly displaying her handcrafted goods",
       "width": 600,
       "height": 400,
@@ -129,228 +129,202 @@
     },
     {
       "id": "14",
-      "src": "https://picsum.photos/seed/gal14/600/400",
-      "alt": "A clean river flowing through a forest",
+      "src": "/images/projects/forest-cleaning/forest-cleaning2.avif",
+      "alt": "Cleaning of Garumara Forest",
       "width": 600,
       "height": 400,
       "hint": "forest cleaning",
-      "description": "Our commitment to preserving natural water sources."
+      "description": "Cleaning of Garumara National Park, Jalpaiguri, West Bengal"
     },
     {
       "id": "15",
-      "src": "https://picsum.photos/seed/gal15/600/400",
-      "alt": "A person receiving a donation kit",
+      "src": "/images/projects/digiempower/digiempower1.avif",
+      "alt": "Digital literacy class",
       "width": 600,
       "height": 400,
-      "hint": "donation drive",
-      "description": "Distributing aid during our community donation drives."
+      "hint": "DigiEmpower",
+      "description": "Digital Litaracy class at forest village Rangakhila, Purba Bardhanan, West Bengal"
     },
     {
       "id": "16",
-      "src": "https://picsum.photos/seed/gal16/600/400",
-      "alt": "A smiling child holding a new book",
+      "src": "/images/projects/milieu/milieu1.avif",
+      "alt": "Interaction with the students of Modern High School with the underprivileged students of AIM Foundation",
       "width": 600,
       "height": 400,
-      "hint": "child education",
-      "description": "The joy of learning in the eyes of a child."
+      "hint": "Project Milieu",
+      "description": "Interaction with the students of Modern High School with the underprivileged students of AIM Foundation"
     },
     {
       "id": "17",
-      "src": "https://picsum.photos/seed/gal17/600/400",
-      "alt": "A doctor checking a patient's blood pressure",
+      "src": "/images/projects/cureline/cureline3.avif",
+      "alt": "Medical Camp at Sundarbans",
       "width": 600,
       "height": 400,
-      "hint": "health checkup",
-      "description": "Regular health check-ups are a core part of our mission."
+      "hint": "Medical Camp at Sundarbans",
+      "description": "Medical Camp at Kalidaspur, Sundarbans, West Bengal"
     },
     {
       "id": "18",
-      "src": "https://picsum.photos/seed/gal18/600/400",
-      "alt": "Women participating in a group discussion",
+      "src": "/images/projects/childfirst/childfirst1.avif",
+      "alt": "Health Camp for the children of sex workers",
       "width": 600,
       "height": 400,
-      "hint": "women group",
-      "description": "Creating safe spaces for women to connect and share."
+      "hint": "health camp",
+      "description": "Health Camp for the children of sex workers, Sonagachi, Kolkata"
     },
     {
       "id": "19",
-      "src": "https://picsum.photos/seed/gal19/600/400",
-      "alt": "A vibrant community event",
+      "src": "/images/projects/edulab/edulab1.avif",
+      "alt": "Smart Classroom",
       "width": 600,
       "height": 400,
-      "hint": "community event",
-      "description": "Bringing communities together through cultural events."
+      "hint": "smart classroom",
+      "description": "Smart Classroom for the students of remote villages"
     },
     {
       "id": "20",
-      "src": "https://picsum.photos/seed/gal20/600/400",
-      "alt": "A volunteer teaching a child to write",
+      "src": "/images/projects/ignite-change/ignite-change1.avif",
+      "alt": "National Youth Day Celebration",
       "width": 600,
       "height": 400,
-      "hint": "volunteer teaching",
-      "description": "The personal touch of our dedicated volunteers."
+      "hint": "national youth day celebration",
+      "description": "Seminar on National Youth Day"
     },
     {
       "id": "21",
-      "src": "https://picsum.photos/seed/gal21/600/400",
-      "alt": "A field of freshly planted saplings",
+      "src": "/images/projects/oralscan/oralscan2.avif",
+      "alt": "Oral Cancer Detection Camp",
       "width": 600,
       "height": 400,
-      "hint": "tree plantation",
-      "description": "Investing in a greener future, one sapling at a time."
+      "hint": "oral cancer detection camp",
+      "description": "Oral Cancer Detection Camp in association with Narayana Health"
     },
     {
       "id": "22",
-      "src": "https://picsum.photos/seed/gal22/600/400",
-      "alt": "Close-up of hands holding grains",
+      "src": "/images/projects/relief/relief2.avif",
+      "alt": "Blanket Distribution",
       "width": 600,
       "height": 400,
-      "hint": "food security",
-      "description": "Ensuring food security for vulnerable families."
+      "hint": "blanket distribution",
+      "description": "Blanket Distribution to the footpath dwellers of Kolkata"
     },
     {
       "id": "23",
-      "src": "https://picsum.photos/seed/gal23/600/400",
-      "alt": "A group of children playing together",
+      "src": "/images/projects/innocent-smiles/innocent-smiles1.avif",
+      "alt": "Art class for the underpriviledged children",
       "width": 600,
       "height": 400,
-      "hint": "children playing",
-      "description": "Creating joyful and safe play environments for children."
+      "hint": "art class",
+      "description": "Art class for the underpriviledged children at Kasba, Kolkata"
     },
     {
       "id": "24",
-      "src": "https://picsum.photos/seed/gal24/600/400",
-      "alt": "A woman working on a handcrafted item",
+      "src": "/images/projects/cyclesafe/cyclesafe1.avif",
+      "alt": "Menstrual Hygine Awareness Camp",
       "width": 600,
       "height": 400,
-      "hint": "handicraft women",
-      "description": "Fostering economic independence through traditional crafts."
+      "hint": "menstrual hygine awareness camp",
+      "description": "Menstrual Hygine Awareness Camp for Adolecent Girls"
     },
     {
       "id": "25",
-      "src": "https://picsum.photos/seed/gal25/600/400",
-      "alt": "A medical professional examining a child's eyes",
+      "src": "/images/projects/digiempower/digiempower2.avif",
+      "alt": "Computer Class",
       "width": 600,
       "height": 400,
-      "hint": "child eye exam",
-      "description": "Providing specialized pediatric care in our health camps."
+      "hint": "computer class",
+      "description": "Digital literacy Class at Dakshin Dhupjhora, Jalpaiguri"
     },
     {
       "id": "26",
-      "src": "https://picsum.photos/seed/gal26/600/400",
-      "alt": "A community meeting in a village",
+      "src": "/images/projects/tide-shield/tide-shield1.avif",
+      "alt": "Mangrove Plantation in Bali Island Sundarbans, 24 Parganas (S)",
       "width": 600,
       "height": 400,
-      "hint": "village meeting",
-      "description": "Engaging with community leaders to drive change."
+      "hint": "mangrove plantation",
+      "description": "Mangrove Plantation in Bali Island Sundarbans, 24 Parganas (S)"
     },
     {
       "id": "27",
-      "src": "https://picsum.photos/seed/gal27/600/400",
-      "alt": "A student using a computer for the first time",
+      "src": "/images/projects/carecircle/carecircle1.webp",
+      "alt": "Health Camp at Kolkata",
       "width": 600,
       "height": 400,
-      "hint": "student computer",
-      "description": "A student's first step into the digital world."
+      "hint": "health camp",
+      "description": "Health Camp in Kolkata in association with Neotia Bhagirathi Women and Childcare Institute"
     },
     {
       "id": "28",
-      "src": "https://picsum.photos/seed/gal28/600/400",
-      "alt": "A volunteer helping an elderly person",
+      "src": "/images/projects/eduaccess/eduaccess1.avif",
+      "alt": "Kolkata Studio for for online english classes",
       "width": 600,
       "height": 400,
-      "hint": "elderly care",
-      "description": "Providing companionship and care for the elderly."
+      "hint": "Online Classes",
+      "description": "Kolkata Studio for for online English Classes for the children of remote villages"
     },
     {
       "id": "29",
-      "src": "https://picsum.photos/seed/gal29/600/400",
-      "alt": "A clean and green park",
+      "src": "/images/projects/relief/relief3.avif",
+      "alt": "Blanket Distribution to adivasi community of West Medinipur",
       "width": 600,
       "height": 400,
-      "hint": "clean park",
-      "description": "The result of a successful community cleanup drive."
+      "hint": "blanket distribution",
+      "description": "Blanket Distribution to adivasi community of West Medinipur supported by Moothut Finance"
     },
     {
       "id": "30",
-      "src": "https://picsum.photos/seed/gal30/600/400",
-      "alt": "A diverse group of people smiling",
+      "src": "/images/projects/relief/relief1.avif",
+      "alt": "Garment Distribution to fire victims at Topsia, Kolkata",
       "width": 600,
       "height": 400,
-      "hint": "diverse people",
-      "description": "Celebrating the diversity of the communities we serve."
+      "hint": "garment distribution",
+      "description": "Garment Distribution to fire victims at Topsia, Kolkata"
     },
     {
       "id": "31",
-      "src": "https://picsum.photos/seed/gal31/600/400",
-      "alt": "Hands planting a small plant",
+      "src": "/images/projects/innocent-smiles/innocent-smiles3.avif",
+      "alt": "Discussion on Swami Vivekananda",
       "width": 600,
       "height": 400,
-      "hint": "planting seedling",
-      "description": "Nurturing the future, one seedling at a time."
+      "hint": "Swami Vivivekananda",
+      "description": "Bringing the words of Swami Vivekanada amoung the rural people of Purulia District"
     },
     {
       "id": "32",
-      "src": "https://picsum.photos/seed/gal32/600/400",
-      "alt": "A child in a bright, clean classroom",
+      "src": "/images/projects/carecircle/carecircle2.avif",
+      "alt": "Medical Camp in Kolkata",
       "width": 600,
       "height": 400,
-      "hint": "clean classroom",
-      "description": "Creating safe and inspiring learning environments."
+      "hint": "medical camp",
+      "description": "Medical Camp in Kolkata"
     },
     {
       "id": "33",
-      "src": "https://picsum.photos/seed/gal33/600/400",
-      "alt": "Women laughing together in a workshop",
+      "src": "/images/projects/childfirst/childfirst2.avif",
+      "alt": "Healthcare camp for the children of Kolkata",
       "width": 600,
       "height": 400,
-      "hint": "women laughing",
-      "description": "Building bonds and a sense of community among women."
+      "hint": "heath camp",
+      "description": "Free Health camp for the children of Kolkata"
     },
     {
       "id": "34",
-      "src": "https://picsum.photos/seed/gal34/600/400",
-      "alt": "A volunteer distributing fresh vegetables",
+      "src": "/images/projects/cyclesafe/cyclesafe2.avif",
+      "alt": "Menstrual Hygine Awareness",
       "width": 600,
       "height": 400,
-      "hint": "fresh vegetables",
-      "description": "Promoting nutrition and healthy eating habits."
+      "hint": "menstrual hygine",
+      "description": "Menstrual Hygine Awareness Camp"
     },
     {
       "id": "35",
-      "src": "https://picsum.photos/seed/gal35/600/400",
-      "alt": "A traditional dance performance",
+      "src": "/images/projects/detect/detect1.avif",
+      "alt": "Cervical Cancer Screening",
       "width": 600,
       "height": 400,
-      "hint": "traditional dance",
-      "description": "Preserving and celebrating local culture and arts."
-    },
-    {
-      "id": "36",
-      "src": "https://picsum.photos/seed/gal36/600/400",
-      "alt": "An elderly woman smiling",
-      "width": 600,
-      "height": 400,
-      "hint": "elderly woman",
-      "description": "Bringing joy and companionship to the elderly."
-    },
-    {
-      "id": "37",
-      "src": "https://picsum.photos/seed/gal37/600/400",
-      "alt": "A group of children receiving school supplies",
-      "width": 600,
-      "height": 400,
-      "hint": "school supplies",
-      "description": "Equipping students with the tools they need to succeed."
-    },
-    {
-      "id": "38",
-      "src": "https://picsum.photos/seed/gal38/600/400",
-      "alt": "A person being vaccinated",
-      "width": 600,
-      "height": 400,
-      "hint": "vaccination drive",
-      "description": "Our commitment to public health through vaccination drives."
+      "hint": "cervical cancer screening",
+      "description": "Cervical Cancer Screening at Domjur, Howrah"
     }
+
   ]
 }
