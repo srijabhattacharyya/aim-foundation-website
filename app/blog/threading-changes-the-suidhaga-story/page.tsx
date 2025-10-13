@@ -1,11 +1,21 @@
-
 import type { Metadata } from 'next';
 import SuiDhagaBlogPage from './SuiDhagaBlogPage';
 
 export const metadata: Metadata = {
   title: 'SuiDhaga by AIM Foundation | Women’s Skill Empowerment',
   description: "SuiDhaga by AIM Foundation empowers women through tailoring and embroidery training, creating livelihoods, dignity, and sustainable income opportunities in communities.",
-  keywords: ["SuiDhaga AIM Foundation", "AIM Foundation women empowerment", "tailoring training India", "embroidery skill development", "livelihood program women", "rural women income generation", "community stitching initiative", "gender empowerment through skills", "self-reliance women India", "sewing training NGO"],
+  keywords: [
+    "SuiDhaga AIM Foundation",
+    "AIM Foundation women empowerment",
+    "tailoring training India",
+    "embroidery skill development",
+    "livelihood program women",
+    "rural women income generation",
+    "community stitching initiative",
+    "gender empowerment through skills",
+    "self-reliance women India",
+    "sewing training NGO"
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -27,7 +37,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/threading-changes-the-suidhaga-story',
     title: 'SuiDhaga by AIM Foundation | Women’s Skill Empowerment',
     description: 'SuiDhaga by AIM Foundation empowers women through tailoring and embroidery training, creating livelihoods, dignity, and sustainable income opportunities in communities.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -38,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
@@ -53,16 +62,15 @@ export default function Page() {
     ],
     "description": "SuiDhaga by AIM Foundation empowers women through tailoring and embroidery training, creating livelihoods, dignity, and sustainable income opportunities in communities."
   };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-suidhaga-blog"
       />
       <SuiDhagaBlogPage />
     </>
-    );
+  );
 }
