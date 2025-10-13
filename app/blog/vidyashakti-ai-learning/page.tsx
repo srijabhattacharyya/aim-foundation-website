@@ -1,11 +1,21 @@
-
 import type { Metadata } from 'next';
 import VidyaShaktiBlogPage from './VidyaShaktiBlogPage';
 
 export const metadata: Metadata = {
   title: 'VidyaShakti by AIM Foundation | AI Learning for Rural India',
   description: "Discover VidyaShakti by AIM Foundation—an AI-powered learning app transforming rural education with multilingual support, equity, and 24/7 access.",
-  keywords: ["AIM Foundation VidyaShakti", "AI learning app rural India", "AIM Foundation education initiative", "multilingual education app NGO", "rural students digital learning", "AI-powered education for villages", "mobile learning AIM Foundation", "teacher shortage solution India", "NGO tech in education", "equal access to education rural India"],
+  keywords: [
+    "AIM Foundation VidyaShakti",
+    "AI learning app rural India",
+    "AIM Foundation education initiative",
+    "multilingual education app NGO",
+    "rural students digital learning",
+    "AI-powered education for villages",
+    "mobile learning AIM Foundation",
+    "teacher shortage solution India",
+    "NGO tech in education",
+    "equal access to education rural India"
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -27,7 +37,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/vidyashakti-ai-learning',
     title: 'VidyaShakti by AIM Foundation | AI Learning for Rural India',
     description: 'Discover VidyaShakti by AIM Foundation—an AI-powered learning app transforming rural education with multilingual support, equity, and 24/7 access.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -42,7 +51,7 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
+    "url": "https://aimindia.org.in/",
     "logo": "https://aimindia.org.in/logo.png",
     "sameAs": [
       "https://www.facebook.com/aimindiango/",
@@ -58,9 +67,7 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-vidyashakti-blog"
       />
       <VidyaShaktiBlogPage />
