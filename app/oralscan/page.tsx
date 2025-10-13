@@ -27,7 +27,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/oralscan',
     title: 'OralScan by AIM Foundation: Early Oral Cancer Detection',
     description: 'Join AIM Foundation’s OralScan to fight oral cancer. Free screenings, awareness, and care in underserved communities. Support early detection today.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -39,30 +38,28 @@ export const metadata: Metadata = {
 
 export default function OralScanPage() {
     const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-        "https://www.facebook.com/aimindiango/",
-        "https://x.com/aimindiango",
-        "https://www.instagram.com/aimfoundation_ngo/",
-        "https://www.linkedin.com/in/aim-foundation-ngo/",
-        "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "Join AIM Foundation’s OralScan to fight oral cancer. Free screenings, awareness, and care in underserved communities. Support early detection today."
-  };
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
-        key="org-schema-oralscan"
-      />
-      <OralScanClientPage />
-    </>
-  );
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AIM Foundation",
+        "url": "https://www.aimindia.org.in/",
+        "logo": "https://www.aimindia.org.in/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/aimindiango/",
+            "https://x.com/aimindiango",
+            "https://www.instagram.com/aimfoundation_ngo/",
+            "https://www.linkedin.com/in/aim-foundation-ngo/",
+            "https://www.youtube.com/@aimfoundation2604"
+        ],
+        "description": "Join AIM Foundation’s OralScan to fight oral cancer. Free screenings, awareness, and care in underserved communities. Support early detection today."
+    };
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+                key="org-schema-oralscan"
+            />
+            <OralScanClientPage />
+        </>
+    );
 }
