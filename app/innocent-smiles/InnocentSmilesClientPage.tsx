@@ -35,8 +35,8 @@ const childcareInitiatives = [
 ];
 
 const relatedResource = {
-    link: "#",
-    text: "Read more about Innocent Smiles",
+    link: "/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu",
+    text: "Nurturing a Kinder Tomorrow: The Story of Milieu",
     image: { src: "/images/projects/innocent-smiles/innocent-smiles1.avif", alt: "Innocent Smiles initiative", hint: "children art class", description: "Children participating in an art class."},
 };
 
