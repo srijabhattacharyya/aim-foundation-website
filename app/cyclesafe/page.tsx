@@ -1,30 +1,23 @@
 import type { Metadata } from 'next';
 import CycleSafeClientPage from './CycleSafeClientPage';
-import { Suspense } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
   title: 'CycleSafe by AIM Foundation: Menstrual Health Support',
   description: 'AIM Foundation’s CycleSafe empowers girls with menstrual health education, sanitary pads, and awareness to keep them in school and build confidence.',
   keywords: [
-    'AIM Foundation', 'CycleSafe', 'menstrual health Kolkata', 'adolescent girls hygiene',
-    'free sanitary pads', 'menstrual health education', 'reproductive health awareness',
-    'menstrual hygiene India', 'cervical health workshops', 'NGO menstrual support', 'breaking period stigma'
+    'CycleSafe AIM Foundation', 'menstrual health education', 'period hygiene NGO',
+    'girls education India', 'women empowerment NGO', 'sanitary pads distribution',
+    'health awareness India', 'AIM Foundation women health project'
   ],
-  robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
+  robots: 'index, follow',
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/cyclesafe',
     title: 'CycleSafe by AIM Foundation: Menstrual Health Support',
     description: 'AIM Foundation’s CycleSafe empowers girls with menstrual health education, sanitary pads, and awareness to keep them in school and build confidence.',
     images: [
-      {
-        url: 'https://aimindia.org.in/home.avif',
-        width: 1200,
-        height: 630,
-        alt: 'CycleSafe by AIM Foundation',
-      },
+      { url: 'https://aimindia.org.in/home.avif', width: 1200, height: 630, alt: 'CycleSafe by AIM Foundation' }
     ],
     siteName: 'AIM Foundation',
     locale: 'en_IN',
@@ -32,7 +25,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/cyclesafe',
     title: 'CycleSafe by AIM Foundation: Menstrual Health Support',
     description: 'AIM Foundation’s CycleSafe empowers girls with menstrual health education, sanitary pads, and awareness to keep them in school and build confidence.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -66,9 +58,7 @@ export default function CycleSafePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-cyclesafe"
       />
-      <Suspense fallback={<Skeleton className="h-screen w-full" />}>
-        <CycleSafeClientPage />
-      </Suspense>
+      <CycleSafeClientPage />
     </>
   );
 }
