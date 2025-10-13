@@ -1,6 +1,5 @@
-
 import type { Metadata } from 'next';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
+import { Card, CardContent, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
@@ -10,7 +9,12 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: 'Childcare Programs by AIM Foundation: Nurturing Futures',
   description: 'AIM Foundation’s Childcare Programs support children through education, creativity, health camps, and safe spaces, fostering growth, dignity, and well-being.',
-  keywords: ['AIM Foundation', 'childcare programs', 'Innocent Smiles AIM Foundation', 'Milieu AIM Foundation', 'ChildFirst AIM Foundation', 'children education Kolkata NGO', 'pediatric health camps', 'creative learning for children', 'NGO child support India', 'holistic child development', 'safe space for children', 'support for children of sex workers'],
+  keywords: [
+    'AIM Foundation', 'childcare programs', 'Innocent Smiles AIM Foundation', 
+    'Milieu AIM Foundation', 'ChildFirst AIM Foundation', 'children education Kolkata NGO', 
+    'pediatric health camps', 'creative learning for children', 'NGO child support India', 
+    'holistic child development', 'safe space for children', 'support for children of sex workers'
+  ],
   authors: [{ name: 'AIM Foundation' }],
   robots: 'index, follow',
   openGraph: {
@@ -32,10 +36,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/childcare-initiatives',
     title: 'Childcare Programs by AIM Foundation: Nurturing Futures',
     description: 'AIM Foundation’s Childcare Programs support children through education, creativity, health camps, and safe spaces, fostering growth, dignity, and well-being.',
-    images: ['https://aimindia.org.in/home.avif'],
+    images: ['https://aimindia.org.in/home.avif'], // Removed url
   },
   alternates: {
     canonical: '/childcare-initiatives',
@@ -85,75 +88,73 @@ export default function ChildcareInitiativesPage() {
 
   return (
     <>
-    <script
+      <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-childcare"
       />
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        <section className="relative w-full">
-          <div className="relative w-full">
-            <Image
-              src="/images/banner/childcare.avif"
-              alt="Childcare Initiatives Banner"
-              width={1920}
-              height={580}
-              className="w-full h-auto object-cover"
-              data-ai-hint="happy children playing"
-            />
-          </div>
-          <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
-            <div className="relative z-10 text-left">
-              <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Nurturing the Next Generation
-              </h1>
-              <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Our initiatives are focused on creating a safe, healthy, and inspiring start for every child.
-              </p>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <section className="relative w-full">
+            <div className="relative w-full">
+              <Image
+                src="/images/banner/childcare.avif"
+                alt="Childcare Initiatives Banner"
+                width={1920}
+                height={580}
+                className="w-full h-auto object-cover"
+                data-ai-hint="happy children playing"
+              />
             </div>
-          </div>
-        </section>
+            <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
+              <div className="relative z-10 text-left">
+                <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                  Nurturing the Next Generation
+                </h1>
+                <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                  Our initiatives are focused on creating a safe, healthy, and inspiring start for every child.
+                </p>
+              </div>
+            </div>
+          </section>
 
-        <section className="py-12 md:py-20 lg:py-24 bg-muted">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Childcare Programs</h2>
-              <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                We believe that a strong foundation in childhood leads to a brighter future for all.
-              </p>
+          <section className="py-12 md:py-20 lg:py-24 bg-muted">
+            <div className="container mx-auto px-4 md:px-6">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Childcare Programs</h2>
+                <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                  We believe that a strong foundation in childhood leads to a brighter future for all.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {initiatives.map((item, index) => (
+                  <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <div className="relative w-full h-48">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        data-ai-hint={item.hint}
+                        className="object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <CardContent className="p-6 flex flex-col flex-grow">
+                      <CardTitle className="font-headline mb-2">{item.title}</CardTitle>
+                      <CardDescription className="flex-grow text-justify">{item.description}</CardDescription>
+                      <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
+                        <Link href={item.link || "#"}>Learn More &rarr;</Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {initiatives.map((item, index) => (
-                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                  <div className="relative w-full h-48">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      data-ai-hint={item.hint}
-                      className="object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <CardContent className="p-6 flex flex-col flex-grow">
-                    <CardTitle className="font-headline mb-2">{item.title}</CardTitle>
-                    <CardDescription className="flex-grow text-justify">{item.description}</CardDescription>
-                    <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
-                      <Link href={item.link || "#"}>Learn More &rarr;</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
