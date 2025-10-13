@@ -52,4 +52,25 @@ export default function Page() {
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org
+    "logo": "https://aimindia.org.in/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "AIM Foundation’s OralScan fights oral cancer in India with free screenings, awareness, and counseling, bringing early detection and care to underserved communities."
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-oralscan-blog"
+      />
+      <OralScanBlogPage />
+    </>
+  );
+}
