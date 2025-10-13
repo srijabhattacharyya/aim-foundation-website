@@ -1,3 +1,6 @@
+import type { Metadata } from 'next';
+import OrganisationClientPage from './OrganisationClientPage';
+
 export const metadata: Metadata = {
     title: 'AIM Foundation | Leading NGO in Kolkata for Community Development',
     description: 'Since 2016, AIM Foundation has empowered underprivileged families in West Bengal through education, healthcare, women empowerment, and community development.',
@@ -31,3 +34,7 @@ export const metadata: Metadata = {
         canonical: '/organisation',
     },
 };
+
+export default function OrganisationPage() {
+    return <OrganisationClientPage />;
+}
