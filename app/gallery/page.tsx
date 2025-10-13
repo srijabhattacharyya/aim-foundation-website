@@ -7,7 +7,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import imageData from '../../src/app/lib/placeholder-images.json';
+import imageData from '../lib/placeholder-images.json';
 
 export interface GalleryImage {
   id: string;
@@ -87,4 +87,3 @@ export default function GalleryPage() {
     </div>
   );
 }
-
