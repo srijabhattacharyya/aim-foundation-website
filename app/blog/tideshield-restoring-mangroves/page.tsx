@@ -1,11 +1,21 @@
-
 import type { Metadata } from 'next';
 import TideShieldBlogPage from './TideShieldBlogPage';
 
 export const metadata: Metadata = {
   title: 'TideShield Mangrove Restoration | AIM Foundation',
   description: 'AIM Foundation’s TideShield restores Sundarbans mangroves on Bali Island, protecting families from cyclones, erosion, and climate change impacts.',
-  keywords: ['AIM Foundation', 'TideShield initiative', 'Sundarbans mangrove restoration', 'Bali Island climate resilience', 'Cyclone Amphan Yaas recovery', 'mangrove plantation West Bengal', 'coastal erosion protection India', 'community-led mangrove project', 'climate change adaptation NGO', 'restore mangroves AIM Foundation'],
+  keywords: [
+    'AIM Foundation',
+    'TideShield initiative',
+    'Sundarbans mangrove restoration',
+    'Bali Island climate resilience',
+    'Cyclone Amphan Yaas recovery',
+    'mangrove plantation West Bengal',
+    'coastal erosion protection India',
+    'community-led mangrove project',
+    'climate change adaptation NGO',
+    'restore mangroves AIM Foundation'
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -27,7 +37,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/tideshield-restoring-mangroves',
     title: 'TideShield Mangrove Restoration | AIM Foundation',
     description: 'AIM Foundation’s TideShield restores Sundarbans mangroves on Bali Island, protecting families from cyclones, erosion, and climate change impacts.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -58,9 +67,7 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-tideshield-blog"
       />
       <TideShieldBlogPage />
