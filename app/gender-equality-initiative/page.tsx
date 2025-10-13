@@ -1,8 +1,7 @@
-
 import type { Metadata } from 'next';
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
+import { Card, CardContent, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
@@ -31,11 +30,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@aimindiango',
-    url: 'https://aimindia.org.in/gender-equality-initiative',
     title: 'Gender Equality by AIM Foundation: Women Empowerment',
     description: 'AIM Foundation’s Gender Equality Programs empower women and girls through health, skills, and education—building confidence, independence, and equity.',
     images: ['https://aimindia.org.in/home.avif'],
+    site: '@aimindiango',
   },
   alternates: {
     canonical: '/gender-equality-initiative',
@@ -45,35 +43,35 @@ export const metadata: Metadata = {
 const initiatives = [
   {
     title: "SheConnects",
-    description: "empowers rural women through cervical health education and cancer screenings. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.",
+    description: "Empowers rural women through cervical health education and cancer screenings, organizing community camps and training frontline workers.",
     image: "https://placehold.co/600x400.png",
     hint: "women networking",
     link: "/sheconnects?from=gender-equality"
   },
   {
     title: "CycleSafe",
-    description: "empowers underprivileged adolescent girls in and around Kolkata by promoting menstrual hygiene, cervical health awareness, and reproductive well-being. Through monthly sanitary napkin distribution and educational sessions, the initiative breaks taboos, builds knowledge, and fosters confidence—ensuring dignity, health, and equal opportunities for young girls to thrive.",
+    description: "Promotes menstrual hygiene and reproductive health for adolescent girls in and around Kolkata, fostering confidence and dignity.",
     image: "/images/projects/cyclesafe/cyclesafe3.avif",
     hint: "menstrual hygiene",
     link: "/cyclesafe?from=gender-equality"
   },
   {
     title: "Detect",
-    description: "empowers rural women through cervical health education and cancer screenings. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.",
+    description: "Rural women empowerment through cervical health education and cancer screenings in collaboration with local health institutions.",
     image: "/images/projects/detect/detect2.avif",
     hint: "mother child health",
     link: "/detect?from=gender-equality"
   },
   {
     title: "SuiDhaga",
-    description: "empowers women through hands-on training in tailoring and embroidery, helping them transform traditional skills into sources of income. By providing practical vocational education, the initiative equips women with the tools they need to gain financial independence, uplift their families, and take confident steps toward a more self-reliant future.",
+    description: "Hands-on tailoring and embroidery training empowering women to earn income and gain financial independence.",
     image: "/images/projects/suidhaga/suidhaga1.avif",
     hint: "women sewing",
     link: "/suidhaga?from=gender-equality"
   },
   {
     title: "Krishti",
-    description: "is the next step for women trained through SuiDhaga, nurturing their journey from skill to self-reliance. By providing access to modern production setups and marketing support, Krishti empowers women to become entrepreneurs—transforming their craft into livelihood, their passion into purpose, and their efforts into lasting financial independence.",
+    description: "Supports women trained through SuiDhaga with production and marketing access, fostering entrepreneurship and sustainable livelihoods.",
     image: "/images/projects/krishti/krishti1.avif",
     hint: "women traditional art",
     link: "/krishti?from=gender-equality"
@@ -81,21 +79,22 @@ const initiatives = [
 ];
 
 export default function GenderEqualityInitiativesPage() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
     "logo": "https://www.aimindia.org.in/logo.png",
     "sameAs": [
-        "https://www.facebook.com/aimindiango/",
-        "https://x.com/aimindiango",
-        "https://www.instagram.com/aimfoundation_ngo/",
-        "https://www.linkedin.com/in/aim-foundation-ngo/",
-        "https://www.youtube.com/@aimfoundation2604"
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
     ],
     "description": "AIM Foundation’s Gender Equality Programs empower women and girls through health, skills, and education—building confidence, independence, and equity."
   };
+
   return (
     <>
       <script
