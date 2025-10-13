@@ -1,18 +1,32 @@
-
 import type { Metadata } from 'next';
 import SoulCircleClientPage from './SoulCircleClientPage';
 
 export const metadata: Metadata = {
   title: 'SoulCircle by AIM Foundation: 24/7 Mental Health Support',
-  description: 'AIM Foundation’s SoulCircle offers 24/7 AI-powered emotional support, mood tracking, and mindfulness tools to make mental health care accessible to all.',
-  keywords: ['AIM Foundation', 'SoulCircle', 'AI mental health support', '24/7 emotional care', 'online counselling India', 'AI therapy app', 'stress and anxiety relief', 'mental health chatbot', 'mood tracking app', 'mindfulness AI', 'youth mental health support', 'digital emotional wellness'],
+  description:
+    'AIM Foundation’s SoulCircle offers 24/7 AI-powered emotional support, mood tracking, and mindfulness tools to make mental health care accessible to all.',
+  keywords: [
+    'AIM Foundation',
+    'SoulCircle',
+    'AI mental health support',
+    '24/7 emotional care',
+    'online counselling India',
+    'AI therapy app',
+    'stress and anxiety relief',
+    'mental health chatbot',
+    'mood tracking app',
+    'mindfulness AI',
+    'youth mental health support',
+    'digital emotional wellness',
+  ],
   authors: [{ name: 'AIM Foundation' }],
   robots: 'index, follow',
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/soulcircle',
     title: 'SoulCircle by AIM Foundation: 24/7 Mental Health Support',
-    description: 'AIM Foundation’s SoulCircle offers 24/7 AI-powered emotional support, mood tracking, and mindfulness tools to make mental health care accessible to all.',
+    description:
+      'AIM Foundation’s SoulCircle offers 24/7 AI-powered emotional support, mood tracking, and mindfulness tools to make mental health care accessible to all.',
     images: [
       {
         url: 'https://aimindia.org.in/home.avif',
@@ -27,9 +41,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/soulcircle',
     title: 'SoulCircle by AIM Foundation: 24/7 Mental Health Support',
-    description: 'AIM Foundation’s SoulCircle offers 24/7 AI-powered emotional support, mood tracking, and mindfulness tools to make mental health care accessible to all.',
+    description:
+      'AIM Foundation’s SoulCircle offers 24/7 AI-powered emotional support, mood tracking, and mindfulness tools to make mental health care accessible to all.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
@@ -38,29 +52,28 @@ export const metadata: Metadata = {
 };
 
 export default function SoulCirclePage() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-        "https://www.facebook.com/aimindiango/",
-        "https://x.com/aimindiango",
-        "https://www.instagram.com/aimfoundation_ngo/",
-        "https://www.linkedin.com/in/aim-foundation-ngo/",
-        "https://www.youtube.com/@aimfoundation2604"
+    name: "AIM Foundation",
+    url: "https://www.aimindia.org.in/",
+    logo: "https://www.aimindia.org.in/logo.png",
+    sameAs: [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604",
     ],
-    "description": "AIM Foundation’s SoulCircle offers 24/7 AI-powered emotional support, mood tracking, and mindfulness tools to make mental health care accessible to all."
+    description:
+      "AIM Foundation’s SoulCircle offers 24/7 AI-powered emotional support, mood tracking, and mindfulness tools to make mental health care accessible to all.",
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-soulcircle"
       />
       <SoulCircleClientPage />

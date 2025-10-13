@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import SheConnectsClientPage from './SheConnectsClientPage';
 import { Suspense } from 'react';
@@ -7,7 +6,14 @@ import { Skeleton } from '@/components/ui/skeleton';
 export const metadata: Metadata = {
   title: 'AIM Foundation | SheConnects, Women Digital Empowerment',
   description: 'AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth.',
-  keywords: ['AIM Foundation SheConnects', 'women digital empowerment India', 'digital literacy for women', 'women entrepreneurship training', 'cyber safety awareness', 'AIM Foundation women programs'],
+  keywords: [
+    'AIM Foundation SheConnects',
+    'women digital empowerment India',
+    'digital literacy for women',
+    'women entrepreneurship training',
+    'cyber safety awareness',
+    'AIM Foundation women programs',
+  ],
   authors: [{ name: 'AIM Foundation' }],
   robots: 'index, follow',
   openGraph: {
@@ -16,12 +22,12 @@ export const metadata: Metadata = {
     title: 'AIM Foundation | SheConnects, Women Digital Empowerment',
     description: 'AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth.',
     images: [
-        {
-            url: 'https://aimindia.org.in/home.avif',
-            width: 1200,
-            height: 630,
-            alt: 'AIM Foundation SheConnects Program',
-        },
+      {
+        url: 'https://aimindia.org.in/home.avif',
+        width: 1200,
+        height: 630,
+        alt: 'AIM Foundation SheConnects Program',
+      },
     ],
     siteName: 'AIM Foundation',
     locale: 'en_IN',
@@ -47,11 +53,11 @@ export default function SheConnectsPage() {
     "url": "https://www.aimindia.org.in/",
     "logo": "https://www.aimindia.org.in/logo.png",
     "sameAs": [
-        "https://www.facebook.com/aimindiango/",
-        "https://x.com/aimindiango",
-        "https://www.instagram.com/aimfoundation_ngo/",
-        "https://www.linkedin.com/in/aim-foundation-ngo/",
-        "https://www.youtube.com/@aimfoundation2604"
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
     ],
     "description": "AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth."
   };
@@ -60,9 +66,7 @@ export default function SheConnectsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-sheconnects"
       />
       <Suspense fallback={<Skeleton className="h-screen w-full" />}>

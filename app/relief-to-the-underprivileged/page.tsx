@@ -3,7 +3,8 @@ import ReliefClientPage from './ReliefClientPage';
 
 export const metadata: Metadata = {
   title: 'Relief to Underprivileged by AIM Foundation: Support & Aid',
-  description: 'AIM Foundation’s Relief to the Underprivileged program provides food, water, clothing, and essentials to marginalized families, restoring hope and dignity.',
+  description:
+    'AIM Foundation’s Relief to the Underprivileged program provides food, water, clothing, and essentials to marginalized families, restoring hope and dignity.',
   keywords: [
     'AIM Foundation',
     'relief to underprivileged',
@@ -22,7 +23,8 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://aimindia.org.in/relief-to-the-underprivileged',
     title: 'Relief to Underprivileged by AIM Foundation: Support & Aid',
-    description: 'AIM Foundation’s Relief to the Underprivileged program provides food, water, clothing, and essentials to marginalized families, restoring hope and dignity.',
+    description:
+      'AIM Foundation’s Relief to the Underprivileged program provides food, water, clothing, and essentials to marginalized families, restoring hope and dignity.',
     images: [
       {
         url: 'https://aimindia.org.in/home.avif',
@@ -38,7 +40,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@aimindiango',
     title: 'Relief to Underprivileged by AIM Foundation: Support & Aid',
-    description: 'AIM Foundation’s Relief to the Underprivileged program provides food, water, clothing, and essentials to marginalized families, restoring hope and dignity.',
+    description:
+      'AIM Foundation’s Relief to the Underprivileged program provides food, water, clothing, and essentials to marginalized families, restoring hope and dignity.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
@@ -48,28 +51,27 @@ export const metadata: Metadata = {
 
 export default function ReliefPage() {
   const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AIM Foundation',
+    url: 'https://www.aimindia.org.in/',
+    logo: 'https://www.aimindia.org.in/logo.png',
+    sameAs: [
+      'https://www.facebook.com/aimindiango/',
+      'https://x.com/aimindiango',
+      'https://www.instagram.com/aimfoundation_ngo/',
+      'https://www.linkedin.com/in/aim-foundation-ngo/',
+      'https://www.youtube.com/@aimfoundation2604',
     ],
-    "description": "AIM Foundation’s Relief to the Underprivileged program provides food, water, clothing, and essentials to marginalized families, restoring hope and dignity."
+    description:
+      'AIM Foundation’s Relief to the Underprivileged program provides food, water, clothing, and essentials to marginalized families, restoring hope and dignity.',
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-relief"
       />
       <ReliefClientPage />

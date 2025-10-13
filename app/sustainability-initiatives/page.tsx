@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
@@ -9,32 +8,36 @@ import Link from "next/link";
 const initiatives = [
   {
     title: "GreenRoots",
-    description: "aims to promote reforestation in areas where land acquisition is not feasible. By distributing saplings directly to villagers, the project overcomes space constraints and fosters active community involvement in afforestation efforts. This grassroots approach helps expand local green cover in a sustainable and inclusive manner.",
+    description:
+      "aims to promote reforestation in areas where land acquisition is not feasible. By distributing saplings directly to villagers, the project overcomes space constraints and fosters active community involvement in afforestation efforts. This grassroots approach helps expand local green cover in a sustainable and inclusive manner.",
     image: "/images/projects/sustainability/sustainablity4.avif",
     hint: "Tree Plantation and Distribution",
-    link: "/green-roots"
+    link: "/green-roots",
   },
   {
     title: "TideShield",
-    description: "is a mangrove restoration initiative on Bali Island in the Sundarbans, launched to revive ecosystems damaged by cyclones Amphan and Yaas. By planting native mangrove species and involving local communities, the project strengthens coastal resilience, prevents erosion, and restores biodiversity along vulnerable shorelines.",
+    description:
+      "is a mangrove restoration initiative on Bali Island in the Sundarbans, launched to revive ecosystems damaged by cyclones Amphan and Yaas. By planting native mangrove species and involving local communities, the project strengthens coastal resilience, prevents erosion, and restores biodiversity along vulnerable shorelines.",
     image: "/images/projects/tide-shield/tide-shield2.avif",
-    hint: "mangrove restoration",
-    link: "/tideshield?from=sustainability"
+    hint: "Mangrove Restoration",
+    link: "/tideshield?from=sustainability",
   },
   {
     title: "Roots of Change",
-    description: "is AIM Foundation’s environmental education initiative aimed at cultivating awareness and sustainable habits. Through expert-led seminars, engaging workshops, and impactful learning materials, we empower students, communities, and leaders to take informed action for a greener, more resilient future—starting from the roots.",
+    description:
+      "is AIM Foundation’s environmental education initiative aimed at cultivating awareness and sustainable habits. Through expert-led seminars, engaging workshops, and impactful learning materials, we empower students, communities, and leaders to take informed action for a greener, more resilient future—starting from the roots.",
     image: "/images/projects/sustainability/sustainability3.avif",
-    hint: "environmental education",
-    link: "/roots-of-change?from=sustainability"
+    hint: "Environmental Education",
+    link: "/roots-of-change?from=sustainability",
   },
   {
     title: "Forest Cleaning",
-    description: "is our hands-on initiative to restore natural habitats by organizing large-scale forest cleaning drives. We mobilize volunteers to remove plastic and other non-biodegradable waste, helping to preserve biodiversity and protect wildlife from the harmful effects of pollution.",
+    description:
+      "is our hands-on initiative to restore natural habitats by organizing large-scale forest cleaning drives. We mobilize volunteers to remove plastic and other non-biodegradable waste, helping to preserve biodiversity and protect wildlife from the harmful effects of pollution.",
     image: "/images/projects/forest-cleaning/forest-cleaning1.avif",
-    hint: "forest cleaning volunteer",
-    link: "/forest-cleaning?from=sustainability"
-  }
+    hint: "Forest Cleaning Volunteer",
+    link: "/forest-cleaning?from=sustainability",
+  },
 ];
 
 export default function SustainabilityInitiativesPage() {
@@ -42,19 +45,20 @@ export default function SustainabilityInitiativesPage() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
+        {/* Banner */}
         <section className="relative w-full">
-          <div className="relative w-full">
+          <div className="relative w-full h-[580px] md:h-[580px]">
             <Image
               src="/images/banner/environment.avif"
               alt="Sustainability Initiatives Banner"
-              width={1920}
-              height={580}
-              className="w-full h-auto object-cover"
+              fill
+              className="object-cover"
               data-ai-hint="sustainable environment"
+              priority
             />
           </div>
-          <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
-            <div className="relative z-10 text-left">
+          <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent p-8 md:p-12">
+            <div className="relative z-10 text-left text-white">
               <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Sustainability Initiatives
               </h1>
@@ -65,17 +69,24 @@ export default function SustainabilityInitiativesPage() {
           </div>
         </section>
 
+        {/* Initiatives Grid */}
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Sustainability Programs</h2>
+              <h2 className="text-3xl md:text-4xl font-bold font-headline">
+                Our Sustainability Programs
+              </h2>
               <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                We are committed to creating a sustainable future through environmental protection, conservation, and education.
+                We are committed to creating a sustainable future through environmental protection,
+                conservation, and education.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {initiatives.map((item, index) => (
-                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <Card
+                  key={index}
+                  className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
+                >
                   <div className="relative w-full h-48">
                     <Image
                       src={item.image}
@@ -88,9 +99,15 @@ export default function SustainabilityInitiativesPage() {
                   </div>
                   <CardContent className="p-6 flex flex-col flex-grow">
                     <CardTitle className="font-headline mb-2">{item.title}</CardTitle>
-                    <CardDescription className="flex-grow text-justify">{item.description}</CardDescription>
-                    <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
-                      <Link href={item.link || "#"}>Learn More &rarr;</Link>
+                    <CardDescription className="flex-grow text-justify">
+                      {item.description}
+                    </CardDescription>
+                    <Button
+                      asChild
+                      variant="link"
+                      className="p-0 mt-4 self-start transition-transform transform hover:scale-105"
+                    >
+                      <Link href={item.link}>Learn More &rarr;</Link>
                     </Button>
                   </CardContent>
                 </Card>

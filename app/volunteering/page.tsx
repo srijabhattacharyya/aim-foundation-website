@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
@@ -10,7 +9,18 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Volunteer with AIM Foundation in Kolkata & Beyond',
   description: 'Join AIM Foundation’s volunteer programs in Kolkata or online. Support healthcare, education, women empowerment, and more. Make real impact, gain experience.',
-  keywords: ["AIM Foundation volunteer opportunities", "AIM Foundation internships", "NGO careers India", "join AIM Foundation", "social work internships India", "NGO volunteer programs", "careers with purpose NGO", "student internships NGO India", "non profit jobs India", "community service AIM Foundation"],
+  keywords: [
+    "AIM Foundation volunteer opportunities",
+    "AIM Foundation internships",
+    "NGO careers India",
+    "join AIM Foundation",
+    "social work internships India",
+    "NGO volunteer programs",
+    "careers with purpose NGO",
+    "student internships NGO India",
+    "non profit jobs India",
+    "community service AIM Foundation"
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -32,7 +42,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/volunteering',
     title: 'Volunteer with AIM Foundation in Kolkata & Beyond',
     description: 'Join AIM Foundation’s volunteer programs in Kolkata or online. Support healthcare, education, women empowerment, and more. Make real impact, gain experience.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -43,7 +52,7 @@ export const metadata: Metadata = {
 };
 
 export default function VolunteeringPage() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
@@ -58,15 +67,14 @@ export default function VolunteeringPage() {
     ],
     "description": "Join AIM Foundation’s volunteer programs in Kolkata or online. Support healthcare, education, women empowerment, and more. Make real impact, gain experience."
   };
+
   return (
     <div className="flex flex-col min-h-screen">
-       <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaMarkup),
-          }}
-          key="org-schema-volunteering"
-        />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-volunteering"
+      />
       <Navbar />
       <main className="flex-grow">
         <section className="relative w-full">
@@ -124,7 +132,7 @@ export default function VolunteeringPage() {
                   <li>Graphic design & content creation</li>
                   <li>IT support & website development</li>
                 </ul>
-                 <p>Whether you're a student, professional, or retiree, your talents can make a big impact—no matter where you are.</p>
+                <p>Whether you're a student, professional, or retiree, your talents can make a big impact—no matter where you are.</p>
 
                 <h2 className="text-3xl md:text-4xl font-bold font-headline pt-8">Why Volunteer with AIM Foundation?</h2>
                 <ul className="list-disc list-inside space-y-2 pl-4">
@@ -135,16 +143,16 @@ export default function VolunteeringPage() {
                 </ul>
 
                 <div className="bg-card p-6 rounded-lg shadow-md mt-10 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold font-headline">Ready to Get Involved?</h2>
-                    <p className="mt-4">
+                  <h2 className="text-3xl md:text-4xl font-bold font-headline">Ready to Get Involved?</h2>
+                  <p className="mt-4">
                     Before applying, please explore our <Link href="https://drive.google.com/file/d/19mRFXZ8nxvQI0xkrHUlKz0DYKfIipKwe/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Volunteer Orientation Handbook</Link> and review our <Link href="https://drive.google.com/file/d/1W_-oJZuCIOfPbbMqpA5dVDzYL1l0udN5/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Code of Conduct for Working with Children & Young People</Link>.
-                    </p>
-                    <p className="mt-4 font-semibold">
+                  </p>
+                  <p className="mt-4 font-semibold">
                     Join Us & Be the Change You Wish to See!
-                    </p>
-                    <p className="mt-4">
-                        Start your journey of purpose and compassion—Apply now to volunteer with AIM Foundation! Write to: <ContactEmail />
-                    </p>
+                  </p>
+                  <p className="mt-4">
+                    Start your journey of purpose and compassion—Apply now to volunteer with AIM Foundation! Write to: <ContactEmail />
+                  </p>
                 </div>
 
               </div>

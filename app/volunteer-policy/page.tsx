@@ -1,19 +1,48 @@
-
+import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
 
+export const metadata: Metadata = {
+  title: 'Volunteer Policy | AIM Foundation',
+  description: 'Learn about AIM Foundation’s volunteer policy, rights, responsibilities, code of conduct, and opportunities for meaningful engagement.',
+  keywords: ['AIM Foundation volunteer policy', 'NGO volunteering India', 'volunteer rights', 'volunteer code of conduct', 'volunteer opportunities'],
+  robots: 'index, follow',
+  alternates: { canonical: '/volunteer-policy' },
+};
+
 export default function VolunteerPolicyPage() {
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "AIM Foundation",
+    url: "https://aimindia.org.in/",
+    logo: "https://aimindia.org.in/logo.png",
+    sameAs: [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
+    ],
+    description: "Learn about AIM Foundation’s volunteer policy, rights, responsibilities, and volunteering opportunities.",
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-volunteer"
+      />
       <Navbar />
       <main className="flex-grow bg-muted py-12 md:py-20 lg:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-lg">
+          <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
               Volunteer Policy
             </h1>
-            <div className="space-y-6 text-muted-foreground text-justify">
+            <div className="space-y-6 text-muted-foreground text-justify break-words">
               <p>
                 Volunteers are the heart of Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), helping us drive positive change in communities through education, health, empowerment, and social development initiatives. This Volunteer Policy outlines the principles, expectations, and procedures for engaging volunteers ethically, respectfully, and effectively.
               </p>

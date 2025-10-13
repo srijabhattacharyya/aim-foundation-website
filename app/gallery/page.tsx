@@ -6,6 +6,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { fetchGalleryImages } from "@/app/actions/adminActions";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // Define GalleryImage type
 export interface GalleryImage {
@@ -15,25 +17,6 @@ export interface GalleryImage {
   status: string;
   sequence: number;
   imageUrl: string;
-}
-
-// Mock fetch function (replace with your real API call)
-async function fetchGalleryImages(): Promise<Partial<GalleryImage>[]> {
-  // Example: API might only return partial data
-  return [
-    {
-      id: "1",
-      createdAt: new Date().toISOString(),
-      imageUrl: "/images/projects/book/book-distribution.avif",
-      description: "Book distribution to underprivileged children",
-    },
-    {
-      id: "2",
-      createdAt: new Date().toISOString(),
-      imageUrl: "/images/projects/cureline/cureline1.avif",
-      description: "Healthcare camp in remote village",
-    },
-  ];
 }
 
 export default function GalleryPage() {
@@ -46,16 +29,16 @@ export default function GalleryPage() {
       try {
         const fetchedImages = await fetchGalleryImages();
   
-        const galleryImages: GalleryImage[] = fetchedImages.map((img) => ({
-          id: img.id ?? "",
+        const galleryImages: GalleryImage[] = fetchedImages.map((img: any) => ({
+          id: img.id ?? crypto.randomUUID(),
           createdAt: img.createdAt ?? new Date().toISOString(),
           description: img.description ?? "",
-          status: img.status ?? "active",
+          status: img.status ?? "Active",
           sequence: img.sequence ?? 0,
           imageUrl: img.imageUrl ?? "",
         }));
   
-        setImages(galleryImages);
+        setImages(galleryImages.filter(img => img.status === 'Active').sort((a, b) => a.sequence - b.sequence));
       } catch (err: any) {
         console.error("Error fetching gallery images:", err);
         toast({
@@ -85,7 +68,15 @@ export default function GalleryPage() {
             </div>
 
             {loading ? (
-              <p className="text-center text-lg">Loading images...</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[...Array(9)].map((_, i) => (
+                  <Card key={i} className="overflow-hidden shadow-lg">
+                    <CardContent className="relative aspect-[3/2] w-full p-0 overflow-hidden">
+                      <Skeleton className="w-full h-full" />
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {images.map((image) => (
