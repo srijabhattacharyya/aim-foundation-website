@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
     type: 'website',
-    url: 'https://aimindia.org.in/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu',
     title: 'Milieu by AIM Foundation | Building Empathy & Inclusion',
     description: 'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
     images: [
