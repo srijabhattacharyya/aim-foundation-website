@@ -2,8 +2,8 @@
   "gallery": [
     {
       "id": "0",
-      "src": "/images/projects/book-distribution.avif",
-      "alt": "Distributing books to children",
+      "src": "/images/projects/book/book-distribution.avif",
+      "alt": "Distributing books to underprivilegde children",
       "width": 600,
       "height": 400,
       "hint": "book distribution",
@@ -11,25 +11,25 @@
     },
     {
       "id": "1",
-      "src": "https://picsum.photos/seed/gal1/600/400",
-      "alt": "Community health camp in a village",
+      "src": "/images/projects/cureline/cureline1.avif",
+      "alt": "Community health camp in Bali Island, Sundarbans, 24 Parganas (S)",
       "width": 600,
       "height": 400,
       "hint": "health camp",
-      "description": "Providing free medical check-ups at a rural health camp."
+      "description": "Community health camp in Bali Island, Sundarbans, 24 Parganas (S)"
     },
     {
       "id": "2",
-      "src": "https://picsum.photos/seed/gal2/600/400",
-      "alt": "Children learning in an outdoor classroom",
+      "src": "/images/projects/forest-cleaning/forest-cleaning1.avif",
+      "alt": "Cleaning of Garumara Forest",
       "width": 600,
       "height": 400,
       "hint": "children education",
-      "description": "Engaging students with interactive learning sessions."
+      "description": "Cleaning of Garumara National Park, in association with Dept. of Forest, Govt, of West Bengal"
     },
     {
       "id": "3",
-      "src": "https://picsum.photos/seed/gal3/600/400",
+      "src": "/images/projects/tide-shield/tide-shield2.avif",
       "alt": "Volunteers planting mangrove saplings",
       "width": 600,
       "height": 400,
@@ -38,8 +38,8 @@
     },
     {
       "id": "4",
-      "src": "https://picsum.photos/seed/gal4/600/400",
-      "alt": "Woman learning tailoring on a sewing machine",
+      "src": "/images/projects/suidhaga/suidhaga1.avif",
+      "alt": "Woman learning embroadary on a sewing machine",
       "width": 600,
       "height": 400,
       "hint": "women empowerment",
@@ -47,7 +47,7 @@
     },
     {
       "id": "5",
-      "src": "https://picsum.photos/seed/gal5/600/400",
+      "src": "/images/projects/sighthope/sighthope1.avif",
       "alt": "An elderly person getting an eye check-up",
       "width": 600,
       "height": 400,
@@ -56,7 +56,7 @@
     },
     {
       "id": "6",
-      "src": "https://picsum.photos/seed/gal6/600/400",
+      "src": "/images/projects/relief/relief4.avif",
       "alt": "Volunteers distributing relief kits during a flood",
       "width": 600,
       "height": 400,
@@ -65,7 +65,7 @@
     },
     {
       "id": "7",
-      "src": "https://picsum.photos/seed/gal7/600/400",
+      "src": "/images/projects/innocent-smiles/innocent-smiles1.avif",
       "alt": "Children participating in an art workshop",
       "width": 600,
       "height": 400,
@@ -74,12 +74,12 @@
     },
     {
       "id": "8",
-      "src": "https://picsum.photos/seed/gal8/600/400",
-      "alt": "A group of women in a digital literacy class",
+      "src": "/images/projects/krishti/krishti1.avif",
+      "alt": "Women Empowerment through Krishti",
       "width": 600,
       "height": 400,
       "hint": "digital literacy",
-      "description": "Bridging the digital divide with our SheConnects program."
+      "description": "She Creates. Krishti Elevates"
     },
     {
       "id": "9",

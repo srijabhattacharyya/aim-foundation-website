@@ -7,7 +7,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import imageData from '../lib/placeholder-images.json';
+import imageData from 'app/lib/placeholder-images.json';
 
 export interface GalleryImage {
   id: string;
@@ -54,7 +54,7 @@ export default function GalleryPage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {images.map((image) => (
+                {images.map((image, index) => (
                   <Card
                     key={image.id}
                     className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group"
@@ -68,7 +68,7 @@ export default function GalleryPage() {
                         data-ai-hint={image.hint}
                         className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        loading="lazy"
+                        loading={index > 2 ? 'lazy' : 'eager'}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="p-4 absolute bottom-0 text-white">
