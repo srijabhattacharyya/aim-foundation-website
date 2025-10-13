@@ -2,7 +2,7 @@
   "gallery": [
     {
       "id": "0",
-      "src": "/images/projects/book/book-distribution.avif",
+      "src": "/images/projects/book-distribution.avif",
       "alt": "Distributing books to children",
       "width": 600,
       "height": 400,
@@ -11,25 +11,25 @@
     },
     {
       "id": "1",
-      "src": "/images/projects/cureline/cureline1.avif",
+      "src": "https://picsum.photos/seed/gal1/600/400",
       "alt": "Community health camp in a village",
       "width": 600,
       "height": 400,
       "hint": "health camp",
-      "description": "Providing free medical check-ups at Bali Island Sundarbans, 24 Parganas (S)."
+      "description": "Providing free medical check-ups at a rural health camp."
     },
     {
       "id": "2",
-      "src": "/images/projects/innocent-smiles/innocent-smiles2.avif",
-      "alt": "Children learning in an creativity classes",
+      "src": "https://picsum.photos/seed/gal2/600/400",
+      "alt": "Children learning in an outdoor classroom",
       "width": 600,
       "height": 400,
       "hint": "children education",
-      "description": "Engaging children with creative works"
+      "description": "Engaging students with interactive learning sessions."
     },
     {
       "id": "3",
-      "src": "/images/projects/tide-shield/tide-shield2.avif",
+      "src": "https://picsum.photos/seed/gal3/600/400",
       "alt": "Volunteers planting mangrove saplings",
       "width": 600,
       "height": 400,
@@ -38,8 +38,8 @@
     },
     {
       "id": "4",
-      "src": "/images/projects/suidhaga/suidhaga1.avif",
-      "alt": "Woman learning embroidary on a sewing machine",
+      "src": "https://picsum.photos/seed/gal4/600/400",
+      "alt": "Woman learning tailoring on a sewing machine",
       "width": 600,
       "height": 400,
       "hint": "women empowerment",
@@ -47,7 +47,7 @@
     },
     {
       "id": "5",
-      "src": "/images/projects/sighthope/sighthope1.avif",
+      "src": "https://picsum.photos/seed/gal5/600/400",
       "alt": "An elderly person getting an eye check-up",
       "width": 600,
       "height": 400,
@@ -56,7 +56,7 @@
     },
     {
       "id": "6",
-      "src": "/images/projects/relief/relief4.avif",
+      "src": "https://picsum.photos/seed/gal6/600/400",
       "alt": "Volunteers distributing relief kits during a flood",
       "width": 600,
       "height": 400,
@@ -65,7 +65,7 @@
     },
     {
       "id": "7",
-      "src": "/images/projects/innocent-smiles/innocent-smiles1.avif",
+      "src": "https://picsum.photos/seed/gal7/600/400",
       "alt": "Children participating in an art workshop",
       "width": 600,
       "height": 400,
@@ -74,57 +74,57 @@
     },
     {
       "id": "8",
-      "src": "/images/projects/krishti/krishti1.avif",
-      "alt": "Women Empowerment through Krishti",
+      "src": "https://picsum.photos/seed/gal8/600/400",
+      "alt": "A group of women in a digital literacy class",
       "width": 600,
       "height": 400,
       "hint": "digital literacy",
-      "description": "She Creates. Krishti Elevates."
+      "description": "Bridging the digital divide with our SheConnects program."
     },
     {
       "id": "9",
-      "src": "/images/projects/empower-english/empower-english2.avif",
-      "alt": "Empower Underprivileged children through English Training",
+      "src": "https://picsum.photos/seed/gal9/600/400",
+      "alt": "Community members at an environmental awareness session",
       "width": 600,
       "height": 400,
       "hint": "environmental awareness",
-      "description": "Empower Underprivileged children through English Training"
+      "description": "Planting seeds of change with our Roots of Change initiative."
     },
     {
       "id": "10",
-      "src": "/images/projects/empower-english/empower-english.avif",
-      "alt": "Underprivileged children getting health drink during class",
+      "src": "https://picsum.photos/seed/gal10/600/400",
+      "alt": "A smiling child holding a new book",
       "width": 600,
       "height": 400,
-      "hint": "child nutrition",
-      "description": "Providing nutritious health drink during the class to combat malnutrition."
+      "hint": "child reading",
+      "description": "The joy of learning with a new book in hand."
     },
     {
       "id": "11",
-      "src": "/images/projects/cyclesafe/cyclesafe3.avif",
-      "alt": "Distribution os Sanitary Napkins",
-      "width": 600,
-      "height": 400,
-      "hint": "community volunteer",
-      "description": "Distribution os Sanitary Napkins"
-    },
-    {
-      "id": "12",
-      "src": "https://picsum.photos/seed/gal10/600/400",
-      "alt": "Volunteers at a community event",
+      "src": "https://picsum.photos/seed/gal11/600/400",
+      "alt": "A group of volunteers posing together",
       "width": 600,
       "height": 400,
       "hint": "community volunteer",
       "description": "Volunteers coming together to support a community event."
     },
     {
-      "id": "13",
-      "src": "/images/projects/digiempower/digiempower1.avif",
-      "alt": "Children of Rangakhila, forest Village of Purba Bardhaman, getting Computer Literacy",
+      "id": "12",
+      "src": "https://picsum.photos/seed/gal12/600/400",
+      "alt": "A nutritious meal being served",
       "width": 600,
       "height": 400,
       "hint": "child nutrition",
-      "description": "Providing Computer Litaracy to the Children of Rangakhila, forest village of Purba Bardhaman, West Bengal"
+      "description": "Providing nutritious meals to combat malnutrition."
+    },
+    {
+      "id": "13",
+      "src": "https://picsum.photos/seed/gal13/600/400",
+      "alt": "A woman proudly displaying her handcrafted goods",
+      "width": 600,
+      "height": 400,
+      "hint": "local artisan",
+      "description": "Supporting local artisans and their craft."
     }
   ]
 }
