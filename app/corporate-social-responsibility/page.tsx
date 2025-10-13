@@ -30,7 +30,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/corporate-social-responsibility',
     title: 'CSR with AIM Foundation | Corporate Social Responsibility India',
     description: 'Partner with AIM Foundation for impactful CSR initiatives in India. Build brand trust, support communities, and align with SDGs through sustainable projects.',
     images: ['https://aimindia.org.in/home.avif'],
