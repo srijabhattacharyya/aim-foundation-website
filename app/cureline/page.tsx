@@ -1,11 +1,16 @@
-
 import type { Metadata } from 'next';
 import CureLineClientPage from './CureLineClientPage';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation | CureLine Frontline Healthcare Services',
   description: 'CureLine by AIM Foundation delivers essential healthcare to remote villages, forest areas, and disaster-hit regions with free camps, medicines, and doctors.',
-  keywords: ['AIM Foundation CureLine', 'rural healthcare camps', 'frontline healthcare India', 'free medical services West Bengal', 'healthcare for remote villages', 'disaster relief medical aid', 'AIM Foundation health initiative', 'mobile health camps India', 'community healthcare support', 'free medicines and consultations'],
+  keywords: [
+    'AIM Foundation CureLine', 'rural healthcare camps', 'frontline healthcare India', 
+    'free medical services West Bengal', 'healthcare for remote villages', 
+    'disaster relief medical aid', 'AIM Foundation health initiative', 
+    'mobile health camps India', 'community healthcare support', 
+    'free medicines and consultations'
+  ],
   authors: [{ name: 'AIM Foundation' }],
   robots: 'index, follow',
   openGraph: {
@@ -38,31 +43,30 @@ export const metadata: Metadata = {
 };
 
 export default function CureLinePage() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
     "logo": "https://www.aimindia.org.in/logo.png",
     "sameAs": [
-        "https://www.facebook.com/aimindiango/",
-        "https://x.com/aimindiango",
-        "https://www.instagram.com/aimfoundation_ngo/",
-        "https://www.linkedin.com/in/aim-foundation-ngo/",
-        "https://www.youtube.com/@aimfoundation2604"
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
     ],
     "description": "CureLine by AIM Foundation delivers essential healthcare to remote villages, forest areas, and disaster-hit regions with free camps, medicines, and doctors."
-    };
+  };
+
   return (
     <>
       <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaMarkup),
-          }}
-          key="org-schema-cureline"
-        />
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-cureline"
+      />
       <CureLineClientPage />
     </>
-    );
+  );
 }
