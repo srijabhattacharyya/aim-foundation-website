@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import ChildFirstClientPage from './ChildFirstClientPage';
 import { Suspense } from 'react';
@@ -7,7 +6,12 @@ import { Skeleton } from '@/components/ui/skeleton';
 export const metadata: Metadata = {
   title: 'ChildFirst Healthcare | AIM Foundation Child Support',
   description: 'ChildFirst by AIM Foundation provides healthcare, nutrition, and hope to children of sex workers in Rambagan and Sonagachi through free camps and medicines.',
-  keywords: ['AIM Foundation', 'ChildFirst AIM Foundation', 'healthcare for children', 'child health camps Kolkata', 'Rambagan child healthcare', 'Sonagachi children support', 'NGO healthcare Kolkata', 'child medical camps', 'free medicines for children', 'pediatric healthcare AIM Foundation'],
+  keywords: [
+    'AIM Foundation', 'ChildFirst AIM Foundation', 'healthcare for children', 
+    'child health camps Kolkata', 'Rambagan child healthcare', 'Sonagachi children support', 
+    'NGO healthcare Kolkata', 'child medical camps', 'free medicines for children', 
+    'pediatric healthcare AIM Foundation'
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -29,10 +33,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/childfirst',
     title: 'ChildFirst Healthcare | AIM Foundation Child Support',
     description: 'ChildFirst by AIM Foundation provides healthcare, nutrition, and hope to children of sex workers in Rambagan and Sonagachi through free camps and medicines.',
-    images: ['https://aimindia.org.in/home.avif'],
+    images: ['https://aimindia.org.in/home.avif'], // Removed url property
   },
   alternates: {
     canonical: '/childfirst',
@@ -60,9 +63,7 @@ export default function ChildFirstPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-childfirst"
       />
       <Suspense fallback={<Skeleton className="h-screen w-full" />}>
