@@ -2,7 +2,7 @@
   "gallery": [
     {
       "id": "0",
-      "src": "/images/projects/book-distribution.avif",
+      "src": "/images/projects/book/book-distribution.avif",
       "alt": "Distributing books to children",
       "width": 600,
       "height": 400,
@@ -11,21 +11,21 @@
     },
     {
       "id": "1",
-      "src": "https://picsum.photos/seed/gal1/600/400",
+      "src": "/images/projects/cureline/cureline1.avif",
       "alt": "Community health camp in a village",
       "width": 600,
       "height": 400,
       "hint": "health camp",
-      "description": "Providing free medical check-ups at a rural health camp."
+      "description": "Providing free medical check-ups at Bali Island Sundarbans, 24 Parganas (S)."
     },
     {
       "id": "2",
-      "src": "https://picsum.photos/seed/gal2/600/400",
-      "alt": "Children learning in an outdoor classroom",
+      "src": "/images/projects/innocent-smiles/innocent-smiles2.avif",
+      "alt": "Children learning in an creativity classes",
       "width": 600,
       "height": 400,
       "hint": "children education",
-      "description": "Engaging students with interactive learning sessions."
+      "description": "Engaging children with creative works"
     },
     {
       "id": "3",
@@ -107,6 +107,15 @@
       "height": 400,
       "hint": "community volunteer",
       "description": "Community volunteers collaborating on a project."
+    },
+    {
+      "id": "13",
+      "src": "https://picsum.photos/seed/gal10/600/400",
+      "alt": "A child smiling after receiving a meal",
+      "width": 600,
+      "height": 400,
+      "hint": "child nutrition",
+      "description": "Providing nutritious meals to combat malnutrition."
     }
   ]
 }
