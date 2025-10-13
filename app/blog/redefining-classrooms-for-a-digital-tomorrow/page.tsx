@@ -1,11 +1,19 @@
 
-import type { Metadata } from 'next';
-import InspireEduLabBlogPage from './InspireEduLabBlogPage';
+iimport type { Metadata } from 'next';
+import RedefiningClassroomsBlogPage from './RedefiningClassroomsBlogPage';
 
 export const metadata: Metadata = {
   title: 'Inspire EduLab by AIM Foundation | Digital Classrooms',
-  description: "Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.",
-  keywords: ["EduAccess AIM Foundation", "AIM Foundation education", "rural education West Bengal", "online learning India", "digital classes for rural schools", "Kolkata studio teaching", "spoken English rural students", "Math Science online teaching", "education access India", "bridging learning gap"],
+  description: 'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
+  keywords: [
+    'AIM Foundation EduLab',
+    'digital classrooms India',
+    'smart learning initiatives',
+    'online education for students',
+    '3D lessons for schools',
+    'digital learning NGO',
+    'education technology AIM Foundation'
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -14,12 +22,12 @@ export const metadata: Metadata = {
     title: 'Inspire EduLab by AIM Foundation | Digital Classrooms',
     description: 'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
     images: [
-        {
-            url: 'https://aimindia.org.in/home.avif',
-            width: 1200,
-            height: 630,
-            alt: 'Inspire EduLab by AIM Foundation',
-        },
+      {
+        url: 'https://aimindia.org.in/home.avif',
+        width: 1200,
+        height: 630,
+        alt: 'Inspire EduLab by AIM Foundation',
+      },
     ],
     siteName: 'AIM Foundation',
     locale: 'en_IN',
@@ -27,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/redefining-classrooms-for-a-digital-tomorrow',
+    // ✅ Remove url here
     title: 'Inspire EduLab by AIM Foundation | Digital Classrooms',
     description: 'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -41,28 +49,27 @@ export default function Page() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
+    name: "AIM Foundation",
+    url: "https://aimindia.org.in/",
+    logo: "https://aimindia.org.in/logo.png",
+    sameAs: [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
       "https://www.instagram.com/aimfoundation_ngo/",
       "https://www.linkedin.com/in/aim-foundation-ngo/",
       "https://www.youtube.com/@aimfoundation2604"
     ],
-    "description": "Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students."
+    description: 'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.'
   };
+
   return (
     <>
-       <script
+      <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
-        key="org-schema-inspire-edulab-blog"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-redefining-classrooms-blog"
       />
-      <InspireEduLabBlogPage />
+      <RedefiningClassroomsBlogPage />
     </>
   );
 }
