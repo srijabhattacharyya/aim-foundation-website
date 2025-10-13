@@ -68,7 +68,7 @@ export default function GalleryPage() {
                         data-ai-hint={image.hint}
                         className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        loading={index > 2 ? 'lazy' : 'eager'}
+                        loading={index < 3 ? 'eager' : 'lazy'}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="p-4 absolute bottom-0 text-white">
