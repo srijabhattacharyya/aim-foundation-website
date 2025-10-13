@@ -1,11 +1,21 @@
-
 import type { Metadata } from 'next';
 import EduAccessBlogPage from './EduAccessBlogPage';
 
 export const metadata: Metadata = {
   title: 'EduAccess by AIM Foundation | Bridging Rural Education',
   description: 'EduAccess by AIM Foundation connects rural West Bengal students with expert teachers through online classes, ensuring quality English, Math, and Science learning.',
-  keywords: ['EduAccess AIM Foundation', 'AIM Foundation education', 'rural education West Bengal', 'online learning India', 'digital classes for rural schools', 'Kolkata studio teaching', 'spoken English rural students', 'Math Science online teaching', 'education access India', 'bridging learning gap'],
+  keywords: [
+    'EduAccess AIM Foundation',
+    'AIM Foundation education',
+    'rural education West Bengal',
+    'online learning India',
+    'digital classes for rural schools',
+    'Kolkata studio teaching',
+    'spoken English rural students',
+    'Math Science online teaching',
+    'education access India',
+    'bridging learning gap'
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -27,7 +37,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/teaching-beyond-boundaries',
     title: 'EduAccess by AIM Foundation | Bridging Rural Education',
     description: 'EduAccess by AIM Foundation connects rural West Bengal students with expert teachers through online classes, ensuring quality English, Math, and Science learning.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -53,13 +62,12 @@ export default function Page() {
     ],
     "description": "EduAccess by AIM Foundation connects rural West Bengal students with expert teachers through online classes, ensuring quality English, Math, and Science learning."
   };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-eduaccess-blog"
       />
       <EduAccessBlogPage />
