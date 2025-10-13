@@ -1,11 +1,17 @@
-
 import type { Metadata } from 'next';
 import SheConnectsBlogPage from './SheConnectsBlogPage';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation SheConnects: Women’s Digital Empowerment',
   description: 'AIM Foundation’s SheConnects empowers women with digital skills, online safety, and entrepreneurship training, helping them thrive in the digital economy.',
-  keywords: ["AIM Foundation SheConnects", "women digital empowerment India", "NGO digital literacy program Kolkata", "AIM Foundation digital skills training", "SheConnects women entrepreneurship NGO", "bridging digital gender gap India", "women online safety awareness NGO", "support women digital literacy India", "NGO empowering women with technology", "AIM Foundation women empowerment program"],
+  keywords: [
+    'AIM Foundation SheConnects',
+    'women digital empowerment India',
+    'female entrepreneurship training',
+    'online safety for women',
+    'digital literacy NGO',
+    'women skill development AIM Foundation'
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -27,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/project-sheconnects',
+    // ✅ Remove url here
     title: 'AIM Foundation SheConnects: Women’s Digital Empowerment',
     description: 'AIM Foundation’s SheConnects empowers women with digital skills, online safety, and entrepreneurship training, helping them thrive in the digital economy.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -38,31 +44,30 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
+    name: "AIM Foundation",
+    url: "https://aimindia.org.in/",
+    logo: "https://aimindia.org.in/logo.png",
+    sameAs: [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
       "https://www.instagram.com/aimfoundation_ngo/",
       "https://www.linkedin.com/in/aim-foundation-ngo/",
       "https://www.youtube.com/@aimfoundation2604"
     ],
-    "description": "AIM Foundation’s SheConnects empowers women with digital skills, online safety, and entrepreneurship training, helping them thrive in the digital economy."
+    description: 'AIM Foundation’s SheConnects empowers women with digital skills, online safety, and entrepreneurship training, helping them thrive in the digital economy.'
   };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-sheconnects-blog"
       />
       <SheConnectsBlogPage />
     </>
-    );
+  );
 }
