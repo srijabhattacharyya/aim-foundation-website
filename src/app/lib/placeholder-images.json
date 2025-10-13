@@ -1,6 +1,15 @@
 {
   "gallery": [
     {
+      "id": "0",
+      "src": "/images/projects/book-distribution.avif",
+      "alt": "Distributing books to children",
+      "width": 600,
+      "height": 400,
+      "hint": "book distribution",
+      "description": "Distributing books to empower young minds."
+    },
+    {
       "id": "1",
       "src": "https://picsum.photos/seed/gal1/600/400",
       "alt": "Community health camp in a village",
