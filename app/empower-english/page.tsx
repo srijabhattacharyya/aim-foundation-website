@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import EmpowerEnglishClientPage from './EmpowerEnglishClientPage';
 
@@ -37,31 +36,30 @@ export const metadata: Metadata = {
 };
 
 export default function EmpowerEnglishPage() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
     "logo": "https://www.aimindia.org.in/logo.png",
     "sameAs": [
-        "https://www.facebook.com/aimindiango/",
-        "https://x.com/aimindiango",
-        "https://www.instagram.com/aimfoundation_ngo/",
-        "https://www.linkedin.com/in/aim-foundation-ngo/",
-        "https://www.youtube.com/@aimfoundation2604"
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
     ],
     "description": "AIM Foundation’s Empower English trains underserved students in Kolkata, Bardhaman, and Jalpaiguri with spoken English skills for confidence and opportunity."
-    };
+  };
+
   return (
     <>
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaMarkup),
-            }}
-            key="org-schema-empower-english"
-        />
-        <EmpowerEnglishClientPage />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-empower-english"
+      />
+      <EmpowerEnglishClientPage />
     </>
-    );
+  );
 }
