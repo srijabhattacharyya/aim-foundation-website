@@ -32,7 +32,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/cureline',
     title: 'AIM Foundation | CureLine Frontline Healthcare Services',
     description: 'CureLine by AIM Foundation delivers essential healthcare to remote villages, forest areas, and disaster-hit regions with free camps, medicines, and doctors.',
     images: ['https://aimindia.org.in/home.avif'],
