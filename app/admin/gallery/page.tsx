@@ -47,11 +47,11 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import {
-  fetchGalleryImages,
   addGalleryImage,
   updateGalleryImage,
   deleteGalleryImage,
 } from '@/app/actions/adminActions';
+import { fetchGalleryImages } from '@/app/actions/galleryActions';
 
 // ✅ Interface
 export interface GalleryImage {
@@ -129,7 +129,7 @@ export default function GalleryAdminPage() {
 
   useEffect(() => {
     loadGalleryImages();
-  }, []);
+  }, [toast]);
 
   const handleEdit = (image: GalleryImage) => {
     setEditingImage(image);
