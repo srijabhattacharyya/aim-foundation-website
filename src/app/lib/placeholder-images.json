@@ -1,0 +1,85 @@
+{
+  "gallery": [
+    {
+      "id": "1",
+      "src": "https://picsum.photos/seed/gal1/600/400",
+      "alt": "Community health camp in a village",
+      "width": 600,
+      "height": 400,
+      "hint": "health camp",
+      "description": "Providing free medical check-ups at a rural health camp."
+    },
+    {
+      "id": "2",
+      "src": "https://picsum.photos/seed/gal2/600/400",
+      "alt": "Children learning in an outdoor classroom",
+      "width": 600,
+      "height": 400,
+      "hint": "children education",
+      "description": "Engaging students with interactive learning sessions."
+    },
+    {
+      "id": "3",
+      "src": "https://picsum.photos/seed/gal3/600/400",
+      "alt": "Volunteers planting mangrove saplings",
+      "width": 600,
+      "height": 400,
+      "hint": "mangrove restoration",
+      "description": "Our TideShield initiative to restore the Sundarbans ecosystem."
+    },
+    {
+      "id": "4",
+      "src": "https://picsum.photos/seed/gal4/600/400",
+      "alt": "Woman learning tailoring on a sewing machine",
+      "width": 600,
+      "height": 400,
+      "hint": "women empowerment",
+      "description": "Empowering women with vocational skills through Project SuiDhaga."
+    },
+    {
+      "id": "5",
+      "src": "https://picsum.photos/seed/gal5/600/400",
+      "alt": "An elderly person getting an eye check-up",
+      "width": 600,
+      "height": 400,
+      "hint": "eye care",
+      "description": "Restoring vision and hope with our SightHope program."
+    },
+    {
+      "id": "6",
+      "src": "https://picsum.photos/seed/gal6/600/400",
+      "alt": "Volunteers distributing relief kits during a flood",
+      "width": 600,
+      "height": 400,
+      "hint": "disaster relief",
+      "description": "Providing immediate assistance to disaster-affected families."
+    },
+    {
+      "id": "7",
+      "src": "https://picsum.photos/seed/gal7/600/400",
+      "alt": "Children participating in an art workshop",
+      "width": 600,
+      "height": 400,
+      "hint": "children art",
+      "description": "Nurturing creativity and confidence with Innocent Smiles."
+    },
+    {
+      "id": "8",
+      "src": "https://picsum.photos/seed/gal8/600/400",
+      "alt": "A group of women in a digital literacy class",
+      "width": 600,
+      "height": 400,
+      "hint": "digital literacy",
+      "description": "Bridging the digital divide with our SheConnects program."
+    },
+    {
+      "id": "9",
+      "src": "https://picsum.photos/seed/gal9/600/400",
+      "alt": "Community members at an environmental awareness session",
+      "width": 600,
+      "height": 400,
+      "hint": "environmental awareness",
+      "description": "Planting seeds of change with our Roots of Change initiative."
+    }
+  ]
+}

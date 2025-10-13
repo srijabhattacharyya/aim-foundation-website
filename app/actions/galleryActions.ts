@@ -12,7 +12,10 @@ export async function fetchGalleryImages() {
     const data = doc.data();
     return {
       id: doc.id,
-      ...data,
+      description: data.description,
+      status: data.status,
+      sequence: data.sequence,
+      imageUrl: data.imageUrl,
       // Convert timestamp to a serializable format (ISO string)
       createdAt: data.createdAt?.toDate?.().toISOString() || new Date().toISOString(),
     };

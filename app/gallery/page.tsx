@@ -5,47 +5,28 @@ import Image from "next/image";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { fetchGalleryImages } from "@/app/actions/galleryActions";
 import { Skeleton } from "@/components/ui/skeleton";
+import imageData from '@/app/lib/placeholder-images.json';
 
-// Define GalleryImage type
 export interface GalleryImage {
   id: string;
-  createdAt: string;
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  hint: string;
   description: string;
-  status: string;
-  sequence: number;
-  imageUrl: string;
 }
 
 export default function GalleryPage() {
   const [images, setImages] = useState<GalleryImage[]>([]);
-  const { toast } = useToast();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadImages = async () => {
-      try {
-        const fetchedImages: GalleryImage[] = await fetchGalleryImages();
-        
-        // Filter for active images and sort by sequence
-        setImages(fetchedImages.filter(img => img.status === 'Active').sort((a, b) => a.sequence - b.sequence));
-
-      } catch (err: any) {
-        console.error("Error fetching gallery images:", err);
-        toast({
-          title: "Error",
-          description: "Could not fetch gallery images",
-          variant: "destructive",
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-  
-    loadImages();
-  }, [toast]);  
+    // In a real app, you might fetch this data. Here we use a local JSON.
+    setImages(imageData.gallery);
+    setLoading(false);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -79,10 +60,12 @@ export default function GalleryPage() {
                   >
                     <CardContent className="relative aspect-[3/2] w-full p-0 overflow-hidden">
                       <Image
-                        src={image.imageUrl}
-                        alt={image.description || "Gallery image"}
-                        fill
-                        className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                        src={image.src}
+                        alt={image.alt}
+                        width={image.width}
+                        height={image.height}
+                        data-ai-hint={image.hint}
+                        className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         loading="lazy"
                       />
