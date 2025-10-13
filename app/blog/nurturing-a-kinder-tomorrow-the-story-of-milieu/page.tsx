@@ -1,17 +1,26 @@
-
 import type { Metadata } from 'next';
 import MilieuBlogPage from './MilieuBlogPage';
 
 export const metadata: Metadata = {
   title: 'Milieu by AIM Foundation | Building Empathy & Inclusion',
-  description: 'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
-  keywords: ['Milieu AIM Foundation', 'AIM Foundation inclusion', 'empathy education India', 'social harmony program', 'children bridging divide', 'inclusive learning spaces', 'cultural respect education', 'privileged and underserved students', 'emotional intelligence in schools', 'equality through education'],
+  description:
+    'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
+  keywords: [
+    'AIM Foundation Milieu',
+    'social inclusion NGO',
+    'empathy education India',
+    'diversity awareness programs',
+    'child development NGO Kolkata',
+    'youth empathy building workshops',
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
     type: 'website',
+    url: 'https://aimindia.org.in/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu',
     title: 'Milieu by AIM Foundation | Building Empathy & Inclusion',
-    description: 'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
+    description:
+      'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
     images: [
       {
         url: 'https://aimindia.org.in/home.avif',
@@ -26,9 +35,10 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu',
+    // ❌ removed the invalid "url" property
     title: 'Milieu by AIM Foundation | Building Empathy & Inclusion',
-    description: 'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
+    description:
+      'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
@@ -38,19 +48,20 @@ export const metadata: Metadata = {
 
 export default function Page() {
   const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AIM Foundation',
+    url: 'https://aimindia.org.in/',
+    logo: 'https://aimindia.org.in/logo.png',
+    sameAs: [
+      'https://www.facebook.com/aimindiango/',
+      'https://x.com/aimindiango',
+      'https://www.instagram.com/aimfoundation_ngo/',
+      'https://www.linkedin.com/in/aim-foundation-ngo/',
+      'https://www.youtube.com/@aimfoundation2604',
     ],
-    "description": "Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection."
+    description:
+      'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
   };
 
   return (
