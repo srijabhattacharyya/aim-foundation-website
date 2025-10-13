@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -39,7 +38,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/employee-engagement',
     title: 'Employee Engagement Programs with AIM Foundation India',
     description: 'Boost morale, teamwork, and purpose with AIM Foundation’s employee engagement programs. Create meaningful impact while strengthening workplace culture.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -49,9 +47,8 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function EmployeeEngagementPage() {
-    const schemaMarkup = {
+  const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
@@ -66,6 +63,7 @@ export default function EmployeeEngagementPage() {
     ],
     "description": "Boost morale, teamwork, and purpose with AIM Foundation’s employee engagement programs. Create meaningful impact while strengthening workplace culture."
   };
+
   return (
     <>
       <script
