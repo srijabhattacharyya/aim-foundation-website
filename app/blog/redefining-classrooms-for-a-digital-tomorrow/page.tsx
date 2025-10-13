@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import RedefiningClassroomsBlogPage from './RedefiningClassroomsBlogPage';
+import InspireEduLabBlogPage from './InspireEduLabBlogPage';
 
 export const metadata: Metadata = {
   title: 'Inspire EduLab by AIM Foundation | Digital Classrooms',
-  description: 'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
+  description:
+    'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
   keywords: [
     'AIM Foundation EduLab',
     'digital classrooms India',
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     'online education for students',
     '3D lessons for schools',
     'digital learning NGO',
-    'education technology AIM Foundation'
+    'education technology AIM Foundation',
   ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
@@ -19,7 +20,8 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://aimindia.org.in/redefining-classrooms-for-a-digital-tomorrow',
     title: 'Inspire EduLab by AIM Foundation | Digital Classrooms',
-    description: 'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
+    description:
+      'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
     images: [
       {
         url: 'https://aimindia.org.in/home.avif',
@@ -35,7 +37,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@aimindiango',
     title: 'Inspire EduLab by AIM Foundation | Digital Classrooms',
-    description: 'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
+    description:
+      'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
@@ -47,17 +50,18 @@ export default function Page() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "AIM Foundation",
-    url: "https://aimindia.org.in/",
-    logo: "https://aimindia.org.in/logo.png",
+    name: 'AIM Foundation',
+    url: 'https://aimindia.org.in/',
+    logo: 'https://aimindia.org.in/logo.png',
     sameAs: [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
+      'https://www.facebook.com/aimindiango/',
+      'https://x.com/aimindiango',
+      'https://www.instagram.com/aimfoundation_ngo/',
+      'https://www.linkedin.com/in/aim-foundation-ngo/',
+      'https://www.youtube.com/@aimfoundation2604',
     ],
-    description: 'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.'
+    description:
+      'Inspire EduLab by AIM Foundation transforms classrooms with smart tech, 3D lessons, and online sessions, bringing digital learning to underserved students.',
   };
 
   return (
@@ -67,7 +71,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-redefining-classrooms-blog"
       />
-      <RedefiningClassroomsBlogPage />
+      <InspireEduLabBlogPage />
     </>
   );
 }
