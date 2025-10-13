@@ -1,11 +1,21 @@
-
 import type { Metadata } from 'next';
 import OralScanBlogPage from './OralScanBlogPage';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation OralScan: Free Oral Cancer Screenings',
   description: 'AIM Foundation’s OralScan fights oral cancer in India with free screenings, awareness, and counseling, bringing early detection and care to underserved communities.',
-  keywords: ["AIM Foundation OralScan", "free oral cancer screening India", "AIM Foundation oral health program", "early detection oral cancer NGO", "oral cancer awareness India", "rural oral cancer screening camps", "tobacco risk awareness AIM Foundation", "community cancer detection India", "oral cancer counseling support NGO", "AIM Foundation healthcare initiative"],
+  keywords: [
+    "AIM Foundation OralScan",
+    "free oral cancer screening India",
+    "AIM Foundation oral health program",
+    "early detection oral cancer NGO",
+    "oral cancer awareness India",
+    "rural oral cancer screening camps",
+    "tobacco risk awareness AIM Foundation",
+    "community cancer detection India",
+    "oral cancer counseling support NGO",
+    "AIM Foundation healthcare initiative"
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -27,7 +37,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/blog/screening-today-for-a-healthier-tomorrow',
     title: 'AIM Foundation OralScan: Free Oral Cancer Screenings',
     description: 'AIM Foundation’s OralScan fights oral cancer in India with free screenings, awareness, and counseling, bringing early detection and care to underserved communities.',
     images: ['https://aimindia.org.in/home.avif'],
@@ -43,24 +52,4 @@ export default function Page() {
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "AIM Foundation’s OralScan fights oral cancer in India with free screenings, awareness, and counseling, bringing early detection and care to underserved communities."
-  };
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-oralscan-blog"
-      />
-      <OralScanBlogPage />
-    </>
-  );
-}
+    "logo": "https://aimindia.org
