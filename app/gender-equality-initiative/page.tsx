@@ -30,10 +30,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@aimindiango',
     title: 'Gender Equality by AIM Foundation: Women Empowerment',
     description: 'AIM Foundation’s Gender Equality Programs empower women and girls through health, skills, and education—building confidence, independence, and equity.',
-    images: ['https://aimindia.org.in/home.avif'],
-    site: '@aimindiango',
+    image: {
+      url: 'https://aimindia.org.in/home.avif',
+      alt: 'Gender Equality Initiatives by AIM Foundation',
+    },
   },
   alternates: {
     canonical: '/gender-equality-initiative',
