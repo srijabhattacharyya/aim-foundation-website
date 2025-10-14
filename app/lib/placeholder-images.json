@@ -2,328 +2,355 @@
 {
   "gallery": [
     {
-      "id": "0",
+      "id": "039",
+      "src": "/images/projects/childfirst/childfirst3.avif",
+      "alt": "Paediatric Health Camp",
+      "width": 600,
+      "height": 400,
+      "hint": "child health",
+      "description": "Bringing smiles and good health — AIM Foundation’s Paediatric Health Camp in Rambagan, Kolkata, caring for the children of sex workers with love, compassion, and hope for a healthier future."
+    },
+    {
+      "id": "038",
+      "src": "/images/projects/cureline/cureline2.avif",
+      "alt": "Community health camp in a village",
+      "width": 600,
+      "height": 400,
+      "hint": "health camp",
+      "description": "Extending healthcare to the last mile — AIM Foundation’s free medical camp at Jharkhali Island, Sundarbans, bringing essential check-ups and care to the remote communities of South 24 Parganas."
+    },
+    {
+      "id": "037",
+      "src": "/images/projects/sighthope/spectacles-distribution.avif",
+      "alt": "Distribution of Spectacles to underprivileged community",
+      "width": 600,
+      "height": 400,
+      "hint": "specticles distribution",
+      "description": "Clear vision for a brighter future — AIM Foundation’s spectacle distribution drive for underprivileged communities in Kolkata, bringing the gift of sight and hope to those in need."
+    },
+    {
+      "id": "036",
       "src": "/images/projects/book/book-distribution.avif",
       "alt": "Distributing books to children",
       "width": 600,
       "height": 400,
       "hint": "book distribution",
-      "description": "Distributing books to empower young minds."
+      "description": "Empowering young minds through education — AIM Foundation’s book distribution drive inspiring children to dream, learn, and grow."
     },
     {
-      "id": "1",
+      "id": "035",
       "src": "/images/projects/cureline/cureline1.avif",
       "alt": "Community health camp in a village",
       "width": 600,
       "height": 400,
       "hint": "health camp",
-      "description": "Providing free medical check-ups at Bali Island, Sundarbans, 24 Parganas (S)"
+      "description": "Delivering healthcare with compassion — AIM Foundation’s free medical camp at Bali Island, Sundarbans, reaching the underserved communities of South 24 Parganas with care and hope."
     },
     {
-      "id": "2",
+      "id": "034",
       "src": "/images/projects/innocent-smiles/innocent-smiles4.avif",
       "alt": "Children from Sabar Community",
       "width": 600,
       "height": 400,
       "hint": "children education",
-      "description": "Helping the children from Sabar Community, most underprivileged class of West Bengal"
+      "description": "Supporting the future of the most marginalized — AIM Foundation’s initiative to uplift children from the Sabar community, nurturing hope, education, and opportunity in West Bengal."
     },
     {
-      "id": "3",
+      "id": "033",
       "src": "/images/projects/tide-shield/tide-shield2.avif",
       "alt": "Volunteers planting mangrove saplings",
       "width": 600,
       "height": 400,
       "hint": "mangrove restoration",
-      "description": "Our TideShield initiative to restore the Sundarbans ecosystem."
+      "description": "Protecting nature, preserving life — AIM Foundation’s TideShield initiative restores the Sundarbans ecosystem with mangrove plantations, safeguarding our environment for generations to come."
     },
     {
-      "id": "4",
+      "id": "032",
       "src": "/images/projects/suidhaga/suidhaga1.avif",
-      "alt": "Woman learning embroidary on a sewing machine",
+      "alt": "Woman learning embroidery",
       "width": 600,
       "height": 400,
       "hint": "women empowerment",
-      "description": "Empowering women with vocational skills through Project SuiDhaga."
+      "description": "Stitching independence and confidence — AIM Foundation’s Project SuiDhaga empowers women with vocational skills, turning talent into livelihood and dreams into reality"
     },
     {
-      "id": "5",
+      "id": "031",
       "src": "/images/projects/sighthope/sighthope1.avif",
       "alt": "An elderly person getting an eye check-up",
       "width": 600,
       "height": 400,
       "hint": "eye care",
-      "description": "Restoring vision and hope with our SightHope program."
+      "description": "Bringing clarity and confidence — AIM Foundation’s SightHope program restores vision and hope, helping communities see a brighter future."
     },
     {
-      "id": "6",
+      "id": "030",
       "src": "/images/projects/relief/relief4.avif",
       "alt": "Volunteers distributing relief kits during a flood",
       "width": 600,
       "height": 400,
       "hint": "disaster relief",
-      "description": "Providing immediate assistance to flood-affected families."
+      "description": "Standing together in times of crisis — AIM Foundation provides immediate relief and support to families affected by floods, restoring hope and strength."
     },
     {
-      "id": "7",
+      "id": "029",
       "src": "/images/projects/innocent-smiles/innocent-smiles2.avif",
       "alt": "Children participating in an art workshop",
       "width": 600,
       "height": 400,
       "hint": "children art",
-      "description": "Nurturing creativity and confidence with Innocent Smiles."
+      "description": "Inspiring joy and imagination — AIM Foundation’s Innocent Smiles program nurtures creativity and confidence in every child, one smile at a time."
     },
     {
-      "id": "8",
+      "id": "028",
       "src": "/images/projects/detect/detect2.avif",
       "alt": "A group of women in a cervical cancer awareness camp",
       "width": 600,
       "height": 400,
-      "hint": "digital literacy",
-      "description": "Cervical Cancer Awareness Camp for the underprivilegde"
+      "hint": "cervical cancer awareness",
+      "description": "Promoting health and prevention — AIM Foundation’s Cervical Cancer Awareness Camp empowers underprivileged women with knowledge and early detection for a healthier future."
     },
     {
-      "id": "9",
+      "id": "027",
       "src": "/images/projects/sustainability/sustainability3.avif",
       "alt": "Community members at an environmental awareness session",
       "width": 600,
       "height": 400,
       "hint": "environmental awareness",
-      "description": "Planting seeds of change with our Roots of Change initiative."
+      "description": "Planting seeds for a sustainable future — AIM Foundation’s Roots of Change initiative raises environmental awareness while nurturing care for our planet."
     },
     {
-      "id": "10",
+      "id": "026",
       "src": "/images/projects/carecircle/carecircle3.avif",
       "alt": "Free health Camp at Kolkata",
       "width": 600,
       "height": 400,
       "hint": "child reading",
-      "description": "Free Health Camp with free Medicine at Sarala Punyashram, Kolkata"
+      "description": "Caring for the community — AIM Foundation’s free health camp at Sarala Punyashram, Kolkata, providing check-ups and medicines to those in need."
     },
     {
-      "id": "11",
+      "id": "025",
       "src": "/images/projects/sustainability/sustainablity4.avif",
       "alt": "A group of volunteers posing together",
       "width": 600,
       "height": 400,
       "hint": "community volunteer",
-      "description": "Volunteers coming together to support a community event."
+      "description": "United in service — AIM Foundation volunteers join hands to make a positive impact at a community event."
     },
     {
-      "id": "12",
+      "id": "024",
       "src": "/images/projects/empower-english/empower-english.avif",
       "alt": "A nutritious health drink being served",
       "width": 600,
       "height": 400,
       "hint": "child nutrition",
-      "description": "Providing nutritious health drink during class hours to combat malnutrition."
+      "description": "Fighting malnutrition one sip at a time — AIM Foundation provides nutritious health drinks during class hours to nurture healthy and strong children."
     },
     {
-      "id": "13",
+      "id": "023",
       "src": "/images/projects/krishti/krishti1.avif",
       "alt": "A woman proudly displaying her handcrafted goods",
       "width": 600,
       "height": 400,
       "hint": "local artisan",
-      "description": "Supporting local artisans and their craft."
+      "description": "Celebrating talent and independence — AIM Foundation supports women in honing their craft, turning skills into empowerment and livelihoods."
     },
     {
-      "id": "14",
+      "id": "022",
       "src": "/images/projects/forest-cleaning/forest-cleaning2.avif",
       "alt": "Cleaning of Garumara Forest",
       "width": 600,
       "height": 400,
       "hint": "forest cleaning",
-      "description": "Cleaning of Garumara National Park, Jalpaiguri, West Bengal"
+      "description": "Preserving nature, protecting wildlife — AIM Foundation leads the cleanup drive at Garumara National Park, Jalpaiguri, fostering a cleaner and greener environment."
     },
     {
-      "id": "15",
+      "id": "021",
       "src": "/images/projects/digiempower/digiempower1.avif",
       "alt": "Digital literacy class",
       "width": 600,
       "height": 400,
       "hint": "DigiEmpower",
-      "description": "Digital Litaracy class at forest village Rangakhila, Purba Bardhanan, West Bengal"
+      "description": "Bridging the digital divide — AIM Foundation’s Digital Literacy class at Rangakhila forest village, Purba Bardhaman, empowers communities with essential digital skills."
     },
     {
-      "id": "16",
+      "id": "020",
       "src": "/images/projects/milieu/milieu1.avif",
       "alt": "Interaction with the students of Modern High School with the underprivileged students of AIM Foundation",
       "width": 600,
       "height": 400,
       "hint": "Project Milieu",
-      "description": "Interaction with the students of Modern High School with the underprivileged students of AIM Foundation"
+      "description": "Building connections, sharing smiles — Students of Modern High School for Girls, Kolkata, engage with underprivileged children of AIM Foundation, fostering learning, friendship, and hope."
     },
     {
-      "id": "17",
+      "id": "019",
       "src": "/images/projects/cureline/cureline3.avif",
       "alt": "Medical Camp at Sundarbans",
       "width": 600,
       "height": 400,
       "hint": "Medical Camp at Sundarbans",
-      "description": "Medical Camp at Kalidaspur, Sundarbans, West Bengal"
+      "description": "Bringing healthcare to remote communities — AIM Foundation’s medical camp at Kalidaspur, Sundarbans, provides essential check-ups and care to those in need."
     },
     {
-      "id": "18",
+      "id": "018",
       "src": "/images/projects/childfirst/childfirst1.avif",
       "alt": "Health Camp for the children of sex workers",
       "width": 600,
       "height": 400,
       "hint": "health camp",
-      "description": "Health Camp for the children of sex workers, Sonagachi, Kolkata"
+      "description": "Caring for every child — AIM Foundation’s health camp in Sonagachi, Kolkata, provides essential medical care to the children of sex workers, nurturing health and hope."
     },
     {
-      "id": "19",
+      "id": "017",
       "src": "/images/projects/edulab/edulab1.avif",
       "alt": "Smart Classroom",
       "width": 600,
       "height": 400,
       "hint": "smart classroom",
-      "description": "Smart Classroom for the students of remote villages"
+      "description": "Empowering education through technology — AIM Foundation’s Smart Classroom initiative brings modern learning tools to students in remote villages, opening doors to a brighter future."
     },
     {
-      "id": "20",
+      "id": "016",
       "src": "/images/projects/ignite-change/ignite-change1.avif",
       "alt": "National Youth Day Celebration",
       "width": 600,
       "height": 400,
       "hint": "national youth day celebration",
-      "description": "Seminar on National Youth Day"
+      "description": "Inspiring young minds — AIM Foundation’s seminar on National Youth Day highlights Swami Vivekananda’s vision of education, igniting purpose, knowledge, and leadership in the youth."
     },
     {
-      "id": "21",
+      "id": "015",
       "src": "/images/projects/oralscan/oralscan2.avif",
       "alt": "Oral Cancer Detection Camp",
       "width": 600,
       "height": 400,
       "hint": "oral cancer detection camp",
-      "description": "Oral Cancer Detection Camp in association with Narayana Health"
+      "description": "Early detection saves lives — AIM Foundation, in association with Narayana Health, conducts an Oral Cancer Detection Camp to raise awareness and provide timely medical care."
     },
     {
-      "id": "22",
+      "id": "014",
       "src": "/images/projects/relief/relief2.avif",
       "alt": "Blanket Distribution",
       "width": 600,
       "height": 400,
       "hint": "blanket distribution",
-      "description": "Blanket Distribution to the footpath dwellers of Kolkata"
+      "description": "Spreading warmth and care — AIM Foundation distributes blankets to footpath dwellers in Kolkata, offering comfort and support during cold nights."
     },
     {
-      "id": "23",
+      "id": "013",
       "src": "/images/projects/innocent-smiles/innocent-smiles1.avif",
       "alt": "Art class for the underpriviledged children",
       "width": 600,
       "height": 400,
       "hint": "art class",
-      "description": "Art class for the underpriviledged children at Kasba, Kolkata"
+      "description": "Unleashing creativity — AIM Foundation’s art class at Kasba, Kolkata, inspires underprivileged children to express themselves and explore their imagination."
     },
     {
-      "id": "24",
+      "id": "012",
       "src": "/images/projects/cyclesafe/cyclesafe1.avif",
-      "alt": "Menstrual Hygine Awareness Camp",
+      "alt": "Menstrual Hygiene Awareness Camp",
       "width": 600,
       "height": 400,
-      "hint": "menstrual hygine awareness camp",
-      "description": "Menstrual Hygine Awareness Camp for Adolecent Girls"
+      "hint": "menstrual hygiene awareness camp",
+      "description": "Empowering young girls with knowledge — AIM Foundation’s Menstrual Hygiene Awareness Camp promotes health, confidence, and dignity among adolescent girls."
     },
     {
-      "id": "25",
+      "id": "011",
       "src": "/images/projects/digiempower/digiempower2.avif",
       "alt": "Computer Class",
       "width": 600,
       "height": 400,
       "hint": "computer class",
-      "description": "Digital literacy Class at Dakshin Dhupjhora, Jalpaiguri"
+      "description": "Bridging the digital divide — AIM Foundation’s Digital Literacy class at Dakshin Dhupjhora, Jalpaiguri, empowers communities with essential technology skills."
     },
     {
-      "id": "26",
+      "id": "010",
       "src": "/images/projects/tide-shield/tide-shield1.avif",
       "alt": "Mangrove Plantation in Bali Island Sundarbans, 24 Parganas (S)",
       "width": 600,
       "height": 400,
       "hint": "mangrove plantation",
-      "description": "Mangrove Plantation in Bali Island Sundarbans, 24 Parganas (S)"
+      "description": "Strengthening nature’s shield — AIM Foundation’s mangrove plantation drive at Bali Island, Sundarbans, 24 Parganas (S), helps restore the ecosystem and protect coastal communities."
     },
     {
-      "id": "27",
+      "id": "009",
       "src": "/images/projects/carecircle/carecircle1.webp",
       "alt": "Health Camp at Kolkata",
       "width": 600,
       "height": 400,
       "hint": "health camp",
-      "description": "Health Camp in Kolkata in association with Neotia Bhagirathi Women and Childcare Institute"
+      "description": "Promoting wellness together — AIM Foundation, in association with Neotia Bhagirathi Women and Childcare Institute, conducts a health camp in Kolkata, providing essential care to the community."
     },
     {
-      "id": "28",
+      "id": "008",
       "src": "/images/projects/eduaccess/eduaccess1.avif",
       "alt": "Kolkata Studio for for online english classes",
       "width": 600,
       "height": 400,
       "hint": "Online Classes",
-      "description": "Kolkata Studio for for online English Classes for the children of remote villages"
+      "description": "Connecting learning beyond boundaries — AIM Foundation’s Kolkata studio enables online English classes, bringing quality education to children in remote villages."
     },
     {
-      "id": "29",
+      "id": "007",
       "src": "/images/projects/relief/relief3.avif",
       "alt": "Blanket Distribution to adivasi community of West Medinipur",
       "width": 600,
       "height": 400,
       "hint": "blanket distribution",
-      "description": "Blanket Distribution to adivasi community of West Medinipur supported by Moothut Finance"
+      "description": "Spreading warmth and care — AIM Foundation, supported by Moothut Finance, distributes blankets to the Adivasi community of West Medinipur, bringing comfort during the cold season."
     },
     {
-      "id": "30",
+      "id": "006",
       "src": "/images/projects/relief/relief1.avif",
       "alt": "Garment Distribution to fire victims at Topsia, Kolkata",
       "width": 600,
       "height": 400,
       "hint": "garment distribution",
-      "description": "Garment Distribution to fire victims at Topsia, Kolkata"
+      "description": "Extending a helping hand — AIM Foundation provides garments to fire-affected families in Topsia, Kolkata, offering relief and support in times of need."
     },
     {
-      "id": "31",
+      "id": "005",
       "src": "/images/projects/innocent-smiles/innocent-smiles3.avif",
       "alt": "Discussion on Swami Vivekananda",
       "width": 600,
       "height": 400,
       "hint": "Swami Vivivekananda",
-      "description": "Bringing the words of Swami Vivekanada amoung the rural people of Purulia District"
+      "description": "Spreading wisdom and inspiration — AIM Foundation shares the teachings of Swami Vivekananda with rural communities in Purulia, fostering knowledge, courage, and hope."
     },
     {
-      "id": "32",
+      "id": "004",
       "src": "/images/projects/carecircle/carecircle2.avif",
       "alt": "Medical Camp in Kolkata",
       "width": 600,
       "height": 400,
       "hint": "medical camp",
-      "description": "Medical Camp in Kolkata"
+      "description": "Promoting health and well-being — AIM Foundation’s medical camp in Kolkata provides essential check-ups and care to the community."
     },
     {
-      "id": "33",
+      "id": "003",
       "src": "/images/projects/childfirst/childfirst2.avif",
       "alt": "Healthcare camp for the children of Kolkata",
       "width": 600,
       "height": 400,
       "hint": "heath camp",
-      "description": "Free Health camp for the children of Kolkata"
+      "description": "Caring for young lives — AIM Foundation’s free health camp in Kolkata ensures children receive essential medical check-ups and support for a healthier future."
     },
     {
-      "id": "34",
+      "id": "002",
       "src": "/images/projects/cyclesafe/cyclesafe2.avif",
-      "alt": "Menstrual Hygine Awareness",
+      "alt": "Menstrual Hygiene Awareness",
       "width": 600,
       "height": 400,
-      "hint": "menstrual hygine",
-      "description": "Menstrual Hygine Awareness Camp"
+      "hint": "menstrual hygiene",
+      "description": "Promoting health and dignity — AIM Foundation’s Menstrual Hygiene Awareness Camp educates and empowers women and girls with essential knowledge and care."
     },
     {
-      "id": "35",
+      "id": "001",
       "src": "/images/projects/detect/detect1.avif",
       "alt": "Cervical Cancer Screening",
       "width": 600,
       "height": 400,
       "hint": "cervical cancer screening",
-      "description": "Cervical Cancer Screening at Domjur, Howrah"
+      "description": "Early detection saves lives — AIM Foundation conducts Cervical Cancer Screening at Domjur, Howrah, empowering women with health awareness and timely care."
     }
 
   ]

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect, useState } from "react";
@@ -22,12 +21,24 @@ export interface GalleryImage {
 export default function GalleryPage() {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadedStates, setLoadedStates] = useState<boolean[]>([]);
 
   useEffect(() => {
-    // In a real app, you might fetch this data. Here we use a local JSON.
-    setImages(imageData.gallery.slice().reverse());
+    // Sort images by ID in descending order
+    const sortedImages = [...imageData.gallery].sort((a, b) => parseInt(b.id) - parseInt(a.id));
+    setImages(sortedImages);
+    // Initially, mark all as not loaded
+    setLoadedStates(new Array(sortedImages.length).fill(false));
     setLoading(false);
   }, []);
+
+  const handleImageLoad = (index: number) => {
+    setLoadedStates(prev => {
+      const newStates = [...prev];
+      newStates[index] = true;
+      return newStates;
+    });
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -66,9 +77,11 @@ export default function GalleryPage() {
                         width={image.width}
                         height={image.height}
                         data-ai-hint={image.hint}
-                        className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
+                        className={`object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105
+                          transition-opacity duration-700 ease-out ${loadedStates[index] ? 'opacity-100' : 'opacity-0'}`}
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         loading={index < 3 ? 'eager' : 'lazy'}
+                        onLoad={() => handleImageLoad(index)}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="p-4 absolute bottom-0 text-white">
