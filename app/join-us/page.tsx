@@ -1,14 +1,28 @@
+import type { Metadata } from 'next';
+
 export const metadata: Metadata = {
   title: 'Join AIM Foundation: Internships, Volunteering & Careers',
   description: 'Be part of AIM Foundation’s mission. Explore internships, volunteer programs, and career opportunities to make a real difference in communities across India.',
-  keywords: ['AIM Foundation volunteer opportunities', 'AIM Foundation internships', 'NGO careers India', 'join AIM Foundation', 'social work internships India', 'NGO volunteer programs', 'careers with purpose NGO', 'student internships NGO India', 'non profit jobs India', 'community service AIM Foundation'],
+  keywords: [
+    'AIM Foundation volunteer opportunities',
+    'AIM Foundation internships',
+    'NGO careers India',
+    'join AIM Foundation',
+    'social work internships India',
+    'NGO volunteer programs',
+    'careers with purpose NGO',
+    'student internships NGO India',
+    'non profit jobs India',
+    'community service AIM Foundation',
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/join-us',
     title: 'Join AIM Foundation: Internships, Volunteering & Careers',
-    description: 'Be part of AIM Foundation’s mission. Explore internships, volunteer programs, and career opportunities to make a real difference in communities across India.',
+    description:
+      'Be part of AIM Foundation’s mission. Explore internships, volunteer programs, and career opportunities to make a real difference in communities across India.',
     images: [
       {
         url: 'https://aimindia.org.in/home.avif',
@@ -24,10 +38,23 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@aimindiango',
     title: 'Join AIM Foundation: Internships, Volunteering & Careers',
-    description: 'Be part of AIM Foundation’s mission. Explore internships, volunteer programs, and career opportunities to make a real difference in communities across India.',
+    description:
+      'Be part of AIM Foundation’s mission. Explore internships, volunteer programs, and career opportunities to make a real difference in communities across India.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
     canonical: '/join-us',
   },
 };
+
+export default function JoinUsPage() {
+  return (
+    <main className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-4">Join AIM Foundation</h1>
+      <p className="mb-6">
+        Be part of AIM Foundation’s mission. Explore internships, volunteer programs, and career opportunities to make a real difference in communities across India.
+      </p>
+      {/* Add your full join us page content here */}
+    </main>
+  );
+}
