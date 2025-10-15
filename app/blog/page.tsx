@@ -19,7 +19,7 @@ const blogPosts = [
   {
     slug: 'soulcircle-24-7-mental-health-support',
     title: 'SoulCircle: 24/7 Compassionate Mental Health Support',
-    image: '/images/banner/soulcircle.avif',
+    image: '/images/banner/soulcircles.avif',
     hint: 'mental health peace',
     excerpt: 'Learn how our SoulCircle app offers AI-powered, accessible, and compassionate mental health support.',
     date: 'April 9, 2025',
@@ -27,7 +27,7 @@ const blogPosts = [
   {
     slug: 'vidyashakti-ai-learning',
     title: 'VidyaShakti: AI-Powered Learning for Rural Classrooms',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/vidyashakti.avif',
     hint: 'learning app student',
     excerpt: 'Discover how our VidyaShakti app provides AI-powered, multilingual academic support to rural and first-generation learners.',
     date: 'February 2, 2025',
@@ -35,7 +35,7 @@ const blogPosts = [
   {
     slug: 'carecircle-bringing-healing-to-the-city',
     title: 'CareCircle: Bringing Healing to the Heart of the City',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/carecircle.avif',
     hint: 'urban health camp',
     excerpt: 'Learn how CareCircle delivers compassionate, affordable, and inclusive medical care to underserved urban communities in Kolkata.',
     date: 'November 19, 2024',
@@ -43,15 +43,15 @@ const blogPosts = [
   {
     slug: 'childfirst-health-hope-dignity',
     title: 'ChildFirst: Bringing Health, Hope, and Dignity',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/childfirst.avif',
     hint: 'child healthcare',
-    excerpt: 'Learn how ChildFirst provides free pediatric and general healthcare to children in Kolkata\'s red-light districts.',
+    excerpt: "Learn how ChildFirst provides free pediatric and general healthcare to children in Kolkata's red-light districts.",
     date: 'August 12, 2024',
   },
   {
     slug: 'tideshield-restoring-mangroves',
     title: 'TideShield: Restoring the Mangrove Heartbeat of the Sundarbans',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/tide-shield.avif',
     hint: 'mangrove restoration',
     excerpt: 'Learn how TideShield is restoring the vital mangrove ecosystem of the Sundarbans, protecting communities and biodiversity from the impacts of climate change.',
     date: 'May 5, 2024',
@@ -59,15 +59,15 @@ const blogPosts = [
   {
     slug: 'cureline-bringing-healthcare-to-the-last-mile',
     title: 'CureLine: Bringing Healthcare to the Last Mile',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/cureline.avif',
     hint: 'rural healthcare camp',
-    excerpt: 'Learn how AIM Foundation\'s CureLine initiative is delivering essential medical services to underserved communities, bridging critical care gaps, and ensuring health access for all.',
+    excerpt: "Learn how AIM Foundation's CureLine initiative is delivering essential medical services to underserved communities, bridging critical care gaps, and ensuring health access for all.",
     date: 'February 27, 2024',
   },
   {
     slug: 'no-child-left-offline',
     title: 'No Child Left Offline: How DigiEmpower is Bridging the Digital Divide',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/digiempower/digiempower1.avif',
     hint: 'digital literacy children',
     excerpt: 'Discover how DigiEmpower is bridging the digital divide for underprivileged and Adivasi children in West Bengal.',
     date: 'November 20, 2023',
@@ -75,7 +75,7 @@ const blogPosts = [
   {
     slug: 'igniting-change-transforming-communities',
     title: 'Igniting Change: How Grassroots Action Transforms Communities',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/awareness.avif',
     hint: 'community action group',
     excerpt: 'Discover how our Ignite Change Initiative empowers local communities to create sustainable solutions and drive their own transformation.',
     date: 'August 13, 2023',
@@ -83,7 +83,7 @@ const blogPosts = [
   {
     slug: 'from-despair-to-recovery-rebuilding-lives-after-disaster',
     title: 'From Despair to Recovery: Rebuilding Lives After Disaster',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/disuster.avif',
     hint: 'disaster relief team',
     excerpt: 'Learn how AIM Foundation’s Disaster Relief Program provides swift, compassionate, and effective assistance to communities affected by natural calamities.',
     date: 'May 6, 2023',
@@ -91,7 +91,7 @@ const blogPosts = [
   {
     slug: 'from-stigma-to-strength',
     title: 'From Stigma to Strength: The CycleSafe Story',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/cyclesafe.avif',
     hint: 'menstrual health awareness',
     excerpt: 'Learn how CycleSafe is breaking the silence around menstrual health and empowering adolescent girls with dignity and education.',
     date: 'February 28, 2023',
@@ -99,7 +99,7 @@ const blogPosts = [
   {
     slug: 'project-sheconnects',
     title: 'Project SheConnects: Empowering Women Through Technology',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/sheconnects/sheconnects1.avif',
     hint: 'women technology',
     excerpt: 'Discover how SheConnects is bridging the digital gender gap and empowering women to build sustainable livelihoods online.',
     date: 'November 23, 2022',
@@ -107,7 +107,7 @@ const blogPosts = [
   {
     slug: 'roots-of-change',
     title: 'Roots of Change: Planting Awareness, Growing a Greener Tomorrow',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/roots-of-change1.avif',
     hint: 'environmental awareness education',
     excerpt: 'Discover how the Roots of Change initiative is cultivating environmental awareness and inspiring sustainable action from the ground up.',
     date: 'August 16, 2022',
@@ -115,7 +115,7 @@ const blogPosts = [
   {
     slug: 'relief-to-the-underprivileged',
     title: 'Relief to the Underprivileged – AIM Foundation’s Lifeline of Hope',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/relief.avif',
     hint: 'community relief support',
     excerpt: "Learn how AIM Foundation provides a lifeline of hope, delivering immediate and compassionate aid to those facing extreme hardship.",
     date: 'May 9, 2022',
@@ -123,7 +123,7 @@ const blogPosts = [
   {
     slug: 'restoring-sight-rekindling-dreams',
     title: 'Restoring Sight, Rekindling Dreams: The Journey of SightHope',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/sighthope.avif',
     hint: 'vision eye exam',
     excerpt: "Learn how AIM Foundation's SightHope initiative provides free, life-changing eye care and surgeries to underserved communities.",
     date: 'February 2, 2022',
@@ -131,7 +131,7 @@ const blogPosts = [
   {
     slug: 'planting-hope-growing-futures',
     title: 'Planting Hope, Growing Futures: The GreenRoots Journey',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/green-root1.avif',
     hint: 'community planting trees',
     excerpt: 'Discover how GreenRoots is empowering communities to plant trees and restore green cover in their own backyards.',
     date: 'November 26, 2021',
@@ -139,7 +139,7 @@ const blogPosts = [
   {
     slug: 'screening-today-for-a-healthier-tomorrow',
     title: 'Screening Today for a Healthier Tomorrow: The OralScan Story',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/oralscan.avif',
     hint: 'oral cancer screening',
     excerpt: 'Learn how OralScan is fighting oral cancer in India through early detection and awareness.',
     date: 'August 19, 2021',
@@ -147,7 +147,7 @@ const blogPosts = [
   {
     slug: 'crafting-futures-the-krishti-story',
     title: 'Crafted by Her. Backed by Krishti.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/krishti1.avif',
     hint: 'women entrepreneurship',
     excerpt: 'Discover how Krishti bridges the gap between learning and earning, transforming skilled women into thriving entrepreneurs.',
     date: 'February 5, 2021',
@@ -155,7 +155,7 @@ const blogPosts = [
    {
     slug: 'empower-english-story',
     title: 'Confidence Begins with Conversation: The Empower English Story',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/empower-english/empower-english.avif',
     hint: 'english speaking class',
     excerpt: "Discover how AIM Foundation's Empower English initiative is helping students in West Bengal find their voice, confidence, and a world of new opportunities.",
     date: 'November 1, 2020',
@@ -163,7 +163,7 @@ const blogPosts = [
   {
     slug: 'teaching-beyond-boundaries',
     title: 'Teaching Beyond Boundaries: How EduAccess is Bringing Quality Education to Rural West Bengal',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/eduaccess.avif',
     hint: 'online learning rural',
     excerpt: "Discover how AIM Foundation's EduAccess initiative is delivering quality education to rural West Bengal through expert-led online classes.",
     date: 'August 28, 2020',
@@ -171,7 +171,7 @@ const blogPosts = [
   {
     slug: 'redefining-classrooms-for-a-digital-tomorrow',
     title: 'Redefining Classrooms for a Digital Tomorrow: The Story of Inspire EduLab',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/edulab.avif',
     hint: 'smart classroom children',
     excerpt: "Discover how AIM Foundation's Inspire EduLab is transforming learning with smart, internet-enabled classrooms, bridging the digital divide for children across India.",
     date: 'May 20, 2020',
@@ -179,7 +179,7 @@ const blogPosts = [
   {
     slug: 'the-quiet-revolution-in-womens-health',
     title: 'The Quiet Revolution in Women’s Health: The Story of Project Detect',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/detect1.avif',
     hint: 'women health rural',
     excerpt: 'Discover how Project Detect is bringing life-saving cervical cancer screenings and health education to rural women in India.',
     date: 'February 12, 2020',
@@ -187,7 +187,7 @@ const blogPosts = [
   {
     slug: 'nurturing-a-kinder-tomorrow-the-story-of-milieu',
     title: 'Nurturing a Kinder Tomorrow: The Story of Milieu',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/milieu.avif',
     hint: 'children collaboration',
     excerpt: 'Discover how Milieu helps shape conscious citizens who learn to see beyond economic, cultural, and social differences.',
     date: 'November 5, 2019',
@@ -195,9 +195,9 @@ const blogPosts = [
   {
     slug: 'threading-changes-the-suidhaga-story',
     title: 'Threading Changes: The SuiDhaga Story by AIM Foundation',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/banner/suidhaga.avif',
     hint: 'women tailoring',
-    excerpt: 'Discover how AIM Foundation\'s SuiDhaga initiative is empowering women, stitching dignity into livelihoods, and creating new patterns of possibility through tailoring and embroidery skills.',
+    excerpt: "Discover how AIM Foundation's SuiDhaga initiative is empowering women, stitching dignity into livelihoods, and creating new patterns of possibility through tailoring and embroidery skills.",
     date: 'August 28, 2019',
   },
 ];
@@ -249,5 +249,7 @@ export default function BlogPage() {
     </div>
   );
 }
+
+    
 
     
