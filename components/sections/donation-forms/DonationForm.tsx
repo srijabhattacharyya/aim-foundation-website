@@ -3,7 +3,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useFormState } from "react-dom";
 import { useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,7 +11,7 @@ import { addDonation } from "@/app/actions/donationActions";
 import { DonationFormFields } from "./DonationFormFields";
 import { Form } from "@/components/ui/form";
 
-// Zod schema for donation form
+// Zod schema for validation
 export const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"]),
   amount: z.string(),
@@ -34,7 +33,8 @@ export const donationSchema = z.object({
   initiative: z.string(),
 });
 
-type DonationAmount = {
+// Shared type for donation amounts
+export type DonationAmount = {
   value: string;
   label: string;
   description?: string;
@@ -88,7 +88,7 @@ export default function DonationForm({
       city: "",
       address: "",
       pincode: "",
-      agree: false, // ✅ boolean
+      agree: false,
       cause: cause,
       initiative: cause,
     },
@@ -96,6 +96,7 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
+  // Update fields based on nationality
   useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
@@ -110,6 +111,7 @@ export default function DonationForm({
     }
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
+  // Show toast on success or error
   useEffect(() => {
     if (state.message) {
       if (state.success) {
@@ -151,6 +153,12 @@ export default function DonationForm({
               donationAmountsIndian={donationAmountsIndian}
               donationAmountsNonIndian={donationAmountsNonIndian}
             />
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white p-3 rounded-md mt-4 hover:bg-blue-700"
+            >
+              Donate
+            </button>
           </form>
         </Form>
       </CardContent>
