@@ -85,6 +85,12 @@ const navLinks: NavItem[] = [
       { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
     ]
   },
+  { label: 'Media', isDropdown: true, items: [
+      { href: '/gallery', label: 'Gallery' },
+      { href: '/films', label: 'Films' },
+      { href: '/press-releases', label: 'Press Releases' },
+    ]
+  },
   { href: '/workshops-events', label: 'Workshops & Events' },
   { href: '/connect', label: 'Connect' },
 ];
