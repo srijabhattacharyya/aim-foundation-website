@@ -23,8 +23,18 @@ const DynamicSponsorChildDonationForm = dynamic(
   { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
 );
 
+// Type for nav links
+interface NavItem {
+  label: string;
+  href?: string;
+  isDropdown?: boolean;
+  items?: NavItem[];
+  isSubDropdown?: boolean;
+  subItems?: NavItem[];
+}
+
 // Navbar links
-const navLinks = [
+const navLinks: NavItem[] = [
   { href: '/', label: 'Home' },
   { label: 'About', isDropdown: true, items: [
       { href: '/organisation', label: 'Organisation' },
@@ -55,7 +65,6 @@ const causeToFormComponent: Record<string, ComponentType<any>> = {
   "general": dynamic(() => import('@/components/sections/donation-forms/IndividualDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
   "educational": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
   "innocent-smiles": dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
-  // Add other dynamic donation forms similarly...
 };
 
 const Navbar = () => {
@@ -118,13 +127,13 @@ const Navbar = () => {
                     <DropdownMenuContent>
                       {link.items?.map((item) => (
                         <DropdownMenuItem key={item.label} asChild>
-                          <Link href={item.href || '#'}>{item.label}</Link>
+                          <Link href={item.href ?? '#'}>{item.label}</Link>
                         </DropdownMenuItem>
                       ))}
                     </DropdownMenuContent>
                   </DropdownMenu>
                 ) : (
-                  <Link key={link.label} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary">{link.label}</Link>
+                  <Link key={link.label} href={link.href ?? '#'} className="text-sm font-medium text-muted-foreground hover:text-primary">{link.label}</Link>
                 )
               )}
             </nav>
@@ -161,7 +170,7 @@ const Navbar = () => {
                 <nav className="flex flex-col gap-4">
                   {navLinks.map((link) => (
                     <SheetClose asChild key={link.label}>
-                      <Link href={link.href || '#'} className="text-lg font-medium text-foreground hover:text-primary">{link.label}</Link>
+                      <Link href={link.href ?? '#'} className="text-lg font-medium text-foreground hover:text-primary">{link.label}</Link>
                     </SheetClose>
                   ))}
                 </nav>
