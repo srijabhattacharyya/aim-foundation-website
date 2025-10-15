@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, ComponentType } from 'react';
@@ -11,6 +12,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import dynamic from 'next/dynamic';
@@ -51,6 +56,16 @@ const navLinks: NavItem[] = [
         { href: '/sheconnects', label: 'SheConnects' },
         { href: '/milieu', label: 'Milieu' },
         { href: '/vidyashakti', label: 'VidyaShakti' },
+      ]},
+      { label: 'Healthcare Initiatives', isSubDropdown: true, href: '/healthcare-initiatives', subItems: [
+        { href: '/cureline', label: 'CureLine' },
+        { href: '/carecircle', label: 'CareCircle' },
+        { href: '/childfirst', label: 'ChildFirst' },
+        { href: '/detect', label: 'Detect' },
+        { href: '/sighthope', label: 'SightHope' },
+        { href: '/oralscan', label: 'OralScan' },
+        { href: '/cyclesafe', label: 'CycleSafe' },
+        { href: '/soulcircle', label: 'SoulCircle' },
       ]},
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
@@ -125,11 +140,28 @@ const Navbar = () => {
                       {link.label} <ChevronDown className="h-4 w-4" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      {link.items?.map((item) => (
-                        <DropdownMenuItem key={item.label} asChild>
-                          <Link href={item.href ?? '#'}>{item.label}</Link>
-                        </DropdownMenuItem>
-                      ))}
+                      {link.items?.map((item) =>
+                        item.isSubDropdown ? (
+                           <DropdownMenuSub key={item.label}>
+                              <DropdownMenuSubTrigger>
+                                <Link href={item.href ?? '#'}>{item.label}</Link>
+                              </DropdownMenuSubTrigger>
+                              <DropdownMenuPortal>
+                                <DropdownMenuSubContent>
+                                  {item.subItems?.map((subItem) => (
+                                    <DropdownMenuItem key={subItem.label} asChild>
+                                      <Link href={subItem.href ?? '#'}>{subItem.label}</Link>
+                                    </DropdownMenuItem>
+                                  ))}
+                                </DropdownMenuSubContent>
+                              </DropdownMenuPortal>
+                            </DropdownMenuSub>
+                        ) : (
+                          <DropdownMenuItem key={item.label} asChild>
+                            <Link href={item.href ?? '#'}>{item.label}</Link>
+                          </DropdownMenuItem>
+                        )
+                      )}
                     </DropdownMenuContent>
                   </DropdownMenu>
                 ) : (
