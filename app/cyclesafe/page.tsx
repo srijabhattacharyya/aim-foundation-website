@@ -1,6 +1,6 @@
-// /app/cyclesafe/page.tsx
 import type { Metadata } from 'next';
-import CycleSafeClientPage from './CycleSafeClientPage';
+import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 
 export const metadata: Metadata = {
   title: 'CycleSafe by AIM Foundation: Menstrual Health Support',
@@ -35,6 +35,11 @@ export const metadata: Metadata = {
   },
 };
 
+const CycleSafeClientPage = dynamic(
+  () => import('./CycleSafeClientPage'),
+  { ssr: false }
+);
+
 export default function CycleSafePage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
@@ -59,7 +64,9 @@ export default function CycleSafePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-cyclesafe"
       />
-      <CycleSafeClientPage />
+      <Suspense fallback={<div>Loading...</div>}>
+        <CycleSafeClientPage />
+      </Suspense>
     </>
   );
 }
