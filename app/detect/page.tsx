@@ -1,5 +1,4 @@
-"use client";
-
+// /app/detect/page.tsx
 import type { Metadata } from 'next';
 import DetectClientPage from './DetectClientPage';
 

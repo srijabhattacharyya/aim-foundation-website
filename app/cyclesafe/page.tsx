@@ -1,5 +1,4 @@
-"use client";
-
+// /app/cyclesafe/page.tsx
 import type { Metadata } from 'next';
 import CycleSafeClientPage from './CycleSafeClientPage';
 
