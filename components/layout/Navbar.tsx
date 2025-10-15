@@ -67,6 +67,13 @@ const navLinks: NavItem[] = [
         { href: '/cyclesafe', label: 'CycleSafe' },
         { href: '/soulcircle', label: 'SoulCircle' },
       ]},
+      { label: 'Gender Equality Initiative', isSubDropdown: true, href: '/gender-equality-initiative', subItems: [
+        { href: '/sheconnects', label: 'SheConnects' },
+        { href: '/cyclesafe', label: 'CycleSafe' },
+        { href: '/detect', label: 'Detect' },
+        { href: '/suidhaga', label: 'SuiDhaga' },
+        { href: '/krishti', label: 'Krishti' },
+      ]},
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
     ]
@@ -216,3 +223,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+    
