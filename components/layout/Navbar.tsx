@@ -98,13 +98,19 @@ const navLinks: NavItem[] = [
       { href: '/career', label: 'Careers' },
     ]
   },
+  { label: 'Resources', isDropdown: true, items: [
+      { href: '/annual-report', label: 'Annual Report' },
+      { href: '/library', label: 'Library' },
+      { href: '/voices', label: 'Voices' },
+      { href: '/policies', label: 'Policies' },
+    ]
+  },
   { label: 'Media', isDropdown: true, items: [
       { href: '/gallery', label: 'Gallery' },
       { href: '/films', label: 'Films' },
       { href: '/press-releases', label: 'Press Releases' },
     ]
   },
-  { href: '/workshops-events', label: 'Workshops & Events' },
   { href: '/connect', label: 'Connect' },
 ];
 
@@ -249,6 +255,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-    
-    
