@@ -37,11 +37,10 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/roots-of-change',
     title: 'Roots of Change - AIM Foundation',
     description:
       'Planting knowledge, growing change. Cultivating environmental awareness and sustainable habits.',
-    images: ['https://aimindia.org.in/home.avif'],
+    images: ['https://aimindia.org.in/home.avif'], // ✅ Correct field
   },
   alternates: {
     canonical: '/roots-of-change',
