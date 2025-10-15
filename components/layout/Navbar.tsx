@@ -15,6 +15,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuPortal,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import dynamic from 'next/dynamic';
@@ -229,5 +230,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-    
