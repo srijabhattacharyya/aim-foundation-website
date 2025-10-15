@@ -11,30 +11,24 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
-  DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 import CauseSelectionForm from '@/components/sections/donation-forms/CauseSelectionForm';
 
-// Dynamically import all the specific donation forms
+// Dynamically import donation forms
 const DynamicSponsorChildDonationForm = dynamic(
   () => import('@/components/sections/donation-forms/SponsorChildDonationForm'),
-  {
-    ssr: false,
-    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
-  }
+  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
 );
+
+const causeToFormComponent: Record<string, ComponentType<any>> = {
+  "general": dynamic(() => import('@/components/sections/donation-forms/IndividualDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "educational": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "innocent-smiles": dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  // Add other donation forms here...
+};
 
 // Navbar links
 const navLinks = [
@@ -51,21 +45,7 @@ const navLinks = [
     label: 'Initiatives',
     isDropdown: true,
     items: [
-      { 
-        label: 'Educational Initiatives',
-        isSubDropdown: true,
-        href: '/educational-initiatives',
-        subItems: [
-          { href: '/innocent-smiles', label: 'Innocent Smiles' },
-          { href: '/inspire-eduLab', label: 'Inspire EduLab' },
-          { href: '/eduaccess', label: 'EduAccess' },
-          { href: '/empower-english', label: 'Empower English'},
-          { href: '/digiempower', label: 'DigiEmpower' },
-          { href: '/sheconnects', label: 'SheConnects' },
-          { href: '/milieu', label: 'Milieu' },
-          { href: '/vidyashakti', label: 'VidyaShakti' },
-        ]
-      },
+      { href: '/educational-initiatives', label: 'Educational Initiatives' },
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
     ]
@@ -73,14 +53,6 @@ const navLinks = [
   { href: '/workshops-events', label: 'Workshops & Events' },
   { href: '/connect', label: 'Connect' },
 ];
-
-// Map causes to dynamically loaded form components
-const causeToFormComponent: Record<string, ComponentType<any>> = {
-  "general": dynamic(() => import('@/components/sections/donation-forms/IndividualDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
-  "educational": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
-  "innocent-smiles": dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
-  // Add other dynamic donation forms similarly...
-};
 
 const Navbar = () => {
   const [sponsorDialogOpen, setSponsorDialogOpen] = useState(false);
@@ -113,6 +85,7 @@ const Navbar = () => {
                   <LogIn className="mr-2 h-4 w-4" /> Login
                 </Link>
               </Button>
+
               <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
                 <DialogTrigger asChild>
                   <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">Sponsor a Child</Button>
@@ -121,6 +94,7 @@ const Navbar = () => {
                   <DynamicSponsorChildDonationForm />
                 </DialogContent>
               </Dialog>
+
               <Dialog open={donateDialogOpen} onOpenChange={handleDialogClose}>
                 <DialogTrigger asChild>
                   <Button size="sm" onClick={() => setDonateDialogOpen(true)}>Donate Now</Button>
@@ -131,6 +105,7 @@ const Navbar = () => {
               </Dialog>
             </div>
           </div>
+
           <div className="flex justify-end items-center h-1/2">
             <nav className="flex gap-6 items-center">
               {navLinks.map((link) =>
@@ -140,15 +115,23 @@ const Navbar = () => {
                       {link.label} <ChevronDown className="h-4 w-4" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      {link.items?.map((item) => (
-                        <DropdownMenuItem key={item.label} asChild>
-                          <Link href={item.href || '#'}>{item.label}</Link>
-                        </DropdownMenuItem>
-                      ))}
+                      {link.items?.map((item) =>
+                        item.href ? (
+                          <DropdownMenuItem key={item.label} asChild>
+                            <Link href={item.href}>{item.label}</Link>
+                          </DropdownMenuItem>
+                        ) : (
+                          <DropdownMenuItem key={item.label} disabled>{item.label}</DropdownMenuItem>
+                        )
+                      )}
                     </DropdownMenuContent>
                   </DropdownMenu>
+                ) : link.href ? (
+                  <Link key={link.label} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary">
+                    {link.label}
+                  </Link>
                 ) : (
-                  <Link key={link.label} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary">{link.label}</Link>
+                  <span key={link.label} className="text-sm font-medium text-muted-foreground cursor-default">{link.label}</span>
                 )
               )}
             </nav>
@@ -165,6 +148,7 @@ const Navbar = () => {
               {FormComponent ? <FormComponent /> : <CauseSelectionForm onCauseSelect={handleCauseSelection} />}
             </DialogContent>
           </Dialog>
+
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -185,7 +169,11 @@ const Navbar = () => {
                 <nav className="flex flex-col gap-4">
                   {navLinks.map((link) => (
                     <SheetClose asChild key={link.label}>
-                      <Link href={link.href || '#'} className="text-lg font-medium text-foreground hover:text-primary">{link.label}</Link>
+                      {link.href ? (
+                        <Link href={link.href} className="text-lg font-medium text-foreground hover:text-primary">{link.label}</Link>
+                      ) : (
+                        <span className="text-lg font-medium text-foreground cursor-default">{link.label}</span>
+                      )}
                     </SheetClose>
                   ))}
                 </nav>
