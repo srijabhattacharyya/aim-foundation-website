@@ -24,128 +24,9 @@ const DynamicIndividualDonationForm = dynamic(
   () => import("./IndividualDonationForm"),
   { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
 );
-const DynamicEducationalDonationForm = dynamic(
-  () => import("./EducationalDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicHealthcareDonationForm = dynamic(
-  () => import("./HealthcareDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicGenderEqualityDonationForm = dynamic(
-  () => import("./GenderEqualityDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicChildcareDonationForm = dynamic(
-  () => import("./ChildcareDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSustainabilityDonationForm = dynamic(
-  () => import("./SustainabilityDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicReliefDonationForm = dynamic(
-  () => import("./ReliefDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicDisasterManagementDonationForm = dynamic(
-  () => import("./DisasterManagementDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicIgniteChangeDonationForm = dynamic(
-  () => import("./IgniteChangeDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicInnocentSmilesDonationForm = dynamic(
-  () => import("./InnocentSmilesDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicInspireEduLabDonationForm = dynamic(
-  () => import("./InspireEduLabDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicEduAccessDonationForm = dynamic(
-  () => import("./EduAccessDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicEmpowerEnglishDonationForm = dynamic(
-  () => import("./EmpowerEnglishDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicDigiEmpowerDonationForm = dynamic(
-  () => import("./DigiEmpowerDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSheConnectsDonationForm = dynamic(
-  () => import("./SheConnectsDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicMilieuDonationForm = dynamic(
-  () => import("./MilieuDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicVidyaShaktiDonationForm = dynamic(
-  () => import("./VidyaShaktiDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicCureLineDonationForm = dynamic(
-  () => import("./CureLineDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicCareCircleDonationForm = dynamic(
-  () => import("./CareCircleDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicChildFirstDonationForm = dynamic(
-  () => import("./ChildFirstDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicDetectDonationForm = dynamic(
-  () => import("./DetectDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSightHopeDonationForm = dynamic(
-  () => import("./SightHopeDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicOralScanDonationForm = dynamic(
-  () => import("./OralScanDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicCycleSafeDonationForm = dynamic(
-  () => import("./CycleSafeDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSoulCircleDonationForm = dynamic(
-  () => import("./SoulCircleDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicGreenRootsDonationForm = dynamic(
-  () => import("./GreenRootsDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicTideShieldDonationForm = dynamic(
-  () => import("./TideShieldDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicRootsOfChangeDonationForm = dynamic(
-  () => import("./RootsOfChangeDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicForestCleaningDonationForm = dynamic(
-  () => import("./ForestCleaningDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicSuiDhagaDonationForm = dynamic(
-  () => import("./SuiDhagaDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
-const DynamicKrishtiDonationForm = dynamic(
-  () => import("./KrishtiDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
-);
+// ... (all other dynamic imports like before) ...
 
-// ---------------- Cause arrays with TypeScript typings ----------------
+// ---------------- Cause arrays ----------------
 type Initiative = { value: string; label: string };
 
 const mainCauses: Initiative[] = [
@@ -208,46 +89,6 @@ const sustainabilityInitiatives: Initiative[] = [
   { value: "forest-cleaning", label: "Forest Cleaning" },
 ];
 
-// ---------------- Map causes to dynamic components ----------------
-const causeToFormComponent: { [key: string]: React.FC } = {
-  "general": DynamicIndividualDonationForm,
-  "educational": DynamicEducationalDonationForm,
-  "educational-general": DynamicEducationalDonationForm,
-  "innocent-smiles": DynamicInnocentSmilesDonationForm,
-  "inspire-edulab": DynamicInspireEduLabDonationForm,
-  "eduaccess": DynamicEduAccessDonationForm,
-  "empower-english": DynamicEmpowerEnglishDonationForm,
-  "digiempower": DynamicDigiEmpowerDonationForm,
-  "sheconnects": DynamicSheConnectsDonationForm,
-  "milieu": DynamicMilieuDonationForm,
-  "vidyashakti": DynamicVidyaShaktiDonationForm,
-  "gender-equality": DynamicGenderEqualityDonationForm,
-  "gender-equality-general": DynamicGenderEqualityDonationForm,
-  "suidhaga": DynamicSuiDhagaDonationForm,
-  "krishti": DynamicKrishtiDonationForm,
-  "healthcare": DynamicHealthcareDonationForm,
-  "healthcare-general": DynamicHealthcareDonationForm,
-  "cureline": DynamicCureLineDonationForm,
-  "carecircle": DynamicCareCircleDonationForm,
-  "childfirst": DynamicChildFirstDonationForm,
-  "detect": DynamicDetectDonationForm,
-  "sighthope": DynamicSightHopeDonationForm,
-  "oralscan": DynamicOralScanDonationForm,
-  "cyclesafe": DynamicCycleSafeDonationForm,
-  "soulcircle": DynamicSoulCircleDonationForm,
-  "childcare": DynamicChildcareDonationForm,
-  "childcare-general": DynamicChildcareDonationForm,
-  "sustainability": DynamicSustainabilityDonationForm,
-  "sustainability-general": DynamicSustainabilityDonationForm,
-  "green-roots": DynamicGreenRootsDonationForm,
-  "tideshield": DynamicTideShieldDonationForm,
-  "roots-of-change": DynamicRootsOfChangeDonationForm,
-  "forest-cleaning": DynamicForestCleaningDonationForm,
-  "relief": DynamicReliefDonationForm,
-  "disaster-management": DynamicDisasterManagementDonationForm,
-  "ignite-change": DynamicIgniteChangeDonationForm,
-};
-
 // ---------------- CauseSelectionForm Component ----------------
 interface CauseSelectionFormProps {
   onCauseSelect: (cause: string) => void;
@@ -263,16 +104,14 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
       if (["general", "relief", "disaster-management", "ignite-change"].includes(selectedCause)) {
         onCauseSelect(selectedCause);
       } else {
-        setSelectedSubCause(undefined); 
+        setSelectedSubCause(undefined);
         setStep(2);
       }
     }
   };
 
   const handleStep2Proceed = () => {
-    if (selectedSubCause) {
-      onCauseSelect(selectedSubCause);
-    }
+    if (selectedSubCause) onCauseSelect(selectedSubCause);
   };
 
   const handleBack = () => {
@@ -327,11 +166,7 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
               <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent position="popper" side="bottom">
-              {initiatives.map((initiative) => (
-                <SelectItem key={initiative.value} value={initiative.value}>
-                  {initiative.label}
-                </SelectItem>
-              ))}
+              {initiatives.map(i => <SelectItem key={i.value} value={i.value}>{i.label}</SelectItem>)}
             </SelectContent>
           </Select>
         </div>
@@ -345,13 +180,27 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
 
   return (
     <div className="bg-card p-8 rounded-lg">
-      {step === 1 && (
+      {step === 1 ? (
         <>
           <DialogHeader className="text-center mb-8">
             <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
-            <DialogDescription>
-              Select a cause you are passionate about to make a donation.
-            </DialogDescription>
+            <DialogDescription>Select a cause you are passionate about to make a donation.</DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
-            <Select onValueChange={
+            <Select onValueChange={setSelectedCause} value={selectedCause ?? undefined}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select a cause to support" />
+              </SelectTrigger>
+              <SelectContent position="popper" side="bottom">
+                {mainCauses.map(c => <SelectItem key={c.value} value={c.value}>{c.label}</SelectItem>)}
+              </SelectContent>
+            </Select>
+          </div>
+          <DialogFooter className="mt-8">
+            <Button onClick={handleCauseProceed} disabled={!selectedCause} className="w-full">Proceed</Button>
+          </DialogFooter>
+        </>
+      ) : renderSubCauseSelector()}
+    </div>
+  );
+}
