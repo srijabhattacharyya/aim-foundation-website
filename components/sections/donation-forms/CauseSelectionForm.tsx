@@ -129,27 +129,27 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
       case "educational":
         initiatives = educationalInitiatives;
         title = "SUPPORT OUR EDUCATIONAL INITIATIVES";
-        placeholder = "Select a specific educational initiative";
+        placeholder = initiatives[0]?.label || "Select a specific educational initiative";
         break;
       case "healthcare":
         initiatives = healthcareInitiatives;
         title = "SUPPORT OUR HEALTHCARE INITIATIVES";
-        placeholder = "Select a specific healthcare initiative";
+        placeholder = initiatives[0]?.label || "Select a specific healthcare initiative";
         break;
       case "gender-equality":
         initiatives = genderEqualityInitiatives;
         title = "SUPPORT GENDER EQUALITY INITIATIVES";
-        placeholder = "Select a specific gender equality initiative";
+        placeholder = initiatives[0]?.label || "Select a specific gender equality initiative";
         break;
       case "childcare":
         initiatives = childcareInitiatives;
         title = "SUPPORT CHILDCARE INITIATIVES";
-        placeholder = "Select a specific childcare initiative";
+        placeholder = initiatives[0]?.label || "Select a specific childcare initiative";
         break;
       case "sustainability":
         initiatives = sustainabilityInitiatives;
         title = "SUPPORT SUSTAINABILITY INITIATIVES";
-        placeholder = "Select a specific sustainability initiative";
+        placeholder = initiatives[0]?.label || "Select a specific sustainability initiative";
         break;
     }
 
