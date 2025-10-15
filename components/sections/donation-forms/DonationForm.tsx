@@ -10,7 +10,9 @@ import Image from "next/image";
 import { addDonation } from "@/app/actions/donationActions";
 import { DonationFormFields } from "./DonationFormFields";
 import { Form } from "@/components/ui/form";
+import { DonationAmount } from "@/types/donation";
 
+// Zod schema
 export const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"]),
   amount: z.string(),
@@ -31,12 +33,6 @@ export const donationSchema = z.object({
   cause: z.string(),
   initiative: z.string(),
 });
-
-type DonationAmount = {
-  value: string;
-  label: string;
-  description?: string;
-};
 
 interface DonationFormProps {
   cause: string;
@@ -80,7 +76,7 @@ export default function DonationForm({
       address: "",
       pincode: "",
       agree: false,
-      cause: cause,
+      cause,
       initiative: cause,
     },
   });
@@ -104,7 +100,6 @@ export default function DonationForm({
   const onSubmit = async (data: z.infer<typeof donationSchema>) => {
     setLoading(true);
     try {
-      // Convert form data to FormData for addDonation
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
         if (value !== undefined && value !== null) {
@@ -112,7 +107,8 @@ export default function DonationForm({
         }
       });
 
-      await addDonation(data, formData); // ✅ Second argument is now proper FormData
+      await addDonation(data, formData);
+
       toast({
         title: `Thank you for supporting ${cause}!`,
         description: "Your generous donation will change a life.",
@@ -147,7 +143,11 @@ export default function DonationForm({
           <p className="text-muted-foreground">{formSubtitle}</p>
         </div>
         <Form {...form}>
-          <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form
+            ref={formRef}
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-6"
+          >
             <DonationFormFields
               donationAmountsIndian={donationAmountsIndian}
               donationAmountsNonIndian={donationAmountsNonIndian}
