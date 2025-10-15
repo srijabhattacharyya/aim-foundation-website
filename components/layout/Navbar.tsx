@@ -11,7 +11,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -49,7 +48,7 @@ const navLinks: NavItem[] = [
   { label: 'Initiatives', isDropdown: true, items: [
       { label: 'Educational Initiatives', isSubDropdown: true, href: '/educational-initiatives', subItems: [
         { href: '/innocent-smiles', label: 'Innocent Smiles' },
-        { href: '/inspire-eduLab', label: 'Inspire EduLab' },
+        { href: '/inspire-edulab', label: 'Inspire EduLab' },
         { href: '/eduaccess', label: 'EduAccess' },
         { href: '/empower-english', label: 'Empower English'},
         { href: '/digiempower', label: 'DigiEmpower' },
@@ -82,6 +81,7 @@ const navLinks: NavItem[] = [
       ]},
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
+      { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
     ]
   },
   { href: '/workshops-events', label: 'Workshops & Events' },
@@ -229,3 +229,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+    
