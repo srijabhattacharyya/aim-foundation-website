@@ -344,8 +344,6 @@ export function DonationFormFields({
       {/* HIDDEN FIELDS */}
       <input type="hidden" {...form.register("cause")} />
       <input type="hidden" {...form.register("initiative")} />
-
-      <SubmitButton />
     </div>
   );
 }

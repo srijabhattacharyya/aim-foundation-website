@@ -11,6 +11,8 @@ import { addDonation } from "@/app/actions/donationActions";
 import { DonationFormFields } from "./DonationFormFields";
 import { Form } from "@/components/ui/form";
 import { DonationAmount } from "@/types/donation";
+import { Loader2 } from "lucide-react";
+import { SubmitButton } from "./SubmitButton";
 
 // ✅ Zod Schema for validation
 export const donationSchema = z.object({
@@ -167,13 +169,7 @@ export default function DonationForm({
               }))}
             />
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 disabled:opacity-50"
-            >
-              {loading ? "Processing..." : "Donate"}
-            </button>
+            <SubmitButton/>
           </form>
         </Form>
       </CardContent>
