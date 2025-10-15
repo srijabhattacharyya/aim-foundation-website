@@ -1,4 +1,6 @@
 // /app/detect/page.tsx
+'use client'; // ← ensure this page is client-only
+
 import type { Metadata } from 'next';
 import DetectClientPage from './DetectClientPage';
 
