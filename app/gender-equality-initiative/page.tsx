@@ -9,7 +9,20 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: 'Gender Equality by AIM Foundation: Women Empowerment',
   description: 'AIM Foundation’s Gender Equality Programs empower women and girls through health, skills, and education—building confidence, independence, and equity.',
-  keywords: ['AIM Foundation', 'gender equality programs', 'women empowerment Kolkata', 'SheConnects AIM Foundation', 'CycleSafe AIM Foundation', 'Detect AIM Foundation', 'SuiDhaga AIM Foundation', 'Krishti AIM Foundation', 'menstrual health support', 'cervical health awareness', 'women entrepreneurship India', 'NGO women empowerment programs'],
+  keywords: [
+    'AIM Foundation',
+    'gender equality programs',
+    'women empowerment Kolkata',
+    'SheConnects AIM Foundation',
+    'CycleSafe AIM Foundation',
+    'Detect AIM Foundation',
+    'SuiDhaga AIM Foundation',
+    'Krishti AIM Foundation',
+    'menstrual health support',
+    'cervical health awareness',
+    'women entrepreneurship India',
+    'NGO women empowerment programs'
+  ],
   robots: 'index, follow',
   authors: [{ name: 'AIM Foundation' }],
   openGraph: {
@@ -33,10 +46,8 @@ export const metadata: Metadata = {
     site: '@aimindiango',
     title: 'Gender Equality by AIM Foundation: Women Empowerment',
     description: 'AIM Foundation’s Gender Equality Programs empower women and girls through health, skills, and education—building confidence, independence, and equity.',
-    image: {
-      url: 'https://aimindia.org.in/home.avif',
-      alt: 'Gender Equality Initiatives by AIM Foundation',
-    },
+    // ✅ Correct field
+    images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
     canonical: '/gender-equality-initiative',
