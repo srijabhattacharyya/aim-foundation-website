@@ -74,7 +74,7 @@ const navLinks: NavItem[] = [
         { href: '/suidhaga', label: 'SuiDhaga' },
         { href: '/krishti', label: 'Krishti' },
       ]},
-      { label: 'Sustainability Initiatives', isSubDropdown: true, href: '/sustainability-initiatives', subItems: [
+       { label: 'Sustainability Initiatives', isSubDropdown: true, href: '/sustainability-initiatives', subItems: [
         { href: '/green-roots', label: 'GreenRoots' },
         { href: '/tideshield', label: 'TideShield' },
         { href: '/roots-of-change', label: 'Roots of Change' },
@@ -83,6 +83,13 @@ const navLinks: NavItem[] = [
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
       { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
+    ]
+  },
+  { label: 'Get Involved', isDropdown: true, items: [
+      { href: '/individual-donation', label: 'Individual Donation' },
+      { href: '/corporate-social-responsibility', label: 'Corporate Social Responsibility' },
+      { href: '/payroll-giving', label: 'Payroll Giving' },
+      { href: '/cause-marketing-events', label: 'Cause-Marketing & Events' },
     ]
   },
    { label: 'Join Us', isDropdown: true, items: [
@@ -243,4 +250,5 @@ const Navbar = () => {
 
 export default Navbar;
 
+    
     
