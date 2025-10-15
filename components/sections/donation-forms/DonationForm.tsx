@@ -113,6 +113,7 @@ export default function DonationForm({
         title: `Thank you for supporting ${cause}!`,
         description: "Your generous donation will change a life.",
       });
+
       form.reset();
       formRef.current?.reset();
     } catch (error: any) {
