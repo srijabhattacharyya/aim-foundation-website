@@ -18,6 +18,7 @@ import {
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
+import Image from "next/image";
 
 // ---------------- Dynamic donation forms ----------------
 const DynamicIndividualDonationForm = dynamic(
@@ -154,7 +155,16 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
 
     return (
       <>
-        <DialogHeader className="text-center mb-8">
+        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+          <Image
+            src="/images/logo.png"
+            alt="AIM Foundation Logo"
+            width={120}
+            height={48}
+            className="object-contain"
+          />
+        </div>
+        <DialogHeader className="text-center mb-8 pt-20">
           <DialogTitle className="text-xl font-bold font-headline">{title}</DialogTitle>
           <DialogDescription>
             Choose a specific initiative or make a general donation.
@@ -179,10 +189,19 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
   };
 
   return (
-    <div className="bg-card p-8 rounded-lg">
+    <div className="bg-card p-8 rounded-lg relative">
       {step === 1 ? (
         <>
-          <DialogHeader className="text-center mb-8">
+          <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+            <Image
+                src="/images/logo.png"
+                alt="AIM Foundation Logo"
+                width={120}
+                height={48}
+                className="object-contain"
+            />
+          </div>
+          <DialogHeader className="text-center mb-8 pt-20">
             <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
             <DialogDescription>Select a cause you are passionate about to make a donation.</DialogDescription>
           </DialogHeader>
