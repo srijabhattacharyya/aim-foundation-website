@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
@@ -11,7 +11,7 @@ import { addDonation } from "@/app/actions/donationActions";
 import { DonationFormFields } from "./DonationFormFields";
 import { Form } from "@/components/ui/form";
 
-// Zod schema for validation
+// Zod schema
 export const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"]),
   amount: z.string(),
@@ -33,7 +33,6 @@ export const donationSchema = z.object({
   initiative: z.string(),
 });
 
-// Shared type for donation amounts
 export type DonationAmount = {
   value: string;
   label: string;
@@ -50,13 +49,6 @@ interface DonationFormProps {
   formSubtitle: string;
 }
 
-const initialState = {
-  message: "",
-  errors: {},
-  success: false,
-  data: null,
-};
-
 export default function DonationForm({
   cause,
   donationAmountsIndian,
@@ -67,8 +59,8 @@ export default function DonationForm({
   formSubtitle,
 }: DonationFormProps) {
   const { toast } = useToast();
-  const [state, formAction] = useFormState(addDonation, initialState);
   const formRef = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -96,7 +88,6 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
-  // Update fields based on nationality
   useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
@@ -111,25 +102,26 @@ export default function DonationForm({
     }
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
-  // Show toast on success or error
-  useEffect(() => {
-    if (state.message) {
-      if (state.success) {
-        toast({
-          title: `Thank you for supporting ${cause}!`,
-          description: "Your generous donation will change a life.",
-        });
-        form.reset();
-        formRef.current?.reset();
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Submission Failed",
-          description: state.message,
-        });
-      }
+  const onSubmit = async (data: z.infer<typeof donationSchema>) => {
+    setLoading(true);
+    try {
+      await addDonation(data);
+      toast({
+        title: `Thank you for supporting ${cause}!`,
+        description: "Your generous donation will change a life.",
+      });
+      form.reset();
+      formRef.current?.reset();
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: error?.message || "Something went wrong",
+      });
+    } finally {
+      setLoading(false);
     }
-  }, [state, toast, form, cause]);
+  };
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none">
@@ -148,7 +140,7 @@ export default function DonationForm({
           <p className="text-muted-foreground">{formSubtitle}</p>
         </div>
         <Form {...form}>
-          <form ref={formRef} action={formAction} className="space-y-6">
+          <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <DonationFormFields
               donationAmountsIndian={donationAmountsIndian}
               donationAmountsNonIndian={donationAmountsNonIndian}
@@ -156,8 +148,9 @@ export default function DonationForm({
             <button
               type="submit"
               className="w-full bg-blue-600 text-white p-3 rounded-md mt-4 hover:bg-blue-700"
+              disabled={loading}
             >
-              Donate
+              {loading ? "Submitting..." : "Donate"}
             </button>
           </form>
         </Form>
