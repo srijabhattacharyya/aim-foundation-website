@@ -85,6 +85,12 @@ const navLinks: NavItem[] = [
       { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
     ]
   },
+   { label: 'Join Us', isDropdown: true, items: [
+      { href: '/volunteering', label: 'Volunteering' },
+      { href: '/internship', label: 'Internship' },
+      { href: '/career', label: 'Careers' },
+    ]
+  },
   { label: 'Media', isDropdown: true, items: [
       { href: '/gallery', label: 'Gallery' },
       { href: '/films', label: 'Films' },
@@ -236,3 +242,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+    
