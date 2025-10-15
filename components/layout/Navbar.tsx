@@ -74,6 +74,12 @@ const navLinks: NavItem[] = [
         { href: '/suidhaga', label: 'SuiDhaga' },
         { href: '/krishti', label: 'Krishti' },
       ]},
+      { label: 'Sustainability Initiatives', isSubDropdown: true, href: '/sustainability-initiatives', subItems: [
+        { href: '/green-roots', label: 'GreenRoots' },
+        { href: '/tideshield', label: 'TideShield' },
+        { href: '/roots-of-change', label: 'Roots of Change' },
+        { href: '/forest-cleaning', label: 'Forest Cleaning' },
+      ]},
       { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
     ]
@@ -84,7 +90,7 @@ const navLinks: NavItem[] = [
 
 // Map causes to dynamically loaded form components
 const causeToFormComponent: Record<string, ComponentType<any>> = {
-  "general": dynamic(() => import('@/components/sections/donation-forms/IndividualDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "general": dynamic(() => import('@/components/sections/donation-forms/GeneralDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
   "educational": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
   "innocent-smiles": dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
 };
@@ -223,5 +229,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-    
