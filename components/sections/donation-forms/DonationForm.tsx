@@ -11,7 +11,6 @@ import { addDonation } from "@/app/actions/donationActions";
 import { DonationFormFields } from "./DonationFormFields";
 import { Form } from "@/components/ui/form";
 
-// Zod schema for donation form
 export const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"]),
   amount: z.string(),
@@ -88,7 +87,6 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
-  // Update form fields based on nationality
   useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
@@ -103,12 +101,18 @@ export default function DonationForm({
     }
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
-  // Handle form submission
   const onSubmit = async (data: z.infer<typeof donationSchema>) => {
     setLoading(true);
     try {
-      // ✅ addDonation expects 2 arguments, pass empty object as second
-      await addDonation(data, {});
+      // Convert form data to FormData for addDonation
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          formData.append(key, String(value));
+        }
+      });
+
+      await addDonation(data, formData); // ✅ Second argument is now proper FormData
       toast({
         title: `Thank you for supporting ${cause}!`,
         description: "Your generous donation will change a life.",
