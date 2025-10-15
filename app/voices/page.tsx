@@ -136,7 +136,7 @@ const blogPosts = [
   {
     slug: 'project-sheconnects',
     title: 'Project SheConnects: Empowering Women Through Technology',
-    image: '/images/projects/sheconnects/sheconnects1.avif',
+    image: '/images/projects/innocent-smiles/innocent-smiles3.avif',
     hint: 'women technology',
     excerpt: 'Discover how SheConnects is bridging the digital gender gap and empowering women to build sustainable livelihoods online.',
     date: 'November 23, 2022',
