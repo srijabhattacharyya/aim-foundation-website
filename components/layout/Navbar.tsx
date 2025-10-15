@@ -1,134 +1,201 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import { useState, ComponentType } from 'react';
+import Link from 'next/link';
+import { Menu, X, ChevronDown, LogIn } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import Image from 'next/image';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuPortal,
+} from "@/components/ui/dropdown-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+import CauseSelectionForm from '@/components/sections/donation-forms/CauseSelectionForm';
 
-const causeToFormComponent: Record<string, React.FC> = {
-  general: dynamic(
-    () =>
-      import(
-        "@/components/sections/donation-forms/IndividualDonationForm"
-      ),
-    {
-      ssr: false,
-      loading: () => (
-        <div className="p-8">
-          <Skeleton className="h-[500px] w-full" />
-        </div>
-      ),
-    }
-  ),
-  educational: dynamic(
-    () =>
-      import(
-        "@/components/sections/donation-forms/EducationalDonationForm"
-      ),
-    {
-      ssr: false,
-      loading: () => (
-        <div className="p-8">
-          <Skeleton className="h-[500px] w-full" />
-        </div>
-      ),
-    }
-  ),
-  "educational-general": dynamic(
-    () =>
-      import(
-        "@/components/sections/donation-forms/EducationalDonationForm"
-      ),
-    {
-      ssr: false,
-      loading: () => (
-        <div className="p-8">
-          <Skeleton className="h-[500px] w-full" />
-        </div>
-      ),
-    }
-  ),
-  "innocent-smiles": dynamic(
-    () =>
-      import(
-        "@/components/sections/donation-forms/InnocentSmilesDonationForm"
-      ),
-    {
-      ssr: false,
-      loading: () => (
-        <div className="p-8">
-          <Skeleton className="h-[500px] w-full" />
-        </div>
-      ),
-    }
-  ),
+// Dynamically import all the specific donation forms
+const DynamicSponsorChildDonationForm = dynamic(
+  () => import('@/components/sections/donation-forms/SponsorChildDonationForm'),
+  {
+    ssr: false,
+    loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>
+  }
+);
+
+// Navbar links
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { 
+    label: 'About',
+    isDropdown: true,
+    items: [
+      { href: '/organisation', label: 'Organisation' },
+      { href: '/team', label: 'Our Team' },
+    ]
+  },
+  { 
+    label: 'Initiatives',
+    isDropdown: true,
+    items: [
+      { 
+        label: 'Educational Initiatives',
+        isSubDropdown: true,
+        href: '/educational-initiatives',
+        subItems: [
+          { href: '/innocent-smiles', label: 'Innocent Smiles' },
+          { href: '/inspire-eduLab', label: 'Inspire EduLab' },
+          { href: '/eduaccess', label: 'EduAccess' },
+          { href: '/empower-english', label: 'Empower English'},
+          { href: '/digiempower', label: 'DigiEmpower' },
+          { href: '/sheconnects', label: 'SheConnects' },
+          { href: '/milieu', label: 'Milieu' },
+          { href: '/vidyashakti', label: 'VidyaShakti' },
+        ]
+      },
+      { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
+      { href: '/disaster-management', label: 'Disaster Management' },
+    ]
+  },
+  { href: '/workshops-events', label: 'Workshops & Events' },
+  { href: '/connect', label: 'Connect' },
+];
+
+// Map causes to dynamically loaded form components
+const causeToFormComponent: Record<string, ComponentType<any>> = {
+  "general": dynamic(() => import('@/components/sections/donation-forms/IndividualDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "educational": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "innocent-smiles": dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  // Add other dynamic donation forms similarly...
 };
 
-export default function Navbar() {
+const Navbar = () => {
+  const [sponsorDialogOpen, setSponsorDialogOpen] = useState(false);
+  const [donateDialogOpen, setDonateDialogOpen] = useState(false);
   const [selectedCause, setSelectedCause] = useState<string | null>(null);
-  const FormComponent = selectedCause
-    ? causeToFormComponent[selectedCause]
-    : null;
+
+  const handleCauseSelection = (cause: string) => setSelectedCause(cause);
+  const handleDialogClose = () => {
+    setDonateDialogOpen(false);
+    setSelectedCause(null);
+  }
+
+  const FormComponent = selectedCause ? causeToFormComponent[selectedCause] : null;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-[100px] items-center px-4 md:px-6">
         <div className="flex h-full items-center mr-auto">
-          <Link href="/" className="flex items-center space-x-2">
-            <Image
-              src="/logo.png"
-              alt="AIM Foundation Logo"
-              width={120}
-              height={60}
-              priority
-            />
-            <span className="hidden md:block font-semibold text-lg text-primary">
-              AIM Foundation
-            </span>
+          <Link href="/" className="flex items-center" aria-label="AIM Foundation Home">
+            <Image src="/images/logo.png" alt="AIM Foundation Logo" width={150} height={60} className="w-auto h-auto"/>
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center space-x-6">
-          <Link href="/about" className="hover:text-primary">
-            About
-          </Link>
-          <Link href="/programs" className="hover:text-primary">
-            Programs
-          </Link>
-          <Link href="/get-involved" className="hover:text-primary">
-            Get Involved
-          </Link>
-          <Link href="/contact" className="hover:text-primary">
-            Contact
-          </Link>
-          <Button
-            onClick={() => setSelectedCause("general")}
-            className="bg-primary text-white hover:bg-primary/90"
-          >
-            Donate
-          </Button>
-        </nav>
-      </div>
-
-      {/* Render the selected donation form dynamically */}
-      {FormComponent && (
-        <div className="fixed inset-0 bg-black/50 flex justify-center items-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-lg max-w-2xl w-full relative">
-            <Button
-              onClick={() => setSelectedCause(null)}
-              className="absolute top-2 right-2"
-              variant="outline"
-            >
-              Close
-            </Button>
-            <div className="p-6">
-              <FormComponent />
+        {/* Desktop Menu */}
+        <div className="hidden md:flex flex-col h-full">
+          <div className="flex justify-end items-center h-1/2 border-b">
+            <div className="flex items-center gap-2">
+              <Button asChild variant="ghost" size="sm">
+                <Link href="/admin/login">
+                  <LogIn className="mr-2 h-4 w-4" /> Login
+                </Link>
+              </Button>
+              <Dialog open={sponsorDialogOpen} onOpenChange={setSponsorDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">Sponsor a Child</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+                  <DynamicSponsorChildDonationForm />
+                </DialogContent>
+              </Dialog>
+              <Dialog open={donateDialogOpen} onOpenChange={handleDialogClose}>
+                <DialogTrigger asChild>
+                  <Button size="sm" onClick={() => setDonateDialogOpen(true)}>Donate Now</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+                  {FormComponent ? <FormComponent /> : <CauseSelectionForm onCauseSelect={handleCauseSelection} />}
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
+          <div className="flex justify-end items-center h-1/2">
+            <nav className="flex gap-6 items-center">
+              {navLinks.map((link) =>
+                link.isDropdown ? (
+                  <DropdownMenu key={link.label}>
+                    <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary">
+                      {link.label} <ChevronDown className="h-4 w-4" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      {link.items?.map((item) => (
+                        <DropdownMenuItem key={item.label} asChild>
+                          <Link href={item.href || '#'}>{item.label}</Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Link key={link.label} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary">{link.label}</Link>
+                )
+              )}
+            </nav>
+          </div>
         </div>
-      )}
+
+        {/* Mobile Menu */}
+        <div className="md:hidden flex items-center gap-2 ml-auto">
+          <Dialog open={donateDialogOpen} onOpenChange={handleDialogClose}>
+            <DialogTrigger asChild>
+              <Button size="sm" onClick={() => setDonateDialogOpen(true)}>Donate Now</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
+              {FormComponent ? <FormComponent /> : <CauseSelectionForm onCauseSelect={handleCauseSelection} />}
+            </DialogContent>
+          </Dialog>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="overflow-y-auto">
+              <div className="flex flex-col p-6">
+                <div className="flex justify-between items-center mb-6">
+                  <Link href="/" className="flex items-center gap-2">
+                    <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
+                  </Link>
+                  <SheetClose asChild>
+                    <Button variant="ghost" size="icon"><X className="h-6 w-6" /></Button>
+                  </SheetClose>
+                </div>
+                <nav className="flex flex-col gap-4">
+                  {navLinks.map((link) => (
+                    <SheetClose asChild key={link.label}>
+                      <Link href={link.href || '#'} className="text-lg font-medium text-foreground hover:text-primary">{link.label}</Link>
+                    </SheetClose>
+                  ))}
+                </nav>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
     </header>
   );
-}
+};
+
+export default Navbar;
