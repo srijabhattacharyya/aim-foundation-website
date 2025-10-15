@@ -1,6 +1,4 @@
 // /app/detect/page.tsx
-'use client'; // ← ensure this page is client-only
-
 import type { Metadata } from 'next';
 import DetectClientPage from './DetectClientPage';
 
@@ -38,30 +36,5 @@ export const metadata: Metadata = {
 };
 
 export default function DetectPage() {
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "Detect by AIM Foundation empowers rural women with cervical cancer screenings, awareness, and training for frontline workers to save lives through early detection."
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-detect"
-      />
-      <DetectClientPage />
-    </>
-  );
+  return <DetectClientPage />;
 }
