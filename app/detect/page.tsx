@@ -1,6 +1,9 @@
-// /app/detect/page.tsx
+'use client';
+
 import type { Metadata } from 'next';
-import DetectClientPage from './DetectClientPage';
+import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Detect Cervical Health | AIM Foundation Women’s Care',
@@ -35,6 +38,35 @@ export const metadata: Metadata = {
   },
 };
 
+const DetectClientPage = dynamic(() => import('./DetectClientPage'), { ssr: false });
+
 export default function DetectPage() {
-  return <DetectClientPage />;
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "Detect by AIM Foundation empowers rural women with cervical cancer screenings, awareness, and training for frontline workers to save lives through early detection."
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-detect"
+      />
+      <Suspense fallback={<div className="text-center p-10">Loading...</div>}>
+        <DetectClientPage />
+      </Suspense>
+    </>
+  );
 }
