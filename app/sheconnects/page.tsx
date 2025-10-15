@@ -5,7 +5,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
   title: 'AIM Foundation | SheConnects, Women Digital Empowerment',
-  description: 'AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth.',
+  description:
+    'AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth.',
   keywords: [
     'AIM Foundation SheConnects',
     'women digital empowerment India',
@@ -20,7 +21,8 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://aimindia.org.in/sheconnects',
     title: 'AIM Foundation | SheConnects, Women Digital Empowerment',
-    description: 'AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth.',
+    description:
+      'AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth.',
     images: [
       {
         url: 'https://aimindia.org.in/home.avif',
@@ -35,31 +37,55 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    url: 'https://aimindia.org.in/sheconnects',
     title: 'AIM Foundation | SheConnects, Women Digital Empowerment',
-    description: 'AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth.',
+    description:
+      'AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
-    canonical: '/sheconnects',
+    canonical: 'https://aimindia.org.in/sheconnects',
   },
 };
 
 export default function SheConnectsPage() {
   const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AIM Foundation',
+    url: 'https://www.aimindia.org.in/',
+    logo: 'https://www.aimindia.org.in/logo.png',
+    sameAs: [
+      'https://www.facebook.com/aimindiango/',
+      'https://x.com/aimindiango',
+      'https://www.instagram.com/aimfoundation_ngo/',
+      'https://www.linkedin.com/in/aim-foundation-ngo/',
+      'https://www.youtube.com/@aimfoundation2604',
     ],
-    "description": "AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth."
+    description:
+      'AIM Foundation’s SheConnects empowers women with digital literacy, cyber safety, and online business skills to achieve independence and financial growth.',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/sheconnects',
+    },
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://aimindia.org.in/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'SheConnects',
+        item: 'https://aimindia.org.in/sheconnects',
+      },
+    ],
   };
 
   return (
@@ -68,6 +94,11 @@ export default function SheConnectsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-sheconnects"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        key="breadcrumb-schema-sheconnects"
       />
       <Suspense fallback={<Skeleton className="h-screen w-full" />}>
         <SheConnectsClientPage />
