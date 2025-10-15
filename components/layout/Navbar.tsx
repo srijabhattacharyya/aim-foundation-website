@@ -80,7 +80,7 @@ const navLinks: NavItem[] = [
         { href: '/roots-of-change', label: 'Roots of Change' },
         { href: '/forest-cleaning', label: 'Forest Cleaning' },
       ]},
-      { href: '/relief-to-the-underprivileged', label: 'Relief to the underprivileged' },
+      { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
       { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
     ]
@@ -114,11 +114,41 @@ const navLinks: NavItem[] = [
   { href: '/connect', label: 'Connect' },
 ];
 
+const SkeletonLoader = () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>;
+
 // Map causes to dynamically loaded form components
 const causeToFormComponent: Record<string, ComponentType<any>> = {
-  "general": dynamic(() => import('@/components/sections/donation-forms/GeneralDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
-  "educational": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
-  "innocent-smiles": dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }),
+  "general": dynamic(() => import('@/components/sections/donation-forms/GeneralDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "educational": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "innocent-smiles": dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "inspire-edulab": dynamic(() => import('@/components/sections/donation-forms/InspireEduLabDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "eduaccess": dynamic(() => import('@/components/sections/donation-forms/EduAccessDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "empower-english": dynamic(() => import('@/components/sections/donation-forms/EmpowerEnglishDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "digiempower": dynamic(() => import('@/components/sections/donation-forms/DigiEmpowerDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "sheconnects": dynamic(() => import('@/components/sections/donation-forms/SheConnectsDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "milieu": dynamic(() => import('@/components/sections/donation-forms/MilieuDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "vidyashakti": dynamic(() => import('@/components/sections/donation-forms/VidyaShaktiDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "healthcare": dynamic(() => import('@/components/sections/donation-forms/HealthcareDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "cureline": dynamic(() => import('@/components/sections/donation-forms/CureLineDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "carecircle": dynamic(() => import('@/components/sections/donation-forms/CareCircleDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "childfirst": dynamic(() => import('@/components/sections/donation-forms/ChildFirstDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "detect": dynamic(() => import('@/components/sections/donation-forms/DetectDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "sighthope": dynamic(() => import('@/components/sections/donation-forms/SightHopeDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "oralscan": dynamic(() => import('@/components/sections/donation-forms/OralScanDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "cyclesafe": dynamic(() => import('@/components/sections/donation-forms/CycleSafeDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "soulcircle": dynamic(() => import('@/components/sections/donation-forms/SoulCircleDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "gender-equality": dynamic(() => import('@/components/sections/donation-forms/GenderEqualityDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "suidhaga": dynamic(() => import('@/components/sections/donation-forms/SuiDhagaDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "krishti": dynamic(() => import('@/components/sections/donation-forms/KrishtiDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "childcare": dynamic(() => import('@/components/sections/donation-forms/ChildcareDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "sustainability": dynamic(() => import('@/components/sections/donation-forms/SustainabilityDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "green-roots": dynamic(() => import('@/components/sections/donation-forms/GreenRootsDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "tideshield": dynamic(() => import('@/components/sections/donation-forms/TideShieldDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "roots-of-change": dynamic(() => import('@/components/sections/donation-forms/RootsOfChangeDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "forest-cleaning": dynamic(() => import('@/components/sections/donation-forms/ForestCleaningDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "relief": dynamic(() => import('@/components/sections/donation-forms/ReliefDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "disaster-management": dynamic(() => import('@/components/sections/donation-forms/DisasterManagementDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "ignite-change": dynamic(() => import('@/components/sections/donation-forms/IgniteChangeDonationForm'), { ssr: false, loading: SkeletonLoader }),
 };
 
 const Navbar = () => {
@@ -126,7 +156,17 @@ const Navbar = () => {
   const [donateDialogOpen, setDonateDialogOpen] = useState(false);
   const [selectedCause, setSelectedCause] = useState<string | null>(null);
 
-  const handleCauseSelection = (cause: string) => setSelectedCause(cause);
+  const handleCauseSelection = (cause: string) => {
+    // Map general categories to their specific general donation form
+    const causeMapping: { [key: string]: string } = {
+        "educational-general": "educational",
+        "healthcare-general": "healthcare",
+        "gender-equality-general": "gender-equality",
+        "childcare-general": "childcare",
+        "sustainability-general": "sustainability",
+    };
+    setSelectedCause(causeMapping[cause] || cause);
+  };
   
   const handleDialogChange = (open: boolean) => {
     setDonateDialogOpen(open);
