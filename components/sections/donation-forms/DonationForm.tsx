@@ -11,7 +11,7 @@ import { addDonation } from "@/app/actions/donationActions";
 import { DonationFormFields } from "./DonationFormFields";
 import { Form } from "@/components/ui/form";
 
-// Zod schema
+// Zod schema for donation form
 export const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"]),
   amount: z.string(),
@@ -33,7 +33,7 @@ export const donationSchema = z.object({
   initiative: z.string(),
 });
 
-export type DonationAmount = {
+type DonationAmount = {
   value: string;
   label: string;
   description?: string;
@@ -88,6 +88,7 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
+  // Update form fields based on nationality
   useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
@@ -102,10 +103,12 @@ export default function DonationForm({
     }
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
+  // Handle form submission
   const onSubmit = async (data: z.infer<typeof donationSchema>) => {
     setLoading(true);
     try {
-      await addDonation(data);
+      // ✅ addDonation expects 2 arguments, pass empty object as second
+      await addDonation(data, {});
       toast({
         title: `Thank you for supporting ${cause}!`,
         description: "Your generous donation will change a life.",
@@ -147,10 +150,10 @@ export default function DonationForm({
             />
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white p-3 rounded-md mt-4 hover:bg-blue-700"
               disabled={loading}
+              className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 disabled:opacity-50"
             >
-              {loading ? "Submitting..." : "Donate"}
+              {loading ? "Processing..." : "Donate"}
             </button>
           </form>
         </Form>
