@@ -127,10 +127,13 @@ const Navbar = () => {
   const [selectedCause, setSelectedCause] = useState<string | null>(null);
 
   const handleCauseSelection = (cause: string) => setSelectedCause(cause);
-  const handleDialogClose = () => {
-    setDonateDialogOpen(false);
-    setSelectedCause(null);
-  }
+  
+  const handleDialogChange = (open: boolean) => {
+    setDonateDialogOpen(open);
+    if (!open) {
+      setSelectedCause(null);
+    }
+  };
 
   const FormComponent = selectedCause ? causeToFormComponent[selectedCause] : null;
 
@@ -160,9 +163,9 @@ const Navbar = () => {
                   <DynamicSponsorChildDonationForm />
                 </DialogContent>
               </Dialog>
-              <Dialog open={donateDialogOpen} onOpenChange={handleDialogClose}>
+              <Dialog open={donateDialogOpen} onOpenChange={handleDialogChange}>
                 <DialogTrigger asChild>
-                  <Button size="sm" onClick={() => setDonateDialogOpen(true)}>Donate Now</Button>
+                  <Button size="sm">Donate Now</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
                   {FormComponent ? <FormComponent /> : <CauseSelectionForm onCauseSelect={handleCauseSelection} />}
@@ -213,9 +216,9 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div className="md:hidden flex items-center gap-2 ml-auto">
-          <Dialog open={donateDialogOpen} onOpenChange={handleDialogClose}>
+          <Dialog open={donateDialogOpen} onOpenChange={handleDialogChange}>
             <DialogTrigger asChild>
-              <Button size="sm" onClick={() => setDonateDialogOpen(true)}>Donate Now</Button>
+              <Button size="sm">Donate Now</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
               {FormComponent ? <FormComponent /> : <CauseSelectionForm onCauseSelect={handleCauseSelection} />}
