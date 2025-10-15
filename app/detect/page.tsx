@@ -1,10 +1,9 @@
-'use client';
-
+// /app/detect/page.tsx
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
+import { Suspense } from 'react';
 
+// ✅ Metadata for SEO
 export const metadata: Metadata = {
   title: 'Detect Cervical Health | AIM Foundation Women’s Care',
   description: 'Detect by AIM Foundation empowers rural women with cervical cancer screenings, awareness, and training for frontline workers to save lives through early detection.',
@@ -38,25 +37,27 @@ export const metadata: Metadata = {
   },
 };
 
+// ✅ Dynamically load client-only component
 const DetectClientPage = dynamic(() => import('./DetectClientPage'), { ssr: false });
 
-export default function DetectPage() {
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "Detect by AIM Foundation empowers rural women with cervical cancer screenings, awareness, and training for frontline workers to save lives through early detection."
-  };
+// ✅ JSON-LD schema for SEO
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AIM Foundation",
+  "url": "https://www.aimindia.org.in/",
+  "logo": "https://www.aimindia.org.in/logo.png",
+  "sameAs": [
+    "https://www.facebook.com/aimindiango/",
+    "https://x.com/aimindiango",
+    "https://www.instagram.com/aimfoundation_ngo/",
+    "https://www.linkedin.com/in/aim-foundation-ngo/",
+    "https://www.youtube.com/@aimfoundation2604"
+  ],
+  "description": "Detect by AIM Foundation empowers rural women with cervical cancer screenings, awareness, and training for frontline workers to save lives through early detection."
+};
 
+export default function DetectPage() {
   return (
     <>
       <script
