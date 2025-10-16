@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -26,7 +25,6 @@ const DynamicIndividualDonationForm = dynamic(
   () => import("./IndividualDonationForm"),
   { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
 );
-// ... (all other dynamic imports like before) ...
 
 // ---------------- Cause arrays ----------------
 type Initiative = { value: string; label: string };
@@ -125,7 +123,7 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
     let initiatives: Initiative[] = [];
     let title = "";
 
-    switch(selectedCause) {
+    switch (selectedCause) {
       case "educational":
         initiatives = educationalInitiatives;
         title = "SUPPORT OUR EDUCATIONAL INITIATIVES";
@@ -171,7 +169,11 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
               <SelectValue placeholder="Select an Initiative" />
             </SelectTrigger>
             <SelectContent position="popper" side="bottom">
-              {initiatives.map(i => <SelectItem key={i.value} value={i.value}>{i.label}</SelectItem>)}
+              {initiatives.map((i) => (
+                <SelectItem key={i.value} value={i.value}>
+                  {i.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
@@ -189,16 +191,18 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
         <>
           <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
             <Image
-                src="/images/logo.png"
-                alt="AIM Foundation Logo"
-                width={120}
-                height={48}
-                className="object-contain"
+              src="/images/logo.png"
+              alt="AIM Foundation Logo"
+              width={120}
+              height={48}
+              className="object-contain"
             />
           </div>
           <DialogHeader className="text-center mb-8 pt-20">
             <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
-            <DialogDescription>Select a cause you are passionate about to make a donation.</DialogDescription>
+            <DialogDescription>
+              Select a cause you are passionate about to make a donation.
+            </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <Select onValueChange={setSelectedCause} value={selectedCause}>
@@ -206,15 +210,23 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
                 <SelectValue placeholder="Select a cause to support" />
               </SelectTrigger>
               <SelectContent position="popper" side="bottom">
-                {mainCauses.map(c => <SelectItem key={c.value} value={c.value}>{c.label}</SelectItem>)}
+                {mainCauses.map((c) => (
+                  <SelectItem key={c.value} value={c.value}>
+                    {c.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
           <DialogFooter className="mt-8">
-            <Button onClick={handleCauseProceed} disabled={!selectedCause} className="w-full">Proceed</Button>
+            <Button onClick={handleCauseProceed} disabled={!selectedCause} className="w-full">
+              Proceed
+            </Button>
           </DialogFooter>
         </>
-      ) : renderSubCauseSelector()}
+      ) : (
+        renderSubCauseSelector()
+      )}
     </div>
   );
 }
