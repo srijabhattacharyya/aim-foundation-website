@@ -17,13 +17,19 @@ import {
 } from "@/components/ui/select";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
-import React from "react";
 import Image from "next/image";
 
 // ---------------- Dynamic donation forms ----------------
 const DynamicIndividualDonationForm = dynamic(
   () => import("./IndividualDonationForm"),
-  { ssr: false, loading: () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div> }
+  {
+    ssr: false,
+    loading: () => (
+      <div className="p-8">
+        <Skeleton className="h-[500px] w-full" />
+      </div>
+    ),
+  }
 );
 
 // ---------------- Cause arrays ----------------
@@ -89,15 +95,15 @@ const sustainabilityInitiatives: Initiative[] = [
   { value: "forest-cleaning", label: "Forest Cleaning" },
 ];
 
-// ---------------- CauseSelectionForm Component ----------------
+// ---------------- Component ----------------
 interface CauseSelectionFormProps {
   onCauseSelect: (cause: string) => void;
 }
 
 export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionFormProps) {
   const [step, setStep] = useState(1);
-  const [selectedCause, setSelectedCause] = useState<string | undefined>(undefined);
-  const [selectedSubCause, setSelectedSubCause] = useState<string | undefined>(undefined);
+  const [selectedCause, setSelectedCause] = useState<string>();
+  const [selectedSubCause, setSelectedSubCause] = useState<string>();
 
   const handleCauseProceed = () => {
     if (selectedCause) {
@@ -157,16 +163,21 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
             className="object-contain"
           />
         </div>
+
         <DialogHeader className="text-center mb-8 pt-20">
           <DialogTitle className="text-xl font-bold font-headline">{title}</DialogTitle>
           <DialogDescription>
             Choose a specific initiative or make a general donation.
           </DialogDescription>
         </DialogHeader>
+
         <div className="space-y-4 py-8">
-          <Select onValueChange={setSelectedSubCause} value={selectedSubCause}>
+          <Select
+            onValueChange={(value) => setSelectedSubCause(value)}
+            value={selectedSubCause || ""}
+          >
             <SelectTrigger className="w-full">
-              {/* ✅ Fixed placeholder shown until a subcause is selected */}
+              {/* ✅ FIX: Proper placeholder handling */}
               <SelectValue placeholder="Select an Initiative" />
             </SelectTrigger>
             <SelectContent position="popper" side="bottom">
@@ -178,9 +189,14 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
             </SelectContent>
           </Select>
         </div>
+
         <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
-          <Button variant="outline" onClick={handleBack}>Back</Button>
-          <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>Proceed</Button>
+          <Button variant="outline" onClick={handleBack}>
+            Back
+          </Button>
+          <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>
+            Proceed
+          </Button>
         </DialogFooter>
       </>
     );
@@ -199,12 +215,16 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
               className="object-contain"
             />
           </div>
+
           <DialogHeader className="text-center mb-8 pt-20">
-            <DialogTitle className="text-2xl font-bold font-headline">Choose a Cause</DialogTitle>
+            <DialogTitle className="text-2xl font-bold font-headline">
+              Choose a Cause
+            </DialogTitle>
             <DialogDescription>
               Select a cause you are passionate about to make a donation.
             </DialogDescription>
           </DialogHeader>
+
           <div className="space-y-4">
             <Select onValueChange={setSelectedCause} value={selectedCause}>
               <SelectTrigger className="w-full">
@@ -219,8 +239,13 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
               </SelectContent>
             </Select>
           </div>
+
           <DialogFooter className="mt-8">
-            <Button onClick={handleCauseProceed} disabled={!selectedCause} className="w-full">
+            <Button
+              onClick={handleCauseProceed}
+              disabled={!selectedCause}
+              className="w-full"
+            >
               Proceed
             </Button>
           </DialogFooter>
