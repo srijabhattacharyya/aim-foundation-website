@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SoulCircleDonationForm'), { 
     ssr: false,
@@ -99,7 +100,11 @@ export default function SoulCircleClientPage() {
                           SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most. Your donation helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. <strong>Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression</strong>. Mental health is not a luxury—it’s a necessity. <strong>Help us make healing accessible to all. Donate now.</strong>
                         </p>
                         <div className="mt-8">
-                            <Button disabled className="bg-primary hover:bg-primary/90 text-primary-foreground cursor-not-allowed opacity-100">App is under construction</Button>
+                            <Button asChild>
+                                <Link href="https://soulcircle.aimindia.org.in/home" target="_blank" rel="noopener noreferrer">
+                                    Connect SoulCircle
+                                </Link>
+                            </Button>
                         </div>
                     </div>
                   </div>
