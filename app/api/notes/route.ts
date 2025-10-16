@@ -7,13 +7,16 @@ if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
 }
 
+// This tells TypeScript that uri is definitely a string
+const uri: string = MONGODB_URI;
+
 // Cached client to prevent multiple connections in dev/hot reload
 let cachedClient: MongoClient | null = null;
 
 async function connectToDatabase(): Promise<MongoClient> {
   if (cachedClient) return cachedClient;
 
-  const client = new MongoClient(MONGODB_URI);
+  const client = new MongoClient(uri); // ✅ now type-safe
   cachedClient = await client.connect();
   return cachedClient;
 }
