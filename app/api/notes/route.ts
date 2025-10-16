@@ -1,11 +1,12 @@
+// app/api/notes/route.ts
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongodb';
+import { connectToDatabase } from '../../../lib/mongodb';
 
 // GET /api/notes
 export async function GET() {
   try {
     const client = await connectToDatabase();
-    const db = client.db(); // Optional: specify DB name like db('mydatabase')
+    const db = client.db(); // Default DB from connection string
     const notes = await db.collection('notes').find({}).toArray();
     return NextResponse.json({ notes });
   } catch (error) {
