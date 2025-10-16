@@ -20,14 +20,12 @@ export const donationSchema = z
     city: z.string().nonempty('City is required'),
     address: z.string().nonempty('Address is required'),
     pincode: z.string().min(5, 'Pincode seems too short'),
-    agree: z.literal(true, {
-      errorMap: () => ({ message: "You must agree to the terms." }),
-    }),
+    agree: z.boolean(), // ✅ allow false, will validate in superRefine
     cause: z.string(),
     initiative: z.string().optional(),
   })
   .superRefine((data, ctx) => {
-    // ✅ Check donation amount
+    // Validate donation amount
     if (data.amount.trim() === '' && (!data.otherAmount || data.otherAmount.trim() === '')) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -36,7 +34,16 @@ export const donationSchema = z
       });
     }
 
-    // ✅ For Indian nationals
+    // Validate agreement
+    if (!data.agree) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "You must agree to the terms.",
+        path: ["agree"],
+      });
+    }
+
+    // For Indian nationals
     if (data.nationality === 'Indian') {
       if (!data.pan && !data.aadhar) {
         ctx.addIssue({
@@ -76,7 +83,7 @@ export const donationSchema = z
       }
     }
 
-    // ✅ For Non-Indian nationals
+    // For Non-Indian nationals
     if (data.nationality === 'Non-Indian' && !data.passport) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -86,6 +93,7 @@ export const donationSchema = z
     }
   });
 
+// Newsletter schema
 export const newsletterSchema = z.object({
   email: z.string().email({ message: 'A valid email is required.' }),
 });
