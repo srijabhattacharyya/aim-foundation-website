@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { addDonation } from "@/app/actions/donationActions";
 import { DonationFormFields } from "./DonationFormFields";
 import { Form } from "@/components/ui/form";
 import { DonationAmount } from "@/types/donation";
@@ -55,9 +54,7 @@ export default function DonationForm({
   formTitle,
   formSubtitle,
 }: DonationFormProps) {
-  const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -101,34 +98,14 @@ export default function DonationForm({
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
   // ✅ Submission Handler
-  const onSubmit = async (data: z.infer<typeof donationSchema>) => {
-    setLoading(true);
-    try {
-      const formData = new FormData();
-      Object.entries(data).forEach(([key, value]) => {
-        if (value !== undefined && value !== null) {
-          formData.append(key, String(value));
-        }
-      });
-
-      await addDonation(data, formData);
-
-      toast({
-        title: `Thank you for supporting ${cause}!`,
-        description: "Your generous donation will change a life.",
-      });
-
-      form.reset();
-      formRef.current?.reset();
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "Submission Failed",
-        description: error?.message || "Something went wrong",
-      });
-    } finally {
-      setLoading(false);
+  const onSubmit = (data: z.infer<typeof donationSchema>) => {
+    let paymentUrl = "";
+    if (data.nationality === "Indian") {
+      paymentUrl = "https://razorpay.com/";
+    } else {
+      paymentUrl = "https://stripe.com/in";
     }
+    window.open(paymentUrl, '_blank');
   };
 
   return (
@@ -168,8 +145,6 @@ export default function DonationForm({
                 description: item.description ?? "",
               }))}
             />
-
-            <SubmitButton/>
           </form>
         </Form>
       </CardContent>
