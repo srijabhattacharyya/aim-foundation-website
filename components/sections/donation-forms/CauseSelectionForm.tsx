@@ -124,7 +124,6 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
   const renderSubCauseSelector = () => {
     let initiatives: Initiative[] = [];
     let title = "";
-    const placeholder = "Select an Initiative";
 
     switch(selectedCause) {
       case "educational":
@@ -169,7 +168,7 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
         <div className="space-y-4 py-8">
           <Select onValueChange={setSelectedSubCause} value={selectedSubCause}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder={placeholder} />
+              <SelectValue placeholder="Select an Initiative" />
             </SelectTrigger>
             <SelectContent position="popper" side="bottom">
               {initiatives.map(i => <SelectItem key={i.value} value={i.value}>{i.label}</SelectItem>)}
