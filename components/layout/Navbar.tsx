@@ -17,6 +17,12 @@ import {
   DropdownMenuPortal,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -274,19 +280,57 @@ const Navbar = () => {
             <SheetContent side="right" className="overflow-y-auto">
               <div className="flex flex-col p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <Link href="/" className="flex items-center gap-2">
-                    <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
-                  </Link>
+                  <SheetClose asChild>
+                    <Link href="/" className="flex items-center gap-2">
+                      <Image src="/images/logo.png" alt="AIM Foundation Logo" width={120} height={50} />
+                    </Link>
+                  </SheetClose>
                   <SheetClose asChild>
                     <Button variant="ghost" size="icon"><X className="h-6 w-6" /></Button>
                   </SheetClose>
                 </div>
-                <nav className="flex flex-col gap-4">
-                  {navLinks.map((link) => (
-                    <SheetClose asChild key={link.label}>
-                      <Link href={link.href ?? '#'} className="text-lg font-medium text-foreground hover:text-primary">{link.label}</Link>
-                    </SheetClose>
-                  ))}
+                <nav className="flex flex-col gap-2">
+                  <Accordion type="multiple" className="w-full">
+                    {navLinks.map((link) => 
+                      link.isDropdown ? (
+                        <AccordionItem value={link.label} key={link.label} className="border-b-0">
+                          <AccordionTrigger className="py-3 text-lg font-medium text-foreground hover:text-primary hover:no-underline">
+                            {link.label}
+                          </AccordionTrigger>
+                          <AccordionContent className="pl-4">
+                            {link.items?.map((item) => (
+                              item.isSubDropdown ? (
+                                <Accordion type="multiple" key={item.label}>
+                                  <AccordionItem value={item.label} className="border-b-0">
+                                    <AccordionTrigger className="py-2 text-md font-medium text-muted-foreground hover:text-primary hover:no-underline">
+                                      <SheetClose asChild>
+                                        <Link href={item.href ?? '#'} className="w-full text-left">{item.label}</Link>
+                                      </SheetClose>
+                                    </AccordionTrigger>
+                                    <AccordionContent className="pl-4">
+                                      {item.subItems?.map((subItem) => (
+                                        <SheetClose asChild key={subItem.label}>
+                                          <Link href={subItem.href ?? '#'} className="block py-2 text-muted-foreground hover:text-primary">{subItem.label}</Link>
+                                        </SheetClose>
+                                      ))}
+                                    </AccordionContent>
+                                  </AccordionItem>
+                                </Accordion>
+                              ) : (
+                                <SheetClose asChild key={item.label}>
+                                  <Link href={item.href ?? '#'} className="block py-2 text-muted-foreground hover:text-primary">{item.label}</Link>
+                                </SheetClose>
+                              )
+                            ))}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ) : (
+                        <SheetClose asChild key={link.label}>
+                          <Link href={link.href ?? '#'} className="block py-3 text-lg font-medium text-foreground hover:text-primary">{link.label}</Link>
+                        </SheetClose>
+                      )
+                    )}
+                  </Accordion>
                 </nav>
               </div>
             </SheetContent>
@@ -298,5 +342,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-    
