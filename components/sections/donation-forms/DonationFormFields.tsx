@@ -353,7 +353,7 @@ export function DonationFormFields({
       {/* TAX INFORMATION */}
       <div className="text-xs text-muted-foreground text-center space-y-1">
         <p>
-          YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT UNDER
+          YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UP TO 50% TAX BENEFIT IN INDIA UNDER
           SECTION 80G AS ASSOCIATED INITIATIVE FOR MANKIND FOUNDATION IS
           REGISTERED AS NON PROFIT ORGANIZATION
         </p>
