@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -12,7 +11,6 @@ import { DonationAmount } from "@/types/donation";
 import { donationSchema } from './schemas';
 import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
-
 
 interface DonationFormProps {
   cause: string;
@@ -54,7 +52,7 @@ export default function DonationForm({
       city: "",
       address: "",
       pincode: "",
-      agree: false,
+      agree: false, // ✅ keep false, schema allows boolean
       cause,
       initiative: cause,
     },
@@ -70,10 +68,7 @@ export default function DonationForm({
       form.setValue("passport", "");
       form.setValue("amount", defaultIndianAmount);
     } else {
-      // Don't reset country if it's already set to something other than India
-      if (form.getValues("country") === "India") {
-        form.setValue("country", "");
-      }
+      if (form.getValues("country") === "India") form.setValue("country", "");
       form.setValue("countryCode", "+1");
       form.setValue("pan", "");
       form.setValue("aadhar", "");
@@ -85,23 +80,17 @@ export default function DonationForm({
 
   useEffect(() => {
     if (selectedCountry) {
-        const countryData = countries.find(c => c.name === selectedCountry);
-        if (countryData) {
-            form.setValue("countryCode", countryData.dial_code);
-        }
+      const countryData = countries.find(c => c.name === selectedCountry);
+      if (countryData) {
+        form.setValue("countryCode", countryData.dial_code);
+      }
     }
   }, [selectedCountry, form]);
 
   const onSubmit = (data: z.infer<typeof donationSchema>) => {
-    // This is a client-side only form for redirection
     console.log("Form submitted, redirecting...", data);
-    let paymentUrl = "";
-    if (data.nationality === "Indian") {
-      paymentUrl = "https://razorpay.com/";
-    } else {
-      paymentUrl = "https://stripe.com/in";
-    }
-    window.open(paymentUrl, '_blank');
+    let paymentUrl = data.nationality === "Indian" ? "https://razorpay.com/" : "https://stripe.com/in";
+    window.open(paymentUrl, "_blank");
   };
 
   return (
@@ -123,20 +112,10 @@ export default function DonationForm({
         </div>
 
         <Form {...form}>
-          <form
-            ref={formRef}
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-6"
-          >
+          <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <DonationFormFields
-              donationAmountsIndian={donationAmountsIndian.map((item) => ({
-                ...item,
-                description: item.description ?? "",
-              }))}
-              donationAmountsNonIndian={donationAmountsNonIndian.map((item) => ({
-                ...item,
-                description: item.description ?? "",
-              }))}
+              donationAmountsIndian={donationAmountsIndian.map(item => ({ ...item, description: item.description ?? "" }))}
+              donationAmountsNonIndian={donationAmountsNonIndian.map(item => ({ ...item, description: item.description ?? "" }))}
             />
           </form>
         </Form>
