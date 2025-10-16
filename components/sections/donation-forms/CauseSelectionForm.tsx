@@ -166,6 +166,7 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
         <div className="space-y-4 py-8">
           <Select onValueChange={setSelectedSubCause} value={selectedSubCause}>
             <SelectTrigger className="w-full">
+              {/* ✅ Fixed placeholder shown until a subcause is selected */}
               <SelectValue placeholder="Select an Initiative" />
             </SelectTrigger>
             <SelectContent position="popper" side="bottom">
