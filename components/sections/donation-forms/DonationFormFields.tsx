@@ -183,7 +183,7 @@ export function DonationFormFields({
                             </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                            {countries.map(c => <SelectItem key={c.code} value={c.dial_code}>{`${c.code} (${c.dial_code})`}</SelectItem>)}
+                            {countries.map(c => <SelectItem key={c.code} value={c.dial_code}>{`${c.name} (${c.dial_code})`}</SelectItem>)}
                         </SelectContent>
                     </Select>
                   <FormMessage />
