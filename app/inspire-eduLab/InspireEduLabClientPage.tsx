@@ -87,7 +87,7 @@ export default function InspireEduLabClientPage() {
                         </div>
                     </div>
                 </div>
-                <div className="md:col-span-1 md:order-last">
+                <div className="hidden md:block md:col-span-1 md:order-last">
                   <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                 </div>
             </div>
