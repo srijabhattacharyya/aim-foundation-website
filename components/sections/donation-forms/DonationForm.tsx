@@ -11,6 +11,7 @@ import { Form } from "@/components/ui/form";
 import { DonationAmount } from "@/types/donation";
 import { donationSchema } from './schemas';
 import type { z } from "zod";
+import { countries } from "@/lib/countries";
 
 
 interface DonationFormProps {
@@ -60,6 +61,7 @@ export default function DonationForm({
   });
 
   const nationality = form.watch("nationality");
+  const selectedCountry = form.watch("country");
 
   useEffect(() => {
     if (nationality === "Indian") {
@@ -68,7 +70,10 @@ export default function DonationForm({
       form.setValue("passport", "");
       form.setValue("amount", defaultIndianAmount);
     } else {
-      form.setValue("country", "");
+      // Don't reset country if it's already set to something other than India
+      if (form.getValues("country") === "India") {
+        form.setValue("country", "");
+      }
       form.setValue("countryCode", "+1");
       form.setValue("pan", "");
       form.setValue("aadhar", "");
@@ -77,6 +82,15 @@ export default function DonationForm({
     }
     form.resetField("mobile");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
+
+  useEffect(() => {
+    if (selectedCountry) {
+        const countryData = countries.find(c => c.name === selectedCountry);
+        if (countryData) {
+            form.setValue("countryCode", countryData.dial_code);
+        }
+    }
+  }, [selectedCountry, form]);
 
   const onSubmit = (data: z.infer<typeof donationSchema>) => {
     // This is a client-side only form for redirection

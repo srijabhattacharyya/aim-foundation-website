@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useFormContext } from "react-hook-form";
@@ -14,6 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { SubmitButton } from "./SubmitButton";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { countries } from "@/lib/countries";
 
 // Match with your /types/donation.ts
 export type DonationAmount = {
@@ -26,14 +28,6 @@ interface DonationFormFieldsProps {
   donationAmountsIndian: DonationAmount[];
   donationAmountsNonIndian: DonationAmount[];
 }
-
-const countryCodes = [
-    { value: "+91", label: "IN (+91)" },
-    { value: "+1", label: "US (+1)" },
-    { value: "+44", label: "UK (+44)" },
-    { value: "+61", label: "AU (+61)" },
-    { value: "+65", label: "SG (+65)" },
-];
 
 export function DonationFormFields({
   donationAmountsIndian,
@@ -189,7 +183,7 @@ export function DonationFormFields({
                             </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                            {countryCodes.map(c => <SelectItem key={c.value} value={c.value}>{c.label}</SelectItem>)}
+                            {countries.map(c => <SelectItem key={c.code} value={c.dial_code}>{`${c.code} (${c.dial_code})`}</SelectItem>)}
                         </SelectContent>
                     </Select>
                   <FormMessage />
@@ -273,28 +267,44 @@ export function DonationFormFields({
       {/* ADDRESS DETAILS */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
-          control={form.control}
-          name="country"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Country"
-                  {...field}
-                  disabled={nationality === "Indian"}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+            control={form.control}
+            name="country"
+            render={({ field }) => (
+                <FormItem>
+                    <Select onValueChange={field.onChange} value={field.value} disabled={nationality === "Indian"}>
+                        <FormControl>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select Country" />
+                            </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                            {countries.map(c => <SelectItem key={c.code} value={c.name}>{c.name}</SelectItem>)}
+                        </SelectContent>
+                    </Select>
+                    <FormMessage />
+                </FormItem>
+            )}
         />
-        {nationality === "Indian" && (
+        {nationality === "Indian" ? (
           <FormField
             control={form.control}
             name="state"
             render={({ field }) => (
               <FormItem>
                 <StatesAndUTs field={field} />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        ) : (
+            <FormField
+            control={form.control}
+            name="state"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input placeholder="State / Province" {...field} />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -318,7 +328,7 @@ export function DonationFormFields({
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Pincode" {...field} />
+                <Input placeholder="Pincode / Zipcode" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
