@@ -67,7 +67,6 @@ export default function EduAccessClientPage() {
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
              <div className="grid md:grid-cols-3 gap-12">
-                <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                 <div className="md:col-span-2">
                     <div className="space-y-6">
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Teaching Beyond Boundaries</h2>
@@ -87,6 +86,9 @@ export default function EduAccessClientPage() {
                           </p>
                         </div>
                     </div>
+                </div>
+                <div className="md:col-span-1 md:order-last">
+                  <InitiativeSidebar initiativeLists={initiativeLists} relatedResource={relatedResource} />
                 </div>
             </div>
             <div className="fixed bottom-8 right-8 z-50">
