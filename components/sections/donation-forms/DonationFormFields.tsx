@@ -15,7 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { SubmitButton } from "./SubmitButton";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { countries } from "@/lib/countries";
+import { countries } from "@/app/lib/countries";
 
 // Match with your /types/donation.ts
 export type DonationAmount = {

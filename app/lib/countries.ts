@@ -92,7 +92,7 @@ export const countries = [
   { name: 'Guyana', dial_code: '+595', code: 'GY' },
   { name: 'Haiti', dial_code: '+509', code: 'HT' },
   { name: 'Holy See (Vatican City State)', dial_code: '+379', code: 'VA' },
-  { name: 'Honduras', dial_code: '+504', code_ 'HN' },
+  { name: 'Honduras', dial_code: '+504', code: 'HN' },
   { name: 'Hong Kong', dial_code: '+852', code: 'HK' },
   { name: 'Hungary', dial_code: '+36', code: 'HU' },
   { name: 'Iceland', dial_code: '+354', code: 'IS' },

@@ -11,7 +11,7 @@ import { Form } from "@/components/ui/form";
 import { DonationAmount } from "@/types/donation";
 import { donationSchema } from './schemas';
 import type { z } from "zod";
-import { countries } from "@/lib/countries";
+import { countries } from "@/app/lib/countries";
 
 
 interface DonationFormProps {
@@ -94,7 +94,6 @@ export default function DonationForm({
 
   const onSubmit = (data: z.infer<typeof donationSchema>) => {
     // This is a client-side only form for redirection
-    // The actual data submission would happen on the payment gateway's callback
     console.log("Form submitted, redirecting...", data);
     let paymentUrl = "";
     if (data.nationality === "Indian") {
