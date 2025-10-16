@@ -3,8 +3,9 @@ import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URI;
 
+// Throw error if env variable is missing
 if (!uri) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  throw new Error('Please define the MONGODB_URI environment variable in Vercel');
 }
 
 let cachedClient: MongoClient | null = null;
@@ -12,7 +13,8 @@ let cachedClient: MongoClient | null = null;
 export async function connectToDatabase(): Promise<MongoClient> {
   if (cachedClient) return cachedClient;
 
-  const client = new MongoClient(uri);
+  // Type assertion to tell TypeScript uri is definitely a string
+  const client = new MongoClient(uri as string); 
   cachedClient = await client.connect();
   return cachedClient;
 }
