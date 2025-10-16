@@ -124,7 +124,7 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
   const renderSubCauseSelector = () => {
     let initiatives: Initiative[] = [];
     let title = "";
-    let placeholder = "Select an Initiative";
+    const placeholder = "Select an Initiative";
 
     switch(selectedCause) {
       case "educational":
