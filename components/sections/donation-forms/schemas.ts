@@ -9,7 +9,8 @@ export const donationSchema = z
     otherAmount: z.string().optional(),
     fullName: z.string().min(2, 'Full name is required'),
     email: z.string().email('Invalid email address'),
-    mobile: z.string().min(10, 'Mobile number must be at least 10 digits'),
+    countryCode: z.string(),
+    mobile: z.string().min(5, 'Mobile number seems too short'),
     dob: z.string().optional(),
     pan: z.string().optional(),
     aadhar: z.string().optional(),
@@ -18,7 +19,7 @@ export const donationSchema = z
     state: z.string().optional(),
     city: z.string().nonempty('City is required'),
     address: z.string().nonempty('Address is required'),
-    pincode: z.string().min(6, 'Pincode must be 6 digits'),
+    pincode: z.string().min(5, 'Pincode seems too short'),
     agree: z.literal(true, {
       errorMap: () => ({ message: "You must agree to the terms." }),
     }),

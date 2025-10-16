@@ -13,6 +13,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import StatesAndUTs from "@/components/layout/StatesAndUTs";
 import { SubmitButton } from "./SubmitButton";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 
 // Match with your /types/donation.ts
 export type DonationAmount = {
@@ -25,6 +26,14 @@ interface DonationFormFieldsProps {
   donationAmountsIndian: DonationAmount[];
   donationAmountsNonIndian: DonationAmount[];
 }
+
+const countryCodes = [
+    { value: "+91", label: "IN (+91)" },
+    { value: "+1", label: "US (+1)" },
+    { value: "+44", label: "UK (+44)" },
+    { value: "+61", label: "AU (+61)" },
+    { value: "+65", label: "SG (+65)" },
+];
 
 export function DonationFormFields({
   donationAmountsIndian,
@@ -167,18 +176,39 @@ export function DonationFormFields({
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="mobile"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input type="tel" placeholder="Enter Mobile No" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="md:col-span-2 grid grid-cols-3 gap-2">
+            <FormField
+              control={form.control}
+              name="countryCode"
+              render={({ field }) => (
+                <FormItem className="col-span-1">
+                   <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Code" />
+                            </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                            {countryCodes.map(c => <SelectItem key={c.value} value={c.value}>{c.label}</SelectItem>)}
+                        </SelectContent>
+                    </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="mobile"
+              render={({ field }) => (
+                <FormItem className="col-span-2">
+                  <FormControl>
+                    <Input type="tel" placeholder="Enter Mobile No" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+        </div>
         <FormField
           control={form.control}
           name="dob"

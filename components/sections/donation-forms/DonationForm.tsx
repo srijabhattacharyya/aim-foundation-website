@@ -42,6 +42,7 @@ export default function DonationForm({
       otherAmount: "",
       fullName: "",
       email: "",
+      countryCode: "+91",
       mobile: "",
       dob: "",
       pan: "",
@@ -63,18 +64,24 @@ export default function DonationForm({
   useEffect(() => {
     if (nationality === "Indian") {
       form.setValue("country", "India");
+      form.setValue("countryCode", "+91");
       form.setValue("passport", "");
       form.setValue("amount", defaultIndianAmount);
     } else {
       form.setValue("country", "");
+      form.setValue("countryCode", "+1");
       form.setValue("pan", "");
       form.setValue("aadhar", "");
       form.setValue("state", "");
       form.setValue("amount", defaultNonIndianAmount);
     }
+    form.resetField("mobile");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
   const onSubmit = (data: z.infer<typeof donationSchema>) => {
+    // This is a client-side only form for redirection
+    // The actual data submission would happen on the payment gateway's callback
+    console.log("Form submitted, redirecting...", data);
     let paymentUrl = "";
     if (data.nationality === "Indian") {
       paymentUrl = "https://razorpay.com/";
