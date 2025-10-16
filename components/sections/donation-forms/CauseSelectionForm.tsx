@@ -167,18 +167,19 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-8">
-          <Select onValueChange={setSelectedSubCause} value={selectedSubCause ?? undefined}>
+          <Select onValueChange={setSelectedSubCause} value={selectedSubCause}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent position="popper" side="bottom">
+              <SelectItem value="placeholder" disabled>{placeholder}</SelectItem>
               {initiatives.map(i => <SelectItem key={i.value} value={i.value}>{i.label}</SelectItem>)}
             </SelectContent>
           </Select>
         </div>
         <DialogFooter className="mt-8 grid grid-cols-2 gap-4">
           <Button variant="outline" onClick={handleBack}>Back</Button>
-          <Button onClick={handleStep2Proceed} disabled={!selectedSubCause}>Proceed</Button>
+          <Button onClick={handleStep2Proceed} disabled={!selectedSubCause || selectedSubCause === 'placeholder'}>Proceed</Button>
         </DialogFooter>
       </>
     );
@@ -202,17 +203,18 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
             <DialogDescription>Select a cause you are passionate about to make a donation.</DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
-            <Select onValueChange={setSelectedCause} value={selectedCause ?? undefined}>
+            <Select onValueChange={setSelectedCause} value={selectedCause}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select a cause to support" />
               </SelectTrigger>
               <SelectContent position="popper" side="bottom">
+                <SelectItem value="placeholder" disabled>Select a cause to support</SelectItem>
                 {mainCauses.map(c => <SelectItem key={c.value} value={c.value}>{c.label}</SelectItem>)}
               </SelectContent>
             </Select>
           </div>
           <DialogFooter className="mt-8">
-            <Button onClick={handleCauseProceed} disabled={!selectedCause} className="w-full">Proceed</Button>
+            <Button onClick={handleCauseProceed} disabled={!selectedCause || selectedCause === 'placeholder'} className="w-full">Proceed</Button>
           </DialogFooter>
         </>
       ) : renderSubCauseSelector()}
