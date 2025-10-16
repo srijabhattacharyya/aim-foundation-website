@@ -124,33 +124,28 @@ export default function CauseSelectionForm({ onCauseSelect }: CauseSelectionForm
   const renderSubCauseSelector = () => {
     let initiatives: Initiative[] = [];
     let title = "";
-    let placeholder = "";
+    let placeholder = "Select an Initiative";
 
     switch(selectedCause) {
       case "educational":
         initiatives = educationalInitiatives;
         title = "SUPPORT OUR EDUCATIONAL INITIATIVES";
-        placeholder = initiatives[0]?.label || "Select a specific educational initiative";
         break;
       case "healthcare":
         initiatives = healthcareInitiatives;
         title = "SUPPORT OUR HEALTHCARE INITIATIVES";
-        placeholder = initiatives[0]?.label || "Select a specific healthcare initiative";
         break;
       case "gender-equality":
         initiatives = genderEqualityInitiatives;
         title = "SUPPORT GENDER EQUALITY INITIATIVES";
-        placeholder = initiatives[0]?.label || "Select a specific gender equality initiative";
         break;
       case "childcare":
         initiatives = childcareInitiatives;
         title = "SUPPORT CHILDCARE INITIATIVES";
-        placeholder = initiatives[0]?.label || "Select a specific childcare initiative";
         break;
       case "sustainability":
         initiatives = sustainabilityInitiatives;
         title = "SUPPORT SUSTAINABILITY INITIATIVES";
-        placeholder = initiatives[0]?.label || "Select a specific sustainability initiative";
         break;
     }
 
