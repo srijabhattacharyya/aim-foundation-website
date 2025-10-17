@@ -18,7 +18,6 @@ const DynamicDonationForm = dynamic(() => import('@/components/sections/donation
 
 const educationalInitiatives = [
   { href: '/innocent-smiles?from=educational', label: 'Innocent Smiles' },
-  { href: '/inspire-eduLab?from=educational', label: 'Inspire EduLab' },
   { href: '/eduaccess?from=educational', label: 'EduAccess' },
   { href: '/empower-english?from=educational', label: 'Empower English'},
   { href: '/digiempower?from=educational', label: 'DigiEmpower' },
@@ -28,7 +27,7 @@ const educationalInitiatives = [
 ];
 
 const relatedResource = {
-    link: "/blog/redefining-classrooms-for-a-digital-tomorrow",
+    link: "#",
     text: "Redefining Classrooms for a Digital Tomorrow",
     image: { src: "/images/projects/edulab/edulab1.avif", alt: "Inspire EduLab initiative", hint: "smart classroom children", description: "Smart Classroom"}
 };

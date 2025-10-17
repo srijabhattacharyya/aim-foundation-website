@@ -206,14 +206,6 @@ const blogPosts = [
     date: 'August 28, 2020',
   },
   {
-    slug: 'redefining-classrooms-for-a-digital-tomorrow',
-    title: 'Redefining Classrooms for a Digital Tomorrow: The Story of Inspire EduLab',
-    image: '/images/banner/edulab.avif',
-    hint: 'smart classroom children',
-    excerpt: "Discover how AIM Foundation's Inspire EduLab is transforming learning with smart, internet-enabled classrooms, bridging the digital divide for children across India.",
-    date: 'May 20, 2020',
-  },
-  {
     slug: 'the-quiet-revolution-in-womens-health',
     title: 'The Quiet Revolution in Women’s Health: The Story of Project Detect',
     image: '/images/banner/detect1.avif',
