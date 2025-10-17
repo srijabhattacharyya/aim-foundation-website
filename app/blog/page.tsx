@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'innocent-smiles-nurturing-dreams',
+    title: 'Innocent Smiles: Nurturing Dreams, Inspiring Futures',
+    image: '/images/banner/innocent-smiles.avif',
+    hint: 'children smiling classroom',
+    excerpt: 'Discover how Innocent Smiles nurtures creativity and academic potential in underprivileged children.',
+    date: 'October 18, 2025',
+  },
+  {
     slug: 'soulcircle-24-7-mental-health-support',
     title: 'SoulCircle: 24/7 Compassionate Mental Health Support',
     image: '/images/banner/soulcircles.avif',

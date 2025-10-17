@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/vidyashakti-ai-learning',
     '/blog/soulcircle-24-7-mental-health-support',
     '/blog/forest-cleaning-restoring-natural-habitats',
+    '/blog/innocent-smiles-nurturing-dreams',
     '/carecircle',
     '/career',
     '/cause-marketing-events',
