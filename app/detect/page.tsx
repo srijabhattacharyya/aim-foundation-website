@@ -1,7 +1,9 @@
+
 // /app/detect/page.tsx
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 // ✅ Metadata for SEO
 export const metadata: Metadata = {
@@ -38,7 +40,10 @@ export const metadata: Metadata = {
 };
 
 // ✅ Dynamically load client-only component
-const DetectClientPage = dynamic(() => import('./DetectClientPage'), { ssr: false });
+const DetectClientPage = dynamic(() => import('./DetectClientPage'), { 
+  ssr: false,
+  loading: () => <Skeleton className="h-screen w-full" />,
+});
 
 // ✅ JSON-LD schema for SEO
 const schemaMarkup = {
@@ -65,7 +70,7 @@ export default function DetectPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         key="org-schema-detect"
       />
-      <Suspense fallback={<div className="text-center p-10">Loading...</div>}>
+      <Suspense fallback={<Skeleton className="h-screen w-full" />}>
         <DetectClientPage />
       </Suspense>
     </>
