@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: 'AIM Foundation’s DigiEmpower bridges the digital divide by training underprivileged and Adivasi children in West Bengal with essential computer and internet skills.',
     images: [
       {
-        url: 'https://aimindia.org.in/home.avif',
+        url: 'https://aimindia.org.in/digiempower.avif',
         width: 1200,
         height: 630,
         alt: 'AIM Foundation DigiEmpower Program',
