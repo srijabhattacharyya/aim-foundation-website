@@ -73,7 +73,7 @@ export default function VidyaShaktiClientPage() {
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">When Teachers Aren’t Nearby, VidyaShakti Is!</h2>
                         <div className="text-lg text-muted-foreground space-y-4 text-justify">
                            <p>
-                            VidyaShakti is a multilingual educational app designed to support rural children and first-generation learners. While it may not be possible to provide quality teachers in every village, the widespread availability of smartphones and internet connectivity has opened new doors for accessible learning.
+                            <Link href="https://vidyashakti.aimindia.org.in/" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">VidyaShakti</Link> is a multilingual educational app designed to support rural children and first-generation learners. While it may not be possible to provide quality teachers in every village, the widespread availability of smartphones and internet connectivity has opened new doors for accessible learning.
                           </p>
                           <p>
                             Through VidyaShakti, students from Class 5 to Class 12 can ask any academic question and receive AI-generated answers tailored to their class level and comprehension ability. What sets the app apart is its ability to deliver explanations in the student’s preferred language, ensuring clarity and better understanding.
