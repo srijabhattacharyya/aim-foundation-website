@@ -65,7 +65,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/internship-policy',
     '/join-us',
     '/krishti',
-    '/library',
     '/media',
     '/milieu',
     '/newsletter',

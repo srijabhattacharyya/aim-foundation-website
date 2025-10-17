@@ -105,7 +105,6 @@ const navLinks: NavItem[] = [
   },
   { label: 'Resources', isDropdown: true, items: [
       { href: '/annual-report', label: 'Annual Report' },
-      { href: '/library', label: 'Library' },
       { href: '/voices', label: 'Blog' },
       { href: '/policies', label: 'Policies' },
     ]
