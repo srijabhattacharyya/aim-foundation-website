@@ -29,7 +29,7 @@ export default function NoChildLeftOfflineBlogPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
               <Image
-                src="https://placehold.co/1920x580.png"
+                src="/images/banner/digiempower.avif"
                 alt="Children learning on computers"
                 width={1920}
                 height={580}
