@@ -16,6 +16,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { Checkbox } from "../ui/checkbox";
+import Image from "next/image";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -30,6 +32,9 @@ const formSchema = z.object({
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
+  recaptcha: z.boolean().refine(val => val === true, {
+    message: "Please verify you are not a robot.",
+  }),
 });
 
 export default function ContactForm() {
@@ -41,6 +46,7 @@ export default function ContactForm() {
       email: "",
       subject: "",
       message: "",
+      recaptcha: false,
     },
   });
 
@@ -108,6 +114,33 @@ export default function ContactForm() {
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="recaptcha"
+          render={({ field }) => (
+            <FormItem>
+                <div className="flex items-center space-x-4 p-3 rounded-md bg-muted/50 border">
+                    <FormControl>
+                        <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            className="h-7 w-7"
+                        />
+                    </FormControl>
+                    <FormLabel className="text-base font-normal">
+                        I'm not a robot
+                    </FormLabel>
+                    <div className="ml-auto flex flex-col items-center">
+                        <Image src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" width={32} height={32} />
+                        <p className="text-xs text-muted-foreground">reCAPTCHA</p>
+                    </div>
+                </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button type="submit" className="w-full">Send Message</Button>
       </form>
     </Form>
