@@ -32,11 +32,14 @@ export default function NewsletterForm() {
         });
         formRef.current?.reset();
       } else {
-        toast({
-          variant: 'destructive',
-          title: 'Subscription Failed',
-          description: state.message,
-        });
+        // Do not show error for bot detection
+        if (state.message !== 'Bot detected.') {
+          toast({
+            variant: 'destructive',
+            title: 'Subscription Failed',
+            description: state.message,
+          });
+        }
       }
     }
   }, [state, toast]);
@@ -53,6 +56,8 @@ export default function NewsletterForm() {
           required
         />
       </div>
+      {/* Honeypot field for bot protection */}
+      <input type="text" name="honeypot" className="hidden" />
       <SubmitButton />
     </form>
   );

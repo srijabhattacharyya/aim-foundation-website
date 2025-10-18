@@ -96,4 +96,5 @@ export const donationSchema = z
 // Newsletter schema
 export const newsletterSchema = z.object({
   email: z.string().email({ message: 'A valid email is required.' }),
+  honeypot: z.string().optional(),
 });

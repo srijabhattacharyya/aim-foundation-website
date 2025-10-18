@@ -8,6 +8,14 @@ import { newsletterSchema } from '@/components/sections/donation-forms/schemas';
 
 
 export async function subscribeToNewsletter(prevState: any, formData: FormData) {
+  // Honeypot check
+  if (formData.get('honeypot')) {
+    return {
+      success: false,
+      message: 'Bot detected.',
+    };
+  }
+
   const validatedFields = newsletterSchema.safeParse({
     email: formData.get('email'),
   });
