@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -43,7 +42,7 @@ const relatedResource = {
 export default function ChildFirstClientPage() {
     const [showForm, setShowForm] = useState(false);
     const searchParams = useSearchParams();
-    const fromQuery = searchParams.get('from') || 'healthcare';
+    const fromQuery = searchParams?.get('from') || 'healthcare';
 
     const initiativeLists = fromQuery === 'childcare'
         ? [{ title: "Childcare Initiatives", initiatives: childcareInitiatives }, { title: "Healthcare Initiatives", initiatives: healthcareInitiatives }]
