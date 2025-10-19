@@ -48,8 +48,8 @@ export const metadata: Metadata = {
 const reports = [
   {
     year: '2025',
-    image: 'https://picsum.photos/seed/report2025/400/600',
-    hint: 'report cover abstract',
+    image: '/images/annual-report/annual-report-2025.avif',
+    hint: 'annual report, 2025',
     link: '#', 
   },
   {
