@@ -55,13 +55,13 @@ const reports = [
   {
     year: '2024',
     image: '/images/annual-report/annual-report-2024.avif',
-    hint: 'annual report, 2025',
+    hint: 'annual report, 2024',
     link: '#',
   },
   {
     year: '2023',
-    image: 'https://picsum.photos/seed/report2023/400/600',
-    hint: 'impact presentation',
+    image: '/images/annual-report/annual-report-2023.avif',
+    hint: 'annual report, 2023',
     link: '#',
   },
 ];
