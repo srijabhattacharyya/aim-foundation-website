@@ -54,8 +54,8 @@ const reports = [
   },
   {
     year: '2024',
-    image: 'https://picsum.photos/seed/report2024/400/600',
-    hint: 'community data chart',
+    image: '/images/annual-report/annual-report-2024.avif',
+    hint: 'annual report, 2025',
     link: '#',
   },
   {
