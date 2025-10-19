@@ -43,7 +43,7 @@ const relatedResource = {
 export default function InnocentSmilesClientPage() {
     const [showForm, setShowForm] = useState(false);
     const searchParams = useSearchParams();
-    const from = searchParams.get('from') || 'educational';
+    const from = searchParams?.get('from') ?? 'educational';
     
     const initiativeLists = from === 'educational'
         ? [{ title: "Educational Initiatives", initiatives: educationalInitiatives }, { title: "Childcare Initiatives", initiatives: childcareInitiatives }]
