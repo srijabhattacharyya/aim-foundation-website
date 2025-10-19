@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
@@ -48,14 +49,6 @@ const initiatives = [
     specialText: "(Art & Music Class)"
   },
   {
-    title: "Inspire EduLab",
-    description: "Transforms classrooms into smart, internet-enabled hubs. With interactive tools, it makes complex lessons dynamic and easier to grasp, fostering engagement and a love for learning.",
-    image: "/images/projects/edulab/edulab1.avif",
-    hint: "smart classroom",
-    link: "/inspire-eduLab?from=educational",
-    specialText: "(Smart Class Room)"
-  },
-  {
     title: "EduAccess",
     description: "Delivers quality education to rural West Bengal through expert-led online classes. Covering core subjects, it empowers students in underserved areas with skills for academic success.",
     image: "/images/projects/eduaccess/eduaccess2.avif",
@@ -78,14 +71,6 @@ const initiatives = [
     hint: "computer literacy",
     link: "/digiempower?from=educational",
     specialText: "(Digital Literacy for Children)"
-  },
-  {
-    title: "SheConnects",
-    description: "Empowers women through digital literacy, helping them promote businesses online. Includes cyber safety sessions to ensure secure digital participation and financial independence.",
-    image: "https://placehold.co/600x400.png",
-    hint: "women entrepreneurs",
-    link: "/sheconnects?from=educational",
-    specialText: "(Digital Literacy for women)"
   },
   {
     title: "Milieu",

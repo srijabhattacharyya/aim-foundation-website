@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
@@ -55,13 +56,6 @@ export const metadata: Metadata = {
 };
 
 const initiatives = [
-  {
-    title: "SheConnects",
-    description: "Empowers rural women through cervical health education and cancer screenings, organizing community camps and training frontline workers.",
-    image: "https://placehold.co/600x400.png",
-    hint: "women networking",
-    link: "/sheconnects?from=gender-equality"
-  },
   {
     title: "CycleSafe",
     description: "Promotes menstrual hygiene and reproductive health for adolescent girls in and around Kolkata, fostering confidence and dignity.",

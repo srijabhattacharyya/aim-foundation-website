@@ -105,14 +105,6 @@ const blogPosts = [
     date: 'February 28, 2023',
   },
   {
-    slug: 'project-sheconnects',
-    title: 'Project SheConnects: Empowering Women Through Technology',
-    image: '/images/projects/sheconnects/sheconnects1.avif',
-    hint: 'women technology',
-    excerpt: 'Discover how SheConnects is bridging the digital gender gap and empowering women to build sustainable livelihoods online.',
-    date: 'November 23, 2022',
-  },
-  {
     slug: 'roots-of-change',
     title: 'Roots of Change: Planting Awareness, Growing a Greener Tomorrow',
     image: '/images/banner/roots-of-change1.avif',
