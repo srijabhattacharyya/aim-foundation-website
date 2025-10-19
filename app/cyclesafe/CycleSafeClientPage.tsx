@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -45,7 +44,7 @@ const relatedResource = {
 export default function CycleSafeClientPage() {
     const [showForm, setShowForm] = useState(false);
     const searchParams = useSearchParams();
-    const from = searchParams.get('from') || 'healthcare';
+    const from = searchParams?.get('from') || 'healthcare';
 
     const initiativeLists = from === 'gender-equality'
         ? [{ title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }, { title: "Healthcare Initiatives", initiatives: healthcareInitiatives }]
