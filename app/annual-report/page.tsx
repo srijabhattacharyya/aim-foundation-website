@@ -48,19 +48,19 @@ export const metadata: Metadata = {
 const reports = [
   {
     year: '2025',
-    image: 'https://picsum.photos/seed/report2025/600/400',
+    image: 'https://picsum.photos/seed/report2025/400/400',
     hint: 'report cover abstract',
     link: '#', 
   },
   {
     year: '2024',
-    image: 'https://picsum.photos/seed/report2024/600/400',
+    image: 'https://picsum.photos/seed/report2024/400/400',
     hint: 'community data chart',
     link: '#',
   },
   {
     year: '2023',
-    image: 'https://picsum.photos/seed/report2023/600/400',
+    image: 'https://picsum.photos/seed/report2023/400/400',
     hint: 'impact presentation',
     link: '#',
   },
@@ -108,10 +108,10 @@ export default function AnnualReportPage() {
                     <Image
                       src={report.image}
                       alt={`Annual Report ${report.year}`}
-                      width={600}
+                      width={400}
                       height={400}
                       data-ai-hint={report.hint}
-                      className="w-full h-auto object-cover aspect-[3/2]"
+                      className="w-full h-auto object-cover aspect-square"
                     />
                   </CardHeader>
                   <CardContent className="p-6 text-center flex-grow">
