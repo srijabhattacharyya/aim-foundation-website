@@ -22,7 +22,7 @@ const FinancialReports = () => {
                 </p>
             </div>
             <div className="mt-8 bg-card p-8 rounded-lg shadow-md">
-                <h3 className="text-2xl font-bold font-headline text-center mb-6">Download Section</h3>
+                <h3 className="text-2xl font-bold font-headline text-center mb-6">Financial Disclosures</h3>
                 <div className="space-y-4">
                     {reports.map((report, index) => (
                         <div key={index} className="flex justify-between items-center p-4 rounded-lg border hover:bg-muted/50 transition-colors">
