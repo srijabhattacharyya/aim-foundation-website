@@ -2,7 +2,7 @@
 import { Table, TableBody, TableCell, TableRow, TableHead, TableHeader } from '@/components/ui/table';
 
 const impactData = [
-    { metric: "Children Educated", value: "1,200+" },
+    { metric: "Children Educated", value: "2,703" },
     { metric: "Women Screened for Health Issues", value: "800+" },
     { metric: "Volunteers Engaged", value: "150+" },
     { metric: "Districts Covered", value: "5" },
