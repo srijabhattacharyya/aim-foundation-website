@@ -1,6 +1,7 @@
 
 "use client";
 import { Table, TableBody, TableCell, TableRow, TableHead, TableHeader } from '@/components/ui/table';
+import TrusteeEmail from '../layout/TrusteeEmail';
 
 const recognitions = [
     { particular: "Legal Name", detail: "Associated Initiative for Mankind Foundation" },
@@ -43,6 +44,9 @@ const LegalRecognitions = () => {
                         ))}
                     </TableBody>
                 </Table>
+                 <p className="text-sm italic text-muted-foreground mt-4 text-center">
+                    Stakeholders can obtain copies of the original documents by writing to <TrusteeEmail />.
+                </p>
             </div>
         </div>
       </div>
