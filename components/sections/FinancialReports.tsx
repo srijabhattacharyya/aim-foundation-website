@@ -7,7 +7,7 @@ import Link from 'next/link';
 const reports = [
     { name: "Annual Report 2024–25", href: "#" },
     { name: "Audited Financial Statements 2024–25", href: "#" },
-    { name: "Previous Annual Reports (2020–24)", href: "/annual-report" },
+    { name: "Previous Annual Reports", href: "/annual-report" },
 ];
 
 const FinancialReports = () => {
