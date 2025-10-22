@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableRow, TableHead, TableHeader } from '@
 
 const recognitions = [
     { particular: "Legal Name", detail: "Associated Initiative for Mankind Foundation" },
-    { particular: "Short Name", detail: "(AIM Foundation)" },
+    { particular: "Short Name", detail: "AIM Foundation" },
     { particular: "Registered Under", detail: "The Indian Trusts Act, 1882" },
     { particular: "PAN", detail: "AAFTA1983P" },
     { particular: "Registered with the Income Tax Department u/s 12A", detail: "AAFTA1983PE20221" },
