@@ -125,7 +125,20 @@ export default function ProfilePage() {
                     </div>
                 </section>
 
-                <section className="py-12 md:py-20 lg:py-24 bg-card">
+                 <section className="py-12 md:py-20 lg:py-24 bg-card">
+                    <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Verified &amp; Trusted By</h2>
+                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                            AIM Foundation’s work is verified by leading third-party organizations, ensuring transparency, credibility, and accountability in all our programs.
+                        </p>
+                        <ul className="mt-6 text-lg text-muted-foreground list-disc list-inside inline-block text-left">
+                            <li>Give.do</li>
+                            <li>GuideStar</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section className="py-12 md:py-20 lg:py-24 bg-background">
                     <div className="container mx-auto px-4 md:px-6 text-center">
                          <h2 className="text-3xl md:text-4xl font-bold font-headline">Contact for Queries</h2>
                         <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
