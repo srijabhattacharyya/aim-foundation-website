@@ -7,6 +7,7 @@ import LegalRecognitions from "@/components/sections/LegalRecognitions";
 import FinancialReports from "@/components/sections/FinancialReports";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
+import TrusteeEmail from '@/components/layout/TrusteeEmail';
 
 export const metadata: Metadata = {
     title: 'Our Profile & Transparency | AIM Foundation',
@@ -99,8 +100,9 @@ export default function ProfilePage() {
                            Our governance is guided by a comprehensive set of policies that ensure ethical conduct, accountability, and the safeguarding of all stakeholders.
                         </p>
                         <Button asChild size="lg" className="mt-8">
-                            <Link href="/policies">View All Policies</Link>
+                            <Link href="/policies">View Policies</Link>
                         </Button>
+                        <p className="mt-4 text-sm text-muted-foreground">For internal policies all stakeholders are requested to contact <TrusteeEmail />.</p>
                     </div>
                 </section>
             </main>
