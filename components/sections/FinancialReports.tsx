@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 import Link from 'next/link';
+import TrusteeEmail from '../layout/TrusteeEmail';
 
 const reports = [
     { name: "Annual Report 2024–25", href: "#" },
@@ -33,6 +34,9 @@ const FinancialReports = () => {
                         </div>
                     ))}
                 </div>
+                <p className="text-sm italic text-muted-foreground mt-4 text-center">
+                    Stakeholders can obtain copies of the original documents by writing to <TrusteeEmail />.
+                </p>
             </div>
         </div>
       </div>
