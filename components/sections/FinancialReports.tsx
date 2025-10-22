@@ -26,13 +26,10 @@ const FinancialReports = () => {
                 <div className="space-y-4">
                     {reports.map((report, index) => (
                         <div key={index} className="flex justify-between items-center p-4 rounded-lg border hover:bg-muted/50 transition-colors">
-                            <p className="font-medium">{report.name}</p>
-                            <Button asChild variant="outline">
-                                <Link href={report.href}>
-                                    <Download className="mr-2 h-4 w-4" />
-                                    PDF
-                                </Link>
-                            </Button>
+                            <Link href={report.href} className="font-medium text-primary hover:underline flex items-center gap-2">
+                                <Download className="h-4 w-4" />
+                                {report.name}
+                            </Link>
                         </div>
                     ))}
                 </div>
