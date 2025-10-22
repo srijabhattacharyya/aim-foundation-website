@@ -133,7 +133,7 @@ export default function ProfilePage() {
                         </p>
                         <ul className="mt-6 text-lg text-muted-foreground list-disc list-inside inline-block text-left">
                             <li>Goodstack</li>
-                            <li>Give.do</li>
+                            <li><Link href="https://give.do/discover/19HG/associated-initiative-for-mankind-foundation-aim-foundation/" target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">Give.do</Link></li>
                             <li>GuideStar</li>
                         </ul>
                         <p className="mt-4 text-muted-foreground">AIM Foundation is a <strong>Google for Non-Profit</strong> affiliated organisation.</p>
