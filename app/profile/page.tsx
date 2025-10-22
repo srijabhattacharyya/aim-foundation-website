@@ -78,6 +78,16 @@ export default function ProfilePage() {
                         </div>
                     </div>
                 </section>
+                <section className="py-12 md:py-20 lg:py-24 bg-background">
+                    <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Commitment to Transparency</h2>
+                        <div className="mt-6 text-lg text-muted-foreground space-y-4 text-justify">
+                            <p>
+                                AIM Foundation believes that true impact begins with honesty and openness. We are committed to maintaining 100% transparency in our governance, finances, and operations so that every donor, partner, and volunteer can trust that their contribution directly supports our mission to build a better tomorrow.
+                            </p>
+                        </div>
+                    </div>
+                </section>
                 <Ethos />
                 <LegalRecognitions />
                 <section className="py-12 md:py-20 lg:py-24 bg-card">
