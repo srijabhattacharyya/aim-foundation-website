@@ -95,17 +95,7 @@ export default function ProfilePage() {
                 <LegalRecognitions />
                 <FinancialReports />
                 <GovernanceAndTeam />
-                <section className="py-12 md:py-20 lg:py-24 bg-background">
-                    <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
-                        <h2 className="text-3xl md:text-4xl font-bold font-headline">CSR and Partner Disclosures</h2>
-                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                           AIM Foundation collaborates with corporates, institutions, and individuals under CSR and partnership programs.
-                        </p>
-                        <Button asChild size="lg" className="mt-8">
-                            <Link href="/#patrons">View Our Partners</Link>
-                        </Button>
-                    </div>
-                </section>
+
                 <section className="py-12 md:py-20 lg:py-24 bg-card">
                     <div className="container mx-auto px-4 md:px-6 text-center">
                          <h2 className="text-3xl md:text-4xl font-bold font-headline">Policies and Guidelines</h2>
@@ -118,6 +108,19 @@ export default function ProfilePage() {
                         <p className="mt-4 text-sm text-muted-foreground">For internal policies all stakeholders are requested to contact <TrusteeEmail />.</p>
                     </div>
                 </section>
+                
+                <section className="py-12 md:py-20 lg:py-24 bg-background">
+                    <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">CSR and Partner Disclosures</h2>
+                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                           AIM Foundation collaborates with corporates, institutions, and individuals under CSR and partnership programs.
+                        </p>
+                        <Button asChild size="lg" className="mt-8">
+                            <Link href="/#patrons">View Our Partners</Link>
+                        </Button>
+                    </div>
+                </section>
+
             </main>
             <Footer />
         </div>
