@@ -49,6 +49,7 @@ const navLinks: NavItem[] = [
   { href: '/', label: 'Home' },
   { label: 'About', isDropdown: true, items: [
       { href: '/organisation', label: 'Organisation' },
+      { href: '/profile', label: 'Our Profile' },
       { href: '/team', label: 'Our Team' },
     ]
   },
@@ -102,7 +103,7 @@ const navLinks: NavItem[] = [
     ]
   },
   { label: 'Resources', isDropdown: true, items: [
-      { href: '/voices', label: 'Blog' },
+      { href: '/blog', label: 'Blog' },
       { href: '/annual-report', label: 'Annual Report' },
       { href: '/policies', label: 'Policies' },
     ]

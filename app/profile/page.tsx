@@ -1,0 +1,99 @@
+
+import type { Metadata } from 'next';
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import Ethos from "@/components/sections/Ethos";
+import LegalRecognitions from "@/components/sections/LegalRecognitions";
+import { Button } from "@/components/ui/button";
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+    title: 'Our Profile & Transparency | AIM Foundation',
+    description: 'Explore AIM Foundation’s profile, including our mission, legal recognitions, and commitment to transparency and accountability in all our initiatives.',
+    keywords: ['AIM Foundation profile', 'NGO transparency', 'AIM Foundation legal status', 'NGO mission and vision', 'charity accountability'],
+    authors: [{ name: 'AIM Foundation' }],
+    robots: 'index, follow',
+    openGraph: {
+        type: 'website',
+        url: 'https://aimindia.org.in/profile',
+        title: 'Our Profile & Transparency | AIM Foundation',
+        description: 'Explore AIM Foundation’s profile, including our mission, legal recognitions, and commitment to transparency.',
+        images: [
+            {
+                url: 'https://aimindia.org.in/home.avif',
+                width: 1200,
+                height: 630,
+                alt: 'AIM Foundation Profile',
+            },
+        ],
+        siteName: 'AIM Foundation',
+        locale: 'en_IN',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        site: '@aimindiango',
+        title: 'Our Profile & Transparency | AIM Foundation',
+        description: 'Explore AIM Foundation’s profile, including our mission, legal recognitions, and commitment to transparency.',
+        images: ['https://aimindia.org.in/home.avif'],
+    },
+    alternates: {
+        canonical: '/profile',
+    },
+};
+
+export default function ProfilePage() {
+    const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/aimindiango/",
+      "https://x.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo/",
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
+    ],
+    "description": "Explore AIM Foundation’s profile, including our mission, legal recognitions, and commitment to transparency and accountability in all our initiatives."
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-profile"
+      />
+        <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow">
+                <section className="py-12 md:py-20 lg:py-24 bg-muted">
+                    <div className="container mx-auto px-4 md:px-6">
+                        <div className="text-center mb-12">
+                            <h1 className="text-4xl md:text-5xl font-bold font-headline">Our Profile & Transparency</h1>
+                            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                                We are committed to upholding the highest standards of accountability and openness in all our work.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <Ethos />
+                <LegalRecognitions />
+                <section className="py-12 md:py-20 lg:py-24 bg-card">
+                    <div className="container mx-auto px-4 md:px-6 text-center">
+                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Explore Our Policies</h2>
+                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                           Our governance is guided by a comprehensive set of policies that ensure ethical conduct, accountability, and the safeguarding of all stakeholders.
+                        </p>
+                        <Button asChild size="lg" className="mt-8">
+                            <Link href="/policies">View All Policies</Link>
+                        </Button>
+                    </div>
+                </section>
+            </main>
+            <Footer />
+        </div>
+    </>
+  );
+}

@@ -74,6 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/policies',
     '/press-releases',
     '/privacy-policy',
+    '/profile',
     '/refund-policy',
     '/relief-to-the-underprivileged',
     '/roots-of-change',
