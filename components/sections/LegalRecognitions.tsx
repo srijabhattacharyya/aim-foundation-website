@@ -13,6 +13,7 @@ const recognitions = [
     { particular: "Registered with Ministry of Corporate Affairs (CSR 1)", detail: "CSR00000373 (Perpetual)" },
     { particular: "Registered in Foreign Contribution Regulation Act (FCRA)", detail: "147120199" },
     { particular: "Registered Address", detail: "41, Ballygaunge Terrace, Kolkata 700029, India" },
+    { particular: "Head Office", detail: "Sarala Punyashram, 91/34, Bosepukur Road, Kolkata 700042" },
     { particular: "Email", detail: "info@aimindia.org.in" },
 ];
 
