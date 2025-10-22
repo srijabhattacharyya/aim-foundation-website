@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import TrusteeEmail from '@/components/layout/TrusteeEmail';
 import GovernanceAndTeam from '@/components/sections/GovernanceAndTeam';
+import ImpactAndReach from '@/components/sections/ImpactAndReach';
 
 export const metadata: Metadata = {
     title: 'Our Profile & Transparency | AIM Foundation',
@@ -94,6 +95,7 @@ export default function ProfilePage() {
                 <Ethos />
                 <LegalRecognitions />
                 <FinancialReports />
+                <ImpactAndReach />
                 <GovernanceAndTeam />
 
                 <section className="py-12 md:py-20 lg:py-24 bg-card">
