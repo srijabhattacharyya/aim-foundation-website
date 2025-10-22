@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.aimindia.org.in'),
@@ -119,6 +120,17 @@ export default function RootLayout({
             __html: JSON.stringify(schemaMarkup),
           }}
         />
+        {/* Google tag (gtag.js) */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-16896084763"></Script>
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-16896084763');
+          `}
+        </Script>
       </head>
       <body className="font-body antialiased">
         {children}
