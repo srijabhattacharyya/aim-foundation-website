@@ -37,6 +37,11 @@ const policies = [
      link: "/whistleblower-policy"
   },
   {
+    title: "Grievance Redressal Policy",
+    content: "Our Grievance Redressal Policy provides a fair and transparent framework for addressing concerns from all stakeholders, ensuring accountability and continuous improvement.",
+    link: "/grievance-redressal"
+  },
+  {
     title: "Volunteer Policy",
     content: "AIM Foundation values volunteers as essential partners in its mission. The policy outlines respectful engagement, clear roles, code of conduct, and safeguarding measures. Volunteers receive orientation, support, and recognition, while contributing ethically and responsibly to education, health, and community initiatives.",
      link: "/volunteer-policy"
