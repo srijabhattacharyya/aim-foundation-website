@@ -95,7 +95,7 @@ export default function ProfilePage() {
                 <FinancialReports />
                 <section className="py-12 md:py-20 lg:py-24 bg-card">
                     <div className="container mx-auto px-4 md:px-6 text-center">
-                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Explore Our Policies</h2>
+                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Policies and Guidelines</h2>
                         <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
                            Our governance is guided by a comprehensive set of policies that ensure ethical conduct, accountability, and the safeguarding of all stakeholders.
                         </p>
