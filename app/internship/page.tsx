@@ -95,8 +95,45 @@ export default function InternshipPage() {
           </div>
         </section>
 
-        {/* Rest of your content remains unchanged */}
-        {/* Sections about internship areas, benefits, handbook links, contact, etc. */}
+        <section className="py-12 md:py-20 lg:py-24 bg-muted">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="max-w-4xl mx-auto">
+                    <div className="space-y-6 text-lg text-muted-foreground text-justify">
+                        <p>
+                            Are you a student or recent graduate eager to apply your skills to real-world challenges? Join AIM Foundation’s internship program and gain hands-on experience in the social sector. Our internships offer a unique opportunity to contribute to meaningful projects while developing professional skills and a deep understanding of grassroots development.
+                        </p>
+                        
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline pt-8">Internship Areas</h2>
+                        <ul className="list-disc list-inside space-y-2 pl-4">
+                            <li><Link href="/healthcare-initiatives" className="text-primary hover:underline">Healthcare</Link>: Assist in organizing health camps and awareness drives.</li>
+                            <li><Link href="/educational-initiatives" className="text-primary hover:underline">Education</Link>: Support our learning centers and educational programs.</li>
+                            <li><Link href="/sustainability-initiatives" className="text-primary hover:underline">Environment</Link>: Participate in conservation and sustainability projects.</li>
+                            <li><Link href="/gender-equality-initiative" className="text-primary hover:underline">Women Empowerment</Link>: Contribute to skill-building and livelihood initiatives.</li>
+                            <li><strong>Community Engagement</strong>: Help with outreach, surveys, and mobilization.</li>
+                        </ul>
+
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline pt-8">Benefits of Interning with Us</h2>
+                        <ul className="list-disc list-inside space-y-2 pl-4">
+                            <li>Gain practical experience in a professional NGO environment.</li>
+                            <li>Develop skills in project management, communication, and teamwork.</li>
+                            <li>Receive mentorship from experienced professionals.</li>
+                            <li>Contribute to meaningful social change.</li>
+                            <li>Receive a certificate upon successful completion.</li>
+                        </ul>
+
+                        <div className="bg-card p-6 rounded-lg shadow-md mt-10 text-center">
+                            <h2 className="text-3xl md:text-4xl font-bold font-headline">Ready to Join?</h2>
+                            <p className="mt-4">
+                                Before applying, please explore our <Link href="/internship-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Internship Policy</Link> and review our <Link href="/code-of-conduct" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Code of Conduct</Link>.
+                            </p>
+                            <p className="mt-4 font-semibold">
+                                To apply, send your resume and a cover letter to: <ContactEmail />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
       </main>
       <Footer />

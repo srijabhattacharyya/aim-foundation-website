@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import HREmail from "@/components/layout/HREmail";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Careers & Opportunities at AIM Foundation India',
@@ -112,11 +113,11 @@ export default function CareerPage() {
                     Through structured and community-driven programs, we work across diverse verticals including:
                   </p>
                   <ul className="list-disc list-inside space-y-2 pl-4">
-                    <li>Education & Child Development</li>
-                    <li>Healthcare & Hygiene</li>
-                    <li>Women’s Empowerment & Livelihoods</li>
-                    <li>Environmental Sustainability</li>
-                    <li>Disaster Relief & Community Resilience</li>
+                    <li><Link href="/educational-initiatives" className="text-primary hover:underline">Education & Child Development</Link></li>
+                    <li><Link href="/healthcare-initiatives" className="text-primary hover:underline">Healthcare & Hygiene</Link></li>
+                    <li><Link href="/gender-equality-initiative" className="text-primary hover:underline">Women’s Empowerment & Livelihoods</Link></li>
+                    <li><Link href="/sustainability-initiatives" className="text-primary hover:underline">Environmental Sustainability</Link></li>
+                    <li><Link href="/disaster-management" className="text-primary hover:underline">Disaster Relief & Community Resilience</Link></li>
                   </ul>
                   <h3 className="text-2xl font-bold font-headline pt-6">We don’t just run programs—we nurture transformation.</h3>
                   <p>

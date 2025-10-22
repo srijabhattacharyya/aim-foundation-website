@@ -1,4 +1,5 @@
 
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -19,7 +20,7 @@ export default function VolunteerPolicyPage() {
     "@type": "Organization",
     name: "AIM Foundation",
     url: "https://www.aimindia.org.in/",
-    logo: "https://aimindia.org.in/logo.png",
+    logo: "https://www.aimindia.org.in/logo.png",
     sameAs: [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",

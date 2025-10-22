@@ -124,12 +124,12 @@ export default function DonationPolicyPage() {
 
                 <h2 className="text-2xl font-bold font-headline pt-4">Donation Refund Policy</h2>
                 <p>
-                  Donations, once made, are non-refundable, as they are immediately allocated toward program support and implementation. We kindly request donors to carefully review the donation details before confirming the transaction. (For more information, please refer to our <Link href="/refund-policy" className="underline hover:text-primary">Refund Policy</Link>).
+                  Donations, once made, are non-refundable, as they are immediately allocated toward program support and implementation. We kindly request donors to carefully review the donation details before confirming the transaction. (For more information, please refer to our <Link href="/refund-policy" className="text-primary hover:underline">Refund Policy</Link>).
                 </p>
 
                 <h2 className="text-2xl font-bold font-headline pt-4">Donor Privacy</h2>
                 <p>
-                  We respect your privacy. Personal information collected for donation processing is kept strictly confidential and is not shared, rented, or sold to any third party. (See our full <Link href="/privacy-policy" className="underline hover:text-primary">Privacy Policy</Link> for more details.)
+                  We respect your privacy. Personal information collected for donation processing is kept strictly confidential and is not shared, rented, or sold to any third party. (See our full <Link href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link> for more details.)
                 </p>
 
                 <h2 className="text-2xl font-bold font-headline pt-4">Donation Acknowledgment</h2>
