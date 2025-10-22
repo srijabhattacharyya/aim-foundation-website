@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from "@/components/ui/button";
@@ -54,7 +53,7 @@ const GovernanceAndTeam = () => {
                     We believe in participatory governance — where the Board of Trustees ensures accountability, and the Management Committee ensures effective execution of every program.
                 </p>
                 <p>
-                    Together, they uphold AIM Foundation’s values of Integrity, Empathy, and Impact.
+                    Together, they uphold AIM Foundation’s values of <strong>Integrity</strong>, <strong>Empathy</strong>, and <strong>Impact</strong>.
                 </p>
             </div>
           </div>
