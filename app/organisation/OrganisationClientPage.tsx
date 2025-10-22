@@ -59,7 +59,7 @@ export default function OrganisationClientPage() {
                     At the heart of our mission is the unwavering belief that empowered women uplift entire communities. We strive to create a world where access to education, health, and a clean environment is not a privilege, but a right for all. With collaboration, care, and courage, AIM Foundation builds spaces where equality blossoms and futures are reshaped with hope.
                     </p>
                      <Button asChild className="mt-4">
-                        <Link href="/profile#legal-recognitions">Our Recognitions</Link>
+                        <Link href="/profile">View Profile</Link>
                     </Button>
                 </div>
               </div>
