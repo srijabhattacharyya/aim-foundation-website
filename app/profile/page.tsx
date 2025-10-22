@@ -107,7 +107,6 @@ export default function ProfilePage() {
                         <Button asChild size="lg" className="mt-8">
                             <Link href="/policies">View Policies</Link>
                         </Button>
-                        <p className="mt-4 text-sm text-muted-foreground">For internal policies all stakeholders are requested to contact <TrusteeEmail />.</p>
                     </div>
                 </section>
                 
@@ -120,6 +119,16 @@ export default function ProfilePage() {
                         <Button asChild size="lg" className="mt-8">
                             <Link href="/#patrons">View Our Partners</Link>
                         </Button>
+                    </div>
+                </section>
+
+                <section className="py-12 md:py-20 lg:py-24 bg-card">
+                    <div className="container mx-auto px-4 md:px-6 text-center">
+                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Contact for Queries</h2>
+                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                           For any questions regarding financial or legal transparency, please contact:
+                        </p>
+                        <p className="mt-4"><TrusteeEmail /></p>
                     </div>
                 </section>
 
