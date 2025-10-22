@@ -47,6 +47,16 @@ const policies = [
      link: "/volunteer-policy"
   },
   {
+    title: "Internship Policy",
+    content: "Our Internship Policy outlines the principles, expectations, and procedures for engaging interns ethically and effectively, ensuring a mutually beneficial experience for both the interns and the organization.",
+    link: "/internship-policy"
+  },
+  {
+    title: "Code of Conduct",
+    content: "Our Code of Conduct outlines the principles, values, and standards expected of everyone associated with our organization, ensuring we operate with integrity, respect, and accountability.",
+    link: "/code-of-conduct"
+  },
+  {
     title: "Cookie Policy",
     content: "AIM Foundation’s website uses cookies to enhance user experience, analyse traffic, and enable essential functions. No personal data is collected or shared. Users can manage cookie preferences via browser settings. Continued use of the site implies consent to this policy.",
      link: "/cookie-policy"
@@ -68,18 +78,20 @@ export default function PoliciesPage() {
                 Transparency and accountability are at the core of our operations. Explore our policies to understand our commitment to ethical and responsible practices.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {policies.map((policy, index) => (
                 <Card key={index} className="shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
                   <CardHeader>
                     <CardTitle className="font-headline text-xl">{policy.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-grow flex flex-col">
-                    <p className="text-muted-foreground text-base flex-grow">{policy.content}</p>
+                  <CardContent className="flex flex-col flex-grow">
+                    <p className="text-muted-foreground text-base flex-grow text-justify">{policy.content}</p>
+                  </CardContent>
+                  <CardFooter>
                     <Button asChild className="mt-6 w-full transition-transform transform hover:scale-105">
                       <Link href={policy.link}>View Policy</Link>
                     </Button>
-                  </CardContent>
+                  </CardFooter>
                 </Card>
               ))}
             </div>
