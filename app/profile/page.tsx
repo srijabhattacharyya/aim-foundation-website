@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Ethos from "@/components/sections/Ethos";
 import LegalRecognitions from "@/components/sections/LegalRecognitions";
+import FinancialReports from "@/components/sections/FinancialReports";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 
@@ -90,6 +91,7 @@ export default function ProfilePage() {
                 </section>
                 <Ethos />
                 <LegalRecognitions />
+                <FinancialReports />
                 <section className="py-12 md:py-20 lg:py-24 bg-card">
                     <div className="container mx-auto px-4 md:px-6 text-center">
                          <h2 className="text-3xl md:text-4xl font-bold font-headline">Explore Our Policies</h2>

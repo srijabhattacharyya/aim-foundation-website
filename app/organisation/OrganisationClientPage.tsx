@@ -17,31 +17,9 @@ const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintC
 
 
 export default function OrganisationClientPage() {
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "Since 2016, AIM Foundation has empowered underprivileged families in West Bengal through education, healthcare, women empowerment, and community development."
-  };
 
   return (
     <div className="flex flex-col min-h-screen">
-       <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaMarkup),
-          }}
-          key="org-schema"
-        />
       <Navbar />
       <main className="flex-grow">
         <section className="relative w-full">
@@ -81,7 +59,7 @@ export default function OrganisationClientPage() {
                     At the heart of our mission is the unwavering belief that empowered women uplift entire communities. We strive to create a world where access to education, health, and a clean environment is not a privilege, but a right for all. With collaboration, care, and courage, AIM Foundation builds spaces where equality blossoms and futures are reshaped with hope.
                     </p>
                      <Button asChild className="mt-4">
-                        <Link href="#legal-recognitions">Our Recognitions</Link>
+                        <Link href="/profile#legal-recognitions">Our Recognitions</Link>
                     </Button>
                 </div>
               </div>
@@ -93,7 +71,6 @@ export default function OrganisationClientPage() {
         </section>
 
         <Ethos />
-        <LegalRecognitions />
         
       </main>
       <Footer />
