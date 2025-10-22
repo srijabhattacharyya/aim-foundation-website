@@ -132,9 +132,11 @@ export default function ProfilePage() {
                             AIM Foundation’s work is verified by leading third-party organizations, ensuring transparency, credibility, and accountability in all our programs.
                         </p>
                         <ul className="mt-6 text-lg text-muted-foreground list-disc list-inside inline-block text-left">
+                            <li>Goodstack</li>
                             <li>Give.do</li>
                             <li>GuideStar</li>
                         </ul>
+                        <p className="mt-4 text-muted-foreground">AIM Foundation is a Google for Non-Profit affiliated organisation.</p>
                     </div>
                 </section>
 
