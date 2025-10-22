@@ -136,7 +136,7 @@ export default function ProfilePage() {
                             <li>Give.do</li>
                             <li>GuideStar</li>
                         </ul>
-                        <p className="mt-4 text-muted-foreground">AIM Foundation is a Google for Non-Profit affiliated organisation.</p>
+                        <p className="mt-4 text-muted-foreground">AIM Foundation is a <strong>Google for Non-Profit</strong> affiliated organisation.</p>
                     </div>
                 </section>
 
