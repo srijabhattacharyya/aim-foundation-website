@@ -107,6 +107,9 @@ export default function ProfilePage() {
                         <Button asChild size="lg" className="mt-8">
                             <Link href="/policies">View Policies</Link>
                         </Button>
+                        <p className="mt-4 text-sm text-muted-foreground">
+                            For internal policies all stakeholders are requested to contact <TrusteeEmail />.
+                        </p>
                     </div>
                 </section>
                 
@@ -129,6 +132,15 @@ export default function ProfilePage() {
                            For any questions regarding financial or legal transparency, please contact:
                         </p>
                         <p className="mt-4"><TrusteeEmail /></p>
+                    </div>
+                </section>
+
+                <section className="py-12 md:py-20 lg:py-24 bg-muted">
+                    <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Declaration</h2>
+                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto italic">
+                           AIM Foundation certifies that all information presented on this page is true and verified by our independent auditors. The organization abides by all statutory requirements under Indian NGO law and CSR guidelines.
+                        </p>
                     </div>
                 </section>
 
