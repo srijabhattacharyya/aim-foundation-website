@@ -1,8 +1,10 @@
 
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Grievance Redressal Policy | AIM Foundation',
@@ -96,7 +98,7 @@ export default function GrievanceRedressalPage() {
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Beneficiaries and community members</li>
                   <li>Donors, supporters, and partners</li>
-                  <li>Volunteers, interns, and employees</li>
+                  <li><Link href="/volunteering" className="text-primary hover:underline">Volunteers</Link>, interns, and employees</li>
                   <li>Members of the public who interact with AIM Foundation</li>
                 </ul>
                 <p className="pt-2">Grievances may relate to:</p>
@@ -105,7 +107,7 @@ export default function GrievanceRedressalPage() {
                   <li>Unethical behaviour by staff or volunteers</li>
                   <li>Program delivery or beneficiary concerns</li>
                   <li>Financial integrity or misuse of resources</li>
-                  <li>Any violation of AIM Foundation’s policies or code of conduct</li>
+                  <li>Any violation of AIM Foundation’s policies or <Link href="/code-of-conduct" className="text-primary hover:underline">code of conduct</Link></li>
                 </ul>
                 
                 <h2 className="text-2xl font-bold font-headline pt-4">Guiding Principles</h2>

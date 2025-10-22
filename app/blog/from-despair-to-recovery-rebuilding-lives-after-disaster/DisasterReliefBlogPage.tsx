@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -51,12 +52,12 @@ export default function DisasterReliefBlogPage() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <p>
-                  Disasters don’t wait for the perfect moment—they strike without warning, leaving families shattered, homes destroyed, and communities struggling to survive. In such times of chaos, the difference between despair and hope often comes down to how quickly help arrives. At AIM Foundation, we believe that when disaster strikes, our response must be swift, compassionate, and effective. Through our Disaster Management and Relief Program, we stand with those affected—bringing life-saving assistance, comfort, and the promise of recovery.
+                  Disasters don’t wait for the perfect moment—they strike without warning, leaving families shattered, homes destroyed, and communities struggling to survive. In such times of chaos, the difference between despair and hope often comes down to how quickly help arrives. At AIM Foundation, we believe that when disaster strikes, our response must be swift, compassionate, and effective. Through our <Link href="/disaster-management" className="text-primary hover:underline">Disaster Management and Relief Program</Link>, we stand with those affected—bringing life-saving assistance, comfort, and the promise of recovery.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why Disaster Relief Matters</h2>
                 <p>
-                  Floods, cyclones, earthquakes, and other calamities do more than destroy infrastructure—they disrupt the very fabric of communities. Homes vanish overnight, livelihoods are wiped out, and vulnerable populations are pushed further into poverty. In these moments, access to food, clean water, shelter, and healthcare becomes a matter of life and death.
+                  Floods, cyclones, earthquakes, and other calamities do more than destroy infrastructure—they disrupt the very fabric of communities. Homes vanish overnight, livelihoods are wiped out, and vulnerable populations are pushed further into poverty. In these moments, access to food, clean water, shelter, and <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link> becomes a matter of life and death.
                 </p>
                 <p>
                   For many survivors, aid is not just about physical supplies—it’s about the reassurance that they are not alone, that someone cares enough to stand beside them in their darkest hour. This is where AIM Foundation steps in, providing both immediate relief and long-term recovery support to help communities not just survive, but rebuild stronger than before.
@@ -73,7 +74,7 @@ export default function DisasterReliefBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Beyond Immediate Relief – Building Resilience</h2>
                 <p>
-                  Recovery doesn’t end when the crisis abates. We are committed to helping communities rebuild stronger. We assist in repairing homes and schools, restoring livelihoods through grants and training, and implementing disaster preparedness programs to mitigate future risks.
+                  Recovery doesn’t end when the crisis abates. We are committed to helping communities rebuild stronger. We assist in repairing homes and schools, restoring <Link href="/gender-equality-initiative" className="text-primary hover:underline">livelihoods</Link> through grants and training, and implementing disaster preparedness programs to mitigate future risks.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories of Hope from the Front Lines</h2>
@@ -85,7 +86,7 @@ export default function DisasterReliefBlogPage() {
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Be a Beacon of Hope in the Storm</h2>
                   <p className="mt-4">
-                    Your contribution to our Disaster Relief Program has a direct and measurable impact. It’s a message of solidarity and hope to those who’ve lost everything.
+                    Your contribution to our <Link href="/disaster-management" className="text-primary hover:underline">Disaster Relief Program</Link> has a direct and measurable impact. It’s a message of solidarity and hope to those who’ve lost everything.
                   </p>
                   <ul className="list-none space-y-2 mt-4 text-left sm:text-center">
                     <li><strong>₹1,000</strong> can provide a week’s worth of food to a family of four.</li>

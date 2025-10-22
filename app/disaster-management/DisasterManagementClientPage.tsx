@@ -10,6 +10,7 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/DisasterManagementDonationForm'), { 
     ssr: false,
@@ -84,15 +85,15 @@ export default function DisasterManagementClientPage() {
                     <ul className="list-disc list-inside space-y-2">
                       <li>Distribution of emergency food, clean water, and hygiene kits.</li>
                       <li>Provision of temporary shelter and essential supplies like blankets and clothing.</li>
-                      <li>Deployment of mobile medical units to provide first aid and essential healthcare.</li>
+                      <li>Deployment of mobile medical units to provide first aid and essential <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>.</li>
                       <li>Psychosocial support to help individuals cope with trauma and stress.</li>
                     </ul>
                     <p>
-                      Beyond immediate relief, we are committed to long-term recovery and resilience-building. We work with communities to rebuild infrastructure, restore livelihoods, and implement disaster preparedness programs to mitigate the impact of future crises. Our goal is not just to help people survive, but to help them rebuild their lives with dignity and hope.
+                      Beyond immediate relief, we are committed to long-term recovery and resilience-building. We work with communities to rebuild infrastructure, <Link href="/gender-equality-initiative" className="text-primary hover:underline">restore livelihoods</Link>, and implement disaster preparedness programs to mitigate the impact of future crises. Our goal is not just to help people survive, but to help them rebuild their lives with dignity and hope.
                     </p>
                     <h3 className="text-2xl font-bold font-headline pt-4">Be a Beacon of Hope in the Storm</h3>
                     <p>
-                      Your contribution can provide life-saving assistance to a family devastated by disaster. A donation today can provide emergency shelter, a week's worth of food, or critical medical supplies. Stand with us as we stand with them. <strong>Your support can turn despair into hope and help communities rebuild stronger than before.</strong>
+                      Your contribution can provide life-saving assistance to a family devastated by disaster. A <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> today can provide emergency shelter, a week's worth of food, or critical medical supplies. Stand with us as we stand with them. <strong>Your support can turn despair into hope and help communities rebuild stronger than before.</strong>
                     </p>
                   </div>
                 </div>

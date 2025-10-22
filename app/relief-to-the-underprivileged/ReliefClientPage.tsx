@@ -10,6 +10,7 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/ReliefDonationForm'), { 
     ssr: false,
@@ -72,7 +73,7 @@ export default function ReliefClientPage() {
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Extending a Helping Hand, Restoring Dignity.</h2>
                         <div className="text-lg text-muted-foreground space-y-4 text-justify">
                            <p>
-                            Our Relief to the Underprivileged program is a cornerstone of our commitment to immediate and compassionate action. We provide essential support to individuals and families facing extreme hardship due to poverty, lack of resources, or sudden crises. This initiative is about more than just aid; it's about restoring hope and dignity.
+                            Our Relief to the Underprivileged program is a cornerstone of our commitment to immediate and compassionate action. We provide essential support to individuals and families facing extreme hardship due to poverty, lack of resources, or sudden crises like <Link href="/disaster-management" className="text-primary hover:underline">disasters</Link>. This initiative is about more than just aid; it's about restoring hope and dignity.
                           </p>
                           <p>
                             We work to address the most urgent needs of marginalized communities, including those in remote villages, urban slums, and areas often overlooked by mainstream support systems.
@@ -89,7 +90,7 @@ export default function ReliefClientPage() {
                           </p>
                           <h3 className="text-2xl font-bold font-headline pt-4">Be the Lifeline for Someone in Need</h3>
                           <p>
-                            For many, a single meal, a warm blanket, or access to clean water can be a lifeline. Your donation provides immediate, tangible relief to those who have the least. You can help us reach more families, provide more meals, and offer a glimmer of hope in the darkest of times. Your support ensures that our helping hand can extend to every person who needs it.
+                            For many, a single meal, a warm blanket, or access to clean water can be a lifeline. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> provides immediate, tangible relief to those who have the least. You can help us reach more families, provide more meals, and offer a glimmer of hope in the darkest of times. Your support ensures that our helping hand can extend to every person who needs it.
                           </p>
                         </div>
                     </div>

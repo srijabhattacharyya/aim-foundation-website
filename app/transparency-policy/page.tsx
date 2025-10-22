@@ -1,8 +1,10 @@
 
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Transparency Policy | AIM Foundation',
@@ -79,7 +81,7 @@ export default function TransparencyPolicyPage() {
               </h1>
               <div className="space-y-6 text-muted-foreground text-justify">
                 <p>
-                  At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we believe that transparency is fundamental to building trust with our stakeholders — including donors, partners, beneficiaries, volunteers, and the general public. We are committed to conducting all our operations with honesty, openness, and accountability.
+                  At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we believe that transparency is fundamental to building trust with our stakeholders — including donors, partners, beneficiaries, <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link>, and the general public. We are committed to conducting all our operations with honesty, openness, and accountability.
                 </p>
                 <p>
                   This Transparency Policy outlines the principles and practices we follow to ensure our work is open, ethical, and verifiable.
@@ -90,13 +92,13 @@ export default function TransparencyPolicyPage() {
                   We maintain clear and accurate financial records and ensure proper use of funds in accordance with Indian laws and our stated mission.
                 </p>
                 <ul className="list-disc list-inside space-y-2">
-                  <li>Our audited financial statements, annual reports, and utilization certificates are made publicly available on our website.</li>
-                  <li>All donations received — whether domestic or foreign — are recorded, acknowledged, and utilized responsibly for programmatic purposes.</li>
+                  <li>Our audited financial statements, <Link href="/annual-report" className="text-primary hover:underline">annual reports</Link>, and utilization certificates are made publicly available on our website.</li>
+                  <li>All <Link href="/individual-donation" className="text-primary hover:underline">donations</Link> received — whether domestic or foreign — are recorded, acknowledged, and utilized responsibly for programmatic purposes.</li>
                   <li>We comply with all applicable regulations under:
                     <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
                       <li>The Income Tax Act, including provisions related to Section 12A and 80G.</li>
                       <li>The Foreign Contribution (Regulation) Act (FCRA), where applicable.</li>
-                      <li>Corporate Social Responsibility (CSR) requirements under the Companies Act for CSR partnerships.</li>
+                      <li><Link href="/corporate-social-responsibility" className="text-primary hover:underline">Corporate Social Responsibility (CSR)</Link> requirements under the Companies Act for CSR partnerships.</li>
                     </ul>
                   </li>
                 </ul>
@@ -112,9 +114,9 @@ export default function TransparencyPolicyPage() {
                 <p>All reports are based on verified data and are available to our stakeholders via newsletters, reports, and our website.</p>
                 
                 <h2 className="text-2xl font-bold font-headline pt-4">Governance and Ethical Practices</h2>
-                <p>AIM Foundation is governed by a Board of Trustees/Directors who oversee the organization's strategic direction and ensure compliance with statutory obligations.</p>
+                <p>AIM Foundation is governed by a <Link href="/team" className="text-primary hover:underline">Board of Trustees/Directors</Link> who oversee the organization's strategic direction and ensure compliance with statutory obligations.</p>
                 <ul className="list-disc list-inside space-y-2">
-                  <li>We follow a documented Code of Conduct, and all staff, volunteers, and partners are expected to adhere to it.</li>
+                  <li>We follow a documented <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link>, and all staff, volunteers, and partners are expected to adhere to it.</li>
                   <li>No part of the organization’s income or assets is used for the personal benefit of trustees or staff beyond fair and disclosed compensation.</li>
                   <li>We avoid conflicts of interest and maintain clear segregation of duties in program, finance, and governance roles.</li>
                 </ul>

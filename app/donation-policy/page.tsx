@@ -1,4 +1,5 @@
 
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -78,10 +79,10 @@ export default function DonationPolicyPage() {
               </h1>
               <div className="space-y-6 text-muted-foreground text-justify">
                 <p>
-                  At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we are deeply grateful for the generosity and trust of our donors. Your contributions play a vital role in supporting our mission to empower underprivileged communities through education, health, and social development programs.
+                  At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we are deeply grateful for the generosity and trust of our donors. Your contributions play a vital role in supporting our mission to empower underprivileged communities through <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, and social development programs.
                 </p>
                 <p>
-                  This Donation Policy outlines how we handle donations, issue receipts, and ensure transparency and compliance in all donor interactions.
+                  This Donation Policy outlines how we handle donations, issue receipts, and ensure <Link href="/transparency-policy" className="text-primary hover:underline">transparency</Link> and compliance in all donor interactions.
                 </p>
                 
                 <h2 className="text-2xl font-bold font-headline pt-4">Use of Donations</h2>

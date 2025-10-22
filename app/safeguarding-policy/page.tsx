@@ -1,8 +1,10 @@
 
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import ContactEmail from "@/components/layout/ContactEmail";
+import Link from 'next/link';
 
 export default function SafeguardingPolicyPage() {
   return (
@@ -19,7 +21,7 @@ export default function SafeguardingPolicyPage() {
                 At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we are committed to creating a safe, inclusive, and respectful environment for all individuals who engage with our organization — especially children, women, persons with disabilities, and other vulnerable communities.
               </p>
               <p>
-                This Safeguarding Policy outlines our principles and procedures to prevent and respond to any form of abuse, exploitation, harassment, or neglect. It applies to all staff, volunteers, partners, and anyone representing or working on behalf of AIM Foundation.
+                This Safeguarding Policy outlines our principles and procedures to prevent and respond to any form of abuse, exploitation, harassment, or neglect. It applies to all staff, <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link>, partners, and anyone representing or working on behalf of AIM Foundation.
               </p>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Purpose and Scope</h2>
@@ -58,7 +60,7 @@ export default function SafeguardingPolicyPage() {
               <p>AIM Foundation commits to:</p>
               <ul className="list-disc list-inside space-y-2">
                   <li>Prioritise safety and dignity of all participants in every program and interaction.</li>
-                  <li>Ensure all staff and volunteers undergo orientation on safeguarding and code of conduct.</li>
+                  <li>Ensure all staff and volunteers undergo orientation on safeguarding and <Link href="/code-of-conduct" className="text-primary hover:underline">code of conduct</Link>.</li>
                   <li>Require background checks and screening for individuals working directly with children or vulnerable groups.</li>
                   <li>Obtain informed consent from parents or guardians for activities involving children.</li>
                   <li>Never engage in or tolerate any form of abuse, harassment, or exploitation.</li>

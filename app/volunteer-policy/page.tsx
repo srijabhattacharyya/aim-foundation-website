@@ -1,7 +1,9 @@
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Volunteer Policy | AIM Foundation',
@@ -16,7 +18,7 @@ export default function VolunteerPolicyPage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "AIM Foundation",
-    url: "https://aimindia.org.in/",
+    url: "https://www.aimindia.org.in/",
     logo: "https://aimindia.org.in/logo.png",
     sameAs: [
       "https://www.facebook.com/aimindiango/",
@@ -44,7 +46,7 @@ export default function VolunteerPolicyPage() {
             </h1>
             <div className="space-y-6 text-muted-foreground text-justify break-words">
               <p>
-                Volunteers are the heart of Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), helping us drive positive change in communities through education, health, empowerment, and social development initiatives. This Volunteer Policy outlines the principles, expectations, and procedures for engaging volunteers ethically, respectfully, and effectively.
+                <Link href="/volunteering" className="text-primary hover:underline">Volunteers</Link> are the heart of Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), helping us drive positive change in communities through <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, empowerment, and social development initiatives. This Volunteer Policy outlines the principles, expectations, and procedures for engaging volunteers ethically, respectfully, and effectively.
               </p>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Purpose</h2>
@@ -75,7 +77,7 @@ export default function VolunteerPolicyPage() {
               <ul className="list-disc list-inside space-y-2 pl-4">
                 <li>Interested individuals must complete a Volunteer Application Form and may undergo a basic screening or interview.</li>
                 <li>Volunteers working directly with children or vulnerable groups may be required to submit identity/address proof and references.</li>
-                <li>Orientation will be provided covering AIM Foundation’s mission, code of conduct, safeguarding policy, and assigned duties.</li>
+                <li>Orientation will be provided covering AIM Foundation’s mission, <Link href="/code-of-conduct" className="text-primary hover:underline">code of conduct</Link>, <Link href="/safeguarding-policy" className="text-primary hover:underline">safeguarding policy</Link>, and assigned duties.</li>
               </ul>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Volunteer Rights</h2>
@@ -85,7 +87,7 @@ export default function VolunteerPolicyPage() {
                 <li>Clear communication about tasks, responsibilities, and expectations</li>
                 <li>Proper supervision and support</li>
                 <li>Recognition of their contributions</li>
-                <li>Access to relevant policies and grievance mechanisms</li>
+                <li>Access to relevant policies and <Link href="/grievance-redressal" className="text-primary hover:underline">grievance mechanisms</Link></li>
               </ul>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Volunteer Responsibilities</h2>
@@ -111,7 +113,7 @@ export default function VolunteerPolicyPage() {
               <h2 className="text-2xl font-bold font-headline pt-4">Safeguarding</h2>
               <p>Volunteers working with children or vulnerable adults must:</p>
               <ul className="list-disc list-inside space-y-2 pl-4">
-                  <li>Adhere to the Safeguarding Policy</li>
+                  <li>Adhere to the <Link href="/safeguarding-policy" className="text-primary hover:underline">Safeguarding Policy</Link></li>
                   <li>Report any concerns or suspected abuse to the designated Safeguarding Officer</li>
                   <li>Avoid being alone with a child in private spaces</li>
               </ul>

@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -59,7 +60,7 @@ export default function IgniteChangeBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Power of Grassroots Action</h2>
                 <p>
-                  Grassroots action is more than just community involvement — it is community leadership. It’s about people stepping up to take ownership of their challenges and solutions. Whether it’s a group of women starting a self-help group to improve livelihoods, youth launching an environmental awareness campaign, or a neighbourhood banding together to clean up their local park, grassroots initiatives are driven by those who live and breathe the issues every day.
+                  Grassroots action is more than just community involvement — it is community leadership. It’s about people stepping up to take ownership of their challenges and solutions. Whether it’s a group of women starting a self-help group to improve <Link href="/gender-equality-initiative" className="text-primary hover:underline">livelihoods</Link>, youth launching an <Link href="/sustainability-initiatives" className="text-primary hover:underline">environmental awareness campaign</Link>, or a neighbourhood banding together to clean up their local park, grassroots initiatives are driven by those who live and breathe the issues every day.
                 </p>
                 <p>The power of grassroots action lies in its authenticity and immediacy:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
@@ -73,14 +74,14 @@ export default function IgniteChangeBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why AIM Foundation Believes in Igniting Change</h2>
                  <p>
-                  At AIM Foundation, we have seen firsthand that top-down approaches alone are not enough. External aid is important, but it works best when paired with local action. That’s why our Ignite Change Initiative is not about doing things for communities — it’s about doing things with them.
+                  At AIM Foundation, we have seen firsthand that top-down approaches alone are not enough. External aid is important, but it works best when paired with local action. That’s why our <Link href="/ignite-change-initiative" className="text-primary hover:underline">Ignite Change Initiative</Link> is not about doing things for communities — it’s about doing things with them.
                 </p>
                  <p>We don’t just deliver solutions; we enable communities to create their own. This means providing:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Seed funding to help promising ideas get off the ground.</li>
                   <li>Mentorship and guidance for project leaders.</li>
                   <li>Training workshops to build skills in planning, outreach, and management.</li>
-                  <li>Volunteer mobilization to bring more hands and hearts into the work.</li>
+                  <li><Link href="/volunteering" className="text-primary hover:underline">Volunteer mobilization</Link> to bring more hands and hearts into the work.</li>
                   <li>A network of changemakers to exchange ideas and inspiration.</li>
                 </ul>
                 <p>The result? Projects that are rooted in local wisdom, driven by local passion, and sustained by local ownership.</p>
@@ -99,7 +100,7 @@ export default function IgniteChangeBlogPage() {
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Be the Spark. Fuel the Movement.</h2>
                   <p className="mt-4">
-                    Change doesn’t have to wait for someone else to start it. It can begin with you, here, today. Your donation to the Ignite Change Initiative can fund a community-led health campaign, provide training to rural entrepreneurs, or supply tools for an environmental clean-up.
+                    Change doesn’t have to wait for someone else to start it. It can begin with you, here, today. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> to the Ignite Change Initiative can fund a community-led health campaign, provide training to rural entrepreneurs, or supply tools for an environmental clean-up.
                   </p>
                   <Button asChild size="lg" className="mt-6 transition-transform transform hover:scale-105">
                     <Link href="/ignite-change-initiative">Support a Changemaker</Link>

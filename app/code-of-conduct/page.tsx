@@ -1,6 +1,8 @@
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Code of Conduct - AIM Foundation',
@@ -69,8 +71,40 @@ export default function CodeOfConductPage() {
                 Code of Conduct
               </h1>
               <div className="space-y-6 text-muted-foreground text-justify">
-                {/* All your sections go here exactly as in your original code */}
-                {/* Professionalism, Respect, Child Protection, Harassment-Free, Confidentiality, Resources, Accountability, Social Media, Learning, Disciplinary Action, Acknowledgment */}
+                  <p>Our Code of Conduct applies to all AIM Foundation staff, <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link>, interns, partners, and representatives. It outlines the ethical principles and standards of behavior expected of everyone associated with our organization, ensuring we operate with integrity, respect, and accountability.</p>
+                  
+                  <h2 className="text-2xl font-bold font-headline pt-4">1. Professionalism and Integrity</h2>
+                  <p>We act with honesty, transparency, and fairness in all our dealings. We are accountable for our actions and decisions, and we strive for excellence in our work.</p>
+
+                  <h2 className="text-2xl font-bold font-headline pt-4">2. Respect for All Individuals</h2>
+                  <p>We treat every individual—including beneficiaries, colleagues, donors, and community members—with dignity, respect, and courtesy, regardless of their background, identity, or beliefs.</p>
+
+                  <h2 className="text-2xl font-bold font-headline pt-4">3. Child Protection and Safeguarding</h2>
+                  <p>The safety and well-being of children and vulnerable adults are our highest priority. We have a zero-tolerance policy for any form of abuse, exploitation, or harm. All personnel must adhere to our <Link href="/safeguarding-policy" className="text-primary hover:underline">Safeguarding Policy</Link>.</p>
+
+                  <h2 className="text-2xl font-bold font-headline pt-4">4. Harassment-Free Environment</h2>
+                  <p>We are committed to maintaining a work environment free from harassment, discrimination, and bullying. Any such behavior will not be tolerated.</p>
+
+                  <h2 className="text-2xl font-bold font-headline pt-4">5. Confidentiality</h2>
+                  <p>We respect and protect the confidentiality of sensitive information concerning beneficiaries, donors, and organizational matters, in line with our <Link href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link>.</p>
+
+                  <h2 className="text-2xl font-bold font-headline pt-4">6. Responsible Use of Resources</h2>
+                  <p>We use all organizational resources—including funds, assets, and data—responsibly, ethically, and for their intended purposes only.</p>
+
+                  <h2 className="text-2xl font-bold font-headline pt-4">7. Accountability and Reporting</h2>
+                  <p>We encourage open communication and have a clear <Link href="/grievance-redressal" className="text-primary hover:underline">Grievance Redressal</Link> and <Link href="/whistleblower-policy" className="text-primary hover:underline">Whistleblower Policy</Link> for reporting concerns without fear of retaliation.</p>
+                  
+                  <h2 className="text-2xl font-bold font-headline pt-4">8. Responsible Social Media and Communication</h2>
+                  <p>When representing AIM Foundation, we communicate respectfully and accurately, protecting the dignity of our beneficiaries and upholding the organization’s reputation.</p>
+
+                  <h2 className="text-2xl font-bold font-headline pt-4">9. Continuous Learning and Improvement</h2>
+                  <p>We foster a culture of learning, reflection, and professional development to continuously improve our impact and effectiveness.</p>
+
+                  <h2 className="text-2xl font-bold font-headline pt-4">10. Disciplinary Action</h2>
+                  <p>Violations of this Code of Conduct may result in disciplinary action, up to and including termination of employment or engagement, and legal action where applicable.</p>
+                  
+                  <h2 className="text-2xl font-bold font-headline pt-4">11. Acknowledgment</h2>
+                  <p>All individuals working with AIM Foundation are required to read, understand, and abide by this Code of Conduct.</p>
               </div>
               <div className="pt-6 text-center">
                 <p>Together, we uphold the values of AIM Foundation and work toward a more just, compassionate, and empowered society.</p>

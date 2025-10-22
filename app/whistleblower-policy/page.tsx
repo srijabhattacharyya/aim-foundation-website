@@ -1,6 +1,8 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
+import Link from 'next/link';
 
 export default function WhistleblowerPolicyPage() {
   return (
@@ -17,7 +19,7 @@ export default function WhistleblowerPolicyPage() {
               <h2 className="text-2xl font-bold font-headline pt-4">Purpose</h2>
               <p>The purpose of this Whistleblower Policy is to:</p>
               <ul className="list-disc list-inside space-y-2 pl-4">
-                <li>Encourage and enable employees, volunteers, beneficiaries, donors, and stakeholders to report any unethical behavior, misconduct, or wrongdoing in good faith.</li>
+                <li>Encourage and enable employees, <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link>, beneficiaries, donors, and stakeholders to report any unethical behavior, misconduct, or wrongdoing in good faith.</li>
                 <li>Establish a safe and confidential process for reporting concerns.</li>
                 <li>Protect whistleblowers from retaliation, discrimination, or victimization.</li>
               </ul>
@@ -38,7 +40,7 @@ export default function WhistleblowerPolicyPage() {
                 <li>Corruption or bribery</li>
                 <li>Harassment or abuse (including child abuse or exploitation)</li>
                 <li>Discrimination or violation of human rights</li>
-                <li>Violation of AIM Foundation policies, including Code of Conduct, Safeguarding Policy, etc.</li>
+                <li>Violation of AIM Foundation policies, including <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link>, <Link href="/safeguarding-policy" className="text-primary hover:underline">Safeguarding Policy</Link>, etc.</li>
               </ul>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Principles</h2>

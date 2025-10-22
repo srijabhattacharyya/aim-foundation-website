@@ -52,7 +52,7 @@ export default function ReliefBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why Immediate Relief Matters</h2>
                 <p>
-                  When disaster strikes—whether it is a personal crisis like the death of a breadwinner, a natural calamity like floods or cyclones, or the ongoing reality of deep poverty—speed matters. Immediate relief is not just about survival; it is about showing people that they are seen, valued, and supported.
+                  When <Link href="/disaster-management" className="text-primary hover:underline">disaster</Link> strikes—whether it is a personal crisis like the death of a breadwinner, a natural calamity like floods or cyclones, or the ongoing reality of deep poverty—speed matters. Immediate relief is not just about survival; it is about showing people that they are seen, valued, and supported.
                 </p>
                  <p>Our relief work is rooted in three key principles:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
@@ -62,7 +62,7 @@ export default function ReliefBlogPage() {
                 </ul>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">What We Provide: More Than Just Aid</h2>
-                <p>Our Relief to the Underprivileged program covers a broad range of urgent needs:</p>
+                <p>Our <Link href="/relief-to-the-underprivileged" className="text-primary hover:underline">Relief to the Underprivileged program</Link> covers a broad range of urgent needs:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li><strong>Nutritious Food & Ration Kits:</strong> We distribute food kits with rice, pulses, oil, salt, sugar, and other essentials, ensuring families can prepare wholesome meals.</li>
                   <li><strong>Clean Drinking Water & Sanitation Supplies:</strong> We provide bottled drinking water, purification tablets, and hygiene kits to prevent disease outbreaks.</li>
