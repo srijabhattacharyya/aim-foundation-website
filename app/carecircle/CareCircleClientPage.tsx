@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CareCircleDonationForm'), { 
     ssr: false,
@@ -76,7 +77,7 @@ export default function CareCircleClientPage() {
                   <h2 className="text-3xl md:text-4xl font-bold font-headline">Health Equity in Every Neighbourhood.</h2>
                   <div className="text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
-                      CareCircle is a collaborative urban health initiative by AIM Foundation, focused on delivering <strong>accessible and inclusive medical services</strong> to underserved communities across Kolkata. Through strategic partnerships with healthcare providers and community organizations, CareCircle organizes regular healthcare camps at key urban outreach centres such as <strong>Sarala Punyashram, Sarat Bose Road</strong>, and <strong>Boral Natunhat</strong>.
+                      CareCircle is a collaborative urban health initiative by AIM Foundation, focused on delivering <strong>accessible and inclusive medical services</strong> to underserved communities across Kolkata. Through strategic partnerships with <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare providers</Link> and community organizations, CareCircle organizes regular healthcare camps at key urban outreach centres such as <strong>Sarala Punyashram, Sarat Bose Road</strong>, and <strong>Boral Natunhat</strong>.
                     </p>
                     <p>
                       These camps are designed to reach <strong>marginalized urban populations</strong>, including daily wage workers, senior citizens, migrants, single mothers, and others who often fall through the cracks of the healthcare system. By bringing <strong>basic health services directly to localities</strong>, CareCircle eliminates common barriers like affordability, transportation challenges, and lack of awareness.
@@ -85,19 +86,19 @@ export default function CareCircleClientPage() {
                     <ul className="list-disc list-inside space-y-2">
                       <li>General health check-ups and consultations</li>
                       <li>Free distribution of essential medicines</li>
-                      <li>Health screenings for blood pressure, diabetes, and other chronic conditions</li>
+                      <li>Health screenings for blood pressure, <Link href="/detect" className="text-primary hover:underline">diabetes</Link>, and other chronic conditions</li>
                       <li>Referrals to partner hospitals for further treatment</li>
                       <li>Awareness sessions on hygiene, nutrition, and disease prevention</li>
                     </ul>
                     <p>
-                      What sets CareCircle apart is its holistic, community-based approach—fostering trust within neighbourhoods, encouraging preventive care, and promoting health-seeking behaviour among vulnerable urban residents. The program also empowers local volunteers and caregivers, turning every camp into an opportunity for both healing and education.
+                      What sets CareCircle apart is its holistic, community-based approach—fostering trust within neighbourhoods, encouraging preventive care, and promoting health-seeking behaviour among vulnerable urban residents. The program also empowers local <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link> and caregivers, turning every camp into an opportunity for both healing and education.
                     </p>
                     <p>
                       <strong>CareCircle ensures that health is not a privilege, but a shared right—accessible to all, regardless of income, identity, or background.</strong>
                     </p>
                     <h3 className="text-2xl font-bold font-headline pt-4">Bring Healing to the Heart of the City</h3>
                     <p>
-                      In the shadows of urban progress, thousands still live without access to basic healthcare. <strong>Your donation to CareCircle can provide free medical check-ups, life-saving medicines, and preventive care</strong> to daily wage earners, elderly citizens, migrants, and single mothers who are too often overlooked. By supporting these local health camps, <strong>you’re not just funding treatment—you’re restoring dignity, reducing suffering, and building a healthier, more inclusive Kolkata. Donate today and become part of a circle of care that truly leaves no one behind.</strong>
+                      In the shadows of urban progress, thousands still live without access to basic healthcare. <strong>Your <Link href="/individual-donation" className="text-primary hover:underline">donation to CareCircle</Link> can provide free medical check-ups, life-saving medicines, and preventive care</strong> to daily wage earners, elderly citizens, migrants, and single mothers who are too often overlooked. By supporting these local health camps, <strong>you’re not just funding treatment—you’re restoring dignity, reducing suffering, and building a healthier, more inclusive Kolkata. Donate today and become part of a circle of care that truly leaves no one behind.</strong>
                     </p>
                   </div>
                 </div>

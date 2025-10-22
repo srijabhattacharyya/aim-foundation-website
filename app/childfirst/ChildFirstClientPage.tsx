@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -10,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/ChildFirstDonationForm'), { 
     ssr: false,
@@ -84,14 +86,14 @@ export default function ChildFirstClientPage() {
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Every Child Deserves a Healthy Start.</h2>
                         <div className="text-lg text-muted-foreground space-y-4 text-justify">
                           <p>
-                            ChildFirst is a compassionate healthcare initiative offering paediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.
+                            ChildFirst is a compassionate <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare initiative</Link> offering paediatric and general health camps for children of sex workers in Rambagan and Sonagachi. It provides a safe, non-judgmental space for early medical intervention, aiming to improve health, dignity, and future opportunities for these vulnerable and often overlooked children.
                           </p>
                           <p>
                             These camps offer free consultations, essential medicines, and nutritional support, ensuring that every child receives the care they need to thrive.
                           </p>
                           <h3 className="text-2xl font-bold font-headline pt-4">Your Support Can Change a Life</h3>
                           <p>
-                            A small contribution can provide a child with a complete health check-up and vital medicines. Help us ensure that no child is left behind. Donate today to support our mission and bring health and hope to those who need it most.
+                            A small <Link href="/individual-donation" className="text-primary hover:underline">contribution</Link> can provide a child with a complete health check-up and vital medicines. Help us ensure that no child is left behind. Donate today to support our mission and bring health and hope to those who need it most.
                           </p>
                         </div>
                       </div>
