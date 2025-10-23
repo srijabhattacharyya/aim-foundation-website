@@ -6,7 +6,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
   title: 'Innocent Smiles | Child Education & Art NGO in Kolkata',
-  description: 'AIM Foundation’s Innocent Smiles empowers underprivileged children with education, art, dance, and music—fostering creativity, confidence, and brighter futures.',
+  description: 'Innocent Smiles by AIM Foundation, the best NGO in Kolkata, nurtures underprivileged children through education, art, and holistic development programs.',
   keywords: [
     'AIM Foundation Innocent Smiles',
     'AIM Foundation child growth',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://aimindia.org.in/innocent-smiles',
     title: 'Innocent Smiles | Child Education & Art NGO in Kolkata',
-    description: 'AIM Foundation’s Innocent Smiles empowers underprivileged children with education, art, dance, and music—fostering creativity, confidence, and brighter futures.',
+    description: 'Innocent Smiles by AIM Foundation, the best NGO in Kolkata, nurtures underprivileged children through education, art, and holistic development programs.',
     images: [
       {
         url: 'https://aimindia.org.in/home.avif',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@aimindiango',
     title: 'Innocent Smiles | Child Education & Art NGO in Kolkata',
-    description: 'AIM Foundation’s Innocent Smiles empowers underprivileged children with education, art, dance, and music—fostering creativity, confidence, and brighter futures.',
+    description: 'Innocent Smiles by AIM Foundation, the best NGO in Kolkata, nurtures underprivileged children through education, art, and holistic development programs.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
