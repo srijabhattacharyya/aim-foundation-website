@@ -45,10 +45,11 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-md mb-4">Useful Links</h3>
             <ul className="space-y-2">
-              <li><Link href="/policies" className="text-muted-foreground hover:text-primary transition-colors">Policies</Link></li>
-              <li><Link href="/code-of-conduct" className="text-muted-foreground hover:text-primary transition-colors">Code of Conduct</Link></li>
-              <li><Link href="/grievance-redressal" className="text-muted-foreground hover:text-primary transition-colors">Grievance Redressal</Link></li>
-              <li><Link href="/volunteering" className="text-muted-foreground hover:text-primary transition-colors">Volunteering</Link></li>
+              <li><Link href="/policies" className="text-muted-foreground hover:text-primary transition-colors">Policies & Terms</Link></li>
+              <li><Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
+              <li><Link href="/films" className="text-muted-foreground hover:text-primary transition-colors">Film</Link></li>
+              <li><Link href="/gallery" className="text-muted-foreground hover:text-primary transition-colors">Gallery</Link></li>
+              <li><Link href="/annual-report" className="text-muted-foreground hover:text-primary transition-colors">Annual Report</Link></li>
             </ul>
           </div>
           <div>
