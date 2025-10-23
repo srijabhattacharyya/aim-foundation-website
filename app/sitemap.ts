@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/relief-to-the-underprivileged',
     '/blog/roots-of-change',
     '/blog/from-stigma-to-strength',
-    '/blog/from-despair-to-recovery-rebuilding-lives-after-disaster',
+    '/blog/standing-strong-in-times-of-crisis',
     '/blog/igniting-change-transforming-communities',
     '/blog/no-child-left-offline',
     '/blog/cureline-bringing-healthcare-to-the-last-mile',
