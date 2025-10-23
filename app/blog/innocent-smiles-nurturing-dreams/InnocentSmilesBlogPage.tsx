@@ -54,7 +54,7 @@ export default function InnocentSmilesBlogPage() {
                   In a world that often measures success by grades and numbers, there exists a quieter, deeper kind of growth—the growth that happens when a child feels seen, heard, and encouraged to dream. This belief forms the heart of “Innocent Smiles,” a transformative initiative by AIM Foundation that celebrates the creativity, curiosity, and potential within every child, especially those from underprivileged communities.
                 </p>
                 <p>
-                  Through a blend of education, art, dance, music, and mentorship, Innocent Smiles is much more than a learning program—it’s a movement of hope and imagination. It opens doors for children who may never have access to structured artistic or academic opportunities, allowing them to discover their strengths and express their unique voices with confidence and joy.
+                  Through a blend of <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, art, dance, music, and mentorship, Innocent Smiles is much more than a learning program—it’s a movement of hope and imagination. It opens doors for children who may never have access to structured artistic or academic opportunities, allowing them to discover their strengths and express their unique voices with confidence and joy.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">A Holistic Approach to Child Development</h2>
@@ -80,7 +80,7 @@ export default function InnocentSmilesBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Learning Through Joy and Discovery</h2>
                 <p>
-                  Education, when combined with creativity, becomes an experience of joy. In every Innocent Smiles session, children learn not just from books, but through play, art, and exploration. Teachers and volunteers serve as mentors, guiding the children to connect what they learn with real-life experiences. A lesson in science might become an art project; a story in English may inspire a short play; a group activity could become a dance of unity.
+                  Education, when combined with creativity, becomes an experience of joy. In every Innocent Smiles session, children learn not just from books, but through play, art, and exploration. Teachers and <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link> serve as mentors, guiding the children to connect what they learn with real-life experiences. A lesson in science might become an art project; a story in English may inspire a short play; a group activity could become a dance of unity.
                 </p>
                 <p>This interactive model helps children:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">

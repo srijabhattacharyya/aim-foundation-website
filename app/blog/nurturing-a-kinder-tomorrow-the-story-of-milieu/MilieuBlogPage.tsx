@@ -45,7 +45,7 @@ export default function MilieuBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Beyond Books: Where Learning Meets Humanity</h2>
                 <p>
-                  Classrooms teach math, science, and grammar—but where do children learn empathy, respect, and inclusion? Milieu answers this gap by offering real-world education that goes beyond textbooks and into the hearts and minds of children.
+                  Classrooms teach math, science, and grammar—but where do children learn empathy, respect, and inclusion? Milieu answers this gap by offering real-world <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> that goes beyond textbooks and into the hearts and minds of children.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Bridging the Divide: Why Milieu Was Born</h2>

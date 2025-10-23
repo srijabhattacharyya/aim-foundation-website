@@ -67,7 +67,7 @@ export default function SuiDhagaBlogPage() {
                   <li>Certificates that help them find work or earn from home</li>
                 </ul>
                 <p>
-                  The goal is simple: to enable women to earn, immediately and sustainably—from their homes or within local tailoring hubs.
+                  The goal is simple: to enable women to earn, immediately and sustainably—from their homes or within local tailoring hubs. This then opens the door for them to move on to our <Link href="/krishti" className="text-primary hover:underline">Krishti</Link> initiative.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why SuiDhaga Is Needed</h2>
@@ -142,7 +142,7 @@ export default function SuiDhagaBlogPage() {
                   <li>Low-cost model with high impact</li>
                   <li>Community-led training and follow-up</li>
                   <li>Quick skill absorption and income generation</li>
-                  <li>Alignment with CSR goals of livelihood and gender empowerment</li>
+                  <li>Alignment with <Link href="/corporate-social-responsibility" className="text-primary hover:underline">CSR</Link> goals of livelihood and gender empowerment</li>
                 </ul>
                 <p>With every new centre, SuiDhaga threads change across new communities—and multiplies the impact organically.</p>
 

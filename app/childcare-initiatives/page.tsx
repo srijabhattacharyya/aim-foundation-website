@@ -124,7 +124,7 @@ export default function ChildcareInitiativesPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Childcare Programs</h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                  We believe that a strong foundation in childhood leads to a brighter future for all.
+                  We believe that a strong foundation in childhood leads to a brighter future for all. Our programs focus on holistic development, from <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> and creativity to <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link> and well-being.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

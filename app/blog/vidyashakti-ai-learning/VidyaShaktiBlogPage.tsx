@@ -61,12 +61,12 @@ export default function VidyaShaktiBlogPage() {
                   Yet, there is a powerful equalizer in their homes—a small device that has quietly revolutionized communication: the smartphone. What if this very phone could become a classroom? What if every child could have a personal tutor, speaking in their own language, ready to explain any concept at any time?
                 </p>
                 <p>
-                  This is the vision of VidyaShakti, an innovative educational app by AIM Foundation.
+                  This is the vision of <Link href="/vidyashakti" className="text-primary hover:underline">VidyaShakti</Link>, an innovative educational app by AIM Foundation.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Education Gap in Rural India</h2>
                 <p>
-                  While India has made remarkable progress in expanding primary school enrollment, the real challenge lies in the quality and continuity of education. According to various education reports:
+                  While India has made remarkable progress in expanding primary school enrollment, the real challenge lies in the quality and continuity of <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>. According to various education reports:
                 </p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>Many rural schools face teacher shortages, with some having just one teacher for all grades.</li>

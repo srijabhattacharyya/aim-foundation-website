@@ -141,7 +141,7 @@ export default function GenderEqualityInitiativesPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Gender Equality Programs</h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                  We believe that empowering women and girls is essential for building a just, prosperous, and compassionate society.
+                  We believe that empowering women and girls is essential for building a just, prosperous, and compassionate society. Our programs focus on <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, livelihood, and dignity.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
