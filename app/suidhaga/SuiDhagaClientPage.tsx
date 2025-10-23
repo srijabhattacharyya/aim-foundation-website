@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from 'next/link';
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SuiDhagaDonationForm'), { 
     ssr: false,
@@ -76,11 +77,11 @@ export default function SuiDhagaClientPage() {
                         Many of these women have immense potential but lack access to formal employment or financial resources. SuiDhaga bridges that gap by providing them with practical, hands-on instruction, experienced trainers, and supportive learning environments. The focus is not on entrepreneurship but on enabling immediate, income-generating skills that women can use to support their families—whether by stitching from home or working in local tailoring units.
                       </p>
                       <p>
-                        Through SuiDhaga, women gain more than just skills—they gain dignity, confidence, and a renewed sense of purpose. They become active contributors to their households, role models in their communities, and participants in a larger movement toward equality and empowerment.
+                        Through SuiDhaga, women gain more than just skills—they gain dignity, confidence, and a renewed sense of purpose. They become active contributors to their households, role models in their communities, and participants in a larger movement toward <Link href="/gender-equality-initiative" className="text-primary hover:underline">equality and empowerment</Link>.
                       </p>
                       <h3 className="text-2xl font-bold font-headline pt-4">Hold the thread that changes her life</h3>
                       <p>
-                        A sewing machine can be a tool of empowerment, and a new skill can be the start of a new life. <strong>Your donation to SuiDhaga provides women with the training, materials, and support they need to become financially independent.</strong> Help us equip more women with the skills to build a better future for themselves and their families. <strong>Donate today and help stitch together a world of opportunity.</strong>
+                        A sewing machine can be a tool of empowerment, and a new skill can be the start of a new life. <strong>Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> to SuiDhaga provides women with the training, materials, and support they need to become financially independent.</strong> Help us equip more women with the skills to build a better future for themselves and their families. <strong>Donate today and help stitch together a world of opportunity.</strong>
                       </p>
                     </div>
                   </div>

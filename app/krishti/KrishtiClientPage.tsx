@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from 'next/link';
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/KrishtiDonationForm'), { 
     ssr: false,
@@ -70,14 +71,14 @@ export default function KrishtiClientPage() {
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">Crafted by Her. Backed by Krishti.</h2>
                     <div className="text-lg text-muted-foreground space-y-4 text-justify">
                       <p>
-                        Krishti is an empowerment initiative that builds on the foundation laid by SuiDhaga, guiding skilled women toward entrepreneurship. While SuiDhaga imparts tailoring and embroidery skills, Krishti takes it further—offering access to modern production infrastructure, collaborative workspaces, and crucial marketing support. Here, trained women are no longer just workers—they become creators, leaders, and businesswomen.
+                        Krishti is an empowerment initiative that builds on the foundation laid by <Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link>, guiding skilled women toward entrepreneurship. While SuiDhaga imparts tailoring and embroidery skills, Krishti takes it further—offering access to modern production infrastructure, collaborative workspaces, and crucial marketing support. Here, trained women are no longer just workers—they become creators, leaders, and businesswomen.
                       </p>
                       <p>
                         By connecting their traditional skills with contemporary platforms, Krishti helps these women launch their own micro-enterprises, reach wider markets, and earn dignified incomes. It’s not just about stitching garments; it’s about stitching stories of resilience, independence, and progress. Krishti is where skills blossom into sustainable livelihoods, and hope finds a path forward.
                       </p>
                       <h3 className="text-2xl font-bold font-headline pt-4">She Learned to Sew—Now Let Her Soar</h3>
                       <p>
-                        She mastered the skill. Now she needs the chance. Krishti bridges the gap between training and real livelihood, giving women access to modern production support and market exposure. Your contribution fuels her flight to financial freedom. <strong>Be the wind beneath her wings—donate to Krishti today.</strong>
+                        She mastered the skill. Now she needs the chance. Krishti bridges the gap between training and real livelihood, giving women access to modern production support and market exposure. Your <Link href="/individual-donation" className="text-primary hover:underline">contribution</Link> fuels her flight to financial freedom. <strong>Be the wind beneath her wings—donate to Krishti today.</strong>
                       </p>
                     </div>
                   </div>
