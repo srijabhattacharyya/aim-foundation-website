@@ -51,7 +51,7 @@ export default function InnocentSmilesBlogPage() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <p>
-                  In a world that often measures success by grades and numbers, there exists a quieter, deeper kind of growth—the growth that happens when a child feels seen, heard, and encouraged to dream. This belief forms the heart of “Innocent Smiles,” a transformative initiative by AIM Foundation that celebrates the creativity, curiosity, and potential within every child, especially those from underprivileged communities.
+                  In a world that often measures success by grades and numbers, there exists a quieter, deeper kind of growth—the growth that happens when a child feels seen, heard, and encouraged to dream. This belief forms the heart of “<Link href="/innocent-smiles" className="text-primary hover:underline">Innocent Smiles</Link>,” a transformative initiative by <Link href="/organisation" className="text-primary hover:underline">AIM Foundation</Link> that celebrates the creativity, curiosity, and potential within every child, especially those from underprivileged communities.
                 </p>
                 <p>
                   Through a blend of <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, art, dance, music, and mentorship, Innocent Smiles is much more than a learning program—it’s a movement of hope and imagination. It opens doors for children who may never have access to structured artistic or academic opportunities, allowing them to discover their strengths and express their unique voices with confidence and joy.
@@ -133,7 +133,7 @@ export default function InnocentSmilesBlogPage() {
                         <Smile /> Because Every Innocent Smile Deserves to Shine
                     </p>
                     <p className="mt-2">
-                        When a child smiles—truly smiles—it is more than a moment of happiness. It is a reflection of safety, love, and possibility. Through Innocent Smiles, AIM Foundation continues its mission of bringing light to young lives—helping them learn, imagine, and grow into the best versions of themselves. Each brushstroke, each dance step, each note sung is a reminder that with the right support, hope can flourish even in the simplest of spaces. Together, let’s create a world where every innocent smile is nurtured, cherished, and celebrated—for in those smiles lies the promise of a brighter tomorrow.
+                        When a child smiles—truly smiles—it is more than a moment of happiness. It is a reflection of safety, love, and possibility. Through <Link href="/innocent-smiles" className="text-primary hover:underline">Innocent Smiles</Link>, AIM Foundation continues its mission of bringing light to young lives—helping them learn, imagine, and grow into the best versions of themselves. Each brushstroke, each dance step, each note sung is a reminder that with the right support, hope can flourish even in the simplest of spaces. Together, let’s create a world where every innocent smile is nurtured, cherished, and celebrated—for in those smiles lies the promise of a brighter tomorrow.
                     </p>
                     <div className="mt-4 flex gap-4 justify-center">
                         <Button asChild><Link href="/innocent-smiles">Donate</Link></Button>
