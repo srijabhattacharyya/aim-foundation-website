@@ -85,7 +85,7 @@ export default function InnocentSmilesClientPage() {
                       <div className="text-lg text-muted-foreground space-y-4 text-justify">
                         <h1 className="text-3xl md:text-4xl font-bold font-headline">Innocent Smiles – A Child Development & Education Initiative by AIM Foundation</h1>
                         <p>
-                          Innocent Smiles is a heartfelt initiative by AIM Foundation, an NGO for underprivileged children in Kolkata, dedicated to nurturing the creative and academic potential of young minds.
+                          Innocent Smiles is a heartfelt initiative by <Link href="/organisation" className="text-primary hover:underline">AIM Foundation</Link>, an NGO for underprivileged children in Kolkata, dedicated to nurturing the creative and academic potential of young minds.
                           The program focuses on holistic child development by integrating <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, art, dance, and music, ensuring that every child receives the opportunity to grow both intellectually and artistically.
                         </p>
                         <h2 className="text-2xl font-bold font-headline pt-4">A Safe and Inclusive Space for Every Child</h2>
@@ -105,7 +105,7 @@ export default function InnocentSmilesClientPage() {
                             <li>Supporting education for underprivileged children in Kolkata and beyond</li>
                             <li>Conducting art, dance, and music workshops for self-expression</li>
                             <li>Creating safe spaces for creative learning and growth</li>
-                            <li>Building a community of mentors and volunteers who inspire and guide</li>
+                            <li>Building a community of mentors and <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link> who inspire and guide</li>
                             <li>Promoting child development through holistic education</li>
                         </ul>
                         <p>Every Innocent Smile we see is a reflection of growth, creativity, and newfound confidence.</p>
