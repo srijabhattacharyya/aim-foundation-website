@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import Link from 'next/link';
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/IndividualDonationForm'), { 
     ssr: false,
@@ -52,10 +53,10 @@ export default function IndividualDonationClientPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">AIM Foundation is a people-driven organization.</h2>
                 <div className="text-lg text-muted-foreground space-y-4 text-justify">
                    <p>
-                    Your contribution—no matter the amount—helps us bring healthcare, education, and hope to communities that need it most.
+                    Your contribution—no matter the amount—helps us bring <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>, <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, and hope to communities that need it most.
                   </p>
                   <p>
-                    When you choose to donate, you become an integral part of a movement that creates lasting change. Your support can put books in a child’s hands, fund a life-saving surgery, empower a woman to achieve financial independence, or help us plant trees for a healthier planet.
+                    When you choose to donate, you become an integral part of a movement that creates lasting change. Your support can put books in a child’s hands, fund a life-saving surgery, <Link href="/gender-equality-initiative" className="text-primary hover:underline">empower a woman</Link> to achieve financial independence, or help us <Link href="/sustainability-initiatives" className="text-primary hover:underline">plant trees</Link> for a healthier planet.
                   </p>
                   <p>
                     Every rupee you give takes us one step closer to building a more equitable, compassionate, and sustainable world.

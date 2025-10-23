@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
@@ -5,6 +6,7 @@ import PayrollGivingBenefits from "@/components/sections/PayrollGivingBenefits";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: "Payroll Giving Programs with AIM Foundation India",
@@ -58,17 +60,17 @@ export default function PayrollGivingPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "AIM Foundation",
-    url: "https://www.aimindia.org.in/",
-    logo: "https://www.aimindia.org.in/logo.png",
-    sameAs: [
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
       "https://www.instagram.com/aimfoundation_ngo/",
       "https://www.linkedin.com/in/aim-foundation-ngo/",
       "https://www.youtube.com/@aimfoundation2604",
     ],
-    description:
+    "description":
       "Support social impact with AIM Foundation Payroll Giving. Enable employees to donate effortlessly, strengthen CSR goals, and create lasting community change.",
   };
 
@@ -135,7 +137,7 @@ export default function PayrollGivingPage() {
                   </ul>
                   <p>
                     For organizations, it’s a meaningful way to demonstrate your
-                    social commitment, while fostering employee engagement and
+                    social commitment, while fostering <Link href="/employee-engagement" className="text-primary hover:underline">employee engagement</Link> and
                     team spirit.
                   </p>
 
@@ -153,8 +155,7 @@ export default function PayrollGivingPage() {
                     </li>
                     <li>
                       AIM Foundation receives the funds and channels them into
-                      programs across education, healthcare, women empowerment,
-                      environment, and more
+                      programs across <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>, <Link href="/gender-equality-initiative" className="text-primary hover:underline">women empowerment</Link>, <Link href="/sustainability-initiatives" className="text-primary hover:underline">environment</Link>, and more
                     </li>
                     <li>
                       Regular updates and impact reports are shared with both
@@ -163,7 +164,7 @@ export default function PayrollGivingPage() {
                   </ol>
                   <p>
                     It’s easy to implement, fully transparent, and customizable
-                    to your CSR goals.
+                    to your <Link href="/corporate-social-responsibility" className="text-primary hover:underline">CSR</Link> goals.
                   </p>
 
                   <h3 className="text-2xl font-bold font-headline pt-6">
@@ -175,7 +176,7 @@ export default function PayrollGivingPage() {
                     Foundation’s work by:
                   </p>
                   <ul className="list-disc list-inside space-y-2 pl-4">
-                    <li>Volunteering on special occasions</li>
+                    <li><Link href="/volunteering" className="text-primary hover:underline">Volunteering</Link> on special occasions</li>
                     <li>Participating in community drives and campaigns</li>
                     <li>
                       Visiting project locations to witness their impact

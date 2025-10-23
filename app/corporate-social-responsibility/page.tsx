@@ -1,8 +1,10 @@
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'CSR with AIM Foundation | Corporate Social Responsibility India',
@@ -101,7 +103,7 @@ export default function CorporateSocialResponsibilityPage() {
                 <h3 className="text-2xl font-bold font-headline pt-6">Why CSR Matters More Than Ever</h3>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Strengthen brand reputation</li>
-                  <li>Deepen employee engagement</li>
+                  <li>Deepen <Link href="/employee-engagement" className="text-primary hover:underline">employee engagement</Link></li>
                   <li>Build lasting community relationships</li>
                   <li>Contribute meaningfully to India’s development</li>
                 </ul>
@@ -109,11 +111,11 @@ export default function CorporateSocialResponsibilityPage() {
                 <h3 className="text-2xl font-bold font-headline pt-6">Partnering for Purpose</h3>
                 <p>We work with businesses of all sizes to design, implement, and monitor CSR projects that align with your brand values and compliance requirements.</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
-                  <li>Education & Child Development</li>
-                  <li>Healthcare & Hygiene</li>
-                  <li>Women Empowerment & Livelihoods</li>
-                  <li>Environmental Sustainability</li>
-                  <li>Disaster Relief & Resilience</li>
+                  <li><Link href="/educational-initiatives" className="text-primary hover:underline">Education & Child Development</Link></li>
+                  <li><Link href="/healthcare-initiatives" className="text-primary hover:underline">Healthcare & Hygiene</Link></li>
+                  <li><Link href="/gender-equality-initiative" className="text-primary hover:underline">Women Empowerment & Livelihoods</Link></li>
+                  <li><Link href="/sustainability-initiatives" className="text-primary hover:underline">Environmental Sustainability</Link></li>
+                  <li><Link href="/disaster-management" className="text-primary hover:underline">Disaster Relief & Resilience</Link></li>
                 </ul>
 
                 <h3 className="text-2xl font-bold font-headline pt-6">What You Can Expect</h3>

@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -5,6 +6,7 @@ import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
+import Link from 'next/link';
 
 const QuickFacts = dynamic(() => import('@/components/sections/QuickFacts'), {
   loading: () => <Skeleton className="h-[200px] w-full" />,
@@ -139,11 +141,11 @@ export default function CauseMarketingEventsPage() {
                     At AIM Foundation, we bring deep grassroots experience and a strong track record of working with vulnerable communities across India. When you collaborate with us on a CRM initiative, your brand directly contributes to:
                   </p>
                   <ul className="list-disc list-inside space-y-2 pl-4">
-                    <li>Improved access to education for underprivileged children</li>
-                    <li>Better healthcare and hygiene in underserved areas</li>
-                    <li>Skill development and entrepreneurship opportunities for women and youth</li>
-                    <li>Environmental protection and sustainability</li>
-                    <li>Livelihood enhancement through community-led initiatives</li>
+                    <li>Improved access to <Link href="/educational-initiatives" className="text-primary hover:underline">education for underprivileged children</Link></li>
+                    <li>Better <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare and hygiene</Link> in underserved areas</li>
+                    <li>Skill development and entrepreneurship opportunities for <Link href="/gender-equality-initiative" className="text-primary hover:underline">women and youth</Link></li>
+                    <li><Link href="/sustainability-initiatives" className="text-primary hover:underline">Environmental protection and sustainability</Link></li>
+                    <li>Livelihood enhancement through <Link href="/ignite-change-initiative" className="text-primary hover:underline">community-led initiatives</Link></li>
                   </ul>
 
                   <h3 className="text-2xl font-bold font-headline pt-6">How Your Brand Benefits</h3>
@@ -151,7 +153,7 @@ export default function CauseMarketingEventsPage() {
                     <li>Stronger brand reputation and emotional connection with consumers</li>
                     <li>Increased customer loyalty and engagement</li>
                     <li>Positive media coverage and public goodwill</li>
-                    <li>Contribution to your CSR, ESG, and SDG goals</li>
+                    <li>Contribution to your <Link href="/corporate-social-responsibility" className="text-primary hover:underline">CSR</Link>, ESG, and SDG goals</li>
                   </ul>
 
                   <div className="bg-card p-6 rounded-lg shadow-md mt-10 text-center">
