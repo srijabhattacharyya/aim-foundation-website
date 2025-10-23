@@ -89,10 +89,10 @@ export default function DonationPolicyPage() {
                 <p>
                   All donations received by AIM Foundation are used solely for charitable purposes in alignment with our mission and program goals. Funds may be allocated toward:
                 </p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Educational and digital literacy programs</li>
-                  <li>Health camps and awareness drives</li>
-                  <li>Women and youth empowerment initiatives</li>
+                <ul className="list-disc list-inside space-y-2 pl-4">
+                  <li><Link href="/educational-initiatives" className="text-primary hover:underline">Educational</Link> and <Link href="/digiempower" className="text-primary hover:underline">digital literacy programs</Link></li>
+                  <li><Link href="/healthcare-initiatives" className="text-primary hover:underline">Health camps</Link> and awareness drives</li>
+                  <li><Link href="/gender-equality-initiative" className="text-primary hover:underline">Women</Link> and youth empowerment initiatives</li>
                   <li>Program support, outreach, and capacity building</li>
                   <li>Administrative and operational support for program delivery</li>
                 </ul>
@@ -102,7 +102,7 @@ export default function DonationPolicyPage() {
 
                 <h2 className="text-2xl font-bold font-headline pt-4">Modes of Donation</h2>
                 <p>Donations can be made via:</p>
-                 <ul className="list-disc list-inside space-y-2">
+                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Our secure online payment gateway on www.aimindia.org.in</li>
                   <li>Direct bank transfer (NEFT/RTGS/IMPS)</li>
                   <li>Cheques or Demand Drafts in favour of “Associated Initiative for Mankind Foundation”</li>
@@ -115,7 +115,7 @@ export default function DonationPolicyPage() {
                   AIM Foundation is a registered not-for-profit organization under the Income Tax Act of India. Donations made to us are eligible for tax exemption under Section 80G, subject to applicable laws.
                 </p>
                 <p>Donors will receive:</p>
-                 <ul className="list-disc list-inside space-y-2">
+                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>A digital donation receipt</li>
                   <li>80G certificate (if applicable)</li>
                   <li>Annual summary of donations (on request)</li>

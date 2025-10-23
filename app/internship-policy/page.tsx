@@ -80,7 +80,7 @@ export default function InternshipPolicyPage() {
               </ul>
               
               <h2 className="text-2xl font-bold font-headline pt-4">Code of Conduct</h2>
-              <p>All interns must uphold the highest standards of ethical behavior, treating all individuals with dignity and respect, and avoiding any conflicts of interest or misuse of organizational resources.</p>
+              <p>All interns must uphold the highest standards of ethical behavior, treating all individuals with dignity and respect, and avoiding any conflicts of interest or misuse of organizational resources. Please see our full <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link> for details.</p>
               
               <h2 className="text-2xl font-bold font-headline pt-4">Safeguarding</h2>
               <p>Interns working with children or vulnerable adults must strictly adhere to our <Link href="/safeguarding-policy" className="text-primary hover:underline">Safeguarding Policy</Link>, report any concerns immediately, and prioritize the well-being of beneficiaries at all times.</p>

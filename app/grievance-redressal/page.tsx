@@ -52,7 +52,7 @@ export default function GrievanceRedressalPage() {
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
+    "logo": "https://aimindia.org.in/logo.png",
     "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
@@ -127,7 +127,7 @@ export default function GrievanceRedressalPage() {
                   <p>📬 Mail: 41, Ballygaunge Terrace, Kolkata 700029</p>
                   <p>💬 Feedback box / In-person at project locations (where applicable)</p>
                 </div>
-                <p>Anonymous complaints will also be accepted, but may be more difficult to investigate fully.</p>
+                <p>Anonymous complaints will also be accepted, but may be more difficult to investigate fully. For such cases, our <Link href="/whistleblower-policy" className="text-primary hover:underline">Whistleblower Policy</Link> provides further guidance.</p>
 
                 <h2 className="text-2xl font-bold font-headline pt-4">Grievance Redressal Process</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">

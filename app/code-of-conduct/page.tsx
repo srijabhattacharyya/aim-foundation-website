@@ -44,7 +44,7 @@ export default function CodeOfConductPage() {
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
+    "logo": "https://aimindia.org.in/logo.png",
     "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",

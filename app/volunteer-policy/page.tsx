@@ -1,6 +1,5 @@
 
 
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -21,7 +20,7 @@ export default function VolunteerPolicyPage() {
     "@type": "Organization",
     name: "AIM Foundation",
     url: "https://www.aimindia.org.in/",
-    logo: "https://www.aimindia.org.in/logo.png",
+    logo: "https://aimindia.org.in/logo.png",
     sameAs: [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
@@ -96,7 +95,7 @@ export default function VolunteerPolicyPage() {
               <p>Volunteers are expected to:</p>
               <ul className="list-disc list-inside space-y-2 pl-4">
                 <li>Act respectfully and ethically at all times</li>
-                <li>Maintain the confidentiality of beneficiary and organizational information</li>
+                <li>Maintain the confidentiality of beneficiary and organizational information as per our <Link href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link></li>
                 <li>Be punctual, reliable, and committed to agreed tasks</li>
                 <li>Follow safety, safeguarding, and child protection guidelines</li>
                 <li>Inform their supervisor in case of absence, delay, or difficulty</li>
@@ -104,7 +103,7 @@ export default function VolunteerPolicyPage() {
               </ul>
               
               <h2 className="text-2xl font-bold font-headline pt-4">Code of Conduct</h2>
-              <p>All volunteers must:</p>
+              <p>All volunteers must adhere to our <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link> and:</p>
               <ul className="list-disc list-inside space-y-2 pl-4">
                 <li>Treat beneficiaries, staff, and fellow volunteers with dignity and kindness</li>
                 <li>Avoid any form of harassment, abuse, or exploitation</li>

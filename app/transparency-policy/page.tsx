@@ -91,7 +91,7 @@ export default function TransparencyPolicyPage() {
                 <p>
                   We maintain clear and accurate financial records and ensure proper use of funds in accordance with Indian laws and our stated mission.
                 </p>
-                <ul className="list-disc list-inside space-y-2">
+                <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Our audited financial statements, <Link href="/annual-report" className="text-primary hover:underline">annual reports</Link>, and utilization certificates are made publicly available on our website.</li>
                   <li>All <Link href="/individual-donation" className="text-primary hover:underline">donations</Link> received — whether domestic or foreign — are recorded, acknowledged, and utilized responsibly for programmatic purposes.</li>
                   <li>We comply with all applicable regulations under:
@@ -105,7 +105,7 @@ export default function TransparencyPolicyPage() {
                 
                 <h2 className="text-2xl font-bold font-headline pt-4">Programmatic Transparency</h2>
                 <p>We share timely updates on our programs and their impact, including:</p>
-                <ul className="list-disc list-inside space-y-2">
+                <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Number of beneficiaries reached</li>
                   <li>Project outcomes and key achievements</li>
                   <li>Challenges and learning experiences</li>
@@ -114,8 +114,8 @@ export default function TransparencyPolicyPage() {
                 <p>All reports are based on verified data and are available to our stakeholders via newsletters, reports, and our website.</p>
                 
                 <h2 className="text-2xl font-bold font-headline pt-4">Governance and Ethical Practices</h2>
-                <p>AIM Foundation is governed by a <Link href="/team" className="text-primary hover:underline">Board of Trustees/Directors</Link> who oversee the organization's strategic direction and ensure compliance with statutory obligations.</p>
-                <ul className="list-disc list-inside space-y-2">
+                <p>AIM Foundation is governed by a <Link href="/team" className="text-primary hover:underline">Board of Trustees</Link> who oversee the organization's strategic direction and ensure compliance with statutory obligations.</p>
+                <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>We follow a documented <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link>, and all staff, volunteers, and partners are expected to adhere to it.</li>
                   <li>No part of the organization’s income or assets is used for the personal benefit of trustees or staff beyond fair and disclosed compensation.</li>
                   <li>We avoid conflicts of interest and maintain clear segregation of duties in program, finance, and governance roles.</li>
@@ -123,15 +123,15 @@ export default function TransparencyPolicyPage() {
 
                 <h2 className="text-2xl font-bold font-headline pt-4">Donor Transparency</h2>
                 <p>We maintain open communication with our donors regarding:</p>
-                <ul className="list-disc list-inside space-y-2">
+                <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>How funds are used</li>
                   <li>Progress and impact reports</li>
                   <li>Timely issuance of donation receipts and 80G certificates</li>
                 </ul>
-                <p>We do not publish personal donor information without consent and comply with all privacy and data protection norms.</p>
+                <p>We do not publish personal donor information without consent and comply with all privacy and data protection norms as per our <Link href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link>.</p>
 
                 <h2 className="text-2xl font-bold font-headline pt-4">Feedback and Grievance Redressal</h2>
-                <p>We encourage feedback and take all concerns seriously. If any stakeholder has questions regarding our operations, finances, or governance, they may contact us directly.</p>
+                <p>We encourage feedback and take all concerns seriously. If any stakeholder has questions regarding our operations, finances, or governance, they may contact us directly or refer to our <Link href="/grievance-redressal" className="text-primary hover:underline">Grievance Redressal Policy</Link>.</p>
                 <div className="text-muted-foreground space-y-2">
                    <div className="flex items-center gap-2">
                       <span>📧</span> <TrusteeEmail />

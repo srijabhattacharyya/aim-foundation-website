@@ -26,20 +26,20 @@ export default function SafeguardingPolicyPage() {
 
               <h2 className="text-2xl font-bold font-headline pt-4">Purpose and Scope</h2>
               <p>The purpose of this policy is to:</p>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside space-y-2 pl-4">
                 <li>Protect beneficiaries, especially children and vulnerable adults, from harm or abuse.</li>
                 <li>Ensure all AIM Foundation representatives understand their safeguarding responsibilities.</li>
                 <li>Provide a clear procedure for responding to safeguarding concerns or allegations.</li>
               </ul>
               <p>This policy applies to:</p>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside space-y-2 pl-4">
                 <li>All employees, board members, interns, and volunteers</li>
                 <li>Contractors, consultants, donors, and program partners</li>
                 <li>Any individual involved in AIM Foundation programs, whether directly or indirectly</li>
               </ul>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Key Definitions</h2>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside space-y-2 pl-4">
                   <li><strong>Safeguarding:</strong> The proactive responsibility to protect people from harm or abuse, especially children and vulnerable individuals.</li>
                   <li><strong>Child:</strong> Any individual under the age of 18, as defined by the Juvenile Justice Act, 2015 (India).</li>
                   <li><strong>Vulnerable Adult:</strong> A person aged 18 or over who may be unable to protect themselves due to age, illness, disability, or social circumstances.</li>
@@ -48,7 +48,7 @@ export default function SafeguardingPolicyPage() {
               
               <h2 className="text-2xl font-bold font-headline pt-4">Legal Framework</h2>
               <p>This policy complies with:</p>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>The Protection of Children from Sexual Offences (POCSO) Act, 2012</li>
                   <li>The Juvenile Justice (Care and Protection of Children) Act, 2015</li>
                   <li>The Bharatiya Nyaya Sanhita (BNS), 2023</li>
@@ -58,7 +58,7 @@ export default function SafeguardingPolicyPage() {
 
               <h2 className="text-2xl font-bold font-headline pt-4">Policy Commitments</h2>
               <p>AIM Foundation commits to:</p>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Prioritise safety and dignity of all participants in every program and interaction.</li>
                   <li>Ensure all staff and volunteers undergo orientation on safeguarding and <Link href="/code-of-conduct" className="text-primary hover:underline">code of conduct</Link>.</li>
                   <li>Require background checks and screening for individuals working directly with children or vulnerable groups.</li>
@@ -67,8 +67,8 @@ export default function SafeguardingPolicyPage() {
               </ul>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Code of Conduct for Staff and Volunteers</h2>
-              <p>All AIM Foundation personnel must:</p>
-              <ul className="list-disc list-inside space-y-2">
+              <p>All AIM Foundation personnel must adhere to our full <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link> and are expected to:</p>
+              <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Treat all individuals with respect and fairness</li>
                   <li>Maintain appropriate professional boundaries</li>
                   <li>Avoid being alone with a child in a private or secluded setting</li>
@@ -77,8 +77,7 @@ export default function SafeguardingPolicyPage() {
               </ul>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Reporting and Response Mechanism</h2>
-              <p>We maintain a zero-tolerance approach to abuse and are committed to responding swiftly and fairly.</p>
-              <p>Any safeguarding concern must be reported to the Trustees at AIM Foundation.</p>
+              <p>We maintain a zero-tolerance approach to abuse and are committed to responding swiftly and fairly. Any safeguarding concern must be reported to the Trustees at AIM Foundation. Our <Link href="/whistleblower-policy" className="text-primary hover:underline">Whistleblower Policy</Link> ensures that all reports are handled with confidentiality and without fear of retaliation.</p>
               <p>Reports can be made confidentially via:</p>
                <div className="pl-6">
                  <div className="flex items-center gap-2">
@@ -90,10 +89,10 @@ export default function SafeguardingPolicyPage() {
               <p>If required, the matter will be referred to local authorities or child protection agencies.</p>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Confidentiality</h2>
-              <p>All safeguarding concerns will be handled with strict confidentiality. Information will be shared only on a need-to-know basis for the purpose of investigation and protection.</p>
+              <p>All safeguarding concerns will be handled with strict confidentiality in line with our <Link href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link>. Information will be shared only on a need-to-know basis for the purpose of investigation and protection.</p>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Training and Awareness</h2>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Regular training on safeguarding, child rights, and gender sensitivity will be conducted.</li>
                   <li>All staff and volunteers will be required to sign a <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link> as a condition of engagement.</li>
               </ul>
