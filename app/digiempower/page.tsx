@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital literacy, computer skills, and hands-on learning.',
     images: [
       {
-        url: 'https://aimindia.org.in/digiempower.avif',
+        url: 'https://aimindia.org.in/home.avif',
         width: 1200,
         height: 630,
         alt: 'AIM Foundation DigiEmpower Program',
