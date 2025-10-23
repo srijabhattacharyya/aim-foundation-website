@@ -21,7 +21,6 @@ const educationalInitiatives = [
   { href: '/eduaccess?from=educational', label: 'EduAccess' },
   { href: '/empower-english?from=educational', label: 'Empower English'},
   { href: '/digiempower?from=educational', label: 'DigiEmpower' },
-  { href: '/sheconnects?from=educational', label: 'SheConnects' },
   { href: '/milieu?from=educational', label: 'Milieu' },
   { href: '/vidyashakti?from=educational', label: 'VidyaShakti' },
 ];
