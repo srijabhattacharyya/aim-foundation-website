@@ -19,7 +19,6 @@ const DynamicDonationForm = dynamic(() => import('@/components/sections/donation
 
 const educationalInitiatives = [
   { href: '/innocent-smiles?from=educational', label: 'Innocent Smiles' },
-  { href: '/inspire-eduLab?from=educational', label: 'Inspire EduLab' },
   { href: '/eduaccess?from=educational', label: 'EduAccess' },
   { href: '/empower-english?from=educational', label: 'Empower English'},
   { href: '/digiempower?from=educational', label: 'DigiEmpower' },
@@ -69,24 +68,42 @@ export default function DigiEmpowerClientPage() {
             <div className="grid md:grid-cols-3 gap-12">
                 <div className="md:col-span-2">
                     <div className="space-y-6">
-                        <h2 className="text-3xl md:text-4xl font-bold font-headline">No Child Left Offline</h2>
                         <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                           <h2 className="text-3xl md:text-4xl font-bold font-headline">DigiEmpower – Digital Literacy for Underprivileged Children</h2>
                            <p>
-                            DigiEmpower, an initiative supported by the Dhritiman Abilizing Infinity Foundation, is dedicated to promoting digital literacy among underprivileged and Adivasi children in both urban and remote regions of West Bengal. Operating in areas such as Kolkata, Rangakhila in Purba Bardhaman, and Dakshin Dhupjhora in Jalpaiguri, the program reaches <Link href="/childcare-initiatives" className="text-primary hover:underline">children</Link> who traditionally have limited or no access to technology.
+                            DigiEmpower, an initiative by AIM Foundation, is dedicated to promoting digital literacy for underprivileged and Adivasi children in both urban and remote areas of West Bengal. Operating in regions such as Kolkata, Rangakhila in Purba Bardhaman, and Dakshin Dhupjhora in Jalpaiguri, the program reaches <Link href="/childcare-initiatives" className="text-primary hover:underline">children</Link> who traditionally have limited or no access to computers, the internet, and digital learning tools.
+                          </p>
+                          <h3 className="text-2xl font-bold font-headline pt-4">Bridging the Digital Divide</h3>
+                          <p>
+                            Through its Dhriti Abilizing Centres, AIM Foundation provides hands-on computer training, equipping children with essential digital skills such as typing, internet navigation, using productivity software, and understanding online safety. These foundational skills prepare children to thrive in school, compete in future careers, and participate fully in a technology-driven world.
                           </p>
                           <p>
-                            Through its Dhriti Abilizing Centres, the AIM Foundation provides hands-on computer training that equips children with essential digital skills—such as typing, navigating the internet, using productivity software, and understanding online safety. These skills are critical in today’s technology-driven world and form the foundation for future <Link href="/educational-initiatives" className="text-primary hover:underline">educational</Link> and career opportunities.
+                            By offering structured digital education, DigiEmpower ensures that children gain both confidence and competence, opening doors to educational and professional opportunities that were previously out of reach.
                           </p>
+                          <h3 className="text-2xl font-bold font-headline pt-4">Empowering Adivasi and Rural Communities</h3>
                           <p>
-                            DigiEmpower recognizes that digital competence is no longer optional but a necessity. By offering structured training and exposure to technology, the initiative helps children develop the confidence and knowledge needed to thrive in school, compete in the job market, and participate fully in an increasingly digital society.
+                            DigiEmpower places a special focus on Adivasi communities in Aushgram, Rangakhila, and Dakshin Dhupjhora, where children often face social and infrastructural barriers. By bringing digital skills education to these underserved areas, the program fosters social inclusion, reduces the digital divide, and empowers children to reach their full potential.
                           </p>
-                          <p>
-                            Importantly, the program ensures equitable access by extending its reach to Adivasi communities in Aushgram, Rangakhila, and Dakshin Dhupjhora, where children often face both social and infrastructural barriers. By bridging the digital divide, DigiEmpower not only enhances individual futures but also fosters broader social inclusion and <Link href="/gender-equality-initiative" className="text-primary hover:underline">empowerment</Link> across rural Bengal.
-                          </p>
+                           <h3 className="text-2xl font-bold font-headline pt-4">Hands-On Learning for the Digital Age</h3>
+                            <p>The program emphasizes interactive, practical learning rather than just theoretical knowledge. Children engage in:</p>
+                           <ul className="list-disc list-inside space-y-2">
+                                <li>Typing and computer basics</li>
+                                <li>Internet safety and responsible usage</li>
+                                <li>Productivity tools like Word, Excel, and presentation software</li>
+                                <li>Collaborative projects that build teamwork and problem-solving skills</li>
+                            </ul>
+                            <p>These experiences give children valuable skills for <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> and future employment, ensuring they are prepared for a rapidly changing digital world.</p>
                           <h3 className="text-2xl font-bold font-headline pt-4">Bridge the Digital Divide—One Child at a Time</h3>
                           <p>
-                            In a world where digital skills shape futures, many underprivileged and Adivasi children remain disconnected. <strong>Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> can help us provide computers, internet access, and hands-on training at our Dhriti Abilizing Centres—turning curiosity into competence.</strong> With your support, a child in a remote village can learn to type, explore the internet safely, and build skills vital for school and future employment. Empower a generation to thrive in the digital age—<strong>donate today</strong> to DigiEmpower and light the screen of opportunity.
+                            In today’s technology-driven society, digital competence is essential. Your support can help provide computers, internet access, and hands-on training at our Dhriti Abilizing Centres, turning curiosity into competence.
                           </p>
+                          <p>With your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link>, a child in a remote village can:</p>
+                           <ul className="list-disc list-inside space-y-2">
+                                <li>Learn to type and use computers confidently</li>
+                                <li>Explore the internet safely</li>
+                                <li>Build critical digital skills essential for school and work</li>
+                            </ul>
+                            <p>Empower a generation to thrive in the digital age. Donate to DigiEmpower today and light the screen of opportunity for every child.</p>
                         </div>
                     </div>
                 </div>
