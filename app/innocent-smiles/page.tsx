@@ -44,17 +44,17 @@ export default function InnocentSmilesPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "AIM Foundation",
-    url: "https://www.aimindia.org.in/",
-    logo: "https://www.aimindia.org.in/logo.png",
-    sameAs: [
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
       "https://www.instagram.com/aimfoundation_ngo/",
       "https://www.linkedin.com/in/aim-foundation-ngo/",
       "https://www.youtube.com/@aimfoundation2604"
     ],
-    description: "AIM Foundation’s Innocent Smiles empowers underprivileged children with education, art, dance, and music—fostering creativity, confidence, and brighter futures."
+    "description": "AIM Foundation’s Innocent Smiles empowers underprivileged children with education, art, dance, and music—fostering creativity, confidence, and brighter futures."
   };
 
   return (
