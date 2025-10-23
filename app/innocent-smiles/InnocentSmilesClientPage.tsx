@@ -82,14 +82,15 @@ export default function InnocentSmilesClientPage() {
                 <div className="grid md:grid-cols-3 gap-12">
                    <div className="md:col-span-2">
                     <div className="space-y-6">
-                      <h2 className="text-3xl md:text-4xl font-bold font-headline">Shaping Dreams with Smiles and Skills</h2>
                       <div className="text-lg text-muted-foreground space-y-4 text-justify">
                         <p>
                           Innocent Smiles is a heartfelt initiative dedicated to nurturing the creative and academic potential of children, especially those from underprivileged backgrounds. The program focuses on developing talents across multiple disciplines, including <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, visual arts, dance, and singing—ensuring that each child receives the opportunity to grow both intellectually and artistically.
                         </p>
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">A Safe Space for Every Child</h2>
                         <p>
                           At its core, the project creates a safe, inclusive, and encouraging environment where children can freely express themselves, discover their passions, and build self-confidence. By integrating artistic expression with strong academic foundations, Innocent Smiles promotes a holistic model of development—recognizing that true learning goes beyond textbooks.
                         </p>
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Learning Through Joy and Discovery</h2>
                         <p>
                           Through thoughtfully designed activities, workshops, and mentorship, children are not only taught essential academic concepts but also guided to explore their creativity, voice their feelings, and work collaboratively. These experiences equip them with life skills such as communication, discipline, teamwork, and resilience.
                         </p>
