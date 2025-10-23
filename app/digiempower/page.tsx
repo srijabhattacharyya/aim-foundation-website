@@ -3,23 +3,18 @@ import type { Metadata } from 'next';
 import DigiEmpowerClientPage from './DigiEmpowerClientPage';
 
 export const metadata: Metadata = {
-  title: 'DigiEmpower – Digital Literacy for Children',
-  description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital skills, computer training, and online learning opportunities.',
+  title: 'DigiEmpower – Digital Literacy for Children | AIM Foundation',
+  description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital literacy, computer skills, and hands-on learning.',
   keywords: [
-    'AIM Foundation DigiEmpower',
-    'digital literacy NGO West Bengal',
-    'computer training for children',
-    'Adivasi education programs',
-    'bridge digital divide India',
-    'AIM Foundation education'
+    'DigiEmpower', 'AIM Foundation', 'Digital literacy for children', 'Child computer training', 'Digital skills program', 'Digital education NGO', 'Top NGO in Kolkata', 'Underprivileged children digital learning', 'Adivasi children computer training', 'Bridge the digital divide India'
   ],
   authors: [{ name: 'AIM Foundation' }],
   robots: 'index, follow',
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/digiempower',
-    title: 'DigiEmpower – Digital Literacy for Children',
-    description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital skills, computer training, and online learning opportunities.',
+    title: 'DigiEmpower – Digital Literacy for Children | AIM Foundation',
+    description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital literacy, computer skills, and hands-on learning.',
     images: [
       {
         url: 'https://aimindia.org.in/digiempower.avif',
@@ -34,8 +29,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    title: 'DigiEmpower – Digital Literacy for Children',
-    description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital skills, computer training, and online learning opportunities.',
+    title: 'DigiEmpower – Digital Literacy for Children | AIM Foundation',
+    description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital literacy, computer skills, and hands-on learning.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
