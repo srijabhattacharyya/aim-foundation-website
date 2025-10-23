@@ -54,10 +54,11 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-md mb-4">Get Involved</h4>
             <ul className="space-y-2">
-              <li><Link href="/join-us" className="text-muted-foreground hover:text-primary transition-colors">Join Us</Link></li>
               <li><Link href="/individual-donation" className="text-muted-foreground hover:text-primary transition-colors">Donate Now</Link></li>
-              <li><Link href="/career" className="text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="/voices" className="text-muted-foreground hover:text-primary transition-colors">Voices of Change</Link></li>
+              <li><Link href="/volunteering" className="text-muted-foreground hover:text-primary transition-colors">Volunteering</Link></li>
+              <li><Link href="/internship" className="text-muted-foreground hover:text-primary transition-colors">Internship</Link></li>
+              <li><Link href="/corporate-social-responsibility" className="text-muted-foreground hover:text-primary transition-colors">CSR</Link></li>
+              <li><Link href="/payroll-giving" className="text-muted-foreground hover:text-primary transition-colors">Payroll Giving</Link></li>
             </ul>
           </div>
           <div>
