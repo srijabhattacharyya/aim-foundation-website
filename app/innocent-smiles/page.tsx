@@ -1,10 +1,11 @@
+
 import type { Metadata } from 'next';
 import InnocentSmilesClientPage from './InnocentSmilesClientPage';
 import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
-  title: 'AIM Foundation | Innocent Smiles - Child Growth Program',
+  title: 'Innocent Smiles | Child Education & Art NGO in Kolkata',
   description: 'AIM Foundation’s Innocent Smiles empowers underprivileged children with education, art, dance, and music—fostering creativity, confidence, and brighter futures.',
   keywords: [
     'AIM Foundation Innocent Smiles',
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/innocent-smiles',
-    title: 'AIM Foundation | Innocent Smiles - Child Growth Program',
+    title: 'Innocent Smiles | Child Education & Art NGO in Kolkata',
     description: 'AIM Foundation’s Innocent Smiles empowers underprivileged children with education, art, dance, and music—fostering creativity, confidence, and brighter futures.',
     images: [
       {
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    title: 'AIM Foundation | Innocent Smiles - Child Growth Program',
+    title: 'Innocent Smiles | Child Education & Art NGO in Kolkata',
     description: 'AIM Foundation’s Innocent Smiles empowers underprivileged children with education, art, dance, and music—fostering creativity, confidence, and brighter futures.',
     images: ['https://aimindia.org.in/home.avif'],
   },
