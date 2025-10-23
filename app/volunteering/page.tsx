@@ -57,7 +57,7 @@ export default function VolunteeringPage() {
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
+    "logo": "https://www.aimindia.org.in/logo.png",
     "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
@@ -110,12 +110,12 @@ export default function VolunteeringPage() {
                 <h2 className="text-3xl md:text-4xl font-bold font-headline pt-8">Explore Our Volunteer Programs:</h2>
                 <p>Make an impact in areas that matter most:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
-                  <li><strong>Healthcare</strong> – Support vital medical services and spread health awareness.</li>
-                  <li><strong>Education</strong> – Teach and inspire underprivileged children with learning tools and support.</li>
-                  <li><strong>Environmental Sustainability</strong> – Champion green initiatives and eco-awareness.</li>
-                  <li><strong>Women Empowerment</strong> – Help women build leadership, skills, and financial independence.</li>
-                  <li><strong>Child Development</strong> – Nurture children’s physical, mental, and emotional growth.</li>
-                  <li><strong>Disaster Relief</strong> – Provide critical aid like food, medicine, and essentials during crises.</li>
+                  <li><Link href="/healthcare-initiatives" className="text-primary hover:underline">Healthcare</Link> – Support vital medical services and spread health awareness.</li>
+                  <li><Link href="/educational-initiatives" className="text-primary hover:underline">Education</Link> – Teach and inspire underprivileged children with learning tools and support.</li>
+                  <li><Link href="/sustainability-initiatives" className="text-primary hover:underline">Environmental Sustainability</Link> – Champion green initiatives and eco-awareness.</li>
+                  <li><Link href="/gender-equality-initiative" className="text-primary hover:underline">Women Empowerment</Link> – Help women build leadership, skills, and financial independence.</li>
+                  <li><Link href="/childcare-initiatives" className="text-primary hover:underline">Child Development</Link> – Nurture children’s physical, mental, and emotional growth.</li>
+                  <li><Link href="/disaster-management" className="text-primary hover:underline">Disaster Relief</Link> – Provide critical aid like food, medicine, and essentials during crises.</li>
                 </ul>
                 <p>
                   Kolkata is a city rich in culture and compassion—once home to Mother Teresa's iconic mission. Volunteering here offers a powerful blend of cultural immersion and social impact.
@@ -145,7 +145,7 @@ export default function VolunteeringPage() {
                 <div className="bg-card p-6 rounded-lg shadow-md mt-10 text-center">
                   <h2 className="text-3xl md:text-4xl font-bold font-headline">Ready to Get Involved?</h2>
                   <p className="mt-4">
-                    Before applying, please explore our <Link href="https://drive.google.com/file/d/19mRFXZ8nxvQI0xkrHUlKz0DYKfIipKwe/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Volunteer Orientation Handbook</Link> and review our <Link href="https://drive.google.com/file/d/1W_-oJZuCIOfPbbMqpA5dVDzYL1l0udN5/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Code of Conduct for Working with Children & Young People</Link>.
+                    Before applying, please explore our <Link href="/volunteer-policy" className="text-primary hover:underline">Volunteer Policy</Link> and review our <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link>.
                   </p>
                   <p className="mt-4 font-semibold">
                     Join Us & Be the Change You Wish to See!

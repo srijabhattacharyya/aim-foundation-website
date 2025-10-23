@@ -121,7 +121,7 @@ export default function CareerPage() {
                   </ul>
                   <h3 className="text-2xl font-bold font-headline pt-6">We don’t just run programs—we nurture transformation.</h3>
                   <p>
-                    At the heart of AIM Foundation is our people—a growing team of professionals, interns, and volunteers committed to serving communities with integrity, compassion, and skill. We believe in empowering individuals to grow while they contribute—building careers of purpose and value in the development sector.
+                    At the heart of AIM Foundation is our people—a growing team of professionals, <Link href="/internship" className="text-primary hover:underline">interns</Link>, and <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link> committed to serving communities with integrity, compassion, and skill. We believe in empowering individuals to grow while they contribute—building careers of purpose and value in the development sector.
                   </p>
                   <p>If you’re ready to step beyond the ordinary and work on the frontlines of change, we’d love to hear from you.</p>
                   

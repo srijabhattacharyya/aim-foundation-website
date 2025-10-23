@@ -49,17 +49,17 @@ export default function InternshipPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "AIM Foundation",
-    url: "https://www.aimindia.org.in/",
-    logo: "https://www.aimindia.org.in/logo.png",
-    sameAs: [
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
       "https://www.instagram.com/aimfoundation_ngo/",
       "https://www.linkedin.com/in/aim-foundation-ngo/",
       "https://www.youtube.com/@aimfoundation2604"
     ],
-    description: "Join AIM Foundation internships in India. Gain hands-on experience in health, education, empowerment & community projects. Build skills while driving change."
+    "description": "Join AIM Foundation internships in India. Gain hands-on experience in health, education, empowerment & community projects. Build skills while driving change."
   };
 
   return (
@@ -109,7 +109,7 @@ export default function InternshipPage() {
                             <li><Link href="/educational-initiatives" className="text-primary hover:underline">Education</Link>: Support our learning centers and educational programs.</li>
                             <li><Link href="/sustainability-initiatives" className="text-primary hover:underline">Environment</Link>: Participate in conservation and sustainability projects.</li>
                             <li><Link href="/gender-equality-initiative" className="text-primary hover:underline">Women Empowerment</Link>: Contribute to skill-building and livelihood initiatives.</li>
-                            <li><strong>Community Engagement</strong>: Help with outreach, surveys, and mobilization.</li>
+                            <li><strong>Community Engagement</strong>: Help with outreach, surveys, and mobilization through our <Link href="/ignite-change-initiative" className="text-primary hover:underline">Ignite Change Initiative</Link>.</li>
                         </ul>
 
                         <h2 className="text-3xl md:text-4xl font-bold font-headline pt-8">Benefits of Interning with Us</h2>
