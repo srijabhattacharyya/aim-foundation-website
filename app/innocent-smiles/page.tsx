@@ -8,11 +8,7 @@ export const metadata: Metadata = {
   title: 'Innocent Smiles | Child Education & Art NGO in Kolkata',
   description: 'Innocent Smiles by AIM Foundation, the best NGO in Kolkata, nurtures underprivileged children through education, art, and holistic development programs.',
   keywords: [
-    'AIM Foundation Innocent Smiles',
-    'AIM Foundation child growth',
-    'NGO for children Kolkata',
-    'holistic education NGO',
-    'child empowerment program'
+    'donate for children', 'child education charity', 'help underprivileged children', 'support children\'s future', 'donate to children\'s charity', 'children\'s welfare organization', 'sponsor child\'s education', 'make a difference for children', 'donate to empower kids', 'innocent smiles program', 'children\'s health donation', 'online child donation India', 'provide education for children', 'fund children\'s wellbeing', 'charitable donation for kids', 'how to help children in need', 'best charities for child support', 'secure children\'s future donation', 'humanitarian aid for children', 'volunteer for child development', 'Innocent Smiles', 'AIM Foundation', 'NGO for underprivileged children', 'child education NGO', 'holistic child development', 'art and education program', 'creative learning for kids', 'empower children through education', 'NGO in Kolkata', 'support child education in India'
   ],
   authors: [{ name: 'AIM Foundation' }],
   robots: 'index, follow',
