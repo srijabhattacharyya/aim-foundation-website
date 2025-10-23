@@ -10,6 +10,7 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/InspireEduLabDonationForm'), { 
     ssr: false,
@@ -18,6 +19,7 @@ const DynamicDonationForm = dynamic(() => import('@/components/sections/donation
 
 const educationalInitiatives = [
   { href: '/innocent-smiles?from=educational', label: 'Innocent Smiles' },
+  { href: '/inspire-edulab', label: 'Inspire EduLab' },
   { href: '/eduaccess?from=educational', label: 'EduAccess' },
   { href: '/empower-english?from=educational', label: 'Empower English'},
   { href: '/digiempower?from=educational', label: 'DigiEmpower' },
