@@ -78,7 +78,7 @@ export default function VidyaShaktiBlogPage() {
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">VidyaShakti: A Teacher in Every Pocket</h2>
                 <p>
-                  VidyaShakti was born out of a simple belief: every child, no matter where they live, deserves access to quality education in a language they understand. The app harnesses the power of AI to create an on-demand, multilingual learning experience tailored for rural learners.
+                  <Link href="/vidyashakti" className="text-primary hover:underline">VidyaShakti</Link> was born out of a simple belief: every child, no matter where they live, deserves access to quality education in a language they understand. The app harnesses the power of AI to create an on-demand, multilingual learning experience tailored for rural learners.
                 </p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Key Features</h3>
                 <ul className="list-disc list-inside space-y-2 pl-4">

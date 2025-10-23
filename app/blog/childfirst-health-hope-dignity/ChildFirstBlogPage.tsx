@@ -55,7 +55,7 @@ export default function ChildFirstBlogPage() {
                   In the bustling lanes of Rambagan and Sonagachi—two of Kolkata’s oldest red-light districts—life is a constant struggle for survival. For the children born here, innocence is often overshadowed by the harsh realities of poverty, stigma, and neglect. Many of these children live in cramped, unsafe quarters, surrounded by environments that threaten not only their physical health but also their emotional well-being. While the city around them continues to grow and modernize, they remain invisible to most. Their dreams are small—often just a hope for one full meal, freedom from recurring illness, and the comfort of someone who cares.
                 </p>
                 <p className="font-semibold text-primary text-center text-xl">
-                    This is where ChildFirst, an initiative by AIM Foundation, steps in. Guided by compassion and committed to justice, ChildFirst brings free paediatric and general healthcare camps directly to these communities—offering medical care, dignity, and hope to those who need it most.
+                    This is where ChildFirst, an initiative by AIM Foundation, steps in. Guided by compassion and committed to justice, ChildFirst brings free paediatric and general <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link> camps directly to these communities—offering medical care, dignity, and hope to those who need it most.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why ChildFirst Exists: The Urgent Need for Intervention</h2>
@@ -107,7 +107,7 @@ export default function ChildFirstBlogPage() {
                     <li><strong>Confidence:</strong> Physical well-being improves self-esteem, allowing children to interact confidently with peers.</li>
                     <li><strong>Breaking the Cycle:</strong> Healthy children are more likely to grow into healthy adults who can support themselves and their families, reducing the risk of exploitation.</li>
                 </ul>
-                <p>By addressing health first, we lay the groundwork for education, empowerment, and long-term social change.</p>
+                <p>By addressing health first, we lay the groundwork for <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, empowerment, and long-term social change.</p>
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Your Role: How You Can Make a Difference</h2>
@@ -128,7 +128,7 @@ export default function ChildFirstBlogPage() {
 
                 <div className="text-center pt-8">
                     <p className="text-2xl font-semibold text-primary font-headline flex items-center justify-center gap-2">
-                        <HandHeart /> Donate to ChildFirst today.
+                        <HandHeart /> Donate to <Link href="/childfirst" className="text-primary hover:underline">ChildFirst</Link> today.
                     </p>
                     <div className="mt-4 flex gap-4 justify-center">
                         <Button asChild><Link href="/childfirst">Donate</Link></Button>

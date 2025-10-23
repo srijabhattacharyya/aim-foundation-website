@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -54,7 +55,7 @@ export default function TideShieldBlogPage() {
                     In the farthest reaches of West Bengal, where land dissolves into the sea, lies one of Earth’s most extraordinary and fragile ecosystems—the Sundarbans. This sprawling mangrove forest, a UNESCO World Heritage Site, is home to countless species and a lifeline for coastal communities. But in recent years, its protective shield has been torn apart by nature’s fury—cyclones, rising seas, and the relentless march of climate change.
                 </p>
                 <p>
-                    On Bali Island, one of the Sundarbans’ most vulnerable fringes, the scars of cyclones Amphan (2020) and Yaas (2021) are still raw. Eroded coastlines, saline-invaded farmlands, and uprooted mangroves tell a story of both devastation and resilience. And in this critical chapter of recovery, TideShield—an environmental initiative by AIM Foundation—has taken root, determined to restore the mangrove heartbeat of this region.
+                    On Bali Island, one of the Sundarbans’ most vulnerable fringes, the scars of cyclones Amphan (2020) and Yaas (2021) are still raw. Eroded coastlines, saline-invaded farmlands, and uprooted mangroves tell a story of both devastation and resilience. And in this critical chapter of recovery, <Link href="/tideshield" className="text-primary hover:underline">TideShield</Link>—an environmental initiative by AIM Foundation—has taken root, determined to restore the mangrove heartbeat of this region.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why Mangroves Matter More Than Ever</h2>
@@ -78,7 +79,7 @@ export default function TideShieldBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Birth of TideShield</h2>
                 <p>
-                    Amid this backdrop of urgency, AIM Foundation launched TideShield, an initiative singularly focused on restoring Bali Island’s mangrove ecosystems. The mission was clear:
+                    Amid this backdrop of urgency, AIM Foundation launched <Link href="/tideshield" className="text-primary hover:underline">TideShield</Link>, an initiative singularly focused on restoring Bali Island’s mangrove ecosystems. The mission was clear:
                 </p>
                  <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>Rebuild coastal protection by planting native mangrove species.</li>
@@ -88,7 +89,7 @@ export default function TideShieldBlogPage() {
                 <p>TideShield is not just about planting trees. It’s about planting hope, security, and self-reliance in one of the most climate-threatened places on Earth.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">How TideShield Works</h2>
-                <p>The program combines science-based restoration techniques with community-led action—because in the Sundarbans, any long-term environmental solution must also serve the people who depend on it.</p>
+                <p>The program combines science-based restoration techniques with community-led action—because in the Sundarbans, any long-term <Link href="/sustainability-initiatives" className="text-primary hover:underline">environmental</Link> solution must also serve the people who depend on it.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">1. Careful Species Selection</h3>
                 <p>Different mangrove species thrive in different tidal zones. TideShield focuses on planting native species such as:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
