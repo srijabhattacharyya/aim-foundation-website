@@ -56,7 +56,6 @@ const navLinks: NavItem[] = [
   { label: 'Initiatives', isDropdown: true, items: [
       { label: 'Educational Initiatives', isSubDropdown: true, href: '/educational-initiatives', subItems: [
         { href: '/innocent-smiles', label: 'Innocent Smiles' },
-        { href: '/inspire-edulab', label: 'Inspire EduLab' },
         { href: '/eduaccess', label: 'EduAccess' },
         { href: '/empower-english', label: 'Empower English'},
         { href: '/digiempower', label: 'DigiEmpower' },

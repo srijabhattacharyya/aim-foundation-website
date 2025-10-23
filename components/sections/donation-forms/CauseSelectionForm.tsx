@@ -51,7 +51,6 @@ const mainCauses: Initiative[] = [
 const educationalInitiatives: Initiative[] = [
   { value: "educational-general", label: "General Donation to support Educational Initiatives" },
   { value: "innocent-smiles", label: "Innocent Smiles" },
-  { value: "inspire-edulab", label: "Inspire EduLab" },
   { value: "eduaccess", label: "EduAccess" },
   { value: "empower-english", label: "Empower English" },
   { value: "digiempower", label: "DigiEmpower" },
