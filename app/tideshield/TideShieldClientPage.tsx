@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from 'next/link';
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/TideShieldDonationForm'), { 
     ssr: false,
@@ -68,14 +69,14 @@ export default function TideShieldClientPage() {
                       <h2 className="text-3xl md:text-4xl font-bold font-headline">Give the Sundarbans a fighting chance.</h2>
                       <div className="text-lg text-muted-foreground space-y-4 text-justify">
                         <p>
-                          TideShield is a focused environmental initiative by AIM Foundation to restore the mangrove ecosystems of Bali Island in the Sundarbans, severely impacted by cyclones Amphan and Yaas. These natural disasters caused widespread coastal degradation, increased erosion, and left communities more vulnerable to future climate events.
+                          TideShield is a focused <Link href="/sustainability-initiatives" className="text-primary hover:underline">environmental initiative</Link> by AIM Foundation to restore the mangrove ecosystems of Bali Island in the Sundarbans, severely impacted by cyclones Amphan and Yaas. These natural disasters caused widespread coastal degradation, increased erosion, and left communities more vulnerable to future climate events.
                         </p>
                         <p>
                           Mangroves act as nature’s frontline defenders—reducing storm surges, stabilizing shorelines, and supporting rich biodiversity. Through TideShield, we plant native mangrove species and work hand-in-hand with local communities to nurture and maintain these vital green buffers. By restoring mangroves, we not only protect fragile ecosystems but also enhance the long-term resilience of the people who depend on them for survival. But we can’t do it alone.
                         </p>
                         <h3 className="text-2xl font-bold font-headline pt-4">Be the hope that coastal families are waiting for.</h3>
                          <p>
-                          Every contribution helps us provide more saplings, train local volunteers, and monitor the growth and survival of planted trees. With just a small donation, you can directly help protect coastal families, restore biodiversity, and rebuild nature’s defences against climate disasters.
+                          Every <Link href="/individual-donation" className="text-primary hover:underline">contribution</Link> helps us provide more saplings, train local <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link>, and monitor the growth and survival of planted trees. With just a small donation, you can directly help protect coastal families, restore biodiversity, and rebuild nature’s defences against climate disasters.
                          </p>
                          <p>
                           Help us shield the Sundarbans. Donate to TideShield today—and let your generosity take root in the world’s most vital coastal forest.

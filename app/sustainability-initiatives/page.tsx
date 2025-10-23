@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
@@ -142,8 +143,7 @@ export default function SustainabilityInitiativesPage() {
                   Our Sustainability Programs
                 </h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                  We are committed to creating a sustainable future through environmental protection,
-                  conservation, and <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>.
+                  We are committed to creating a sustainable future through environmental protection, conservation, and <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>. Our programs also align with our work in <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link> and <Link href="/gender-equality-initiative" className="text-primary hover:underline">women empowerment</Link>.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

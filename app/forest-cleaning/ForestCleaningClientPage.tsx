@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from 'next/link';
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/ForestCleaningDonationForm'), { 
     ssr: false,
@@ -68,10 +69,10 @@ export default function ForestCleaningClientPage() {
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">Reclaiming Our Forests from Waste</h2>
                     <div className="text-lg text-muted-foreground space-y-4 text-justify">
                       <p>
-                        Forest Cleaning is our hands-on initiative dedicated to the restoration and preservation of natural habitats through large-scale cleaning drives. Our forests are vital ecosystems that are increasingly threatened by plastic and other non-biodegradable waste, which harms wildlife and pollutes the environment.
+                        Forest Cleaning is our hands-on initiative dedicated to the restoration and preservation of natural habitats through large-scale cleaning drives. Our forests are vital ecosystems that are increasingly threatened by plastic and other non-biodegradable waste, which harms wildlife and pollutes the <Link href="/sustainability-initiatives" className="text-primary hover:underline">environment</Link>.
                       </p>
                       <p>
-                        This project mobilizes volunteers, local communities, and corporate partners to participate in organized cleanups in forest areas. By removing harmful pollutants, we help restore the natural balance, protect biodiversity, and ensure these precious green spaces remain healthy for generations to come.
+                        This project mobilizes <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link>, local communities, and <Link href="/corporate-social-responsibility" className="text-primary hover:underline">corporate partners</Link> to participate in organized cleanups in forest areas. By removing harmful pollutants, we help restore the natural balance, protect biodiversity, and ensure these precious green spaces remain healthy for generations to come.
                       </p>
                       <h3 className="text-2xl font-bold font-headline pt-4">Our cleaning drives focus on:</h3>
                       <ul className="list-disc list-inside space-y-2">
@@ -85,7 +86,7 @@ export default function ForestCleaningClientPage() {
                       </p>
                       <h3 className="text-2xl font-bold font-headline pt-4">Help Us Keep Our Forests Green</h3>
                       <p>
-                        Your contribution can fund cleaning equipment, safety gear for volunteers, and transportation for waste disposal. Every donation helps us reclaim more forest area from pollution.
+                        Your <Link href="/individual-donation" className="text-primary hover:underline">contribution</Link> can fund cleaning equipment, safety gear for volunteers, and transportation for waste disposal. Every donation helps us reclaim more forest area from pollution.
                       </p>
                     </div>
                   </div>
