@@ -87,7 +87,7 @@ export default function ProfilePage() {
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Commitment to Transparency</h2>
                         <div className="mt-6 text-lg text-muted-foreground space-y-4 text-justify">
                             <p>
-                                AIM Foundation believes that true impact begins with honesty and openness. We are committed to maintaining 100% transparency in our governance, finances, and operations so that every donor, partner, and volunteer can trust that their contribution directly supports our mission to build a better tomorrow.
+                                AIM Foundation believes that true impact begins with honesty and openness. We are committed to maintaining 100% transparency in our governance, finances, and operations so that every <Link href="/individual-donation" className="text-primary hover:underline">donor</Link>, <Link href="/corporate-social-responsibility" className="text-primary hover:underline">partner</Link>, and <Link href="/volunteering" className="text-primary hover:underline">volunteer</Link> can trust that their contribution directly supports our mission to build a better tomorrow.
                             </p>
                         </div>
                     </div>
@@ -117,7 +117,7 @@ export default function ProfilePage() {
                     <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">CSR and Partner Disclosures</h2>
                         <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                           AIM Foundation collaborates with corporates, institutions, and individuals under CSR and partnership programs.
+                           AIM Foundation collaborates with corporates, institutions, and individuals under <Link href="/corporate-social-responsibility" className="text-primary hover:underline">CSR</Link> and partnership programs.
                         </p>
                         <Button asChild size="lg" className="mt-8">
                             <Link href="/#patrons">View Our Partners</Link>
@@ -154,7 +154,7 @@ export default function ProfilePage() {
                     <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Declaration</h2>
                         <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto italic">
-                           AIM Foundation certifies that all information presented on this page is true and verified by our independent auditors. The organization abides by all statutory requirements under Indian NGO law and CSR guidelines.
+                           AIM Foundation certifies that all information presented on this page is true and verified by our independent auditors. The organization abides by all statutory requirements under Indian NGO law and <Link href="/corporate-social-responsibility" className="text-primary hover:underline">CSR</Link> guidelines.
                         </p>
                     </div>
                 </section>

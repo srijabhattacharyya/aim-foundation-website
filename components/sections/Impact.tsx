@@ -1,4 +1,6 @@
+
 import { Users, Home } from 'lucide-react';
+import Link from 'next/link';
 
 const Impact = () => {
   const stats = [
@@ -7,14 +9,34 @@ const Impact = () => {
       value: '50,000+',
       label: 'Lives Impacted',
       description: 'Through our health, education, and empowerment programs.',
+      links: [
+        { word: 'health', href: '/healthcare-initiatives' },
+        { word: 'education', href: '/educational-initiatives' },
+        { word: 'empowerment', href: '/gender-equality-initiative' }
+      ]
     },
     {
       icon: <Home className="w-12 h-12 text-primary" />,
       value: '200+',
       label: 'Villages Reached',
       description: 'Providing essential services to remote communities.',
+      links: []
     },
   ];
+
+  const renderDescription = (description: string, links: {word: string, href: string}[]) => {
+    if (links.length === 0) {
+      return description;
+    }
+    const parts = description.split(new RegExp(`(${links.map(l => l.word).join('|')})`, 'g'));
+    return parts.map((part, index) => {
+      const link = links.find(l => l.word === part);
+      if (link) {
+        return <Link key={index} href={link.href} className="text-primary hover:underline">{part}</Link>;
+      }
+      return part;
+    });
+  }
 
   return (
     <section className="bg-muted py-12 md:py-20 lg:py-24">
@@ -34,7 +56,7 @@ const Impact = () => {
                 </div>
                 <p className="text-4xl md:text-5xl font-bold text-primary">{stat.value}</p>
                 <h3 className="text-xl font-semibold mt-2 font-headline">{stat.label}</h3>
-                <p className="text-muted-foreground mt-2">{stat.description}</p>
+                <p className="text-muted-foreground mt-2">{renderDescription(stat.description, stat.links)}</p>
                 </div>
             ))}
             </div>
