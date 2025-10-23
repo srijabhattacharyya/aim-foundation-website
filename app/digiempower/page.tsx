@@ -1,9 +1,10 @@
+
 import type { Metadata } from 'next';
 import DigiEmpowerClientPage from './DigiEmpowerClientPage';
 
 export const metadata: Metadata = {
-  title: 'AIM Foundation | DigiEmpower Digital Literacy Program',
-  description: 'AIM Foundation’s DigiEmpower bridges the digital divide by training underprivileged and Adivasi children in West Bengal with essential computer and internet skills.',
+  title: 'DigiEmpower – Digital Literacy for Children',
+  description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital skills, computer training, and online learning opportunities.',
   keywords: [
     'AIM Foundation DigiEmpower',
     'digital literacy NGO West Bengal',
@@ -17,8 +18,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/digiempower',
-    title: 'AIM Foundation | DigiEmpower Digital Literacy Program',
-    description: 'AIM Foundation’s DigiEmpower bridges the digital divide by training underprivileged and Adivasi children in West Bengal with essential computer and internet skills.',
+    title: 'DigiEmpower – Digital Literacy for Children',
+    description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital skills, computer training, and online learning opportunities.',
     images: [
       {
         url: 'https://aimindia.org.in/digiempower.avif',
@@ -33,8 +34,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    title: 'AIM Foundation | DigiEmpower Digital Literacy Program',
-    description: 'AIM Foundation’s DigiEmpower bridges the digital divide by training underprivileged and Adivasi children in West Bengal with essential computer and internet skills.',
+    title: 'DigiEmpower – Digital Literacy for Children',
+    description: 'DigiEmpower by AIM Foundation, a top NGO in Kolkata, empowers underprivileged children with digital skills, computer training, and online learning opportunities.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
