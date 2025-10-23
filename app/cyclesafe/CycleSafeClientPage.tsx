@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -10,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CycleSafeDonationForm'), { 
     ssr: false,
@@ -86,7 +88,7 @@ export default function CycleSafeClientPage() {
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Girls, One Cycle at a Time.</h2>
                         <div className="text-lg text-muted-foreground space-y-4 text-justify">
                           <p>
-                            CycleSafe is a dedicated initiative that supports the <strong>menstrual and reproductive health of underprivileged adolescent girls</strong> in and around Kolkata. These girls, many of whom come from socioeconomically disadvantaged backgrounds, often lack access to basic menstrual hygiene resources, health education, and supportive spaces to discuss their bodies and well-being.
+                            CycleSafe is a dedicated initiative that supports the <strong>menstrual and reproductive health of underprivileged adolescent girls</strong> in and around Kolkata. Part of our <Link href="/gender-equality-initiative" className="text-primary hover:underline">gender equality</Link> and <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare initiatives</Link>, these girls, many of whom come from socioeconomically disadvantaged backgrounds, often lack access to basic menstrual hygiene resources, health <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, and supportive spaces to discuss their bodies and well-being.
                           </p>
                           <p>
                             The project addresses this gap through comprehensive menstrual hygiene workshops, awareness sessions on cervical health, and open discussions on puberty, reproductive health, and emotional changes. These sessions are led by trained health educators who approach the subject with sensitivity, accuracy, and respect.
@@ -102,7 +104,7 @@ export default function CycleSafeClientPage() {
                           </p>
                           <h3 className="text-2xl font-bold font-headline pt-4">Help Her Stay in School, Stay Confident</h3>
                           <p>
-                            For many adolescent girls, periods mean missed classes, silent shame, and compromised health—simply because they can’t afford sanitary napkins or don’t understand what’s happening to their bodies. <strong>Your support to CycleSafe can change that.</strong> <strong>Just ₹300 can provide a girl with sanitary pads and vital menstrual health education for a month.</strong> With your donation, you’re not just giving hygiene products—you’re restoring dignity, confidence, and opportunity. <strong>Stand with these girls. Help them grow without fear or stigma. Donate today and empower a future that’s safe, strong, and unstoppable.</strong>
+                            For many adolescent girls, periods mean missed classes, silent shame, and compromised health—simply because they can’t afford sanitary napkins or don’t understand what’s happening to their bodies. <strong>Your support to CycleSafe can change that.</strong> <strong>Just ₹300 can provide a girl with sanitary pads and vital menstrual health education for a month.</strong> With your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link>, you’re not just giving hygiene products—you’re restoring dignity, confidence, and opportunity. <strong>Stand with these girls. Help them grow without fear or stigma. Donate today and empower a future that’s safe, strong, and unstoppable.</strong>
                           </p>
                         </div>
                       </div>

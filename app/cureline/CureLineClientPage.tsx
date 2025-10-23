@@ -75,7 +75,7 @@ export default function CureLineClientPage() {
                   <h2 className="text-3xl md:text-4xl font-bold font-headline">Reaching the Unreachable with Care.</h2>
                   <div className="text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
-                      CureLine is a frontline <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare initiative</Link> by AIM Foundation, designed to deliver <strong>essential medical services</strong> to communities that are often neglected by mainstream health systems. Through regular, on-ground <strong>healthcare camps</strong>, CureLine serves <strong>remote villages, forest-fringe settlements,</strong> and <strong>disaster-affected regions</strong> across West Bengal and beyond.
+                      CureLine is a frontline <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare initiative</Link> by AIM Foundation, designed to deliver <strong>essential medical services</strong> to communities that are often neglected by mainstream health systems. Through regular, on-ground <strong>healthcare camps</strong>, CureLine serves <strong>remote villages, forest-fringe settlements,</strong> and <strong><Link href="/disaster-management" className="text-primary hover:underline">disaster-affected regions</Link></strong> across West Bengal and beyond.
                     </p>
                     <p>
                       Many of these regions suffer from <strong>limited or no access to registered medical practitioners</strong>, diagnostic facilities, or affordable treatment options. CureLine fills this critical gap by <strong>bringing doctors, nurses, and essential medicines directly to the people</strong>, eliminating the barriers of distance, cost, and awareness.
@@ -85,9 +85,9 @@ export default function CureLineClientPage() {
                       <li>General health check-ups and medical consultations</li>
                       <li>Diagnosis and treatment of common ailments</li>
                       <li>Monitoring of chronic conditions like diabetes and hypertension</li>
-                      <li>Maternal and child healthcare support</li>
+                      <li>Maternal and <Link href="/childcare-initiatives" className="text-primary hover:underline">child healthcare</Link> support</li>
                       <li>Free distribution of prescribed medicines and supplements</li>
-                      <li>Health education sessions on hygiene, nutrition, and disease prevention</li>
+                      <li>Health <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> sessions on hygiene, nutrition, and disease prevention</li>
                     </ul>
                     <p>
                       Camps are conducted at local community hubs such as schools, village centres, and makeshift clinics—often in challenging terrains like the Sundarbans delta, the tribal villages near Gorumara, and flood-prone areas.

@@ -73,7 +73,7 @@ export default function SoulCircleClientPage() {
                     <h2 className="text-3xl md:text-4xl font-bold font-headline">24/7 Emotional Support, Just a Chat Away</h2>
                     <div className="text-lg text-muted-foreground space-y-4 text-justify">
                         <p>
-                            <Link href="https://soulcircle.aimindia.org.in/home" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">SoulCircle</Link> is an innovative <strong>AI-powered mental health support app</strong> created to provide accessible, compassionate, and judgment-free support for anyone experiencing emotional distress, stress, anxiety, loneliness, or other mental health challenges.
+                            <Link href="https://soulcircle.aimindia.org.in/home" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">SoulCircle</Link> is an innovative <strong>AI-powered mental health support app</strong> created to provide accessible, compassionate, and judgment-free support for anyone experiencing emotional distress, stress, anxiety, loneliness, or other mental health challenges. It's a key part of our <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare initiatives</Link>.
                         </p>
                         <p>
                             Whether you're struggling in silence, need someone to talk to, or just want daily emotional check-ins, <strong>SoulCircle's intelligent AI mental health counsellors</strong> are always available—24/7. These virtual companions are designed to <strong>listen empathetically, respond mindfully,</strong> and provide <strong>supportive guidance</strong> based on therapeutic frameworks and emotional well-being best practices.
@@ -96,7 +96,7 @@ export default function SoulCircleClientPage() {
                         </p>
                         <h3 className="text-2xl font-bold font-headline pt-4">Be the Reason Someone Feels Heard Today</h3>
                         <p>
-                          SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most. Your donation helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. <strong>Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression</strong>. Mental health is not a luxury—it’s a necessity. <strong>Help us make healing accessible to all. Donate now.</strong>
+                          SoulCircle can offer 24/7 emotional care—free of stigma, barriers, or judgment—to those who need it most. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> helps us improve AI emotional intelligence, expand multilingual access, and reach more isolated individuals, especially students, youth, and those in underserved regions. <strong>Just ₹500 can fund a month of safe, compassionate support for someone silently battling anxiety, stress, or depression</strong>. Mental health is not a luxury—it’s a necessity. <strong>Help us make healing accessible to all. Donate now.</strong>
                         </p>
                         <div className="mt-8">
                             <Button asChild>

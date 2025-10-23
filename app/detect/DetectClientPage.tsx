@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -10,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DetectDonationForm'), { 
     ssr: false,
@@ -86,14 +88,14 @@ export default function DetectClientPage() {
                             <h2 className="text-3xl md:text-4xl font-bold font-headline">Empowering Women Through Early Detection.</h2>
                             <div className="text-lg text-muted-foreground space-y-4 text-justify">
                               <p>
-                                Project Detect empowers rural women through <strong>cervical health education and cancer screenings</strong>. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health.
+                                Project Detect empowers rural women through <strong>cervical health <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> and cancer screenings</strong>. In collaboration with Chittaranjan National Cancer Institute and the West Bengal government, it organizes community camps and trains frontline workers district by district—starting with Howrah—to promote early detection, break taboos, and build awareness for women’s reproductive health. This initiative is a vital part of our <Link href="/gender-equality-initiative" className="text-primary hover:underline">Gender Equality</Link> and <Link href="/healthcare-initiatives" className="text-primary hover:underline">Healthcare</Link> programs.
                               </p>
                               <p>
                                 By bringing these vital services directly to the communities, we overcome barriers of distance, cost, and social stigma, ensuring that women have the knowledge and access to care they need to protect their health.
                               </p>
                               <h3 className="text-2xl font-bold font-headline pt-4">Your Support Saves Lives</h3>
                               <p>
-                                Cervical cancer is preventable and treatable when caught early, yet millions of women in rural India lack access to basic screenings. Your donation can change that. <strong>A contribution of just ₹1500 can sponsor a life-saving screening for one woman</strong>, giving her the chance for early treatment and a healthy future. By funding our community camps and training health workers, you’re not just detecting cancer—you’re building a shield of awareness and hope. <strong>Donate today and empower a woman to live a life free from fear.</strong>
+                                Cervical cancer is preventable and treatable when caught early, yet millions of women in rural India lack access to basic screenings. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> can change that. <strong>A contribution of just ₹1500 can sponsor a life-saving screening for one woman</strong>, giving her the chance for early treatment and a healthy future. By funding our community camps and training health workers, you’re not just detecting cancer—you’re building a shield of awareness and hope. <strong>Donate today and empower a woman to live a life free from fear.</strong>
                               </p>
                             </div>
                         </div>

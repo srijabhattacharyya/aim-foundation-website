@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/SightHopeDonationForm'), { 
     ssr: false,
@@ -76,7 +77,7 @@ export default function SightHopeClientPage() {
                       SightHope is a transformative eye health initiative by AIM Foundation, launched to address the widespread but often overlooked burden of <strong>avoidable vision loss</strong> among underserved populations. In partnership with some of Kolkata’s most renowned eye hospitals—including Sushrut Eye Foundation, B. B. Eye Foundation, and the Hope Foundation—SightHope <strong>brings high-quality, no-cost eye care</strong> to those who need it most but can least afford it.
                     </p>
                     <p>
-                      For many individuals living in urban slums, rural villages, and remote areas, poor eyesight is not just a health issue—it’s a barrier to education, employment, mobility, and dignity. Children struggle in school, adults lose livelihoods, and elders face isolation, all due to conditions that are often preventable or easily treatable, such as refractive errors or cataracts.
+                      For many individuals living in urban slums, rural villages, and remote areas, poor eyesight is not just a health issue—it’s a barrier to <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, employment, mobility, and dignity. Children struggle in school, adults lose livelihoods, and elders face isolation, all due to conditions that are often preventable or easily treatable, such as refractive errors or cataracts.
                     </p>
                     <p>
                       SightHope steps in to fill this critical gap by organizing regular eye care camps that provide:
@@ -108,7 +109,7 @@ export default function SightHopeClientPage() {
                     </p>
                     <h3 className="text-2xl font-bold font-headline pt-4">Restore Sight, Renew Lives</h3>
                     <p>
-                      For millions, blurry vision means missed opportunities, lost income, and silent suffering. With just ₹300, you can provide the gift of spectacles to someone in need. A donation of ₹3000 can fund a life-changing cataract surgery. Your contribution to SightHope empowers children to succeed in school, enables elders to regain independence, and allows workers to return to their jobs with confidence. <strong>Vision is more than just sight—it’s dignity, freedom, and hope.</strong> Give someone the gift of seeing the world clearly again. <strong>Donate now—because no one should live in the dark when the cure is within reach.</strong>
+                      For millions, blurry vision means missed opportunities, lost income, and silent suffering. With just ₹300, you can provide the gift of spectacles to someone in need. A <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> of ₹3000 can fund a life-changing cataract surgery. Your contribution to SightHope empowers <Link href="/childcare-initiatives" className="text-primary hover:underline">children</Link> to succeed in school, enables elders to regain independence, and allows workers to return to their jobs with confidence. <strong>Vision is more than just sight—it’s dignity, freedom, and hope.</strong> Give someone the gift of seeing the world clearly again. <strong>Donate now—because no one should live in the dark when the cure is within reach.</strong>
                     </p>
                   </div>
                 </div>

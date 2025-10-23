@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from "next/link";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/OralScanDonationForm'), { 
     ssr: false,
@@ -74,7 +75,7 @@ export default function OralScanClientPage() {
                   <h2 className="text-3xl md:text-4xl font-bold font-headline">Screening Today for a Healthier Tomorrow.</h2>
                   <div className="text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
-                      OralScan is a crucial initiative by AIM Foundation focused on <strong>early detection of oral cancer</strong> through free screening camps in underserved communities. Oral cancer is a significant health threat in India, often diagnosed late due to lack of awareness and access to medical care. OralScan directly confronts this challenge by bringing vital services to those who need them most.
+                      OralScan is a crucial initiative by AIM Foundation focused on <strong>early detection of oral cancer</strong> through free screening camps in underserved communities. Oral cancer is a significant health threat in India, often diagnosed late due to lack of awareness and access to medical care. OralScan directly confronts this challenge by bringing vital <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare services</Link> to those who need them most.
                     </p>
                     <p>
                       Our camps provide more than just screenings. We focus on comprehensive community engagement through:
@@ -87,14 +88,14 @@ export default function OralScanClientPage() {
                       <li><strong>Referrals for further diagnosis and treatment</strong>, ensuring a continuum of care.</li>
                     </ul>
                     <p>
-                      By focusing on early detection, OralScan significantly improves the chances of successful treatment and saves lives. The program is built on the belief that preventive care and education are the most powerful tools in fighting this preventable disease. We work to break down barriers of fear and stigma, encouraging community members to take proactive steps for their health.
+                      By focusing on early detection, OralScan significantly improves the chances of successful treatment and saves lives. The program is built on the belief that preventive care and <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> are the most powerful tools in fighting this preventable disease. We work to break down barriers of fear and stigma, encouraging community members to take proactive steps for their health.
                     </p>
                     <p>
                       Join us in our mission to combat oral cancer. Your support helps us reach more villages, screen more people, and spread the life-saving message of early detection.
                     </p>
                     <h3 className="text-2xl font-bold font-headline pt-4">Your Support Can Save a Life</h3>
                     <p>
-                      A simple screening can be the difference between life and death. <strong>Your donation to OralScan funds free screening camps, educational materials, and follow-up care for at-risk individuals</strong> in communities with little to no access to dental and health services. Help us detect cancer early and give someone a chance for a healthy future. <strong>Donate today and be a part of the fight against oral cancer.</strong>
+                      A simple screening can be the difference between life and death. <strong>Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> to OralScan funds free screening camps, educational materials, and follow-up care for at-risk individuals</strong> in communities with little to no access to dental and health services. Help us detect cancer early and give someone a chance for a healthy future. <strong>Donate today and be a part of the fight against oral cancer.</strong>
                     </p>
                   </div>
                 </div>

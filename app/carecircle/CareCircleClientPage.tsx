@@ -91,7 +91,7 @@ export default function CareCircleClientPage() {
                       <li>Awareness sessions on hygiene, nutrition, and disease prevention</li>
                     </ul>
                     <p>
-                      What sets CareCircle apart is its holistic, community-based approach—fostering trust within neighbourhoods, encouraging preventive care, and promoting health-seeking behaviour among vulnerable urban residents. The program also empowers local <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link> and caregivers, turning every camp into an opportunity for both healing and education.
+                      What sets CareCircle apart is its holistic, community-based approach—fostering trust within neighbourhoods, encouraging preventive care, and promoting health-seeking behaviour among vulnerable urban residents. The program also empowers local <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link> and caregivers, turning every camp into an opportunity for both <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> and healing.
                     </p>
                     <p>
                       <strong>CareCircle ensures that health is not a privilege, but a shared right—accessible to all, regardless of income, identity, or background.</strong>
