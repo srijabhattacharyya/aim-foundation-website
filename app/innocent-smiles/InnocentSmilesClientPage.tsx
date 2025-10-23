@@ -83,21 +83,33 @@ export default function InnocentSmilesClientPage() {
                    <div className="md:col-span-2">
                     <div className="space-y-6">
                       <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                        <h1 className="text-3xl md:text-4xl font-bold font-headline">Innocent Smiles – A Child Development & Education Initiative by AIM Foundation</h1>
                         <p>
-                          Innocent Smiles is a heartfelt initiative dedicated to nurturing the creative and academic potential of children, especially those from underprivileged backgrounds. The program focuses on developing talents across multiple disciplines, including <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, visual arts, dance, and singing—ensuring that each child receives the opportunity to grow both intellectually and artistically.
+                          Innocent Smiles is a heartfelt initiative by AIM Foundation, an NGO for underprivileged children in Kolkata, dedicated to nurturing the creative and academic potential of young minds.
+                          The program focuses on holistic child development by integrating <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, art, dance, and music, ensuring that every child receives the opportunity to grow both intellectually and artistically.
                         </p>
-                        <h2 className="text-3xl md:text-4xl font-bold font-headline">A Safe Space for Every Child</h2>
+                        <h2 className="text-2xl font-bold font-headline pt-4">A Safe and Inclusive Space for Every Child</h2>
                         <p>
-                          At its core, the project creates a safe, inclusive, and encouraging environment where children can freely express themselves, discover their passions, and build self-confidence. By integrating artistic expression with strong academic foundations, Innocent Smiles promotes a holistic model of development—recognizing that true learning goes beyond textbooks.
+                          At the heart of Project Innocent Smiles lies the mission to create a safe, inclusive, and joyful environment where every child can learn, play, and dream freely.
+                          Children are encouraged to express themselves creatively, discover their passions, and build confidence through art and learning.
+                          By combining art-based education with strong academic foundations, we promote a holistic model of growth—recognizing that true learning extends beyond textbooks and nurtures imagination, empathy, and self-belief.
                         </p>
-                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Learning Through Joy and Discovery</h2>
+                        <h2 className="text-2xl font-bold font-headline pt-4">Learning Through Joy, Discovery, and Creativity</h2>
                         <p>
-                          Through thoughtfully designed activities, workshops, and mentorship, children are not only taught essential academic concepts but also guided to explore their creativity, voice their feelings, and work collaboratively. These experiences equip them with life skills such as communication, discipline, teamwork, and resilience.
+                          Through thoughtfully designed workshops, storytelling sessions, and mentorship, children explore both academic and creative dimensions.
+                          They gain essential life skills such as communication, teamwork, discipline, and resilience—empowering them to succeed in all areas of life.
+                          Our approach ensures that every learning experience is joyful and meaningful, helping each child realize their unique potential.
                         </p>
-                        <p>
-                          By investing in the potential of each child, Project Innocent Smiles aims to brighten futures, instil hope, and cultivate well-rounded individuals who can thrive in all areas of life. It’s more than a program—it’s a journey of growth, joy, and transformation for every young heart it touches.
-                        </p>
-                        <h3 className="text-2xl font-bold font-headline pt-4">You Can Make a Difference</h3>
+                        <h2 className="text-2xl font-bold font-headline pt-4">Our Impact – Empowering Children Through Art and Education</h2>
+                        <ul className="list-disc list-inside space-y-2 pl-4">
+                            <li>Supporting education for underprivileged children in Kolkata and beyond</li>
+                            <li>Conducting art, dance, and music workshops for self-expression</li>
+                            <li>Creating safe spaces for creative learning and growth</li>
+                            <li>Building a community of mentors and volunteers who inspire and guide</li>
+                            <li>Promoting child development through holistic education</li>
+                        </ul>
+                        <p>Every Innocent Smile we see is a reflection of growth, creativity, and newfound confidence.</p>
+                        <h3 className="text-xl font-bold font-headline pt-4">You Can Make a Difference</h3>
                         <p>
                           Every child deserves the chance to dream, create, and succeed—regardless of their background. Your support can help us provide art supplies, educational resources, nutritious snacks, and safe spaces for learning and expression. With your generous <Link href="/individual-donation" className="text-primary hover:underline">contribution</Link>, we can reach more children, organize more workshops, and nurture brighter, more confident futures. <strong>Donate today</strong> and become a part of a child’s journey toward joy, growth, and transformation. <strong>Because every innocent smile deserves to shine.</strong>
                         </p>
