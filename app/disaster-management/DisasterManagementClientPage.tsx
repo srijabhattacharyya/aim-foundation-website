@@ -76,7 +76,7 @@ export default function DisasterManagementClientPage() {
                   <h2 className="text-3xl md:text-4xl font-bold font-headline">Standing Strong in Times of Crisis.</h2>
                   <div className="text-lg text-muted-foreground space-y-4 text-justify">
                     <p>
-                      When disaster strikes, AIM Foundation is on the front lines, providing swift and effective relief to affected communities. Our disaster management program is designed to address the immediate needs of those impacted by natural calamities like floods, cyclones, and earthquakes, as well as other emergencies.
+                      When disaster strikes, AIM Foundation is on the front lines, providing swift and effective <Link href="/relief-to-the-underprivileged" className="text-primary hover:underline">relief</Link> to affected communities. Our disaster management program is designed to address the immediate needs of those impacted by natural calamities like floods, cyclones, and earthquakes, as well as other emergencies.
                     </p>
                     <p>
                       Our rapid response teams work tirelessly to deliver critical aid where it's needed most, ensuring that vulnerable populations receive the support necessary to survive and recover.
@@ -86,7 +86,7 @@ export default function DisasterManagementClientPage() {
                       <li>Distribution of emergency food, clean water, and hygiene kits.</li>
                       <li>Provision of temporary shelter and essential supplies like blankets and clothing.</li>
                       <li>Deployment of mobile medical units to provide first aid and essential <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>.</li>
-                      <li>Psychosocial support to help individuals cope with trauma and stress.</li>
+                      <li>Psychosocial support to help individuals and <Link href="/childcare-initiatives" className="text-primary hover:underline">children</Link> cope with trauma and stress.</li>
                     </ul>
                     <p>
                       Beyond immediate relief, we are committed to long-term recovery and resilience-building. We work with communities to rebuild infrastructure, <Link href="/gender-equality-initiative" className="text-primary hover:underline">restore livelihoods</Link>, and implement disaster preparedness programs to mitigate the impact of future crises. Our goal is not just to help people survive, but to help them rebuild their lives with dignity and hope.

@@ -81,12 +81,12 @@ export default function IgniteChangeInitiativeClientPage() {
                         <h3 className="text-2xl font-bold font-headline pt-4">Our Support Includes:</h3>
                         <ul className="list-disc list-inside space-y-2">
                             <li>Seed funding for innovative community projects.</li>
-                            <li>Volunteer recruitment and management support.</li>
+                            <li>Volunteer recruitment and management support through our <Link href="/join-us" className="text-primary hover:underline">Join Us</Link> program.</li>
                             <li>Training workshops on project management and community outreach.</li>
                             <li>A network of like-minded changemakers to share ideas and resources.</li>
                         </ul>
                         <p>
-                            Whether it's a neighbourhood cleanup drive, a local literacy program, or a campaign for public <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, Ignite Change is here to help turn passion into impactful action. We are dedicated to building a more engaged, compassionate, and proactive society from the ground up.
+                            Whether it's a neighbourhood cleanup drive, a local literacy program under our <Link href="/educational-initiatives" className="text-primary hover:underline">Educational Initiatives</Link>, or a campaign for public <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, Ignite Change is here to help turn passion into impactful action. We are dedicated to building a more engaged, compassionate, and proactive society from the ground up.
                         </p>
                         <h3 className="text-2xl font-bold font-headline pt-4">Fuel a Grassroots Movement</h3>
                         <p>

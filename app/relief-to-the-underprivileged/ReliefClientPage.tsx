@@ -76,7 +76,7 @@ export default function ReliefClientPage() {
                             Our Relief to the Underprivileged program is a cornerstone of our commitment to immediate and compassionate action. We provide essential support to individuals and families facing extreme hardship due to poverty, lack of resources, or sudden crises like <Link href="/disaster-management" className="text-primary hover:underline">disasters</Link>. This initiative is about more than just aid; it's about restoring hope and dignity.
                           </p>
                           <p>
-                            We work to address the most urgent needs of marginalized communities, including those in remote villages, urban slums, and areas often overlooked by mainstream support systems.
+                            We work to address the most urgent needs of marginalized communities, including those in remote villages served by <Link href="/cureline" className="text-primary hover:underline">CureLine</Link>, urban slums reached by <Link href="/carecircle" className="text-primary hover:underline">CareCircle</Link>, and areas often overlooked by mainstream support systems.
                           </p>
                           <h3 className="text-2xl font-bold font-headline pt-4">Our relief efforts include:</h3>
                           <ul className="list-disc list-inside space-y-2">
