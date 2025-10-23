@@ -124,7 +124,6 @@ const causeToFormComponent: Record<string, ComponentType<any>> = {
   "general": dynamic(() => import('@/components/sections/donation-forms/GeneralDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "educational": dynamic(() => import('@/components/sections/donation-forms/EducationalDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "innocent-smiles": dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { ssr: false, loading: SkeletonLoader }),
-  "inspire-edulab": dynamic(() => import('@/components/sections/donation-forms/InspireEduLabDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "eduaccess": dynamic(() => import('@/components/sections/donation-forms/EduAccessDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "empower-english": dynamic(() => import('@/components/sections/donation-forms/EmpowerEnglishDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "digiempower": dynamic(() => import('@/components/sections/donation-forms/DigiEmpowerDonationForm'), { ssr: false, loading: SkeletonLoader }),
@@ -338,3 +337,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+    
