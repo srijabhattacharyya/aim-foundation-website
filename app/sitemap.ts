@@ -79,6 +79,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/relief-to-the-underprivileged',
     '/roots-of-change',
     '/safeguarding-policy',
+    '/sheconnects',
     '/sighthope',
     '/soulcircle',
     '/suidhaga',

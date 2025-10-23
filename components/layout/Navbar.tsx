@@ -59,6 +59,7 @@ const navLinks: NavItem[] = [
         { href: '/eduaccess', label: 'EduAccess' },
         { href: '/empower-english', label: 'Empower English'},
         { href: '/digiempower', label: 'DigiEmpower' },
+        { href: '/sheconnects', label: 'SheConnects' },
         { href: '/milieu', label: 'Milieu' },
         { href: '/vidyashakti', label: 'VidyaShakti' },
       ]},
@@ -73,6 +74,7 @@ const navLinks: NavItem[] = [
         { href: '/soulcircle', label: 'SoulCircle' },
       ]},
       { label: 'Gender Equality Initiative', isSubDropdown: true, href: '/gender-equality-initiative', subItems: [
+        { href: '/sheconnects', label: 'SheConnects' },
         { href: '/cyclesafe', label: 'CycleSafe' },
         { href: '/detect', label: 'Detect' },
         { href: '/suidhaga', label: 'SuiDhaga' },
@@ -127,6 +129,7 @@ const causeToFormComponent: Record<string, ComponentType<any>> = {
   "eduaccess": dynamic(() => import('@/components/sections/donation-forms/EduAccessDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "empower-english": dynamic(() => import('@/components/sections/donation-forms/EmpowerEnglishDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "digiempower": dynamic(() => import('@/components/sections/donation-forms/DigiEmpowerDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "sheconnects": dynamic(() => import('@/components/sections/donation-forms/SheConnectsDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "milieu": dynamic(() => import('@/components/sections/donation-forms/MilieuDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "vidyashakti": dynamic(() => import('@/components/sections/donation-forms/VidyaShaktiDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "healthcare": dynamic(() => import('@/components/sections/donation-forms/HealthcareDonationForm'), { ssr: false, loading: SkeletonLoader }),

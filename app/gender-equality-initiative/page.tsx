@@ -57,6 +57,13 @@ export const metadata: Metadata = {
 
 const initiatives = [
   {
+    title: "SheConnects",
+    description: "Empowers adolescent girls and young women with digital and financial literacy, fostering independence, confidence, and leadership skills.",
+    image: "/images/projects/sheconnects/sheconnects1.avif",
+    hint: "digital literacy girls",
+    link: "/sheconnects?from=gender-equality"
+  },
+  {
     title: "CycleSafe",
     description: "Promotes menstrual hygiene and reproductive health for adolescent girls in and around Kolkata, fostering confidence and dignity.",
     image: "/images/projects/cyclesafe/cyclesafe3.avif",
