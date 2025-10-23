@@ -147,7 +147,7 @@ export default function EducationalInitiativesPage() {
               We are committed to breaking down barriers to education and fostering a lifelong love of learning through our various programs in <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link> and <Link href="/sustainability-initiatives" className="text-primary hover:underline">sustainability</Link>.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {initiatives.map((item, index) => (
               <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                 <div className="relative w-full h-48">

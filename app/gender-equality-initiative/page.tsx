@@ -57,13 +57,6 @@ export const metadata: Metadata = {
 
 const initiatives = [
   {
-    title: "SheConnects",
-    description: "Empowers adolescent girls and young women with digital and financial literacy, fostering independence, confidence, and leadership skills.",
-    image: "/images/projects/sheconnects/sheconnects1.avif",
-    hint: "digital literacy girls",
-    link: "/sheconnects?from=gender-equality"
-  },
-  {
     title: "CycleSafe",
     description: "Promotes menstrual hygiene and reproductive health for adolescent girls in and around Kolkata, fostering confidence and dignity.",
     image: "/images/projects/cyclesafe/cyclesafe3.avif",
@@ -151,7 +144,7 @@ export default function GenderEqualityInitiativesPage() {
                   We believe that empowering women and girls is essential for building a just, prosperous, and compassionate society. Our programs focus on <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, livelihood, and dignity.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {initiatives.map((item, index) => (
                   <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                     <div className="relative w-full h-48">

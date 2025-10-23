@@ -18,7 +18,6 @@ const DynamicDonationForm = dynamic(() => import('@/components/sections/donation
 });
 
 const genderEqualityInitiatives = [
-    { href: '/sheconnects?from=gender-equality', label: 'SheConnects' },
     { href: '/cyclesafe?from=gender-equality', label: 'CycleSafe' },
     { href: '/detect?from=gender-equality', label: 'Detect' },
     { href: '/suidhaga?from=gender-equality', label: 'SuiDhaga' },

@@ -55,7 +55,6 @@ const educationalInitiatives: Initiative[] = [
   { value: "eduaccess", label: "EduAccess" },
   { value: "empower-english", label: "Empower English" },
   { value: "digiempower", label: "DigiEmpower" },
-  { value: "sheconnects", label: "SheConnects" },
   { value: "milieu", label: "Milieu" },
   { value: "vidyashakti", label: "VidyaShakti" },
 ];
@@ -74,7 +73,6 @@ const healthcareInitiatives: Initiative[] = [
 
 const genderEqualityInitiatives: Initiative[] = [
   { value: "gender-equality-general", label: "General Donation to support Gender Equality Initiatives" },
-  { value: "sheconnects", label: "SheConnects" },
   { value: "cyclesafe", label: "CycleSafe" },
   { value: "detect", label: "Detect" },
   { value: "suidhaga", label: "SuiDhaga" },
