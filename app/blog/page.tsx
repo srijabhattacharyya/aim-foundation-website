@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Navbar from "@/components/layout/Navbar";
@@ -204,7 +203,7 @@ export default function BlogPage() {
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold font-headline">Voices of Change</h1>
               <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                Stay close to the change you’re helping spark. Discover stories, reflections, and milestones from our journey of hope.
+                Stay close to the change you’re helping spark. Discover stories, reflections, and milestones from our journey of hope. Read about our work in <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>, <Link href="/sustainability-initiatives" className="text-primary hover:underline">sustainability</Link>, and <Link href="/gender-equality-initiative" className="text-primary hover:underline">women empowerment</Link>.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -241,7 +240,3 @@ export default function BlogPage() {
     </div>
   );
 }
-
-    
-
-    

@@ -94,7 +94,7 @@ export default function CareCircleBlogPage() {
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
 
                 <p>
-                  In the bustling metropolis of Kolkata—where the hum of traffic, the call of street vendors, and the rhythm of daily life form a vivid urban symphony—there exists another, quieter reality. In the narrow lanes and forgotten neighborhoods, countless individuals struggle daily for access to the most basic healthcare. That’s where <strong>CareCircle by AIM Foundation</strong> steps in.
+                  In the bustling metropolis of Kolkata—where the hum of traffic, the call of street vendors, and the rhythm of daily life form a vivid urban symphony—there exists another, quieter reality. In the narrow lanes and forgotten neighborhoods, countless individuals struggle daily for access to the most basic <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>. That’s where <strong><Link href="/carecircle" className="text-primary hover:underline">CareCircle by AIM Foundation</Link></strong> steps in.
                 </p>
 
                 <p>
@@ -115,7 +115,7 @@ export default function CareCircleBlogPage() {
                 {/* --- Final CTA --- */}
                 <div className="text-center pt-8">
                   <p className="text-2xl font-semibold text-primary font-headline flex items-center justify-center gap-2">
-                    <HeartPulse /> Donate to CareCircle today and bring healing to the heart of the city.
+                    <HeartPulse /> Donate to <Link href="/carecircle" className="text-primary hover:underline">CareCircle</Link> today and bring healing to the heart of the city.
                   </p>
                   <div className="mt-4 flex gap-4 justify-center">
                     <Button asChild><Link href="/carecircle">Donate</Link></Button>

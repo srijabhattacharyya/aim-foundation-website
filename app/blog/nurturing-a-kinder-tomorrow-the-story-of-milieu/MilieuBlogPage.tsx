@@ -51,7 +51,7 @@ export default function MilieuBlogPage() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <p>
-                  In a divided world, where children often grow up in social bubbles, <strong>Milieu by AIM Foundation</strong> is creating safe, inclusive spaces where empathy, awareness, and friendship flourish. By bringing together children from privileged schools and underserved communities, Milieu helps shape conscious citizens who learn to see beyond economic, cultural, and social differences.
+                  In a divided world, where children often grow up in social bubbles, <strong><Link href="/milieu" className="text-primary hover:underline">Milieu by AIM Foundation</Link></strong> is creating safe, inclusive spaces where empathy, awareness, and friendship flourish. By bringing together children from privileged schools and underserved communities, Milieu helps shape conscious citizens who learn to see beyond economic, cultural, and social differences.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Beyond Books: Where Learning Meets Humanity</h2>
@@ -104,7 +104,7 @@ export default function MilieuBlogPage() {
                   Milieu proves that children don’t need to be taught to care—they only need the chance to connect. When given the opportunity, they listen, laugh, learn, and lead—with open hearts and open minds.
                 </p>
                 <p>
-                  Help us create more spaces where children grow together—beyond class, beyond color, beyond boundaries.
+                  Help us create more spaces where <Link href="/childcare-initiatives" className="text-primary hover:underline">children grow</Link> together—beyond class, beyond color, beyond boundaries.
                   Support Milieu. Nurture empathy. Build a future stitched with unity.
                 </p>
                 
