@@ -20,19 +20,19 @@ const InfoSection = () => {
             </p>
           </div>
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
-             <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105" asChild>
+             <Button size="lg" variant="link" className="transition-transform transform hover:scale-105" asChild>
                 <Link href="/volunteering">Join Volunteer</Link>
             </Button>
-            <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105" asChild>
+            <Button size="lg" variant="link" className="transition-transform transform hover:scale-105" asChild>
                 <Link href="/internship">Join Intern</Link>
             </Button>
-            <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105" asChild>
+            <Button size="lg" variant="link" className="transition-transform transform hover:scale-105" asChild>
                 <Link href="/corporate-social-responsibility">CSR</Link>
             </Button>
-            <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105" asChild>
+            <Button size="lg" variant="link" className="transition-transform transform hover:scale-105" asChild>
                 <Link href="/cause-marketing-events">Cause Marketing</Link>
             </Button>
-            <Button size="lg" variant="outline" className="transition-transform transform hover:scale-105" asChild>
+            <Button size="lg" variant="link" className="transition-transform transform hover:scale-105" asChild>
                 <Link href="/payroll-giving">Payroll Giving</Link>
             </Button>
             <Link href="https://www.youtube.com/watch?v=sG3BRIdRI3k" target="_blank" rel="noopener noreferrer">
