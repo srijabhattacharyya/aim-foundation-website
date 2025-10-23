@@ -2,7 +2,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aim-foundation-hub.vercel.app';
+  const baseUrl = 'https://www.aimindia.org.in';
 
   const staticPages = [
     '/',
