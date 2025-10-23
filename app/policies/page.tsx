@@ -61,6 +61,11 @@ const policies = [
     content: "AIM Foundation’s website uses cookies to enhance user experience, analyse traffic, and enable essential functions. No personal data is collected or shared. Users can manage cookie preferences via browser settings. Continued use of the site implies consent to this policy.",
      link: "/cookie-policy"
   },
+  {
+    title: "Shipping Policy",
+    content: "AIM Foundation is a non-profit and does not sell or ship physical goods. This policy clarifies that all online transactions are voluntary contributions, with receipts delivered electronically.",
+    link: "/shipping-policy"
+  }
 ];
 
 export default function PoliciesPage() {
