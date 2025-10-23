@@ -41,10 +41,10 @@ export default function DetectBlogPage() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <p>
-                  In the quiet corners of rural India, where women silently shoulder the burdens of family, fields, and society, an invisible danger lurks—cervical cancer. It’s a disease that whispers before it strikes, often going unnoticed until it’s too late. And for millions of rural women who have never visited a gynaecologist, the danger grows every day.
+                  In the quiet corners of rural India, where <Link href="/gender-equality-initiative" className="text-primary hover:underline">women</Link> silently shoulder the burdens of family, fields, and society, an invisible danger lurks—cervical cancer. It’s a disease that whispers before it strikes, often going unnoticed until it’s too late. And for millions of rural women who have never visited a gynaecologist, the danger grows every day.
                 </p>
                 <p>
-                  But what if this silent killer could be caught early? What if one screening, one conversation, or one awareness session could save her life? This is the heartbeat of <strong>Project Detect</strong>—an initiative by AIM Foundation that’s reaching women before cancer does. By bringing critical screening services and reproductive health education to underserved regions, Detect is doing what was once unthinkable: <strong>catching cancer before it catches her.</strong>
+                  But what if this silent killer could be caught early? What if one screening, one conversation, or one awareness session could save her life? This is the heartbeat of <strong><Link href="/detect" className="text-primary hover:underline">Project Detect</Link></strong>—an initiative by AIM Foundation that’s reaching women before cancer does. By bringing critical screening services and reproductive <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link> education to underserved regions, Detect is doing what was once unthinkable: <strong>catching cancer before it catches her.</strong>
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Unseen Threat: Cervical Cancer in Rural India</h2>
@@ -58,7 +58,7 @@ export default function DetectBlogPage() {
                   <li>Limited or no access to female doctors or screening facilities</li>
                   <li>Fear, shame, and misinformation</li>
                 </ul>
-                <p>In rural India, a woman might ignore bleeding, discharge, or pain for months—sometimes years—before seeking help. And by then, it’s often too late. That’s where Detect steps in.</p>
+                <p>In rural India, a woman might ignore bleeding, discharge, or pain for months—sometimes years—before seeking help. And by then, it’s often too late. That’s where <Link href="/detect" className="text-primary hover:underline">Detect</Link> steps in.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">A Lifeline in the Villages: What Project Detect Does</h2>
                 <p>
@@ -102,7 +102,7 @@ export default function DetectBlogPage() {
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Real Stories. Real Impact.</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Sabita’s Second Chance</h3>
-                <p>Sabita Devi, a 39-year-old farm labourer, attended a Detect camp out of curiosity. During screening, early signs of cervical cell changes were spotted. She was referred for further tests and treated before cancer could take hold. “I didn’t know I was sick. They told me in time. I feel like I’ve been given a new life,” she says.</p>
+                <p>Sabita Devi, a 39-year-old farm labourer, attended a <Link href="/detect" className="text-primary hover:underline">Detect</Link> camp out of curiosity. During screening, early signs of cervical cell changes were spotted. She was referred for further tests and treated before cancer could take hold. “I didn’t know I was sick. They told me in time. I feel like I’ve been given a new life,” she says.</p>
 
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Mina Becomes a Health Champion</h3>
                 <p>Mina, an ASHA worker, participated in a training session by AIM Foundation and CNCI. Armed with new knowledge, she began visiting homes in her village—explaining cervical cancer in simple terms and convincing women to attend camps. “Before, even I was afraid to talk about these things. Now I help other women understand their bodies,” Mina proudly shares.</p>
@@ -119,7 +119,7 @@ export default function DetectBlogPage() {
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">How You Can Help: Your ₹500 Could Save a Life</h2>
-                  <p className="mt-4">Too many women are dying of a disease that is preventable. Your contribution can change that.</p>
+                  <p className="mt-4">Too many women are dying of a disease that is preventable. Your <Link href="/individual-donation" className="text-primary hover:underline">contribution</Link> can change that.</p>
                   <ul className="list-none space-y-2 mt-4">
                     <li>₹500 funds one cervical cancer screening</li>
                     <li>₹2,000 trains a frontline health worker</li>
@@ -133,7 +133,7 @@ export default function DetectBlogPage() {
                 </div>
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Bigger Picture: Not Just Saving Lives—Changing Culture</h2>
-                <p>Cervical cancer may be the starting point—but Project Detect is changing the cultural narrative around women’s health. It’s building a generation of informed women who ask questions, demand care, talk to their daughters, and visit clinics without fear. It’s also encouraging men to support their wives’ health, breaking the myth that reproductive health is only a “woman’s issue.” This cultural shift—slow, quiet, but powerful—is the true legacy of Project Detect.</p>
+                <p>Cervical cancer may be the starting point—but Project Detect is changing the cultural narrative around <Link href="/gender-equality-initiative" className="text-primary hover:underline">women's health</Link>. It’s building a generation of informed women who ask questions, demand care, talk to their daughters, and visit clinics without fear. It’s also encouraging men to support their wives’ health, breaking the myth that reproductive health is only a “woman’s issue.” This cultural shift—slow, quiet, but powerful—is the true legacy of Project Detect.</p>
                 
                 <div className="text-center pt-8">
                     <p className="text-2xl font-semibold text-primary font-headline flex items-center justify-center gap-2">

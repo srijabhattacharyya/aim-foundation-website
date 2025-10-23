@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -51,17 +52,17 @@ export default function MilieuBlogPage() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <p>
-                  In a divided world, where children often grow up in social bubbles, <strong><Link href="/milieu" className="text-primary hover:underline">Milieu by AIM Foundation</Link></strong> is creating safe, inclusive spaces where empathy, awareness, and friendship flourish. By bringing together children from privileged schools and underserved communities, Milieu helps shape conscious citizens who learn to see beyond economic, cultural, and social differences.
+                  In a divided world, where children often grow up in social bubbles, <strong><Link href="/milieu" className="text-primary hover:underline">Milieu by AIM Foundation</Link></strong> is creating safe, inclusive spaces where empathy, awareness, and friendship flourish. By bringing together <Link href="/childcare-initiatives" className="text-primary hover:underline">children</Link> from privileged schools and underserved communities, Milieu helps shape conscious citizens who learn to see beyond economic, cultural, and social differences.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Beyond Books: Where Learning Meets Humanity</h2>
                 <p>
-                  Classrooms teach math, science, and grammar—but where do children learn empathy, respect, and inclusion? Milieu answers this gap by offering real-world <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> that goes beyond textbooks and into the hearts and minds of children.
+                  Classrooms teach math, science, and grammar—but where do children learn empathy, respect, and inclusion? <Link href="/milieu" className="text-primary hover:underline">Milieu</Link> answers this gap by offering real-world <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> that goes beyond textbooks and into the hearts and minds of children.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Bridging the Divide: Why Milieu Was Born</h2>
                 <p>
-                  Too often, children from different social backgrounds grow up without ever meaningfully interacting. This lack of exposure fuels stereotypes and unconscious bias. Milieu breaks this pattern early—creating safe spaces for connection and learning across differences.
+                  Too often, children from different social backgrounds grow up without ever meaningfully interacting. This lack of exposure fuels stereotypes and unconscious bias. <Link href="/milieu" className="text-primary hover:underline">Milieu</Link> breaks this pattern early—creating safe spaces for connection and learning across differences.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">A Day in Milieu: How Change Begins with a Smile</h2>
@@ -71,7 +72,7 @@ export default function MilieuBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Breaking Barriers, Building Bonds: Stories from the Heart</h2>
                 <p>
-                    Real transformation happens when children open up and connect. From Arjun’s awakening to Tapan’s resilience, and Meena finding her voice, these stories show how Milieu touches lives and rewrites narratives.
+                    Real transformation happens when children open up and connect. From Arjun’s awakening to Tapan’s resilience, and Meena finding her voice, these stories show how <Link href="/milieu" className="text-primary hover:underline">Milieu</Link> touches lives and rewrites narratives.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">What Makes Milieu Different: The Values We Weave</h2>
@@ -86,7 +87,7 @@ export default function MilieuBlogPage() {
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Your Role in the Story: Support Learning Without Boundaries</h2>
-                  <p className="mt-4 font-semibold">Your support can fund:</p>
+                  <p className="mt-4 font-semibold">Your <Link href="/individual-donation" className="text-primary hover:underline">support</Link> can fund:</p>
                   <ul className="list-none space-y-2 mt-2">
                     <li>🚍 Transport for children from underserved areas</li>
                     <li>🎨 Creative materials for interactive learning</li>

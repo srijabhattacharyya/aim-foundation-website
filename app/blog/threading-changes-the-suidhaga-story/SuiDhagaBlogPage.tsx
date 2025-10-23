@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -40,7 +41,7 @@ export default function SuiDhagaBlogPage() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <p>
-                  In a world full of noise, the soft hum of a sewing machine can seem almost unremarkable. But for many women across India’s underserved communities, that hum represents something powerful: transformation. It’s not just about tailoring—it’s about threading change into the fabric of everyday life. Through its unique initiative <strong>SuiDhaga</strong>, AIM Foundation is doing just that—threading changes that empower women, stitch dignity into livelihoods, and create new patterns of possibility.
+                  In a world full of noise, the soft hum of a sewing machine can seem almost unremarkable. But for many <Link href="/gender-equality-initiative" className="text-primary hover:underline">women</Link> across India’s underserved communities, that hum represents something powerful: transformation. It’s not just about tailoring—it’s about threading change into the fabric of everyday life. Through its unique initiative <strong><Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link></strong>, AIM Foundation is doing just that—threading changes that empower women, stitch dignity into livelihoods, and create new patterns of possibility.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">A Needle, A Thread, A New Beginning</h2>
@@ -75,7 +76,7 @@ export default function SuiDhagaBlogPage() {
                   India is home to millions of women who, despite their capabilities, are locked out of formal employment. Gender bias, low education levels, and family responsibilities often keep them confined to domestic spaces. But what if those very domestic skills—like stitching, hemming, and embroidery—could become sources of empowerment?
                 </p>
                 <p>
-                  That’s the essence of threading change. SuiDhaga turns familiar, culturally rooted practices into meaningful income opportunities. It doesn’t impose a foreign concept of success—it enhances what already exists in women’s hands and homes.
+                  That’s the essence of threading change. <Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link> turns familiar, culturally rooted practices into meaningful income opportunities. It doesn’t impose a foreign concept of success—it enhances what already exists in women’s hands and homes.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Inside the Program: How Change Is Threaded</h2>
@@ -148,7 +149,7 @@ export default function SuiDhagaBlogPage() {
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Hold the Thread That Changes a Life</h2>
-                  <p className="mt-4">We often look for big ways to create change. But sometimes, change starts with something small—a needle, a thread, a stitch. When you support SuiDhaga, you support a woman’s journey from silence to self-reliance.</p>
+                  <p className="mt-4">We often look for big ways to create change. But sometimes, change starts with something small—a needle, a thread, a stitch. When you support <Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link>, you support a woman’s journey from silence to self-reliance.</p>
                   <p className="mt-4 font-semibold">How You Can Help:</p>
                   <ul className="list-none space-y-2 mt-2">
                     <li>₹2,000 can cover training materials for one woman.</li>
@@ -163,7 +164,7 @@ export default function SuiDhagaBlogPage() {
                 </div>
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Looking Ahead: Stitching a Movement</h2>
-                <p>The SuiDhaga program is more than a skill development initiative—it’s a movement for economic dignity, gender equity, and grassroots transformation. As AIM Foundation expands its reach, the goal is to open more centres, train thousands of women, and weave change into the very social fabric of the communities we serve.</p>
+                <p>The <Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link> program is more than a skill development initiative—it’s a movement for economic dignity, gender equity, and grassroots transformation. As AIM Foundation expands its reach, the goal is to open more centres, train thousands of women, and weave change into the very social fabric of the communities we serve.</p>
                 <p>Every time a woman learns to sew, she’s not just making a blouse—she’s making history. She’s threading her name into the future of her family. She’s reshaping her role in society. She’s claiming her space in the story of India’s development.</p>
                 <p>And you can be a part of that story.</p>
                 

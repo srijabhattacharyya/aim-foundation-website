@@ -41,11 +41,11 @@ export default function EduAccessBlogPage() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <p>
-                  In today’s interconnected world, education has the power to break cycles of poverty, open doors to opportunities, and ignite a lifetime of learning. But while technology has transformed classrooms in cities, millions of children in rural India still sit in classrooms where resources are scarce and quality teachers are a distant dream.
+                  In today’s interconnected world, <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> has the power to break cycles of poverty, open doors to opportunities, and ignite a lifetime of learning. But while technology has transformed classrooms in cities, millions of children in rural India still sit in classrooms where resources are scarce and quality teachers are a distant dream.
                 </p>
-                <p><strong>This is the reality EduAccess seeks to change.</strong></p>
+                <p><strong>This is the reality <Link href="/eduaccess" className="text-primary hover:underline">EduAccess</Link> seeks to change.</strong></p>
                 <p>
-                  Supported by Dhritiman Abilizing Infinity Foundation, EduAccess is redefining how children in rural West Bengal learn. Through expert-led online classes streamed from a state-of-the-art studio in Kolkata, we connect some of the best educators with students who might otherwise never get the chance to learn from them.
+                  Supported by Dhritiman Abilizing Infinity Foundation, <Link href="/eduaccess" className="text-primary hover:underline">EduAccess</Link> is redefining how children in rural West Bengal learn. Through expert-led online classes streamed from a state-of-the-art studio in Kolkata, we connect some of the best educators with students who might otherwise never get the chance to learn from them.
                 </p>
                 <p>
                   The result? A classroom without borders — where knowledge travels faster than roads can be built, and where dreams no longer have to wait for infrastructure to catch up.
@@ -60,7 +60,7 @@ export default function EduAccessBlogPage() {
                   <li>Economic hardship forces many children to drop out early.</li>
                 </ul>
                 <p>
-                  Even the most eager and capable students are limited by circumstances beyond their control. They may have the talent and drive to excel, but without access to quality education, their potential remains untapped.
+                  Even the most eager and capable students are limited by circumstances beyond their control. They may have the talent and drive to excel, but without access to quality <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, their potential remains untapped.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">EduAccess: A Bridge Between Talent and Opportunity</h2>
@@ -73,7 +73,7 @@ export default function EduAccessBlogPage() {
                 </ul>
                 <p>Our subjects include:</p>
                  <ul className="list-disc list-inside space-y-2 pl-4">
-                  <li>English – building communication skills critical for higher education and jobs.</li>
+                  <li><Link href="/empower-english" className="text-primary hover:underline">English</Link> – building communication skills critical for higher education and jobs.</li>
                   <li>Mathematics – teaching logical thinking and problem-solving.</li>
                   <li>Science – sparking curiosity about the world and its possibilities.</li>
                 </ul>
@@ -106,7 +106,7 @@ export default function EduAccessBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">A Day in the Life of an EduAccess Student</h2>
                 <p>Meet Soham, a 14-year-old from a village near Purulia.</p>
-                <p>Before EduAccess, Soham struggled in English and Science. His school had dedicated teachers, but they were stretched thin, and specialized subjects often suffered. Today:</p>
+                <p>Before <Link href="/eduaccess" className="text-primary hover:underline">EduAccess</Link>, Soham struggled in English and Science. His school had dedicated teachers, but they were stretched thin, and specialized subjects often suffered. Today:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>Soham logs in for his EduAccess class three times a week.</li>
                     <li>He participates in group discussions about global warming, watching videos that explain climate change in ways a textbook never could.</li>
@@ -133,7 +133,7 @@ export default function EduAccessBlogPage() {
                 <p>In a competitive global economy, these skills are non-negotiable.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Scaling for Greater Impact</h2>
-                <p>Currently, EduAccess serves several rural schools in West Bengal, but the need is enormous. There are hundreds of villages where children have never interacted with a subject expert, never seen a science experiment outside of a textbook, and never been encouraged to ask “Why?” or “How?”</p>
+                <p>Currently, <Link href="/eduaccess" className="text-primary hover:underline">EduAccess</Link> serves several rural schools in West Bengal, but the need is enormous. There are hundreds of villages where children have never interacted with a subject expert, never seen a science experiment outside of a textbook, and never been encouraged to ask “Why?” or “How?”</p>
                 <p>With more support, we can:</p>
                  <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>Expand to more schools and districts.</li>
@@ -157,11 +157,11 @@ export default function EduAccessBlogPage() {
                 </blockquote>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Vision Ahead</h2>
-                <p>We dream of a day when no child’s education is limited by their postal code. With every new school we connect, we move closer to that reality. EduAccess is proof that technology, when used with purpose, can create equity in education.</p>
+                <p>We dream of a day when no child’s education is limited by their postal code. With every new school we connect, we move closer to that reality. <Link href="/eduaccess" className="text-primary hover:underline">EduAccess</Link> is proof that technology, when used with purpose, can create equity in education.</p>
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">How You Can Help</h2>
-                  <p className="mt-4">Your donation can make a direct, measurable impact:</p>
+                  <p className="mt-4">Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> can make a direct, measurable impact:</p>
                    <ul className="list-none space-y-2 mt-4">
                     <li>₹500 – Provides internet access for a rural school for one month.</li>
                     <li>₹2,000 – Covers the cost of streaming equipment for a classroom.</li>
