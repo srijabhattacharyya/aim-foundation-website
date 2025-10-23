@@ -55,12 +55,12 @@ export default function IgniteChangeBlogPage() {
                   When we think of change, we often imagine sweeping reforms, large-scale policies, or billion-dollar projects. But history tells a different story — one where transformations often begin with a spark in the heart of a single individual or a small group of determined people. This is the story of grassroots action — the power of communities rising to solve their own problems, creating ripples that grow into waves of lasting change.
                 </p>
                 <p>
-                  At AIM Foundation, our <strong>Ignite Change Initiative</strong> is designed to capture that spark and turn it into a movement. We believe that every person can be a changemaker, and with the right tools, resources, and support, communities can create solutions that are not only effective but deeply rooted in local realities.
+                  At AIM Foundation, our <strong><Link href="/ignite-change-initiative" className="text-primary hover:underline">Ignite Change Initiative</Link></strong> is designed to capture that spark and turn it into a movement. We believe that every person can be a changemaker, and with the right tools, resources, and support, communities can create solutions that are not only effective but deeply rooted in local realities.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Power of Grassroots Action</h2>
                 <p>
-                  Grassroots action is more than just community involvement — it is community leadership. It’s about people stepping up to take ownership of their challenges and solutions. Whether it’s a group of women starting a self-help group to improve <Link href="/gender-equality-initiative" className="text-primary hover:underline">livelihoods</Link>, youth launching an <Link href="/sustainability-initiatives" className="text-primary hover:underline">environmental awareness campaign</Link>, or a neighbourhood banding together to clean up their local park, grassroots initiatives are driven by those who live and breathe the issues every day.
+                  Grassroots action is more than just community involvement — it is community leadership. It’s about people stepping up to take ownership of their challenges and solutions. Whether it’s a group of <Link href="/gender-equality-initiative" className="text-primary hover:underline">women</Link> starting a self-help group to improve livelihoods, youth launching an <Link href="/sustainability-initiatives" className="text-primary hover:underline">environmental awareness campaign</Link>, or a neighbourhood banding together to clean up their local park, grassroots initiatives are driven by those who live and breathe the issues every day.
                 </p>
                 <p>The power of grassroots action lies in its authenticity and immediacy:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
@@ -88,9 +88,9 @@ export default function IgniteChangeBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories of Transformation</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Cleaning the Shores, One Bag at a Time</h3>
-                <p>In a small riverside community, plastic waste had become a daily sight. With seed funding from Ignite Change, a youth group launched a “Clean Shores” campaign. They began with weekly clean-ups and expanded to create eco-education programs in local schools. Within a year, waste levels dropped significantly, and the project inspired nearby towns to start their own clean-up drives.</p>
+                <p>In a small riverside community, plastic waste had become a daily sight. With seed funding from <Link href="/ignite-change-initiative" className="text-primary hover:underline">Ignite Change</Link>, a youth group launched a “Clean Shores” campaign. They began with weekly clean-ups and expanded to create <Link href="/educational-initiatives" className="text-primary hover:underline">eco-education programs</Link> in local schools. Within a year, waste levels dropped significantly, and the project inspired nearby towns to start their own clean-up drives.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Women Weaving a New Future</h3>
-                <p>In a rural village, a group of skilled women weavers struggled to sell their products beyond the local market. Through Ignite Change, they received training in digital marketing and small business management. They launched an online store, reaching customers across the state. The income boost helped pay for children’s education and reinvestment into community projects.</p>
+                <p>In a rural village, a group of skilled women weavers struggled to sell their products beyond the local market. Through <Link href="/ignite-change-initiative" className="text-primary hover:underline">Ignite Change</Link>, they received training in digital marketing and small business management. They launched an online store, reaching customers across the state. The income boost helped pay for <Link href="/childcare-initiatives" className="text-primary hover:underline">children’s education</Link> and reinvestment into community projects.</p>
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why Small Actions Matter</h2>
                 <p>
@@ -100,7 +100,7 @@ export default function IgniteChangeBlogPage() {
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Be the Spark. Fuel the Movement.</h2>
                   <p className="mt-4">
-                    Change doesn’t have to wait for someone else to start it. It can begin with you, here, today. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> to the Ignite Change Initiative can fund a community-led health campaign, provide training to rural entrepreneurs, or supply tools for an environmental clean-up.
+                    Change doesn’t have to wait for someone else to start it. It can begin with you, here, today. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> to the <Link href="/ignite-change-initiative" className="text-primary hover:underline">Ignite Change Initiative</Link> can fund a community-led health campaign, provide training to rural entrepreneurs, or supply tools for an environmental clean-up.
                   </p>
                   <Button asChild size="lg" className="mt-6 transition-transform transform hover:scale-105">
                     <Link href="/ignite-change-initiative">Support a Changemaker</Link>
