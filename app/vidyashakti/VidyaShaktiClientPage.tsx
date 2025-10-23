@@ -73,7 +73,7 @@ export default function VidyaShaktiClientPage() {
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">When Teachers Aren’t Nearby, VidyaShakti Is!</h2>
                         <div className="text-lg text-muted-foreground space-y-4 text-justify">
                            <p>
-                            <Link href="https://vidyashakti.aimindia.org.in/" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">VidyaShakti</Link> is a multilingual educational app designed to support rural children and first-generation learners. While it may not be possible to provide quality teachers in every village, the widespread availability of smartphones and internet connectivity has opened new doors for accessible learning.
+                            <Link href="https://vidyashakti.aimindia.org.in/" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">VidyaShakti</Link> is a multilingual <Link href="/educational-initiatives" className="text-primary hover:underline">educational</Link> app designed to support rural children and first-generation learners. While it may not be possible to provide quality teachers in every village, the widespread availability of smartphones and internet connectivity has opened new doors for accessible learning.
                           </p>
                           <p>
                             Through VidyaShakti, students from Class 5 to Class 12 can ask any academic question and receive AI-generated answers tailored to their class level and comprehension ability. What sets the app apart is its ability to deliver explanations in the student’s preferred language, ensuring clarity and better understanding.
@@ -86,7 +86,7 @@ export default function VidyaShaktiClientPage() {
                           </p>
                           <h3 className="text-2xl font-bold font-headline pt-4">Put the Power of Learning in a Child’s Hands</h3>
                           <p>
-                            In many rural homes, a smartphone is the only classroom a child can access. <strong>Your donation can help us expand VidyaShakti</strong>—bringing AI-powered, multilingual learning to more remote students who lack quality teaching support. With just a click, a child can ask questions, receive tailored answers in their own language, and build the confidence to learn independently. <strong>Support VidyaShakti today</strong>, and help transform a mobile device into a gateway of hope, knowledge, and opportunity for first-generation learners across rural India.
+                            In many rural homes, a smartphone is the only classroom a child can access. <strong>Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> can help us expand VidyaShakti</strong>—bringing AI-powered, multilingual learning to more remote students who lack quality teaching support. With just a click, a child can ask questions, receive tailored answers in their own language, and build the confidence to learn independently. <strong>Support VidyaShakti today</strong>, and help transform a mobile device into a gateway of hope, knowledge, and opportunity for first-generation learners across rural India.
                           </p>
                            <div className="mt-8">
                             <Button asChild>

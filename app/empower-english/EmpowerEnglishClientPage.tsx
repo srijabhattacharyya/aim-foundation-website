@@ -10,6 +10,7 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from 'next/link';
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/EmpowerEnglishDonationForm'), { 
     ssr: false,
@@ -75,7 +76,7 @@ export default function EmpowerEnglishClientPage() {
                             Empower English is a transformative initiative by the AIM Foundation that offers spoken English training to students from underserved communities in Kolkata, Purba Bardhaman, and Jalpaiguri. Recognizing the critical role of language in shaping academic and professional success, the program is designed to strengthen students’ communication skills and boost their self-confidence.
                         </p>
                         <p>
-                            Many students in these regions face challenges due to a lack of exposure to proficient English instruction. Empower English bridges this gap by providing structured, interactive learning sessions that focus on practical speaking, listening, and comprehension skills. These classes help students express themselves more clearly, participate actively in their education, and prepare for future career opportunities.
+                            Many students in these regions face challenges due to a lack of exposure to proficient English instruction. Empower English bridges this gap by providing structured, interactive learning sessions that focus on practical speaking, listening, and comprehension skills. These classes help students express themselves more clearly, participate actively in their <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, and prepare for future career opportunities.
                         </p>
                         <p>
                             The initiative not only improves language proficiency but also fosters a sense of self-assurance, enabling students to engage more fully in classrooms, interviews, and everyday conversations. By equipping them with essential communication tools, Empower English opens doors to higher education, employment, and social mobility.
@@ -85,7 +86,7 @@ export default function EmpowerEnglishClientPage() {
                         </p>
                         <h3 className="text-2xl font-bold font-headline pt-4">Give a Voice to Their Dreams</h3>
                         <p>
-                            For many students in underserved communities, learning English isn’t just about language—it’s about confidence, opportunity, and belonging. <strong>Your donation can help provide trained instructors, learning materials, and digital access</strong> so these students can speak up, stand out, and succeed. Whether it’s for a college interview, a job application, or simply being heard in the classroom, every word they learn is a step toward a brighter future. <strong>Support Empower English today</strong>—and <strong>help unlock the power of communication for those who need it most.</strong>
+                            For many students in underserved communities, learning English isn’t just about language—it’s about confidence, opportunity, and belonging. <strong>Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> can help provide trained instructors, learning materials, and digital access</strong> so these students can speak up, stand out, and succeed. Whether it’s for a college interview, a job application, or simply being heard in the classroom, every word they learn is a step toward a brighter future. <strong>Support Empower English today</strong>—and <strong>help unlock the power of communication for those who need it most.</strong>
                         </p>
                         </div>
                     </div>

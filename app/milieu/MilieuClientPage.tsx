@@ -11,6 +11,7 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 const DynamicDonationForm = dynamic(() => import('../../components/sections/donation-forms/MilieuDonationForm'), { 
     ssr: false,
@@ -84,7 +85,7 @@ export default function MilieuClientPage() {
                             <h2 className="text-3xl md:text-4xl font-bold font-headline">Shaping Conscious Citizens of Tomorrow.</h2>
                             <div className="text-lg text-muted-foreground space-y-4 text-justify">
                                 <p>
-                                    Milieu is a unique initiative that promotes holistic development in children by fostering meaningful connections across diverse socio-economic backgrounds. The program brings together students from reputed schools and underprivileged communities, offering a shared space where learning, empathy, and mutual respect flourish.
+                                    Milieu is a unique initiative that promotes holistic development in <Link href="/childcare-initiatives" className="text-primary hover:underline">children</Link> by fostering meaningful connections across diverse socio-economic backgrounds. The program brings together students from reputed schools and underprivileged communities, offering a shared space where learning, empathy, and mutual respect flourish.
                                 </p>
                                 <p>
                                     Through interactive sessions, collaborative activities, and open conversations, children engage with one another in ways that go beyond textbooks. These exchanges create opportunities for students to see the world through different lenses—helping privileged children develop humility and social awareness, while underprivileged children gain confidence and a sense of inclusion.
@@ -97,7 +98,7 @@ export default function MilieuClientPage() {
                                 </p>
                                 <h3 className="text-2xl font-bold font-headline pt-4">Help Children Learn Beyond Boundaries</h3>
                                 <p>
-                                  In every Milieu session, a child discovers empathy, breaks a bias, or finds the courage to connect across differences. <strong>Your donation can help us organize more inclusive workshops, provide transportation, materials, and safe spaces</strong> where children from all walks of life learn together, grow together, and inspire each other. <strong>Support Milieu today</strong> to build bridges of understanding and shape a generation that sees unity in diversity. <strong>Your kindness can nurture a more compassionate tomorrow—one child at a time.</strong>
+                                  In every Milieu session, a child discovers empathy, breaks a bias, or finds the courage to connect across differences. <strong>Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> can help us organize more inclusive workshops, provide transportation, materials, and safe spaces</strong> where children from all walks of life learn together, grow together, and inspire each other. <strong>Support Milieu today</strong> to build bridges of understanding and shape a generation that sees unity in diversity. <strong>Your kindness can nurture a more compassionate tomorrow—one child at a time.</strong>
                                 </p>
                             </div>
                         </div>

@@ -10,6 +10,7 @@ import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
+import Link from 'next/link';
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/EduAccessDonationForm'), { 
     ssr: false,
@@ -72,7 +73,7 @@ export default function EduAccessClientPage() {
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Teaching Beyond Boundaries</h2>
                         <div className="text-lg text-muted-foreground space-y-4 text-justify">
                            <p>
-                            Supported by Dhritiman Abilizing Infinity Foundation, EduAccess delivers quality education to rural West Bengal through expert-led online classes from a Kolkata studio. Covering subjects like English, Math, and Science, it empowers students in underserved areas with skills essential for academic success and future opportunities.
+                            Supported by Dhritiman Abilizing Infinity Foundation, EduAccess delivers quality <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> to rural West Bengal through expert-led online classes from a Kolkata studio. Covering subjects like English, Math, and Science, it empowers students in underserved areas with skills essential for academic success and future opportunities.
                           </p>
                           <p>
                             Our state-of-the-art studio allows experienced educators to connect with students in real-time, providing interactive and engaging lessons that transcend geographical barriers. We aim to bridge the educational gap between urban and rural areas, ensuring that every student has the chance to receive a high-quality education.
@@ -82,7 +83,7 @@ export default function EduAccessClientPage() {
                           </p>
                           <h3 className="text-2xl font-bold font-headline pt-4">Bring a Classroom to a Village</h3>
                           <p>
-                            Thousands of bright young minds in rural West Bengal are eager to learn—but lack access to quality teachers and resources. Your donation can help us expand EduAccess to more remote communities, provide digital learning tools, and ensure uninterrupted online education from our Kolkata-based studio. <strong>With your support, a child who once struggled to keep up can thrive, dream bigger, and build a better future.</strong> Help us bridge the education gap—<strong>donate today</strong><strong> and be the link between talent and opportunity.</strong>
+                            Thousands of bright young minds in rural West Bengal are eager to learn—but lack access to quality teachers and resources. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> can help us expand EduAccess to more remote communities, provide digital learning tools, and ensure uninterrupted online education from our Kolkata-based studio. <strong>With your support, a child who once struggled to keep up can thrive, dream bigger, and build a better future.</strong> Help us bridge the education gap—<strong>donate today</strong><strong> and be the link between talent and opportunity.</strong>
                           </p>
                         </div>
                     </div>

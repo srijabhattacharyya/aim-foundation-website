@@ -144,7 +144,7 @@ export default function EducationalInitiativesPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Educational Initiatives</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-              We are committed to breaking down barriers to education and fostering a lifelong love of learning.
+              We are committed to breaking down barriers to education and fostering a lifelong love of learning through our various programs in <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link> and <Link href="/sustainability-initiatives" className="text-primary hover:underline">sustainability</Link>.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
