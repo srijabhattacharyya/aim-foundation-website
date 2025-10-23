@@ -51,10 +51,10 @@ export default function SoulCircleBlogPage() {
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <h2 className="text-3xl font-bold font-headline text-foreground">Introduction – Why Mental Health Can’t Wait</h2>
                 <p>
-                  In today’s fast-paced, always-connected yet often emotionally disconnected world, mental health has become one of the most pressing challenges of our time. Anxiety, stress, loneliness, and depression are no longer rare struggles—they are everyday realities for millions of people across the globe. And while awareness is growing, access to quality mental health support is still limited, especially in rural areas, underserved regions, and among those who feel too stigmatized to seek help.
+                  In today’s fast-paced, always-connected yet often emotionally disconnected world, <Link href="/healthcare-initiatives" className="text-primary hover:underline">mental health</Link> has become one of the most pressing challenges of our time. Anxiety, stress, loneliness, and depression are no longer rare struggles—they are everyday realities for millions of people across the globe. And while awareness is growing, access to quality mental health support is still limited, especially in rural areas, underserved regions, and among those who feel too stigmatized to seek help.
                 </p>
                 <p>
-                  This is where SoulCircle comes in—a revolutionary AI-powered mental health support app designed to offer accessible, compassionate, and judgment-free care anytime, anywhere. It is not here to replace human therapy, but to bridge the critical gap between the moment someone feels emotionally distressed and the moment they can access the help they deserve.
+                  This is where <Link href="/soulcircle" className="text-primary hover:underline">SoulCircle</Link> comes in—a revolutionary AI-powered mental health support app designed to offer accessible, compassionate, and judgment-free care anytime, anywhere. It is not here to replace human therapy, but to bridge the critical gap between the moment someone feels emotionally distressed and the moment they can access the help they deserve.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Silent Mental Health Crisis</h2>
@@ -137,9 +137,9 @@ export default function SoulCircleBlogPage() {
                     Mental health challenges can affect anyone, but together, we can ensure that no one faces them alone. Here’s how you can support SoulCircle’s mission:
                   </p>
                   <ul className="list-disc list-inside text-left space-y-2 mt-4 pl-4">
-                      <li><strong>Donate:</strong> Just ₹500 can fund a month of safe, compassionate support for one person.</li>
+                      <li><strong><Link href="/individual-donation" className="text-primary hover:underline">Donate</Link>:</strong> Just ₹500 can fund a month of safe, compassionate support for one person.</li>
                       <li><strong>Spread the Word:</strong> Share SoulCircle with friends, family, and colleagues.</li>
-                      <li><strong>Partner with Us:</strong> Schools, colleges, and NGOs can collaborate to make the app accessible to their communities.</li>
+                      <li><strong><Link href="/corporate-social-responsibility" className="text-primary hover:underline">Partner with Us</Link>:</strong> Schools, colleges, and NGOs can collaborate to make the app accessible to their communities.</li>
                       <li><strong>Advocate for Mental Health:</strong> Use your voice to break stigma and promote open conversations.</li>
                   </ul>
                   <Button asChild size="lg" className="mt-6 transition-transform transform hover:scale-105">
