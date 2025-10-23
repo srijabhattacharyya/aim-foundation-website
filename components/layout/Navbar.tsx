@@ -115,7 +115,7 @@ const navLinks: NavItem[] = [
       { href: '/press-releases', label: 'Press Releases' },
     ]
   },
-  { href: '/connect', label: 'Connect' },
+  { href: '/contact-us', label: 'Contact' },
 ];
 
 const SkeletonLoader = () => <div className="p-8"><Skeleton className="h-[500px] w-full" /></div>;
