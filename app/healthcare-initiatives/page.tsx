@@ -94,7 +94,7 @@ const initiatives = [
   {
     title: "OralScan",
     description: "is a crucial initiative offering free oral cancer screening camps in underserved communities. By focusing on early detection and public awareness, it identifies potential risks at the outset, improving treatment outcomes. The program promotes oral hygiene, educates on risk factors, and helps save lives through timely medical intervention.",
-    image: "/images/projects/oralscan/oranscan2.avif",
+    image: "/images/projects/oralscan/oralscan2.avif",
     hint: "oral cancer screening",
     link: "/oralscan?from=healthcare",
     specialText: "(Oral Cancer Screening)"
