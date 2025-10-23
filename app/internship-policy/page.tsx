@@ -1,8 +1,10 @@
 
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Internship Policy - AIM Foundation',
@@ -42,7 +44,7 @@ export default function InternshipPolicyPage() {
               <h2 className="text-2xl font-bold font-headline pt-4">Internship Opportunities</h2>
               <p>Interns may be engaged in various areas, including but not limited to:</p>
               <ul className="list-disc list-inside space-y-2 pl-4">
-                <li>Project implementation and support in health, education, or environmental programs.</li>
+                <li>Project implementation and support in <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, or <Link href="/sustainability-initiatives" className="text-primary hover:underline">environmental</Link> programs.</li>
                 <li>Research, data analysis, and report writing.</li>
                 <li>Communications, content creation, and social media management.</li>
                 <li>Fundraising and donor relations support.</li>
@@ -54,7 +56,7 @@ export default function InternshipPolicyPage() {
               <ul className="list-disc list-inside space-y-2 pl-4">
                 <li>Recruitment will be conducted through a fair and transparent process, including an application and interview.</li>
                 <li>Successful candidates will receive an internship offer letter detailing the role, duration, stipend (if any), and terms of engagement.</li>
-                <li>All interns will undergo an onboarding process covering AIM Foundation’s mission, policies (including Code of Conduct and Safeguarding), and their specific roles and responsibilities.</li>
+                <li>All interns will undergo an onboarding process covering AIM Foundation’s mission, policies (including <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link> and <Link href="/safeguarding-policy" className="text-primary hover:underline">Safeguarding</Link>), and their specific roles and responsibilities.</li>
               </ul>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Intern Rights</h2>
@@ -70,7 +72,7 @@ export default function InternshipPolicyPage() {
               <h2 className="text-2xl font-bold font-headline pt-4">Intern Responsibilities</h2>
               <p>Interns are expected to:</p>
               <ul className="list-disc list-inside space-y-2 pl-4">
-                <li>Adhere to all AIM Foundation policies, including the Code of Conduct and Safeguarding Policy.</li>
+                <li>Adhere to all AIM Foundation policies, including the <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link> and <Link href="/safeguarding-policy" className="text-primary hover:underline">Safeguarding Policy</Link>.</li>
                 <li>Perform assigned duties diligently and professionally.</li>
                 <li>Maintain confidentiality regarding sensitive organizational and beneficiary information.</li>
                 <li>Communicate openly with their supervisor about their progress, challenges, and any concerns.</li>
@@ -81,7 +83,7 @@ export default function InternshipPolicyPage() {
               <p>All interns must uphold the highest standards of ethical behavior, treating all individuals with dignity and respect, and avoiding any conflicts of interest or misuse of organizational resources.</p>
               
               <h2 className="text-2xl font-bold font-headline pt-4">Safeguarding</h2>
-              <p>Interns working with children or vulnerable adults must strictly adhere to our Safeguarding Policy, report any concerns immediately, and prioritize the well-being of beneficiaries at all times.</p>
+              <p>Interns working with children or vulnerable adults must strictly adhere to our <Link href="/safeguarding-policy" className="text-primary hover:underline">Safeguarding Policy</Link>, report any concerns immediately, and prioritize the well-being of beneficiaries at all times.</p>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Internship Completion and Feedback</h2>
               <ul className="list-disc list-inside space-y-2 pl-4">

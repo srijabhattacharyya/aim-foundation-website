@@ -95,7 +95,7 @@ export default function SafeguardingPolicyPage() {
               <h2 className="text-2xl font-bold font-headline pt-4">Training and Awareness</h2>
               <ul className="list-disc list-inside space-y-2">
                   <li>Regular training on safeguarding, child rights, and gender sensitivity will be conducted.</li>
-                  <li>All staff and volunteers will be required to sign a Code of Conduct as a condition of engagement.</li>
+                  <li>All staff and volunteers will be required to sign a <Link href="/code-of-conduct" className="text-primary hover:underline">Code of Conduct</Link> as a condition of engagement.</li>
               </ul>
 
               <h2 className="text-2xl font-bold font-headline pt-4">Monitoring and Review</h2>
