@@ -2,6 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
+import Link from 'next/link';
 
 export default function PrivacyPolicyPage() {
   return (
@@ -24,7 +25,7 @@ export default function PrivacyPolicyPage() {
               
               <h2 className="text-2xl font-bold font-headline pt-4">Collection and Use of Personal Information</h2>
               <p>
-                When you choose to engage with AIM Foundation—by making a donation, subscribing to updates, or participating in our programs—you may be asked to provide personal details such as your name, email address, phone number, mailing address, and payment information.
+                When you choose to engage with AIM Foundation—by making a <Link href="/individual-donation" className="text-primary hover:underline">donation</Link>, subscribing to updates, or participating in our <Link href="/#initiatives" className="text-primary hover:underline">programs</Link>—you may be asked to provide personal details such as your name, email address, phone number, mailing address, and payment information.
               </p>
               <p>
                 Please be assured that:

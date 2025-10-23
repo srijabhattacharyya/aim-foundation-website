@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import DonationEmail from "@/components/layout/DonationEmail";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Refund Policy | AIM Foundation',
@@ -77,11 +78,11 @@ export default function RefundPolicyPage() {
               </h1>
               <div className="space-y-6 text-muted-foreground text-justify">
                 <p>
-                  At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we deeply value the generosity and trust of all our donors. Your contributions go directly toward supporting our mission to uplift underprivileged communities through education, health, and empowerment initiatives.
+                  At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we deeply value the generosity and trust of all our donors. Your contributions go directly toward supporting our mission to uplift underprivileged communities through <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, and <Link href="/gender-equality-initiative" className="text-primary hover:underline">empowerment</Link> initiatives.
                 </p>
                 
                 <p>
-                  As a not-for-profit organization, all donations made to AIM Foundation are used immediately to fund ongoing programs and outreach activities. Therefore, we regret to inform you that we are unable to offer refunds on any donations once they have been processed.
+                  As a not-for-profit organization, all donations made to AIM Foundation are used immediately to fund ongoing programs and outreach activities. Therefore, we regret to inform you that we are unable to offer refunds on any <Link href="/individual-donation" className="text-primary hover:underline">donations</Link> once they have been processed.
                 </p>
                 
                 <p>
@@ -90,7 +91,7 @@ export default function RefundPolicyPage() {
 
                 <h2 className="text-2xl font-bold font-headline pt-4">Contact Us</h2>
                  <div className="text-muted-foreground space-y-2">
-                  <p>For queries related to donations, receipts, or compliance, please contact:</p>
+                  <p>For queries related to donations, receipts, or compliance, please refer to our <Link href="/donation-policy" className="text-primary hover:underline">Donation Policy</Link> or contact:</p>
                   <div className="flex items-center gap-2">
                       <span>📧</span> <DonationEmail />
                   </div>

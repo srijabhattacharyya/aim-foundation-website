@@ -1,7 +1,9 @@
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy - AIM Foundation',
@@ -80,7 +82,7 @@ export default function CookiePolicyPage() {
                   This Cookie Policy explains how Associated Initiative for Mankind Foundation ("AIM Foundation") uses cookies and similar technologies to recognise users when they visit our website: www.aimindia.org.in. It outlines what these technologies are, why we use them, and your rights to control their use.
                 </p>
                 <p>
-                  By continuing to use our website, you consent to our use of cookies in accordance with this policy.
+                  By continuing to use our website, you consent to our use of cookies in accordance with this policy. For more details on our data practices, please see our <Link href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link>.
                 </p>
                 
                 <h2 className="text-2xl font-bold font-headline pt-4">1. What Are Cookies?</h2>
