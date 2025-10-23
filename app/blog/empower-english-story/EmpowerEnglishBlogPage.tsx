@@ -58,12 +58,12 @@ export default function EmpowerEnglishBlogPage() {
                   In a bustling classroom in Jalpaiguri, a shy 16-year-old named Rina nervously stands before her peers. Just weeks ago, she could barely introduce herself in English. Today, she looks up, smiles, and says, “Good morning. My name is Rina, and I want to be a teacher.” Her voice is steady, her words clear. The room erupts in applause — not just for the sentence she spoke, but for the courage she found within herself.
                 </p>
                 <p>
-                  This is the magic of <strong>Empower English</strong> — a transformative initiative by the AIM Foundation that is helping young students in Kolkata, Purba Bardhaman, and Jalpaiguri find their voice, their confidence, and their place in the world.
+                  This is the magic of <strong><Link href="/empower-english" className="text-primary hover:underline">Empower English</Link></strong> — a transformative initiative by the AIM Foundation that is helping young students in Kolkata, Purba Bardhaman, and Jalpaiguri find their voice, their confidence, and their place in the world.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Challenge: When Language Becomes a Barrier</h2>
                 <p>
-                  English is more than a language in today’s world. It’s a passport to education, a bridge to opportunity, and a tool for global connection. In India, where competitive exams, job interviews, and higher education often require English proficiency, the lack of spoken English skills can leave talented young minds at the margins.
+                  English is more than a language in today’s world. It’s a passport to <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, a bridge to opportunity, and a tool for global connection. In India, where competitive exams, job interviews, and higher education often require English proficiency, the lack of spoken English skills can leave talented young minds at the margins.
                 </p>
                 <p>
                   In rural and semi-urban areas of West Bengal, many students grow up in environments where English is neither spoken at home nor taught effectively in schools. Textbook learning often focuses on grammar and rote memorization, leaving little space for real conversation practice. The result? Students understand written English to some extent but freeze when asked to speak. Their ideas remain locked inside, their confidence dwindles, and opportunities slip away.
@@ -71,7 +71,7 @@ export default function EmpowerEnglishBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The AIM Foundation’s Response: Empower English</h2>
                 <p>
-                  Recognizing this urgent gap, AIM Foundation launched Empower English, a spoken English training program tailored for underserved communities. The initiative goes beyond vocabulary lists and grammar drills — it focuses on real-life communication skills that help students express themselves clearly and confidently.
+                  Recognizing this urgent gap, AIM Foundation launched <Link href="/empower-english" className="text-primary hover:underline">Empower English</Link>, a spoken English training program tailored for underserved communities. The initiative goes beyond vocabulary lists and grammar drills — it focuses on real-life communication skills that help students express themselves clearly and confidently.
                 </p>
                 <p>Key features of the program include:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
@@ -97,12 +97,12 @@ export default function EmpowerEnglishBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories of Change</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Rina’s Journey</h3>
-                <p>Rina, from Jalpaiguri, always dreamed of becoming a teacher. However, during her first attempt at a teacher training course interview, she could not answer questions in English. Through Empower English, she practiced daily conversations, learned to structure answers, and grew comfortable speaking to strangers. On her second attempt, she aced the interview — in English.</p>
+                <p>Rina, from Jalpaiguri, always dreamed of becoming a teacher. However, during her first attempt at a teacher training course interview, she could not answer questions in English. Through <Link href="/empower-english" className="text-primary hover:underline">Empower English</Link>, she practiced daily conversations, learned to structure answers, and grew comfortable speaking to strangers. On her second attempt, she aced the interview — in English.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Arjun’s Transformation</h3>
-                <p>Arjun, a college student from Purba Bardhaman, had strong technical knowledge in computers but struggled to land an internship because he could not explain his skills in English. After three months in Empower English, he was able to confidently present his portfolio during interviews. Today, he works as a junior IT assistant and continues to mentor younger students in the program.</p>
+                <p>Arjun, a college student from Purba Bardhaman, had strong technical knowledge in computers but struggled to land an internship because he could not explain his skills in English. After three months in <Link href="/empower-english" className="text-primary hover:underline">Empower English</Link>, he was able to confidently present his portfolio during interviews. Today, he works as a junior IT assistant and continues to mentor younger students in the program.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why Your Donation Matters</h2>
-                <p>Your contribution can:</p>
+                <p>Your <Link href="/individual-donation" className="text-primary hover:underline">contribution</Link> can:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>Provide trained instructors.</li>
                     <li>Supply learning materials like books, flashcards, and audio lessons.</li>
@@ -111,7 +111,7 @@ export default function EmpowerEnglishBlogPage() {
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Give a Voice to Their Dreams</h2>
-                  <p className="mt-4">For many students, learning English isn’t about mastering a foreign language — it’s about gaining the confidence to step onto a bigger stage in life. By supporting Empower English, you’re not just funding a class — you’re investing in futures.</p>
+                  <p className="mt-4">For many students, learning English isn’t about mastering a foreign language — it’s about gaining the confidence to step onto a bigger stage in life. By supporting <Link href="/empower-english" className="text-primary hover:underline">Empower English</Link>, you’re not just funding a class — you’re investing in futures.</p>
                   <Button asChild size="lg" className="mt-6 transition-transform transform hover:scale-105">
                     <Link href="/empower-english">Support Empower English Today</Link>
                   </Button>

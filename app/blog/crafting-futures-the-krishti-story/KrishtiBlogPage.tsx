@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -54,15 +55,15 @@ export default function KrishtiBlogPage() {
                   In countless small towns and villages, women with extraordinary talent sit quietly behind sewing machines, embroidering beauty into pieces of cloth. Their stitches are neat, their patterns intricate, and their work speaks of a craftsmanship passed down through generations. Yet, despite their skill, many remain financially dependent, unable to translate their art into a sustainable income.
                 </p>
                 <p>
-                  For years, the <strong>SuiDhaga</strong> initiative worked to change this reality—training women in tailoring and embroidery so they could earn from home or within their communities. But training alone is just the first step. Once the needlework was mastered, a bigger challenge emerged: How do you turn skill into a livelihood?
+                  For years, the <strong><Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link></strong> initiative worked to change this reality—training women in tailoring and embroidery so they could earn from home or within their communities. But training alone is just the first step. Once the needlework was mastered, a bigger challenge emerged: How do you turn skill into a livelihood?
                 </p>
                 <p className="text-xl font-semibold text-center text-primary py-4">
-                  That’s where Krishti steps in.
+                  That’s where <Link href="/krishti" className="text-primary hover:underline">Krishti</Link> steps in.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">What Is Krishti?</h2>
                 <p>
-                  Krishti is more than an empowerment program—it is the bridge between learning and earning. While SuiDhaga equips women with skills, Krishti ensures those skills flourish into thriving micro-enterprises.
+                  <Link href="/krishti" className="text-primary hover:underline">Krishti</Link> is more than an empowerment program—it is the bridge between learning and earning. While <Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link> equips women with skills, <Link href="/krishti" className="text-primary hover:underline">Krishti</Link> ensures those skills flourish into thriving micro-enterprises.
                 </p>
                 <p>We provide:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
@@ -77,16 +78,16 @@ export default function KrishtiBlogPage() {
                 <p>
                   While India is home to millions of women artisans, many are trapped in low-paying work or seasonal jobs that offer no security. The lack of access to modern tools, competitive markets, and business networks keeps them in a cycle of dependence.
                 </p>
-                <p>Krishti exists to break that cycle. We believe:</p>
+                <p><Link href="/krishti" className="text-primary hover:underline">Krishti</Link> exists to break that cycle. We believe:</p>
                  <ul className="list-disc list-inside space-y-2 pl-4">
-                    <li><strong>Economic independence changes everything</strong> – When a woman earns her own income, she gains decision-making power in her household, invests in her children’s education, and becomes a role model in her community.</li>
+                    <li><strong>Economic independence changes everything</strong> – When a woman earns her own income, she gains decision-making power in her household, invests in her children’s <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, and becomes a role model in her community.</li>
                     <li><strong>Traditional skills deserve modern opportunities</strong> – Handcrafted products can have a global audience if given the right exposure.</li>
                     <li><strong>Sustainability is key</strong> – Instead of temporary aid, we focus on creating self-sustaining business models for women.</li>
                 </ul>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">From Training to Transformation: A Woman’s Journey with Krishti</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
-                    <li><strong>Skill Development through SuiDhaga:</strong> She learns to stitch, embroider, and design—building her confidence with every completed piece.</li>
+                    <li><strong>Skill Development through <Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link>:</strong> She learns to stitch, embroider, and design—building her confidence with every completed piece.</li>
                     <li><strong>Access to Production Facilities:</strong> She moves into the Krishti workspace, where she works with better tools and can take on bulk orders without the limitations of her home setup.</li>
                     <li><strong>Business & Branding Support:</strong> She learns to create product lines, set prices, manage stock, and communicate with buyers.</li>
                     <li><strong>Market Linkage:</strong> Her creations are sold at exhibitions, online marketplaces, and boutique stores, reaching customers who value handcrafted work.</li>
@@ -95,12 +96,12 @@ export default function KrishtiBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories That Inspire</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Meet Anjali – From Housewife to Entrepreneur</h3>
-                <p>Anjali had been stitching clothes for neighbours for years, but it was always for minimal payment. After training with SuiDhaga, she joined Krishti’s production unit. Today, she runs her own small clothing brand, supplying kurtas and saree blouses to boutiques in Kolkata. Her income now covers her children’s school fees entirely.</p>
+                <p>Anjali had been stitching clothes for neighbours for years, but it was always for minimal payment. After training with <Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link>, she joined <Link href="/krishti" className="text-primary hover:underline">Krishti</Link>’s production unit. Today, she runs her own small clothing brand, supplying kurtas and saree blouses to boutiques in Kolkata. Her income now covers her children’s school fees entirely.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Meet Parveen – A Master of Embroidery</h3>
-                <p>Parveen’s embroidery work is exquisite, but her reach was limited to local fairs. Through Krishti, she learned about product photography, pricing for online markets, and quality control for bulk orders. She now sells her work to buyers in Delhi, Mumbai, and even overseas.</p>
+                <p>Parveen’s embroidery work is exquisite, but her reach was limited to local fairs. Through <Link href="/krishti" className="text-primary hover:underline">Krishti</Link>, she learned about product photography, pricing for online markets, and quality control for bulk orders. She now sells her work to buyers in Delhi, Mumbai, and even overseas.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why Your Donation Matters</h2>
-                <p>Setting up and sustaining Krishti requires:</p>
+                <p>Setting up and sustaining <Link href="/krishti" className="text-primary hover:underline">Krishti</Link> requires:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>Modern sewing machines and embroidery units</li>
                     <li>Raw materials like fabric, threads, and trims</li>
@@ -108,7 +109,7 @@ export default function KrishtiBlogPage() {
                     <li>Training workshops on entrepreneurship and financial literacy</li>
                     <li>Rent and utilities for collaborative workspaces</li>
                 </ul>
-                <p>Every contribution directly fuels a woman’s path to independence. For example:</p>
+                <p>Every <Link href="/individual-donation" className="text-primary hover:underline">contribution</Link> directly fuels a woman’s path to independence. For example:</p>
                 <ul className="list-none space-y-2 pl-4">
                     <li><strong>₹1,000</strong> can provide high-quality fabric for one woman’s first product line.</li>
                     <li><strong>₹8,000</strong> can cover the cost of a sewing machine for shared use.</li>
@@ -117,8 +118,8 @@ export default function KrishtiBlogPage() {
                 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">A Future Stitched with Dignity and Dreams</h2>
-                  <p className="mt-4">The future of women’s empowerment lies not just in training but in turning that training into sustainable livelihoods. Krishti is proof that with the right resources, women can create their own opportunities and lift entire communities along with them.</p>
-                  <p className="mt-4 italic">When you donate to Krishti, you’re not giving charity—you’re making an investment. An investment in women’s potential, in handcrafted artistry, and in a future where every woman has the chance to earn with dignity.</p>
+                  <p className="mt-4">The future of <Link href="/gender-equality-initiative" className="text-primary hover:underline">women’s empowerment</Link> lies not just in training but in turning that training into sustainable livelihoods. <Link href="/krishti" className="text-primary hover:underline">Krishti</Link> is proof that with the right resources, women can create their own opportunities and lift entire communities along with them.</p>
+                  <p className="mt-4 italic">When you donate to <Link href="/krishti" className="text-primary hover:underline">Krishti</Link>, you’re not giving charity—you’re making an investment. An investment in women’s potential, in handcrafted artistry, and in a future where every woman has the chance to earn with dignity.</p>
                   <Button asChild size="lg" className="mt-6 transition-transform transform hover:scale-105">
                     <Link href="/krishti">Support Krishti Today</Link>
                   </Button>

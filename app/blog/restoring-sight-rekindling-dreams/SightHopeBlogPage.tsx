@@ -47,7 +47,7 @@ export default function SightHopeBlogPage() {
                   Poor vision is far more than a medical condition. It’s a thief of opportunity, dignity, and independence. It silently erodes quality of life, often without drawing much attention from policymakers or healthcare systems. Yet, in many cases, this vision loss is avoidable—conditions like cataracts, refractive errors, and common eye infections can be diagnosed and treated quickly, effectively, and at relatively low cost.
                 </p>
                 <p>
-                  The AIM Foundation, recognizing this urgent but under-addressed crisis, launched <strong>SightHope</strong>—a mission to restore sight and, with it, the dreams, livelihoods, and independence of those left in the shadows. In partnership with some of Kolkata’s most respected eye care institutions, SightHope brings world-class, no-cost eye care services directly to those who need them most.
+                  The AIM Foundation, recognizing this urgent but under-addressed crisis, launched <strong><Link href="/sighthope" className="text-primary hover:underline">SightHope</Link></strong>—a mission to restore sight and, with it, the dreams, livelihoods, and independence of those left in the shadows. In partnership with some of Kolkata’s most respected eye care institutions, SightHope brings world-class, no-cost eye care services directly to those who need them most.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Invisible Crisis: Vision Loss in India</h2>
@@ -60,24 +60,24 @@ export default function SightHopeBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Birth of SightHope</h2>
                 <p>
-                  The AIM Foundation conceived SightHope with a simple but powerful belief: no one should be condemned to a life of darkness when the cure is within reach. To achieve this vision, AIM Foundation forged partnerships with leading eye hospitals in Kolkata, including Sushrut Eye Foundation, B. B. Eye Foundation, and Hope Foundation.
+                  The AIM Foundation conceived <Link href="/sighthope" className="text-primary hover:underline">SightHope</Link> with a simple but powerful belief: no one should be condemned to a life of darkness when the cure is within reach. To achieve this vision, AIM Foundation forged partnerships with leading eye hospitals in Kolkata, including Sushrut Eye Foundation, B. B. Eye Foundation, and Hope Foundation.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">How SightHope Works</h2>
                 <p>
-                  SightHope operates on a community-first model, bringing free eye care services directly to where people live, work, and study. This includes eye care camps, cataract surgeries, school vision screenings, and awareness programs.
+                  <Link href="/sighthope" className="text-primary hover:underline">SightHope</Link> operates on a community-first model, bringing free eye care services directly to where people live, work, and study. This includes eye care camps, cataract surgeries, school vision screenings, and awareness programs.
                 </p>
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Human Impact – Stories that Inspire</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Rina – The Schoolgirl Who Couldn’t Read the Board</h3>
-                <p>Rina, a bright 12-year-old from a rural school near Kolkata, often sat at the back of the classroom, squinting at the blackboard. A SightHope school screening revealed she had significant myopia. With a simple pair of glasses, her grades improved dramatically, and her confidence soared.</p>
+                <p>Rina, a bright 12-year-old from a rural school near Kolkata, often sat at the back of the classroom, squinting at the blackboard. A <Link href="/sighthope" className="text-primary hover:underline">SightHope</Link> school screening revealed she had significant myopia. With a simple pair of glasses, her grades improved dramatically, and her confidence soared.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Mohammad – The Rickshaw Puller Who Saw the World Again</h3>
-                <p>Mohammad, a 55-year-old rickshaw puller, gradually lost vision in both eyes due to cataracts. Unable to work, he struggled to feed his family. SightHope arranged a free cataract surgery. Today, he is back on the road, earning a living.</p>
+                <p>Mohammad, a 55-year-old rickshaw puller, gradually lost vision in both eyes due to cataracts. Unable to work, he struggled to feed his family. <Link href="/sighthope" className="text-primary hover:underline">SightHope</Link> arranged a free cataract surgery. Today, he is back on the road, earning a living.</p>
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Restore Sight, Renew Lives</h2>
                   <p className="mt-4 italic">
-                    Sight is more than vision—it’s freedom, dignity, and opportunity. Every contribution to SightHope brings us closer to a future where no one has to live in the dark due to poverty.
+                    Sight is more than vision—it’s freedom, dignity, and opportunity. Every contribution to <Link href="/sighthope" className="text-primary hover:underline">SightHope</Link> brings us closer to a future where no one has to live in the dark due to poverty.
                   </p>
                   <Button asChild size="lg" className="mt-6 transition-transform transform hover:scale-105">
                     <Link href="/sighthope">Support SightHope Today</Link>

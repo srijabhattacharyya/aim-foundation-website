@@ -44,15 +44,15 @@ export default function OralScanBlogPage() {
                   In India, oral cancer is not just a health issue—it’s a silent epidemic. According to the World Health Organization, India accounts for nearly one-third of the world’s oral cancer cases. The disease often creeps in unnoticed, hidden behind symptoms mistaken for harmless ulcers or gum issues. By the time it is detected, it is frequently in an advanced stage, making treatment more complex, costly, and less effective.
                 </p>
                 <p>
-                  The tragedy is that oral cancer is largely preventable and highly curable if caught early. Yet, millions of people—especially in rural and underserved communities—never get screened. The reasons are many: lack of awareness, fear of diagnosis, financial barriers, and limited access to healthcare facilities.
+                  The tragedy is that oral cancer is largely preventable and highly curable if caught early. Yet, millions of people—especially in rural and underserved communities—never get screened. The reasons are many: lack of awareness, fear of diagnosis, financial barriers, and limited access to <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link> facilities.
                 </p>
                 <p className="font-semibold text-primary text-center text-xl">
-                  This is where OralScan, an initiative by AIM Foundation, steps in to change the story.
+                  This is where <Link href="/oralscan" className="text-primary hover:underline">OralScan</Link>, an initiative by AIM Foundation, steps in to change the story.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">What Is OralScan?</h2>
                 <p>
-                  OralScan is AIM Foundation’s community-based program dedicated to the early detection of oral cancer through free screening camps. We focus on reaching populations that are at the highest risk yet have the least access to preventive care—small villages, low-income neighbourhoods, and communities where tobacco use is culturally entrenched.
+                  <Link href="/oralscan" className="text-primary hover:underline">OralScan</Link> is AIM Foundation’s community-based program dedicated to the early detection of oral cancer through free screening camps. We focus on reaching populations that are at the highest risk yet have the least access to preventive care—small villages, low-income neighbourhoods, and communities where tobacco use is culturally entrenched.
                 </p>
                 <p>
                   The program is not just about diagnosis—it’s about prevention, awareness, and follow-through. Our approach is simple yet powerful: bring the doctors to the people, educate them about risk factors, screen them in a comfortable and familiar setting, and connect those at risk to the next steps of care.
@@ -62,7 +62,7 @@ export default function OralScanBlogPage() {
                 <p>
                   Oral cancer develops slowly, often starting as precancerous lesions that can be detected during a simple visual examination by a trained healthcare provider. When identified in the early stages, survival rates can be as high as 80–90%. But when caught late, survival drops to 20–30%, and treatment becomes far more expensive and invasive.
                 </p>
-                <p>By focusing on early intervention, OralScan is able to:</p>
+                <p>By focusing on early intervention, <Link href="/oralscan" className="text-primary hover:underline">OralScan</Link> is able to:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Save lives by diagnosing cases before they advance.</li>
                   <li>Reduce treatment costs for families already struggling financially.</li>
@@ -70,7 +70,7 @@ export default function OralScanBlogPage() {
                 </ul>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">How OralScan Works</h2>
-                <p>Our work is built on three strong pillars—screening, education, and support.</p>
+                <p>Our work is built on three strong pillars—screening, <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, and support.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">1. Free Oral Cancer Screenings</h3>
                 <p>We organize mobile screening camps in collaboration with trained doctors and healthcare volunteers. Using non-invasive methods, we check for:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
@@ -95,7 +95,7 @@ export default function OralScanBlogPage() {
                 <p>Being told that you may have cancer is overwhelming. That’s why we provide on-the-spot counselling, explaining what the screening means, and guiding patients through the next steps. For high-risk or suspected cases, we coordinate referrals to government or charitable hospitals that can offer affordable or free treatment.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Communities We Serve</h2>
-                <p>OralScan primarily targets:</p>
+                <p><Link href="/oralscan" className="text-primary hover:underline">OralScan</Link> primarily targets:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Rural villages where healthcare infrastructure is minimal.</li>
                   <li>Urban slums where tobacco use is high and dental care is almost non-existent.</li>
@@ -104,13 +104,13 @@ export default function OralScanBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories from the Field</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Ramesh’s Turning Point</h3>
-                <p>Ramesh, a 42-year-old tea stall owner in a West Bengal village, had been chewing tobacco for over 20 years. He ignored a small sore in his mouth until he attended an OralScan camp. Our doctors flagged it as a potential precancerous lesion. With our referral, Ramesh received treatment at a charitable hospital. Today, he is cancer-free and has quit tobacco completely.</p>
+                <p>Ramesh, a 42-year-old tea stall owner in a West Bengal village, had been chewing tobacco for over 20 years. He ignored a small sore in his mouth until he attended an <Link href="/oralscan" className="text-primary hover:underline">OralScan</Link> camp. Our doctors flagged it as a potential precancerous lesion. With our referral, Ramesh received treatment at a charitable hospital. Today, he is cancer-free and has quit tobacco completely.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Mita’s Second Chance</h3>
-                <p>Mita, a 35-year-old mother of two, attended our camp reluctantly after neighbours persuaded her. She had no symptoms but was screened as part of the general check-up. A tiny white patch was discovered—an early warning sign. Early treatment meant she avoided a major surgery, and she now works with OralScan as a community volunteer.</p>
+                <p>Mita, a 35-year-old mother of two, attended our camp reluctantly after neighbours persuaded her. She had no symptoms but was screened as part of the general check-up. A tiny white patch was discovered—an early warning sign. Early treatment meant she avoided a major surgery, and she now works with <Link href="/oralscan" className="text-primary hover:underline">OralScan</Link> as a community volunteer.</p>
                 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Your Donation is Critical</h2>
-                  <p className="mt-4">Every OralScan camp costs money—though surprisingly little considering the life-changing results. Your donation helps cover:</p>
+                  <p className="mt-4">Every <Link href="/oralscan" className="text-primary hover:underline">OralScan</Link> camp costs money—though surprisingly little considering the life-changing results. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> helps cover:</p>
                   <ul className="list-disc list-inside space-y-2 mt-4 text-left pl-8">
                     <li>Medical professionals’ honorarium.</li>
                     <li>Portable diagnostic equipment.</li>
@@ -125,7 +125,7 @@ export default function OralScanBlogPage() {
                 </div>
                 
                 <h2 className="text-3xl font-bold font-headline text-foreground">A Future Without Fear</h2>
-                <p>With OralScan, we envision a future where no person dies because they were diagnosed too late. A future where education replaces ignorance, prevention replaces neglect, and early treatment replaces tragedy.</p>
+                <p>With <Link href="/oralscan" className="text-primary hover:underline">OralScan</Link>, we envision a future where no person dies because they were diagnosed too late. A future where education replaces ignorance, prevention replaces neglect, and early treatment replaces tragedy.</p>
                 <p>We cannot achieve this alone. We need you—your generosity, your voice, and your belief in the power of prevention.</p>
 
                 <div className="text-center pt-8">

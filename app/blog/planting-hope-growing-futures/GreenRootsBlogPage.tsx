@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -54,7 +55,7 @@ export default function GreenRootsBlogPage() {
                   When we think about climate change, deforestation, and rising global temperatures, the solutions often seem distant and large-scale—massive forests, corporate-led afforestation drives, or sprawling green belts. But what if the power to fight environmental degradation lay right in our own backyards?
                 </p>
                 <p>
-                  This is the heart of <strong>GreenRoots</strong>, AIM Foundation’s community-driven environmental initiative that believes reforestation is not just about planting trees on vast open lands—it’s about empowering people, families, and villages to nurture greenery where they live, work, and pray.
+                  This is the heart of <strong><Link href="/green-roots" className="text-primary hover:underline">GreenRoots</Link></strong>, AIM Foundation’s community-driven <Link href="/sustainability-initiatives" className="text-primary hover:underline">environmental initiative</Link> that believes reforestation is not just about planting trees on vast open lands—it’s about empowering people, families, and villages to nurture greenery where they live, work, and pray.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">A Seed of Change</h2>
@@ -79,7 +80,7 @@ export default function GreenRootsBlogPage() {
                     <li><strong>Planting Guidance:</strong> Recipients are trained on how to plant, water, and care for the saplings. Workshops include tips on soil preparation, natural fertilizers, and protection from grazing animals.</li>
                     <li><strong>Decentralized Plantation Sites:</strong> Saplings are planted in courtyards, farm boundaries, roadside edges, school playgrounds, temple compounds, and other available open spaces.</li>
                     <li><strong>Community Awareness Drives:</strong> Through street plays, posters, and local champions, awareness about the importance of trees, biodiversity, and climate resilience is spread.</li>
-                    <li><strong>Monitoring and Follow-up:</strong> Local volunteers and AIM Foundation teams revisit sites periodically to ensure the trees are thriving and provide additional support where needed.</li>
+                    <li><strong>Monitoring and Follow-up:</strong> Local <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link> and AIM Foundation teams revisit sites periodically to ensure the trees are thriving and provide additional support where needed.</li>
                 </ul>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why This Works: The Ownership Factor</h2>
@@ -92,18 +93,18 @@ export default function GreenRootsBlogPage() {
                 </ul>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories from the Field</h2>
-                <p>Every sapling planted under GreenRoots tells a story.</p>
+                <p>Every sapling planted under <Link href="/green-roots" className="text-primary hover:underline">GreenRoots</Link> tells a story.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">The Farmer’s Shade</h3>
                 <p>In a small village in West Bengal, a farmer planted neem and mango saplings along the border of his field. Two years later, he says the shade has improved soil moisture, and his children love to play under the trees.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">The School Garden</h3>
-                <p>A primary school in a semi-rural block transformed its dusty playground into a green haven with 20 saplings provided by GreenRoots. Students take turns watering the plants, and science lessons often happen under the shade.</p>
+                <p>A primary school in a semi-rural block transformed its dusty playground into a green haven with 20 saplings provided by <Link href="/green-roots" className="text-primary hover:underline">GreenRoots</Link>. Students take turns watering the plants, and science lessons often happen under the shade.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">The Temple Courtyard</h3>
                 <p>A village temple that had only concrete and tiles now boasts flowering trees that attract birds. Festivals are celebrated amidst natural beauty, and visitors are inspired to plant in their own spaces.</p>
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Let Your Support Take Root</h2>
-                  <p className="mt-4">Your contribution can help provide more saplings, expand outreach, and support communities in nurturing our planet. Donate today and help GreenRoots grow stronger, deeper, and greener—one tree, one family, one village at a time.</p>
-                  <p className="mt-4 italic">Every donation helps us reach more communities, host impactful seminars, and inspire lasting change. Together, let’s grow minds that protect the Earth. Donate today—and let your support become the root of real change.</p>
+                  <p className="mt-4">Your contribution can help provide more saplings, expand outreach, and support communities in nurturing our planet. Donate today and help <Link href="/green-roots" className="text-primary hover:underline">GreenRoots</Link> grow stronger, deeper, and greener—one tree, one family, one village at a time.</p>
+                  <p className="mt-4 italic">Every <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> helps us reach more communities, host impactful seminars, and inspire lasting change. Together, let’s grow minds that protect the Earth. Donate today—and let your support become the root of real change.</p>
                   <Button asChild size="lg" className="mt-6 transition-transform transform hover:scale-105">
                     <Link href="/green-roots">Support GreenRoots Today</Link>
                   </Button>
