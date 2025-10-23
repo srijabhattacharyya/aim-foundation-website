@@ -47,7 +47,7 @@ export default function RootsOfChangeBlogPage() {
                   When we think about the future, most of us imagine a world where our children can breathe clean air, drink pure water, and walk through lush green landscapes without fear of pollution or climate disasters. But for millions around the world—especially in vulnerable communities—this vision is slipping away. Rising sea levels, extreme weather, polluted rivers, vanishing forests, and contaminated soil are no longer distant threats; they are part of daily reality.
                 </p>
                 <p>
-                  The AIM Foundation believes that change—real, lasting, and deeply rooted—can only happen when people understand the “why” behind the problems they face. Our flagship environmental education initiative, <strong>Roots of Change</strong>, was created to bring that understanding to life.
+                  The AIM Foundation believes that change—real, lasting, and deeply rooted—can only happen when people understand the “why” behind the problems they face. Our flagship <Link href="/sustainability-initiatives" className="text-primary hover:underline">environmental education</Link> initiative, <strong><Link href="/roots-of-change" className="text-primary hover:underline">Roots of Change</Link></strong>, was created to bring that understanding to life.
                 </p>
                 <p>
                   It’s not just about telling people to recycle or plant trees. It’s about giving them the knowledge, the tools, and the inspiration to see themselves as active stewards of the Earth.
@@ -90,10 +90,10 @@ export default function RootsOfChangeBlogPage() {
                 <p>We work with local organizations, women’s self-help groups, youth clubs, and municipal bodies to keep the momentum alive.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories from the Roots</h2>
-                <p>Change is best understood through stories. In a small village outside Kolkata, we met Anita, a mother of two who attended one of our waste management workshops. She learned how burning plastic releases toxic fumes that can harm her children’s lungs. Within weeks, she organized her neighbourhood to collect and send recyclable waste to a nearby centre.</p>
+                <p>Change is best understood through stories. In a small village outside Kolkata, we met Anita, a mother of two who attended one of our waste management workshops. She learned how burning plastic releases toxic fumes that can harm her <Link href="/childcare-initiatives" className="text-primary hover:underline">children’s</Link> lungs. Within weeks, she organized her neighbourhood to collect and send recyclable waste to a nearby centre.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">How You Can Be Part of the Roots of Change</h2>
-                <p>Planting awareness is a community effort. Your donation funds workshops, educational materials, and sustainability projects in vulnerable communities.</p>
+                <p>Planting awareness is a community effort. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> funds workshops, educational materials, and sustainability projects in vulnerable communities.</p>
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Every voice we awaken through Roots of Change plants a seed of environmental responsibility.</h2>

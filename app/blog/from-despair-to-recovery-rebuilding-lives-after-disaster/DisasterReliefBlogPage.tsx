@@ -69,7 +69,7 @@ export default function DisasterReliefBlogPage() {
                   <li><strong>Clean Water and Hygiene Kits:</strong> We provide clean drinking water, purification tablets, and hygiene kits to prevent disease.</li>
                   <li><strong>Temporary Shelter and Essential Supplies:</strong> We distribute tarpaulins, tents, blankets, and clothing to offer safety and dignity.</li>
                   <li><strong>Mobile Medical Units and First Aid:</strong> Our teams offer first aid, essential medicines, and maternal healthcare in affected areas.</li>
-                  <li><strong>Psychosocial Support:</strong> Our counselors help survivors, especially children, process grief and trauma.</li>
+                  <li><strong>Psychosocial Support:</strong> Our counselors help survivors, especially <Link href="/childcare-initiatives" className="text-primary hover:underline">children</Link>, process grief and trauma.</li>
                 </ol>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Beyond Immediate Relief – Building Resilience</h2>
@@ -81,7 +81,7 @@ export default function DisasterReliefBlogPage() {
                 <h3 className="text-2xl font-semibold font-headline text-foreground">The Cyclone Survivor Who Rebuilt Her Shop</h3>
                 <p>When Cyclone Amphan tore through coastal West Bengal, Rekha Devi’s small tailoring shop was washed away. With AIM Foundation’s livelihood grant, she purchased a new sewing machine and materials. Today, she’s not only back in business but also training two young girls from her village—turning her recovery into an opportunity for others.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Children Back to School After the Floods</h3>
-                <p>In Assam, devastating floods submerged entire villages. Our team set up temporary learning spaces so that children could continue their education while their schools were rebuilt, providing a lifeline to normalcy amidst chaos.</p>
+                <p>In Assam, devastating floods submerged entire villages. Our team set up temporary learning spaces so that <Link href="/childcare-initiatives" className="text-primary hover:underline">children</Link> could continue their <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> while their schools were rebuilt, providing a lifeline to normalcy amidst chaos.</p>
 
                 <div className="bg-muted p-8 rounded-lg my-12 text-center">
                   <h2 className="text-3xl font-bold font-headline text-foreground">Be a Beacon of Hope in the Storm</h2>

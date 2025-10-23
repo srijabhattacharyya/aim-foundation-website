@@ -44,7 +44,7 @@ export default function CycleSafeBlogPage() {
                   For many adolescent girls, menstruation is a normal biological process—but for millions across India, it’s a monthly challenge filled with fear, shame, and missed opportunities. In underserved communities, particularly in and around Kolkata, menstruation is still shrouded in silence.
                 </p>
                 <p>
-                  CycleSafe was born out of a simple yet powerful belief: no girl should have to miss school or compromise her health because of her period. By providing essential menstrual products, conducting awareness workshops, and breaking taboos, this initiative ensures girls can live with dignity, confidence, and independence.
+                  <Link href="/cyclesafe" className="text-primary hover:underline font-bold">CycleSafe</Link> was born out of a simple yet powerful belief: no girl should have to miss school or compromise her health because of her period. By providing essential menstrual products, conducting awareness workshops, and breaking taboos, this <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare initiative</Link> ensures girls can live with dignity, confidence, and independence.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">The Challenges Girls Face</h2>
@@ -66,12 +66,12 @@ export default function CycleSafeBlogPage() {
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Stories of Change</h2>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Rani’s Journey</h3>
-                <p>Rani, a 14-year-old, used to miss school every month. After joining CycleSafe, she received sanitary pads and health education. Today, she attends school confidently, participates in sports, and educates her peers.</p>
+                <p>Rani, a 14-year-old, used to miss school every month. After joining CycleSafe, she received sanitary pads and health <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>. Today, she attends school confidently, participates in sports, and educates her peers.</p>
                 <h3 className="text-2xl font-semibold font-headline text-foreground">Meena Inspires a Village</h3>
                 <p>Meena was the first in her family to openly talk about menstruation. Now a volunteer, she empowers other girls to embrace their bodies without shame.</p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">Why Your Support is Crucial</h2>
-                <p>Just <strong>₹300 per month</strong> can support one girl with both menstrual products and life-changing health education. Your contribution can:</p>
+                <p>Just <strong>₹300 per month</strong> can support one girl with both menstrual products and life-changing health education. Your <Link href="/individual-donation" className="text-primary hover:underline">contribution</Link> can:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>Keep a girl in school all year round.</li>
                   <li>Provide her with dignity and comfort.</li>
