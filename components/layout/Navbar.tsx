@@ -84,6 +84,11 @@ const navLinks: NavItem[] = [
         { href: '/roots-of-change', label: 'Roots of Change' },
         { href: '/forest-cleaning', label: 'Forest Cleaning' },
       ]},
+      { label: 'Childcare Initiatives', isSubDropdown: true, href: '/childcare-initiatives', subItems: [
+        { href: '/innocent-smiles', label: 'Innocent Smiles' },
+        { href: '/milieu', label: 'Milieu' },
+        { href: '/childfirst', label: 'ChildFirst' },
+      ]},
       { href: '/relief-to-the-underprivileged', label: 'Relief to the Underprivileged' },
       { href: '/disaster-management', label: 'Disaster Management' },
       { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
@@ -337,5 +342,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+    
 
     
