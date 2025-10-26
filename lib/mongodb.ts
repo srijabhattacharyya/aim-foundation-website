@@ -3,7 +3,8 @@ import { MongoClient } from "mongodb";
 let cachedClient: MongoClient | null = null;
 
 export async function connectToDatabase() {
-  const uri = process.env.MONGODB_URI ?? "";
+  // Force TypeScript to treat this as a definite string
+  const uri = process.env.MONGODB_URI as string;
 
   if (!uri) {
     throw new Error("❌ Missing MONGODB_URI in environment variables.");
@@ -23,3 +24,4 @@ export async function connectToDatabase() {
     throw error;
   }
 }
+
