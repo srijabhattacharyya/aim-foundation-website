@@ -12,40 +12,22 @@ function initializeAdminApp() {
         return;
     }
 
-    const serviceAccount = {
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        // Replace newline characters with actual newlines
-        privateKey: (process.env.FIREBASE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
-    };
-
-    if (!serviceAccount.projectId || !serviceAccount.clientEmail || !serviceAccount.privateKey) {
-        // If deployed in a Google Cloud environment (like older Vercel integrations)
-        // without these env vars, it might still work automatically.
-        // Log a warning instead of throwing an error.
-        console.warn(
-            'Firebase Admin credentials environment variables are not fully set. ' +
-            'Relying on default application credentials. ' +
-            'If you see authentication errors, please set FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, and FIREBASE_PRIVATE_KEY.'
-        );
-        admin.initializeApp({
-            storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
-        });
-        return;
-    }
-
     try {
+        // When deployed on Vercel (or other Google Cloud environments),
+        // the Admin SDK can automatically find the credentials.
+        // No need to pass serviceAccount details manually.
         admin.initializeApp({
-            credential: admin.credential.cert(serviceAccount),
-            storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
+             storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
         });
+        console.log('Firebase Admin SDK initialized successfully using Application Default Credentials.');
     } catch (error: any) {
         console.error('Firebase Admin Initialization Error:', error.message);
-        throw new Error("Failed to initialize Firebase Admin SDK. Check server logs for details.");
+        // This will help diagnose if there's a problem with the default credentials setup.
+        throw new Error("Failed to initialize Firebase Admin SDK. Ensure the Vercel project is correctly linked to a Google Cloud service account with appropriate permissions.");
     }
 }
 
-// Call initialization once
+// Call initialization once at module load
 initializeAdminApp();
 
 export function getAdminDb(): Firestore {
