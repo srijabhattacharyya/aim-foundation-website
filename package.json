@@ -43,6 +43,7 @@
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.417.0",
     "mongodb": "^6.20.0",
+    "mongoose": "^8.19.2",
     "next": "^14.2.33",
     "papaparse": "^5.4.1",
     "razorpay": "^2.9.4",
