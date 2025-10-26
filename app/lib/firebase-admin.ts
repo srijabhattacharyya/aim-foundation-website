@@ -12,19 +12,33 @@ function initializeAdminApp() {
         return;
     }
 
+    const projectId = process.env.FIREBASE_PROJECT_ID;
+    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
+    // The private key needs to be properly formatted. Vercel automatically handles the newlines.
+    const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+
+    // If these environment variables are not set, it's a configuration error.
+    if (!projectId || !clientEmail || !privateKey) {
+        console.error('Firebase Admin SDK environment variables are not set. Required: FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY');
+        // We throw an error here to make it clear during development/deployment that the config is missing.
+        // The error seen by the user will be the one from the catch block in the server action.
+        return;
+    }
+
     try {
-        // When deployed on Vercel (or other Google Cloud environments),
-        // the Admin SDK can automatically find the credentials, but sometimes
-        // needs the projectId for context.
         admin.initializeApp({
-             projectId: process.env.FIREBASE_PROJECT_ID,
-             storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
+            credential: admin.credential.cert({
+                projectId,
+                clientEmail,
+                privateKey,
+            }),
+            storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com',
         });
-        console.log('Firebase Admin SDK initialized successfully using Application Default Credentials.');
+        console.log('Firebase Admin SDK initialized successfully using service account environment variables.');
     } catch (error: any) {
         console.error('Firebase Admin Initialization Error:', error.message);
-        // This will help diagnose if there's a problem with the default credentials setup.
-        throw new Error("Failed to initialize Firebase Admin SDK. Ensure the Vercel project is correctly linked to a Google Cloud service account with appropriate permissions, and the FIREBASE_PROJECT_ID environment variable is set.");
+        // This will help diagnose if there's a problem with the credentials setup.
+        throw new Error("Failed to initialize Firebase Admin SDK. Please check your FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, and FIREBASE_PRIVATE_KEY environment variables.");
     }
 }
 
@@ -32,6 +46,12 @@ function initializeAdminApp() {
 initializeAdminApp();
 
 export function getAdminDb(): Firestore {
+    if (!admin.apps.length) {
+       initializeAdminApp();
+       if (!admin.apps.length) {
+         throw new Error("Admin SDK not initialized");
+       }
+    }
     if (!db) {
         db = getFirestore();
     }
@@ -39,6 +59,12 @@ export function getAdminDb(): Firestore {
 }
 
 export function getAdminStorage(): Storage {
+     if (!admin.apps.length) {
+       initializeAdminApp();
+       if (!admin.apps.length) {
+         throw new Error("Admin SDK not initialized");
+       }
+    }
     if (!storage) {
         storage = getStorage();
     }
