@@ -6,7 +6,7 @@ import { randomBytes } from 'crypto';
 export async function createRazorpayOrder(amount: number, currency: string = 'INR') {
   try {
     const instance = new Razorpay({
-      key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
+      key_id: process.env.RAZORPAY_KEY_ID!,
       key_secret: process.env.RAZORPAY_KEY_SECRET!,
     });
 
