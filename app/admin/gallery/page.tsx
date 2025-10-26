@@ -50,8 +50,8 @@ import {
   addGalleryImage,
   updateGalleryImage,
   deleteGalleryImage,
+  fetchGalleryImages,
 } from '@/app/actions/adminActions';
-import { fetchGalleryImages } from '@/app/actions/galleryActions';
 
 // ✅ Interface
 export interface GalleryImage {

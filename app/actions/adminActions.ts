@@ -61,19 +61,24 @@ export async function deleteSubscriber(id: string) {
 // ------------------------------
 // Gallery Management
 // ------------------------------
-// For now, we will comment out image upload/delete as it requires a storage solution.
-// We'll focus on database operations.
 
-// async function uploadImage(fileBase64: string, fileName: string): Promise<string> {
-//   // This needs a storage solution like AWS S3, Cloudinary, or Vercel Blob.
-//   // Returning a placeholder for now.
-//   return "https://placehold.co/600x400.png";
-// }
+export async function fetchGalleryImages() {
+  const db = getAdminDb();
+  const snapshot = await db.collection('gallery').orderBy('sequence', 'asc').get();
+  
+  return snapshot.docs.map((doc) => {
+    const data = doc.data();
+    return {
+      id: doc.id,
+      description: data.description,
+      status: data.status,
+      sequence: data.sequence,
+      imageUrl: data.imageUrl,
+      createdAt: data.createdAt?.toDate?.().toISOString() || new Date().toISOString(),
+    };
+  });
+}
 
-// async function deleteImage(imageUrl: string) {
-//   // This needs to be implemented based on the chosen storage solution.
-//   console.log("Deleting image:", imageUrl);
-// }
 
 export async function addGalleryImage(data: {
   description: string;

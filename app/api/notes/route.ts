@@ -1,6 +1,6 @@
 // app/api/notes/route.ts
 import { NextResponse } from 'next/server';
-import { getAdminDb } from '../../../lib/firebase-admin';
+import { getAdminDb } from '@/app/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
 // GET /api/notes
