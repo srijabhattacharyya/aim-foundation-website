@@ -1,3 +1,4 @@
+
 'use server';
 
 import { z } from 'zod';
@@ -12,6 +13,7 @@ export async function addDonation(prevState: any, formData: FormData) {
   const data = Object.fromEntries(formData.entries());
 
   const refinedData = {
+    ...data, // Pass all form data through
     agree: (formData.get('agree') as string | null) === 'on',
     amount: (() => {
       const otherAmount = formData.get('otherAmount') as string | null;
@@ -23,10 +25,8 @@ export async function addDonation(prevState: any, formData: FormData) {
     })(),
   };
 
-  const validatedFields = donationSchema.safeParse({
-    ...refinedData,
-    agree: refinedData.agree,
-  });
+
+  const validatedFields = donationSchema.safeParse(refinedData);
 
   if (!validatedFields.success) {
     console.error('Validation Errors:', validatedFields.error.flatten().fieldErrors);
@@ -61,11 +61,12 @@ export async function addDonation(prevState: any, formData: FormData) {
       data: dataToSave,
       errors: {},
     };
-  } catch (e) {
+  } catch (e: any) {
     console.error('Error recording donation:', e);
+    // Return the specific error message from the catch block
     return {
       success: false,
-      message: 'Could not record donation. Please try again later.',
+      message: e.message || 'Could not record donation. Please try again later.',
       errors: {},
       data: null,
     };
