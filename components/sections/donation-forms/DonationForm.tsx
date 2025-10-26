@@ -13,7 +13,6 @@ import { donationSchema } from './schemas';
 import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
 import Script from "next/script";
-import { createRazorpayOrder } from "@/app/actions/paymentActions";
 import { addDonation } from "@/app/actions/donationActions";
 import { useToast } from "@/hooks/use-toast";
 
@@ -103,93 +102,40 @@ export default function DonationForm({
 
     setIsSubmitting(true);
 
-    if (values.nationality !== 'Indian') {
-      console.log("Non-Indian donation submitted, redirecting...", values);
-      let paymentUrl = "https://stripe.com/in";
-      window.open(paymentUrl, "_blank");
-      setIsSubmitting(false);
-      return;
-    }
-
-    const finalAmountString = values.otherAmount || values.amount;
-    const finalAmount = parseFloat(finalAmountString);
-
-    if (isNaN(finalAmount) || finalAmount <= 0) {
-        toast({ variant: 'destructive', title: 'Invalid Amount', description: 'Please enter a valid donation amount.' });
-        setIsSubmitting(false);
-        return;
-    }
-
-    const orderResponse = await createRazorpayOrder(finalAmount);
-    if (!orderResponse.success || !orderResponse.order) {
-        toast({ variant: 'destructive', title: 'Payment Error', description: orderResponse.message });
-        setIsSubmitting(false);
-        return;
-    }
-
-    const razorpayOrder = orderResponse.order;
-
-    const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
-        amount: razorpayOrder.amount,
-        currency: razorpayOrder.currency,
-        name: 'AIM Foundation',
-        description: `Donation for ${values.cause}`,
-        image: 'https://aimindia.org.in/logo.png',
-        order_id: razorpayOrder.id,
-        handler: async function (response: any) {
-            const formData = new FormData();
-            Object.entries(values).forEach(([key, value]) => {
-                if (value !== undefined) {
-                    formData.append(key, String(value));
-                }
-            });
-
-            try {
-                const donationResult = await addDonation({}, formData);
-                if (donationResult.success) {
-                    toast({ title: 'Donation Successful', description: 'Thank you for your generous contribution!' });
-                    form.reset();
-                } else {
-                    toast({ variant: 'destructive', title: 'Donation Failed', description: donationResult.message });
-                }
-            } catch (error) {
-                toast({ variant: 'destructive', title: 'Error', description: 'Could not record your donation. Please contact us.' });
-            } finally {
-                setIsSubmitting(false);
-            }
-        },
-        prefill: {
-            name: values.fullName,
-            email: values.email,
-            contact: `${values.countryCode}${values.mobile}`,
-        },
-        notes: {
-            address: `${values.address}, ${values.city}, ${values.state}, ${values.pincode}`,
-            cause: values.cause,
-        },
-        theme: {
-            color: '#2ecc71',
-        },
-        modal: {
-            ondismiss: function() {
-                setIsSubmitting(false);
-            }
-        }
-    };
-    
-    // @ts-ignore
-    const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed', function (response: any) {
-        toast({
-            variant: 'destructive',
-            title: 'Payment Failed',
-            description: response.error.description || 'An unknown error occurred.',
-        });
-        setIsSubmitting(false);
+    // Save donation details first
+    const formData = new FormData();
+    Object.entries(values).forEach(([key, value]) => {
+      if (value !== undefined) {
+        formData.append(key, String(value));
+      }
     });
 
-    rzp.open();
+    try {
+      const donationResult = await addDonation({}, formData);
+      if (!donationResult.success) {
+        toast({ variant: 'destructive', title: 'Error', description: donationResult.message || 'Could not save donation details.' });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Handle payment redirection
+      if (values.nationality === 'Indian') {
+        const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
+        window.open(paymentUrl, "_blank");
+        toast({ title: 'Redirecting to Payment', description: 'Please complete your donation on the Razorpay page.' });
+        form.reset();
+      } else {
+        const paymentUrl = "https://stripe.com/in"; // Fallback for non-Indian
+        window.open(paymentUrl, "_blank");
+        toast({ title: 'Redirecting to Payment', description: 'Please complete your donation.' });
+        form.reset();
+      }
+
+    } catch (error) {
+        toast({ variant: 'destructive', title: 'Error', description: 'An unexpected error occurred. Please contact us.' });
+    } finally {
+        setIsSubmitting(false);
+    }
   }
 
   return (
