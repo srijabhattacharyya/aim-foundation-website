@@ -1,13 +1,15 @@
+// app/lib/mongodb.ts
 import { MongoClient } from "mongodb";
 
 let cachedClient: MongoClient | null = null;
 
 export async function connectToDatabase() {
-  // Force TypeScript to treat this as a definite string
-  const uri = process.env.MONGODB_URI as string;
+  const uri = process.env.MONGODB_URI;
 
   if (!uri) {
-    throw new Error("❌ Missing MONGODB_URI in environment variables.");
+    throw new Error(
+      "Please define the MONGODB_URI environment variable inside Vercel or .env.local"
+    );
   }
 
   if (cachedClient) {
@@ -17,11 +19,10 @@ export async function connectToDatabase() {
   try {
     const client = new MongoClient(uri);
     cachedClient = await client.connect();
-    console.log("✅ Successfully connected to MongoDB.");
+    console.log("Successfully connected to MongoDB.");
     return cachedClient;
   } catch (error) {
-    console.error("❌ MongoDB connection failed:", error);
+    console.error("MongoDB connection error:", error);
     throw error;
   }
 }
-
