@@ -9,7 +9,7 @@ import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
 import { Form } from "@/components/ui/form";
 import { DonationAmount } from "@/types/donation";
-import { donationSchema } from './schemas';
+import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
 import Script from "next/script";
@@ -164,7 +164,6 @@ export default function DonationForm({
                   donationAmountsIndian={donationAmountsIndian}
                   donationAmountsNonIndian={donationAmountsNonIndian}
                 />
-                <SubmitButton isSubmitting={isSubmitting} />
               </form>
             </Form>
           </FormProvider>
