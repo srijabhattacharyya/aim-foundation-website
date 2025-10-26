@@ -22,7 +22,7 @@ function initializeAdminApp() {
         console.error('Firebase Admin SDK environment variables are not set. Required: FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY');
         // We throw an error here to make it clear during development/deployment that the config is missing.
         // The error seen by the user will be the one from the catch block in the server action.
-        return;
+        throw new Error("Missing Firebase Admin credentials in environment variables.");
     }
 
     try {
@@ -42,15 +42,9 @@ function initializeAdminApp() {
     }
 }
 
-// Call initialization once at module load
-initializeAdminApp();
-
 export function getAdminDb(): Firestore {
     if (!admin.apps.length) {
        initializeAdminApp();
-       if (!admin.apps.length) {
-         throw new Error("Admin SDK not initialized");
-       }
     }
     if (!db) {
         db = getFirestore();
@@ -61,9 +55,6 @@ export function getAdminDb(): Firestore {
 export function getAdminStorage(): Storage {
      if (!admin.apps.length) {
        initializeAdminApp();
-       if (!admin.apps.length) {
-         throw new Error("Admin SDK not initialized");
-       }
     }
     if (!storage) {
         storage = getStorage();
