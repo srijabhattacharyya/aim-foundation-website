@@ -1,20 +1,23 @@
-// lib/mongodb.ts
-import { MongoClient } from 'mongodb';
-
-const uri = process.env.MONGODB_URI;
-
-// Throw error if env variable is missing
-if (!uri) {
-  throw new Error('The MONGODB_URI environment variable is not defined. Please add your MongoDB connection string to your deployment environment (e.g., Vercel, Firebase) to connect to the database.');
-}
+import { MongoClient } from "mongodb";
 
 let cachedClient: MongoClient | null = null;
 
-export async function connectToDatabase(): Promise<MongoClient> {
+export async function connectToDatabase() {
+  const uri = process.env.MONGODB_URI;
+
+  if (!uri) {
+    throw new Error("❌ Missing MONGODB_URI in environment variables.");
+  }
+
   if (cachedClient) return cachedClient;
 
-  // Type assertion to tell TypeScript uri is definitely a string
-  const client = new MongoClient(uri as string); 
-  cachedClient = await client.connect();
-  return cachedClient;
+  try {
+    const client = new MongoClient(uri as string);
+    cachedClient = await client.connect();
+    console.log("✅ Successfully connected to MongoDB");
+    return cachedClient;
+  } catch (error) {
+    console.error("❌ MongoDB connection failed:", error);
+    throw error;
+  }
 }
