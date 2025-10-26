@@ -46,11 +46,14 @@ export async function deleteDonation(id: string) {
 export async function fetchSubscribers() {
   const db = getAdminDb();
   const snapshot = await db.collection('subscribers').orderBy('createdAt', 'desc').get();
-  return snapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-    createdAt: doc.data().createdAt.toDate().toISOString(),
-  }));
+  return snapshot.docs.map((doc) => {
+    const data = doc.data();
+    return {
+      id: doc.id,
+      email: data.email,
+      createdAt: data.createdAt.toDate().toISOString(),
+    };
+  });
 }
 
 export async function deleteSubscriber(id: string) {
