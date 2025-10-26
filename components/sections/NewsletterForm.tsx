@@ -1,51 +1,79 @@
+
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
-import { useEffect, useRef } from 'react';
+import { useState, FormEvent } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
-import { subscribeToNewsletter } from '@/app/actions/newsletterActions';
+import { z } from 'zod';
+import { newsletterSchema } from '@/components/sections/donation-forms/schemas';
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-
+function SubmitButton({ isSubmitting }: { isSubmitting: boolean }) {
   return (
-    <Button type="submit" size="lg" className="flex-shrink-0 w-full sm:w-auto transition-transform transform hover:scale-105" disabled={pending}>
-      {pending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...</> : 'Subscribe'}
+    <Button type="submit" size="lg" className="flex-shrink-0 w-full sm:w-auto transition-transform transform hover:scale-105" disabled={isSubmitting}>
+      {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...</> : 'Subscribe'}
     </Button>
   );
 }
 
 export default function NewsletterForm() {
   const { toast } = useToast();
-  const [state, formAction] = useFormState(subscribeToNewsletter, { success: false, message: '' });
-  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    if (state.message) {
-      if (state.success) {
-        toast({
-          title: 'Thank you for subscribing!',
-          description: 'We will stay connected.',
-        });
-        formRef.current?.reset();
-      } else {
-        // Do not show error for bot detection
-        if (state.message !== 'Bot detected.') {
-          toast({
-            variant: 'destructive',
-            title: 'Subscription Failed',
-            description: state.message,
-          });
-        }
-      }
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get('email') as string;
+    const honeypot = formData.get('honeypot') as string;
+
+    // Honeypot check
+    if (honeypot) {
+      setIsSubmitting(false);
+      return;
     }
-  }, [state, toast]);
+
+    try {
+      // Zod validation on the client
+      newsletterSchema.parse({ email });
+
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'An unknown error occurred.');
+      }
+
+      toast({
+        title: 'Thank you for subscribing!',
+        description: 'We will stay connected.',
+      });
+      (event.target as HTMLFormElement).reset();
+
+    } catch (error: any) {
+      const errorMessage = error instanceof z.ZodError 
+        ? error.errors[0].message 
+        : error.message;
+      
+      toast({
+        variant: 'destructive',
+        title: 'Subscription Failed',
+        description: errorMessage,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <form ref={formRef} action={formAction} className="flex flex-col sm:flex-row gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
       <div className="flex-grow w-full">
         <Input
           name="email"
@@ -58,7 +86,7 @@ export default function NewsletterForm() {
       </div>
       {/* Honeypot field for bot protection */}
       <input type="text" name="honeypot" className="hidden" />
-      <SubmitButton />
+      <SubmitButton isSubmitting={isSubmitting} />
     </form>
   );
 }

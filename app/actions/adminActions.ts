@@ -1,5 +1,6 @@
+
 'use server';
-import { getAdminDb } from '@/lib/firebase-admin';
+import { getAdminDb } from '@/app/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
 // ------------------------------

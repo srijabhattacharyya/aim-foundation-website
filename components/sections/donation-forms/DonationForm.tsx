@@ -1,9 +1,9 @@
 
 "use client";
 
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "./DonationFormFields";
@@ -13,8 +13,8 @@ import { donationSchema } from './schemas';
 import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
 import Script from "next/script";
-import { addDonation } from "@/app/actions/donationActions";
 import { useToast } from "@/hooks/use-toast";
+import { SubmitButton } from "./SubmitButton";
 
 interface DonationFormProps {
   cause: string;
@@ -35,8 +35,8 @@ export default function DonationForm({
   formTitle,
   formSubtitle,
 }: DonationFormProps) {
-  const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -81,6 +81,7 @@ export default function DonationForm({
       form.setValue("amount", defaultNonIndianAmount);
     }
     form.resetField("mobile");
+    form.resetField("otherAmount");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
   useEffect(() => {
@@ -91,50 +92,45 @@ export default function DonationForm({
       }
     }
   }, [selectedCountry, form]);
-
+  
   async function onSubmit(values: z.infer<typeof donationSchema>) {
-    form.control.register('submit'); // Manually register to track isSubmitting
-    const setIsSubmitting = (isSubmitting: boolean) => {
-        const { control }: any = form;
-        control._formState.isSubmitting = isSubmitting;
-        control._subjects.state.next({ ...control._formState, isSubmitting });
-    };
-
     setIsSubmitting(true);
-
-    const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
-      if (value !== undefined) {
-        formData.append(key, String(value));
-      }
-    });
-
-    const donationResult = await addDonation({}, formData);
-
-    if (!donationResult.success) {
-      toast({
-        variant: 'destructive',
-        title: 'Error',
-        description: donationResult.message || 'An unexpected error occurred. Please try again.',
+    try {
+      const response = await fetch('/api/donations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
       });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'An unexpected error occurred.');
+      }
+      
+      toast({
+        title: "Donation Recorded!",
+        description: "Thank you for your support. Please complete the payment.",
+      });
+
+      if (values.nationality === 'Indian') {
+        const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
+        window.open(paymentUrl, "_blank");
+      } else {
+        const paymentUrl = "https://stripe.com/in"; // Fallback for non-Indian
+        window.open(paymentUrl, "_blank");
+      }
+      form.reset();
+
+    } catch (error: any) {
+       toast({
+        variant: 'destructive',
+        title: 'Submission Failed',
+        description: error.message || 'Could not record your donation. Please try again.',
+      });
+    } finally {
       setIsSubmitting(false);
-      return;
     }
-
-    // Handle payment redirection
-    if (values.nationality === 'Indian') {
-      const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
-      window.open(paymentUrl, "_blank");
-      toast({ title: 'Redirecting to Payment', description: 'Please complete your donation on the Razorpay page.' });
-      form.reset();
-    } else {
-      const paymentUrl = "https://stripe.com/in"; // Fallback for non-Indian
-      window.open(paymentUrl, "_blank");
-      toast({ title: 'Redirecting to Payment', description: 'Please complete your donation.' });
-      form.reset();
-    }
-
-    setIsSubmitting(false);
   }
 
   return (
@@ -160,14 +156,15 @@ export default function DonationForm({
             <p className="text-muted-foreground">{formSubtitle}</p>
           </div>
 
-          <Form {...form}>
-            <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormProvider {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <DonationFormFields
-                donationAmountsIndian={donationAmountsIndian.map(item => ({ ...item, description: item.description ?? "" }))}
-                donationAmountsNonIndian={donationAmountsNonIndian.map(item => ({ ...item, description: item.description ?? "" }))}
+                donationAmountsIndian={donationAmountsIndian}
+                donationAmountsNonIndian={donationAmountsNonIndian}
               />
+              <SubmitButton isSubmitting={isSubmitting} />
             </form>
-          </Form>
+          </FormProvider>
         </CardContent>
       </Card>
     </>
