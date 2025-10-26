@@ -8,21 +8,15 @@ export async function connectToDatabase() {
 
   if (!uri) {
     throw new Error(
-      "Please define the MONGODB_URI environment variable inside Vercel or .env.local"
+      "MONGODB_URI environment variable is missing. Set it in Vercel or .env.local"
     );
   }
 
-  if (cachedClient) {
-    return cachedClient;
-  }
+  if (cachedClient) return cachedClient;
 
-  try {
-    const client = new MongoClient(uri);
-    cachedClient = await client.connect();
-    console.log("Successfully connected to MongoDB.");
-    return cachedClient;
-  } catch (error) {
-    console.error("MongoDB connection error:", error);
-    throw error;
-  }
+  const client = new MongoClient(uri);
+  cachedClient = await client.connect();
+  console.log("Successfully connected to MongoDB.");
+  return cachedClient;
 }
+
