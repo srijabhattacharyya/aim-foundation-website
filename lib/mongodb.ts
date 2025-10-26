@@ -4,9 +4,11 @@ import { MongoClient } from "mongodb";
 let cachedClient: MongoClient | null = null;
 
 export async function connectToDatabase() {
-  const uri = process.env.MONGODB_URI;
-
+  // Use ! to assert non-undefined for TypeScript
+  const uri = process.env.MONGODB_URI!;
+  
   if (!uri) {
+    // Runtime check for safety
     throw new Error(
       "MONGODB_URI environment variable is missing. Set it in Vercel or .env.local"
     );
