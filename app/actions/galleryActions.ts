@@ -1,24 +1,20 @@
 'use server';
 
-import { connectToDatabase } from '@/lib/mongodb';
+import { getAdminDb } from '@/lib/firebase-admin';
 
 export async function fetchGalleryImages() {
-  const client = await connectToDatabase();
-  const db = client.db();
-  const snapshot = await db
-    .collection('gallery')
-    .find()
-    .sort({ sequence: 1 })
-    .toArray();
-    
-  return snapshot.map((doc: any) => {
+  const db = getAdminDb();
+  const snapshot = await db.collection('gallery').orderBy('sequence', 'asc').get();
+  
+  return snapshot.docs.map((doc) => {
+    const data = doc.data();
     return {
-      id: doc._id.toString(),
-      description: doc.description,
-      status: doc.status,
-      sequence: doc.sequence,
-      imageUrl: doc.imageUrl,
-      createdAt: doc.createdAt ? new Date(doc.createdAt).toISOString() : new Date().toISOString(),
+      id: doc.id,
+      description: data.description,
+      status: data.status,
+      sequence: data.sequence,
+      imageUrl: data.imageUrl,
+      createdAt: data.createdAt?.toDate?.().toISOString() || new Date().toISOString(),
     };
   });
 }

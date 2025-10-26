@@ -2,7 +2,8 @@
 'use server';
 
 import { z } from 'zod';
-import { connectToDatabase } from '@/lib/mongodb';
+import { getAdminDb } from '@/lib/firebase-admin';
+import { FieldValue } from 'firebase-admin/firestore';
 import { newsletterSchema } from '@/components/sections/donation-forms/schemas';
 
 
@@ -29,21 +30,21 @@ export async function subscribeToNewsletter(prevState: any, formData: FormData) 
   const { email } = validatedFields.data;
 
   try {
-    const client = await connectToDatabase();
-    const db = client.db();
+    const db = getAdminDb();
     
-    const existingSubscriber = await db.collection('subscribers').findOne({ email: email });
+    const subscribersRef = db.collection('subscribers');
+    const existingSubscriberQuery = await subscribersRef.where('email', '==', email).limit(1).get();
 
-    if (existingSubscriber) {
+    if (!existingSubscriberQuery.empty) {
       return {
         success: false,
         message: 'This email is already subscribed.',
       };
     }
 
-    await db.collection('subscribers').insertOne({
+    await subscribersRef.add({
       email: email,
-      createdAt: new Date(),
+      createdAt: FieldValue.serverTimestamp(),
     });
 
     return {

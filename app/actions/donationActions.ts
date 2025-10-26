@@ -3,7 +3,8 @@
 
 import { z } from 'zod';
 import { donationSchema } from '@/components/sections/donation-forms/schemas';
-import { connectToDatabase } from '@/lib/mongodb';
+import { getAdminDb } from '@/lib/firebase-admin';
+import { FieldValue } from 'firebase-admin/firestore';
 
 // ------------------------------
 // Add Donation (Form Submission)
@@ -45,24 +46,26 @@ export async function addDonation(prevState: any, formData: FormData) {
   const dataToSave = {
     ...validatedFields.data,
     amount: finalAmount,
-    createdAt: new Date(),
+    createdAt: FieldValue.serverTimestamp(),
   };
 
   delete (dataToSave as any).agree;
   delete (dataToSave as any).otherAmount;
 
   try {
-    const client = await connectToDatabase();
-    const db = client.db();
-    await db.collection('donations').insertOne(dataToSave);
+    const db = getAdminDb();
+    await db.collection('donations').add(dataToSave);
     return {
       success: true,
       message: 'Donation recorded successfully.',
-      data: dataToSave,
+      data: {
+          ...dataToSave,
+          createdAt: new Date().toISOString() // Return an ISO string for client
+      },
       errors: {},
     };
   } catch (e: any) {
-    console.error('Error recording donation to MongoDB:', e);
+    console.error('Error recording donation to Firestore:', e);
     // Return the specific error message from the catch block
     return {
       success: false,
@@ -86,24 +89,21 @@ export interface Donation {
 }
 
 export async function fetchDonations(): Promise<Donation[]> {
-  const client = await connectToDatabase();
-  const db = client.db();
+  const db = getAdminDb();
   const snapshot = await db
     .collection('donations')
-    .find()
-    .sort({ createdAt: -1 })
-    .toArray();
+    .orderBy('createdAt', 'desc')
+    .get();
 
-  return snapshot.map((doc: any) => {
+  return snapshot.docs.map((doc) => {
+    const data = doc.data();
     return {
-      id: doc._id.toString(),
-      fullName: doc.fullName || 'Anonymous',
-      email: doc.email || 'N/A',
-      amount: Number(doc.amount) || 0,
-      cause: doc.cause || 'General',
-      createdAt: doc.createdAt
-        ? new Date(doc.createdAt).toISOString()
-        : new Date().toISOString(),
+      id: doc.id,
+      fullName: data.fullName || 'Anonymous',
+      email: data.email || 'N/A',
+      amount: Number(data.amount) || 0,
+      cause: data.cause || 'General',
+      createdAt: data.createdAt?.toDate?.().toISOString() || new Date().toISOString(),
     };
   });
 }

@@ -1,13 +1,14 @@
 // app/api/notes/route.ts
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../../lib/mongodb';
+import { getAdminDb } from '../../../lib/firebase-admin';
+import { FieldValue } from 'firebase-admin/firestore';
 
 // GET /api/notes
 export async function GET() {
   try {
-    const client = await connectToDatabase();
-    const db = client.db(); // Default DB from connection string
-    const notes = await db.collection('notes').find({}).toArray();
+    const db = getAdminDb();
+    const snapshot = await db.collection('notes').get();
+    const notes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     return NextResponse.json({ notes });
   } catch (error) {
     console.error('API Error:', error);
@@ -18,8 +19,7 @@ export async function GET() {
 // POST /api/notes
 export async function POST(request: Request) {
   try {
-    const client = await connectToDatabase();
-    const db = client.db();
+    const db = getAdminDb();
 
     const { title, content } = await request.json();
 
@@ -27,13 +27,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: 'Title and content are required' }, { status: 400 });
     }
 
-    const result = await db.collection('notes').insertOne({
+    const result = await db.collection('notes').add({
       title,
       content,
-      createdAt: new Date(),
+      createdAt: FieldValue.serverTimestamp(),
     });
 
-    return NextResponse.json({ message: 'Note created', noteId: result.insertedId }, { status: 201 });
+    return NextResponse.json({ message: 'Note created', noteId: result.id }, { status: 201 });
   } catch (error) {
     console.error('API Error:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
