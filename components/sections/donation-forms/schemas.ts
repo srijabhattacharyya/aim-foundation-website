@@ -1,3 +1,4 @@
+
 // components/sections/donation-forms/schemas.ts
 
 import { z } from 'zod';
@@ -17,12 +18,13 @@ export const donationSchema = z
     passport: z.string().optional(),
     country: z.string().nonempty('Country is required'),
     state: z.string().optional(),
-    city: z.string().nonempty('City is required'),
-    address: z.string().nonempty('Address is required'),
-    pincode: z.string().min(5, 'Pincode seems too short'),
+    city: z.string().optional(),
+    address: z.string().optional(),
+    pincode: z.string().optional(),
     agree: z.boolean(), // ✅ allow false, will validate in superRefine
     cause: z.string(),
     initiative: z.string().optional(),
+    submit: z.any().optional(), // Added to track submission state
   })
   .superRefine((data, ctx) => {
     // Validate donation amount
@@ -32,6 +34,15 @@ export const donationSchema = z
         message: "Please select or enter a donation amount.",
         path: ["amount"],
       });
+    } else {
+        const otherAmount = parseFloat(data.otherAmount || '0');
+        if (data.otherAmount && otherAmount <= 0) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: "Please enter a valid donation amount.",
+                path: ["otherAmount"],
+            });
+        }
     }
 
     // Validate agreement
@@ -66,7 +77,7 @@ export const donationSchema = z
         });
       }
 
-      if (data.aadhar && !/^[0-9]{12}$/.test(data.aadhar)) {
+      if (data.aadhar && !/^\d{12}$/.test(data.aadhar)) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
           path: ["aadhar"],
@@ -80,6 +91,17 @@ export const donationSchema = z
           path: ["state"],
           message: "State is required for Indian nationals.",
         });
+      }
+      if (!data.city) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["city"], message: "City is required." });
+      }
+      if (!data.address) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["address"], message: "Address is required." });
+      }
+      if (!data.pincode) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["pincode"], message: "Pincode is required." });
+      } else if (!/^\d{6}$/.test(data.pincode)) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["pincode"], message: "Invalid pincode." });
       }
     }
 
