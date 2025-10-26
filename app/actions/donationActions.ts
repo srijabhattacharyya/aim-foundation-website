@@ -62,11 +62,11 @@ export async function addDonation(prevState: any, formData: FormData) {
       errors: {},
     };
   } catch (e: any) {
-    console.error('Error recording donation:', e);
+    console.error('Error recording donation to MongoDB:', e);
     // Return the specific error message from the catch block
     return {
       success: false,
-      message: e.message || 'Could not record donation. Please try again later.',
+      message: `Database Error: ${e.message || 'Could not record donation.'}`,
       errors: {},
       data: null,
     };
