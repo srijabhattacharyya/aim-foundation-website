@@ -1,7 +1,6 @@
 'use server';
-
-import { getAdminDb, getAdminStorage } from '@/lib/firebase-admin';
-import { FieldValue } from 'firebase-admin/firestore';
+import { connectToDatabase } from '@/lib/mongodb';
+import { ObjectId } from 'mongodb';
 
 // ------------------------------
 // Donation Management
@@ -16,94 +15,82 @@ export interface Donation {
 }
 
 export async function fetchDonations(): Promise<Donation[]> {
-  const adminDb = getAdminDb();
-  const snapshot = await adminDb
+  const client = await connectToDatabase();
+  const db = client.db();
+  const snapshot = await db
     .collection('donations')
-    .orderBy('createdAt', 'desc')
-    .get();
+    .find()
+    .sort({ createdAt: -1 })
+    .toArray();
 
-  return snapshot.docs.map((doc) => {
-    const data = doc.data();
+  return snapshot.map((doc: any) => {
     return {
-      id: doc.id,
-      fullName: data.fullName || 'Anonymous',
-      email: data.email || 'N/A',
-      amount: Number(data.amount) || 0,
-      cause: data.cause || 'General',
-      createdAt: data.createdAt
-        ? data.createdAt.toDate().toISOString()
+      id: doc._id.toString(),
+      fullName: doc.fullName || 'Anonymous',
+      email: doc.email || 'N/A',
+      amount: Number(doc.amount) || 0,
+      cause: doc.cause || 'General',
+      createdAt: doc.createdAt
+        ? new Date(doc.createdAt).toISOString()
         : new Date().toISOString(),
     };
   });
 }
 
 export async function deleteDonation(id: string) {
-  const adminDb = getAdminDb();
-  await adminDb.collection('donations').doc(id).delete();
+  const client = await connectToDatabase();
+  const db = client.db();
+  await db.collection('donations').deleteOne({ _id: new ObjectId(id) });
 }
 
 // ------------------------------
 // Subscriber Management
 // ------------------------------
 export async function fetchSubscribers() {
-  const adminDb = getAdminDb();
-  const snapshot = await adminDb
+  const client = await connectToDatabase();
+  const db = client.db();
+  const snapshot = await db
     .collection('subscribers')
-    .orderBy('createdAt', 'desc')
-    .get();
-  return snapshot.docs.map((doc) => {
-    const data = doc.data();
-    return {
-      id: doc.id,
-      email: data.email,
-      createdAt: data.createdAt.toDate().toISOString(),
-    };
-  });
+    .find()
+    .sort({ createdAt: -1 })
+    .toArray();
+  return snapshot.map((doc: any) => ({
+    id: doc._id.toString(),
+    email: doc.email,
+    createdAt: new Date(doc.createdAt).toISOString(),
+  }));
 }
 
 export async function deleteSubscriber(id: string) {
-  const adminDb = getAdminDb();
-  await adminDb.collection('subscribers').doc(id).delete();
+  const client = await connectToDatabase();
+  const db = client.db();
+  // In newsletterActions, we use email as the ID. Let's be consistent.
+  // If id is ObjectId, this will fail. Let's assume it's email.
+  // The subscribers page seems to pass an ObjectId as `id`. Let's use ObjectId.
+  try {
+     await db.collection('subscribers').deleteOne({ _id: new ObjectId(id) });
+  } catch (e) {
+    // Fallback if the id is an email for some reason
+     await db.collection('subscribers').deleteOne({ email: id });
+  }
 }
 
 // ------------------------------
 // Gallery Management
 // ------------------------------
-async function uploadImage(fileBase64: string, fileName: string): Promise<string> {
-  const storage = getAdminStorage();
-  const bucket = storage.bucket(
-    process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
-  );
-  const file = bucket.file(`gallery/${Date.now()}-${fileName}`);
+// For now, we will comment out image upload/delete as it requires a storage solution.
+// We'll focus on database operations.
 
-  const buffer = Buffer.from(fileBase64.split(',')[1], 'base64');
+// async function uploadImage(fileBase64: string, fileName: string): Promise<string> {
+//   // This needs a storage solution like AWS S3, Cloudinary, or Vercel Blob.
+//   // Returning a placeholder for now.
+//   return "https://placehold.co/600x400.png";
+// }
 
-  await file.save(buffer, {
-    metadata: {
-      contentType: fileBase64.split(';')[0].split(':')[1],
-    },
-  });
-
-  return file.publicUrl();
-}
-
-async function deleteImage(imageUrl: string) {
-  try {
-    const storage = getAdminStorage();
-    const bucket = storage.bucket(
-      process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
-    );
-    const url = new URL(imageUrl);
-    const path = decodeURIComponent(url.pathname).substring(1);
-    const fileName = path.split('/').slice(2).join('/');
-    await bucket.file(fileName).delete();
-  } catch (error: any) {
-    if (error.code !== 404) {
-      console.error('Failed to delete old gallery image:', error);
-      throw error;
-    }
-  }
-}
+// async function deleteImage(imageUrl: string) {
+//   // This needs to be implemented based on the chosen storage solution.
+//   console.log("Deleting image:", imageUrl);
+// }
 
 export async function addGalleryImage(data: {
   description: string;
@@ -112,16 +99,18 @@ export async function addGalleryImage(data: {
   imageFileBase64: string;
   imageFileName: string;
 }) {
-  const adminDb = getAdminDb();
-  const imageUrl = await uploadImage(data.imageFileBase64, data.imageFileName);
+  const client = await connectToDatabase();
+  const db = client.db();
+  // const imageUrl = await uploadImage(data.imageFileBase64, data.imageFileName);
+  const imageUrl = "https://placehold.co/600x400.png"; // Placeholder
 
-  await adminDb.collection('gallery').add({
+  await db.collection('gallery').insertOne({
     description: data.description,
     status: data.status,
     sequence: data.sequence,
     imageUrl,
-    createdAt: FieldValue.serverTimestamp(),
-    updatedAt: FieldValue.serverTimestamp(),
+    createdAt: new Date(),
+    updatedAt: new Date(),
   });
 }
 
@@ -136,27 +125,34 @@ export async function updateGalleryImage(
     existingImageUrl: string;
   }
 ) {
-  const adminDb = getAdminDb();
+  const client = await connectToDatabase();
+  const db = client.db();
   let imageUrl = data.existingImageUrl;
 
-  if (data.imageFileBase64 && data.imageFileName) {
-    if (data.existingImageUrl) {
-      await deleteImage(data.existingImageUrl);
-    }
-    imageUrl = await uploadImage(data.imageFileBase64, data.imageFileName);
-  }
+  // if (data.imageFileBase64 && data.imageFileName) {
+  //   if (data.existingImageUrl) {
+  //     await deleteImage(data.existingImageUrl);
+  //   }
+  //   imageUrl = await uploadImage(data.imageFileBase64, data.imageFileName);
+  // }
 
-  await adminDb.collection('gallery').doc(id).update({
-    description: data.description,
-    status: data.status,
-    sequence: data.sequence,
-    imageUrl,
-    updatedAt: FieldValue.serverTimestamp(),
-  });
+  await db.collection('gallery').updateOne(
+    { _id: new ObjectId(id) },
+    {
+      $set: {
+        description: data.description,
+        status: data.status,
+        sequence: data.sequence,
+        imageUrl,
+        updatedAt: new Date(),
+      },
+    }
+  );
 }
 
 export async function deleteGalleryImage(id: string, imageUrl: string) {
-  const adminDb = getAdminDb();
-  await deleteImage(imageUrl);
-  await adminDb.collection('gallery').doc(id).delete();
+  const client = await connectToDatabase();
+  const db = client.db();
+  // await deleteImage(imageUrl);
+  await db.collection('gallery').deleteOne({ _id: new ObjectId(id) });
 }

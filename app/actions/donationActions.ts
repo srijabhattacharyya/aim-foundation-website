@@ -3,8 +3,7 @@
 
 import { z } from 'zod';
 import { donationSchema } from '@/components/sections/donation-forms/schemas';
-import { getAdminDb } from '@/lib/firebase-admin';
-import { FieldValue } from 'firebase-admin/firestore';
+import { connectToDatabase } from '@/lib/mongodb';
 
 // ------------------------------
 // Add Donation (Form Submission)
@@ -46,15 +45,16 @@ export async function addDonation(prevState: any, formData: FormData) {
   const dataToSave = {
     ...validatedFields.data,
     amount: finalAmount,
-    createdAt: FieldValue.serverTimestamp(),
+    createdAt: new Date(),
   };
 
   delete (dataToSave as any).agree;
   delete (dataToSave as any).otherAmount;
 
   try {
-    const adminDb = getAdminDb();
-    await adminDb.collection('donations').add(dataToSave);
+    const client = await connectToDatabase();
+    const db = client.db();
+    await db.collection('donations').insertOne(dataToSave);
     return {
       success: true,
       message: 'Donation recorded successfully.',
@@ -86,23 +86,23 @@ export interface Donation {
 }
 
 export async function fetchDonations(): Promise<Donation[]> {
-  const adminDb = getAdminDb();
-  const snapshot = await adminDb
+  const client = await connectToDatabase();
+  const db = client.db();
+  const snapshot = await db
     .collection('donations')
-    .orderBy('createdAt', 'desc')
-    .get();
+    .find()
+    .sort({ createdAt: -1 })
+    .toArray();
 
-  return snapshot.docs.map((doc) => {
-    const data = doc.data();
-
+  return snapshot.map((doc: any) => {
     return {
-      id: doc.id,
-      fullName: data.fullName || 'Anonymous',
-      email: data.email || 'N/A',
-      amount: Number(data.amount) || 0,
-      cause: data.cause || 'General',
-      createdAt: data.createdAt
-        ? data.createdAt.toDate().toISOString()
+      id: doc._id.toString(),
+      fullName: doc.fullName || 'Anonymous',
+      email: doc.email || 'N/A',
+      amount: Number(doc.amount) || 0,
+      cause: doc.cause || 'General',
+      createdAt: doc.createdAt
+        ? new Date(doc.createdAt).toISOString()
         : new Date().toISOString(),
     };
   });
