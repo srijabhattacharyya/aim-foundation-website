@@ -381,8 +381,6 @@ export function DonationFormFields({
         )}
       />
 
-      <SubmitButton />
-
       {/* HIDDEN FIELDS */}
       <input type="hidden" {...form.register("cause")} />
       <input type="hidden" {...form.register("initiative")} />

@@ -14,6 +14,7 @@ import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
 import Script from "next/script";
 import { useToast } from "@/hooks/use-toast";
+import { createRazorpayOrder } from "@/app/actions/paymentActions";
 import { SubmitButton } from "./SubmitButton";
 
 interface DonationFormProps {
@@ -157,13 +158,15 @@ export default function DonationForm({
           </div>
 
           <FormProvider {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <DonationFormFields
-                donationAmountsIndian={donationAmountsIndian}
-                donationAmountsNonIndian={donationAmountsNonIndian}
-              />
-              <SubmitButton isSubmitting={isSubmitting} />
-            </form>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <DonationFormFields
+                  donationAmountsIndian={donationAmountsIndian}
+                  donationAmountsNonIndian={donationAmountsNonIndian}
+                />
+                <SubmitButton isSubmitting={isSubmitting} />
+              </form>
+            </Form>
           </FormProvider>
         </CardContent>
       </Card>
