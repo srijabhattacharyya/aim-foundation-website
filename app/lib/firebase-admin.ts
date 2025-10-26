@@ -12,23 +12,35 @@ function initializeAdminApp() {
         return;
     }
 
-    try {
-        // When deployed in a Google Cloud environment (like Vercel or App Hosting),
-        // the SDK will automatically use the runtime's service account credentials.
-        // No key file is needed.
+    const serviceAccount = {
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        // Replace newline characters with actual newlines
+        privateKey: (process.env.FIREBASE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
+    };
+
+    if (!serviceAccount.projectId || !serviceAccount.clientEmail || !serviceAccount.privateKey) {
+        // If deployed in a Google Cloud environment (like older Vercel integrations)
+        // without these env vars, it might still work automatically.
+        // Log a warning instead of throwing an error.
+        console.warn(
+            'Firebase Admin credentials environment variables are not fully set. ' +
+            'Relying on default application credentials. ' +
+            'If you see authentication errors, please set FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, and FIREBASE_PRIVATE_KEY.'
+        );
         admin.initializeApp({
-             storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
+            storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
+        });
+        return;
+    }
+
+    try {
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+            storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
         });
     } catch (error: any) {
         console.error('Firebase Admin Initialization Error:', error.message);
-        // Add a more descriptive error for local development if credentials are not found.
-        if (error.code === 'GOOGLE_APPLICATION_CREDENTIALS_NOT_FOUND') {
-            console.error(
-                'Could not find Application Default Credentials. ' +
-                'If you are running locally, you need to set up local authentication. ' +
-                'See https://cloud.google.com/docs/authentication/provide-credentials-adc#local-dev'
-            );
-        }
         throw new Error("Failed to initialize Firebase Admin SDK. Check server logs for details.");
     }
 }
