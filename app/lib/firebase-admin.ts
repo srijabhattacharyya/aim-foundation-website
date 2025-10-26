@@ -14,16 +14,17 @@ function initializeAdminApp() {
 
     try {
         // When deployed on Vercel (or other Google Cloud environments),
-        // the Admin SDK can automatically find the credentials.
-        // No need to pass serviceAccount details manually.
+        // the Admin SDK can automatically find the credentials, but sometimes
+        // needs the projectId for context.
         admin.initializeApp({
+             projectId: process.env.FIREBASE_PROJECT_ID,
              storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com'
         });
         console.log('Firebase Admin SDK initialized successfully using Application Default Credentials.');
     } catch (error: any) {
         console.error('Firebase Admin Initialization Error:', error.message);
         // This will help diagnose if there's a problem with the default credentials setup.
-        throw new Error("Failed to initialize Firebase Admin SDK. Ensure the Vercel project is correctly linked to a Google Cloud service account with appropriate permissions.");
+        throw new Error("Failed to initialize Firebase Admin SDK. Ensure the Vercel project is correctly linked to a Google Cloud service account with appropriate permissions, and the FIREBASE_PROJECT_ID environment variable is set.");
     }
 }
 
