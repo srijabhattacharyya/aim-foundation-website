@@ -111,7 +111,8 @@ export default function RootLayout({
     ]
   };
 
-  const newMeasurementId = "G-0Q40BRFCRS";
+  const measurementId = process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID;
+  const adwordsId = "AW-16896084763";
 
   return (
     <html lang="en" className={`${bricolage.variable}`}>
@@ -123,17 +124,21 @@ export default function RootLayout({
           }}
         />
         {/* Google tag (gtag.js) */}
-        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${newMeasurementId}`}></Script>
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+        {measurementId && (
+          <>
+            <Script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></Script>
+            <Script id="google-analytics">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
-            gtag('config', '${newMeasurementId}');
-            gtag('config', 'AW-16896084763');
-          `}
-        </Script>
+                gtag('config', '${measurementId}');
+                gtag('config', '${adwordsId}');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body className="font-body antialiased">
         {children}
