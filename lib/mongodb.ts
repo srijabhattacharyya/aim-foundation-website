@@ -5,7 +5,7 @@ const uri = process.env.MONGODB_URI;
 
 // Throw error if env variable is missing
 if (!uri) {
-  throw new Error('Please define the MONGODB_URI environment variable in Vercel');
+  throw new Error('The MONGODB_URI environment variable is not defined. Please add your MongoDB connection string to your deployment environment (e.g., Vercel, Firebase) to connect to the database.');
 }
 
 let cachedClient: MongoClient | null = null;
