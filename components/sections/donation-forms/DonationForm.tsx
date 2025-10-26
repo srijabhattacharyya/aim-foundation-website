@@ -3,7 +3,7 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "./DonationFormFields";
@@ -102,7 +102,6 @@ export default function DonationForm({
 
     setIsSubmitting(true);
 
-    // Save donation details first
     const formData = new FormData();
     Object.entries(values).forEach(([key, value]) => {
       if (value !== undefined) {
@@ -110,32 +109,32 @@ export default function DonationForm({
       }
     });
 
-    try {
-      const donationResult = await addDonation({}, formData);
-      if (!donationResult.success) {
-        toast({ variant: 'destructive', title: 'Error', description: donationResult.message || 'Could not save donation details.' });
-        setIsSubmitting(false);
-        return;
-      }
+    const donationResult = await addDonation({}, formData);
 
-      // Handle payment redirection
-      if (values.nationality === 'Indian') {
-        const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
-        window.open(paymentUrl, "_blank");
-        toast({ title: 'Redirecting to Payment', description: 'Please complete your donation on the Razorpay page.' });
-        form.reset();
-      } else {
-        const paymentUrl = "https://stripe.com/in"; // Fallback for non-Indian
-        window.open(paymentUrl, "_blank");
-        toast({ title: 'Redirecting to Payment', description: 'Please complete your donation.' });
-        form.reset();
-      }
-
-    } catch (error) {
-        toast({ variant: 'destructive', title: 'Error', description: 'An unexpected error occurred. Please contact us.' });
-    } finally {
-        setIsSubmitting(false);
+    if (!donationResult.success) {
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: donationResult.message || 'An unexpected error occurred. Please try again.',
+      });
+      setIsSubmitting(false);
+      return;
     }
+
+    // Handle payment redirection
+    if (values.nationality === 'Indian') {
+      const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
+      window.open(paymentUrl, "_blank");
+      toast({ title: 'Redirecting to Payment', description: 'Please complete your donation on the Razorpay page.' });
+      form.reset();
+    } else {
+      const paymentUrl = "https://stripe.com/in"; // Fallback for non-Indian
+      window.open(paymentUrl, "_blank");
+      toast({ title: 'Redirecting to Payment', description: 'Please complete your donation.' });
+      form.reset();
+    }
+
+    setIsSubmitting(false);
   }
 
   return (
