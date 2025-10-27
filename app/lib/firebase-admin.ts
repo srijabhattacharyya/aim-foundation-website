@@ -13,38 +13,29 @@ function initializeAdminApp() {
         return;
     }
 
-    const projectId = process.env.FIREBASE_PROJECT_ID;
-    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-    // Replace literal \n with actual newlines
-    const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
-
-    if (!projectId || !clientEmail || !privateKey) {
-        console.error('Firebase Admin SDK environment variables are not set correctly.');
-        throw new Error("Missing Firebase Admin credentials in environment variables.");
-    }
-    
+    // This configuration relies on Application Default Credentials (ADC).
+    // It will automatically find credentials when deployed on Vercel
+    // or when you are logged in via the gcloud CLI on your local machine.
     try {
         admin.initializeApp({
-            credential: admin.credential.cert({
-                projectId,
-                clientEmail,
-                privateKey,
-            }),
-            storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'aim-foundation-website.appspot.com',
+            projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+            storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
         });
-        console.log('Firebase Admin SDK initialized successfully.');
+        console.log('Firebase Admin SDK initialized successfully using ADC.');
     } catch (error: any) {
         console.error('Firebase Admin Initialization Error:', error.message);
+        // Provide a helpful error message for the user
+        if (error.message.includes('Could not find')) {
+             throw new Error(
+                `Firebase Admin initialization failed. For local development, please authenticate via the Google Cloud CLI by running: 'gcloud auth application-default login'. Details: ${error.message}`
+            );
+        }
         throw new Error(`Failed to initialize Firebase Admin SDK: ${error.message}`);
     }
 }
 
 export function getAdminDb(): Firestore {
-    // Initialize if not already done
-    if (admin.apps.length === 0) {
-       initializeAdminApp();
-    }
-    // Return cached instance or create new one
+    initializeAdminApp();
     if (!db) {
         db = getFirestore();
     }
@@ -52,11 +43,7 @@ export function getAdminDb(): Firestore {
 }
 
 export function getAdminStorage(): Storage {
-     // Initialize if not already done
-    if (admin.apps.length === 0) {
-       initializeAdminApp();
-    }
-    // Return cached instance or create new one
+    initializeAdminApp();
     if (!storage) {
         storage = getStorage();
     }
