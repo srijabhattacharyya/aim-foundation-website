@@ -11,7 +11,7 @@ let storage: Storage;
 function initializeAdminApp() {
   if (!getApps().length) {
     try {
-      // This line is for ensuring the auth context is established, as per your suggestion.
+      // This line is for ensuring the auth context is established, as per the user's snippet.
       new GoogleAuth({
         scopes: ["https://www.googleapis.com/auth/cloud-platform"],
       });
@@ -28,7 +28,7 @@ function initializeAdminApp() {
     }
   } else {
     app = getApp();
-    console.log('✅ Using existing Firebase Admin app.');
+    // console.log('✅ Using existing Firebase Admin app.');
   }
 }
 
