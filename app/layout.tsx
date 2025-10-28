@@ -111,7 +111,7 @@ export default function RootLayout({
     ]
   };
 
-  const measurementId = process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID;
+  const measurementId = "G-0Q40BRFCRS";
   const adwordsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
 
   return (
