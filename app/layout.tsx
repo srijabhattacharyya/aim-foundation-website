@@ -124,21 +124,17 @@ export default function RootLayout({
           }}
         />
         {/* Google tag (gtag.js) */}
-        {measurementId && (
-          <>
-            <Script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></Script>
-            <Script id="google-analytics">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
+        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></Script>
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-                gtag('config', '${measurementId}');
-                ${adwordsId ? `gtag('config', '${adwordsId}');` : ''}
-              `}
-            </Script>
-          </>
-        )}
+            gtag('config', '${measurementId}');
+            ${adwordsId ? `gtag('config', '${adwordsId}');` : ''}
+          `}
+        </Script>
       </head>
       <body className="font-body antialiased">
         {children}
