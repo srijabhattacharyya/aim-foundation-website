@@ -112,7 +112,7 @@ export default function RootLayout({
   };
 
   const measurementId = "G-0Q40BRFCRS";
-  const adwordsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
+  const adwordsId = "AW-16896084763";
 
   return (
     <html lang="en" className={`${bricolage.variable}`}>
@@ -132,7 +132,7 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', '${measurementId}');
-            ${adwordsId ? `gtag('config', '${adwordsId}');` : ''}
+            gtag('config', '${adwordsId}');
           `}
         </Script>
       </head>
