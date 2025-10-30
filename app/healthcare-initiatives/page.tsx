@@ -171,7 +171,7 @@ export default function HealthCareInitiativesPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Core Healthcare Programs</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-              At AIM Foundation, we believe that access to healthcare is a fundamental right. Our initiatives in <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link> and <Link href="/sustainability-initiatives" className="text-primary hover:underline">sustainability</Link> are designed to bring quality medical services to the most vulnerable communities.
+              At AIM Foundation, we believe that access to healthcare is a fundamental right. Our healthcare initiatives are designed to bring quality medical services to the most vulnerable communities.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
