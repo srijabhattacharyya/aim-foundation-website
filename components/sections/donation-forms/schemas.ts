@@ -59,12 +59,12 @@ export const donationSchema = z
       if (!data.pan && !data.aadhar) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: "PAN or Aadhar is required for Indian nationals.",
+          message: "PAN or Aadhar is required for Indian nationals",
           path: ["pan"],
         });
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: "PAN or Aadhar is required for Indian nationals.",
+          message: "PAN or Aadhar is required for Indian nationals",
           path: ["aadhar"],
         });
       }
