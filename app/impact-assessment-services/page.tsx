@@ -129,7 +129,7 @@ export default function ImpactAssessmentServicesPage() {
           <section className="relative w-full">
             <div className="relative w-full">
               <Image
-                src="/images/banner/impact_assessment.avif"
+                src="/images/banner/impact-assessment.avif"
                 alt="Impact Assessment"
                 width={1920}
                 height={580}
