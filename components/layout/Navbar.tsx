@@ -94,6 +94,7 @@ const navLinks: NavItem[] = [
       { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
     ]
   },
+  { href: '/services', label: 'Services' },
   { label: 'Get Involved', isDropdown: true, items: [
       { href: '/individual-donation', label: 'Individual Donation' },
       { href: '/corporate-social-responsibility', label: 'Corporate Social Responsibility' },
