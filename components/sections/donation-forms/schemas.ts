@@ -89,7 +89,7 @@ export const donationSchema = z
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
           path: ["state"],
-          message: "State is required for Indian nationals.",
+          message: "State is required for Indian nationals",
         });
       }
       if (!data.city) {
