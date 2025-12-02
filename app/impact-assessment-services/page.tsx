@@ -128,7 +128,7 @@ export default function ImpactAssessmentServicesPage() {
         <main className="flex-grow">
           <section className="relative w-full h-[334px]">
             <Image
-              src="/images/banner/assessment.avif"
+              src="/images/banner/impact_assessment.avif"
               alt="Impact Assessment"
               fill
               className="object-cover"
