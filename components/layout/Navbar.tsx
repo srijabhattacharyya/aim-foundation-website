@@ -94,7 +94,10 @@ const navLinks: NavItem[] = [
       { href: '/ignite-change-initiative', label: 'Ignite Change Initiative' },
     ]
   },
-  { href: '/services', label: 'Services' },
+  { label: 'Services', isDropdown: true, items: [
+      { href: '/impact-assessment-services', label: 'Impact Assessment Services' },
+    ]
+  },
   { label: 'Get Involved', isDropdown: true, items: [
       { href: '/individual-donation', label: 'Individual Donation' },
       { href: '/corporate-social-responsibility', label: 'Corporate Social Responsibility' },
@@ -347,3 +350,4 @@ export default Navbar;
     
 
     
+
