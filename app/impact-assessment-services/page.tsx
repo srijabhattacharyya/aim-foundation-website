@@ -126,16 +126,19 @@ export default function ImpactAssessmentServicesPage() {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
-          <section className="relative w-full h-[334px]">
-            <Image
-              src="/images/banner/impact_assessment.avif"
-              alt="Impact Assessment"
-              fill
-              className="object-cover"
-              data-ai-hint="data charts graphs"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <section className="relative w-full">
+            <div className="relative w-full">
+              <Image
+                src="https://picsum.photos/seed/impact-assessment/1920/580"
+                alt="Impact Assessment"
+                width={1920}
+                height={580}
+                className="w-full h-auto object-cover"
+                data-ai-hint="data charts graphs"
+                priority
+              />
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
               <div className="text-center text-white px-4">
                 <h1 className="text-4xl md:text-5xl font-bold font-headline">CSR Impact Assessment Services</h1>
                 <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
