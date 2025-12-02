@@ -129,7 +129,7 @@ export default function ImpactAssessmentServicesPage() {
           <section className="relative w-full">
             <div className="relative w-full">
               <Image
-                src="https://picsum.photos/seed/impact-assessment/1920/580"
+                src="/images/banner/impact_assessment.avif"
                 alt="Impact Assessment"
                 width={1920}
                 height={580}
