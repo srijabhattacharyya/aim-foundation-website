@@ -128,7 +128,7 @@ export default function ImpactAssessmentServicesPage() {
         <main className="flex-grow">
           <section className="relative w-full h-[334px]">
             <Image
-              src="/images/banner/impact.avif"
+              src="/images/banner/assessment.avif"
               alt="Impact Assessment"
               fill
               className="object-cover"
@@ -161,7 +161,8 @@ export default function ImpactAssessmentServicesPage() {
                 
                 <div>
                   <h2 className="text-2xl font-bold font-headline mb-4 text-center">CSR Impact Assessment – Mandatory Under CSR Rules 2021</h2>
-                  <p>According to the Companies (CSR Policy) Amendment Rules 2021, organisations must conduct an independent impact assessment for CSR projects above the prescribed threshold. AIM Foundation ensures full CSR compliance by delivering third-party evaluations aligned with statutory norms and reporting requirements.</p>
+                  <p>According to the Companies (CSR Policy) Amendment Rules 2021, organisations must conduct an independent impact assessment for CSR projects above the prescribed threshold.
+AIM Foundation ensures full CSR compliance by delivering third-party evaluations aligned with statutory norms and reporting requirements.</p>
                 </div>
 
                 <div className="bg-card p-6 rounded-lg shadow-sm">
