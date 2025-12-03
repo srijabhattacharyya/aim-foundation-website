@@ -13,45 +13,7 @@ import TrusteeEmail from '@/components/layout/TrusteeEmail';
 
 export const metadata: Metadata = {
   title: 'CSR Impact Assessment Services India | AIM Foundation',
-  description: 'AIM Foundation is a leading CSR Impact Assessment agency in India, providing independent third-party evaluation, M&E, and social impact reports for CSR projects.',
-  keywords: [
-    'CSR impact assessment India',
-    'social impact assessment agency',
-    'third-party CSR evaluation',
-    'monitoring and evaluation NGO India',
-    'CSR project assessment',
-    'SROI methodology India',
-    'CSR compliance reporting',
-    'independent impact assessment organisation',
-  ],
-  authors: [{ name: 'AIM Foundation' }],
-  robots: 'index, follow',
-  openGraph: {
-    type: 'website',
-    url: 'https://aimindia.org.in/impact-assessment-services',
-    title: 'CSR Impact Assessment Services in India | AIM Foundation',
-    description: 'Trusted third-party CSR impact assessment services in India. We help companies measure and maximize the real outcomes of their CSR initiatives.',
-    images: [
-      {
-        url: 'https://aimindia.org.in/home.avif',
-        width: 1200,
-        height: 630,
-        alt: 'CSR Impact Assessment Services',
-      },
-    ],
-    siteName: 'AIM Foundation',
-    locale: 'en_IN',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@aimindiango',
-    title: 'CSR Impact Assessment Services in India | AIM Foundation',
-    description: 'Trusted third-party CSR impact assessment services in India.',
-    images: ['https://aimindia.org.in/home.avif'],
-  },
-  alternates: {
-    canonical: '/impact-assessment-services',
-  },
+  description: 'AIM Foundation offers independent CSR impact assessment, third-party evaluation, and SROI-based analysis across  India. Stay compliant with CSR Rules.',
 };
 
 const faqs = [
