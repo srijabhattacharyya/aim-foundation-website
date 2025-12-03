@@ -126,33 +126,16 @@ export default function ImpactAssessmentServicesPage() {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
-          <section className="relative w-full">
-            <div className="relative w-full">
-              <Image
-                src="/images/banner/impact-assessment.avif"
-                alt="Impact Assessment"
-                width={1920}
-                height={580}
-                className="w-full h-auto object-cover"
-                data-ai-hint="data charts graphs"
-                priority
-              />
-            </div>
-            <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
-              <div className="relative z-10 text-left">
-                <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                  CSR Impact Assessment Services
-                </h1>
-                <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                  Measuring What Matters: From CSR Spend to Real Social Value
-                </p>
-              </div>
-            </div>
-          </section>
-          
           <section className="py-12 md:py-20 bg-muted">
             <div className="container mx-auto px-4 md:px-6">
               <div className="max-w-4xl mx-auto space-y-8 text-lg text-muted-foreground text-justify">
+                
+                <div className="text-center">
+                    <h1 className="text-4xl md:text-5xl font-bold font-headline">CSR Impact Assessment Services</h1>
+                    <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
+                        Measuring What Matters: From CSR Spend to Real Social Value
+                    </p>
+                </div>
 
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4 text-center text-primary">Leading CSR Impact Assessment Agency in India</h2>
@@ -161,7 +144,8 @@ export default function ImpactAssessmentServicesPage() {
 
                 <div className="bg-card p-6 rounded-lg shadow-sm">
                   <h2 className="text-2xl font-bold font-headline mb-4 text-center">Unbiased CSR Project Impact Assessment Reports</h2>
-                  <p>Our CSR Impact Assessment Reports offer clear, data-backed insights into your project’s effectiveness, scalability, and sustainability. Operating all over India, we conduct rigorous field assessments to understand social, environmental, and economic changes brought by your CSR interventions.</p>
+                  <p>Our CSR Impact Assessment Reports offer clear, data-backed insights into your project’s effectiveness, scalability, and sustainability.
+Operating all over India, we conduct rigorous field assessments to understand social, environmental, and economic changes brought by your CSR interventions.</p>
                 </div>
                 
                 <div>
