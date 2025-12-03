@@ -2,7 +2,6 @@
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import Image from "next/image";
 import Link from 'next/link';
 import {
   Accordion,
@@ -13,7 +12,7 @@ import {
 import TrusteeEmail from '@/components/layout/TrusteeEmail';
 
 export const metadata: Metadata = {
-  title: 'CSR Impact Assessment Services in India | AIM Foundation',
+  title: 'CSR Impact Assessment Services India | AIM Foundation',
   description: 'AIM Foundation is a leading CSR Impact Assessment agency in India, providing independent third-party evaluation, M&E, and social impact reports for CSR projects.',
   keywords: [
     'CSR impact assessment India',
