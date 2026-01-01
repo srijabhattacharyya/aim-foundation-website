@@ -136,7 +136,7 @@ export default function WebDevelopmentClientPage() {
                         <p>This course is part of our broader mission to deliver high-quality, <strong>online skill development training</strong> to underserved communities.</p>
                          <div className="pt-4">
                             <Button asChild>
-                                <Link href="https://aimtoskill.in/web-development/" target="_blank" rel="noopener noreferrer">
+                                <Link href="https://aimtoskill.in/website-building/" target="_blank" rel="noopener noreferrer">
                                 View Details
                                 </Link>
                             </Button>
