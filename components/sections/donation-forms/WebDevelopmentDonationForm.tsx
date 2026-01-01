@@ -24,7 +24,7 @@ export default function WebDevelopmentDonationForm() {
             donationAmountsNonIndian={donationAmountsNonIndian}
             defaultIndianAmount="3000"
             defaultNonIndianAmount="36"
-            formTitle="SUPPORT WEB DEVELOPMENT"
+            formTitle="SUPPORT WEB DEVELOPMENT TRAINING"
             formSubtitle="EMPOWER A FUTURE BUILDER"
         />
     );
