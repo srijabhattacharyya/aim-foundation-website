@@ -123,7 +123,7 @@ export default function DigitalMarketingClientPage() {
 
                         <h3 className="text-2xl font-bold font-headline pt-4">Our Commitment</h3>
                         <p>AIM Foundation is a leading <strong>skill development NGO</strong> committed to education, livelihood promotion, and <strong>community empowerment through skills</strong>. Through our <strong>skill development courses</strong> and free training initiatives, we aim to build a digitally skilled, self-reliant society.</p>
-                        <p>This course is part of our broader mission to deliver high-quality, online skill development training to underserved communities.</p>
+                        <p>This course is part of our broader mission to deliver high-quality, <strong>online skill development training</strong> to underserved communities.</p>
                          <div className="pt-4">
                             <Button asChild>
                                 <Link href="https://aimtoskill.in/digital-marketing/" target="_blank" rel="noopener noreferrer">
