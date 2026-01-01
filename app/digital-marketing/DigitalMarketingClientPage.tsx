@@ -19,8 +19,8 @@ const DynamicDonationForm = dynamic(() => import('@/components/sections/donation
 
 const skillDevelopmentInitiatives = [
   { href: '/digital-marketing', label: 'Digital Marketing' },
-  { href: '#', label: 'Graphic Designing' },
-  { href: '#', label: 'Web Development' },
+  { href: '/skill-development-initiatives', label: 'Graphic Designing' },
+  { href: '/skill-development-initiatives', label: 'Web Development' },
 ];
 
 const relatedResource = {
@@ -70,6 +70,7 @@ export default function DigitalMarketingClientPage() {
                    <div className="md:col-span-2">
                     <div className="space-y-6">
                       <div className="text-lg text-muted-foreground space-y-4 text-justify">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">Free Digital Marketing Course - A Skill Development Initiative by AIM Foundation</h2>
                         <p>AIM Foundation proudly offers a Free Digital Marketing Course under our flagship Skill Development Initiative. This no-cost digital marketing course is designed for students, unemployed youth, homemakers, and small business owners who want to learn digital marketing, enhance their livelihood opportunities, or build sustainable online careers.</p>
                         <p>Our digital marketing training combines beginner-friendly lessons, real-life applications, and practical tools to ensure participants gain job-oriented, future-ready skills.</p>
                         
