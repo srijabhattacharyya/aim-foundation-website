@@ -71,7 +71,7 @@ export default function DigitalMarketingClientPage() {
                     <div className="space-y-6">
                       <div className="text-lg text-muted-foreground space-y-4 text-justify">
                         <h2 className="text-3xl md:text-4xl font-headline">Free Digital Marketing Course - A Skill Development Initiative by AIM Foundation</h2>
-                        <p>AIM Foundation proudly offers a <strong>Free Digital Marketing Course</strong> under our flagship <strong>Skill Development Initiative</strong>. This <strong>no-cost digital marketing course</strong> is designed for <strong>students, unemployed youth, homemakers,</strong> and <strong>small business owners</strong> who want to <strong>learn digital marketing</strong>, enhance their livelihood opportunities, or build sustainable online careers.</p>
+                        <p>AIM Foundation proudly offers a <strong>Free Digital Marketing Course</strong> under our flagship <strong>Skill Development Initiative</strong>. This <strong>no-cost digital marketing course</strong> is designed for <strong>students, unemployed youth, homemakers</strong>, and <strong>small business owners</strong> who want to <strong>learn digital marketing</strong>, enhance their livelihood opportunities, or build sustainable online careers.</p>
                         <p>Our <strong>digital marketing training</strong> combines beginner-friendly lessons, real-life applications, and practical tools to ensure participants gain job-oriented, future-ready skills.</p>
                         
                         <h3 className="text-2xl font-bold font-headline pt-4">Why Join Our Free Digital Marketing Course?</h3>
@@ -97,7 +97,7 @@ export default function DigitalMarketingClientPage() {
                             <li>Email & WhatsApp Marketing</li>
                             <li>Analytics, AI Tools & Freelancing</li>
                         </ul>
-                        <p>This free no-code digital marketing training program is delivered in Bengali to ensure seamless learning for all.</p>
+                        <p>This <strong>free no-code digital marketing training program</strong> is delivered in Bengali to ensure seamless learning for all.</p>
 
                         <h3 className="text-2xl font-bold font-headline pt-4">Why This Course Matters</h3>
                         <p>Digital marketing is one of the fastest-growing skill areas globally. With businesses and individuals increasingly shifting to online platforms, learning digital marketing opens the door to multiple opportunities—freelancing, online entrepreneurship, digital jobs, home-based income, and business expansion.</p>
