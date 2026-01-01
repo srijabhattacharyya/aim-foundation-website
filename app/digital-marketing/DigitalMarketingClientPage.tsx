@@ -71,7 +71,7 @@ export default function DigitalMarketingClientPage() {
                     <div className="space-y-6">
                       <div className="text-lg text-muted-foreground space-y-4 text-justify">
                         <h2 className="text-3xl md:text-4xl font-headline">Free Digital Marketing Course - A Skill Development Initiative by AIM Foundation</h2>
-                        <p>AIM Foundation proudly offers a <strong>Free Digital Marketing Course</strong> under our flagship <strong>Skill Development Initiative</strong>. This <strong>no-cost digital marketing course</strong> is designed for <strong>students, unemployed youth, homemakers</strong>, and <strong>small business owners</strong> who want to <strong>learn digital marketing</strong>, enhance their livelihood opportunities, or build sustainable online careers.</p>
+                        <p>AIM Foundation proudly offers a <strong>Free Digital Marketing Course</strong> under our flagship <strong>Skill Development Initiative</strong>. This <strong>no-cost digital marketing course</strong> is designed for <strong>students, unemployed youth, homemakers,</strong> and <strong>small business owners</strong> who want to <strong>learn digital marketing</strong>, enhance their livelihood opportunities, or build sustainable online careers.</p>
                         <p>Our <strong>digital marketing training</strong> combines beginner-friendly lessons, real-life applications, and practical tools to ensure participants gain job-oriented, future-ready skills.</p>
                         
                         <h3 className="text-2xl font-bold font-headline pt-4">Why Join Our Free Digital Marketing Course?</h3>
@@ -83,7 +83,7 @@ export default function DigitalMarketingClientPage() {
                           <li>Strengthen digital literacy</li>
                           <li>Gain confidence using online marketing tools</li>
                         </ul>
-                        <p>This digital marketing course online free supports individuals seeking employment-oriented courses and digital skills applicable in real-world situations.</p>
+                        <p>This <strong>digital marketing course online free</strong> supports individuals seeking employment-oriented courses and digital skills applicable in real-world situations.</p>
 
                         <h3 className="text-2xl font-bold font-headline pt-4">What the Course Covers</h3>
                         <p>Our curriculum is structured to provide comprehensive, hands-on digital marketing training. Key modules include:</p>
