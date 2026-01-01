@@ -75,7 +75,7 @@ export default function DigitalMarketingClientPage() {
                         <p>Our <strong>digital marketing training</strong> combines beginner-friendly lessons, real-life applications, and practical tools to ensure participants gain job-oriented, future-ready skills.</p>
                         
                         <h3 className="text-2xl font-bold font-headline pt-4">Why Join Our Free Digital Marketing Course?</h3>
-                        <p>In today’s digital era, digital marketing skills training is essential for employment, freelancing, entrepreneurship, and business expansion. Whether you are a beginner or someone looking to upgrade your abilities, this digital marketing for beginners programme helps you:</p>
+                        <p>In today’s digital era, <strong>digital marketing skills training</strong> is essential for employment, freelancing, entrepreneurship, and business expansion. Whether you are a beginner or someone looking to upgrade your abilities, this digital marketing for beginners programme helps you:</p>
                         <ul className="list-disc list-inside space-y-2 pl-4">
                           <li>Start a digital career</li>
                           <li>Promote your small business online</li>
