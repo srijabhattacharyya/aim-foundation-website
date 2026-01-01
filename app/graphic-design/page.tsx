@@ -88,18 +88,29 @@ export const metadata: Metadata = {
 export default function GraphicDesignPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "AIM Foundation’s free Graphic Design program empowers youth with essential skills in visual communication using Canva."
+    "@type": "Course",
+    "name": "Free Graphic Design Certificate Course with Canva",
+    "description": "A comprehensive, no-cost graphic design course using Canva, designed for students, unemployed youth, homemakers, and small business owners to build practical, job-oriented skills.",
+    "provider": {
+      "@type": "Organization",
+      "name": "AIM Foundation",
+      "url": "https://www.aimindia.org.in/"
+    },
+    "isAccessibleForFree": true,
+    "educationalCredentialAwarded": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certificate of Completion"
+    },
+    "audience": {
+        "@type": "Audience",
+        "audienceType": [
+            "Students",
+            "Unemployed youth",
+            "Homemakers",
+            "Small business owners",
+            "Freelancers"
+        ]
+    }
   };
 
   return (
