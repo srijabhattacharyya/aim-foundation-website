@@ -151,7 +151,7 @@ export default function WebDevelopmentClientPage() {
                 <div className="fixed bottom-8 right-8 z-50">
                   <Dialog open={showForm} onOpenChange={setShowForm}>
                     <DialogTrigger asChild>
-                      <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to Web Development</Button>
+                      <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate for Free Web Development Course</Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
                       <DynamicDonationForm />
