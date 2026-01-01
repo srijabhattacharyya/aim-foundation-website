@@ -19,8 +19,8 @@ const DynamicDonationForm = dynamic(() => import('@/components/sections/donation
 
 const skillDevelopmentInitiatives = [
   { href: '/digital-marketing', label: 'Digital Marketing' },
-  { href: '/skill-development-initiatives', label: 'Graphic Designing' },
-  { href: '/skill-development-initiatives', label: 'Web Development' },
+  { href: '/graphic-design', label: 'Graphic Designing' },
+  { href: '/web-development', label: 'Web Development' },
 ];
 
 const relatedResource = {
@@ -83,7 +83,7 @@ export default function DigitalMarketingClientPage() {
                           <li>Strengthen digital literacy</li>
                           <li>Gain confidence using online marketing tools</li>
                         </ul>
-                        <p>This <strong>digital marketing course online free</strong> supports individuals seeking employment-oriented courses and digital skills applicable in real-world situations.</p>
+                        <p>This <strong>online skill development training</strong> supports individuals seeking employment-oriented courses and digital skills applicable in real-world situations.</p>
 
                         <h3 className="text-2xl font-bold font-headline pt-4">What the Course Covers</h3>
                         <p>Our curriculum is structured to provide comprehensive, hands-on <strong>digital marketing training</strong>. Key modules include:</p>
@@ -141,7 +141,7 @@ export default function DigitalMarketingClientPage() {
                 <div className="fixed bottom-8 right-8 z-50">
                   <Dialog open={showForm} onOpenChange={setShowForm}>
                     <DialogTrigger asChild>
-                      <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate to Digital Marketing</Button>
+                      <Button size="lg" className="w-full transition-transform transform hover:scale-105 shadow-2xl rounded-full px-6 py-8 text-lg">Donate for Free Digital Marketing Course</Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
                       <DynamicDonationForm />
