@@ -24,7 +24,7 @@ export default function DigitalMarketingDonationForm() {
             donationAmountsNonIndian={donationAmountsNonIndian}
             defaultIndianAmount="3000"
             defaultNonIndianAmount="36"
-            formTitle="SUPPORT DIGITAL MARKETING Training"
+            formTitle="SUPPORT DIGITAL MARKETING TRAINING"
             formSubtitle="EMPOWER A FUTURE PROFESSIONAL"
         />
     );
