@@ -59,7 +59,7 @@ const initiatives = [
     description: "Our Web Development course teaches the fundamentals of front-end and back-end technologies, enabling students to build and manage modern websites and web applications.",
     image: "/images/projects/skill/web.avif",
     hint: "web development coding",
-    link: "#"
+    link: "/web-development"
   },
 ];
 
