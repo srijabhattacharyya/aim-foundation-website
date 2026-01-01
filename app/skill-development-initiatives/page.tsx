@@ -43,14 +43,14 @@ const initiatives = [
   {
     title: "Digital Marketing",
     description: "Our Digital Marketing program equips students with essential skills in SEO, social media marketing, content creation, and analytics to thrive in the digital economy.",
-    image: "/images/projects/skill/digital.avif",
+    image: "/images/projects/skill-development/digital-marketing.avif",
     hint: "digital marketing class",
     link: "#"
   },
   {
     title: "Graphic Designing",
     description: "This program nurtures creativity and technical proficiency in graphic design, covering tools like Adobe Photoshop and Illustrator to prepare students for creative careers.",
-    image: "/images/projects/skill/graphic.avif",
+    image: "/images/projects/skill/graphic-design.avif",
     hint: "graphic design workshop",
     link: "#"
   },
