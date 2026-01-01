@@ -55,7 +55,7 @@ export default function WebDevelopmentClientPage() {
               <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
                 <div className="relative z-10 text-left">
                   <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                    Free No-Code WordPress Website Building Course
+                    Free No-Code Website Building Course
                   </h1>
                   <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                     Build Websites, Build Your Future.
@@ -70,8 +70,8 @@ export default function WebDevelopmentClientPage() {
                    <div className="md:col-span-2">
                     <div className="space-y-6">
                       <div className="text-lg text-muted-foreground space-y-4 text-justify">
-                        <h2 className="text-3xl md:text-4xl font-headline">Free No-Code WordPress Website Building Course - A <strong>Skill Development Initiative</strong> by AIM Foundation</h2>
-                        <p>AIM Foundation offers a <strong>Free No-Code WordPress Website Building Course</strong> as part of our <strong>Skill Development Initiative</strong>. This course is designed for students, entrepreneurs, small business owners, homemakers, and anyone interested in creating professional websites without any prior coding experience.</p>
+                        <h2 className="text-3xl md:text-4xl font-headline">Free No-Code Website Building Course - A <strong>Skill Development Initiative</strong> by AIM Foundation</h2>
+                        <p>AIM Foundation offers a <strong>Free No-Code Website Building Course</strong> as part of our <strong>Skill Development Initiative</strong>. This course is designed for students, entrepreneurs, small business owners, homemakers, and anyone interested in creating professional websites without any prior coding experience.</p>
                         <p>Learn to build, customize, and manage WordPress websites step-by-step with practical, hands-on training that empowers you to launch and grow your online presence confidently.</p>
                         
                         <h3 className="text-2xl font-bold font-headline pt-4">Why Join Our WordPress Website Building Course?</h3>

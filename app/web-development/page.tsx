@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
-  title: 'Free No-Code WordPress Website Building Course | AIM Foundation',
+  title: 'Free No-Code Website Building Course | AIM Foundation',
   description: 'Learn to build professional WordPress websites with AIM Foundation\'s free no-code course. Ideal for students, entrepreneurs, and job-seekers. Enrol now.',
   keywords: [
     'Free WordPress course',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/web-development',
-    title: 'Free No-Code WordPress Website Building Course | AIM Foundation',
+    title: 'Free No-Code Website Building Course | AIM Foundation',
     description: 'Learn to build professional WordPress websites with AIM Foundation\'s free no-code course. Ideal for students, entrepreneurs, and job-seekers. Enrol now.',
     images: [
       {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    title: 'Free No-Code WordPress Website Building Course | AIM Foundation',
+    title: 'Free No-Code Website Building Course | AIM Foundation',
     description: 'Learn to build professional WordPress websites with AIM Foundation\'s free no-code course. Ideal for students, entrepreneurs, and job-seekers. Enrol now.',
     images: ['https://aimindia.org.in/images/banner/skill-development.avif'],
   },
