@@ -49,7 +49,7 @@ const initiatives = [
   },
   {
     title: "Graphic Designing",
-    description: "This program nurtures creativity and technical proficiency in graphic design, covering tools like Adobe Photoshop and Illustrator to prepare students for creative careers.",
+    description: "This program nurtures creativity and technical proficiency in graphic design, focusing on user-friendly tools like Canva to prepare students for creative careers in social media and marketing.",
     image: "/images/projects/skill/graphic-design.avif",
     hint: "graphic design workshop",
     link: "#"
