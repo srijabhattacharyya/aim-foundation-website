@@ -85,7 +85,7 @@ const navLinks: NavItem[] = [
         { href: '/forest-cleaning', label: 'Forest Cleaning' },
       ]},
       { label: 'Skill Development Initiative', isSubDropdown: true, href: '/skill-development-initiatives', subItems: [
-        { href: '#', label: 'Digital Marketing' },
+        { href: '/digital-marketing', label: 'Digital Marketing' },
         { href: '#', label: 'Graphic Designing' },
         { href: '#', label: 'Web Development' },
       ]},
@@ -141,6 +141,7 @@ const causeToFormComponent: Record<string, ComponentType<any>> = {
   "eduaccess": dynamic(() => import('@/components/sections/donation-forms/EduAccessDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "empower-english": dynamic(() => import('@/components/sections/donation-forms/EmpowerEnglishDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "digiempower": dynamic(() => import('@/components/sections/donation-forms/DigiEmpowerDonationForm'), { ssr: false, loading: SkeletonLoader }),
+  "digital-marketing": dynamic(() => import('@/components/sections/donation-forms/DigitalMarketingDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "milieu": dynamic(() => import('@/components/sections/donation-forms/MilieuDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "vidyashakti": dynamic(() => import('@/components/sections/donation-forms/VidyaShaktiDonationForm'), { ssr: false, loading: SkeletonLoader }),
   "healthcare": dynamic(() => import('@/components/sections/donation-forms/HealthcareDonationForm'), { ssr: false, loading: SkeletonLoader }),
@@ -355,6 +356,7 @@ export default Navbar;
     
 
     
+
 
 
 
