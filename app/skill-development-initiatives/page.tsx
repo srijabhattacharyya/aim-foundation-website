@@ -50,14 +50,14 @@ const initiatives = [
   {
     title: "Graphic Designing",
     description: "This program nurtures creativity and technical proficiency in graphic design, covering tools like Adobe Photoshop and Illustrator to prepare students for creative careers.",
-    image: "/images/projects/skill/graphic-design.avif",
+    image: "/images/projects/skill-development/graphic-design.avif",
     hint: "graphic design workshop",
     link: "#"
   },
   {
     title: "Web Development",
     description: "Our Web Development course teaches the fundamentals of front-end and back-end technologies, enabling students to build and manage modern websites and web applications.",
-    image: "/images/projects/skill-development/web-development.avif",
+    image: "/images/projects/skill/web.avif",
     hint: "web development coding",
     link: "#"
   },
