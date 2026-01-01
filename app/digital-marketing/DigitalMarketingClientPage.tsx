@@ -72,7 +72,7 @@ export default function DigitalMarketingClientPage() {
                       <div className="text-lg text-muted-foreground space-y-4 text-justify">
                         <h2 className="text-3xl md:text-4xl font-headline">Free Digital Marketing Course - A Skill Development Initiative by AIM Foundation</h2>
                         <p>AIM Foundation proudly offers a <strong>Free Digital Marketing Course</strong> under our flagship <strong>Skill Development Initiative</strong>. This <strong>no-cost digital marketing course</strong> is designed for <strong>students, unemployed youth, homemakers</strong>, and <strong>small business owners</strong> who want to <strong>learn digital marketing</strong>, enhance their livelihood opportunities, or build sustainable online careers.</p>
-                        <p>Our digital marketing training combines beginner-friendly lessons, real-life applications, and practical tools to ensure participants gain job-oriented, future-ready skills.</p>
+                        <p>Our <strong>digital marketing training</strong> combines beginner-friendly lessons, real-life applications, and practical tools to ensure participants gain job-oriented, future-ready skills.</p>
                         
                         <h3 className="text-2xl font-bold font-headline pt-4">Why Join Our Free Digital Marketing Course?</h3>
                         <p>In today’s digital era, digital marketing skills training is essential for employment, freelancing, entrepreneurship, and business expansion. Whether you are a beginner or someone looking to upgrade your abilities, this digital marketing for beginners programme helps you:</p>
