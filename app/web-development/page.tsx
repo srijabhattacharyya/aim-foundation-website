@@ -88,18 +88,29 @@ export const metadata: Metadata = {
 export default function WebDevelopmentPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "AIM Foundation’s free Web Development program empowers youth with essential skills in no-code website building using WordPress."
+    "@type": "Course",
+    "name": "Free No-Code Website Building Course with WordPress",
+    "description": "Learn to build professional websites using WordPress without any coding. This free course is designed for students, entrepreneurs, and anyone looking to gain practical web development skills.",
+    "provider": {
+      "@type": "Organization",
+      "name": "AIM Foundation",
+      "url": "https://www.aimindia.org.in/"
+    },
+    "isAccessibleForFree": true,
+    "educationalCredentialAwarded": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certificate of Completion"
+    },
+    "audience": {
+        "@type": "Audience",
+        "audienceType": [
+            "Students",
+            "Entrepreneurs",
+            "Small business owners",
+            "Homemakers",
+            "Unemployed youth"
+        ]
+    }
   };
 
   return (
