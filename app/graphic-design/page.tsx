@@ -5,8 +5,8 @@ import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
-  title: 'Learn Graphic Design Free with Canva | AIM Foundation',
-  description: 'Boost your creative skills with AIM Foundation’s free Graphic Design course using Canva. Perfect for students, job-seekers, homemakers, and small businesses.',
+  title: 'Beginner Graphic Design Course with Canva | Free & Online',
+  description: 'Learn graphic design with Canva for free! Get practical skills, hands-on training, and a certificate to boost your career and grow your business.',
   keywords: [
     'Free graphic design course',
     'Learn graphic design with Canva',
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/graphic-design',
-    title: 'Learn Graphic Design Free with Canva | AIM Foundation',
-    description: 'Boost your creative skills with AIM Foundation’s free Graphic Design course using Canva. Perfect for students, job-seekers, homemakers, and small businesses.',
+    title: 'Beginner Graphic Design Course with Canva | Free & Online',
+    description: 'Learn graphic design with Canva for free! Get practical skills, hands-on training, and a certificate to boost your career and grow your business.',
     images: [
       {
         url: 'https://aimindia.org.in/images/banner/skill-development.avif',
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    title: 'Learn Graphic Design Free with Canva | AIM Foundation',
-    description: 'Boost your creative skills with AIM Foundation’s free Graphic Design course using Canva. Perfect for students, job-seekers, homemakers, and small businesses.',
+    title: 'Beginner Graphic Design Course with Canva | Free & Online',
+    description: 'Learn graphic design with Canva for free! Get practical skills, hands-on training, and a certificate to boost your career and grow your business.',
     images: ['https://aimindia.org.in/images/banner/skill-development.avif'],
   },
   alternates: {
