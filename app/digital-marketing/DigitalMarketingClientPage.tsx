@@ -97,7 +97,7 @@ export default function DigitalMarketingClientPage() {
                             <li>Email & WhatsApp Marketing</li>
                             <li>Analytics, AI Tools & Freelancing</li>
                         </ul>
-                        <p>This <strong>free no-code digital marketing training program</strong> is delivered in Bengali to ensure seamless learning for all.</p>
+                        <p>This <strong>free no-code digital marketing training program</strong> is delivered in <strong>Bengali</strong> to ensure seamless learning for all.</p>
 
                         <h3 className="text-2xl font-bold font-headline pt-4">Why This Course Matters</h3>
                         <p>Digital marketing is one of the fastest-growing skill areas globally. With businesses and individuals increasingly shifting to online platforms, learning digital marketing opens the door to multiple opportunities—freelancing, online entrepreneurship, digital jobs, home-based income, and business expansion.</p>
@@ -116,7 +116,7 @@ export default function DigitalMarketingClientPage() {
                             <li>100% free training</li>
                             <li>Beginner-friendly modules</li>
                             <li>Practical and job-oriented curriculum</li>
-                            <li>Training in Bengali for ease of understanding</li>
+                            <li>Training in <strong>Bengali</strong> for ease of understanding</li>
                             <li>Hands-on assignments and real-life examples</li>
                             <li>Certificate of Completion from AIM Foundation</li>
                         </ul>
