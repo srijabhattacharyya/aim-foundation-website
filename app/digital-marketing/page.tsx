@@ -5,8 +5,8 @@ import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing Program | AIM Foundation',
-  description: 'AIM Foundation’s Digital Marketing program empowers youth with essential skills in SEO, social media marketing, and content creation for a successful career in the digital economy.',
+  title: 'Learn Digital Marketing Free with AIM Foundation',
+  description: 'Boost your career with AIM Foundation’s free Digital Marketing course in Bengali. Ideal for students, job-seekers, homemakers, and small businesses. Enrol now.',
   keywords: [
     'Digital Marketing course', 'AIM Foundation skill development', 'SEO training', 
     'social media marketing program', 'content creation skills', 'youth empowerment India', 
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/digital-marketing',
-    title: 'Digital Marketing Program | AIM Foundation',
-    description: 'AIM Foundation’s Digital Marketing program empowers youth with essential skills in SEO, social media marketing, and content creation.',
+    title: 'Learn Digital Marketing Free with AIM Foundation',
+    description: 'Boost your career with AIM Foundation’s free Digital Marketing course in Bengali. Ideal for students, job-seekers, homemakers, and small businesses. Enrol now.',
     images: [
       {
         url: 'https://aimindia.org.in/images/banner/skill-development.avif',
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    title: 'Digital Marketing Program | AIM Foundation',
-    description: 'AIM Foundation’s Digital Marketing program empowers youth with essential skills in SEO, social media marketing, and content creation.',
+    title: 'Learn Digital Marketing Free with AIM Foundation',
+    description: 'Boost your career with AIM Foundation’s free Digital Marketing course in Bengali. Ideal for students, job-seekers, homemakers, and small businesses. Enrol now.',
     images: ['https://aimindia.org.in/images/banner/skill-development.avif'],
   },
   alternates: {
