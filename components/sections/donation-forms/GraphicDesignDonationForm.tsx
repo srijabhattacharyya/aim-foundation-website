@@ -24,7 +24,7 @@ export default function GraphicDesignDonationForm() {
             donationAmountsNonIndian={donationAmountsNonIndian}
             defaultIndianAmount="3000"
             defaultNonIndianAmount="36"
-            formTitle="SUPPORT GRAPHIC DESIGNING"
+            formTitle="SUPPORT GRAPHIC DESIGNING Training"
             formSubtitle="EMPOWER A CREATIVE FUTURE"
         />
     );
