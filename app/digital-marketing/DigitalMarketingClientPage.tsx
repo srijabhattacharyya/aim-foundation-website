@@ -127,7 +127,7 @@ export default function DigitalMarketingClientPage() {
                          <div className="pt-4">
                             <Button asChild>
                                 <Link href="https://aimtoskill.in/digital-marketing/" target="_blank" rel="noopener noreferrer">
-                                For Details
+                                View Details
                                 </Link>
                             </Button>
                         </div>
