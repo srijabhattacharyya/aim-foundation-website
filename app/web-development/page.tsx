@@ -5,8 +5,8 @@ import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata: Metadata = {
-  title: 'Free No-Code Website Building Course | AIM Foundation',
-  description: 'Learn to build professional WordPress websites with AIM Foundation\'s free no-code course. Ideal for students, entrepreneurs, and job-seekers. Enrol now.',
+  title: 'Learn WordPress Website Building Free – No Coding Needed',
+  description: 'Learn to build professional WordPress websites without coding. Join AIM Foundation’s free no-code WordPress course and gain practical skills for jobs and entrepreneurship.',
   keywords: [
     'Free WordPress course',
     'No-code website building course',
