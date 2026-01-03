@@ -1,5 +1,8 @@
 
 import { FileText, Users, BarChart, FileBarChart, Presentation, FileCheck2, Recycle, Building } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { CardFooter } from '@/components/ui/card';
 
 export const reportTypes = [
     {
@@ -49,7 +52,8 @@ export const reportTypes = [
         description: "In-depth evaluations measuring social and environmental outcomes of specific CSR or development interventions.",
         icon: <Recycle className="w-8 h-8" />,
         color: "bg-pink-100 text-pink-800",
-        iconBg: "bg-pink-200"
+        iconBg: "bg-pink-200",
+        link: "/impact-assessment-services"
     },
     {
         title: "Bespoke CSR & Impact Reporting",

@@ -8,8 +8,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Card, CardContent, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardTitle, CardFooter } from '@/components/ui/card';
 import { reportTypes } from './reportTypes';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 
 export const metadata: Metadata = {
@@ -189,6 +191,13 @@ export default function CsrReportPage() {
                                     <CardTitle className="text-xl font-bold font-headline mb-3">{report.title}</CardTitle>
                                     <p className="text-sm opacity-90 flex-grow">{report.description}</p>
                                 </CardContent>
+                                {report.link && (
+                                    <CardFooter className="p-4 pt-0">
+                                        <Button asChild variant="link" className="p-0 text-primary self-start transition-transform transform hover:scale-105">
+                                            <Link href={report.link}>Learn More &rarr;</Link>
+                                        </Button>
+                                    </CardFooter>
+                                )}
                             </Card>
                         ))}
                     </div>
