@@ -97,6 +97,22 @@ export default function DonationForm({
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
+      // First, submit to the PHP endpoint
+      const phpResponse = await fetch("https://aimindia.org.in/submit_donation.php", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!phpResponse.ok) {
+        // Handle error from PHP script if needed, or just log it
+        console.error("Error submitting to PHP endpoint:", await phpResponse.text());
+        // Decide if you want to stop or continue if this fails
+      }
+
+      // Then, submit to the Next.js API endpoint as before
       const response = await fetch('/api/donations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
