@@ -101,6 +101,7 @@ const navLinks: NavItem[] = [
   },
   { label: 'Services', isDropdown: true, items: [
       { href: '/impact-assessment-services', label: 'Impact Assessment Services' },
+      { href: '/csr-report', label: 'CSR Report' },
     ]
   },
   { label: 'Get Involved', isDropdown: true, items: [
