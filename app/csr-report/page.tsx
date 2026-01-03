@@ -8,6 +8,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
+import { reportTypes } from './reportTypes';
+
 
 export const metadata: Metadata = {
   title: 'CSR Reporting & Impact Assessment Services | AIM Foundation',
@@ -134,9 +137,6 @@ export default function CsrReportPage() {
                 
                 <div className="text-center">
                     <h1 className="text-4xl md:text-5xl font-bold font-headline">CSR Reporting &amp; Impact Assessment Services</h1>
-                    <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
-                        End-to-End CSR Reporting &amp; Impact Assessment Services in India
-                    </p>
                     <h2 className="mt-4 text-2xl md:text-3xl font-bold font-headline text-primary">
                         Crafting Compelling CSR Reports That Inspire Action and Build Trust
                     </h2>
@@ -170,22 +170,36 @@ export default function CsrReportPage() {
                     <li>Custom impact dashboards and reporting frameworks</li>
                   </ul>
                 </div>
+              </div>
+            </div>
+          </section>
 
-                <div className="bg-card p-6 rounded-lg shadow-sm">
-                  <h2 className="text-2xl font-bold font-headline mb-4 text-center">Types of CSR &amp; Impact Reports We Develop</h2>
-                  <p>We offer a complete suite of CSR and impact reporting formats, tailored to diverse stakeholder needs and objectives.</p>
-                  <ul className="list-disc list-inside space-y-2 pl-4 mt-4">
-                    <li><strong>Impact Dashboards & Reports:</strong> Data-rich dashboards showcasing trends, performance, and effectiveness in impact measurement. Ideal for tracking outcomes and highlighting success stories.</li>
-                    <li><strong>Community Impact Reports:</strong> Reports that reflect progress, measure outcomes, and highlight positive social change within communities.</li>
-                    <li><strong>Project Reports:</strong> Structured reports presenting achievements, milestones, learnings, and outcomes to support internal review or external communication.</li>
-                    <li><strong>Project Proposals:</strong> Clear, persuasive proposals outlining objectives, methodology, timelines, and expected impact—designed to secure CSR or donor support.</li>
-                    <li><strong>Impact Decks:</strong> Visually engaging presentations that communicate key results, insights, and strategic learnings to boards, donors, and partners.</li>
-                    <li><strong>Annual CSR Reports (Corporates & CSR Foundations):</strong> Comprehensive year-end CSR reports covering CSR policy, expenditure, projects, outcomes, governance, and future plans, in line with statutory requirements.</li>
-                    <li><strong>CSR Impact Assessment Reports:</strong> In-depth evaluations measuring social and environmental outcomes of specific CSR or development interventions.</li>
-                    <li><strong>Bespoke CSR & Impact Reporting Solutions:</strong> Custom-designed reports combining multiple formats to address unique organisational goals and stakeholder expectations.</li>
-                  </ul>
+          <section className="py-12 md:py-20 lg:py-24 bg-card">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-4">Types of CSR &amp; Impact Reports We Develop</h2>
+                    <p className="text-lg text-muted-foreground text-center mb-12">We offer a complete suite of CSR and impact reporting formats, tailored to diverse stakeholder needs and objectives.</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {reportTypes.map((report, index) => (
+                            <Card key={index} className={`shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full ${report.color}`}>
+                                <CardContent className="p-6 flex-grow flex flex-col">
+                                    <div className={`mb-4 p-3 rounded-full self-start ${report.iconBg}`}>
+                                        {report.icon}
+                                    </div>
+                                    <CardTitle className="text-xl font-bold font-headline mb-3">{report.title}</CardTitle>
+                                    <p className="text-sm opacity-90 flex-grow">{report.description}</p>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
                 </div>
+            </div>
+        </section>
 
+
+          <section className="py-12 md:py-20 bg-muted">
+            <div className="container mx-auto px-4 md:px-6">
+              <div className="max-w-4xl mx-auto space-y-8 text-lg text-muted-foreground text-justify">
                 <div>
                   <h2 className="text-2xl font-bold font-headline mb-4 text-center">CSR Report Design &amp; Layout Services</h2>
                   <p>We combine professional copy editing, content writing, and data visualisation to create high-impact CSR reports. Our design approach integrates:</p>
