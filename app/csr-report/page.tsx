@@ -150,7 +150,7 @@ export default function CsrReportPage() {
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4 text-center">The Power of Impact Reporting: Where Data Meets Purpose</h2>
                   <p>Effective CSR impact reporting makes your social value visible. It connects data with purpose—demonstrating outcomes, building trust, and guiding future action.</p>
-                  <p className="mt-4 italic">Imagine a social enterprise empowering young women in technology. By tracking participation levels, skills development, and job placements, the impact report evolves into a compelling story of transformation—one that strengthens stakeholder confidence, attracts partners, and informs strategic decisions.</p>
+                  <p className="mt-4 italic text-primary">Imagine a social enterprise empowering young women in technology. By tracking participation levels, skills development, and job placements, the impact report evolves into a compelling story of transformation—one that strengthens stakeholder confidence, attracts partners, and informs strategic decisions.</p>
                 </div>
 
                 <div className="bg-card p-6 rounded-lg shadow-sm">
