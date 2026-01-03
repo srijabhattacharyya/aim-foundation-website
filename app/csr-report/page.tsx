@@ -137,7 +137,7 @@ export default function CsrReportPage() {
                     <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
                         End-to-End CSR Reporting &amp; Impact Assessment Services in India
                     </p>
-                    <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-primary">
+                    <p className="mt-4 text-xl md:text-2xl max-w-3xl mx-auto text-primary font-semibold">
                         Crafting Compelling CSR Reports That Inspire Action and Build Trust
                     </p>
                 </div>
