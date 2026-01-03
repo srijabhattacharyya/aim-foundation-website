@@ -97,56 +97,64 @@ export default function DonationForm({
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      // First, submit to the PHP endpoint
-      const phpResponse = await fetch("https://aimindia.org.in/submit_donation.php", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
-
-      if (!phpResponse.ok) {
-        // Handle error from PHP script if needed, or just log it
-        console.error("Error submitting to PHP endpoint:", await phpResponse.text());
-        // Decide if you want to stop or continue if this fails
-      }
-
-      // Then, submit to the Next.js API endpoint as before
-      const response = await fetch('/api/donations', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
-      });
+      const response = await fetch(
+        "https://aimindia.org.in/submit_donation.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cause: values.cause,
+            amount: values.otherAmount || values.amount,
+            name: values.fullName,
+            email: values.email,
+            mobile_no: `${values.countryCode} ${values.mobile}`,
+            date_of_birth: values.dob,
+            pan: values.pan,
+            aadhar: values.aadhar,
+            state: values.state,
+            city: values.city,
+            pin: values.pincode,
+            address: values.address,
+            nationality: values.nationality,
+            passport: values.passport,
+            country: values.country,
+          }),
+        }
+      );
 
       const result = await response.json();
+      console.log(result);
 
-      if (!response.ok) {
-        throw new Error(result.message || 'An unexpected error occurred.');
-      }
-      
-      toast({
-        title: "Donation Recorded!",
-        description: "Thank you for your support. Please complete the payment.",
-      });
+      if (result.success) {
+        toast({
+            title: "Donation Saved",
+            description: "Your donation has been recorded successfully. Please proceed to payment.",
+        });
 
-      if (values.nationality === 'Indian') {
-        const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
-        window.open(paymentUrl, "_blank");
+        // Open payment gateway
+        if (values.nationality === 'Indian') {
+            const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
+            window.open(paymentUrl, "_blank");
+        } else {
+            const paymentUrl = "https://stripe.com/in"; // Fallback for non-Indian
+            window.open(paymentUrl, "_blank");
+        }
+        form.reset();
+
       } else {
-        const paymentUrl = "https://stripe.com/in"; // Fallback for non-Indian
-        window.open(paymentUrl, "_blank");
+        throw new Error(result.message || "An unknown error occurred on the server.");
       }
-      form.reset();
-
     } catch (error: any) {
-       toast({
+      console.error("Fetch error:", error);
+      toast({
         variant: 'destructive',
         title: 'Submission Failed',
         description: error.message || 'Could not record your donation. Please try again.',
       });
     } finally {
-      setIsSubmitting(false);
+        setIsSubmitting(false);
     }
   }
 

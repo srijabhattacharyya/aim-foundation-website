@@ -5,6 +5,9 @@ import { FieldValue } from 'firebase-admin/firestore';
 import { donationSchema } from '@/components/sections/donation-forms/schemas';
 
 export async function POST(request: Request) {
+  // This endpoint is currently not used in the form submission flow,
+  // as the data is being sent directly to a PHP script.
+  // We are keeping it in case it's needed in the future.
   try {
     const data = await request.json();
 
