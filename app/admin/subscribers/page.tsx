@@ -48,7 +48,7 @@ export default function SubscribersPage() {
             setSubscribers(fetchedSubscribers);
         } catch (err: any) {
             console.error("Error fetching subscribers: ", err);
-            setError("Could not retrieve subscribers.");
+            setError("Could not retrieve subscribers. Ensure you are logged in.");
         } finally {
             setLoading(false);
         }

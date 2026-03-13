@@ -113,7 +113,6 @@ export default function DonationForm({
         description: "Thank you for your support. Please complete the payment.",
       });
 
-      // Open payment gateway
       if (values.nationality === 'Indian') {
         const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
         window.open(paymentUrl, "_blank");

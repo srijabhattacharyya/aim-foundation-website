@@ -39,7 +39,7 @@ export default function NewsletterForm() {
     try {
       newsletterSchema.parse({ email });
 
-      // Check for existing subscriber
+      // Check for existing subscriber directly in Firestore
       const subscribersRef = collection(db, 'subscribers');
       const q = query(subscribersRef, where('email', '==', email));
       const querySnapshot = await getDocs(q);
@@ -87,7 +87,6 @@ export default function NewsletterForm() {
           required
         />
       </div>
-      {/* Honeypot field for bot protection */}
       <input type="text" name="honeypot" className="hidden" />
       <SubmitButton isSubmitting={isSubmitting} />
     </form>

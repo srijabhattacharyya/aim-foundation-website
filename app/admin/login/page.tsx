@@ -12,7 +12,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Shield, Loader2 } from 'lucide-react';
-import Cookies from 'js-cookie';
 import { auth } from '@/app/lib/firebase';
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
@@ -49,13 +48,7 @@ export default function AdminLoginPage() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
-      const token = await userCredential.user.getIdToken();
-      
-      // Keep cookies for legacy layout checks if needed
-      Cookies.set('firebaseAuthToken', token, { expires: 1 });
-      Cookies.set('firebaseUserEmail', values.email, { expires: 1 });
-
+      await signInWithEmailAndPassword(auth, values.email, values.password);
       toast({
         title: 'Login Successful',
         description: 'Redirecting to dashboard...',

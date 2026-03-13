@@ -93,7 +93,7 @@ export default function DonationsPage() {
         setFilteredDonations(fetchedDonations);
     } catch (err: any) {
         console.error("Error fetching donations: ", err);
-        setError("Could not retrieve donations.");
+        setError("Could not retrieve donations. Ensure you are logged in.");
     } finally {
         setLoading(false);
     }
@@ -189,7 +189,6 @@ export default function DonationsPage() {
             </div>
         </div>
 
-        {/* Filters Card */}
         <Card className="mb-8">
             <CardHeader>
                 <CardTitle className="flex items-center gap-2"><Filter className="h-5 w-5" /> Filters</CardTitle>
@@ -258,7 +257,6 @@ export default function DonationsPage() {
             </CardContent>
         </Card>
 
-        {/* Donations Table */}
         <Card>
             <CardHeader>
                 <CardTitle>Donation Records ({filteredDonations.length})</CardTitle>
