@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -103,7 +102,22 @@ export default function DonationForm({
 
       // Save directly to Firestore using Client SDK
       await addDoc(collection(db, "donations"), {
-        ...values,
+        nationality: values.nationality,
+        fullName: values.fullName,
+        email: values.email,
+        countryCode: values.countryCode,
+        mobile: values.mobile,
+        dob: values.dob || "",
+        pan: values.pan || "",
+        aadhar: values.aadhar || "",
+        passport: values.passport || "",
+        country: values.country,
+        state: values.state || "",
+        city: values.city || "",
+        address: values.address || "",
+        pincode: values.pincode || "",
+        cause: values.cause,
+        initiative: values.initiative || values.cause,
         amount: finalAmount,
         createdAt: serverTimestamp(),
       });

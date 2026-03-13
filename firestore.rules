@@ -1,15 +1,16 @@
-
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow anyone to create (submit) a donation or subscription.
-    // Allow only authenticated users (the admin) to read and delete.
+    // Allow anyone to create (submit) a donation.
+    // Allow any authenticated user (the admin) to read and delete.
     match /donations/{donationId} {
       allow create: if true;
       allow read, delete: if request.auth != null;
     }
 
+    // Allow anyone to subscribe to the newsletter.
+    // Allow only authenticated users (admins) to read and delete.
     match /subscribers/{subscriberId} {
       allow create: if true;
       allow read, delete: if request.auth != null;
