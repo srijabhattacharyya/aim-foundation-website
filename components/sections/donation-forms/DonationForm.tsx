@@ -12,9 +12,10 @@ import { DonationAmount } from "@/types/donation";
 import { donationSchema } from './schemas';
 import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
-import Script from "next/script";
 import { useToast } from "@/hooks/use-toast";
 import { SubmitButton } from "./SubmitButton";
+import { db } from "@/app/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 interface DonationFormProps {
   cause: string;
@@ -96,17 +97,16 @@ export default function DonationForm({
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/donations', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+      const finalAmount = values.otherAmount && values.otherAmount.trim() !== '' 
+        ? values.otherAmount 
+        : values.amount;
+
+      // Save directly to Firestore using Client SDK
+      await addDoc(collection(db, "donations"), {
+        ...values,
+        amount: finalAmount,
+        createdAt: serverTimestamp(),
       });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || 'An unexpected error occurred.');
-      }
       
       toast({
         title: "Donation Recorded!",
@@ -118,7 +118,7 @@ export default function DonationForm({
         const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
         window.open(paymentUrl, "_blank");
       } else {
-        const paymentUrl = "https://stripe.com/in"; // Placeholder or direct link
+        const paymentUrl = "https://stripe.com/in";
         window.open(paymentUrl, "_blank");
       }
       form.reset();
@@ -136,37 +136,35 @@ export default function DonationForm({
   }
 
   return (
-    <>
-      <Card className="w-full border-0 shadow-none rounded-none">
-        <CardContent className="p-6 md:p-8 relative">
-          <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
-            <Image
-              src="/images/logo.png"
-              alt="AIM Foundation Logo"
-              width={120}
-              height={48}
-              className="object-contain"
-            />
-          </div>
+    <Card className="w-full border-0 shadow-none rounded-none">
+      <CardContent className="p-6 md:p-8 relative">
+        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+          <Image
+            src="/images/logo.png"
+            alt="AIM Foundation Logo"
+            width={120}
+            height={48}
+            className="object-contain"
+          />
+        </div>
 
-          <div className="text-center mb-8 pt-20">
-            <h2 className="text-3xl font-bold font-headline">{formTitle}</h2>
-            <p className="text-muted-foreground">{formSubtitle}</p>
-          </div>
+        <div className="text-center mb-8 pt-20">
+          <h2 className="text-3xl font-bold font-headline">{formTitle}</h2>
+          <p className="text-muted-foreground">{formSubtitle}</p>
+        </div>
 
-          <FormProvider {...form}>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <DonationFormFields
-                  donationAmountsIndian={donationAmountsIndian}
-                  donationAmountsNonIndian={donationAmountsNonIndian}
-                />
-                <SubmitButton isSubmitting={isSubmitting} />
-              </form>
-            </Form>
-          </FormProvider>
-        </CardContent>
-      </Card>
-    </>
+        <FormProvider {...form}>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <DonationFormFields
+                donationAmountsIndian={donationAmountsIndian}
+                donationAmountsNonIndian={donationAmountsNonIndian}
+              />
+              <SubmitButton isSubmitting={isSubmitting} />
+            </form>
+          </Form>
+        </FormProvider>
+      </CardContent>
+    </Card>
   );
 }

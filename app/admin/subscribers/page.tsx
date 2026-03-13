@@ -20,7 +20,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from '@/hooks/use-toast';
 import Papa from 'papaparse';
-import { fetchSubscribers, deleteSubscriber } from '@/app/actions/adminActions';
+import { db } from '@/app/lib/firebase';
+import { collection, query, orderBy, getDocs, deleteDoc, doc } from 'firebase/firestore';
 
 export interface Subscriber {
     id: string;
@@ -37,7 +38,13 @@ export default function SubscribersPage() {
     async function loadSubscribers() {
         setLoading(true);
         try {
-            const fetchedSubscribers = await fetchSubscribers();
+            const q = query(collection(db, "subscribers"), orderBy("createdAt", "desc"));
+            const querySnapshot = await getDocs(q);
+            const fetchedSubscribers = querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                email: doc.data().email,
+                createdAt: doc.data().createdAt?.toDate?.()?.toISOString() || new Date().toISOString()
+            }));
             setSubscribers(fetchedSubscribers);
         } catch (err: any) {
             console.error("Error fetching subscribers: ", err);
@@ -53,7 +60,7 @@ export default function SubscribersPage() {
 
     const handleDelete = async (id: string) => {
         try {
-            await deleteSubscriber(id);
+            await deleteDoc(doc(db, "subscribers", id));
             loadSubscribers(); // Refresh data
             toast({
                 title: "Subscriber deleted",

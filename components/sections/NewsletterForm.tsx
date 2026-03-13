@@ -8,6 +8,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import { z } from 'zod';
 import { newsletterSchema } from '@/components/sections/donation-forms/schemas';
+import { db } from '@/app/lib/firebase';
+import { collection, addDoc, query, where, getDocs, serverTimestamp } from 'firebase/firestore';
 
 function SubmitButton({ isSubmitting }: { isSubmitting: boolean }) {
   return (
@@ -26,30 +28,31 @@ export default function NewsletterForm() {
     setIsSubmitting(true);
 
     const formData = new FormData(event.currentTarget);
-    const email = formData.get('email') as string;
+    const email = (formData.get('email') as string).trim().toLowerCase();
     const honeypot = formData.get('honeypot') as string;
 
-    // Honeypot check
     if (honeypot) {
       setIsSubmitting(false);
       return;
     }
 
     try {
-      // Zod validation on the client
       newsletterSchema.parse({ email });
 
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
+      // Check for existing subscriber
+      const subscribersRef = collection(db, 'subscribers');
+      const q = query(subscribersRef, where('email', '==', email));
+      const querySnapshot = await getDocs(q);
 
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || 'An unknown error occurred.');
+      if (!querySnapshot.empty) {
+        throw new Error('This email is already subscribed.');
       }
+
+      // Add new subscriber
+      await addDoc(subscribersRef, {
+        email,
+        createdAt: serverTimestamp(),
+      });
 
       toast({
         title: 'Thank you for subscribing!',

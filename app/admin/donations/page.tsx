@@ -24,7 +24,9 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import Papa from 'papaparse';
-import { fetchDonations, deleteDonation } from '@/app/actions/adminActions';
+import { db } from '@/app/lib/firebase';
+import { collection, query, orderBy, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import AdminLayout from '../AdminLayout';
 
 export interface Donation {
     id: string;
@@ -71,19 +73,24 @@ export default function DonationsPage() {
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
 
-  // ---- FIXED FUNCTION ----
   async function loadDonations() {
+    setLoading(true);
     try {
-        const fetchedDonations = await fetchDonations();
+        const q = query(collection(db, "donations"), orderBy("createdAt", "desc"));
+        const querySnapshot = await getDocs(q);
+        
+        const fetchedDonations = querySnapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+                id: doc.id,
+                ...data,
+                createdAt: data.createdAt?.toDate?.()?.toISOString() || new Date().toISOString(),
+                amount: data.amount?.toString() || "0",
+            };
+        }) as Donation[];
 
-        // Convert amount to string to match Donation interface
-        const donationsWithStringAmount = fetchedDonations.map(donation => ({
-            ...donation,
-            amount: donation.amount.toString(),
-        }));
-
-        setDonations(donationsWithStringAmount);
-        setFilteredDonations(donationsWithStringAmount);
+        setDonations(fetchedDonations);
+        setFilteredDonations(fetchedDonations);
     } catch (err: any) {
         console.error("Error fetching donations: ", err);
         setError("Could not retrieve donations.");
@@ -130,7 +137,7 @@ export default function DonationsPage() {
 
   const handleDelete = async (id: string) => {
     try {
-        await deleteDonation(id);
+        await deleteDoc(doc(db, "donations", id));
         loadDonations();
         toast({
             title: "Donation deleted",
@@ -170,7 +177,7 @@ export default function DonationsPage() {
   };
 
   return (
-    <div className="p-8">
+    <AdminLayout>
         <div className="flex justify-between items-center mb-8">
             <h1 className="text-4xl font-bold font-headline">Donations</h1>
             <div className="flex items-center gap-2">
@@ -189,7 +196,6 @@ export default function DonationsPage() {
             </CardHeader>
             <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {/* Start Date */}
                     <Popover>
                         <PopoverTrigger asChild>
                         <Button
@@ -210,7 +216,6 @@ export default function DonationsPage() {
                         />
                         </PopoverContent>
                     </Popover>
-                    {/* End Date */}
                     <Popover>
                         <PopoverTrigger asChild>
                         <Button
@@ -231,7 +236,6 @@ export default function DonationsPage() {
                         />
                         </PopoverContent>
                     </Popover>
-                    {/* Cause Filter */}
                     <Select onValueChange={setCauseFilter} value={causeFilter}>
                         <SelectTrigger><SelectValue placeholder="Filter by Cause" /></SelectTrigger>
                         <SelectContent>
@@ -239,7 +243,6 @@ export default function DonationsPage() {
                             {causes.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                         </SelectContent>
                     </Select>
-                    {/* Nationality Filter */}
                      <Select onValueChange={setNationalityFilter} value={nationalityFilter}>
                         <SelectTrigger><SelectValue placeholder="Filter by Nationality" /></SelectTrigger>
                         <SelectContent>
@@ -350,6 +353,6 @@ export default function DonationsPage() {
                 )}
             </CardContent>
         </Card>
-    </div>
+    </AdminLayout>
   );
 }

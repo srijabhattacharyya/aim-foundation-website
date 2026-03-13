@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { LayoutDashboard, LogOut, HandHeart, Mail, GalleryHorizontal } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { auth } from '@/app/lib/firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import Cookies from 'js-cookie';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -14,21 +16,30 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = Cookies.get('firebaseAuthToken');
-    if (token) {
-      setIsAuthenticated(true);
-    } else {
-      router.push('/admin/login');
-    }
-    setLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+        router.push('/admin/login');
+      }
+      setLoading(false);
+    });
+    return () => unsubscribe();
   }, [router]);
 
   const handleLogout = async () => {
+    await signOut(auth);
     Cookies.remove('firebaseAuthToken');
+    Cookies.remove('firebaseUserEmail');
     router.push('/admin/login');
   };
 
-  if (loading || !isAuthenticated) {
+  if (loading) {
+    return null;
+  }
+
+  if (!isAuthenticated) {
     return null;
   }
 

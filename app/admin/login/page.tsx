@@ -13,32 +13,13 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Shield, Loader2 } from 'lucide-react';
 import Cookies from 'js-cookie';
+import { auth } from '@/app/lib/firebase';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
 });
-
-async function signInWithEmail(email: string, password: string): Promise<{ success: boolean; token?: string; error?: string }> {
-    try {
-        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_FIREBASE_API_KEY}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password, returnSecureToken: true }),
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            return { success: false, error: data.error.message };
-        }
-
-        return { success: true, token: data.idToken };
-    } catch (error) {
-        return { success: false, error: 'An unexpected error occurred.' };
-    }
-}
-
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -47,12 +28,14 @@ export default function AdminLoginPage() {
   const [checkingAuth, setCheckingAuth] = useState(true);
 
   useEffect(() => {
-    const token = Cookies.get('firebaseAuthToken');
-    if (token) {
-      router.push('/admin/dashboard');
-    } else {
-      setCheckingAuth(false);
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        router.push('/admin/dashboard');
+      } else {
+        setCheckingAuth(false);
+      }
+    });
+    return () => unsubscribe();
   }, [router]);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -65,32 +48,28 @@ export default function AdminLoginPage() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
-    const result = await signInWithEmail(values.email, values.password);
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+      const token = await userCredential.user.getIdToken();
+      
+      // Keep cookies for legacy layout checks if needed
+      Cookies.set('firebaseAuthToken', token, { expires: 1 });
+      Cookies.set('firebaseUserEmail', values.email, { expires: 1 });
 
-    if (result.success && result.token) {
-        Cookies.set('firebaseAuthToken', result.token, { expires: 1 }); // Expires in 1 day
-        Cookies.set('firebaseUserEmail', values.email, { expires: 1 });
-        toast({
-            title: 'Login Successful',
-            description: 'Redirecting to dashboard...',
-        });
-        router.push('/admin/dashboard');
-    } else {
-        let errorMessage = 'An unexpected error occurred.';
-        if(result.error) {
-             switch (result.error) {
-                case 'INVALID_LOGIN_CREDENTIALS':
-                case 'INVALID_PASSWORD':
-                case 'USER_NOT_FOUND':
-                    errorMessage = 'Invalid email or password.';
-                    break;
-                case 'INVALID_EMAIL':
-                    errorMessage = 'Please enter a valid email address.';
-                    break;
-                default:
-                    errorMessage = 'Login failed. Please try again.';
-            }
-        }
+      toast({
+        title: 'Login Successful',
+        description: 'Redirecting to dashboard...',
+      });
+      router.push('/admin/dashboard');
+    } catch (error: any) {
+      console.error("Login error:", error);
+      let errorMessage = 'Invalid email or password.';
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        errorMessage = 'Invalid email or password.';
+      } else if (error.code === 'auth/invalid-email') {
+        errorMessage = 'Please enter a valid email address.';
+      }
+      
       toast({
         variant: 'destructive',
         title: 'Login Failed',
