@@ -3,7 +3,7 @@
 
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
@@ -12,9 +12,7 @@ import { DonationAmount } from "@/types/donation";
 import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
-import Script from "next/script";
 import { useToast } from "@/hooks/use-toast";
-import { createRazorpayOrder } from "@/app/actions/paymentActions";
 import { SubmitButton } from "./SubmitButton";
 
 interface DonationFormProps {
@@ -118,7 +116,7 @@ export default function DonationForm({
         const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
         window.open(paymentUrl, "_blank");
       } else {
-        const paymentUrl = "https://stripe.com/in"; // Fallback for non-Indian
+        const paymentUrl = "https://stripe.com/in";
         window.open(paymentUrl, "_blank");
       }
       form.reset();
@@ -135,40 +133,35 @@ export default function DonationForm({
   }
 
   return (
-    <>
-      <Script
-        id="razorpay-checkout-js"
-        src="https://checkout.razorpay.com/v1/checkout.js"
-      />
-      <Card className="w-full border-0 shadow-none rounded-none">
-        <CardContent className="p-6 md:p-8 relative">
-          <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
-            <Image
-              src="/images/logo.png"
-              alt="AIM Foundation Logo"
-              width={120}
-              height={48}
-              className="object-contain"
-            />
-          </div>
+    <Card className="w-full border-0 shadow-none rounded-none">
+      <CardContent className="p-6 md:p-8 relative">
+        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
+          <Image
+            src="/images/logo.png"
+            alt="AIM Foundation Logo"
+            width={120}
+            height={48}
+            className="object-contain"
+          />
+        </div>
 
-          <div className="text-center mb-8 pt-20">
-            <h2 className="text-3xl font-bold font-headline">{formTitle}</h2>
-            <p className="text-muted-foreground">{formSubtitle}</p>
-          </div>
+        <div className="text-center mb-8 pt-20">
+          <h2 className="text-3xl font-bold font-headline">{formTitle}</h2>
+          <p className="text-muted-foreground">{formSubtitle}</p>
+        </div>
 
-          <FormProvider {...form}>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <DonationFormFields
-                  donationAmountsIndian={donationAmountsIndian}
-                  donationAmountsNonIndian={donationAmountsNonIndian}
-                />
-              </form>
-            </Form>
-          </FormProvider>
-        </CardContent>
-      </Card>
-    </>
+        <FormProvider {...form}>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <DonationFormFields
+                donationAmountsIndian={donationAmountsIndian}
+                donationAmountsNonIndian={donationAmountsNonIndian}
+              />
+              <SubmitButton isSubmitting={isSubmitting} />
+            </form>
+          </Form>
+        </FormProvider>
+      </CardContent>
+    </Card>
   );
 }

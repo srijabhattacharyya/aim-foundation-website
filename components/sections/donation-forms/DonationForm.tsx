@@ -14,7 +14,6 @@ import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
 import Script from "next/script";
 import { useToast } from "@/hooks/use-toast";
-import { createRazorpayOrder } from "@/app/actions/paymentActions";
 import { SubmitButton } from "./SubmitButton";
 
 interface DonationFormProps {
@@ -97,73 +96,47 @@ export default function DonationForm({
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const response = await fetch(
-        "https://aimindia.org.in/submit_donation.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            cause: values.cause,
-            amount: values.otherAmount || values.amount,
-            name: values.fullName,
-            email: values.email,
-            mobile_no: `${values.countryCode} ${values.mobile}`,
-            date_of_birth: values.dob,
-            pan: values.pan,
-            aadhar: values.aadhar,
-            state: values.state,
-            city: values.city,
-            pin: values.pincode,
-            address: values.address,
-            nationality: values.nationality,
-            passport: values.passport,
-            country: values.country,
-          }),
-        }
-      );
+      const response = await fetch('/api/donations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
 
       const result = await response.json();
-      console.log(result);
 
-      if (result.success) {
-        toast({
-            title: "Donation Saved",
-            description: "Your donation has been recorded successfully. Please proceed to payment.",
-        });
-
-        // Open payment gateway
-        if (values.nationality === 'Indian') {
-            const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
-            window.open(paymentUrl, "_blank");
-        } else {
-            const paymentUrl = "https://stripe.com/in"; // Fallback for non-Indian
-            window.open(paymentUrl, "_blank");
-        }
-        form.reset();
-
-      } else {
-        throw new Error(result.message || "An unknown error occurred on the server.");
+      if (!response.ok) {
+        throw new Error(result.message || 'An unexpected error occurred.');
       }
+      
+      toast({
+        title: "Donation Recorded!",
+        description: "Thank you for your support. Please complete the payment.",
+      });
+
+      // Open payment gateway
+      if (values.nationality === 'Indian') {
+        const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
+        window.open(paymentUrl, "_blank");
+      } else {
+        const paymentUrl = "https://stripe.com/in"; // Placeholder or direct link
+        window.open(paymentUrl, "_blank");
+      }
+      form.reset();
+
     } catch (error: any) {
-      console.error("Fetch error:", error);
+      console.error("Submission error:", error);
       toast({
         variant: 'destructive',
         title: 'Submission Failed',
         description: error.message || 'Could not record your donation. Please try again.',
       });
     } finally {
-        setIsSubmitting(false);
+      setIsSubmitting(false);
     }
   }
 
   return (
     <>
-      <Script
-        id="razorpay-checkout-js"
-        src="https://checkout.razorpay.com/v1/checkout.js"
-      />
       <Card className="w-full border-0 shadow-none rounded-none">
         <CardContent className="p-6 md:p-8 relative">
           <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md">
