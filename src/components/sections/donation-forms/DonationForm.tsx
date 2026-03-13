@@ -14,6 +14,8 @@ import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
 import { useToast } from "@/hooks/use-toast";
 import { SubmitButton } from "./SubmitButton";
+import { db } from "@/app/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 interface DonationFormProps {
   cause: string;
@@ -95,17 +97,31 @@ export default function DonationForm({
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/donations', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+      const finalAmount = values.otherAmount && values.otherAmount.trim() !== '' 
+        ? values.otherAmount 
+        : values.amount;
+
+      // Save directly to Firestore using Client SDK
+      await addDoc(collection(db, "donations"), {
+        nationality: values.nationality,
+        fullName: values.fullName,
+        email: values.email,
+        countryCode: values.countryCode,
+        mobile: values.mobile,
+        dob: values.dob || "",
+        pan: values.pan || "",
+        aadhar: values.aadhar || "",
+        passport: values.passport || "",
+        country: values.country,
+        state: values.state || "",
+        city: values.city || "",
+        address: values.address || "",
+        pincode: values.pincode || "",
+        cause: values.cause,
+        initiative: values.initiative || values.cause,
+        amount: finalAmount,
+        createdAt: serverTimestamp(),
       });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || 'An unexpected error occurred.');
-      }
       
       toast({
         title: "Donation Recorded!",
@@ -113,7 +129,8 @@ export default function DonationForm({
       });
 
       if (values.nationality === 'Indian') {
-        const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
+        // Appending the amount to the Razorpay.me link
+        const paymentUrl = `https://razorpay.me/@associatedinitiativeformankin?amount=${finalAmount}`;
         window.open(paymentUrl, "_blank");
       } else {
         const paymentUrl = "https://stripe.com/in";

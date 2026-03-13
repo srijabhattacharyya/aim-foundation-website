@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -128,7 +129,8 @@ export default function DonationForm({
       });
 
       if (values.nationality === 'Indian') {
-        const paymentUrl = "https://razorpay.me/@associatedinitiativeformankin";
+        // Appending the amount to the Razorpay.me link
+        const paymentUrl = `https://razorpay.me/@associatedinitiativeformankin?amount=${finalAmount}`;
         window.open(paymentUrl, "_blank");
       } else {
         const paymentUrl = "https://stripe.com/in";
