@@ -16,6 +16,7 @@ import { useToast } from "@/hooks/use-toast";
 import { SubmitButton } from "./SubmitButton";
 import { db } from "@/app/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { useRouter } from 'next/navigation';
 
 interface DonationFormProps {
   cause: string;
@@ -44,6 +45,7 @@ export default function DonationForm({
 }: DonationFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -169,6 +171,7 @@ export default function DonationForm({
             if (verifyData.status === "Payment verified") {
               toast({ title: "Donation Successful!", description: "Thank you for your generous support." });
               form.reset();
+              router.push('/thank-you');
             } else {
               toast({ variant: "destructive", title: "Payment Verification Failed", description: "Please contact us if your account was debited." });
             }
@@ -194,6 +197,7 @@ export default function DonationForm({
         const paymentUrl = "https://stripe.com/in"; // Replace with your actual international link
         window.open(paymentUrl, "_blank");
         form.reset();
+        router.push('/thank-you');
       }
 
     } catch (error: any) {
