@@ -62,16 +62,16 @@ export default function DonationForm({
     }
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
-  // Dynamically load the Razorpay script once data is saved
+  // Dynamically load the Razorpay script once data is saved (only for Indian donors)
   useEffect(() => {
-    if (isDataSaved && rzpButtonRef.current) {
+    if (isDataSaved && rzpButtonRef.current && nationality === "Indian") {
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/payment-button.js";
       script.setAttribute("data-payment_button_id", "pl_SQxZiuYPAbjQdo");
       script.async = true;
       rzpButtonRef.current.appendChild(script);
     }
-  }, [isDataSaved]);
+  }, [isDataSaved, nationality]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -85,6 +85,15 @@ export default function DonationForm({
         paymentStatus: "initiated",
         createdAt: serverTimestamp(),
       });
+
+      if (values.nationality === "Non-Indian") {
+        toast({
+          title: "Redirecting...",
+          description: "Connecting to international gateway.",
+        });
+        window.location.href = "https://stripe.com/in";
+        return;
+      }
 
       setIsDataSaved(true);
       toast({
