@@ -47,6 +47,17 @@ export default function DonationForm({
     setMounted(true);
   }, []);
 
+  // Force body pointer-events to auto when overlay is active to bypass Dialog locking
+  useEffect(() => {
+    if (isDataSaved) {
+      const originalStyle = document.body.style.pointerEvents;
+      document.body.style.pointerEvents = 'auto';
+      return () => {
+        document.body.style.pointerEvents = originalStyle;
+      };
+    }
+  }, [isDataSaved]);
+
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
     defaultValues: {
@@ -70,19 +81,16 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
-  // Dynamically load the Razorpay script once data is saved (only for Indian donors)
+  // Dynamically load the Razorpay script once data is saved
   useEffect(() => {
     if (isDataSaved && rzpButtonRef.current && nationality === "Indian") {
-      // Clear previous content
       rzpButtonRef.current.innerHTML = "";
       
-      const formElement = document.createElement("form");
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/payment-button.js";
       script.setAttribute("data-payment_button_id", "pl_SQxZiuYPAbjQdo");
       script.async = true;
-      formElement.appendChild(script);
-      rzpButtonRef.current.appendChild(formElement);
+      rzpButtonRef.current.appendChild(script);
     }
   }, [isDataSaved, nationality]);
 
@@ -96,7 +104,6 @@ export default function DonationForm({
         throw new Error("Please enter a valid donation amount.");
       }
 
-      // Save record to Firestore
       await addDoc(collection(db, "donations"), {
         nationality: values.nationality,
         amount: finalAmount,
@@ -107,25 +114,20 @@ export default function DonationForm({
       });
 
       if (values.nationality === "Non-Indian") {
-        toast({
-          title: "Redirecting...",
-          description: "Connecting to international gateway.",
-        });
         window.location.href = "https://stripe.com/in";
         return;
       }
 
       setIsDataSaved(true);
       toast({
-        title: "Details Confirmed",
-        description: "Please complete the payment using the button displayed.",
+        title: "Details Saved",
+        description: "Please use the payment button below to complete your donation.",
       });
     } catch (error: any) {
-      console.error("❌ Submission Error:", error);
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: error.message || 'An error occurred while saving your details.',
+        description: error.message || 'Could not save your details.',
       });
     } finally {
       setIsSubmitting(false);
@@ -133,35 +135,40 @@ export default function DonationForm({
   }
 
   const paymentOverlay = mounted && isDataSaved && nationality === "Indian" ? createPortal(
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
-      <div className="bg-card w-full max-w-md p-8 rounded-2xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-6 text-center">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-300">
+      <div className="bg-card w-full max-w-md p-8 rounded-3xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-8 text-center m-4">
         <Button 
           variant="ghost" 
           size="icon" 
-          className="absolute right-4 top-4 rounded-full hover:bg-muted"
+          className="absolute right-4 top-4 rounded-full"
           onClick={() => setIsDataSaved(false)}
         >
-          <X className="h-5 w-5" />
+          <X className="h-6 w-6" />
         </Button>
 
-        <div className="bg-primary/10 p-4 rounded-full">
-          <CheckCircle2 className="h-12 w-12 text-primary" />
+        <div className="bg-primary/10 p-6 rounded-full animate-bounce">
+          <CheckCircle2 className="h-16 w-12 text-primary" />
         </div>
 
-        <div className="space-y-2">
-          <h3 className="text-2xl font-bold font-headline">Ready to Pay</h3>
-          <p className="text-muted-foreground text-sm">
-            Your selection has been saved. Please click the Razorpay button below to complete your contribution securely.
+        <div className="space-y-3">
+          <h3 className="text-3xl font-bold font-headline">Ready to Pay</h3>
+          <p className="text-muted-foreground">
+            Your contribution details are secured. Please click <strong>Donate Now</strong> below to finish.
           </p>
         </div>
         
-        <div ref={rzpButtonRef} className="flex justify-center w-full min-h-[60px] py-4">
-          {/* Razorpay Script Injects Button Here */}
+        <div ref={rzpButtonRef} className="flex justify-center w-full min-h-[80px] py-4 bg-muted/30 rounded-xl border border-dashed">
+          {/* Razorpay Button Injected Here */}
         </div>
 
-        <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
-          Securely processed by Razorpay
-        </p>
+        <div className="space-y-4 w-full">
+          <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
+            Safe & Secure via Razorpay
+          </p>
+          <Button variant="outline" onClick={() => setIsDataSaved(false)} className="w-full">
+            Back to Form
+          </Button>
+        </div>
       </div>
     </div>,
     document.body
@@ -197,12 +204,11 @@ export default function DonationForm({
                 />
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-bold" 
-                  size="lg" 
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-14 text-lg" 
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...</>
+                    <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Processing...</>
                   ) : (
                     'Confirm & Proceed'
                   )}

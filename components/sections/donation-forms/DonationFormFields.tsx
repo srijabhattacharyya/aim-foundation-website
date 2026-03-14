@@ -8,6 +8,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
@@ -81,7 +82,10 @@ export function DonationFormFields({
         name="amount"
         render={({ field }) => (
           <FormItem className="space-y-6">
-            <FormLabel className="text-base font-semibold">Select Amount</FormLabel>
+            <div className="space-y-1">
+              <FormLabel className="text-base font-semibold">Select Amount</FormLabel>
+              <FormDescription>Choose a preset amount or specify your own below.</FormDescription>
+            </div>
             <FormControl>
               <RadioGroup
                 onValueChange={field.onChange}
@@ -132,14 +136,15 @@ export function DonationFormFields({
           control={control}
           name="otherAmount"
           render={({ field }) => (
-            <FormItem className="animate-fade-in-down">
-              <FormLabel>Enter Amount ({nationality === "Indian" ? "INR" : "USD"})</FormLabel>
+            <FormItem className="animate-in slide-in-from-top-2 duration-300">
+              <FormLabel>Specify Your Donation Amount ({nationality === "Indian" ? "INR" : "USD"})</FormLabel>
               <FormControl>
                 <Input
                   type="number"
-                  placeholder={nationality === "Indian" ? "Enter amount in ₹" : "Enter amount in $"}
+                  placeholder={nationality === "Indian" ? "e.g. 5000" : "e.g. 50"}
                   {...field}
-                  className="text-lg h-12"
+                  className="text-lg h-12 border-primary/50 focus:border-primary"
+                  autoFocus
                 />
               </FormControl>
               <FormMessage />
@@ -149,12 +154,11 @@ export function DonationFormFields({
       )}
 
       {selectedAmount !== 'other' && description && (
-        <p className="text-center text-muted-foreground text-sm font-medium pt-2 uppercase tracking-wider animate-fade-in-up">
+        <p className="text-center text-primary text-sm font-bold pt-2 uppercase tracking-wider animate-in fade-in slide-in-from-bottom-1 duration-500">
           {description}
         </p>
       )}
 
-      {/* HIDDEN FIELDS */}
       <input type="hidden" name="cause" />
       <input type="hidden" name="initiative" />
     </div>
