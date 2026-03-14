@@ -34,15 +34,6 @@ export default function ThankYouPage() {
               Your contribution has been received successfully. You are now a part of a movement that is changing lives and building futures.
             </p>
 
-            <div className="space-y-4 text-lg text-muted-foreground text-justify bg-muted/50 p-6 rounded-lg mb-8 border-l-4 border-primary">
-              <p>
-                Every rupee you give helps us bring <strong>healthcare</strong>, <strong>education</strong>, and <strong>dignity</strong> to marginalized communities. Whether it's a child's first book, a life-saving screening, or a sapling planted for a greener earth—you've made it possible.
-              </p>
-              <p className="text-sm italic">
-                A digital receipt and your 80G tax certificate (if applicable) will be sent to your registered email address shortly.
-              </p>
-            </div>
-
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Button asChild size="lg" className="transition-transform transform hover:scale-105">
                 <Link href="/">Return to Homepage</Link>
