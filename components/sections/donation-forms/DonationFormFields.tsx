@@ -22,11 +22,13 @@ export type DonationAmount = {
 interface DonationFormFieldsProps {
   donationAmountsIndian: DonationAmount[];
   donationAmountsNonIndian: DonationAmount[];
+  hideAmount?: boolean;
 }
 
 export function DonationFormFields({
   donationAmountsIndian,
   donationAmountsNonIndian,
+  hideAmount = false,
 }: DonationFormFieldsProps) {
   const { control, watch } = useFormContext();
   const nationality = watch("nationality");
@@ -50,12 +52,12 @@ export function DonationFormFields({
         name="nationality"
         render={({ field }) => (
           <FormItem className="space-y-3">
-            <FormLabel className="text-base font-semibold">Nationality</FormLabel>
+            <FormLabel className="text-base font-semibold text-center block">Nationality</FormLabel>
             <FormControl>
               <RadioGroup
                 onValueChange={field.onChange}
                 value={field.value}
-                className="flex items-center space-x-6"
+                className="flex items-center justify-center space-x-6"
               >
                 <FormItem className="flex items-center space-x-2 space-y-0">
                   <FormControl>
@@ -77,86 +79,90 @@ export function DonationFormFields({
       />
 
       {/* DONATION AMOUNT */}
-      <FormField
-        control={control}
-        name="amount"
-        render={({ field }) => (
-          <FormItem className="space-y-6">
-            <div className="space-y-1">
-              <FormLabel className="text-base font-semibold">Select Amount</FormLabel>
-              <FormDescription>Choose a preset amount or specify your own below.</FormDescription>
-            </div>
-            <FormControl>
-              <RadioGroup
-                onValueChange={field.onChange}
-                value={field.value}
-                className="flex flex-wrap justify-center gap-6 md:gap-10"
-              >
-                {donationAmounts.map((item) => (
-                  <FormItem
-                    key={item.value}
-                    className="flex items-center space-x-2 space-y-0"
+      {!hideAmount && (
+        <>
+          <FormField
+            control={control}
+            name="amount"
+            render={({ field }) => (
+              <FormItem className="space-y-6">
+                <div className="space-y-1">
+                  <FormLabel className="text-base font-semibold">Select Amount</FormLabel>
+                  <FormDescription>Choose a preset amount or specify your own below.</FormDescription>
+                </div>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    className="flex flex-wrap justify-center gap-6 md:gap-10"
                   >
-                    <FormControl>
-                      <RadioGroupItem
-                        value={item.value}
-                        id={`${item.value}-${field.name}`}
-                      />
-                    </FormControl>
-                    <FormLabel
-                      htmlFor={`${item.value}-${field.name}`}
-                      className="font-normal text-lg cursor-pointer"
-                    >
-                      {item.label}
-                    </FormLabel>
-                  </FormItem>
-                ))}
-                {/* Other Amount Option */}
-                <FormItem className="flex items-center space-x-2 space-y-0">
+                    {donationAmounts.map((item) => (
+                      <FormItem
+                        key={item.value}
+                        className="flex items-center space-x-2 space-y-0"
+                      >
+                        <FormControl>
+                          <RadioGroupItem
+                            value={item.value}
+                            id={`${item.value}-${field.name}`}
+                          />
+                        </FormControl>
+                        <FormLabel
+                          htmlFor={`${item.value}-${field.name}`}
+                          className="font-normal text-lg cursor-pointer"
+                        >
+                          {item.label}
+                        </FormLabel>
+                      </FormItem>
+                    ))}
+                    {/* Other Amount Option */}
+                    <FormItem className="flex items-center space-x-2 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="other" id={`other-${field.name}`} />
+                      </FormControl>
+                      <FormLabel
+                        htmlFor={`other-${field.name}`}
+                        className="font-normal text-lg cursor-pointer"
+                      >
+                        Donate any Amount of your Choice
+                      </FormLabel>
+                    </FormItem>
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* CUSTOM AMOUNT INPUT */}
+          {selectedAmount === 'other' && (
+            <FormField
+              control={control}
+              name="otherAmount"
+              render={({ field }) => (
+                <FormItem className="animate-in slide-in-from-top-2 duration-300">
+                  <FormLabel>Enter Amount ({nationality === "Indian" ? "INR" : "USD"})</FormLabel>
                   <FormControl>
-                    <RadioGroupItem value="other" id={`other-${field.name}`} />
+                    <Input
+                      type="number"
+                      placeholder={nationality === "Indian" ? "e.g. 5000" : "e.g. 50"}
+                      {...field}
+                      className="text-lg h-12 border-primary/50 focus:border-primary"
+                      autoFocus
+                    />
                   </FormControl>
-                  <FormLabel
-                    htmlFor={`other-${field.name}`}
-                    className="font-normal text-lg cursor-pointer"
-                  >
-                    Donate any Amount of your Choice
-                  </FormLabel>
+                  <FormMessage />
                 </FormItem>
-              </RadioGroup>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      {/* CUSTOM AMOUNT INPUT */}
-      {selectedAmount === 'other' && (
-        <FormField
-          control={control}
-          name="otherAmount"
-          render={({ field }) => (
-            <FormItem className="animate-in slide-in-from-top-2 duration-300">
-              <FormLabel>Enter Amount ({nationality === "Indian" ? "INR" : "USD"})</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder={nationality === "Indian" ? "e.g. 5000" : "e.g. 50"}
-                  {...field}
-                  className="text-lg h-12 border-primary/50 focus:border-primary"
-                  autoFocus
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              )}
+            />
           )}
-        />
-      )}
 
-      {selectedAmount !== 'other' && description && (
-        <p className="text-center text-primary text-sm font-bold pt-2 uppercase tracking-wider animate-in fade-in slide-in-from-bottom-1 duration-500">
-          {description}
-        </p>
+          {selectedAmount !== 'other' && description && (
+            <p className="text-center text-primary text-sm font-bold pt-2 uppercase tracking-wider animate-in fade-in slide-in-from-bottom-1 duration-500">
+              {description}
+            </p>
+          )}
+        </>
       )}
 
       <input type="hidden" name="cause" />

@@ -26,6 +26,8 @@ interface DonationFormProps {
   defaultNonIndianAmount: string;
   formTitle: string;
   formSubtitle: string;
+  hideAmount?: boolean;
+  razorpayButtonId?: string;
 }
 
 export default function DonationForm({
@@ -36,6 +38,8 @@ export default function DonationForm({
   defaultNonIndianAmount,
   formTitle,
   formSubtitle,
+  hideAmount = false,
+  razorpayButtonId = "pl_SQxZiuYPAbjQdo",
 }: DonationFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,7 +65,7 @@ export default function DonationForm({
     resolver: zodResolver(donationSchema),
     defaultValues: {
       nationality: "Indian",
-      amount: defaultIndianAmount,
+      amount: hideAmount ? "" : defaultIndianAmount,
       otherAmount: "",
       cause,
       initiative: cause,
@@ -72,13 +76,15 @@ export default function DonationForm({
   const nationality = form.watch("nationality");
 
   useEffect(() => {
-    if (nationality === "Indian") {
-      form.setValue("amount", defaultIndianAmount);
-    } else {
-      form.setValue("amount", defaultNonIndianAmount);
+    if (!hideAmount) {
+      if (nationality === "Indian") {
+        form.setValue("amount", defaultIndianAmount);
+      } else {
+        form.setValue("amount", defaultNonIndianAmount);
+      }
     }
     form.setValue("otherAmount", "");
-  }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
+  }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
   useEffect(() => {
     if (isDataSaved && rzpButtonRef.current && nationality === "Indian") {
@@ -86,20 +92,23 @@ export default function DonationForm({
       
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.setAttribute("data-payment_button_id", "pl_SQxZiuYPAbjQdo");
+      script.setAttribute("data-payment_button_id", razorpayButtonId);
       script.async = true;
       rzpButtonRef.current.appendChild(script);
     }
-  }, [isDataSaved, nationality]);
+  }, [isDataSaved, nationality, razorpayButtonId]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const displayAmount = values.amount === 'other' ? values.otherAmount : values.amount;
-      const finalAmount = parseFloat(displayAmount || "0");
-      
-      if (isNaN(finalAmount) || finalAmount <= 0) {
-        throw new Error("Please enter a valid donation amount.");
+      let finalAmount = 0;
+      if (!hideAmount) {
+        const displayAmount = values.amount === 'other' ? values.otherAmount : values.amount;
+        finalAmount = parseFloat(displayAmount || "0");
+        
+        if (isNaN(finalAmount) || finalAmount <= 0) {
+          throw new Error("Please enter a valid donation amount.");
+        }
       }
 
       await addDoc(collection(db, "donations"), {
@@ -199,6 +208,7 @@ export default function DonationForm({
                 <DonationFormFields
                   donationAmountsIndian={donationAmountsIndian}
                   donationAmountsNonIndian={donationAmountsNonIndian}
+                  hideAmount={hideAmount}
                 />
                 <Button 
                   type="submit" 

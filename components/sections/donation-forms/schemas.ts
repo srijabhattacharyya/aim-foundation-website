@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 export const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"]),
-  amount: z.string().min(1, 'Please select a donation amount'),
+  amount: z.string().optional(),
   otherAmount: z.string().optional().refine((val) => {
     if (!val) return true;
     const num = parseFloat(val);
