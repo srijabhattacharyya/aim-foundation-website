@@ -15,7 +15,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { db } from "@/app/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { Loader2, CheckCircle2 } from "lucide-react";
+import { Loader2, CheckCircle2, X } from "lucide-react";
+import { createPortal } from "react-dom";
 
 interface DonationFormProps {
   cause: string;
@@ -39,7 +40,12 @@ export default function DonationForm({
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const rzpButtonRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -67,7 +73,7 @@ export default function DonationForm({
   // Dynamically load the Razorpay script once data is saved (only for Indian donors)
   useEffect(() => {
     if (isDataSaved && rzpButtonRef.current && nationality === "Indian") {
-      // Clear previous content to avoid duplicate buttons
+      // Clear previous content
       rzpButtonRef.current.innerHTML = "";
       
       const formElement = document.createElement("form");
@@ -112,7 +118,7 @@ export default function DonationForm({
       setIsDataSaved(true);
       toast({
         title: "Details Confirmed",
-        description: "Your selection has been saved. Please complete the payment below.",
+        description: "Please complete the payment using the button displayed.",
       });
     } catch (error: any) {
       console.error("❌ Submission Error:", error);
@@ -126,71 +132,87 @@ export default function DonationForm({
     }
   }
 
-  return (
-    <Card className="w-full border-0 shadow-none rounded-none bg-background">
-      <CardContent className="p-6 md:p-10 relative">
-        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md border shadow-sm">
-          <Image
-            src="/images/logo.png"
-            alt="AIM Foundation Logo"
-            width={120}
-            height={48}
-            className="object-contain"
-          />
+  const paymentOverlay = mounted && isDataSaved && nationality === "Indian" ? createPortal(
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
+      <div className="bg-card w-full max-w-md p-8 rounded-2xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-6 text-center">
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="absolute right-4 top-4 rounded-full hover:bg-muted"
+          onClick={() => setIsDataSaved(false)}
+        >
+          <X className="h-5 w-5" />
+        </Button>
+
+        <div className="bg-primary/10 p-4 rounded-full">
+          <CheckCircle2 className="h-12 w-12 text-primary" />
         </div>
 
-        {!isDataSaved ? (
-          <>
-            <div className="text-center mb-10 pt-20">
-              <h2 className="text-3xl font-bold font-headline uppercase tracking-tight">{formTitle}</h2>
-              <p className="text-muted-foreground font-medium uppercase tracking-widest text-sm mt-2">
-                {formSubtitle}
-              </p>
-            </div>
+        <div className="space-y-2">
+          <h3 className="text-2xl font-bold font-headline">Ready to Pay</h3>
+          <p className="text-muted-foreground text-sm">
+            Your selection has been saved. Please click the Razorpay button below to complete your contribution securely.
+          </p>
+        </div>
+        
+        <div ref={rzpButtonRef} className="flex justify-center w-full min-h-[60px] py-4">
+          {/* Razorpay Script Injects Button Here */}
+        </div>
 
-            <FormProvider {...form}>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
-                  <DonationFormFields
-                    donationAmountsIndian={donationAmountsIndian}
-                    donationAmountsNonIndian={donationAmountsNonIndian}
-                  />
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-primary hover:bg-primary/90 text-white font-bold" 
-                    size="lg" 
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...</>
-                    ) : (
-                      'Confirm & Proceed'
-                    )}
-                  </Button>
-                </form>
-              </Form>
-            </FormProvider>
-          </>
-        ) : (
-          <div className="flex flex-col items-center justify-center py-16 space-y-8 animate-fade-in-up">
-            <div className="text-center space-y-3">
-              <CheckCircle2 className="h-16 w-16 text-primary mx-auto" />
-              <h3 className="text-2xl font-bold font-headline">Ready to Donate</h3>
-              <p className="text-muted-foreground text-sm max-w-xs mx-auto">
-                Click the button below to finish your contribution via Razorpay's secure checkout.
-              </p>
-            </div>
-            
-            <div ref={rzpButtonRef} className="flex justify-center w-full min-h-[80px]">
-              {/* Razorpay Script Injects Button Here */}
-            </div>
+        <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
+          Securely processed by Razorpay
+        </p>
+      </div>
+    </div>,
+    document.body
+  ) : null;
 
-            <Button variant="ghost" onClick={() => setIsDataSaved(false)} className="text-xs text-muted-foreground hover:text-primary mt-4">
-              ← Go back to change amount
-            </Button>
+  return (
+    <>
+      <Card className="w-full border-0 shadow-none rounded-none bg-background">
+        <CardContent className="p-6 md:p-10 relative">
+          <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md border shadow-sm">
+            <Image
+              src="/images/logo.png"
+              alt="AIM Foundation Logo"
+              width={120}
+              height={48}
+              className="object-contain"
+            />
           </div>
-        )}
-      </CardContent>
-    </Card>
+
+          <div className="text-center mb-10 pt-20">
+            <h2 className="text-3xl font-bold font-headline uppercase tracking-tight">{formTitle}</h2>
+            <p className="text-muted-foreground font-medium uppercase tracking-widest text-sm mt-2">
+              {formSubtitle}
+            </p>
+          </div>
+
+          <FormProvider {...form}>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+                <DonationFormFields
+                  donationAmountsIndian={donationAmountsIndian}
+                  donationAmountsNonIndian={donationAmountsNonIndian}
+                />
+                <Button 
+                  type="submit" 
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-bold" 
+                  size="lg" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...</>
+                  ) : (
+                    'Confirm & Proceed'
+                  )}
+                </Button>
+              </form>
+            </Form>
+          </FormProvider>
+        </CardContent>
+      </Card>
+      {paymentOverlay}
+    </>
   );
 }
