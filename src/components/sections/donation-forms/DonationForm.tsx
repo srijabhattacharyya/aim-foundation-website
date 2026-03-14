@@ -41,13 +41,12 @@ export default function DonationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const rzpButtonRef = useRef<HTMLDivElement>(null);
+  const rzpButtonRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Force body pointer-events to auto when overlay is active to bypass Dialog locking
   useEffect(() => {
     if (isDataSaved) {
       const originalStyle = document.body.style.pointerEvents;
@@ -81,7 +80,6 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
-  // Dynamically load the Razorpay script once data is saved
   useEffect(() => {
     if (isDataSaved && rzpButtonRef.current && nationality === "Indian") {
       rzpButtonRef.current.innerHTML = "";
@@ -157,9 +155,9 @@ export default function DonationForm({
           </p>
         </div>
         
-        <div ref={rzpButtonRef} className="flex justify-center w-full min-h-[80px] py-4 bg-muted/30 rounded-xl border border-dashed">
+        <form ref={rzpButtonRef} className="flex justify-center w-full min-h-[80px] py-4 bg-muted/30 rounded-xl border border-dashed">
           {/* Razorpay Button Injected Here */}
-        </div>
+        </form>
 
         <div className="space-y-4 w-full">
           <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
