@@ -119,9 +119,14 @@ export default function DonationForm({
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const finalAmount = values.otherAmount && values.otherAmount.trim() !== '' 
+      const amountStr = values.otherAmount && values.otherAmount.trim() !== '' 
         ? values.otherAmount 
         : values.amount;
+      
+      const finalAmount = parseFloat(amountStr);
+      if (isNaN(finalAmount) || finalAmount <= 0) {
+        throw new Error("Please enter a valid donation amount.");
+      }
 
       // 1. Save preliminary data to Firestore
       const docRef = await addDoc(collection(db, "donations"), {
@@ -149,10 +154,9 @@ export default function DonationForm({
         if (orderData.error) throw new Error(orderData.error);
 
         // 4. Open Razorpay Checkout Modal
+        // Note: amount and currency are fetched automatically from order_id
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-          amount: orderData.amount,
-          currency: orderData.currency,
           name: "AIM Foundation",
           description: `Donation for ${values.cause}`,
           order_id: orderData.id,
@@ -207,7 +211,6 @@ export default function DonationForm({
         title: 'Donation Failed',
         description: error.message || 'An unexpected error occurred.',
       });
-    } finally {
       setIsSubmitting(false);
     }
   }
