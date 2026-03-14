@@ -46,6 +46,7 @@ export default function DonationForm({
     defaultValues: {
       nationality: "Indian",
       amount: defaultIndianAmount,
+      otherAmount: "",
       cause,
       initiative: cause,
       agree: true,
@@ -60,28 +61,41 @@ export default function DonationForm({
     } else {
       form.setValue("amount", defaultNonIndianAmount);
     }
+    form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
 
   // Dynamically load the Razorpay script once data is saved (only for Indian donors)
   useEffect(() => {
     if (isDataSaved && rzpButtonRef.current && nationality === "Indian") {
+      // Clear previous content if any
+      rzpButtonRef.current.innerHTML = "";
+      
+      const formElement = document.createElement("form");
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/payment-button.js";
       script.setAttribute("data-payment_button_id", "pl_SQxZiuYPAbjQdo");
       script.async = true;
-      rzpButtonRef.current.appendChild(script);
+      formElement.appendChild(script);
+      rzpButtonRef.current.appendChild(formElement);
     }
   }, [isDataSaved, nationality]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const finalAmount = parseFloat(values.amount);
+      const displayAmount = values.amount === 'other' ? values.otherAmount : values.amount;
+      const finalAmount = parseFloat(displayAmount || "0");
       
-      // Save preliminary record to Firestore
+      if (isNaN(finalAmount) || finalAmount <= 0) {
+        throw new Error("Please enter a valid donation amount.");
+      }
+
+      // Save record to Firestore
       await addDoc(collection(db, "donations"), {
-        ...values,
+        nationality: values.nationality,
         amount: finalAmount,
+        cause: values.cause,
+        initiative: values.initiative,
         paymentStatus: "initiated",
         createdAt: serverTimestamp(),
       });

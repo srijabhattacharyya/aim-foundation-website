@@ -6,10 +6,15 @@ import { z } from 'zod';
 export const donationSchema = z.object({
   nationality: z.enum(["Indian", "Non-Indian"]),
   amount: z.string().min(1, 'Please select a donation amount'),
+  otherAmount: z.string().optional().refine((val) => {
+    if (!val) return true;
+    const num = parseFloat(val);
+    return !isNaN(num) && num > 0;
+  }, {
+    message: "Please enter a valid positive number",
+  }),
   cause: z.string(),
   initiative: z.string().optional(),
-  // All other fields are now optional as they are removed from the minimal UI
-  otherAmount: z.string().optional(),
   fullName: z.string().optional(),
   email: z.string().optional(),
   countryCode: z.string().optional(),
