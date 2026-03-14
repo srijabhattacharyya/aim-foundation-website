@@ -129,7 +129,7 @@ export default function DonationForm({
         throw new Error("Please enter a valid donation amount.");
       }
 
-      // 1. Save preliminary record to Firestore
+      // 1. Save preliminary record to Firestore with 'initiated' status
       const docRef = await addDoc(collection(db, "donations"), {
         ...values,
         amount: finalAmountInRupees,
@@ -157,40 +157,25 @@ export default function DonationForm({
           throw new Error(orderData.error);
         }
 
-        // Safer prefill contact formatting
         const formattedContact = `${values.countryCode}${values.mobile}`.replace(/\D/g, "");
 
         // 3. Open Razorpay Checkout Modal
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-          amount: orderData.amount, // Strictly use the amount from the backend order
+          amount: orderData.amount,
           currency: orderData.currency, 
           name: "AIM Foundation",
           description: `Donation for ${values.cause}`,
           image: "/images/logo.png",
           order_id: orderData.id,
-          handler: async function (response: any) {
-            // 4. Verify payment on server
-            const verifyRes = await fetch("/api/payments/verify", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-                donationId: docRef.id
-              }),
+          handler: function (response: any) {
+            // Payment status is handled by Webhook for final confirmation
+            toast({ 
+              title: "Payment Authorized", 
+              description: "We are processing your contribution. Thank you for your support." 
             });
-            const verifyData = await verifyRes.json();
-            
-            if (verifyData.status === "Payment verified") {
-              toast({ title: "Success!", description: "Thank you for your support." });
-              form.reset();
-              router.push('/thank-you');
-            } else {
-              toast({ variant: "destructive", title: "Failed", description: "Payment verification failed." });
-              setIsSubmitting(false);
-            }
+            form.reset();
+            router.push('/thank-you');
           },
           prefill: {
             name: values.fullName,
@@ -198,7 +183,7 @@ export default function DonationForm({
             contact: formattedContact,
           },
           notes: {
-            donationId: docRef.id
+            donationId: docRef.id // Vital for Webhook to update correct doc
           },
           retry: {
             enabled: true
@@ -211,15 +196,14 @@ export default function DonationForm({
           }
         };
 
-        // Debug logging
-        console.log("Razorpay Key Status:", !!process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID);
+        // Debug logging for developers
         console.log("Order Data:", orderData);
-        console.log("Checkout Options (Prefill Contact):", formattedContact);
+        console.log("Checkout Options:", options);
 
         const rzp = new window.Razorpay(options);
         rzp.open();
       } else {
-        // International logic (Redirect to generic processor for now)
+        // International logic (Redirect to generic processor)
         toast({ title: "Redirecting...", description: "Connecting to international gateway." });
         window.open("https://stripe.com/in", "_blank");
         form.reset();
