@@ -11,7 +11,6 @@ import { Form } from "@/components/ui/form";
 import { DonationAmount } from "@/types/donation";
 import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
-import { countries } from "@/app/lib/countries";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { db } from "@/app/lib/firebase";
@@ -47,55 +46,21 @@ export default function DonationForm({
     defaultValues: {
       nationality: "Indian",
       amount: defaultIndianAmount,
-      otherAmount: "",
-      fullName: "",
-      email: "",
-      countryCode: "+91",
-      mobile: "",
-      dob: "",
-      pan: "",
-      aadhar: "",
-      passport: "",
-      country: "India",
-      state: "",
-      city: "",
-      address: "",
-      pincode: "",
-      agree: false,
       cause,
       initiative: cause,
+      agree: true,
     },
   });
 
   const nationality = form.watch("nationality");
-  const selectedCountry = form.watch("country");
 
   useEffect(() => {
     if (nationality === "Indian") {
-      form.setValue("country", "India");
-      form.setValue("countryCode", "+91");
-      form.setValue("passport", "");
       form.setValue("amount", defaultIndianAmount);
     } else {
-      if (form.getValues("country") === "India") form.setValue("country", "");
-      form.setValue("countryCode", "+1");
-      form.setValue("pan", "");
-      form.setValue("aadhar", "");
-      form.setValue("state", "");
       form.setValue("amount", defaultNonIndianAmount);
     }
-    form.resetField("mobile");
-    form.resetField("otherAmount");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount]);
-
-  useEffect(() => {
-    if (selectedCountry) {
-      const countryData = countries.find(c => c.name === selectedCountry);
-      if (countryData) {
-        form.setValue("countryCode", countryData.dial_code);
-      }
-    }
-  }, [selectedCountry, form]);
 
   // Dynamically load the Razorpay script once data is saved
   useEffect(() => {
@@ -111,10 +76,9 @@ export default function DonationForm({
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      const amountStr = values.otherAmount?.trim() || values.amount;
-      const finalAmount = parseFloat(amountStr);
+      const finalAmount = parseFloat(values.amount);
       
-      // 1. Save all details to Firestore first (for 80G and records)
+      // Save record to Firestore
       await addDoc(collection(db, "donations"), {
         ...values,
         amount: finalAmount,
@@ -122,11 +86,10 @@ export default function DonationForm({
         createdAt: serverTimestamp(),
       });
 
-      // 2. Switch to payment button view
       setIsDataSaved(true);
       toast({
-        title: "Details Saved",
-        description: "Please proceed to payment using the button below.",
+        title: "Selection Saved",
+        description: "Please click the button below to complete your donation.",
       });
     } catch (error: any) {
       console.error("❌ Submission Error:", error);
@@ -141,8 +104,8 @@ export default function DonationForm({
   }
 
   return (
-    <Card className="w-full border-0 shadow-none rounded-none">
-      <CardContent className="p-6 md:p-8 relative">
+    <Card className="w-full border-0 shadow-none rounded-none bg-background">
+      <CardContent className="p-6 md:p-10 relative">
         <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md border shadow-sm">
           <Image
             src="/images/logo.png"
@@ -153,53 +116,52 @@ export default function DonationForm({
           />
         </div>
 
-        <div className="text-center mb-8 pt-20">
-          <h2 className="text-3xl font-bold font-headline">{formTitle}</h2>
-          <p className="text-muted-foreground">
-            {isDataSaved ? "Step 2: Complete your Payment" : formSubtitle}
+        <div className="text-center mb-10 pt-20">
+          <h2 className="text-3xl font-bold font-headline uppercase tracking-tight">{formTitle}</h2>
+          <p className="text-muted-foreground font-medium uppercase tracking-widest text-sm mt-2">
+            {formSubtitle}
           </p>
         </div>
 
         {!isDataSaved ? (
           <FormProvider {...form}>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
                 <DonationFormFields
                   donationAmountsIndian={donationAmountsIndian}
                   donationAmountsNonIndian={donationAmountsNonIndian}
                 />
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary hover:bg-primary/90 text-white" 
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-bold" 
                   size="lg" 
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving Details...</>
+                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...</>
                   ) : (
-                    'Confirm & Proceed to Pay'
+                    'Confirm & Proceed'
                   )}
                 </Button>
               </form>
             </Form>
           </FormProvider>
         ) : (
-          <div className="flex flex-col items-center justify-center py-12 space-y-6 animate-fade-in-up">
-            <div className="text-center space-y-2">
-              <CheckCircle2 className="h-12 w-12 text-primary mx-auto" />
-              <h3 className="text-xl font-bold font-headline">Details Confirmed</h3>
+          <div className="flex flex-col items-center justify-center py-12 space-y-8 animate-fade-in-up">
+            <div className="text-center space-y-3">
+              <CheckCircle2 className="h-14 w-14 text-primary mx-auto" />
+              <h3 className="text-2xl font-bold font-headline">Ready to Pay</h3>
               <p className="text-muted-foreground text-sm max-w-xs mx-auto">
-                Your information has been securely recorded. Click the button below to complete your donation on Razorpay.
+                Click the button below to finish your donation via Razorpay's secure gateway.
               </p>
             </div>
             
-            {/* This is where the Razorpay script will inject the button */}
             <div ref={rzpButtonRef} className="flex justify-center w-full min-h-[60px]">
-              {/* Script injects here */}
+              {/* Razorpay Script Injects Button Here */}
             </div>
 
-            <Button variant="ghost" onClick={() => setIsDataSaved(false)} className="text-xs text-muted-foreground">
-              ← Edit details
+            <Button variant="ghost" onClick={() => setIsDataSaved(false)} className="text-xs text-muted-foreground hover:text-primary">
+              ← Change amount or nationality
             </Button>
           </div>
         )}
