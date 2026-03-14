@@ -18,10 +18,13 @@ export async function POST(req: Request) {
 
     const { amount, donationId } = await req.json();
 
+    // Convert INR to Paise
+    const amountInPaise = Math.round(parseFloat(amount) * 100);
+
     const options = {
-      amount: Math.round(parseFloat(amount) * 100), // amount in paise
+      amount: amountInPaise,
       currency: "INR",
-      receipt: `receipt_${donationId}`,
+      receipt: `receipt_${donationId}`.substring(0, 40), // Razorpay limit is 40 chars
       notes: {
         donationId: donationId
       }

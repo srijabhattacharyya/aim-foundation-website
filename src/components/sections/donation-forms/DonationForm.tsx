@@ -110,6 +110,7 @@ export default function DonationForm({
       }
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.async = true;
       script.onload = () => resolve(true);
       script.onerror = () => resolve(false);
       document.body.appendChild(script);
@@ -123,57 +124,73 @@ export default function DonationForm({
         ? values.otherAmount 
         : values.amount;
       
-      const finalAmount = parseFloat(amountStr);
-      if (isNaN(finalAmount) || finalAmount <= 0) {
+      const finalAmountInRupees = parseFloat(amountStr);
+      if (isNaN(finalAmountInRupees) || finalAmountInRupees <= 0) {
         throw new Error("Please enter a valid donation amount.");
       }
 
-      // 1. Save preliminary data to Firestore
+      // 1. Save preliminary record to Firestore
       const docRef = await addDoc(collection(db, "donations"), {
         ...values,
-        amount: finalAmount,
-        paymentStatus: "pending",
+        amount: finalAmountInRupees,
+        paymentStatus: "initiated",
         createdAt: serverTimestamp(),
       });
 
       if (values.nationality === 'Indian') {
         const res = await loadRazorpay();
-        if (!res) throw new Error("Razorpay SDK failed to load");
+        if (!res) throw new Error("Razorpay SDK failed to load. Please check your connection.");
 
+        // 2. Create Order on Server
         const orderRes = await fetch("/api/payments/create-order", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ amount: finalAmount, donationId: docRef.id }),
+          body: JSON.stringify({ amount: finalAmountInRupees, donationId: docRef.id }),
         });
         const orderData = await orderRes.json();
 
         if (orderData.error) throw new Error(orderData.error);
 
-        // Note: amount and currency are fetched automatically from order_id
+        // 3. Open Razorpay Checkout Modal
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+          amount: orderData.amount, // amount in paise
+          currency: orderData.currency,
           name: "AIM Foundation",
           description: `Donation for ${values.cause}`,
+          image: "/images/logo.png",
           order_id: orderData.id,
           handler: async function (response: any) {
+            // 4. Verify payment on server
             const verifyRes = await fetch("/api/payments/verify", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ ...response, donationId: docRef.id }),
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                donationId: docRef.id
+              }),
             });
             const verifyData = await verifyRes.json();
+            
             if (verifyData.status === "Payment verified") {
-              toast({ title: "Success!", description: "Thank you for your donation." });
+              toast({ title: "Donation Successful!", description: "Thank you for your generous support." });
               form.reset();
               router.push('/thank-you');
             } else {
-              toast({ variant: "destructive", title: "Verification Failed", description: "Payment verification failed." });
+              toast({ variant: "destructive", title: "Verification Failed", description: "Could not verify payment. Please contact us." });
+              setIsSubmitting(false);
             }
           },
           prefill: {
             name: values.fullName,
             email: values.email,
             contact: values.mobile,
+          },
+          notes: {
+            donationId: docRef.id,
+            cause: values.cause
           },
           theme: { color: "#2ecc71" },
           modal: {
@@ -184,9 +201,18 @@ export default function DonationForm({
         };
 
         const rzp = new window.Razorpay(options);
+        rzp.on('payment.failed', function (response: any){
+            toast({
+                variant: 'destructive',
+                title: 'Payment Failed',
+                description: response.error.description || 'The payment was not successful.',
+            });
+            setIsSubmitting(false);
+        });
         rzp.open();
       } else {
-        toast({ title: "Donation Recorded!", description: "Redirecting to payment..." });
+        // International logic remains the same
+        toast({ title: "Donation Recorded", description: "Redirecting to international payment gateway..." });
         const paymentUrl = "https://stripe.com/in";
         window.open(paymentUrl, "_blank");
         form.reset();
@@ -194,14 +220,13 @@ export default function DonationForm({
       }
 
     } catch (error: any) {
-       toast({
+      console.error("Donation error:", error);
+      toast({
         variant: 'destructive',
-        title: 'Submission Failed',
-        description: error.message || 'Could not process donation.',
+        title: 'Donation Failed',
+        description: error.message || 'An unexpected error occurred.',
       });
       setIsSubmitting(false);
-    } finally {
-      // setIsSubmitting(false); // Managed by Razorpay or catch block
     }
   }
 
