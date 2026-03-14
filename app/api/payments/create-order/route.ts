@@ -4,9 +4,16 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
+    const key_id = process.env.RAZORPAY_KEY_ID;
+    const key_secret = process.env.RAZORPAY_KEY_SECRET;
+
+    if (!key_id || !key_secret) {
+      throw new Error("Razorpay credentials are not configured in environment variables.");
+    }
+
     const razorpay = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID!,
-      key_secret: process.env.RAZORPAY_KEY_SECRET!,
+      key_id,
+      key_secret,
     });
 
     const { amount, donationId } = await req.json();

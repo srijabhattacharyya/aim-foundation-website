@@ -102,6 +102,10 @@ export default function DonationForm({
 
   const loadRazorpay = () => {
     return new Promise((resolve) => {
+      if (window.Razorpay) {
+        resolve(true);
+        return;
+      }
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/checkout.js";
       script.onload = () => resolve(true);
@@ -117,7 +121,7 @@ export default function DonationForm({
         ? values.otherAmount 
         : values.amount;
 
-      // 1. Save data to Firestore first (Pending state)
+      // 1. Save preliminary data to Firestore
       const docRef = await addDoc(collection(db, "donations"), {
         ...values,
         amount: finalAmount,
@@ -126,13 +130,13 @@ export default function DonationForm({
       });
 
       if (values.nationality === 'Indian') {
-        // 2. Load Razorpay
+        // 2. Load Razorpay Script
         const res = await loadRazorpay();
         if (!res) {
-          throw new Error("Razorpay SDK failed to load. Are you online?");
+          throw new Error("Razorpay SDK failed to load. Please check your internet connection.");
         }
 
-        // 3. Create Order on Server
+        // 3. Create Order on our Server
         const orderRes = await fetch("/api/payments/create-order", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -142,7 +146,7 @@ export default function DonationForm({
 
         if (orderData.error) throw new Error(orderData.error);
 
-        // 4. Open Razorpay Checkout
+        // 4. Open Razorpay Checkout Modal
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
           amount: orderData.amount,
@@ -151,7 +155,7 @@ export default function DonationForm({
           description: `Donation for ${values.cause}`,
           order_id: orderData.id,
           handler: async function (response: any) {
-            // Verify payment on server
+            // 5. Verify payment on our server
             const verifyRes = await fetch("/api/payments/verify", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -161,11 +165,12 @@ export default function DonationForm({
               }),
             });
             const verifyData = await verifyRes.json();
+            
             if (verifyData.status === "Payment verified") {
-              toast({ title: "Success!", description: "Thank you for your generous donation." });
+              toast({ title: "Donation Successful!", description: "Thank you for your generous support." });
               form.reset();
             } else {
-              toast({ variant: "destructive", title: "Verification Failed", description: "Please contact support if your account was debited." });
+              toast({ variant: "destructive", title: "Payment Verification Failed", description: "Please contact us if your account was debited." });
             }
           },
           prefill: {
@@ -174,24 +179,29 @@ export default function DonationForm({
             contact: values.mobile,
           },
           theme: { color: "#2ecc71" },
+          modal: {
+            ondismiss: function() {
+              setIsSubmitting(false);
+            }
+          }
         };
 
         const rzp = new window.Razorpay(options);
         rzp.open();
       } else {
-        // International logic remains as redirect for now
-        toast({ title: "Donation Recorded!", description: "Redirecting to international payment gateway..." });
-        const paymentUrl = "https://stripe.com/in";
+        // International logic (e.g., Stripe)
+        toast({ title: "Donation Recorded", description: "Redirecting to international payment gateway..." });
+        const paymentUrl = "https://stripe.com/in"; // Replace with your actual international link
         window.open(paymentUrl, "_blank");
         form.reset();
       }
 
     } catch (error: any) {
-      console.error("Submission error:", error);
+      console.error("Donation error:", error);
       toast({
         variant: 'destructive',
-        title: 'Submission Failed',
-        description: error.message || 'Could not process donation. Please try again.',
+        title: 'Donation Failed',
+        description: error.message || 'An unexpected error occurred.',
       });
     } finally {
       setIsSubmitting(false);

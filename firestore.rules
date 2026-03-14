@@ -1,12 +1,16 @@
+
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow anyone to create (submit) a donation.
+    // Allow anyone to create a donation.
     // Allow any authenticated user (the admin) to read and delete.
     match /donations/{donationId} {
       allow create: if true;
       allow read, delete: if request.auth != null;
+      // Allow updates for payment status updates from our API routes
+      // Note: In production without service account keys, we use the client SDK in API routes.
+      allow update: if true; 
     }
 
     // Allow anyone to subscribe to the newsletter.

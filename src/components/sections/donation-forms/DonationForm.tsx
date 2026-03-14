@@ -102,6 +102,10 @@ export default function DonationForm({
 
   const loadRazorpay = () => {
     return new Promise((resolve) => {
+      if (window.Razorpay) {
+        resolve(true);
+        return;
+      }
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/checkout.js";
       script.onload = () => resolve(true);
@@ -117,7 +121,7 @@ export default function DonationForm({
         ? values.otherAmount 
         : values.amount;
 
-      // 1. Save data to Firestore (Pending)
+      // 1. Save preliminary data to Firestore
       const docRef = await addDoc(collection(db, "donations"), {
         ...values,
         amount: finalAmount,
@@ -126,11 +130,9 @@ export default function DonationForm({
       });
 
       if (values.nationality === 'Indian') {
-        // 2. Load script
         const res = await loadRazorpay();
         if (!res) throw new Error("Razorpay SDK failed to load");
 
-        // 3. Create Order
         const orderRes = await fetch("/api/payments/create-order", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -140,7 +142,6 @@ export default function DonationForm({
 
         if (orderData.error) throw new Error(orderData.error);
 
-        // 4. Open Modal
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
           amount: orderData.amount,
@@ -168,6 +169,11 @@ export default function DonationForm({
             contact: values.mobile,
           },
           theme: { color: "#2ecc71" },
+          modal: {
+            ondismiss: function() {
+              setIsSubmitting(false);
+            }
+          }
         };
 
         const rzp = new window.Razorpay(options);
