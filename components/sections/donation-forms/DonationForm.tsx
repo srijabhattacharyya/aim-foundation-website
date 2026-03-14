@@ -27,6 +27,12 @@ interface DonationFormProps {
   formSubtitle: string;
 }
 
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
+
 export default function DonationForm({
   cause,
   donationAmountsIndian,
@@ -93,6 +99,16 @@ export default function DonationForm({
       }
     }
   }, [selectedCountry, form]);
+
+  const loadRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
   
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -101,49 +117,81 @@ export default function DonationForm({
         ? values.otherAmount 
         : values.amount;
 
-      // Save directly to Firestore using Client SDK
-      await addDoc(collection(db, "donations"), {
-        nationality: values.nationality,
-        fullName: values.fullName,
-        email: values.email,
-        countryCode: values.countryCode,
-        mobile: values.mobile,
-        dob: values.dob || "",
-        pan: values.pan || "",
-        aadhar: values.aadhar || "",
-        passport: values.passport || "",
-        country: values.country,
-        state: values.state || "",
-        city: values.city || "",
-        address: values.address || "",
-        pincode: values.pincode || "",
-        cause: values.cause,
-        initiative: values.initiative || values.cause,
+      // 1. Save data to Firestore first (Pending state)
+      const docRef = await addDoc(collection(db, "donations"), {
+        ...values,
         amount: finalAmount,
+        paymentStatus: "pending",
         createdAt: serverTimestamp(),
-      });
-      
-      toast({
-        title: "Donation Recorded!",
-        description: "Thank you for your support. Please complete the payment.",
       });
 
       if (values.nationality === 'Indian') {
-        // Appending the amount to the Razorpay.me link
-        const paymentUrl = `https://razorpay.me/@associatedinitiativeformankin?amount=${finalAmount}`;
-        window.open(paymentUrl, "_blank");
+        // 2. Load Razorpay
+        const res = await loadRazorpay();
+        if (!res) {
+          throw new Error("Razorpay SDK failed to load. Are you online?");
+        }
+
+        // 3. Create Order on Server
+        const orderRes = await fetch("/api/payments/create-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount: finalAmount, donationId: docRef.id }),
+        });
+        const orderData = await orderRes.json();
+
+        if (orderData.error) throw new Error(orderData.error);
+
+        // 4. Open Razorpay Checkout
+        const options = {
+          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+          amount: orderData.amount,
+          currency: orderData.currency,
+          name: "AIM Foundation",
+          description: `Donation for ${values.cause}`,
+          order_id: orderData.id,
+          handler: async function (response: any) {
+            // Verify payment on server
+            const verifyRes = await fetch("/api/payments/verify", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                ...response,
+                donationId: docRef.id
+              }),
+            });
+            const verifyData = await verifyRes.json();
+            if (verifyData.status === "Payment verified") {
+              toast({ title: "Success!", description: "Thank you for your generous donation." });
+              form.reset();
+            } else {
+              toast({ variant: "destructive", title: "Verification Failed", description: "Please contact support if your account was debited." });
+            }
+          },
+          prefill: {
+            name: values.fullName,
+            email: values.email,
+            contact: values.mobile,
+          },
+          theme: { color: "#2ecc71" },
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.open();
       } else {
+        // International logic remains as redirect for now
+        toast({ title: "Donation Recorded!", description: "Redirecting to international payment gateway..." });
         const paymentUrl = "https://stripe.com/in";
         window.open(paymentUrl, "_blank");
+        form.reset();
       }
-      form.reset();
 
     } catch (error: any) {
       console.error("Submission error:", error);
       toast({
         variant: 'destructive',
         title: 'Submission Failed',
-        description: error.message || 'Could not record your donation. Please try again.',
+        description: error.message || 'Could not process donation. Please try again.',
       });
     } finally {
       setIsSubmitting(false);
