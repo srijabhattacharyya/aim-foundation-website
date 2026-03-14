@@ -3,7 +3,7 @@
 
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
@@ -13,10 +13,10 @@ import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
 import { useToast } from "@/hooks/use-toast";
-import { SubmitButton } from "./SubmitButton";
+import { Button } from "@/components/ui/button";
 import { db } from "@/app/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { useRouter } from 'next/navigation';
+import { Loader2, CheckCircle2 } from "lucide-react";
 
 interface DonationFormProps {
   cause: string;
@@ -26,12 +26,6 @@ interface DonationFormProps {
   defaultNonIndianAmount: string;
   formTitle: string;
   formSubtitle: string;
-}
-
-declare global {
-  interface Window {
-    Razorpay: any;
-  }
 }
 
 export default function DonationForm({
@@ -45,7 +39,8 @@ export default function DonationForm({
 }: DonationFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const router = useRouter();
+  const [isDataSaved, setIsDataSaved] = useState(false);
+  const rzpButtonRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -102,113 +97,45 @@ export default function DonationForm({
     }
   }, [selectedCountry, form]);
 
-  const loadRazorpay = () => {
-    return new Promise((resolve) => {
-      if (window.Razorpay) {
-        resolve(true);
-        return;
-      }
+  // Dynamically load the Razorpay script once data is saved
+  useEffect(() => {
+    if (isDataSaved && rzpButtonRef.current) {
       const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.setAttribute("data-payment_button_id", "pl_SQxZiuYPAbjQdo");
       script.async = true;
-      script.onload = () => resolve(true);
-      script.onerror = () => resolve(false);
-      document.body.appendChild(script);
-    });
-  };
+      rzpButtonRef.current.appendChild(script);
+    }
+  }, [isDataSaved]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
       const amountStr = values.otherAmount?.trim() || values.amount;
-      const finalAmountInRupees = parseFloat(amountStr);
-      if (isNaN(finalAmountInRupees) || finalAmountInRupees <= 0) {
-        throw new Error("Please enter a valid donation amount.");
-      }
-
-      // 1. Save preliminary record in Firestore
-      const docRef = await addDoc(collection(db, "donations"), {
+      const finalAmount = parseFloat(amountStr);
+      
+      // 1. Save all details to Firestore first (for 80G and records)
+      await addDoc(collection(db, "donations"), {
         ...values,
-        amount: finalAmountInRupees,
+        amount: finalAmount,
         paymentStatus: "initiated",
         createdAt: serverTimestamp(),
       });
 
-      if (values.nationality === "Indian") {
-        const res = await loadRazorpay();
-        if (!res) throw new Error("Could not load payment gateway.");
-
-        // Define additional metadata for Razorpay
-        const rzpNotes = {
-          donationId: docRef.id,
-          address: values.address || "",
-          state: values.state || "",
-          country: values.country || "",
-          pan: values.pan || values.aadhar || "",
-        };
-
-        // 2. Request Razorpay Order
-        const orderRes = await fetch("/api/payments/create-order", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            amount: finalAmountInRupees,
-            donationId: docRef.id,
-            notes: rzpNotes
-          }),
-        });
-
-        const orderData = await orderRes.json();
-        if (orderData.error) throw new Error(orderData.error);
-
-        // 3. Open Razorpay Checkout with Pre-filled data
-        const options = {
-          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-          amount: orderData.amount,
-          currency: orderData.currency,
-          name: "AIM Foundation",
-          description: `Donation for ${values.cause}`,
-          image: "/images/logo.png",
-          order_id: orderData.id,
-          handler: function () {
-            toast({
-              title: "Payment initiated",
-              description: "We are verifying your payment. Confirmation will be sent shortly.",
-            });
-            form.reset();
-            router.push("/thank-you");
-          },
-          prefill: {
-            name: values.fullName,
-            email: values.email,
-            contact: `${values.countryCode}${values.mobile}`.replace(/\D/g, ""), // SANITIZED: Digits only
-          },
-          notes: rzpNotes,
-          theme: { color: "#2ecc71" },
-          modal: {
-            ondismiss: function() {
-              setIsSubmitting(false);
-            }
-          }
-        };
-
-        const rzp = new window.Razorpay(options);
-        rzp.open();
-      } else {
-        // International donations
-        toast({ title: "Redirecting...", description: "Connecting to international gateway." });
-        window.open("https://stripe.com/in", "_blank");
-        form.reset();
-        router.push('/thank-you');
-      }
-
+      // 2. Switch to payment button view
+      setIsDataSaved(true);
+      toast({
+        title: "Details Saved",
+        description: "Please proceed to payment using the button below.",
+      });
     } catch (error: any) {
       console.error("❌ Submission Error:", error);
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: error.message || 'An error occurred.',
+        description: error.message || 'An error occurred while saving your details.',
       });
+    } finally {
       setIsSubmitting(false);
     }
   }
@@ -228,20 +155,54 @@ export default function DonationForm({
 
         <div className="text-center mb-8 pt-20">
           <h2 className="text-3xl font-bold font-headline">{formTitle}</h2>
-          <p className="text-muted-foreground">{formSubtitle}</p>
+          <p className="text-muted-foreground">
+            {isDataSaved ? "Step 2: Complete your Payment" : formSubtitle}
+          </p>
         </div>
 
-        <FormProvider {...form}>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <DonationFormFields
-                donationAmountsIndian={donationAmountsIndian}
-                donationAmountsNonIndian={donationAmountsNonIndian}
-              />
-              <SubmitButton isSubmitting={isSubmitting} />
-            </form>
-          </Form>
-        </FormProvider>
+        {!isDataSaved ? (
+          <FormProvider {...form}>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <DonationFormFields
+                  donationAmountsIndian={donationAmountsIndian}
+                  donationAmountsNonIndian={donationAmountsNonIndian}
+                />
+                <Button 
+                  type="submit" 
+                  className="w-full bg-primary hover:bg-primary/90 text-white" 
+                  size="lg" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving Details...</>
+                  ) : (
+                    'Confirm & Proceed to Pay'
+                  )}
+                </Button>
+              </form>
+            </Form>
+          </FormProvider>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-12 space-y-6 animate-fade-in-up">
+            <div className="text-center space-y-2">
+              <CheckCircle2 className="h-12 w-12 text-primary mx-auto" />
+              <h3 className="text-xl font-bold font-headline">Details Confirmed</h3>
+              <p className="text-muted-foreground text-sm max-w-xs mx-auto">
+                Your information has been securely recorded. Click the button below to complete your donation on Razorpay.
+              </p>
+            </div>
+            
+            {/* This is where the Razorpay script will inject the button */}
+            <div ref={rzpButtonRef} className="flex justify-center w-full min-h-[60px]">
+              {/* Script injects here */}
+            </div>
+
+            <Button variant="ghost" onClick={() => setIsDataSaved(false)} className="text-xs text-muted-foreground">
+              ← Edit details
+            </Button>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
