@@ -13,7 +13,7 @@ export default function EduAccessDonationForm() {
             formTitle="SUPPORT EDUACCESS"
             formSubtitle="MAKE A DIFFERENCE"
             hideAmount={true}
-            razorpayButtonId="pl_SR13XkTMxcm3AS"
+            razorpayButtonId="pl_SR1EcRsMeo0Z3R"
         />
     );
 }
