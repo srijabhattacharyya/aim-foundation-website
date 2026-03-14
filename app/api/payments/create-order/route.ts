@@ -1,6 +1,7 @@
 
-import Razorpay from "razorpay";
+import Razorpay from "react-razorpay";
 import { NextResponse } from "next/server";
+import RazorpayNode from "razorpay";
 
 export async function POST(req: Request) {
   try {
@@ -8,32 +9,51 @@ export async function POST(req: Request) {
     const key_secret = process.env.RAZORPAY_KEY_SECRET;
 
     if (!key_id || !key_secret) {
-      throw new Error("Razorpay credentials are not configured in environment variables.");
+      console.error("❌ RAZORPAY_KEY_ID or RAZORPAY_KEY_SECRET is missing from environment variables.");
+      return NextResponse.json({ error: "Razorpay credentials are not configured on the server." }, { status: 500 });
     }
 
-    const razorpay = new Razorpay({
+    const razorpay = new RazorpayNode({
       key_id,
       key_secret,
     });
 
-    const { amount, donationId } = await req.json();
+    const body = await req.json();
+    const { amount, donationId } = body;
 
-    // Convert INR to Paise
+    if (!amount || isNaN(parseFloat(amount))) {
+      console.error("❌ Invalid amount received in create-order:", amount);
+      return NextResponse.json({ error: "Invalid donation amount." }, { status: 400 });
+    }
+
+    // Convert INR to Paise (must be an integer)
     const amountInPaise = Math.round(parseFloat(amount) * 100);
+
+    if (amountInPaise < 100) {
+      return NextResponse.json({ error: "Amount must be at least ₹1." }, { status: 400 });
+    }
 
     const options = {
       amount: amountInPaise,
       currency: "INR",
-      receipt: `receipt_${donationId}`.substring(0, 40), // Razorpay limit is 40 chars
+      // Receipt must be unique and max 40 chars. Using timestamp + partial ID for safety.
+      receipt: `rcpt_${donationId?.substring(0, 10) || Date.now()}`,
       notes: {
-        donationId: donationId
+        donationId: donationId || "anonymous",
       }
     };
 
+    console.log("🚀 Creating Razorpay Order with options:", JSON.stringify(options));
+
     const order = await razorpay.orders.create(options);
+    
+    console.log("✅ Razorpay Order created successfully:", order.id);
+    
     return NextResponse.json(order);
   } catch (error: any) {
-    console.error("Error creating Razorpay order:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("❌ Razorpay Order Creation Error:", error);
+    // Return the actual error message from Razorpay if available
+    const errorMsg = error.error?.description || error.message || "Unknown error creating order";
+    return NextResponse.json({ error: errorMsg }, { status: 500 });
   }
 }

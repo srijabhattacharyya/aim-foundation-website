@@ -145,17 +145,23 @@ export default function DonationForm({
         const orderRes = await fetch("/api/payments/create-order", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ amount: finalAmountInRupees, donationId: docRef.id }),
+          body: JSON.stringify({ 
+            amount: finalAmountInRupees, 
+            donationId: docRef.id 
+          }),
         });
+        
         const orderData = await orderRes.json();
 
-        if (orderData.error) throw new Error(orderData.error);
+        if (orderData.error) {
+          throw new Error(orderData.error);
+        }
 
         // 3. Open Razorpay Checkout Modal
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-          amount: orderData.amount, // amount in paise
-          currency: orderData.currency,
+          amount: orderData.amount, // From server
+          currency: orderData.currency, // From server
           name: "AIM Foundation",
           description: `Donation for ${values.cause}`,
           image: "/images/logo.png",
@@ -202,6 +208,7 @@ export default function DonationForm({
 
         const rzp = new window.Razorpay(options);
         rzp.on('payment.failed', function (response: any){
+            console.error("❌ Razorpay Payment Failed:", response.error);
             toast({
                 variant: 'destructive',
                 title: 'Payment Failed',
@@ -211,19 +218,19 @@ export default function DonationForm({
         });
         rzp.open();
       } else {
-        // International logic remains the same
-        toast({ title: "Donation Recorded", description: "Redirecting to international payment gateway..." });
-        const paymentUrl = "https://stripe.com/in";
+        // International logic
+        toast({ title: "International Donation", description: "Redirecting to international payment gateway..." });
+        const paymentUrl = "https://stripe.com/in"; 
         window.open(paymentUrl, "_blank");
         form.reset();
         router.push('/thank-you');
       }
 
     } catch (error: any) {
-      console.error("Donation error:", error);
+      console.error("❌ Donation Form Submission Error:", error);
       toast({
         variant: 'destructive',
-        title: 'Donation Failed',
+        title: 'Submission Failed',
         description: error.message || 'An unexpected error occurred.',
       });
       setIsSubmitting(false);
