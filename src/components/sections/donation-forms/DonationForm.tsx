@@ -160,8 +160,8 @@ export default function DonationForm({
         // 3. Open Razorpay Checkout Modal
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-          amount: orderData.amount, // MUST match backend
-          currency: orderData.currency, // MUST match backend
+          amount: orderData.amount, // Paise from backend order
+          currency: orderData.currency, 
           name: "AIM Foundation",
           description: `Donation for ${values.cause}`,
           image: "/images/logo.png",
@@ -205,7 +205,6 @@ export default function DonationForm({
         const rzp = new window.Razorpay(options);
         rzp.open();
       } else {
-        // International logic (Placeholder for Stripe etc.)
         toast({ title: "Redirecting...", description: "Connecting to international gateway." });
         window.open("https://stripe.com/in", "_blank");
         form.reset();

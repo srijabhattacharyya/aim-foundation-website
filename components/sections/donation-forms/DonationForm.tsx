@@ -129,6 +129,7 @@ export default function DonationForm({
         throw new Error("Please enter a valid donation amount.");
       }
 
+      // 1. Save preliminary record to Firestore
       const docRef = await addDoc(collection(db, "donations"), {
         ...values,
         amount: finalAmountInRupees,
@@ -140,6 +141,7 @@ export default function DonationForm({
         const res = await loadRazorpay();
         if (!res) throw new Error("Could not load payment gateway.");
 
+        // 2. Create Order on Server
         const orderRes = await fetch("/api/payments/create-order", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -155,15 +157,17 @@ export default function DonationForm({
           throw new Error(orderData.error);
         }
 
+        // 3. Open Razorpay Checkout Modal
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-          amount: orderData.amount, 
+          amount: orderData.amount, // Strictly use the amount from the backend order
           currency: orderData.currency, 
           name: "AIM Foundation",
           description: `Donation for ${values.cause}`,
           image: "/images/logo.png",
-          order_id: orderData.id,
+          order_id: orderData.id, // The critical matching ID
           handler: async function (response: any) {
+            // 4. Verify payment on server
             const verifyRes = await fetch("/api/payments/verify", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -201,6 +205,7 @@ export default function DonationForm({
         const rzp = new window.Razorpay(options);
         rzp.open();
       } else {
+        // International logic (Redirect to generic processor for now)
         toast({ title: "Redirecting...", description: "Connecting to international gateway." });
         window.open("https://stripe.com/in", "_blank");
         form.reset();
