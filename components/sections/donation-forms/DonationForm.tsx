@@ -6,10 +6,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { DonationFormFields } from "./DonationFormFields";
+import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
 import { Form } from "@/components/ui/form";
 import { DonationAmount } from "@/types/donation";
-import { donationSchema } from './schemas';
+import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
 import { countries } from "@/app/lib/countries";
 import { useToast } from "@/hooks/use-toast";
@@ -129,7 +129,6 @@ export default function DonationForm({
         throw new Error("Please enter a valid donation amount.");
       }
 
-      // 1. Save preliminary record to Firestore
       const docRef = await addDoc(collection(db, "donations"), {
         ...values,
         amount: finalAmountInRupees,
@@ -139,9 +138,8 @@ export default function DonationForm({
 
       if (values.nationality === 'Indian') {
         const res = await loadRazorpay();
-        if (!res) throw new Error("Razorpay SDK failed to load. Please check your connection.");
+        if (!res) throw new Error("Could not load payment gateway.");
 
-        // 2. Create Order on Server
         const orderRes = await fetch("/api/payments/create-order", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -157,17 +155,15 @@ export default function DonationForm({
           throw new Error(orderData.error);
         }
 
-        // 3. Open Razorpay Checkout Modal
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-          amount: orderData.amount, // From server
-          currency: orderData.currency, // From server
+          amount: orderData.amount, 
+          currency: orderData.currency, 
           name: "AIM Foundation",
           description: `Donation for ${values.cause}`,
           image: "/images/logo.png",
           order_id: orderData.id,
           handler: async function (response: any) {
-            // 4. Verify payment on server
             const verifyRes = await fetch("/api/payments/verify", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -181,11 +177,11 @@ export default function DonationForm({
             const verifyData = await verifyRes.json();
             
             if (verifyData.status === "Payment verified") {
-              toast({ title: "Donation Successful!", description: "Thank you for your generous support." });
+              toast({ title: "Success!", description: "Thank you for your support." });
               form.reset();
               router.push('/thank-you');
             } else {
-              toast({ variant: "destructive", title: "Verification Failed", description: "Could not verify payment. Please contact us." });
+              toast({ variant: "destructive", title: "Failed", description: "Payment verification failed." });
               setIsSubmitting(false);
             }
           },
@@ -193,10 +189,6 @@ export default function DonationForm({
             name: values.fullName,
             email: values.email,
             contact: values.mobile,
-          },
-          notes: {
-            donationId: docRef.id,
-            cause: values.cause
           },
           theme: { color: "#2ecc71" },
           modal: {
@@ -207,32 +199,20 @@ export default function DonationForm({
         };
 
         const rzp = new window.Razorpay(options);
-        rzp.on('payment.failed', function (response: any){
-            console.error("❌ Razorpay Payment Failed:", response.error);
-            toast({
-                variant: 'destructive',
-                title: 'Payment Failed',
-                description: response.error.description || 'The payment was not successful.',
-            });
-            setIsSubmitting(false);
-        });
         rzp.open();
       } else {
-        // International logic
-        toast({ title: "International Donation", description: "Redirecting to international payment gateway..." });
-        // This should point to your Stripe or other international gateway
-        const paymentUrl = "https://stripe.com/in"; 
-        window.open(paymentUrl, "_blank");
+        toast({ title: "Redirecting...", description: "Connecting to international gateway." });
+        window.open("https://stripe.com/in", "_blank");
         form.reset();
         router.push('/thank-you');
       }
 
     } catch (error: any) {
-      console.error("❌ Donation Form Submission Error:", error);
+      console.error("❌ Submission Error:", error);
       toast({
         variant: 'destructive',
-        title: 'Submission Failed',
-        description: error.message || 'An unexpected error occurred.',
+        title: 'Error',
+        description: error.message || 'An error occurred.',
       });
       setIsSubmitting(false);
     }
