@@ -120,7 +120,7 @@ export function DonationFormFields({
                     htmlFor={`other-${field.name}`}
                     className="font-normal text-lg cursor-pointer"
                   >
-                    Other
+                    Donate any Amount of your Choice
                   </FormLabel>
                 </FormItem>
               </RadioGroup>
@@ -137,7 +137,7 @@ export function DonationFormFields({
           name="otherAmount"
           render={({ field }) => (
             <FormItem className="animate-in slide-in-from-top-2 duration-300">
-              <FormLabel>Specify Your Donation Amount ({nationality === "Indian" ? "INR" : "USD"})</FormLabel>
+              <FormLabel>Enter Amount ({nationality === "Indian" ? "INR" : "USD"})</FormLabel>
               <FormControl>
                 <Input
                   type="number"
