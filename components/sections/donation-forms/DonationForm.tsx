@@ -157,6 +157,9 @@ export default function DonationForm({
           throw new Error(orderData.error);
         }
 
+        // Safer prefill contact formatting
+        const formattedContact = `${values.countryCode}${values.mobile}`.replace(/\D/g, "");
+
         // 3. Open Razorpay Checkout Modal
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
@@ -165,7 +168,7 @@ export default function DonationForm({
           name: "AIM Foundation",
           description: `Donation for ${values.cause}`,
           image: "/images/logo.png",
-          order_id: orderData.id, // The critical matching ID
+          order_id: orderData.id,
           handler: async function (response: any) {
             // 4. Verify payment on server
             const verifyRes = await fetch("/api/payments/verify", {
@@ -192,7 +195,13 @@ export default function DonationForm({
           prefill: {
             name: values.fullName,
             email: values.email,
-            contact: values.mobile,
+            contact: formattedContact,
+          },
+          notes: {
+            donationId: docRef.id
+          },
+          retry: {
+            enabled: true
           },
           theme: { color: "#2ecc71" },
           modal: {
@@ -201,6 +210,11 @@ export default function DonationForm({
             }
           }
         };
+
+        // Debug logging
+        console.log("Razorpay Key Status:", !!process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID);
+        console.log("Order Data:", orderData);
+        console.log("Checkout Options (Prefill Contact):", formattedContact);
 
         const rzp = new window.Razorpay(options);
         rzp.open();
