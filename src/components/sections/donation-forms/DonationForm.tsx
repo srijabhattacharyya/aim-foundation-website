@@ -3,7 +3,7 @@
 
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
@@ -17,8 +17,6 @@ import { SubmitButton } from "./SubmitButton";
 import { db } from "@/app/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useRouter } from 'next/navigation';
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
 
 interface DonationFormProps {
   cause: string;
@@ -28,6 +26,12 @@ interface DonationFormProps {
   defaultNonIndianAmount: string;
   formTitle: string;
   formSubtitle: string;
+}
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
 }
 
 export default function DonationForm({
@@ -41,8 +45,6 @@ export default function DonationForm({
 }: DonationFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showPaymentButton, setShowPaymentButton] = useState(false);
-  const paymentButtonContainerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof donationSchema>>({
@@ -100,40 +102,32 @@ export default function DonationForm({
     }
   }, [selectedCountry, form]);
 
-  // Inject Razorpay Script when showPaymentButton becomes true
-  useEffect(() => {
-    if (showPaymentButton && paymentButtonContainerRef.current) {
-      paymentButtonContainerRef.current.innerHTML = "";
-      
+  const loadRazorpay = () => {
+    return new Promise((resolve) => {
+      if (window.Razorpay) {
+        resolve(true);
+        return;
+      }
       const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.setAttribute("data-payment_button_id", "pl_SQxZiuYPAbjQdo");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
       script.async = true;
-      
-      const formElement = document.createElement("form");
-      formElement.appendChild(script);
-      
-      paymentButtonContainerRef.current.appendChild(formElement);
-      
-      toast({
-        title: "Ready for Payment",
-        description: "Please click the Razorpay button below to complete your donation.",
-      });
-    }
-  }, [showPaymentButton, toast]);
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
       const amountStr = values.otherAmount?.trim() || values.amount;
       const finalAmountInRupees = parseFloat(amountStr);
-      
       if (isNaN(finalAmountInRupees) || finalAmountInRupees <= 0) {
         throw new Error("Please enter a valid donation amount.");
       }
 
-      // 1. Save donation record to Firestore
-      await addDoc(collection(db, "donations"), {
+      // 1. Save preliminary record in Firestore
+      const docRef = await addDoc(collection(db, "donations"), {
         ...values,
         amount: finalAmountInRupees,
         paymentStatus: "initiated",
@@ -141,8 +135,59 @@ export default function DonationForm({
       });
 
       if (values.nationality === "Indian") {
-        setShowPaymentButton(true);
+        const res = await loadRazorpay();
+        if (!res) throw new Error("Could not load payment gateway.");
+
+        // 2. Request Razorpay Order
+        const orderRes = await fetch("/api/payments/create-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            amount: finalAmountInRupees,
+            donationId: docRef.id
+          }),
+        });
+
+        const orderData = await orderRes.json();
+        if (orderData.error) throw new Error(orderData.error);
+
+        // 3. Open Razorpay Checkout with Pre-filled data
+        const options = {
+          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+          amount: orderData.amount,
+          currency: orderData.currency,
+          name: "AIM Foundation",
+          description: `Donation for ${values.cause}`,
+          image: "/images/logo.png",
+          order_id: orderData.id,
+          handler: function () {
+            toast({
+              title: "Payment authorized",
+              description: "Thank you for your generous support!",
+            });
+            form.reset();
+            router.push("/thank-you");
+          },
+          prefill: {
+            name: values.fullName,
+            email: values.email,
+            contact: `${values.countryCode}${values.mobile}`.replace(/\D/g, ""), // SANITIZED: Digits only
+          },
+          notes: {
+            donationId: docRef.id
+          },
+          theme: { color: "#2ecc71" },
+          modal: {
+            ondismiss: function() {
+              setIsSubmitting(false);
+            }
+          }
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.open();
       } else {
+        // International donations
         toast({ title: "Redirecting...", description: "Connecting to international gateway." });
         window.open("https://stripe.com/in", "_blank");
         form.reset();
@@ -156,7 +201,6 @@ export default function DonationForm({
         title: 'Error',
         description: error.message || 'An error occurred.',
       });
-    } finally {
       setIsSubmitting(false);
     }
   }
@@ -179,38 +223,17 @@ export default function DonationForm({
           <p className="text-muted-foreground">{formSubtitle}</p>
         </div>
 
-        {!showPaymentButton ? (
-          <FormProvider {...form}>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <DonationFormFields
-                  donationAmountsIndian={donationAmountsIndian}
-                  donationAmountsNonIndian={donationAmountsNonIndian}
-                />
-                <SubmitButton isSubmitting={isSubmitting} />
-              </form>
-            </Form>
-          </FormProvider>
-        ) : (
-          <div className="space-y-6 text-center py-8">
-            <div className="bg-muted p-4 rounded-lg mb-6">
-              <p className="font-semibold text-primary">Details saved successfully!</p>
-              <p className="text-sm text-muted-foreground mt-1">Please complete the final step by clicking the payment button below.</p>
-            </div>
-            
-            <div ref={paymentButtonContainerRef} className="flex justify-center min-h-[60px]">
-              <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-            </div>
-
-            <Button 
-              variant="ghost" 
-              onClick={() => setShowPaymentButton(false)}
-              className="mt-4"
-            >
-              Back to Edit Details
-            </Button>
-          </div>
-        )}
+        <FormProvider {...form}>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <DonationFormFields
+                donationAmountsIndian={donationAmountsIndian}
+                donationAmountsNonIndian={donationAmountsNonIndian}
+              />
+              <SubmitButton isSubmitting={isSubmitting} />
+            </form>
+          </Form>
+        </FormProvider>
       </CardContent>
     </Card>
   );
