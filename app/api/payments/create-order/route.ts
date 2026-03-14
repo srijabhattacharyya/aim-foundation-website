@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     });
 
     const body = await req.json();
-    const { amount, donationId } = body;
+    const { amount, donationId, notes } = body;
 
     if (!amount || isNaN(parseFloat(amount))) {
       return NextResponse.json({ error: "Invalid donation amount." }, { status: 400 });
@@ -37,6 +37,7 @@ export async function POST(req: Request) {
       receipt: `rcpt_${Date.now()}`,
       notes: {
         donationId: donationId || "anonymous",
+        ...notes
       }
     };
 

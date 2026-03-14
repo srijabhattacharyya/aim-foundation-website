@@ -138,13 +138,23 @@ export default function DonationForm({
         const res = await loadRazorpay();
         if (!res) throw new Error("Could not load payment gateway.");
 
+        // Define additional metadata for Razorpay
+        const rzpNotes = {
+          donationId: docRef.id,
+          address: values.address || "",
+          state: values.state || "",
+          country: values.country || "",
+          pan: values.pan || values.aadhar || "",
+        };
+
         // 2. Request Razorpay Order
         const orderRes = await fetch("/api/payments/create-order", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             amount: finalAmountInRupees,
-            donationId: docRef.id
+            donationId: docRef.id,
+            notes: rzpNotes
           }),
         });
 
@@ -162,8 +172,8 @@ export default function DonationForm({
           order_id: orderData.id,
           handler: function () {
             toast({
-              title: "Payment authorized",
-              description: "Thank you for your generous support!",
+              title: "Payment initiated",
+              description: "We are verifying your payment. Confirmation will be sent shortly.",
             });
             form.reset();
             router.push("/thank-you");
@@ -173,9 +183,7 @@ export default function DonationForm({
             email: values.email,
             contact: `${values.countryCode}${values.mobile}`.replace(/\D/g, ""), // SANITIZED: Digits only
           },
-          notes: {
-            donationId: docRef.id
-          },
+          notes: rzpNotes,
           theme: { color: "#2ecc71" },
           modal: {
             ondismiss: function() {
