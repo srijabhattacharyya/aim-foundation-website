@@ -191,6 +191,9 @@ export default function DonationForm({
             <p className="text-muted-foreground font-medium uppercase tracking-widest text-sm mt-2">
               {formSubtitle}
             </p>
+            <p className="mt-4 text-primary font-semibold text-sm italic">
+              All donors will receive impact updates and photos from the workshops and activities.
+            </p>
           </div>
 
           <FormProvider {...form}>
