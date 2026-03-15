@@ -149,7 +149,7 @@ export default function DonationForm({
               className="object-contain mb-2"
             />
             <div className="text-center space-y-2">
-              <h3 className="text-xl font-bold font-headline uppercase">Ready to Pay</h3>
+              <h3 className="text-xl font-bold font-headline uppercase">Be Part of the Change</h3>
               <p className="text-sm text-muted-foreground">Please complete your donation using the Razorpay button below.</p>
             </div>
             
