@@ -145,7 +145,7 @@ export default function DonationForm({
           />
         </div>
 
-        <div className="text-center mb-10 pt-20">
+        <div className="text-center mb-6 pt-12">
           <h2 className="text-3xl font-bold font-headline uppercase tracking-tight">{formTitle}</h2>
           <p className="text-muted-foreground font-medium uppercase tracking-widest text-sm mt-2">
             {formSubtitle}
@@ -179,8 +179,12 @@ export default function DonationForm({
             </Form>
           </FormProvider>
         ) : (
-          <div className="flex flex-col items-center space-y-8 py-12 animate-in fade-in zoom-in duration-300">
-            <div className="w-full bg-muted/30 rounded-xl border border-dashed p-8 min-h-[160px] flex items-center justify-center">
+          <div className="flex flex-col items-center space-y-6 py-6 animate-in fade-in zoom-in duration-300">
+            <p className="text-foreground font-semibold text-center text-lg">
+              Please complete your donation using the Razorpay button below.
+            </p>
+            
+            <div className="w-full bg-muted/30 rounded-xl border border-dashed p-8 min-h-[120px] flex items-center justify-center">
               <form ref={rzpButtonRef} className="flex justify-center w-full">
                 {/* Razorpay Button Injected Here */}
               </form>
@@ -190,7 +194,7 @@ export default function DonationForm({
               variant="outline" 
               size="sm"
               onClick={() => setIsDataSaved(false)} 
-              className="mt-4"
+              className="mt-2"
             >
               Go Back / Edit Details
             </Button>
