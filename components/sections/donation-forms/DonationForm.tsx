@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -150,39 +149,41 @@ export default function DonationForm({
   }
 
   const paymentOverlay = mounted && isDataSaved && nationality === "Indian" ? createPortal(
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-300">
-      <div className="bg-card w-full max-w-md p-8 rounded-3xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-8 text-center m-4">
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="absolute right-4 top-4 rounded-full"
-          onClick={() => setIsDataSaved(false)}
-        >
-          <X className="h-6 w-6" />
-        </Button>
-
-        <div className="bg-primary/10 p-6 rounded-full animate-bounce">
-          <CheckCircle2 className="h-16 w-12 text-primary" />
-        </div>
-
-        <div className="space-y-3">
-          <h3 className="text-3xl font-bold font-headline">Ready to Pay</h3>
-          <p className="text-muted-foreground">
-            Your contribution details are secured. Please click <strong>Donate Now</strong> below to finish.
-          </p>
-        </div>
-        
-        <form ref={rzpButtonRef} className="flex justify-center w-full min-h-[80px] py-4 bg-muted/30 rounded-xl border border-dashed">
-          {/* Razorpay Button Injected Here */}
-        </form>
-
-        <div className="space-y-4 w-full">
-          <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
-            Safe & Secure via Razorpay
-          </p>
-          <Button variant="outline" onClick={() => setIsDataSaved(false)} className="w-full">
-            Back to Form
+    <div className="fixed inset-0 z-[9999] overflow-y-auto bg-black/90 backdrop-blur-md animate-in fade-in duration-300">
+      <div className="flex min-h-full items-center justify-center p-4">
+        <div className="bg-card w-full max-w-md p-8 rounded-3xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-8 text-center my-8">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="absolute right-4 top-4 rounded-full"
+            onClick={() => setIsDataSaved(false)}
+          >
+            <X className="h-6 w-6" />
           </Button>
+
+          <div className="bg-primary/10 p-6 rounded-full animate-bounce">
+            <CheckCircle2 className="h-16 w-12 text-primary" />
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-3xl font-bold font-headline">Ready to Pay</h3>
+            <p className="text-muted-foreground text-sm">
+              Your contribution details are secured. Please click <strong>Donate Now</strong> below to finish.
+            </p>
+          </div>
+          
+          <form ref={rzpButtonRef} className="flex justify-center w-full min-h-[80px] py-4 bg-muted/30 rounded-xl border border-dashed">
+            {/* Razorpay Button Injected Here */}
+          </form>
+
+          <div className="space-y-4 w-full">
+            <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
+              Safe & Secure via Razorpay
+            </p>
+            <Button variant="outline" onClick={() => setIsDataSaved(false)} className="w-full">
+              Back to Form
+            </Button>
+          </div>
         </div>
       </div>
     </div>,
