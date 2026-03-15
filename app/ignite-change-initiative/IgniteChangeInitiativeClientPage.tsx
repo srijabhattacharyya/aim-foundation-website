@@ -77,6 +77,10 @@ export default function IgniteChangeInitiativeClientPage() {
                         <p>
                             We believe that small actions, when multiplied by many, can lead to transformative outcomes. Ignite Change provides the resources, mentorship, and framework for passionate individuals and groups to launch and sustain their own social good projects.
                         </p>
+                        <h3 className="text-2xl font-bold font-headline pt-4 text-center">“Join the Ignite Change Circle”</h3>
+                        <p className="text-center font-bold">
+                            Monthly support helps us plan long-term community projects
+                        </p>
                         <h3 className="text-2xl font-bold font-headline pt-4">Our Support Includes:</h3>
                         <ul className="list-disc list-inside space-y-2">
                             <li>Seed funding for innovative community projects.</li>
@@ -91,10 +95,6 @@ export default function IgniteChangeInitiativeClientPage() {
                         <p>
                             Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> to the Ignite Change Initiative provides the critical seed funding that allows local heroes to get their ideas off the ground. Support a community-led project and empower passionate individuals to create the change they want to see. Your contribution can help launch a new campaign, train volunteers, or provide essential materials. Be the spark that ignites a wave of positive action.
                         </p>
-                        <div className="text-center pt-6 pb-2">
-                            <p className="font-bold text-xl">Join the Ignite Change Circle</p>
-                            <p>Monthly support helps us plan long-term community projects</p>
-                        </div>
                         </div>
                     </div>
                 </div>
