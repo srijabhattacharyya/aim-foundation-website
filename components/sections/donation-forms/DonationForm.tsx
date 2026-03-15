@@ -102,14 +102,16 @@ export default function DonationForm({
         }
       }
 
-      await addDoc(collection(db, "donations"), {
-        nationality: values.nationality,
+      // Prepare data for Firestore, including all user-provided details
+      const { agree, amount, otherAmount, ...rest } = values;
+      const dataToSave = {
+        ...rest,
         amount: finalAmount,
-        cause: values.cause,
-        initiative: values.initiative,
         paymentStatus: "initiated",
         createdAt: serverTimestamp(),
-      });
+      };
+
+      await addDoc(collection(db, "donations"), dataToSave);
 
       if (values.nationality === "Non-Indian") {
         window.location.href = "https://stripe.com/in";
@@ -117,10 +119,7 @@ export default function DonationForm({
       }
 
       setIsDataSaved(true);
-      toast({
-        title: "Details Saved",
-        description: "Please complete your donation using the button below.",
-      });
+      // Toast notification removed as requested
     } catch (error: any) {
       toast({
         variant: 'destructive',
