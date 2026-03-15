@@ -174,15 +174,6 @@ export default function DonationForm({
                 {/* Razorpay Button Injected Here */}
               </form>
             </div>
-
-            <Button 
-              variant="outline" 
-              size="sm"
-              onClick={() => setIsDataSaved(false)} 
-              className="mt-2"
-            >
-              Go Back / Edit Details
-            </Button>
           </div>
         )}
       </CardContent>
