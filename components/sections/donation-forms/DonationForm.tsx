@@ -14,8 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { db } from "@/app/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { Loader2, CheckCircle2, X } from "lucide-react";
-import { createPortal } from "react-dom";
+import { Loader2, CheckCircle2 } from "lucide-react";
 
 interface DonationFormProps {
   cause: string;
@@ -45,30 +44,7 @@ export default function DonationForm({
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const rzpButtonRef = useRef<HTMLFormElement>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Handle body scroll locking and pointer events when overlay is active
-  useEffect(() => {
-    if (isDataSaved) {
-      const originalOverflow = document.body.style.overflow;
-      const originalPointerEvents = document.body.style.pointerEvents;
-      
-      document.body.style.overflow = 'hidden';
-      // Force pointer events to auto to ensure the portal remains clickable 
-      // even if a parent Radix dialog is trying to block it
-      document.body.style.pointerEvents = 'auto';
-      
-      return () => {
-        document.body.style.overflow = originalOverflow;
-        document.body.style.pointerEvents = originalPointerEvents;
-      };
-    }
-  }, [isDataSaved]);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -156,76 +132,33 @@ export default function DonationForm({
     }
   }
 
-  const paymentOverlay = mounted && isDataSaved && nationality === "Indian" ? createPortal(
-    <div className="fixed inset-0 z-[10000] overflow-y-auto bg-black/95 backdrop-blur-md pointer-events-auto flex justify-center py-8 sm:py-12 px-4">
-      <div className="bg-card w-full max-w-md p-6 sm:p-10 rounded-3xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-6 text-center h-fit pointer-events-auto">
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="absolute right-4 top-4 rounded-full bg-muted/50 hover:bg-muted pointer-events-auto z-[10001]"
-          onClick={() => setIsDataSaved(false)}
-        >
-          <X className="h-5 w-5" />
-        </Button>
-
-        <div className="bg-primary/10 p-4 rounded-full">
-          <CheckCircle2 className="h-10 w-8 text-primary" />
-        </div>
-
-        <div className="space-y-2">
-          <h3 className="text-2xl font-bold font-headline">Ready to Pay</h3>
-          <p className="text-muted-foreground text-xs leading-relaxed max-w-[280px] mx-auto">
-            Your details are secured. Please use the <strong>Razorpay</strong> section below to complete your {isSubscription ? 'subscription' : 'donation'}.
-          </p>
-        </div>
-        
-        {/* Razorpay Container - Ensuring pointer-events are active */}
-        <div className="w-full bg-muted/30 rounded-xl border border-dashed p-2 min-h-[120px] flex items-center justify-center pointer-events-auto">
-          <form ref={rzpButtonRef} className="flex justify-center w-full pointer-events-auto">
-            {/* Razorpay Button Injected Here */}
-          </form>
-        </div>
-
-        <div className="space-y-4 w-full">
-          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">
-            Safe & Secure via Razorpay
-          </p>
-          <Button variant="outline" onClick={() => setIsDataSaved(false)} className="w-full rounded-xl h-12 pointer-events-auto">
-            Back to Form
-          </Button>
-        </div>
-      </div>
-    </div>,
-    document.body
-  ) : null;
-
   return (
-    <>
-      <Card className="w-full border-0 shadow-none rounded-none bg-background">
-        <CardContent className="p-6 md:p-10 relative">
-          <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md border shadow-sm">
-            <Image
-              src="/images/logo.png"
-              alt="AIM Foundation Logo"
-              width={120}
-              height={48}
-              className="object-contain"
-            />
-          </div>
+    <Card className="w-full border-0 shadow-none rounded-none bg-background">
+      <CardContent className="p-6 md:p-10 relative">
+        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md border shadow-sm">
+          <Image
+            src="/images/logo.png"
+            alt="AIM Foundation Logo"
+            width={120}
+            height={48}
+            className="object-contain"
+          />
+        </div>
 
-          <div className="text-center mb-10 pt-20">
-            <h2 className="text-3xl font-bold font-headline uppercase tracking-tight">{formTitle}</h2>
-            <p className="text-muted-foreground font-medium uppercase tracking-widest text-sm mt-2">
-              {formSubtitle}
-            </p>
-            <p className="mt-4 text-primary font-semibold text-sm italic text-center">
-              All donors will receive impact updates and photos from the workshops and activities.
-            </p>
-          </div>
+        <div className="text-center mb-10 pt-20">
+          <h2 className="text-3xl font-bold font-headline uppercase tracking-tight">{formTitle}</h2>
+          <p className="text-muted-foreground font-medium uppercase tracking-widest text-sm mt-2">
+            {formSubtitle}
+          </p>
+        </div>
 
+        {!isDataSaved ? (
           <FormProvider {...form}>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+                <p className="text-primary font-semibold text-sm italic text-center">
+                  All donors will receive impact updates and photos from the workshops and activities.
+                </p>
                 <DonationFormFields
                   donationAmountsIndian={donationAmountsIndian}
                   donationAmountsNonIndian={donationAmountsNonIndian}
@@ -245,9 +178,36 @@ export default function DonationForm({
               </form>
             </Form>
           </FormProvider>
-        </CardContent>
-      </Card>
-      {paymentOverlay}
-    </>
+        ) : (
+          <div className="flex flex-col items-center space-y-8 py-6 animate-in fade-in zoom-in duration-300">
+            <div className="bg-primary/10 p-4 rounded-full">
+              <CheckCircle2 className="h-12 w-12 text-primary" />
+            </div>
+
+            <div className="space-y-2 text-center">
+              <h3 className="text-2xl font-bold font-headline">Details Saved Successfully</h3>
+              <p className="text-muted-foreground text-sm">
+                Please complete your secure payment via Razorpay below.
+              </p>
+            </div>
+            
+            <div className="w-full bg-muted/30 rounded-xl border border-dashed p-6 min-h-[140px] flex items-center justify-center">
+              <form ref={rzpButtonRef} className="flex justify-center w-full">
+                {/* Razorpay Button Injected Here */}
+              </form>
+            </div>
+
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => setIsDataSaved(false)} 
+              className="mt-4"
+            >
+              Go Back / Edit Details
+            </Button>
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
 }
