@@ -1,4 +1,3 @@
-
 'use client';
 import DonationForm from "./DonationForm";
 
@@ -13,8 +12,8 @@ export default function IgniteChangeDonationForm() {
             formTitle="SUPPORT IGNITE CHANGE"
             formSubtitle="BE THE SPARK"
             hideAmount={true}
-            razorpayButtonId="pl_SRZFNDgbZeFnpp"
-            isSubscription={true}
+            razorpayButtonId="pl_SRN9Lp4szo4GJs"
+            isSubscription={false}
         />
     );
 }

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -41,7 +40,14 @@ export default function DonationForm({
 }: DonationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
-  const rzpButtonRef = useRef<HTMLDivElement>(null);
+  const rzpButtonRef = useRef<HTMLFormElement>(null);
+
+  // Ensure clicks work by bypassing any parent dialog interaction blocks
+  useEffect(() => {
+    if (isDataSaved) {
+      document.body.style.pointerEvents = 'auto';
+    }
+  }, [isDataSaved]);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -69,9 +75,7 @@ export default function DonationForm({
       const container = rzpButtonRef.current;
       container.innerHTML = "";
       
-      const formElement = document.createElement("form");
       const script = document.createElement("script");
-      
       if (isSubscription) {
         script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
         script.setAttribute("data-subscription_button_id", razorpayButtonId);
@@ -81,22 +85,14 @@ export default function DonationForm({
         script.setAttribute("data-payment_button_id", razorpayButtonId);
       }
       script.async = true;
-      
-      formElement.appendChild(script);
-      container.appendChild(formElement);
-
-      // Ensure clicks work by bypassing any parent dialog interaction blocks
-      const timer = setTimeout(() => {
-        document.body.style.pointerEvents = "auto";
-      }, 500);
-      return () => clearTimeout(timer);
+      container.appendChild(script);
     }
   }, [isDataSaved, nationality, razorpayButtonId, isSubscription]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     if (values.nationality === "Non-Indian") {
-      window.open("https://stripe.com/in", "_blank");
+      window.location.href = "https://stripe.com/in";
       setIsSubmitting(false);
       return;
     }
@@ -153,11 +149,13 @@ export default function DonationForm({
               <p className="text-sm text-muted-foreground">Please complete your donation using the Razorpay button below.</p>
             </div>
             
-            <div 
+            <form 
               ref={rzpButtonRef} 
               className="w-full flex justify-center py-4 bg-muted/30 rounded-xl min-h-[120px] relative z-[60]"
               style={{ pointerEvents: 'auto' }}
-            />
+            >
+              {/* Razorpay Button Injected Here */}
+            </form>
 
             <Button 
               variant="ghost" 
