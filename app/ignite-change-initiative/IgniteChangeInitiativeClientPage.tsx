@@ -92,6 +92,8 @@ export default function IgniteChangeInitiativeClientPage() {
                         <p>
                             Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> to the Ignite Change Initiative provides the critical seed funding that allows local heroes to get their ideas off the ground. Support a community-led project and empower passionate individuals to create the change they want to see. Your contribution can help launch a new campaign, train volunteers, or provide essential materials. Be the spark that ignites a wave of positive action.
                         </p>
+                        <p className="font-bold pt-4">Join the Ignite Change Circle</p>
+                        <p>Monthly support helps us plan long-term community projects</p>
                         </div>
                     </div>
                 </div>
