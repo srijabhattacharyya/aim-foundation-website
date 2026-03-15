@@ -12,8 +12,6 @@ import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { db } from "@/app/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { Loader2 } from "lucide-react";
 
 interface DonationFormProps {
@@ -92,39 +90,27 @@ export default function DonationForm({
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     try {
-      let finalAmount = 0;
       if (!hideAmount) {
         const displayAmount = values.amount === 'other' ? values.otherAmount : values.amount;
-        finalAmount = parseFloat(displayAmount || "0");
+        const finalAmount = parseFloat(displayAmount || "0");
         
         if (isNaN(finalAmount) || finalAmount <= 0) {
           throw new Error("Please enter a valid donation amount.");
         }
       }
 
-      // Prepare data for Firestore, including all user-provided details
-      const { agree, amount, otherAmount, ...rest } = values;
-      const dataToSave = {
-        ...rest,
-        amount: finalAmount,
-        paymentStatus: "initiated",
-        createdAt: serverTimestamp(),
-      };
-
-      await addDoc(collection(db, "donations"), dataToSave);
-
       if (values.nationality === "Non-Indian") {
         window.location.href = "https://stripe.com/in";
         return;
       }
 
+      // No data is stored in Firebase per user request
       setIsDataSaved(true);
-      // Toast notification removed as requested
     } catch (error: any) {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: error.message || 'Could not save your details.',
+        description: error.message || 'An error occurred.',
       });
     } finally {
       setIsSubmitting(false);
@@ -154,7 +140,7 @@ export default function DonationForm({
         {!isDataSaved ? (
           <FormProvider {...form}>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <p className="text-primary font-semibold text-sm italic text-center">
                   All donors will receive impact updates and photos from the workshops and activities.
                 </p>
