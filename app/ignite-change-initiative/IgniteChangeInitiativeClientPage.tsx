@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "../../components/layout/Navbar";
@@ -77,10 +78,12 @@ export default function IgniteChangeInitiativeClientPage() {
                         <p>
                             We believe that small actions, when multiplied by many, can lead to transformative outcomes. Ignite Change provides the resources, mentorship, and framework for passionate individuals and groups to launch and sustain their own social good projects.
                         </p>
-                        <h3 className="text-2xl font-bold font-headline pt-4 text-center">“Join the Ignite Change Circle”</h3>
-                        <p className="text-center font-bold">
-                            Monthly support helps us plan long-term community projects
-                        </p>
+                        <div className="text-center space-y-2">
+                          <h3 className="text-2xl font-bold font-headline pt-4">“Join the Ignite Change Circle”</h3>
+                          <p className="font-bold">
+                              Monthly support helps us plan long-term community projects
+                          </p>
+                        </div>
                         <h3 className="text-2xl font-bold font-headline pt-4">Our Support Includes:</h3>
                         <ul className="list-disc list-inside space-y-2">
                             <li>Seed funding for innovative community projects.</li>
