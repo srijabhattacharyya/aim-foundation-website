@@ -28,6 +28,7 @@ interface DonationFormProps {
   formSubtitle: string;
   hideAmount?: boolean;
   razorpayButtonId?: string;
+  isSubscription?: boolean;
 }
 
 export default function DonationForm({
@@ -40,6 +41,7 @@ export default function DonationForm({
   formSubtitle,
   hideAmount = false,
   razorpayButtonId = "pl_SQxZiuYPAbjQdo",
+  isSubscription = false,
 }: DonationFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -91,12 +93,18 @@ export default function DonationForm({
       rzpButtonRef.current.innerHTML = "";
       
       const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.setAttribute("data-payment_button_id", razorpayButtonId);
+      if (isSubscription) {
+        script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+        script.setAttribute("data-subscription_button_id", razorpayButtonId);
+        script.setAttribute("data-button_theme", "brand-color");
+      } else {
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+        script.setAttribute("data-payment_button_id", razorpayButtonId);
+      }
       script.async = true;
       rzpButtonRef.current.appendChild(script);
     }
-  }, [isDataSaved, nationality, razorpayButtonId]);
+  }, [isDataSaved, nationality, razorpayButtonId, isSubscription]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -200,7 +208,7 @@ export default function DonationForm({
             <p className="text-muted-foreground font-medium uppercase tracking-widest text-sm mt-2">
               {formSubtitle}
             </p>
-            <p className="mt-4 text-primary font-semibold text-sm italic">
+            <p className="mt-4 text-primary font-semibold text-sm italic text-center">
               All donors will receive impact updates and photos from the workshops and activities.
             </p>
           </div>
