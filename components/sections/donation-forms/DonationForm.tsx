@@ -54,10 +54,10 @@ export default function DonationForm({
 
   useEffect(() => {
     if (isDataSaved) {
-      const originalStyle = document.body.style.pointerEvents;
-      document.body.style.pointerEvents = 'auto';
+      const originalStyle = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
       return () => {
-        document.body.style.pointerEvents = originalStyle;
+        document.body.style.overflow = originalStyle;
       };
     }
   }, [isDataSaved]);
@@ -149,39 +149,41 @@ export default function DonationForm({
   }
 
   const paymentOverlay = mounted && isDataSaved && nationality === "Indian" ? createPortal(
-    <div className="fixed inset-0 z-[9999] overflow-y-auto bg-black/90 backdrop-blur-md animate-in fade-in duration-300">
-      <div className="flex min-h-full items-center justify-center p-4">
-        <div className="bg-card w-full max-w-md p-8 rounded-3xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-8 text-center my-8">
+    <div className="fixed inset-0 z-[9999] overflow-y-auto bg-black/95 backdrop-blur-md animate-in fade-in duration-300">
+      <div className="flex min-h-full items-start justify-center p-4 sm:items-center">
+        <div className="bg-card w-full max-w-md p-6 md:p-8 rounded-3xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-6 text-center my-8">
           <Button 
             variant="ghost" 
             size="icon" 
-            className="absolute right-4 top-4 rounded-full"
+            className="absolute right-4 top-4 rounded-full bg-muted/50 hover:bg-muted"
             onClick={() => setIsDataSaved(false)}
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" />
           </Button>
 
-          <div className="bg-primary/10 p-6 rounded-full animate-bounce">
-            <CheckCircle2 className="h-16 w-12 text-primary" />
+          <div className="bg-primary/10 p-4 rounded-full">
+            <CheckCircle2 className="h-10 w-8 text-primary" />
           </div>
 
-          <div className="space-y-3">
-            <h3 className="text-3xl font-bold font-headline">Ready to Pay</h3>
-            <p className="text-muted-foreground text-sm">
-              Your contribution details are secured. Please click <strong>Donate Now</strong> below to finish.
+          <div className="space-y-2">
+            <h3 className="text-2xl font-bold font-headline">Ready to Pay</h3>
+            <p className="text-muted-foreground text-xs leading-relaxed">
+              Your contribution details are secured. Please use the <strong>Razorpay</strong> section below to complete your {isSubscription ? 'subscription' : 'donation'}.
             </p>
           </div>
           
-          <form ref={rzpButtonRef} className="flex justify-center w-full min-h-[80px] py-4 bg-muted/30 rounded-xl border border-dashed">
-            {/* Razorpay Button Injected Here */}
-          </form>
+          <div className="w-full bg-muted/30 rounded-xl border border-dashed p-2 min-h-[150px]">
+            <form ref={rzpButtonRef} className="flex justify-center w-full">
+              {/* Razorpay Button Injected Here */}
+            </form>
+          </div>
 
           <div className="space-y-4 w-full">
-            <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
-              Safe & Secure via Razorpay
+            <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">
+              Safe & Secure Transaction
             </p>
-            <Button variant="outline" onClick={() => setIsDataSaved(false)} className="w-full">
-              Back to Form
+            <Button variant="outline" onClick={() => setIsDataSaved(false)} className="w-full rounded-xl">
+              Go Back
             </Button>
           </div>
         </div>
