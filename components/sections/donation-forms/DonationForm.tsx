@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -42,7 +43,7 @@ export default function DonationForm({
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
-  const rzpButtonRef = useRef<HTMLFormElement>(null);
+  const rzpButtonRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -71,20 +72,32 @@ export default function DonationForm({
 
   useEffect(() => {
     if (isDataSaved && rzpButtonRef.current && nationality === "Indian") {
-      // Clear previous instances
-      rzpButtonRef.current.innerHTML = "";
-      
-      const script = document.createElement("script");
-      if (isSubscription) {
-        script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
-        script.setAttribute("data-subscription_button_id", razorpayButtonId);
-        script.setAttribute("data-button_theme", "brand-color");
-      } else {
-        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-        script.setAttribute("data-payment_button_id", razorpayButtonId);
-      }
-      script.async = true;
-      rzpButtonRef.current.appendChild(script);
+      // Small delay to ensure the container is fully rendered and accessible
+      const timer = setTimeout(() => {
+        if (!rzpButtonRef.current) return;
+        
+        rzpButtonRef.current.innerHTML = "";
+        const formElement = document.createElement("form");
+        formElement.style.width = "100%";
+        formElement.style.display = "flex";
+        formElement.style.justifyContent = "center";
+        
+        const script = document.createElement("script");
+        if (isSubscription) {
+          script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+          script.setAttribute("data-subscription_button_id", razorpayButtonId);
+          script.setAttribute("data-button_theme", "brand-color");
+        } else {
+          script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+          script.setAttribute("data-payment_button_id", razorpayButtonId);
+        }
+        script.async = true;
+        
+        formElement.appendChild(script);
+        rzpButtonRef.current.appendChild(formElement);
+      }, 100);
+
+      return () => clearTimeout(timer);
     }
   }, [isDataSaved, nationality, razorpayButtonId, isSubscription]);
 
@@ -101,7 +114,7 @@ export default function DonationForm({
       }
 
       if (values.nationality === "Non-Indian") {
-        window.location.href = "https://stripe.com/in";
+        window.open("https://stripe.com/in", "_blank");
         return;
       }
 
@@ -117,10 +130,14 @@ export default function DonationForm({
     }
   }
 
+  const handleBack = () => {
+    setIsDataSaved(false);
+  };
+
   return (
-    <Card className="w-full border-0 shadow-none rounded-none bg-background">
-      <CardContent className="p-6 md:p-10 relative">
-        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md border shadow-sm">
+    <Card className="w-full border-0 shadow-none rounded-none bg-background overflow-visible">
+      <CardContent className="p-6 md:p-10 relative overflow-visible">
+        <div className="absolute top-4 left-4 h-16 w-32 bg-white flex items-center justify-center p-2 rounded-md border shadow-sm z-20">
           <Image
             src="/images/logo.png"
             alt="AIM Foundation Logo"
@@ -164,12 +181,12 @@ export default function DonationForm({
             </Form>
           </FormProvider>
         ) : (
-          <div className="flex flex-col items-center space-y-6 py-6 animate-in fade-in zoom-in duration-300">
+          <div className="flex flex-col items-center space-y-6 py-6 animate-in fade-in zoom-in duration-300 relative z-30">
             <div className="w-full flex justify-start">
               <Button 
                 variant="ghost" 
                 size="sm" 
-                onClick={() => setIsDataSaved(false)}
+                onClick={handleBack}
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary p-0 h-auto"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -180,10 +197,17 @@ export default function DonationForm({
               Please complete your donation using the Razorpay button below.
             </p>
             
-            <div className="w-full bg-muted/30 rounded-xl border border-dashed p-8 min-h-[120px] flex items-center justify-center relative z-10 pointer-events-auto">
-              <form ref={rzpButtonRef} className="flex justify-center w-full pointer-events-auto">
+            <div 
+              className="w-full bg-muted/30 rounded-xl border border-dashed p-8 min-h-[120px] flex items-center justify-center relative pointer-events-auto"
+              style={{ pointerEvents: 'auto' }}
+            >
+              <div 
+                ref={rzpButtonRef} 
+                className="flex justify-center w-full pointer-events-auto z-40"
+                style={{ pointerEvents: 'auto' }}
+              >
                 {/* Razorpay Button Injected Here */}
-              </form>
+              </div>
             </div>
           </div>
         )}
