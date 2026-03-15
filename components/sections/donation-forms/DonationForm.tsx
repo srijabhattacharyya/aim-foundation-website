@@ -12,7 +12,7 @@ import { DonationAmount } from "@/types/donation";
 import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowLeft } from "lucide-react";
 
 interface DonationFormProps {
   cause: string;
@@ -85,7 +85,7 @@ export default function DonationForm({
       formElement.appendChild(script);
       container.appendChild(formElement);
 
-      // Force pointer events to allow interaction inside Dialog
+      // Ensure clicks work by bypassing any parent dialog interaction blocks
       const timer = setTimeout(() => {
         document.body.style.pointerEvents = "auto";
       }, 500);
@@ -140,23 +140,37 @@ export default function DonationForm({
             </FormProvider>
           </>
         ) : (
-          <div className="flex flex-col items-center py-4 animate-in fade-in duration-500">
+          <div className="flex flex-col items-center py-4 space-y-6 animate-in fade-in duration-500">
+            <Image
+              src="/images/logo.png"
+              alt="AIM Foundation"
+              width={100}
+              height={40}
+              className="object-contain mb-2"
+            />
+            <div className="text-center space-y-2">
+              <h3 className="text-xl font-bold font-headline uppercase">Ready to Pay</h3>
+              <p className="text-sm text-muted-foreground">Please complete your donation using the Razorpay button below.</p>
+            </div>
+            
             <div 
               ref={rzpButtonRef} 
-              className="w-full flex justify-center py-4 bg-muted/30 rounded-xl min-h-[120px]"
+              className="w-full flex justify-center py-4 bg-muted/30 rounded-xl min-h-[120px] relative z-[60]"
               style={{ pointerEvents: 'auto' }}
             />
-            <p className="text-[10px] text-muted-foreground uppercase tracking-widest text-center mt-4">
-              Secure Transaction by Razorpay
-            </p>
+
             <Button 
-              variant="link" 
+              variant="ghost" 
               size="sm" 
               onClick={() => setIsDataSaved(false)}
-              className="mt-4 text-xs text-muted-foreground hover:text-primary"
+              className="text-muted-foreground hover:text-primary flex items-center gap-2"
             >
-              Go Back
+              <ArrowLeft className="h-4 w-4" /> Go Back
             </Button>
+            
+            <p className="text-[10px] text-muted-foreground uppercase tracking-widest text-center">
+              Secure Transaction by Razorpay
+            </p>
           </div>
         )}
       </CardContent>
