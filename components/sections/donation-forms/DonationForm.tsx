@@ -71,6 +71,7 @@ export default function DonationForm({
 
   useEffect(() => {
     if (isDataSaved && rzpButtonRef.current && nationality === "Indian") {
+      // Clear previous instances
       rzpButtonRef.current.innerHTML = "";
       
       const script = document.createElement("script");
@@ -104,7 +105,6 @@ export default function DonationForm({
         return;
       }
 
-      // No data is stored in Firebase per user request
       setIsDataSaved(true);
     } catch (error: any) {
       toast({
@@ -155,7 +155,7 @@ export default function DonationForm({
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Processing...</>
+                    <><Loader2 className="mr-2 h-5 v-5 animate-spin" /> Processing...</>
                   ) : (
                     'Confirm & Proceed'
                   )}
@@ -176,12 +176,12 @@ export default function DonationForm({
                 <span>Go Back</span>
               </Button>
             </div>
-            <p className="text-foreground font-semibold text-center text-lg">
+            <p className="text-foreground font-semibold text-center text-lg px-4">
               Please complete your donation using the Razorpay button below.
             </p>
             
-            <div className="w-full bg-muted/30 rounded-xl border border-dashed p-8 min-h-[120px] flex items-center justify-center">
-              <form ref={rzpButtonRef} className="flex justify-center w-full">
+            <div className="w-full bg-muted/30 rounded-xl border border-dashed p-8 min-h-[120px] flex items-center justify-center relative z-10 pointer-events-auto">
+              <form ref={rzpButtonRef} className="flex justify-center w-full pointer-events-auto">
                 {/* Razorpay Button Injected Here */}
               </form>
             </div>
