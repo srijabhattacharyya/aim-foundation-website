@@ -14,7 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { db } from "@/app/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { Loader2, CheckCircle2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 interface DonationFormProps {
   cause: string;
@@ -119,7 +119,7 @@ export default function DonationForm({
       setIsDataSaved(true);
       toast({
         title: "Details Saved",
-        description: "Please complete the payment below.",
+        description: "Please complete your donation using the button below.",
       });
     } catch (error: any) {
       toast({
@@ -179,19 +179,8 @@ export default function DonationForm({
             </Form>
           </FormProvider>
         ) : (
-          <div className="flex flex-col items-center space-y-8 py-6 animate-in fade-in zoom-in duration-300">
-            <div className="bg-primary/10 p-4 rounded-full">
-              <CheckCircle2 className="h-12 w-12 text-primary" />
-            </div>
-
-            <div className="space-y-2 text-center">
-              <h3 className="text-2xl font-bold font-headline">Details Saved Successfully</h3>
-              <p className="text-muted-foreground text-sm">
-                Please complete your secure payment via Razorpay below.
-              </p>
-            </div>
-            
-            <div className="w-full bg-muted/30 rounded-xl border border-dashed p-6 min-h-[140px] flex items-center justify-center">
+          <div className="flex flex-col items-center space-y-8 py-12 animate-in fade-in zoom-in duration-300">
+            <div className="w-full bg-muted/30 rounded-xl border border-dashed p-8 min-h-[160px] flex items-center justify-center">
               <form ref={rzpButtonRef} className="flex justify-center w-full">
                 {/* Razorpay Button Injected Here */}
               </form>
