@@ -12,7 +12,7 @@ import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowLeft } from "lucide-react";
 
 interface DonationFormProps {
   cause: string;
@@ -165,6 +165,17 @@ export default function DonationForm({
           </FormProvider>
         ) : (
           <div className="flex flex-col items-center space-y-6 py-6 animate-in fade-in zoom-in duration-300">
+            <div className="w-full flex justify-start">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => setIsDataSaved(false)}
+                className="flex items-center gap-2 text-muted-foreground hover:text-primary p-0 h-auto"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                <span>Go Back</span>
+              </Button>
+            </div>
             <p className="text-foreground font-semibold text-center text-lg">
               Please complete your donation using the Razorpay button below.
             </p>
