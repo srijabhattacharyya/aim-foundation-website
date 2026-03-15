@@ -52,12 +52,20 @@ export default function DonationForm({
     setMounted(true);
   }, []);
 
+  // Handle body scroll locking and pointer events when overlay is active
   useEffect(() => {
     if (isDataSaved) {
-      const originalStyle = document.body.style.overflow;
+      const originalOverflow = document.body.style.overflow;
+      const originalPointerEvents = document.body.style.pointerEvents;
+      
       document.body.style.overflow = 'hidden';
+      // Force pointer events to auto to ensure the portal remains clickable 
+      // even if a parent Radix dialog is trying to block it
+      document.body.style.pointerEvents = 'auto';
+      
       return () => {
-        document.body.style.overflow = originalStyle;
+        document.body.style.overflow = originalOverflow;
+        document.body.style.pointerEvents = originalPointerEvents;
       };
     }
   }, [isDataSaved]);
@@ -135,7 +143,7 @@ export default function DonationForm({
       setIsDataSaved(true);
       toast({
         title: "Details Saved",
-        description: "Please use the payment button below to complete your donation.",
+        description: "Please complete the payment below.",
       });
     } catch (error: any) {
       toast({
@@ -149,43 +157,42 @@ export default function DonationForm({
   }
 
   const paymentOverlay = mounted && isDataSaved && nationality === "Indian" ? createPortal(
-    <div className="fixed inset-0 z-[9999] overflow-y-auto bg-black/95 backdrop-blur-md animate-in fade-in duration-300">
-      <div className="flex min-h-full items-start justify-center p-4 sm:items-center">
-        <div className="bg-card w-full max-w-md p-6 md:p-8 rounded-3xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-6 text-center my-8">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="absolute right-4 top-4 rounded-full bg-muted/50 hover:bg-muted"
-            onClick={() => setIsDataSaved(false)}
-          >
-            <X className="h-5 w-5" />
+    <div className="fixed inset-0 z-[10000] overflow-y-auto bg-black/95 backdrop-blur-md pointer-events-auto flex justify-center py-8 sm:py-12 px-4">
+      <div className="bg-card w-full max-w-md p-6 sm:p-10 rounded-3xl shadow-2xl relative border border-primary/20 flex flex-col items-center space-y-6 text-center h-fit pointer-events-auto">
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="absolute right-4 top-4 rounded-full bg-muted/50 hover:bg-muted pointer-events-auto z-[10001]"
+          onClick={() => setIsDataSaved(false)}
+        >
+          <X className="h-5 w-5" />
+        </Button>
+
+        <div className="bg-primary/10 p-4 rounded-full">
+          <CheckCircle2 className="h-10 w-8 text-primary" />
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="text-2xl font-bold font-headline">Ready to Pay</h3>
+          <p className="text-muted-foreground text-xs leading-relaxed max-w-[280px] mx-auto">
+            Your details are secured. Please use the <strong>Razorpay</strong> section below to complete your {isSubscription ? 'subscription' : 'donation'}.
+          </p>
+        </div>
+        
+        {/* Razorpay Container - Ensuring pointer-events are active */}
+        <div className="w-full bg-muted/30 rounded-xl border border-dashed p-2 min-h-[120px] flex items-center justify-center pointer-events-auto">
+          <form ref={rzpButtonRef} className="flex justify-center w-full pointer-events-auto">
+            {/* Razorpay Button Injected Here */}
+          </form>
+        </div>
+
+        <div className="space-y-4 w-full">
+          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">
+            Safe & Secure via Razorpay
+          </p>
+          <Button variant="outline" onClick={() => setIsDataSaved(false)} className="w-full rounded-xl h-12 pointer-events-auto">
+            Back to Form
           </Button>
-
-          <div className="bg-primary/10 p-4 rounded-full">
-            <CheckCircle2 className="h-10 w-8 text-primary" />
-          </div>
-
-          <div className="space-y-2">
-            <h3 className="text-2xl font-bold font-headline">Ready to Pay</h3>
-            <p className="text-muted-foreground text-xs leading-relaxed">
-              Your contribution details are secured. Please use the <strong>Razorpay</strong> section below to complete your {isSubscription ? 'subscription' : 'donation'}.
-            </p>
-          </div>
-          
-          <div className="w-full bg-muted/30 rounded-xl border border-dashed p-2 min-h-[150px]">
-            <form ref={rzpButtonRef} className="flex justify-center w-full">
-              {/* Razorpay Button Injected Here */}
-            </form>
-          </div>
-
-          <div className="space-y-4 w-full">
-            <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">
-              Safe & Secure Transaction
-            </p>
-            <Button variant="outline" onClick={() => setIsDataSaved(false)} className="w-full rounded-xl">
-              Go Back
-            </Button>
-          </div>
         </div>
       </div>
     </div>,
