@@ -47,24 +47,10 @@ export default function DonationForm({
   const [isPaymentTriggered, setIsPaymentTriggered] = useState(false);
   const rzpButtonRef = useRef<HTMLFormElement>(null);
 
-  // Reset payment trigger when frequency or data-saved state changes
+  // Reset payment trigger when frequency changes
   useEffect(() => {
     setIsPaymentTriggered(false);
-  }, [frequency, isDataSaved]);
-
-  // Radix UI Dialog blocks pointer events on the body. We need to force them back on 
-  // when showing the Razorpay button to ensure it's clickable.
-  useEffect(() => {
-    if (isDataSaved) {
-      const timer = setTimeout(() => {
-        document.body.style.pointerEvents = 'auto';
-      }, 500);
-      return () => {
-        clearTimeout(timer);
-        document.body.style.pointerEvents = '';
-      };
-    }
-  }, [isDataSaved]);
+  }, [frequency]);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -88,50 +74,74 @@ export default function DonationForm({
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
   useEffect(() => {
-    const isIgniteMonthly = cause === "Ignite Change Initiative" && frequency === "monthly";
-    const shouldInject = isDataSaved && nationality === "Indian" && (!isIgniteMonthly || isPaymentTriggered);
+    if (!isDataSaved || nationality !== "Indian") return;
 
-    if (shouldInject) {
-      const injectScript = () => {
-        // Retry if the ref isn't ready yet (e.g. during a fast state transition)
-        if (!rzpButtonRef.current) {
-          const retryTimeout = setTimeout(injectScript, 50);
-          return () => clearTimeout(retryTimeout);
-        }
+    const isIgniteChange = cause === "Ignite Change Initiative";
+    const isMonthly = frequency === "monthly";
+    
+    // Logic: If it's a monthly Ignite donation, wait for user to click "Donate Monthly"
+    if (isIgniteChange && isMonthly && !isPaymentTriggered) return;
 
-        const container = rzpButtonRef.current;
-        container.innerHTML = ""; // Clean slate
-        
-        const script = document.createElement("script");
-        let targetId = razorpayButtonId;
-        let isSub = isSubscription;
+    let timeoutId: NodeJS.Timeout;
 
-        // Logic for Ignite Change Initiative frequency toggle
-        if (cause === "Ignite Change Initiative") {
-          if (frequency === "monthly") {
-            targetId = "pl_SRZFNDgbZeFnpp";
-            isSub = true;
-          } else {
-            targetId = "pl_SRN9Lp4szo4GJs";
-            isSub = false;
-          }
-        }
+    const injectScript = () => {
+      // Check if the container exists. If not, wait and retry.
+      if (!rzpButtonRef.current) {
+        timeoutId = setTimeout(injectScript, 50);
+        return;
+      }
 
-        if (isSub) {
-          script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
-          script.setAttribute("data-subscription_button_id", targetId);
-          script.setAttribute("data-button_theme", "brand-color");
+      const container = rzpButtonRef.current;
+      container.innerHTML = ""; // Clear any previous attempts
+      
+      const script = document.createElement("script");
+      let targetId = razorpayButtonId;
+      let isSub = isSubscription;
+
+      // Override for Ignite Change frequency toggle
+      if (isIgniteChange) {
+        if (isMonthly) {
+          targetId = "pl_SRZFNDgbZeFnpp";
+          isSub = true;
         } else {
-          script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-          script.setAttribute("data-payment_button_id", targetId);
+          targetId = "pl_SRN9Lp4szo4GJs";
+          isSub = false;
         }
-        script.async = true;
-        container.appendChild(script);
-      };
+      }
 
-      injectScript();
-    }
+      if (isSub) {
+        script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+        script.setAttribute("data-subscription_button_id", targetId);
+        script.setAttribute("data-button_theme", "brand-color");
+      } else {
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+        script.setAttribute("data-payment_button_id", targetId);
+      }
+      
+      script.async = true;
+      container.appendChild(script);
+    };
+
+    injectScript();
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, [isDataSaved, nationality, razorpayButtonId, isSubscription, frequency, cause, isPaymentTriggered]);
+
+  // Radix UI Dialog blocks pointer events on the body. We force them back on
+  // when showing the Razorpay button to ensure it's clickable.
+  useEffect(() => {
+    if (isDataSaved) {
+      const timer = setTimeout(() => {
+        document.body.style.pointerEvents = 'auto';
+      }, 500);
+      return () => {
+        clearTimeout(timer);
+        document.body.style.pointerEvents = '';
+      };
+    }
+  }, [isDataSaved]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
