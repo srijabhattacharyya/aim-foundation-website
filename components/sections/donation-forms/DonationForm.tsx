@@ -27,15 +27,15 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Razorpay button wrapper that ensures injection inside a mandatory FORM tag
+// Robust component to inject Razorpay button script inside a mandatory form tag
 function RazorpayFormButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
-  const formRef = useRef<HTMLFormElement>(null);
+  const containerRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (!formRef.current) return;
+    if (!containerRef.current) return;
 
-    // Clear any previous content/scripts
-    const container = formRef.current;
+    // Razorpay scripts require a clean parent form to inject the button/iframe
+    const container = containerRef.current;
     while (container.firstChild) {
       container.removeChild(container.firstChild);
     }
@@ -51,16 +51,20 @@ function RazorpayFormButton({ buttonId, isSub }: { buttonId: string; isSub: bool
       script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
       script.setAttribute("data-payment_button_id", buttonId);
     }
-
     script.async = true;
-    container.appendChild(script);
+
+    // Use a slight delay to ensure the DOM is ready after React unmounts/mounts the keyed form
+    const timeoutId = setTimeout(() => {
+      container.appendChild(script);
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
   }, [buttonId, isSub]);
 
   return (
     <form
-      ref={formRef}
+      ref={containerRef}
       className="w-full flex justify-center py-6 min-h-[100px]"
-      style={{ pointerEvents: 'auto' }}
     />
   );
 }
@@ -95,7 +99,7 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
-  // Update amount on nationality change
+  // Update amount when nationality changes
   useEffect(() => {
     if (!hideAmount) {
       form.setValue(
@@ -120,17 +124,15 @@ export default function DonationForm({
   const showFrequencyToggle =
     cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
-  // Determine Razorpay button ID
+  // Determine Razorpay button ID based on cause and frequency
   let razorpayButtonToUse = razorpayButtonId;
   let isSubButton = isSubscription;
 
   if (cause === "Ignite Change Initiative") {
-    razorpayButtonToUse =
-      frequency === "monthly" ? "pl_SRZFNDgbZeFnpp" : "pl_SRN9Lp4szo4GJs";
+    razorpayButtonToUse = frequency === "monthly" ? "pl_SRZFNDgbZeFnpp" : "pl_SRN9Lp4szo4GJs";
     isSubButton = frequency === "monthly";
   } else if (cause === "Relief to the Underprivileged") {
-    razorpayButtonToUse =
-      frequency === "monthly" ? "pl_SRkNjBeFddKPwd" : "pl_SRN614kzzmwD8t";
+    razorpayButtonToUse = frequency === "monthly" ? "pl_SRkNjBeFddKPwd" : "pl_SRN614kzzmwD8t";
     isSubButton = frequency === "monthly";
   }
 
@@ -189,13 +191,13 @@ export default function DonationForm({
                 Be Part of the Change
               </h2>
               <p className="text-sm text-muted-foreground px-4">
-                Please complete your donation using Razorpay below.
+                Please complete your donation using the Razorpay button below.
               </p>
             </div>
 
             {showFrequencyToggle && (
               <div className="space-y-4 w-full py-2 px-4">
-                {/* Monthly Option */}
+                {/* Custom Text Toggle for Frequency */}
                 <div
                   className="flex items-center gap-2 cursor-pointer group"
                   onClick={() => setFrequency("monthly")}
@@ -226,7 +228,6 @@ export default function DonationForm({
                   </div>
                 </div>
 
-                {/* One-time Option */}
                 <div
                   className="flex items-center gap-2 cursor-pointer group"
                   onClick={() => setFrequency("onetime")}
@@ -243,10 +244,12 @@ export default function DonationForm({
               </div>
             )}
 
-            {/* 🔑 Keyed Razorpay wrapper forces full remount on frequency change */}
-            <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full flex justify-center py-6 min-h-[100px]">
-              <RazorpayFormButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
-            </div>
+            {/* 🔑 Razorpay component keyed to frequency/buttonId to force unmount/remount */}
+            <RazorpayFormButton
+              key={`${frequency}-${razorpayButtonToUse}`}
+              buttonId={razorpayButtonToUse}
+              isSub={isSubButton}
+            />
 
             <Button
               variant="ghost"

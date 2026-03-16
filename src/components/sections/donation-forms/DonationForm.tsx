@@ -2,7 +2,7 @@
 
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
@@ -12,8 +12,7 @@ import { donationSchema } from "@/components/sections/donation-forms/schemas";
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Loader2, ArrowLeft, Heart } from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 interface DonationFormProps {
   cause: string;
@@ -28,52 +27,44 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Separate component to inject Razorpay button properly inside a FORM tag
-function RazorpayButton({
-  buttonId,
-  isSub,
-}: {
-  buttonId: string;
-  isSub: boolean;
-}) {
-  const formRef = useRef<HTMLFormElement>(null);
+// Robust component to inject Razorpay button script inside a mandatory form tag
+function RazorpayFormButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
+  const containerRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (!formRef.current) return;
+    if (!containerRef.current) return;
 
-    // Razorpay scripts REQUIRE the script to be a direct child of a <form>
-    // We clear the form and inject a fresh script with cache-busting every time.
-    const form = formRef.current;
-    while (form.firstChild) {
-      form.removeChild(form.firstChild);
+    // Razorpay scripts require a clean parent form to inject the button/iframe
+    const container = containerRef.current;
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
     }
 
-    // Delay slightly to ensure cleanup is finished and DOM is stable
-    const timeoutId = setTimeout(() => {
-      const script = document.createElement("script");
-      const cacheBuster = `?t=${Date.now()}`;
+    const script = document.createElement("script");
+    const cacheBuster = `?t=${Date.now()}`;
 
-      if (isSub) {
-        script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
-        script.setAttribute("data-subscription_button_id", buttonId);
-        script.setAttribute("data-button_theme", "brand-color");
-      } else {
-        script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
-        script.setAttribute("data-payment_button_id", buttonId);
-      }
-      
-      script.async = true;
-      form.appendChild(script);
+    if (isSub) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
+      script.setAttribute("data-subscription_button_id", buttonId);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
+      script.setAttribute("data-payment_button_id", buttonId);
+    }
+    script.async = true;
+
+    // Use a slight delay to ensure the DOM is ready after React unmounts/mounts the keyed form
+    const timeoutId = setTimeout(() => {
+      container.appendChild(script);
     }, 0);
 
     return () => clearTimeout(timeoutId);
   }, [buttonId, isSub]);
 
   return (
-    <form 
-      ref={formRef} 
-      className="w-full flex justify-center py-6 min-h-[100px]" 
-      style={{ pointerEvents: 'auto' }}
+    <form
+      ref={containerRef}
+      className="w-full flex justify-center py-6 min-h-[100px]"
     />
   );
 }
@@ -111,7 +102,10 @@ export default function DonationForm({
   // Update amount when nationality changes
   useEffect(() => {
     if (!hideAmount) {
-      form.setValue("amount", nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount);
+      form.setValue(
+        "amount",
+        nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount
+      );
     }
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
@@ -135,12 +129,10 @@ export default function DonationForm({
   let isSubButton = isSubscription;
 
   if (cause === "Ignite Change Initiative") {
-    razorpayButtonToUse =
-      frequency === "monthly" ? "pl_SRZFNDgbZeFnpp" : "pl_SRN9Lp4szo4GJs";
+    razorpayButtonToUse = frequency === "monthly" ? "pl_SRZFNDgbZeFnpp" : "pl_SRN9Lp4szo4GJs";
     isSubButton = frequency === "monthly";
   } else if (cause === "Relief to the Underprivileged") {
-    razorpayButtonToUse =
-      frequency === "monthly" ? "pl_SRkNjBeFddKPwd" : "pl_SRN614kzzmwD8t";
+    razorpayButtonToUse = frequency === "monthly" ? "pl_SRkNjBeFddKPwd" : "pl_SRN614kzzmwD8t";
     isSubButton = frequency === "monthly";
   }
 
@@ -204,41 +196,60 @@ export default function DonationForm({
             </div>
 
             {showFrequencyToggle && (
-              <div className="bg-muted p-4 rounded-lg w-full">
-                <RadioGroup
-                  value={frequency}
-                  onValueChange={(v) => setFrequency(v as "monthly" | "onetime")}
-                  className="flex flex-col space-y-3"
+              <div className="space-y-4 w-full py-2 px-4">
+                {/* Custom Text Toggle for Frequency */}
+                <div
+                  className="flex items-center gap-2 cursor-pointer group"
+                  onClick={() => setFrequency("monthly")}
                 >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="monthly" id="monthly" />
-                    <Label
-                      htmlFor="monthly"
-                      className="font-semibold cursor-pointer flex items-center gap-2"
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span
+                      className={cn(
+                        "text-base font-bold transition-colors",
+                        frequency === "monthly" ? "text-foreground" : "text-muted-foreground"
+                      )}
                     >
-                      Monthly Impact Partner <Heart className="h-3 w-3 fill-primary text-primary" />{" "}
-                      <span className="text-[10px] text-primary uppercase font-bold">
-                        (Recommended)
-                      </span>
-                    </Label>
+                      Be monthly impact partner
+                    </span>
+                    <Heart
+                      className={cn(
+                        "h-4 w-4 transition-all",
+                        frequency === "monthly" ? "fill-red-600 text-red-600 scale-110" : "text-muted-foreground/50"
+                      )}
+                    />
+                    <span
+                      className={cn(
+                        "text-[10px] uppercase font-bold tracking-tight",
+                        frequency === "monthly" ? "text-green-600" : "text-muted-foreground/50"
+                      )}
+                    >
+                      (RECOMMENDED)
+                    </span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="onetime" id="onetime" />
-                    <Label htmlFor="onetime" className="font-semibold cursor-pointer">
-                      One-time Supporter
-                    </Label>
-                  </div>
-                </RadioGroup>
+                </div>
+
+                <div
+                  className="flex items-center gap-2 cursor-pointer group"
+                  onClick={() => setFrequency("onetime")}
+                >
+                  <span
+                    className={cn(
+                      "text-base font-bold transition-colors",
+                      frequency === "onetime" ? "text-foreground" : "text-muted-foreground"
+                    )}
+                  >
+                    one time supporter
+                  </span>
+                </div>
               </div>
             )}
 
-            <div className="w-full">
-              <RazorpayButton 
-                key={`${frequency}-${razorpayButtonToUse}`}
-                buttonId={razorpayButtonToUse} 
-                isSub={isSubButton} 
-              />
-            </div>
+            {/* 🔑 Razorpay component keyed to frequency/buttonId to force unmount/remount */}
+            <RazorpayFormButton
+              key={`${frequency}-${razorpayButtonToUse}`}
+              buttonId={razorpayButtonToUse}
+              isSub={isSubButton}
+            />
 
             <Button
               variant="ghost"
