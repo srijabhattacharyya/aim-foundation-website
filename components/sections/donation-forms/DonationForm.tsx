@@ -41,14 +41,15 @@ function RazorpayFormButton({
   useEffect(() => {
     if (!formRef.current) return;
 
-    // Clear old scripts and divs
-    while (formRef.current.firstChild) {
-      formRef.current.removeChild(formRef.current.firstChild);
+    // Clear old scripts and Razorpay-injected elements
+    const container = formRef.current;
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
     }
 
     // Inject after DOM updates to ensure clean initialization
     const timeoutId = setTimeout(() => {
-      if (!formRef.current) return;
+      if (!container) return;
       
       const script = document.createElement("script");
       const cacheBuster = `?t=${Date.now()}`;
@@ -65,7 +66,7 @@ function RazorpayFormButton({
       }
 
       script.async = true;
-      formRef.current.appendChild(script);
+      container.appendChild(script);
     }, 0);
 
     return () => clearTimeout(timeoutId);
@@ -230,9 +231,12 @@ export default function DonationForm({
               </div>
             )}
 
-            {/* 🔑 Keyed wrapper forces full remount on frequency toggle */}
-            <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full flex justify-center py-6 min-h-[100px]">
-              <RazorpayFormButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
+            {/* 🔑 Keyed wrapper forces full remount on frequency toggle to fix Razorpay initialization cache */}
+            <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full">
+              <RazorpayFormButton
+                buttonId={razorpayButtonToUse}
+                isSub={isSubButton}
+              />
             </div>
 
             <Button
