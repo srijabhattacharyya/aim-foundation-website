@@ -43,7 +43,6 @@ export default function DonationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("monthly");
-  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -66,20 +65,10 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
-  useEffect(() => {
-    if (!isDataSaved || !formRef.current || nationality === "Non-Indian") return;
-
-    const formElement = formRef.current;
-    
-    // Crucial: Clear existing content to force re-render of Razorpay button
-    formElement.innerHTML = "";
-
-    const script = document.createElement("script");
-    
+  const getRazorpayConfig = () => {
     let buttonId = razorpayButtonId;
     let isSub = isSubscription;
 
-    // Special logic for initiatives with dual frequency support
     if (cause === "Ignite Change Initiative") {
       if (frequency === "monthly") {
         buttonId = "pl_SRZFNDgbZeFnpp";
@@ -98,34 +87,13 @@ export default function DonationForm({
       }
     }
 
-    // Add a unique timestamp to force the script to re-execute every time
-    const cacheBuster = `?t=${Date.now()}`;
+    return { buttonId, isSub };
+  };
 
-    if (isSub) {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
-      script.setAttribute("data-subscription_button_id", buttonId!);
-      script.setAttribute("data-button_theme", "brand-color");
-    } else {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
-      script.setAttribute("data-payment_button_id", buttonId!);
-    }
+  // Force remount by updating this key
+  const razorpayKey = `${frequency}-${Date.now()}`;
 
-    script.async = true;
-    
-    // Use a small timeout to ensure DOM is fully ready for the injection
-    const timeoutId = setTimeout(() => {
-      formElement.appendChild(script);
-    }, 10);
-
-    return () => clearTimeout(timeoutId);
-
-  }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
-
-  useEffect(() => {
-    if (isDataSaved) {
-      document.body.style.pointerEvents = 'auto';
-    }
-  }, [isDataSaved]);
+  const showFrequencyToggle = cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -137,8 +105,6 @@ export default function DonationForm({
     setIsDataSaved(true);
     setIsSubmitting(false);
   }
-
-  const showFrequencyToggle = cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none bg-background overflow-hidden">
@@ -213,13 +179,11 @@ export default function DonationForm({
               </div>
             )}
             
-            <form 
-              ref={formRef}
-              className="w-full flex justify-center py-6 min-h-[100px]"
-              style={{ pointerEvents: 'auto' }}
-            >
-              {/* Razorpay Button Injected Here */}
-            </form>
+            {nationality === "Indian" && (
+              <div key={razorpayKey} className="w-full flex justify-center py-6 min-h-[100px]">
+                <RazorpayButton {...getRazorpayConfig()} />
+              </div>
+            )}
 
             <Button 
               variant="ghost" 
@@ -238,4 +202,35 @@ export default function DonationForm({
       </CardContent>
     </Card>
   );
+}
+
+function RazorpayButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    const container = containerRef.current;
+    container.innerHTML = ""; // Clear for absolute safety
+
+    const script = document.createElement("script");
+    if (isSub) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+      script.setAttribute("data-subscription_button_id", buttonId);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.setAttribute("data-payment_button_id", buttonId);
+    }
+    script.async = true;
+    
+    // Slight delay to ensure DOM is ready for Razorpay's injection
+    const timeoutId = setTimeout(() => {
+      container.appendChild(script);
+    }, 10);
+
+    return () => clearTimeout(timeoutId);
+  }, [buttonId, isSub]);
+
+  return <div ref={containerRef} className="w-full flex justify-center" />;
 }
