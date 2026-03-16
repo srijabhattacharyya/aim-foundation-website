@@ -59,6 +59,7 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
+  // Update amount based on nationality
   useEffect(() => {
     if (!hideAmount) {
       form.setValue("amount", nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount);
@@ -66,32 +67,23 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
+  // Inject Razorpay button script
   useEffect(() => {
     if (!isDataSaved || !formRef.current || nationality !== "Indian") return;
 
     const container = formRef.current;
-    container.innerHTML = ""; // Clear previous script/button
+    container.innerHTML = ""; // clear old button
 
     let currentButtonId = razorpayButtonId;
     let currentIsSub = isSubscription;
 
-    // Handle initiatives with frequency toggles
+    // Handle dual-frequency initiative IDs
     if (cause === "Ignite Change Initiative") {
-      if (frequency === "monthly") {
-        currentButtonId = "pl_SRZFNDgbZeFnpp";
-        currentIsSub = true;
-      } else {
-        currentButtonId = "pl_SRN9Lp4szo4GJs";
-        currentIsSub = false;
-      }
+      currentButtonId = frequency === "monthly" ? "pl_SRZFNDgbZeFnpp" : "pl_SRN9Lp4szo4GJs";
+      currentIsSub = frequency === "monthly";
     } else if (cause === "Relief to the Underprivileged") {
-      if (frequency === "monthly") {
-        currentButtonId = "pl_SRkNjBeFddKPwd";
-        currentIsSub = true;
-      } else {
-        currentButtonId = "pl_SRN614kzzmwD8t";
-        currentIsSub = false;
-      }
+      currentButtonId = frequency === "monthly" ? "pl_SRkNjBeFddKPwd" : "pl_SRN614kzzmwD8t";
+      currentIsSub = frequency === "monthly";
     }
 
     const script = document.createElement("script");
@@ -105,18 +97,9 @@ export default function DonationForm({
     }
     script.async = true;
 
-    // Small delay ensures React has finished updating the DOM before Razorpay runs
-    const timeoutId = setTimeout(() => {
-      container.appendChild(script);
-    }, 50);
-
-    return () => {
-      clearTimeout(timeoutId);
-      container.innerHTML = "";
-    };
+    container.appendChild(script);
   }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
 
-  // Ensure interactions are possible when the modal is open
   useEffect(() => {
     if (isDataSaved) {
       document.body.style.pointerEvents = 'auto';
@@ -210,11 +193,12 @@ export default function DonationForm({
             )}
             
             <form 
+              key={`razorpay-form-${frequency}-${isDataSaved}`} // force remount on frequency change
               ref={formRef}
               className="w-full flex justify-center py-6 min-h-[100px]"
               style={{ pointerEvents: 'auto' }}
             >
-              {/* Razorpay Button Injected Here */}
+              {/* Razorpay button injected here */}
             </form>
 
             <Button 
