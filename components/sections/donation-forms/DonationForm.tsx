@@ -28,7 +28,7 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Component to inject Razorpay button properly inside a FORM tag
+// Separate component to inject Razorpay button properly inside a FORM tag
 function RazorpayButton({
   buttonId,
   isSub,
@@ -43,22 +43,30 @@ function RazorpayButton({
 
     // Razorpay scripts REQUIRE the script to be a direct child of a <form>
     // We clear the form and inject a fresh script with cache-busting every time.
-    formRef.current.innerHTML = "";
-
-    const script = document.createElement("script");
-    const cacheBuster = `?t=${Date.now()}`;
-
-    if (isSub) {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
-      script.setAttribute("data-subscription_button_id", buttonId);
-      script.setAttribute("data-button_theme", "brand-color");
-    } else {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
-      script.setAttribute("data-payment_button_id", buttonId);
+    const form = formRef.current;
+    while (form.firstChild) {
+      form.removeChild(form.firstChild);
     }
-    
-    script.async = true;
-    formRef.current.appendChild(script);
+
+    // Delay slightly to ensure cleanup is finished and DOM is stable
+    const timeoutId = setTimeout(() => {
+      const script = document.createElement("script");
+      const cacheBuster = `?t=${Date.now()}`;
+
+      if (isSub) {
+        script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
+        script.setAttribute("data-subscription_button_id", buttonId);
+        script.setAttribute("data-button_theme", "brand-color");
+      } else {
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
+        script.setAttribute("data-payment_button_id", buttonId);
+      }
+      
+      script.async = true;
+      form.appendChild(script);
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
   }, [buttonId, isSub]);
 
   return (
@@ -224,9 +232,12 @@ export default function DonationForm({
               </div>
             )}
 
-            {/* Unique Key on the wrapper forces a complete React remount on frequency change */}
-            <div key={`${frequency}-${isDataSaved}`} className="w-full">
-              <RazorpayButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
+            <div className="w-full">
+              <RazorpayButton 
+                key={`${frequency}-${razorpayButtonToUse}`}
+                buttonId={razorpayButtonToUse} 
+                isSub={isSubButton} 
+              />
             </div>
 
             <Button
