@@ -44,13 +44,7 @@ export default function DonationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("onetime");
-  const [isPaymentTriggered, setIsPaymentTriggered] = useState(false);
-  const rzpButtonRef = useRef<HTMLFormElement>(null);
-
-  // Reset payment trigger when frequency changes
-  useEffect(() => {
-    setIsPaymentTriggered(false);
-  }, [frequency]);
+  const buttonContainerRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -66,6 +60,11 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
+  // Reset frequency if cause changes (safety)
+  useEffect(() => {
+    setFrequency("onetime");
+  }, [isDataSaved]);
+
   useEffect(() => {
     if (!hideAmount) {
       form.setValue("amount", nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount);
@@ -74,74 +73,50 @@ export default function DonationForm({
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
   useEffect(() => {
-    if (!isDataSaved || nationality !== "Indian") return;
+    if (!isDataSaved || nationality !== "Indian" || !buttonContainerRef.current) return;
+
+    const container = buttonContainerRef.current;
+    container.innerHTML = ""; // Clear existing script/button
 
     const isIgniteChange = cause === "Ignite Change Initiative";
     const isMonthly = frequency === "monthly";
     
-    // Logic: If it's a monthly Ignite donation, wait for user to click "Donate Monthly"
-    if (isIgniteChange && isMonthly && !isPaymentTriggered) return;
+    const script = document.createElement("script");
+    
+    // Determine which ID and script to use
+    let targetId = razorpayButtonId;
+    let useSubscriptionScript = isSubscription;
 
-    let timeoutId: NodeJS.Timeout;
-
-    const injectScript = () => {
-      // Check if the container exists. If not, wait and retry.
-      if (!rzpButtonRef.current) {
-        timeoutId = setTimeout(injectScript, 50);
-        return;
-      }
-
-      const container = rzpButtonRef.current;
-      container.innerHTML = ""; // Clear any previous attempts
-      
-      const script = document.createElement("script");
-      let targetId = razorpayButtonId;
-      let isSub = isSubscription;
-
-      // Override for Ignite Change frequency toggle
-      if (isIgniteChange) {
-        if (isMonthly) {
-          targetId = "pl_SRZFNDgbZeFnpp";
-          isSub = true;
-        } else {
-          targetId = "pl_SRN9Lp4szo4GJs";
-          isSub = false;
-        }
-      }
-
-      if (isSub) {
-        script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
-        script.setAttribute("data-subscription_button_id", targetId);
-        script.setAttribute("data-button_theme", "brand-color");
+    if (isIgniteChange) {
+      if (isMonthly) {
+        targetId = "pl_SRZFNDgbZeFnpp";
+        useSubscriptionScript = true;
       } else {
-        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-        script.setAttribute("data-payment_button_id", targetId);
+        targetId = "pl_SRN9Lp4szo4GJs";
+        useSubscriptionScript = false;
       }
-      
-      script.async = true;
-      container.appendChild(script);
-    };
+    }
 
-    injectScript();
+    if (useSubscriptionScript) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+      script.setAttribute("data-subscription_button_id", targetId);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.setAttribute("data-payment_button_id", targetId);
+    }
+
+    script.async = true;
+    container.appendChild(script);
+
+    // Ensure pointer events are enabled so the third-party button is clickable
+    const originalPointerEvents = document.body.style.pointerEvents;
+    document.body.style.pointerEvents = 'auto';
 
     return () => {
-      if (timeoutId) clearTimeout(timeoutId);
+      document.body.style.pointerEvents = originalPointerEvents;
     };
-  }, [isDataSaved, nationality, razorpayButtonId, isSubscription, frequency, cause, isPaymentTriggered]);
-
-  // Radix UI Dialog blocks pointer events on the body. We force them back on
-  // when showing the Razorpay button to ensure it's clickable.
-  useEffect(() => {
-    if (isDataSaved) {
-      const timer = setTimeout(() => {
-        document.body.style.pointerEvents = 'auto';
-      }, 500);
-      return () => {
-        clearTimeout(timer);
-        document.body.style.pointerEvents = '';
-      };
-    }
-  }, [isDataSaved]);
+  }, [isDataSaved, nationality, frequency, cause, razorpayButtonId, isSubscription]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -194,17 +169,20 @@ export default function DonationForm({
             <Image
               src="/images/logo.png"
               alt="AIM Foundation"
-              width={100}
+              width={110}
               height={40}
-              className="object-contain mb-2"
+              className="object-contain"
             />
+            
             <div className="text-center space-y-2">
-              <h3 className="text-xl font-bold font-headline uppercase">Be Part of the Change</h3>
-              <p className="text-sm text-muted-foreground px-4">Please complete your donation using the Razorpay button below.</p>
+              <h2 className="text-xl font-bold font-headline uppercase">Be Part of the Change</h2>
+              <p className="text-sm text-muted-foreground px-4">
+                Please complete your donation using the Razorpay button below.
+              </p>
             </div>
 
             {cause === "Ignite Change Initiative" && (
-              <div className="bg-muted/50 p-4 rounded-lg w-full flex flex-col items-center space-y-4">
+              <div className="bg-muted p-4 rounded-lg w-full">
                 <RadioGroup
                   value={frequency}
                   onValueChange={(v) => setFrequency(v as "monthly" | "onetime")}
@@ -216,32 +194,18 @@ export default function DonationForm({
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="onetime" id="onetime" />
-                    <Label htmlFor="onetime" className="font-semibold cursor-pointer">Onetime Donations</Label>
+                    <Label htmlFor="onetime" className="font-semibold cursor-pointer">One-time Donation</Label>
                   </div>
                 </RadioGroup>
               </div>
             )}
             
-            <div className="w-full min-h-[120px] flex items-center justify-center">
-              {cause === "Ignite Change Initiative" && frequency === "monthly" && !isPaymentTriggered ? (
-                <Button 
-                  size="lg" 
-                  className="w-full h-14 text-xl font-bold transition-all hover:scale-[1.02] bg-primary"
-                  onClick={() => setIsPaymentTriggered(true)}
-                >
-                  Donate Monthly
-                </Button>
-              ) : (
-                <form 
-                  key={`${frequency}-${cause}-${isPaymentTriggered}`} 
-                  ref={rzpButtonRef} 
-                  className="w-full flex justify-center py-4 bg-muted/30 rounded-xl relative z-[60]"
-                  style={{ pointerEvents: 'auto' }}
-                >
-                  {/* Razorpay Button Injected Here */}
-                </form>
-              )}
-            </div>
+            {/* Razorpay Button Container */}
+            <div 
+              ref={buttonContainerRef}
+              className="w-full flex justify-center py-6 min-h-[100px]"
+              style={{ pointerEvents: 'auto' }}
+            />
 
             <Button 
               variant="ghost" 
