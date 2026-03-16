@@ -91,42 +91,45 @@ export default function DonationForm({
     const isIgniteMonthly = cause === "Ignite Change Initiative" && frequency === "monthly";
     const shouldInject = isDataSaved && nationality === "Indian" && (!isIgniteMonthly || isPaymentTriggered);
 
-    if (shouldInject && rzpButtonRef.current) {
-      const container = rzpButtonRef.current;
-      container.innerHTML = ""; // Clean slate
-      
-      const script = document.createElement("script");
-      let targetId = razorpayButtonId;
-      let isSub = isSubscription;
-
-      // Logic for Ignite Change Initiative frequency toggle
-      if (cause === "Ignite Change Initiative") {
-        if (frequency === "monthly") {
-          targetId = "pl_SRZFNDgbZeFnpp";
-          isSub = true;
-        } else {
-          targetId = "pl_SRN9Lp4szo4GJs";
-          isSub = false;
+    if (shouldInject) {
+      const injectScript = () => {
+        // Retry if the ref isn't ready yet (e.g. during a fast state transition)
+        if (!rzpButtonRef.current) {
+          const retryTimeout = setTimeout(injectScript, 50);
+          return () => clearTimeout(retryTimeout);
         }
-      }
 
-      // Add cache-busting timestamp to force script execution
-      const timestamp = Date.now();
-      if (isSub) {
-        script.src = `https://cdn.razorpay.com/static/widget/subscription-button.js?v=${timestamp}`;
-        script.setAttribute("data-subscription_button_id", targetId);
-        script.setAttribute("data-button_theme", "brand-color");
-      } else {
-        script.src = `https://checkout.razorpay.com/v1/payment-button.js?v=${timestamp}`;
-        script.setAttribute("data-payment_button_id", targetId);
-      }
-      script.async = true;
-      
-      const timeout = setTimeout(() => {
+        const container = rzpButtonRef.current;
+        container.innerHTML = ""; // Clean slate
+        
+        const script = document.createElement("script");
+        let targetId = razorpayButtonId;
+        let isSub = isSubscription;
+
+        // Logic for Ignite Change Initiative frequency toggle
+        if (cause === "Ignite Change Initiative") {
+          if (frequency === "monthly") {
+            targetId = "pl_SRZFNDgbZeFnpp";
+            isSub = true;
+          } else {
+            targetId = "pl_SRN9Lp4szo4GJs";
+            isSub = false;
+          }
+        }
+
+        if (isSub) {
+          script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+          script.setAttribute("data-subscription_button_id", targetId);
+          script.setAttribute("data-button_theme", "brand-color");
+        } else {
+          script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+          script.setAttribute("data-payment_button_id", targetId);
+        }
+        script.async = true;
         container.appendChild(script);
-      }, 50);
+      };
 
-      return () => clearTimeout(timeout);
+      injectScript();
     }
   }, [isDataSaved, nationality, razorpayButtonId, isSubscription, frequency, cause, isPaymentTriggered]);
 
@@ -209,7 +212,7 @@ export default function DonationForm({
               </div>
             )}
             
-            <div className="w-full">
+            <div className="w-full min-h-[120px] flex items-center justify-center">
               {cause === "Ignite Change Initiative" && frequency === "monthly" && !isPaymentTriggered ? (
                 <Button 
                   size="lg" 
@@ -222,7 +225,7 @@ export default function DonationForm({
                 <form 
                   key={`${frequency}-${cause}-${isPaymentTriggered}`} 
                   ref={rzpButtonRef} 
-                  className="w-full flex justify-center py-4 bg-muted/30 rounded-xl min-h-[120px] relative z-[60]"
+                  className="w-full flex justify-center py-4 bg-muted/30 rounded-xl relative z-[60]"
                   style={{ pointerEvents: 'auto' }}
                 >
                   {/* Razorpay Button Injected Here */}
