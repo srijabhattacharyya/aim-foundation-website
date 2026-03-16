@@ -44,7 +44,13 @@ export default function DonationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("onetime");
+  const [isPaymentTriggered, setIsPaymentTriggered] = useState(false);
   const rzpButtonRef = useRef<HTMLFormElement>(null);
+
+  // Reset payment trigger when frequency or data-saved state changes
+  useEffect(() => {
+    setIsPaymentTriggered(false);
+  }, [frequency, isDataSaved]);
 
   // Radix UI Dialog blocks pointer events on the body. We need to force them back on 
   // when showing the Razorpay button to ensure it's clickable.
@@ -82,7 +88,10 @@ export default function DonationForm({
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
   useEffect(() => {
-    if (isDataSaved && rzpButtonRef.current && nationality === "Indian") {
+    const isIgniteMonthly = cause === "Ignite Change Initiative" && frequency === "monthly";
+    const shouldInject = isDataSaved && nationality === "Indian" && (!isIgniteMonthly || isPaymentTriggered);
+
+    if (shouldInject && rzpButtonRef.current) {
       const container = rzpButtonRef.current;
       container.innerHTML = ""; // Clean slate
       
@@ -101,8 +110,7 @@ export default function DonationForm({
         }
       }
 
-      // We add a cache-busting timestamp to force the script to re-run
-      // especially when switching between onetime and monthly scripts.
+      // Add cache-busting timestamp to force script execution
       const timestamp = Date.now();
       if (isSub) {
         script.src = `https://cdn.razorpay.com/static/widget/subscription-button.js?v=${timestamp}`;
@@ -114,14 +122,13 @@ export default function DonationForm({
       }
       script.async = true;
       
-      // Slight delay to ensure React has finished any DOM updates for the key change
       const timeout = setTimeout(() => {
         container.appendChild(script);
       }, 50);
 
       return () => clearTimeout(timeout);
     }
-  }, [isDataSaved, nationality, razorpayButtonId, isSubscription, frequency, cause]);
+  }, [isDataSaved, nationality, razorpayButtonId, isSubscription, frequency, cause, isPaymentTriggered]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -202,14 +209,26 @@ export default function DonationForm({
               </div>
             )}
             
-            <form 
-              key={`${frequency}-${cause}`} // Re-mount the form to ensure a clean script injection
-              ref={rzpButtonRef} 
-              className="w-full flex justify-center py-4 bg-muted/30 rounded-xl min-h-[120px] relative z-[60]"
-              style={{ pointerEvents: 'auto' }}
-            >
-              {/* Razorpay Button Injected Here */}
-            </form>
+            <div className="w-full">
+              {cause === "Ignite Change Initiative" && frequency === "monthly" && !isPaymentTriggered ? (
+                <Button 
+                  size="lg" 
+                  className="w-full h-14 text-xl font-bold transition-all hover:scale-[1.02] bg-primary"
+                  onClick={() => setIsPaymentTriggered(true)}
+                >
+                  Donate Monthly
+                </Button>
+              ) : (
+                <form 
+                  key={`${frequency}-${cause}-${isPaymentTriggered}`} 
+                  ref={rzpButtonRef} 
+                  className="w-full flex justify-center py-4 bg-muted/30 rounded-xl min-h-[120px] relative z-[60]"
+                  style={{ pointerEvents: 'auto' }}
+                >
+                  {/* Razorpay Button Injected Here */}
+                </form>
+              )}
+            </div>
 
             <Button 
               variant="ghost" 
