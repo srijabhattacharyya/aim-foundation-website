@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -11,7 +12,7 @@ import { DonationAmount } from "@/types/donation";
 import { donationSchema } from "@/components/sections/donation-forms/schemas";
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Loader2, ArrowLeft, Heart } from "lucide-react";
+import { Loader2, ArrowLeft, Heart, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface DonationFormProps {
@@ -27,14 +28,13 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Robust component to inject Razorpay button script inside a mandatory form tag
+// Component to inject Razorpay script inside a mandatory form tag
 function RazorpayFormButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
   const containerRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Razorpay scripts require a clean parent form to inject the button/iframe
     const container = containerRef.current;
     while (container.firstChild) {
       container.removeChild(container.firstChild);
@@ -53,7 +53,6 @@ function RazorpayFormButton({ buttonId, isSub }: { buttonId: string; isSub: bool
     }
     script.async = true;
 
-    // Use a slight delay to ensure the DOM is ready after React unmounts/mounts the keyed form
     const timeoutId = setTimeout(() => {
       container.appendChild(script);
     }, 0);
@@ -99,7 +98,6 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
-  // Update amount when nationality changes
   useEffect(() => {
     if (!hideAmount) {
       form.setValue(
@@ -109,6 +107,13 @@ export default function DonationForm({
     }
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
+
+  // FIX: Force pointer events to allow interaction with Razorpay modal over our Dialog
+  useEffect(() => {
+    if (isDataSaved) {
+      document.body.style.pointerEvents = "auto";
+    }
+  }, [isDataSaved]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -124,7 +129,6 @@ export default function DonationForm({
   const showFrequencyToggle =
     cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
-  // Determine Razorpay button ID based on cause and frequency
   let razorpayButtonToUse = razorpayButtonId;
   let isSubButton = isSubscription;
 
@@ -196,10 +200,9 @@ export default function DonationForm({
             </div>
 
             {showFrequencyToggle && (
-              <div className="space-y-4 w-full py-2 px-4">
-                {/* Custom Text Toggle for Frequency */}
+              <div className="space-y-4 w-full py-2 px-4 border-y border-muted">
                 <div
-                  className="flex items-center gap-2 cursor-pointer group"
+                  className="flex items-center gap-2 cursor-pointer group py-1"
                   onClick={() => setFrequency("monthly")}
                 >
                   <div className="flex items-center gap-2 flex-wrap">
@@ -214,13 +217,13 @@ export default function DonationForm({
                     <Heart
                       className={cn(
                         "h-4 w-4 transition-all",
-                        frequency === "monthly" ? "fill-red-600 text-red-600 scale-110" : "text-muted-foreground/50"
+                        frequency === "monthly" ? "fill-red-600 text-red-600 scale-110" : "text-muted-foreground/30"
                       )}
                     />
                     <span
                       className={cn(
                         "text-[10px] uppercase font-bold tracking-tight",
-                        frequency === "monthly" ? "text-green-600" : "text-muted-foreground/50"
+                        frequency === "monthly" ? "text-green-600" : "text-muted-foreground/30"
                       )}
                     >
                       (RECOMMENDED)
@@ -229,7 +232,7 @@ export default function DonationForm({
                 </div>
 
                 <div
-                  className="flex items-center gap-2 cursor-pointer group"
+                  className="flex items-center gap-2 cursor-pointer group py-1"
                   onClick={() => setFrequency("onetime")}
                 >
                   <span
@@ -244,23 +247,27 @@ export default function DonationForm({
               </div>
             )}
 
-            {/* 🔑 Razorpay component keyed to frequency/buttonId to force unmount/remount */}
-            <RazorpayFormButton
-              key={`${frequency}-${razorpayButtonToUse}`}
-              buttonId={razorpayButtonToUse}
-              isSub={isSubButton}
-            />
+            <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full">
+              <RazorpayFormButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
+            </div>
 
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsDataSaved(false)}
-              className="text-muted-foreground hover:text-primary flex items-center gap-2"
-            >
-              <ArrowLeft className="h-4 w-4" /> Go Back
-            </Button>
+            <div className="flex flex-col items-center gap-4 w-full">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsDataSaved(false)}
+                className="text-muted-foreground hover:text-primary flex items-center gap-2"
+              >
+                <ArrowLeft className="h-4 w-4" /> Go Back
+              </Button>
+              
+              {/* Added explicit close instruction/button to ensure modal interaction is never blocked */}
+              <p className="text-[10px] text-muted-foreground italic text-center px-6">
+                Note: If the payment window does not respond, please close this dialog to interact with it directly.
+              </p>
+            </div>
 
-            <p className="text-[10px] text-muted-foreground uppercase tracking-widest text-center">
+            <p className="text-[10px] text-muted-foreground uppercase tracking-widest text-center mt-4">
               Secure Transaction by Razorpay
             </p>
           </div>
