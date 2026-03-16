@@ -67,12 +67,16 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
-  // Inject Razorpay button script with cache busting
+  // Inject Razorpay button script with unique wrapper fix for subscriptions
   useEffect(() => {
     if (!isDataSaved || !formRef.current || nationality !== "Indian") return;
 
     const container = formRef.current;
-    container.innerHTML = ""; // clear old button
+
+    // Remove previous button and any leftover scripts
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
 
     let currentButtonId = razorpayButtonId;
     let currentIsSub = isSubscription;
@@ -87,19 +91,27 @@ export default function DonationForm({
     }
 
     const script = document.createElement("script");
-    const cacheBuster = `?t=${Date.now()}`; // forces a fresh load of the widget
+    const cacheBuster = `?t=${Date.now()}`; // Force fresh load
 
     if (currentIsSub) {
       script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
+
+      // Razorpay requires a **new DOM element** each time for subscription widgets
+      const wrapper = document.createElement("div");
+      wrapper.id = `razorpay-sub-wrapper-${Date.now()}`;
+      container.appendChild(wrapper);
+
+      // Attach button attributes
       script.setAttribute("data-subscription_button_id", currentButtonId!);
       script.setAttribute("data-button_theme", "brand-color");
+      script.async = true;
+      wrapper.appendChild(script);
     } else {
       script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
       script.setAttribute("data-payment_button_id", currentButtonId!);
+      script.async = true;
+      container.appendChild(script);
     }
-    script.async = true;
-
-    container.appendChild(script);
   }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
 
   useEffect(() => {
@@ -195,7 +207,7 @@ export default function DonationForm({
             )}
             
             <form 
-              key={`razorpay-form-${frequency}-${isDataSaved}`} // force remount on frequency change
+              key={`razorpay-form-${frequency}-${isDataSaved}`} // Force remount on frequency change
               ref={formRef}
               className="w-full flex justify-center py-6 min-h-[100px]"
               style={{ pointerEvents: 'auto' }}
