@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -43,6 +44,7 @@ export default function DonationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("monthly");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -65,35 +67,62 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
-  const getRazorpayConfig = () => {
-    let buttonId = razorpayButtonId;
-    let isSub = isSubscription;
+  useEffect(() => {
+    if (!isDataSaved || !formRef.current || nationality !== "Indian") return;
 
+    const container = formRef.current;
+    container.innerHTML = ""; // Explicitly clear for fresh initialization
+
+    let currentButtonId = razorpayButtonId;
+    let currentIsSub = isSubscription;
+
+    // Handle specific frequency-based initiative IDs
     if (cause === "Ignite Change Initiative") {
       if (frequency === "monthly") {
-        buttonId = "pl_SRZFNDgbZeFnpp";
-        isSub = true;
+        currentButtonId = "pl_SRZFNDgbZeFnpp";
+        currentIsSub = true;
       } else {
-        buttonId = "pl_SRN9Lp4szo4GJs";
-        isSub = false;
+        currentButtonId = "pl_SRN9Lp4szo4GJs";
+        currentIsSub = false;
       }
     } else if (cause === "Relief to the Underprivileged") {
       if (frequency === "monthly") {
-        buttonId = "pl_SRkNjBeFddKPwd";
-        isSub = true;
+        currentButtonId = "pl_SRkNjBeFddKPwd";
+        currentIsSub = true;
       } else {
-        buttonId = "pl_SRN614kzzmwD8t";
-        isSub = false;
+        currentButtonId = "pl_SRN614kzzmwD8t";
+        currentIsSub = false;
       }
     }
 
-    return { buttonId, isSub };
-  };
+    const script = document.createElement("script");
+    if (currentIsSub) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+      script.setAttribute("data-subscription_button_id", currentButtonId!);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.setAttribute("data-payment_button_id", currentButtonId!);
+    }
+    script.async = true;
 
-  // Force remount by updating this key
-  const razorpayKey = `${frequency}-${Date.now()}`;
+    // Safety timeout ensures React DOM reconcile is complete before script runs
+    const timeoutId = setTimeout(() => {
+      container.appendChild(script);
+    }, 50);
 
-  const showFrequencyToggle = cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
+    return () => {
+      clearTimeout(timeoutId);
+      if (container) container.innerHTML = "";
+    };
+  }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
+
+  // Restore pointer events for modal interactions
+  useEffect(() => {
+    if (isDataSaved) {
+      document.body.style.pointerEvents = 'auto';
+    }
+  }, [isDataSaved]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -105,6 +134,8 @@ export default function DonationForm({
     setIsDataSaved(true);
     setIsSubmitting(false);
   }
+
+  const showFrequencyToggle = cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none bg-background overflow-hidden">
@@ -179,11 +210,13 @@ export default function DonationForm({
               </div>
             )}
             
-            {nationality === "Indian" && (
-              <div key={razorpayKey} className="w-full flex justify-center py-6 min-h-[100px]">
-                <RazorpayButton {...getRazorpayConfig()} />
-              </div>
-            )}
+            <form 
+              ref={formRef}
+              className="w-full flex justify-center py-6 min-h-[100px]"
+              style={{ pointerEvents: 'auto' }}
+            >
+              {/* Razorpay Button Injected Here */}
+            </form>
 
             <Button 
               variant="ghost" 
@@ -202,35 +235,4 @@ export default function DonationForm({
       </CardContent>
     </Card>
   );
-}
-
-function RazorpayButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    
-    const container = containerRef.current;
-    container.innerHTML = ""; // Clear for absolute safety
-
-    const script = document.createElement("script");
-    if (isSub) {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
-      script.setAttribute("data-subscription_button_id", buttonId);
-      script.setAttribute("data-button_theme", "brand-color");
-    } else {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.setAttribute("data-payment_button_id", buttonId);
-    }
-    script.async = true;
-    
-    // Slight delay to ensure DOM is ready for Razorpay's injection
-    const timeoutId = setTimeout(() => {
-      container.appendChild(script);
-    }, 10);
-
-    return () => clearTimeout(timeoutId);
-  }, [buttonId, isSub]);
-
-  return <div ref={containerRef} className="w-full flex justify-center" />;
 }
