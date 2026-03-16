@@ -2,7 +2,7 @@
 
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
@@ -27,53 +27,40 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Component to inject Razorpay inside a form tag with cleanup and cache-busting
-function RazorpayFormButton({
-  buttonId,
-  isSub,
-}: {
-  buttonId: string;
-  isSub: boolean;
-}) {
+// Razorpay button wrapper that ensures injection inside a mandatory FORM tag
+function RazorpayFormButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (!formRef.current) return;
 
-    // Clear old scripts and Razorpay-injected elements
+    // Clear any previous content/scripts
     const container = formRef.current;
     while (container.firstChild) {
       container.removeChild(container.firstChild);
     }
 
-    // Inject after DOM updates have settled to ensure clean state
-    const timeoutId = setTimeout(() => {
-      const script = document.createElement("script");
-      const cacheBuster = `?t=${Date.now()}`;
+    const script = document.createElement("script");
+    const cacheBuster = `?t=${Date.now()}`;
 
-      if (isSub) {
-        script.src =
-          "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
-        script.setAttribute("data-subscription_button_id", buttonId);
-        script.setAttribute("data-button_theme", "brand-color");
-      } else {
-        script.src =
-          "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
-        script.setAttribute("data-payment_button_id", buttonId);
-      }
+    if (isSub) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
+      script.setAttribute("data-subscription_button_id", buttonId);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
+      script.setAttribute("data-payment_button_id", buttonId);
+    }
 
-      script.async = true;
-      container.appendChild(script);
-    }, 0);
-
-    return () => clearTimeout(timeoutId);
+    script.async = true;
+    container.appendChild(script);
   }, [buttonId, isSub]);
 
   return (
     <form
       ref={formRef}
       className="w-full flex justify-center py-6 min-h-[100px]"
-      style={{ pointerEvents: "auto" }}
+      style={{ pointerEvents: 'auto' }}
     />
   );
 }
@@ -108,7 +95,7 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
-  // Update amount when nationality changes
+  // Update amount on nationality change
   useEffect(() => {
     if (!hideAmount) {
       form.setValue(
@@ -131,10 +118,9 @@ export default function DonationForm({
   }
 
   const showFrequencyToggle =
-    cause === "Ignite Change Initiative" ||
-    cause === "Relief to the Underprivileged";
+    cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
-  // Determine correct Razorpay button ID based on cause and frequency
+  // Determine Razorpay button ID
   let razorpayButtonToUse = razorpayButtonId;
   let isSubButton = isSubscription;
 
@@ -182,11 +168,7 @@ export default function DonationForm({
                     className="w-full h-12 text-lg font-bold transition-all hover:scale-[1.02]"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? (
-                      <Loader2 className="h-5 w-5 animate-spin" />
-                    ) : (
-                      "Confirm & Proceed"
-                    )}
+                    {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin" /> : "Confirm & Proceed"}
                   </Button>
                 </form>
               </Form>
@@ -207,61 +189,63 @@ export default function DonationForm({
                 Be Part of the Change
               </h2>
               <p className="text-sm text-muted-foreground px-4">
-                Please complete your donation using the Razorpay button below.
+                Please complete your donation using Razorpay below.
               </p>
             </div>
 
             {showFrequencyToggle && (
               <div className="space-y-4 w-full py-2 px-4">
                 {/* Monthly Option */}
-                <div 
-                  className="flex items-center gap-3 cursor-pointer group" 
+                <div
+                  className="flex items-center gap-2 cursor-pointer group"
                   onClick={() => setFrequency("monthly")}
                 >
-                  <div className={cn(
-                    "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
-                    frequency === "monthly" ? "border-primary" : "border-muted-foreground/50"
-                  )}>
-                    {frequency === "monthly" && <div className="w-2.5 h-2.5 rounded-full bg-primary animate-in zoom-in duration-200" />}
-                  </div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className={cn("text-base font-bold transition-colors", frequency === "monthly" ? "text-foreground" : "text-muted-foreground")}>
+                    <span
+                      className={cn(
+                        "text-base font-bold transition-colors",
+                        frequency === "monthly" ? "text-foreground" : "text-muted-foreground"
+                      )}
+                    >
                       Be monthly impact partner
                     </span>
-                    <Heart className={cn("h-4 w-4 transition-all", frequency === "monthly" ? "fill-red-600 text-red-600 scale-110" : "text-muted-foreground/50")} />
-                    <span className={cn("text-[10px] uppercase font-bold tracking-tight", frequency === "monthly" ? "text-green-600" : "text-muted-foreground/50")}>
+                    <Heart
+                      className={cn(
+                        "h-4 w-4 transition-all",
+                        frequency === "monthly" ? "fill-red-600 text-red-600 scale-110" : "text-muted-foreground/50"
+                      )}
+                    />
+                    <span
+                      className={cn(
+                        "text-[10px] uppercase font-bold tracking-tight",
+                        frequency === "monthly" ? "text-green-600" : "text-muted-foreground/50"
+                      )}
+                    >
                       (RECOMMENDED)
                     </span>
                   </div>
                 </div>
 
                 {/* One-time Option */}
-                <div 
-                  className="flex items-center gap-3 cursor-pointer group" 
+                <div
+                  className="flex items-center gap-2 cursor-pointer group"
                   onClick={() => setFrequency("onetime")}
                 >
-                  <div className={cn(
-                    "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
-                    frequency === "onetime" ? "border-primary" : "border-muted-foreground/50"
-                  )}>
-                    {frequency === "onetime" && <div className="w-2.5 h-2.5 rounded-full bg-primary animate-in zoom-in duration-200" />}
-                  </div>
-                  <span className={cn("text-base font-bold transition-colors", frequency === "onetime" ? "text-foreground" : "text-muted-foreground")}>
+                  <span
+                    className={cn(
+                      "text-base font-bold transition-colors",
+                      frequency === "onetime" ? "text-foreground" : "text-muted-foreground"
+                    )}
+                  >
                     one time supporter
                   </span>
                 </div>
               </div>
             )}
 
-            {/* 🔑 Keyed wrapper forces full remount on frequency toggle to reset Razorpay widget state */}
-            <div 
-              key={`razorpay-remount-${frequency}-${razorpayButtonToUse}`} 
-              className="w-full flex justify-center py-6 min-h-[100px]"
-            >
-              <RazorpayFormButton
-                buttonId={razorpayButtonToUse}
-                isSub={isSubButton}
-              />
+            {/* 🔑 Keyed Razorpay wrapper forces full remount on frequency change */}
+            <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full flex justify-center py-6 min-h-[100px]">
+              <RazorpayFormButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
             </div>
 
             <Button
