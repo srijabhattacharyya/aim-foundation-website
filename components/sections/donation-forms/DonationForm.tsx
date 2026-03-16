@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -12,6 +13,8 @@ import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Loader2, ArrowLeft } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 interface DonationFormProps {
   cause: string;
@@ -40,9 +43,9 @@ export default function DonationForm({
 }: DonationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
+  const [frequency, setFrequency] = useState<"monthly" | "onetime">("onetime");
   const rzpButtonRef = useRef<HTMLFormElement>(null);
 
-  // Ensure clicks work by bypassing any parent dialog interaction blocks
   useEffect(() => {
     if (isDataSaved) {
       document.body.style.pointerEvents = 'auto';
@@ -76,18 +79,32 @@ export default function DonationForm({
       container.innerHTML = "";
       
       const script = document.createElement("script");
-      if (isSubscription) {
+      let targetId = razorpayButtonId;
+      let isSub = isSubscription;
+
+      // Special logic for Ignite Change frequency toggle
+      if (cause === "Ignite Change Initiative") {
+        if (frequency === "monthly") {
+          targetId = "pl_SRZFNDgbZeFnpp";
+          isSub = true;
+        } else {
+          targetId = "pl_SRN9Lp4szo4GJs";
+          isSub = false;
+        }
+      }
+
+      if (isSub) {
         script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
-        script.setAttribute("data-subscription_button_id", razorpayButtonId);
+        script.setAttribute("data-subscription_button_id", targetId);
         script.setAttribute("data-button_theme", "brand-color");
       } else {
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-        script.setAttribute("data-payment_button_id", razorpayButtonId);
+        script.setAttribute("data-payment_button_id", targetId);
       }
       script.async = true;
       container.appendChild(script);
     }
-  }, [isDataSaved, nationality, razorpayButtonId, isSubscription]);
+  }, [isDataSaved, nationality, razorpayButtonId, isSubscription, frequency, cause]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -148,6 +165,25 @@ export default function DonationForm({
               <h3 className="text-xl font-bold font-headline uppercase">Be Part of the Change</h3>
               <p className="text-sm text-muted-foreground">Please complete your donation using the Razorpay button below.</p>
             </div>
+
+            {cause === "Ignite Change Initiative" && (
+              <div className="bg-muted/50 p-4 rounded-lg w-full flex flex-col items-center space-y-4">
+                <RadioGroup
+                  value={frequency}
+                  onValueChange={(v) => setFrequency(v as "monthly" | "onetime")}
+                  className="flex items-center justify-center space-x-6"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="monthly" id="monthly" />
+                    <Label htmlFor="monthly" className="font-semibold cursor-pointer">Monthly Donation</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="onetime" id="onetime" />
+                    <Label htmlFor="onetime" className="font-semibold cursor-pointer">Onetime Donations</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+            )}
             
             <form 
               ref={rzpButtonRef} 
