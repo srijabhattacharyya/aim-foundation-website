@@ -42,7 +42,6 @@ export default function DonationForm({
 }: DonationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
-  // Default to monthly for specific initiatives
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("monthly");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -60,7 +59,6 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
-  // Reset amounts on nationality change
   useEffect(() => {
     if (!hideAmount) {
       form.setValue("amount", nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount);
@@ -68,7 +66,6 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
-  // Razorpay Script Injection Logic
   useEffect(() => {
     if (!isDataSaved || !formRef.current || nationality === "Non-Indian") return;
 
@@ -80,21 +77,12 @@ export default function DonationForm({
     let buttonId = razorpayButtonId;
     let isSub = isSubscription;
 
-    // Special logic for specific initiatives
     if (cause === "Ignite Change Initiative") {
       if (frequency === "monthly") {
         buttonId = "pl_SRZFNDgbZeFnpp";
         isSub = true;
       } else {
         buttonId = "pl_SRN9Lp4szo4GJs";
-        isSub = false;
-      }
-    } else if (cause === "Disaster Management") {
-      if (frequency === "monthly") {
-        buttonId = "pl_SRkNjBeFddKPwd";
-        isSub = true;
-      } else {
-        buttonId = "pl_SRN614kzzmwD8t";
         isSub = false;
       }
     }
@@ -109,13 +97,8 @@ export default function DonationForm({
     }
 
     script.async = true;
-    
-    // Add small delay to ensure DOM is fully ready
-    const timer = setTimeout(() => {
-      formElement.appendChild(script);
-    }, 50);
+    formElement.appendChild(script);
 
-    return () => clearTimeout(timer);
   }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
 
   useEffect(() => {
@@ -187,7 +170,7 @@ export default function DonationForm({
               </p>
             </div>
 
-            {(cause === "Ignite Change Initiative" || cause === "Disaster Management") && (
+            {cause === "Ignite Change Initiative" && (
               <div className="bg-muted p-4 rounded-lg w-full">
                 <RadioGroup
                   value={frequency}
@@ -211,9 +194,7 @@ export default function DonationForm({
             <form 
               ref={formRef}
               className="w-full flex justify-center py-6 min-h-[100px]"
-              style={{ pointerEvents: 'auto' }}
             >
-              {/* Razorpay Button Injected Here */}
             </form>
 
             <Button 
