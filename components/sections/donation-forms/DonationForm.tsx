@@ -96,13 +96,18 @@ export default function DonationForm({
     }
 
     script.async = true;
-    container.appendChild(script);
+    
+    // Add small delay to ensure DOM is ready for injection
+    const timeoutId = setTimeout(() => {
+      container.appendChild(script);
+    }, 50);
 
     // Pointer events fix for third-party buttons in overlays
     const originalPointerEvents = document.body.style.pointerEvents;
     document.body.style.pointerEvents = 'auto';
 
     return () => {
+      clearTimeout(timeoutId);
       document.body.style.pointerEvents = originalPointerEvents;
     };
   }, [isDataSaved, nationality, frequency, cause, razorpayButtonId, isSubscription]);
@@ -189,12 +194,13 @@ export default function DonationForm({
               </div>
             )}
             
-            {/* Razorpay Button Container using form tag as requested */}
+            {/* Razorpay Button Container with standard open-close tags */}
             <form 
               ref={buttonContainerRef}
               className="w-full flex justify-center py-6 min-h-[100px]"
               style={{ pointerEvents: 'auto' }}
-            />
+            >
+            </form>
 
             <Button 
               variant="ghost" 
