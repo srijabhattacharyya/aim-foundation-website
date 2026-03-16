@@ -3,7 +3,7 @@
 
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
@@ -12,7 +12,7 @@ import { DonationAmount } from "@/types/donation";
 import { donationSchema } from '@/components/sections/donation-forms/schemas';
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Loader2, ArrowLeft } from "lucide-react";
+import { Loader2, ArrowLeft, Heart } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 
@@ -45,6 +45,7 @@ export default function DonationForm({
   const [isDataSaved, setIsDataSaved] = useState(false);
   // Default to monthly as suggested to increase recurring donations
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("monthly");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -60,12 +61,55 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
+  // Reset amounts on nationality change
   useEffect(() => {
     if (!hideAmount) {
       form.setValue("amount", nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount);
     }
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
+
+  // Razorpay Script Injection Logic
+  useEffect(() => {
+    if (!isDataSaved || !formRef.current || nationality === "Non-Indian") return;
+
+    const formElement = formRef.current;
+    formElement.innerHTML = "";
+
+    const script = document.createElement("script");
+    
+    let buttonId = razorpayButtonId;
+    let isSub = isSubscription;
+
+    // Special logic for Ignite Change Initiative
+    if (cause === "Ignite Change Initiative") {
+      if (frequency === "monthly") {
+        buttonId = "pl_SRZFNDgbZeFnpp";
+        isSub = true;
+      } else {
+        buttonId = "pl_SRN9Lp4szo4GJs";
+        isSub = false;
+      }
+    }
+
+    if (isSub) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+      script.setAttribute("data-subscription_button_id", buttonId!);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.setAttribute("data-payment_button_id", buttonId!);
+    }
+
+    script.async = true;
+    
+    // Add small delay to ensure DOM is fully ready
+    const timer = setTimeout(() => {
+      formElement.appendChild(script);
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
 
   useEffect(() => {
     if (isDataSaved) {
@@ -141,53 +185,28 @@ export default function DonationForm({
                 <RadioGroup
                   value={frequency}
                   onValueChange={(v) => setFrequency(v as "monthly" | "onetime")}
-                  className="flex items-center justify-center space-x-6"
+                  className="flex flex-col space-y-3"
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="monthly" id="monthly" />
-                    <Label htmlFor="monthly" className="font-semibold cursor-pointer">Monthly Donation</Label>
+                    <Label htmlFor="monthly" className="font-semibold cursor-pointer flex items-center gap-2">
+                      Monthly Impact Partner <Heart className="h-3 w-3 fill-primary text-primary" /> <span className="text-[10px] text-primary uppercase font-bold">(Recommended)</span>
+                    </Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="onetime" id="onetime" />
-                    <Label htmlFor="onetime" className="font-semibold cursor-pointer">One-time Donation</Label>
+                    <Label htmlFor="onetime" className="font-semibold cursor-pointer">One-time Supporter</Label>
                   </div>
                 </RadioGroup>
               </div>
             )}
             
-            {/* Declarative Razorpay Container */}
-            <form className="w-full flex justify-center py-6 min-h-[100px]" style={{ pointerEvents: 'auto' }}>
-              {cause === "Ignite Change Initiative" && frequency === "monthly" ? (
-                <script
-                  key="ignite-monthly"
-                  src="https://cdn.razorpay.com/static/widget/subscription-button.js"
-                  data-subscription_button_id="pl_SRZFNDgbZeFnpp"
-                  data-button_theme="brand-color"
-                  async
-                ></script>
-              ) : cause === "Ignite Change Initiative" && frequency === "onetime" ? (
-                <script
-                  key="ignite-onetime"
-                  src="https://checkout.razorpay.com/v1/payment-button.js"
-                  data-payment_button_id="pl_SRN9Lp4szo4GJs"
-                  async
-                ></script>
-              ) : isSubscription ? (
-                <script
-                  key="custom-subscription"
-                  src="https://cdn.razorpay.com/static/widget/subscription-button.js"
-                  data-subscription_button_id={razorpayButtonId}
-                  data-button_theme="brand-color"
-                  async
-                ></script>
-              ) : (
-                <script
-                  key="custom-onetime"
-                  src="https://checkout.razorpay.com/v1/payment-button.js"
-                  data-payment_button_id={razorpayButtonId}
-                  async
-                ></script>
-              )}
+            <form 
+              ref={formRef}
+              className="w-full flex justify-center py-6 min-h-[100px]"
+              style={{ pointerEvents: 'auto' }}
+            >
+              {/* Razorpay Button Injected Here */}
             </form>
 
             <Button 
