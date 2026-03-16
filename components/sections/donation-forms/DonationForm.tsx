@@ -3,7 +3,7 @@
 
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
@@ -43,8 +43,8 @@ export default function DonationForm({
 }: DonationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
-  const [frequency, setFrequency] = useState<"monthly" | "onetime">("onetime");
-  const buttonContainerRef = useRef<HTMLFormElement>(null);
+  // Default to monthly as suggested to increase recurring donations
+  const [frequency, setFrequency] = useState<"monthly" | "onetime">("monthly");
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -68,49 +68,10 @@ export default function DonationForm({
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
   useEffect(() => {
-    if (!isDataSaved || nationality !== "Indian" || !buttonContainerRef.current) return;
-
-    const container = buttonContainerRef.current;
-    container.innerHTML = "";
-
-    const isIgniteChange = cause === "Ignite Change Initiative";
-    const ONETIME_ID = isIgniteChange ? "pl_SRN9Lp4szo4GJs" : razorpayButtonId;
-    const MONTHLY_ID = isIgniteChange ? "pl_SRZFNDgbZeFnpp" : razorpayButtonId;
-
-    const script = document.createElement("script");
-
-    if (isIgniteChange && frequency === "monthly") {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
-      script.setAttribute("data-subscription_button_id", MONTHLY_ID);
-      script.setAttribute("data-button_theme", "brand-color");
-    } else if (isIgniteChange && frequency === "onetime") {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.setAttribute("data-payment_button_id", ONETIME_ID);
-    } else if (isSubscription) {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
-      script.setAttribute("data-subscription_button_id", razorpayButtonId);
-      script.setAttribute("data-button_theme", "brand-color");
-    } else {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.setAttribute("data-payment_button_id", razorpayButtonId);
+    if (isDataSaved) {
+      document.body.style.pointerEvents = 'auto';
     }
-
-    script.async = true;
-    
-    // Add small delay to ensure DOM is ready for injection
-    const timeoutId = setTimeout(() => {
-      container.appendChild(script);
-    }, 50);
-
-    // Pointer events fix for third-party buttons in overlays
-    const originalPointerEvents = document.body.style.pointerEvents;
-    document.body.style.pointerEvents = 'auto';
-
-    return () => {
-      clearTimeout(timeoutId);
-      document.body.style.pointerEvents = originalPointerEvents;
-    };
-  }, [isDataSaved, nationality, frequency, cause, razorpayButtonId, isSubscription]);
+  }, [isDataSaved]);
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
@@ -194,12 +155,39 @@ export default function DonationForm({
               </div>
             )}
             
-            {/* Razorpay Button Container with standard open-close tags */}
-            <form 
-              ref={buttonContainerRef}
-              className="w-full flex justify-center py-6 min-h-[100px]"
-              style={{ pointerEvents: 'auto' }}
-            >
+            {/* Declarative Razorpay Container */}
+            <form className="w-full flex justify-center py-6 min-h-[100px]" style={{ pointerEvents: 'auto' }}>
+              {cause === "Ignite Change Initiative" && frequency === "monthly" ? (
+                <script
+                  key="ignite-monthly"
+                  src="https://cdn.razorpay.com/static/widget/subscription-button.js"
+                  data-subscription_button_id="pl_SRZFNDgbZeFnpp"
+                  data-button_theme="brand-color"
+                  async
+                ></script>
+              ) : cause === "Ignite Change Initiative" && frequency === "onetime" ? (
+                <script
+                  key="ignite-onetime"
+                  src="https://checkout.razorpay.com/v1/payment-button.js"
+                  data-payment_button_id="pl_SRN9Lp4szo4GJs"
+                  async
+                ></script>
+              ) : isSubscription ? (
+                <script
+                  key="custom-subscription"
+                  src="https://cdn.razorpay.com/static/widget/subscription-button.js"
+                  data-subscription_button_id={razorpayButtonId}
+                  data-button_theme="brand-color"
+                  async
+                ></script>
+              ) : (
+                <script
+                  key="custom-onetime"
+                  src="https://checkout.razorpay.com/v1/payment-button.js"
+                  data-payment_button_id={razorpayButtonId}
+                  async
+                ></script>
+              )}
             </form>
 
             <Button 
