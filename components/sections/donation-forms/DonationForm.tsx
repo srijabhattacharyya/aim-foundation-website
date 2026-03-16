@@ -28,8 +28,8 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Separate component to inject Razorpay button properly inside a FORM tag
-function RazorpayButton({
+// Component to inject Razorpay inside a form tag
+function RazorpayFormButton({
   buttonId,
   isSub,
 }: {
@@ -41,41 +41,37 @@ function RazorpayButton({
   useEffect(() => {
     if (!formRef.current) return;
 
-    // Razorpay scripts REQUIRE the script to be a direct child of a <form>
-    // We clear the form and inject a fresh script with cache-busting every time.
-    const form = formRef.current;
-    while (form.firstChild) {
-      form.removeChild(form.firstChild);
+    // Clear old scripts and divs
+    while (formRef.current.firstChild) {
+      formRef.current.removeChild(formRef.current.firstChild);
     }
 
-    // Delay slightly to ensure cleanup is finished and DOM is stable
+    // Inject after DOM updates to ensure clean initialization
     const timeoutId = setTimeout(() => {
+      if (!formRef.current) return;
+      
       const script = document.createElement("script");
       const cacheBuster = `?t=${Date.now()}`;
 
       if (isSub) {
-        script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
+        script.src =
+          "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
         script.setAttribute("data-subscription_button_id", buttonId);
         script.setAttribute("data-button_theme", "brand-color");
       } else {
-        script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
+        script.src =
+          "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
         script.setAttribute("data-payment_button_id", buttonId);
       }
-      
+
       script.async = true;
-      form.appendChild(script);
+      formRef.current.appendChild(script);
     }, 0);
 
     return () => clearTimeout(timeoutId);
   }, [buttonId, isSub]);
 
-  return (
-    <form 
-      ref={formRef} 
-      className="w-full flex justify-center py-6 min-h-[100px]" 
-      style={{ pointerEvents: 'auto' }}
-    />
-  );
+  return <form ref={formRef} className="w-full flex justify-center py-6 min-h-[100px]" />;
 }
 
 export default function DonationForm({
@@ -108,10 +104,12 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
-  // Update amount when nationality changes
   useEffect(() => {
     if (!hideAmount) {
-      form.setValue("amount", nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount);
+      form.setValue(
+        "amount",
+        nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount
+      );
     }
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
@@ -128,9 +126,9 @@ export default function DonationForm({
   }
 
   const showFrequencyToggle =
-    cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
+    cause === "Ignite Change Initiative" ||
+    cause === "Relief to the Underprivileged";
 
-  // Determine Razorpay button ID based on cause and frequency
   let razorpayButtonToUse = razorpayButtonId;
   let isSubButton = isSubscription;
 
@@ -232,13 +230,12 @@ export default function DonationForm({
               </div>
             )}
 
-            <div className="w-full">
-              <RazorpayButton 
-                key={`${frequency}-${razorpayButtonToUse}`}
-                buttonId={razorpayButtonToUse} 
-                isSub={isSubButton} 
-              />
-            </div>
+            {/* Razorpay subscription/payment button inside a form */}
+            <RazorpayFormButton
+              key={`${frequency}-${razorpayButtonToUse}`}
+              buttonId={razorpayButtonToUse}
+              isSub={isSubButton}
+            />
 
             <Button
               variant="ghost"
