@@ -1,4 +1,3 @@
-
 'use client';
 import DonationForm from "./DonationForm";
 
@@ -14,6 +13,7 @@ export default function DisasterManagementDonationForm() {
             formSubtitle="PROVIDE URGENT AID"
             hideAmount={true}
             razorpayButtonId="pl_SRN614kzzmwD8t"
+            isSubscription={false}
         />
     );
 }

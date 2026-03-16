@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -43,7 +42,7 @@ export default function DonationForm({
 }: DonationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
-  // Default to monthly as suggested to increase recurring donations
+  // Default to monthly for specific initiatives
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("monthly");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -81,13 +80,21 @@ export default function DonationForm({
     let buttonId = razorpayButtonId;
     let isSub = isSubscription;
 
-    // Special logic for Ignite Change Initiative
+    // Special logic for specific initiatives
     if (cause === "Ignite Change Initiative") {
       if (frequency === "monthly") {
         buttonId = "pl_SRZFNDgbZeFnpp";
         isSub = true;
       } else {
         buttonId = "pl_SRN9Lp4szo4GJs";
+        isSub = false;
+      }
+    } else if (cause === "Disaster Management") {
+      if (frequency === "monthly") {
+        buttonId = "pl_SRkNjBeFddKPwd";
+        isSub = true;
+      } else {
+        buttonId = "pl_SRN614kzzmwD8t";
         isSub = false;
       }
     }
@@ -174,13 +181,13 @@ export default function DonationForm({
             />
             
             <div className="text-center space-y-2">
-              <h2 className="text-xl font-bold font-headline uppercase">Be Part of the Change</h2>
+              <h2 className="text-xl font-bold font-headline uppercase text-primary">Be Part of the Change</h2>
               <p className="text-sm text-muted-foreground px-4">
                 Please complete your donation using the Razorpay button below.
               </p>
             </div>
 
-            {cause === "Ignite Change Initiative" && (
+            {(cause === "Ignite Change Initiative" || cause === "Disaster Management") && (
               <div className="bg-muted p-4 rounded-lg w-full">
                 <RadioGroup
                   value={frequency}
