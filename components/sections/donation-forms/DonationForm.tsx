@@ -230,12 +230,10 @@ export default function DonationForm({
               </div>
             )}
 
-            {/* Razorpay subscription/payment button inside a form */}
-            <RazorpayFormButton
-              key={`${frequency}-${razorpayButtonToUse}`}
-              buttonId={razorpayButtonToUse}
-              isSub={isSubButton}
-            />
+            {/* 🔑 Keyed wrapper forces full remount on frequency toggle */}
+            <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full flex justify-center py-6 min-h-[100px]">
+              <RazorpayFormButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
+            </div>
 
             <Button
               variant="ghost"
