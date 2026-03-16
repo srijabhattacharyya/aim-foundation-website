@@ -28,15 +28,22 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Component to inject Razorpay button inside the form
-function RazorpayButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+// Component to inject Razorpay button properly inside a FORM tag
+function RazorpayButton({
+  buttonId,
+  isSub,
+}: {
+  buttonId: string;
+  isSub: boolean;
+}) {
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!formRef.current) return;
 
-    // Clear previous script / button
-    containerRef.current.innerHTML = "";
+    // Razorpay scripts REQUIRE the script to be a direct child of a <form>
+    // We clear the form and inject a fresh script with cache-busting every time.
+    formRef.current.innerHTML = "";
 
     const script = document.createElement("script");
     const cacheBuster = `?t=${Date.now()}`;
@@ -49,12 +56,18 @@ function RazorpayButton({ buttonId, isSub }: { buttonId: string; isSub: boolean 
       script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
       script.setAttribute("data-payment_button_id", buttonId);
     }
+    
     script.async = true;
-
-    containerRef.current.appendChild(script);
+    formRef.current.appendChild(script);
   }, [buttonId, isSub]);
 
-  return <div ref={containerRef} />;
+  return (
+    <form 
+      ref={formRef} 
+      className="w-full flex justify-center py-6 min-h-[100px]" 
+      style={{ pointerEvents: 'auto' }}
+    />
+  );
 }
 
 export default function DonationForm({
@@ -97,13 +110,11 @@ export default function DonationForm({
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
-
     if (values.nationality === "Non-Indian") {
       window.location.href = "https://stripe.com/in";
       setIsSubmitting(false);
       return;
     }
-
     setIsDataSaved(true);
     setIsSubmitting(false);
   }
@@ -111,7 +122,7 @@ export default function DonationForm({
   const showFrequencyToggle =
     cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
-  // Determine correct Razorpay button ID based on cause and frequency
+  // Determine Razorpay button ID based on cause and frequency
   let razorpayButtonToUse = razorpayButtonId;
   let isSubButton = isSubscription;
 
@@ -141,7 +152,9 @@ export default function DonationForm({
               <h2 className="text-2xl font-bold font-headline uppercase text-center">
                 {formTitle}
               </h2>
-              <p className="text-muted-foreground text-xs uppercase tracking-widest text-center mt-1">{formSubtitle}</p>
+              <p className="text-muted-foreground text-xs uppercase tracking-widest text-center mt-1">
+                {formSubtitle}
+              </p>
             </div>
 
             <FormProvider {...form}>
@@ -211,10 +224,10 @@ export default function DonationForm({
               </div>
             )}
 
-            {/* Razorpay button injected INSIDE this form */}
-            <form className="w-full flex justify-center py-6 min-h-[100px]">
+            {/* Unique Key on the wrapper forces a complete React remount on frequency change */}
+            <div key={`${frequency}-${isDataSaved}`} className="w-full">
               <RazorpayButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
-            </form>
+            </div>
 
             <Button
               variant="ghost"
