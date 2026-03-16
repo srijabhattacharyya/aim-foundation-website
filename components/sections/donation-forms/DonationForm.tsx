@@ -12,7 +12,7 @@ import { DonationAmount } from "@/types/donation";
 import { donationSchema } from "@/components/sections/donation-forms/schemas";
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Loader2, ArrowLeft, Heart, X } from "lucide-react";
+import { Loader2, ArrowLeft, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface DonationFormProps {
@@ -28,13 +28,14 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Component to inject Razorpay script inside a mandatory form tag
+// Robust component to inject Razorpay button script inside a mandatory form tag
 function RazorpayFormButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
   const containerRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
+    // Razorpay scripts require a clean parent form to inject the button/iframe
     const container = containerRef.current;
     while (container.firstChild) {
       container.removeChild(container.firstChild);
@@ -53,6 +54,7 @@ function RazorpayFormButton({ buttonId, isSub }: { buttonId: string; isSub: bool
     }
     script.async = true;
 
+    // Use a slight delay to ensure the DOM is ready after React unmounts/mounts the keyed form
     const timeoutId = setTimeout(() => {
       container.appendChild(script);
     }, 0);
@@ -98,6 +100,7 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
+  // Update amount when nationality changes
   useEffect(() => {
     if (!hideAmount) {
       form.setValue(
@@ -129,6 +132,7 @@ export default function DonationForm({
   const showFrequencyToggle =
     cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
+  // Determine Razorpay button ID based on cause and frequency
   let razorpayButtonToUse = razorpayButtonId;
   let isSubButton = isSubscription;
 
@@ -200,53 +204,39 @@ export default function DonationForm({
             </div>
 
             {showFrequencyToggle && (
-              <div className="space-y-4 w-full py-2 px-4 border-y border-muted">
+              <div className="flex flex-col items-center gap-3 w-full py-4 border-y border-muted">
+                {/* Monthly Toggle */}
                 <div
-                  className="flex items-center gap-2 cursor-pointer group py-1"
+                  className={cn(
+                    "flex items-center gap-2 cursor-pointer transition-all duration-200 hover:scale-[1.02]",
+                    frequency === "monthly" ? "scale-105" : "opacity-60"
+                  )}
                   onClick={() => setFrequency("monthly")}
                 >
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span
-                      className={cn(
-                        "text-base font-bold transition-colors",
-                        frequency === "monthly" ? "text-foreground" : "text-muted-foreground"
-                      )}
-                    >
-                      Be monthly impact partner
-                    </span>
-                    <Heart
-                      className={cn(
-                        "h-4 w-4 transition-all",
-                        frequency === "monthly" ? "fill-red-600 text-red-600 scale-110" : "text-muted-foreground/30"
-                      )}
-                    />
-                    <span
-                      className={cn(
-                        "text-[10px] uppercase font-bold tracking-tight",
-                        frequency === "monthly" ? "text-green-600" : "text-muted-foreground/30"
-                      )}
-                    >
-                      (RECOMMENDED)
-                    </span>
-                  </div>
+                  <span className="text-lg font-bold text-foreground">Be monthly impact supporter</span>
+                  <Heart className="h-5 w-5 fill-red-600 text-red-600" />
+                  <span className="text-[10px] text-green-600 font-bold uppercase tracking-tight">
+                    (RECOMMENDED)
+                  </span>
                 </div>
 
+                {/* Separator */}
+                <span className="text-muted-foreground font-medium text-sm">or</span>
+
+                {/* One-time Toggle */}
                 <div
-                  className="flex items-center gap-2 cursor-pointer group py-1"
+                  className={cn(
+                    "cursor-pointer transition-all duration-200 hover:scale-[1.02]",
+                    frequency === "onetime" ? "scale-105" : "opacity-60"
+                  )}
                   onClick={() => setFrequency("onetime")}
                 >
-                  <span
-                    className={cn(
-                      "text-base font-bold transition-colors",
-                      frequency === "onetime" ? "text-foreground" : "text-muted-foreground"
-                    )}
-                  >
-                    one time supporter
-                  </span>
+                  <span className="text-lg font-bold text-foreground">One time supporter</span>
                 </div>
               </div>
             )}
 
+            {/* 🔑 Razorpay component keyed to frequency/buttonId to force unmount/remount */}
             <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full">
               <RazorpayFormButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
             </div>
@@ -261,9 +251,8 @@ export default function DonationForm({
                 <ArrowLeft className="h-4 w-4" /> Go Back
               </Button>
               
-              {/* Added explicit close instruction/button to ensure modal interaction is never blocked */}
               <p className="text-[10px] text-muted-foreground italic text-center px-6">
-                Note: If the payment window does not respond, please close this dialog to interact with it directly.
+                Note: If the payment window is blocked, please close this popup to proceed.
               </p>
             </div>
 

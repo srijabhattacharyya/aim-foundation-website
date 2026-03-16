@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -110,6 +111,13 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
+  // FIX: Force pointer events to allow interaction with Razorpay modal over our Dialog
+  useEffect(() => {
+    if (isDataSaved) {
+      document.body.style.pointerEvents = "auto";
+    }
+  }, [isDataSaved]);
+
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     if (values.nationality === "Non-Indian") {
@@ -196,71 +204,59 @@ export default function DonationForm({
             </div>
 
             {showFrequencyToggle && (
-              <div className="space-y-4 w-full py-2 px-4">
-                {/* Custom Text Toggle for Frequency */}
+              <div className="flex flex-col items-center gap-3 w-full py-4 border-y border-muted">
+                {/* Monthly Toggle */}
                 <div
-                  className="flex items-center gap-2 cursor-pointer group"
+                  className={cn(
+                    "flex items-center gap-2 cursor-pointer transition-all duration-200 hover:scale-[1.02]",
+                    frequency === "monthly" ? "scale-105" : "opacity-60"
+                  )}
                   onClick={() => setFrequency("monthly")}
                 >
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span
-                      className={cn(
-                        "text-base font-bold transition-colors",
-                        frequency === "monthly" ? "text-foreground" : "text-muted-foreground"
-                      )}
-                    >
-                      Be monthly impact partner
-                    </span>
-                    <Heart
-                      className={cn(
-                        "h-4 w-4 transition-all",
-                        frequency === "monthly" ? "fill-red-600 text-red-600 scale-110" : "text-muted-foreground/50"
-                      )}
-                    />
-                    <span
-                      className={cn(
-                        "text-[10px] uppercase font-bold tracking-tight",
-                        frequency === "monthly" ? "text-green-600" : "text-muted-foreground/50"
-                      )}
-                    >
-                      (RECOMMENDED)
-                    </span>
-                  </div>
+                  <span className="text-lg font-bold text-foreground">Be monthly impact supporter</span>
+                  <Heart className="h-5 w-5 fill-red-600 text-red-600" />
+                  <span className="text-[10px] text-green-600 font-bold uppercase tracking-tight">
+                    (RECOMMENDED)
+                  </span>
                 </div>
 
+                {/* Separator */}
+                <span className="text-muted-foreground font-medium text-sm">or</span>
+
+                {/* One-time Toggle */}
                 <div
-                  className="flex items-center gap-2 cursor-pointer group"
+                  className={cn(
+                    "cursor-pointer transition-all duration-200 hover:scale-[1.02]",
+                    frequency === "onetime" ? "scale-105" : "opacity-60"
+                  )}
                   onClick={() => setFrequency("onetime")}
                 >
-                  <span
-                    className={cn(
-                      "text-base font-bold transition-colors",
-                      frequency === "onetime" ? "text-foreground" : "text-muted-foreground"
-                    )}
-                  >
-                    one time supporter
-                  </span>
+                  <span className="text-lg font-bold text-foreground">One time supporter</span>
                 </div>
               </div>
             )}
 
             {/* 🔑 Razorpay component keyed to frequency/buttonId to force unmount/remount */}
-            <RazorpayFormButton
-              key={`${frequency}-${razorpayButtonToUse}`}
-              buttonId={razorpayButtonToUse}
-              isSub={isSubButton}
-            />
+            <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full">
+              <RazorpayFormButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
+            </div>
 
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsDataSaved(false)}
-              className="text-muted-foreground hover:text-primary flex items-center gap-2"
-            >
-              <ArrowLeft className="h-4 w-4" /> Go Back
-            </Button>
+            <div className="flex flex-col items-center gap-4 w-full">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsDataSaved(false)}
+                className="text-muted-foreground hover:text-primary flex items-center gap-2"
+              >
+                <ArrowLeft className="h-4 w-4" /> Go Back
+              </Button>
+              
+              <p className="text-[10px] text-muted-foreground italic text-center px-6">
+                Note: If the payment window is blocked, please close this popup to proceed.
+              </p>
+            </div>
 
-            <p className="text-[10px] text-muted-foreground uppercase tracking-widest text-center">
+            <p className="text-[10px] text-muted-foreground uppercase tracking-widest text-center mt-4">
               Secure Transaction by Razorpay
             </p>
           </div>
