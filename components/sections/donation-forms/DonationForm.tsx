@@ -28,6 +28,39 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
+// Separate component to inject Razorpay button properly
+function SubscriptionButton({
+  buttonId,
+  isSub,
+}: {
+  buttonId: string;
+  isSub: boolean;
+}) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!wrapperRef.current) return;
+
+    wrapperRef.current.innerHTML = ""; // Clear old button
+
+    const script = document.createElement("script");
+    const cacheBuster = `?t=${Date.now()}`;
+
+    if (isSub) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
+      script.setAttribute("data-subscription_button_id", buttonId);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
+      script.setAttribute("data-payment_button_id", buttonId);
+    }
+    script.async = true;
+    wrapperRef.current.appendChild(script);
+  }, [buttonId, isSub]);
+
+  return <div ref={wrapperRef} />;
+}
+
 export default function DonationForm({
   cause,
   donationAmountsIndian,
@@ -43,7 +76,6 @@ export default function DonationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("monthly");
-  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -67,52 +99,6 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
-  // Inject Razorpay script inside a unique wrapper div
-  useEffect(() => {
-    if (!isDataSaved || !formRef.current || nationality !== "Indian") return;
-
-    const container = formRef.current;
-    container.innerHTML = ""; // clear previous content
-
-    let currentButtonId = razorpayButtonId;
-    let currentIsSub = isSubscription;
-
-    if (cause === "Ignite Change Initiative") {
-      currentButtonId = frequency === "monthly" ? "pl_SRZFNDgbZeFnpp" : "pl_SRN9Lp4szo4GJs";
-      currentIsSub = frequency === "monthly";
-    } else if (cause === "Relief to the Underprivileged") {
-      currentButtonId = frequency === "monthly" ? "pl_SRkNjBeFddKPwd" : "pl_SRN614kzzmwD8t";
-      currentIsSub = frequency === "monthly";
-    }
-
-    // Create a unique wrapper for subscription button
-    const wrapper = document.createElement("div");
-    wrapper.id = `razorpay-wrapper-${Date.now()}`;
-    container.appendChild(wrapper);
-
-    const script = document.createElement("script");
-    const cacheBuster = `?t=${Date.now()}`;
-
-    if (currentIsSub) {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
-      script.setAttribute("data-subscription_button_id", currentButtonId!);
-      script.setAttribute("data-button_theme", "brand-color");
-    } else {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
-      script.setAttribute("data-payment_button_id", currentButtonId!);
-    }
-
-    script.async = true;
-    wrapper.appendChild(script);
-
-  }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
-
-  useEffect(() => {
-    if (isDataSaved) {
-      document.body.style.pointerEvents = "auto";
-    }
-  }, [isDataSaved]);
-
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
     if (values.nationality === "Non-Indian") {
@@ -124,7 +110,22 @@ export default function DonationForm({
     setIsSubmitting(false);
   }
 
-  const showFrequencyToggle = cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
+  const showFrequencyToggle =
+    cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
+
+  // Determine Razorpay button ID based on cause and frequency
+  let razorpayButtonToUse = razorpayButtonId;
+  let isSubButton = isSubscription;
+
+  if (cause === "Ignite Change Initiative") {
+    razorpayButtonToUse =
+      frequency === "monthly" ? "pl_SRZFNDgbZeFnpp" : "pl_SRN9Lp4szo4GJs";
+    isSubButton = frequency === "monthly";
+  } else if (cause === "Relief to the Underprivileged") {
+    razorpayButtonToUse =
+      frequency === "monthly" ? "pl_SRkNjBeFddKPwd" : "pl_SRN614kzzmwD8t";
+    isSubButton = frequency === "monthly";
+  }
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none bg-background overflow-hidden">
@@ -139,8 +140,12 @@ export default function DonationForm({
                 height={48}
                 className="object-contain mb-4"
               />
-              <h2 className="text-2xl font-bold font-headline uppercase text-center">{formTitle}</h2>
-              <p className="text-muted-foreground text-xs uppercase tracking-widest text-center mt-1">{formSubtitle}</p>
+              <h2 className="text-2xl font-bold font-headline uppercase text-center">
+                {formTitle}
+              </h2>
+              <p className="text-muted-foreground text-xs uppercase tracking-widest text-center mt-1">
+                {formSubtitle}
+              </p>
             </div>
 
             <FormProvider {...form}>
@@ -173,7 +178,9 @@ export default function DonationForm({
             />
 
             <div className="text-center space-y-2">
-              <h2 className="text-xl font-bold font-headline uppercase text-primary">Be Part of the Change</h2>
+              <h2 className="text-xl font-bold font-headline uppercase text-primary">
+                Be Part of the Change
+              </h2>
               <p className="text-sm text-muted-foreground px-4">
                 Please complete your donation using the Razorpay button below.
               </p>
@@ -188,9 +195,14 @@ export default function DonationForm({
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="monthly" id="monthly" />
-                    <Label htmlFor="monthly" className="font-semibold cursor-pointer flex items-center gap-2">
+                    <Label
+                      htmlFor="monthly"
+                      className="font-semibold cursor-pointer flex items-center gap-2"
+                    >
                       Monthly Impact Partner <Heart className="h-3 w-3 fill-primary text-primary" />{" "}
-                      <span className="text-[10px] text-primary uppercase font-bold">(Recommended)</span>
+                      <span className="text-[10px] text-primary uppercase font-bold">
+                        (Recommended)
+                      </span>
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -203,12 +215,8 @@ export default function DonationForm({
               </div>
             )}
 
-            <form
-              ref={formRef}
-              className="w-full flex justify-center py-6 min-h-[100px]"
-              style={{ pointerEvents: "auto" }}
-            >
-              {/* Razorpay button injected inside unique wrapper div */}
+            <form className="w-full flex justify-center py-6 min-h-[100px]">
+              <SubscriptionButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
             </form>
 
             <Button
