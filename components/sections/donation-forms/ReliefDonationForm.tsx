@@ -1,4 +1,3 @@
-
 'use client';
 import DonationForm from "./DonationForm";
 
@@ -13,7 +12,7 @@ export default function ReliefDonationForm() {
             formTitle="SUPPORT RELIEF EFFORTS"
             formSubtitle="PROVIDE IMMEDIATE AID"
             hideAmount={true}
-            razorpayButtonId="pl_SRN279VxAFLbge"
+            razorpayButtonId="pl_SRN614kzzmwD8t"
         />
     );
 }

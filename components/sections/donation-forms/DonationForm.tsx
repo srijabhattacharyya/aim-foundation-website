@@ -77,12 +77,21 @@ export default function DonationForm({
     let buttonId = razorpayButtonId;
     let isSub = isSubscription;
 
+    // Special logic for dual-frequency initiatives
     if (cause === "Ignite Change Initiative") {
       if (frequency === "monthly") {
         buttonId = "pl_SRZFNDgbZeFnpp";
         isSub = true;
       } else {
         buttonId = "pl_SRN9Lp4szo4GJs";
+        isSub = false;
+      }
+    } else if (cause === "Relief to the Underprivileged") {
+      if (frequency === "monthly") {
+        buttonId = "pl_SRkNjBeFddKPwd";
+        isSub = true;
+      } else {
+        buttonId = "pl_SRN614kzzmwD8t";
         isSub = false;
       }
     }
@@ -117,6 +126,8 @@ export default function DonationForm({
     setIsDataSaved(true);
     setIsSubmitting(false);
   }
+
+  const showFrequencyToggle = cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none bg-background overflow-hidden">
@@ -170,7 +181,7 @@ export default function DonationForm({
               </p>
             </div>
 
-            {cause === "Ignite Change Initiative" && (
+            {showFrequencyToggle && (
               <div className="bg-muted p-4 rounded-lg w-full">
                 <RadioGroup
                   value={frequency}
