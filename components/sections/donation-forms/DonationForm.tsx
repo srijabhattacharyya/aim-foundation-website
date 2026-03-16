@@ -28,20 +28,15 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Separate component to inject Razorpay button properly
-function SubscriptionButton({
-  buttonId,
-  isSub,
-}: {
-  buttonId: string;
-  isSub: boolean;
-}) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+// Component to inject Razorpay button inside the form
+function RazorpayButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!wrapperRef.current) return;
+    if (!containerRef.current) return;
 
-    wrapperRef.current.innerHTML = ""; // Clear old button
+    // Clear previous script / button
+    containerRef.current.innerHTML = "";
 
     const script = document.createElement("script");
     const cacheBuster = `?t=${Date.now()}`;
@@ -55,10 +50,11 @@ function SubscriptionButton({
       script.setAttribute("data-payment_button_id", buttonId);
     }
     script.async = true;
-    wrapperRef.current.appendChild(script);
+
+    containerRef.current.appendChild(script);
   }, [buttonId, isSub]);
 
-  return <div ref={wrapperRef} />;
+  return <div ref={containerRef} />;
 }
 
 export default function DonationForm({
@@ -101,11 +97,13 @@ export default function DonationForm({
 
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
+
     if (values.nationality === "Non-Indian") {
       window.location.href = "https://stripe.com/in";
       setIsSubmitting(false);
       return;
     }
+
     setIsDataSaved(true);
     setIsSubmitting(false);
   }
@@ -113,7 +111,7 @@ export default function DonationForm({
   const showFrequencyToggle =
     cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
-  // Determine Razorpay button ID based on cause and frequency
+  // Determine correct Razorpay button ID based on cause and frequency
   let razorpayButtonToUse = razorpayButtonId;
   let isSubButton = isSubscription;
 
@@ -143,9 +141,7 @@ export default function DonationForm({
               <h2 className="text-2xl font-bold font-headline uppercase text-center">
                 {formTitle}
               </h2>
-              <p className="text-muted-foreground text-xs uppercase tracking-widest text-center mt-1">
-                {formSubtitle}
-              </p>
+              <p className="text-muted-foreground text-xs uppercase tracking-widest text-center mt-1">{formSubtitle}</p>
             </div>
 
             <FormProvider {...form}>
@@ -215,8 +211,9 @@ export default function DonationForm({
               </div>
             )}
 
+            {/* Razorpay button injected INSIDE this form */}
             <form className="w-full flex justify-center py-6 min-h-[100px]">
-              <SubscriptionButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
+              <RazorpayButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
             </form>
 
             <Button

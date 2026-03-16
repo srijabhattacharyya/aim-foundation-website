@@ -8,7 +8,7 @@ import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
 import { Form } from "@/components/ui/form";
 import { DonationAmount } from "@/types/donation";
-import { donationSchema } from '@/components/sections/donation-forms/schemas';
+import { donationSchema } from "@/components/sections/donation-forms/schemas";
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Loader2, ArrowLeft, Heart } from "lucide-react";
@@ -28,6 +28,35 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
+// Component to inject Razorpay button inside the form
+function RazorpayButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    // Clear previous script / button
+    containerRef.current.innerHTML = "";
+
+    const script = document.createElement("script");
+    const cacheBuster = `?t=${Date.now()}`;
+
+    if (isSub) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
+      script.setAttribute("data-subscription_button_id", buttonId);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
+      script.setAttribute("data-payment_button_id", buttonId);
+    }
+    script.async = true;
+
+    containerRef.current.appendChild(script);
+  }, [buttonId, isSub]);
+
+  return <div ref={containerRef} />;
+}
+
 export default function DonationForm({
   cause,
   donationAmountsIndian,
@@ -43,7 +72,6 @@ export default function DonationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("monthly");
-  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -59,7 +87,7 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
-  // Update amount based on nationality
+  // Update amount when nationality changes
   useEffect(() => {
     if (!hideAmount) {
       form.setValue("amount", nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount);
@@ -67,57 +95,35 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
-  // Inject Razorpay button script
-  useEffect(() => {
-    if (!isDataSaved || !formRef.current || nationality !== "Indian") return;
-
-    const container = formRef.current;
-    container.innerHTML = ""; // clear old button
-
-    let currentButtonId = razorpayButtonId;
-    let currentIsSub = isSubscription;
-
-    // Handle dual-frequency initiative IDs
-    if (cause === "Ignite Change Initiative") {
-      currentButtonId = frequency === "monthly" ? "pl_SRZFNDgbZeFnpp" : "pl_SRN9Lp4szo4GJs";
-      currentIsSub = frequency === "monthly";
-    } else if (cause === "Relief to the Underprivileged") {
-      currentButtonId = frequency === "monthly" ? "pl_SRkNjBeFddKPwd" : "pl_SRN614kzzmwD8t";
-      currentIsSub = frequency === "monthly";
-    }
-
-    const script = document.createElement("script");
-    if (currentIsSub) {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
-      script.setAttribute("data-subscription_button_id", currentButtonId!);
-      script.setAttribute("data-button_theme", "brand-color");
-    } else {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.setAttribute("data-payment_button_id", currentButtonId!);
-    }
-    script.async = true;
-
-    container.appendChild(script);
-  }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
-
-  useEffect(() => {
-    if (isDataSaved) {
-      document.body.style.pointerEvents = 'auto';
-    }
-  }, [isDataSaved]);
-
   async function onSubmit(values: z.infer<typeof donationSchema>) {
     setIsSubmitting(true);
+
     if (values.nationality === "Non-Indian") {
       window.location.href = "https://stripe.com/in";
       setIsSubmitting(false);
       return;
     }
+
     setIsDataSaved(true);
     setIsSubmitting(false);
   }
 
-  const showFrequencyToggle = cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
+  const showFrequencyToggle =
+    cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
+
+  // Determine correct Razorpay button ID based on cause and frequency
+  let razorpayButtonToUse = razorpayButtonId;
+  let isSubButton = isSubscription;
+
+  if (cause === "Ignite Change Initiative") {
+    razorpayButtonToUse =
+      frequency === "monthly" ? "pl_SRZFNDgbZeFnpp" : "pl_SRN9Lp4szo4GJs";
+    isSubButton = frequency === "monthly";
+  } else if (cause === "Relief to the Underprivileged") {
+    razorpayButtonToUse =
+      frequency === "monthly" ? "pl_SRkNjBeFddKPwd" : "pl_SRN614kzzmwD8t";
+    isSubButton = frequency === "monthly";
+  }
 
   return (
     <Card className="w-full border-0 shadow-none rounded-none bg-background overflow-hidden">
@@ -132,9 +138,12 @@ export default function DonationForm({
                 height={48}
                 className="object-contain mb-4"
               />
-              <h2 className="text-2xl font-bold font-headline uppercase text-center">{formTitle}</h2>
+              <h2 className="text-2xl font-bold font-headline uppercase text-center">
+                {formTitle}
+              </h2>
               <p className="text-muted-foreground text-xs uppercase tracking-widest text-center mt-1">{formSubtitle}</p>
             </div>
+
             <FormProvider {...form}>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -143,12 +152,12 @@ export default function DonationForm({
                     donationAmountsNonIndian={donationAmountsNonIndian}
                     hideAmount={hideAmount}
                   />
-                  <Button 
-                    type="submit" 
-                    className="w-full h-12 text-lg font-bold transition-all hover:scale-[1.02]" 
+                  <Button
+                    type="submit"
+                    className="w-full h-12 text-lg font-bold transition-all hover:scale-[1.02]"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin" /> : 'Confirm & Proceed'}
+                    {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin" /> : "Confirm & Proceed"}
                   </Button>
                 </form>
               </Form>
@@ -163,9 +172,11 @@ export default function DonationForm({
               height={40}
               className="object-contain"
             />
-            
+
             <div className="text-center space-y-2">
-              <h2 className="text-xl font-bold font-headline uppercase text-primary">Be Part of the Change</h2>
+              <h2 className="text-xl font-bold font-headline uppercase text-primary">
+                Be Part of the Change
+              </h2>
               <p className="text-sm text-muted-foreground px-4">
                 Please complete your donation using the Razorpay button below.
               </p>
@@ -180,36 +191,40 @@ export default function DonationForm({
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="monthly" id="monthly" />
-                    <Label htmlFor="monthly" className="font-semibold cursor-pointer flex items-center gap-2">
-                      Monthly Impact Partner <Heart className="h-3 w-3 fill-primary text-primary" /> <span className="text-[10px] text-primary uppercase font-bold">(Recommended)</span>
+                    <Label
+                      htmlFor="monthly"
+                      className="font-semibold cursor-pointer flex items-center gap-2"
+                    >
+                      Monthly Impact Partner <Heart className="h-3 w-3 fill-primary text-primary" />{" "}
+                      <span className="text-[10px] text-primary uppercase font-bold">
+                        (Recommended)
+                      </span>
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="onetime" id="onetime" />
-                    <Label htmlFor="onetime" className="font-semibold cursor-pointer">One-time Supporter</Label>
+                    <Label htmlFor="onetime" className="font-semibold cursor-pointer">
+                      One-time Supporter
+                    </Label>
                   </div>
                 </RadioGroup>
               </div>
             )}
-            
-            <form 
-              key={`razorpay-form-${frequency}-${isDataSaved}`} // force remount on frequency change
-              ref={formRef}
-              className="w-full flex justify-center py-6 min-h-[100px]"
-              style={{ pointerEvents: 'auto' }}
-            >
-              {/* Razorpay button injected here */}
+
+            {/* Razorpay button injected INSIDE this form */}
+            <form className="w-full flex justify-center py-6 min-h-[100px]">
+              <RazorpayButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
             </form>
 
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => setIsDataSaved(false)}
               className="text-muted-foreground hover:text-primary flex items-center gap-2"
             >
               <ArrowLeft className="h-4 w-4" /> Go Back
             </Button>
-            
+
             <p className="text-[10px] text-muted-foreground uppercase tracking-widest text-center">
               Secure Transaction by Razorpay
             </p>
