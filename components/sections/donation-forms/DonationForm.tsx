@@ -70,6 +70,8 @@ export default function DonationForm({
     if (!isDataSaved || !formRef.current || nationality === "Non-Indian") return;
 
     const formElement = formRef.current;
+    
+    // Crucial: Clear existing content to force re-render of Razorpay button
     formElement.innerHTML = "";
 
     const script = document.createElement("script");
@@ -77,7 +79,7 @@ export default function DonationForm({
     let buttonId = razorpayButtonId;
     let isSub = isSubscription;
 
-    // Special logic for dual-frequency initiatives
+    // Special logic for initiatives with dual frequency support
     if (cause === "Ignite Change Initiative") {
       if (frequency === "monthly") {
         buttonId = "pl_SRZFNDgbZeFnpp";
@@ -96,17 +98,26 @@ export default function DonationForm({
       }
     }
 
+    // Add a unique timestamp to force the script to re-execute every time
+    const cacheBuster = `?t=${Date.now()}`;
+
     if (isSub) {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
       script.setAttribute("data-subscription_button_id", buttonId!);
       script.setAttribute("data-button_theme", "brand-color");
     } else {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
       script.setAttribute("data-payment_button_id", buttonId!);
     }
 
     script.async = true;
-    formElement.appendChild(script);
+    
+    // Use a small timeout to ensure DOM is fully ready for the injection
+    const timeoutId = setTimeout(() => {
+      formElement.appendChild(script);
+    }, 10);
+
+    return () => clearTimeout(timeoutId);
 
   }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
 
@@ -205,7 +216,9 @@ export default function DonationForm({
             <form 
               ref={formRef}
               className="w-full flex justify-center py-6 min-h-[100px]"
+              style={{ pointerEvents: 'auto' }}
             >
+              {/* Razorpay Button Injected Here */}
             </form>
 
             <Button 
