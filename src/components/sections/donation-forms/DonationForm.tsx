@@ -67,59 +67,56 @@ export default function DonationForm({
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
   useEffect(() => {
-    if (!isDataSaved || !formRef.current || nationality === "Non-Indian") return;
+    if (!isDataSaved || !formRef.current || nationality !== "Indian") return;
 
-    const formElement = formRef.current;
-    
-    // Clear existing content to force re-render of Razorpay button
-    formElement.innerHTML = "";
+    const container = formRef.current;
+    container.innerHTML = ""; // Clear previous script/button
 
-    const script = document.createElement("script");
-    
-    let buttonId = razorpayButtonId;
-    let isSub = isSubscription;
+    let currentButtonId = razorpayButtonId;
+    let currentIsSub = isSubscription;
 
-    // Special logic for initiatives with dual frequency support
+    // Handle initiatives with frequency toggles
     if (cause === "Ignite Change Initiative") {
       if (frequency === "monthly") {
-        buttonId = "pl_SRZFNDgbZeFnpp";
-        isSub = true;
+        currentButtonId = "pl_SRZFNDgbZeFnpp";
+        currentIsSub = true;
       } else {
-        buttonId = "pl_SRN9Lp4szo4GJs";
-        isSub = false;
+        currentButtonId = "pl_SRN9Lp4szo4GJs";
+        currentIsSub = false;
       }
     } else if (cause === "Relief to the Underprivileged") {
       if (frequency === "monthly") {
-        buttonId = "pl_SRkNjBeFddKPwd";
-        isSub = true;
+        currentButtonId = "pl_SRkNjBeFddKPwd";
+        currentIsSub = true;
       } else {
-        buttonId = "pl_SRN614kzzmwD8t";
-        isSub = false;
+        currentButtonId = "pl_SRN614kzzmwD8t";
+        currentIsSub = false;
       }
     }
 
-    // Add a unique timestamp to force the script to re-execute every time
-    const cacheBuster = `?t=${Date.now()}`;
-
-    if (isSub) {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
-      script.setAttribute("data-subscription_button_id", buttonId!);
+    const script = document.createElement("script");
+    if (currentIsSub) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+      script.setAttribute("data-subscription_button_id", currentButtonId!);
       script.setAttribute("data-button_theme", "brand-color");
     } else {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
-      script.setAttribute("data-payment_button_id", buttonId!);
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.setAttribute("data-payment_button_id", currentButtonId!);
     }
-
     script.async = true;
-    
+
+    // Small delay ensures React has finished updating the DOM before Razorpay runs
     const timeoutId = setTimeout(() => {
-      formElement.appendChild(script);
-    }, 10);
+      container.appendChild(script);
+    }, 50);
 
-    return () => clearTimeout(timeoutId);
-
+    return () => {
+      clearTimeout(timeoutId);
+      container.innerHTML = "";
+    };
   }, [isDataSaved, frequency, nationality, cause, razorpayButtonId, isSubscription]);
 
+  // Ensure interactions are possible when the modal is open
   useEffect(() => {
     if (isDataSaved) {
       document.body.style.pointerEvents = 'auto';
