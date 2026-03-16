@@ -12,8 +12,7 @@ import { donationSchema } from "@/components/sections/donation-forms/schemas";
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Loader2, ArrowLeft, Heart } from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 interface DonationFormProps {
   cause: string;
@@ -28,7 +27,7 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Component to inject Razorpay inside a mandatory form tag
+// Component to inject Razorpay inside a form tag with cleanup and cache-busting
 function RazorpayFormButton({
   buttonId,
   isSub,
@@ -47,7 +46,7 @@ function RazorpayFormButton({
       container.removeChild(container.firstChild);
     }
 
-    // Inject after DOM updates have settled
+    // Inject after DOM updates have settled to ensure clean state
     const timeoutId = setTimeout(() => {
       const script = document.createElement("script");
       const cacheBuster = `?t=${Date.now()}`;
@@ -213,41 +212,57 @@ export default function DonationForm({
             </div>
 
             {showFrequencyToggle && (
-              <div className="bg-muted p-4 rounded-lg w-full">
-                <RadioGroup
-                  value={frequency}
-                  onValueChange={(v) => setFrequency(v as "monthly" | "onetime")}
-                  className="flex flex-col space-y-3"
+              <div className="space-y-4 w-full py-2 px-4">
+                {/* Monthly Option */}
+                <div 
+                  className="flex items-center gap-3 cursor-pointer group" 
+                  onClick={() => setFrequency("monthly")}
                 >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="monthly" id="monthly" />
-                    <Label
-                      htmlFor="monthly"
-                      className="font-semibold cursor-pointer flex items-center gap-2"
-                    >
-                      Monthly Impact Partner{" "}
-                      <Heart className="h-3 w-3 fill-primary text-primary" />{" "}
-                      <span className="text-[10px] text-primary uppercase font-bold">
-                        (Recommended)
-                      </span>
-                    </Label>
+                  <div className={cn(
+                    "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
+                    frequency === "monthly" ? "border-primary" : "border-muted-foreground/50"
+                  )}>
+                    {frequency === "monthly" && <div className="w-2.5 h-2.5 rounded-full bg-primary animate-in zoom-in duration-200" />}
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="onetime" id="onetime" />
-                    <Label htmlFor="onetime" className="font-semibold cursor-pointer">
-                      One-time Supporter
-                    </Label>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className={cn("text-base font-bold transition-colors", frequency === "monthly" ? "text-foreground" : "text-muted-foreground")}>
+                      Be monthly impact partner
+                    </span>
+                    <Heart className={cn("h-4 w-4 transition-all", frequency === "monthly" ? "fill-red-600 text-red-600 scale-110" : "text-muted-foreground/50")} />
+                    <span className={cn("text-[10px] uppercase font-bold tracking-tight", frequency === "monthly" ? "text-green-600" : "text-muted-foreground/50")}>
+                      (RECOMMENDED)
+                    </span>
                   </div>
-                </RadioGroup>
+                </div>
+
+                {/* One-time Option */}
+                <div 
+                  className="flex items-center gap-3 cursor-pointer group" 
+                  onClick={() => setFrequency("onetime")}
+                >
+                  <div className={cn(
+                    "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
+                    frequency === "onetime" ? "border-primary" : "border-muted-foreground/50"
+                  )}>
+                    {frequency === "onetime" && <div className="w-2.5 h-2.5 rounded-full bg-primary animate-in zoom-in duration-200" />}
+                  </div>
+                  <span className={cn("text-base font-bold transition-colors", frequency === "onetime" ? "text-foreground" : "text-muted-foreground")}>
+                    one time supporter
+                  </span>
+                </div>
               </div>
             )}
 
-            {/* 🔑 Keyed component forces full remount on frequency toggle */}
-            <RazorpayFormButton
-              key={`${frequency}-${razorpayButtonToUse}`}
-              buttonId={razorpayButtonToUse}
-              isSub={isSubButton}
-            />
+            {/* 🔑 Keyed wrapper forces full remount on frequency toggle to reset Razorpay widget state */}
+            <div 
+              key={`razorpay-remount-${frequency}-${razorpayButtonToUse}`} 
+              className="w-full flex justify-center py-6 min-h-[100px]"
+            >
+              <RazorpayFormButton
+                buttonId={razorpayButtonToUse}
+                isSub={isSubButton}
+              />
+            </div>
 
             <Button
               variant="ghost"
