@@ -44,7 +44,7 @@ export default function DonationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDataSaved, setIsDataSaved] = useState(false);
   const [frequency, setFrequency] = useState<"monthly" | "onetime">("onetime");
-  const buttonContainerRef = useRef<HTMLDivElement>(null);
+  const buttonContainerRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof donationSchema>>({
     resolver: zodResolver(donationSchema),
@@ -60,11 +60,6 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
-  // Reset frequency if cause changes (safety)
-  useEffect(() => {
-    setFrequency("onetime");
-  }, [isDataSaved]);
-
   useEffect(() => {
     if (!hideAmount) {
       form.setValue("amount", nationality === "Indian" ? defaultIndianAmount : defaultNonIndianAmount);
@@ -76,40 +71,34 @@ export default function DonationForm({
     if (!isDataSaved || nationality !== "Indian" || !buttonContainerRef.current) return;
 
     const container = buttonContainerRef.current;
-    container.innerHTML = ""; // Clear existing script/button
+    container.innerHTML = "";
 
     const isIgniteChange = cause === "Ignite Change Initiative";
-    const isMonthly = frequency === "monthly";
-    
+    const ONETIME_ID = isIgniteChange ? "pl_SRN9Lp4szo4GJs" : razorpayButtonId;
+    const MONTHLY_ID = isIgniteChange ? "pl_SRZFNDgbZeFnpp" : razorpayButtonId;
+
     const script = document.createElement("script");
-    
-    // Determine which ID and script to use
-    let targetId = razorpayButtonId;
-    let useSubscriptionScript = isSubscription;
 
-    if (isIgniteChange) {
-      if (isMonthly) {
-        targetId = "pl_SRZFNDgbZeFnpp";
-        useSubscriptionScript = true;
-      } else {
-        targetId = "pl_SRN9Lp4szo4GJs";
-        useSubscriptionScript = false;
-      }
-    }
-
-    if (useSubscriptionScript) {
+    if (isIgniteChange && frequency === "monthly") {
       script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
-      script.setAttribute("data-subscription_button_id", targetId);
+      script.setAttribute("data-subscription_button_id", MONTHLY_ID);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else if (isIgniteChange && frequency === "onetime") {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.setAttribute("data-payment_button_id", ONETIME_ID);
+    } else if (isSubscription) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+      script.setAttribute("data-subscription_button_id", razorpayButtonId);
       script.setAttribute("data-button_theme", "brand-color");
     } else {
       script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.setAttribute("data-payment_button_id", targetId);
+      script.setAttribute("data-payment_button_id", razorpayButtonId);
     }
 
     script.async = true;
     container.appendChild(script);
 
-    // Ensure pointer events are enabled so the third-party button is clickable
+    // Pointer events fix for third-party buttons in overlays
     const originalPointerEvents = document.body.style.pointerEvents;
     document.body.style.pointerEvents = 'auto';
 
@@ -200,8 +189,8 @@ export default function DonationForm({
               </div>
             )}
             
-            {/* Razorpay Button Container */}
-            <div 
+            {/* Razorpay Button Container using form tag as requested */}
+            <form 
               ref={buttonContainerRef}
               className="w-full flex justify-center py-6 min-h-[100px]"
               style={{ pointerEvents: 'auto' }}
