@@ -67,7 +67,7 @@ export default function DonationForm({
     form.setValue("otherAmount", "");
   }, [nationality, form, defaultIndianAmount, defaultNonIndianAmount, hideAmount]);
 
-  // Inject Razorpay button script
+  // Inject Razorpay button script with cache busting
   useEffect(() => {
     if (!isDataSaved || !formRef.current || nationality !== "Indian") return;
 
@@ -87,12 +87,14 @@ export default function DonationForm({
     }
 
     const script = document.createElement("script");
+    const cacheBuster = `?t=${Date.now()}`; // forces a fresh load of the widget
+
     if (currentIsSub) {
-      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js";
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
       script.setAttribute("data-subscription_button_id", currentButtonId!);
       script.setAttribute("data-button_theme", "brand-color");
     } else {
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
       script.setAttribute("data-payment_button_id", currentButtonId!);
     }
     script.async = true;
