@@ -2,7 +2,7 @@
 
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { DonationFormFields } from "@/components/sections/donation-forms/DonationFormFields";
@@ -28,51 +28,42 @@ interface DonationFormProps {
   isSubscription?: boolean;
 }
 
-// Component to inject Razorpay inside a form tag
-function RazorpayFormButton({
-  buttonId,
-  isSub,
-}: {
-  buttonId: string;
-  isSub: boolean;
-}) {
+// Razorpay button wrapper that enforces mandatory 'form' tag context
+function RazorpayFormButton({ buttonId, isSub }: { buttonId: string; isSub: boolean }) {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (!formRef.current) return;
 
-    // Clear old scripts and Razorpay-injected elements
+    // Clear any previous content/scripts to prevent duplicate buttons
     const container = formRef.current;
     while (container.firstChild) {
       container.removeChild(container.firstChild);
     }
 
-    // Inject after DOM updates to ensure clean initialization
-    const timeoutId = setTimeout(() => {
-      if (!container) return;
-      
-      const script = document.createElement("script");
-      const cacheBuster = `?t=${Date.now()}`;
+    const script = document.createElement("script");
+    const cacheBuster = `?t=${Date.now()}`;
 
-      if (isSub) {
-        script.src =
-          "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
-        script.setAttribute("data-subscription_button_id", buttonId);
-        script.setAttribute("data-button_theme", "brand-color");
-      } else {
-        script.src =
-          "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
-        script.setAttribute("data-payment_button_id", buttonId);
-      }
+    if (isSub) {
+      script.src = "https://cdn.razorpay.com/static/widget/subscription-button.js" + cacheBuster;
+      script.setAttribute("data-subscription_button_id", buttonId);
+      script.setAttribute("data-button_theme", "brand-color");
+    } else {
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js" + cacheBuster;
+      script.setAttribute("data-payment_button_id", buttonId);
+    }
 
-      script.async = true;
-      container.appendChild(script);
-    }, 0);
-
-    return () => clearTimeout(timeoutId);
+    script.async = true;
+    container.appendChild(script);
   }, [buttonId, isSub]);
 
-  return <form ref={formRef} className="w-full flex justify-center py-6 min-h-[100px]" />;
+  return (
+    <form 
+      ref={formRef} 
+      className="w-full flex justify-center py-6 min-h-[100px]" 
+      style={{ pointerEvents: 'auto' }} 
+    />
+  );
 }
 
 export default function DonationForm({
@@ -105,6 +96,7 @@ export default function DonationForm({
 
   const nationality = form.watch("nationality");
 
+  // Update amount on nationality change
   useEffect(() => {
     if (!hideAmount) {
       form.setValue(
@@ -127,9 +119,9 @@ export default function DonationForm({
   }
 
   const showFrequencyToggle =
-    cause === "Ignite Change Initiative" ||
-    cause === "Relief to the Underprivileged";
+    cause === "Ignite Change Initiative" || cause === "Relief to the Underprivileged";
 
+  // Determine Razorpay button ID based on frequency
   let razorpayButtonToUse = razorpayButtonId;
   let isSubButton = isSubscription;
 
@@ -198,7 +190,7 @@ export default function DonationForm({
                 Be Part of the Change
               </h2>
               <p className="text-sm text-muted-foreground px-4">
-                Please complete your donation using the Razorpay button below.
+                Please complete your donation using Razorpay below.
               </p>
             </div>
 
@@ -215,7 +207,8 @@ export default function DonationForm({
                       htmlFor="monthly"
                       className="font-semibold cursor-pointer flex items-center gap-2"
                     >
-                      Monthly Impact Partner <Heart className="h-3 w-3 fill-primary text-primary" />{" "}
+                      Monthly Impact Partner{" "}
+                      <Heart className="h-3 w-3 fill-primary text-primary" />
                       <span className="text-[10px] text-primary uppercase font-bold">
                         (Recommended)
                       </span>
@@ -231,12 +224,9 @@ export default function DonationForm({
               </div>
             )}
 
-            {/* 🔑 Keyed wrapper forces full remount on frequency toggle to fix Razorpay initialization cache */}
-            <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full">
-              <RazorpayFormButton
-                buttonId={razorpayButtonToUse}
-                isSub={isSubButton}
-              />
+            {/* 🔑 Keyed Razorpay wrapper forces full remount on frequency change */}
+            <div key={`razorpay-${frequency}-${razorpayButtonToUse}`} className="w-full flex justify-center py-6 min-h-[100px]">
+              <RazorpayFormButton buttonId={razorpayButtonToUse} isSub={isSubButton} />
             </div>
 
             <Button
