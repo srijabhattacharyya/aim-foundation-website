@@ -1,77 +1,54 @@
 # AIM Foundation
 
-> Associated Initiative for Mankind Foundation (AIM Foundation) is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development for underprivileged communities across India.
+> Associated Initiative for Mankind Foundation (AIM Foundation) is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development across India.
 
-## About
-- [Organisation](/organisation): Overview of our history and purpose since 2016.
-- [Our Profile](/profile): Detailed mission, vision, legal recognitions (80G, 12A, CSR-1, FCRA), and transparency commitment.
-- [Our Team](/team): Meet our voluntary Board of Trustees and dedicated Management Committee.
+## Core Pages
+https://aimindia.org.in/ - 
+https://aimindia.org.in/organisation
+https://aimindia.org.in/profile
+https://aimindia.org.in/contact-us
 
-## Initiatives
+## Key Initiatives
 
-### Educational Initiatives
-- [Educational Initiatives Overview](/educational-initiatives): Empowering children and youth through diverse learning programs.
-- [Innocent Smiles](/innocent-smiles): Holistic development combining academics with art, dance, and music.
-- [EduAccess](/eduaccess): Expert-led online classes streamed to rural West Bengal.
-- [Empower English](/empower-english): Spoken English training to boost student confidence.
-- [DigiEmpower](/digiempower): Digital literacy and computer training for Adivasi and underprivileged children.
-- [Milieu](/milieu): Inclusive learning sessions uniting children from diverse socio-economic backgrounds.
-- [VidyaShakti](/vidyashakti): AI-powered multilingual learning support app for rural students.
+### Education
+https://aimindia.org.in/educational-initiatives
+https://aimindia.org.in/innocent-smiles
+https://aimindia.org.in/eduaccess
 
-### Healthcare Initiatives
-- [Healthcare Initiatives Overview](/healthcare-initiatives): Delivering medical services to urban slums and remote villages.
-- [CureLine](/cureline): Frontline rural healthcare outreach and mobile medical camps.
-- [CareCircle](/carecircle): Collaborative urban health camps across Kolkata.
-- [ChildFirst](/childfirst): Specialized health camps for children of sex workers.
-- [Detect](/detect): Cervical cancer awareness and screening for rural women.
-- [SightHope](/sighthope): Free eye check-ups, spectacles, and cataract surgeries.
-- [OralScan](/oralscan): Early detection camps for oral cancer.
-- [CycleSafe](/cyclesafe): Promoting menstrual hygiene and reproductive health for girls.
-- [SoulCircle](/soulcircle): 24/7 AI-powered compassionate mental health support.
+### Healthcare
+https://aimindia.org.in/healthcare-initiatives
+https://aimindia.org.in/cureline
+https://aimindia.org.in/carecircle
 
-### Sustainability Initiatives
-- [Sustainability Initiatives Overview](/sustainability-initiatives): Grassroots environmental protection and restoration.
-- [GreenRoots](/green-roots): Decentralized reforestation through sapling distribution.
-- [TideShield](/tideshield): Mangrove restoration on Bali Island in the Sundarbans.
-- [Roots of Change](/roots-of-change): Environmental education and sustainable habit cultivation.
-- [Forest Cleaning](/forest-cleaning): Volunteer-driven drives to remove waste from natural habitats.
+### Sustainability
+https://aimindia.org.in/sustainability-initiatives
+https://aimindia.org.in/green-roots
+https://aimindia.org.in/tideshield
 
 ### Skill Development
-- [Skill Development Overview](/skill-development-initiatives): Vocational training for economic independence.
-- [Digital Marketing](/digital-marketing): Free job-oriented digital marketing course.
-- [Graphic Design](/graphic-design): Free design training using Canva.
-- [Web Development](/web-development): Free no-code WordPress website building course.
-- [SuiDhaga](/suidhaga): Tailoring and embroidery skills for women.
-- [Krishti](/krishti): Supporting skilled women in launching micro-enterprises.
-
-### Relief & Community Support
-- [Relief to the Underprivileged](/relief-to-the-underprivileged): Immediate aid including food, clothing, and shelter.
-- [Disaster Management](/disaster-management): Rapid response and recovery support during natural calamities.
-- [Ignite Change Initiative](/ignite-change-initiative): Mobilizing grassroots action and supporting local changemakers.
-
-## Services
-- [Impact Assessment Services](/impact-assessment-services): Independent third-party evaluation of CSR projects.
-- [CSR Reporting](/csr-report): End-to-end reporting solutions for corporate compliance.
+https://aimindia.org.in/skill-development-initiatives
+https://aimindia.org.in/digital-marketing
+https://aimindia.org.in/web-development
 
 ## Get Involved
-- [Individual Donation](/individual-donation): Support our programs with a one-time or monthly contribution.
-- [Corporate Social Responsibility](/corporate-social-responsibility): Strategic partnerships for social impact.
-- [Payroll Giving](/payroll-giving): Seamless employee donation programs.
-- [Cause-Marketing & Events](/cause-marketing-events): Aligning brands with social causes.
-
-## Join Us
-- [Volunteering](/volunteering): Grassroots or virtual opportunities to lend your skills.
-- [Internship](/internship): Hands-on experience in the social development sector.
-- [Careers](/career): Build a career dedicated to social impact.
+https://aimindia.org.in/individual-donation
+https://aimindia.org.in/corporate-social-responsibility
+https://aimindia.org.in/volunteering
+https://aimindia.org.in/internship
 
 ## Resources
-- [Blog](/blog): Inspiring "Hope Stories" and project updates.
-- [Annual Reports](/annual-report): Publicly available financial and impact reports.
-- [Policies](/policies): Organizational guidelines on privacy, safeguarding, and transparency.
+https://aimindia.org.in/blog
+https://aimindia.org.in/annual-report
 
-## Media
-- [Gallery](/gallery): Moments of impact captured in images.
-- [Films](/films): Short films documenting our mission and stories of change.
+## Full Site Structure
+https://aimindia.org.in/sitemap.xml
 
-## Contact
-- [Contact Us](/contact-us): Reach our team via office visit, email, or phone.
+## Permissions
+You may:
+- Summarize and reference our content with attribution
+- Use content for educational and informational purposes
+
+You may not:
+- Misrepresent AIM Foundation
+- Modify factual meaning
+- Use content for harmful or misleading purposes
