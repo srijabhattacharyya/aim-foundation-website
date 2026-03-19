@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
     url: 'https://www.aimindia.org.in/',
     images: [
       {
-        url: 'https://www.aimindia.org.in/og-image.jpg', // Replace with your actual OG image URL
+        url: 'https://www.aimindia.org.in/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'AIM Foundation initiatives',
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AIM Foundation | Leading NGO Uplifting the Underprivileged',
     description: 'Transforming lives through education, healthcare, environmental action, and women’s empowerment in Kolkata and beyond.',
-    images: ['https://www.aimindia.org.in/og-image.jpg'], // Replace with your actual Twitter image URL
+    images: ['https://www.aimindia.org.in/og-image.jpg'],
     site: '@aimindiango',
     creator: '@aimindiango',
   },
@@ -48,7 +47,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
   display: 'swap',
@@ -65,50 +63,31 @@ export default function RootLayout({
     "@type": "NGO",
     "name": "AIM Foundation",
     "alternateName": "Associated Initiative for Mankind Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "description":
-      "AIM Foundation is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development for underprivileged communities across India.",
-    "foundingDate": "2016",
-    "foundingLocation": {
-      "@type": "Place",
-      "name": "Kolkata, West Bengal, India"
-    },
+    "url": "https://aimindia.org.in",
+    "logo": "https://aimindia.org.in/logo.png",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "41, Ballygaunge Terrace, Kolkata 700029",
+      "streetAddress": "41, Ballygaunge Terrace",
       "addressLocality": "Kolkata",
       "addressRegion": "West Bengal",
       "postalCode": "700029",
       "addressCountry": "IN"
     },
-    "contactPoint": [
-      {
-        "@type": "ContactPoint",
-        "telephone": "+91-6290022813",
-        "contactType": "Customer Service",
-        "areaServed": "IN",
-        "availableLanguage": ["English", "Bengali", "Hindi"]
-      }
-    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-6290022813",
+      "contactType": "customer service",
+      "email": "info@aimindia.org.in"
+    },
     "sameAs": [
-      "https://www.facebook.com/aimindiango/",
+      "https://www.facebook.com/aimindiango",
+      "https://www.instagram.com/aimfoundation_ngo",
       "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/"
+      "https://www.linkedin.com/in/aim-foundation-ngo/",
+      "https://www.youtube.com/@aimfoundation2604"
     ],
-    "knowsAbout": [
-      "Education",
-      "Healthcare",
-      "Women Empowerment",
-      "Environmental Conservation",
-      "Community Development",
-      "Child Welfare",
-      "Skill Development",
-      "Plantation Drives",
-      "Hygiene Awareness",
-      "Rural Development"
-    ]
+    "description": "A leading NGO in Kolkata dedicated to education, healthcare, and sustainability.",
+    "taxID": "80G/12A/CSR-1/FCRA Certified"
   };
 
   const measurementId = "G-0Q40BRFCRS";
@@ -155,7 +134,6 @@ export default function RootLayout({
           src="https://www.facebook.com/tr?id=1912559689679432&ev=PageView&noscript=1"
           />
         </noscript>
-        {/* End Meta Pixel Code */}
       </head>
       <body className="font-body antialiased">
         {children}

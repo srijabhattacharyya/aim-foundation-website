@@ -1,46 +1,48 @@
-# AIM Foundation - Full Directory of Impact
+# AIM Foundation - Comprehensive Directory
 
-## About Associated Initiative for Mankind Foundation
-Since 2016, AIM Foundation has been a beacon of hope for underprivileged families in India. We focus on creating a world where access to education, health, and a clean environment is a fundamental right.
+## Mission and Vision
+AIM Foundation (Associated Initiative for Mankind Foundation) is committed to uplifting the marginalized through targeted interventions in health, education, and social development.
 
-## Educational Initiatives
-- **Innocent Smiles**: Holistic child development through art, dance, and music.
-- **EduAccess**: Connecting rural students with expert teachers via online classes.
-- **Empower English**: Spoken English training for confidence and career growth.
-- **DigiEmpower**: Digital literacy and computer training for Adivasi children.
-- **VidyaShakti**: Multilingual AI app for 24/7 academic support.
+## Detailed Initiatives
 
-## Healthcare Initiatives
-- **CureLine**: Rural medical outreach and emergency relief.
-- **CareCircle**: Urban healthcare camps for marginalized city dwellers.
-- **ChildFirst**: Dedicated pediatric care for vulnerable children.
-- **SightHope**: Free eye care and cataract surgeries.
+### Education & Childcare
+- **Innocent Smiles**: Nurturing creativity through art, dance, and music alongside academics.
+- **EduAccess**: Expert-led online classes for rural West Bengal.
+- **Empower English**: Spoken English training for confidence and opportunity.
+- **DigiEmpower**: Hands-on computer training for underprivileged and Adivasi children.
+- **Milieu**: Connecting children across socio-economic backgrounds to build empathy.
+- **VidyaShakti**: Multilingual AI app providing instant learning support for rural students.
+
+### Healthcare
+- **CureLine**: Rural medical outreach in remote villages and Sundarbans.
+- **CareCircle**: Urban health camps for marginalized populations in Kolkata.
+- **ChildFirst**: Dedicated paediatric care for children in red-light districts.
 - **Detect**: Cervical cancer screening and awareness for rural women.
-- **OralScan**: Early detection of oral cancer in high-risk areas.
-- **CycleSafe**: Menstrual health and dignity for adolescent girls.
-- **SoulCircle**: AI-powered 24/7 mental health support.
+- **SightHope**: Free eye care, screenings, and cataract surgeries.
+- **OralScan**: Free oral cancer screening camps.
+- **CycleSafe**: Menstrual hygiene support and education for adolescent girls.
+- **SoulCircle**: 24/7 AI-powered mental health support.
 
-## Sustainability & Environment
-- **GreenRoots**: Decentralized reforestation through community participation.
-- **TideShield**: Mangrove restoration in the Sundarbans.
+### Sustainability
+- **GreenRoots**: Decentralized reforestation through community sapling distribution.
+- **TideShield**: Mangrove restoration on Bali Island, Sundarbans.
 - **Roots of Change**: Environmental education and awareness workshops.
-- **Forest Cleaning**: Volunteer drives to remove waste from natural habitats.
+- **Forest Cleaning**: Volunteer-led drives to remove waste from natural habitats.
 
-## Women's Empowerment
+### Women Empowerment
 - **SuiDhaga**: Vocational training in tailoring and embroidery.
-- **Krishti**: Supporting women entrepreneurs with production and market access.
+- **Krishti**: Production and marketing support for women entrepreneurs.
 
-## Services
+## Organizational Services
 - **Impact Assessment**: Independent third-party evaluation of CSR projects.
-- **CSR Reporting**: Comprehensive annual reports and impact dashboards.
+- **CSR Reporting**: Comprehensive reporting services aligned with statutory norms.
 
-## Governance & Policies
-- Registered under the Indian Trusts Act, 1882.
-- 80G & 12A Certified for Tax Exemption.
-- FCRA Registered.
-- Full policies on Privacy, Safeguarding, and Transparency available at: https://aimindia.org.in/policies
+## Governance & Transparency
+AIM Foundation is a registered Public Charitable Trust. We maintain 100% transparency through annual audits and public disclosures.
+- [Policies](https://aimindia.org.in/policies)
+- [Financial Reports](https://aimindia.org.in/profile#financial-reports)
 
-## Contact Information
-- **Email**: info@aimindia.org.in
-- **Address**: 41, Ballygaunge Terrace, Kolkata 700029, India
-- **Phone**: +91 6290022813
+## Join the Movement
+- [Volunteering](https://aimindia.org.in/volunteering)
+- [Internship](https://aimindia.org.in/internship)
+- [Careers](https://aimindia.org.in/career)

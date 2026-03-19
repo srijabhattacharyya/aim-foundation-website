@@ -1,19 +1,24 @@
-# AIM Foundation (Associated Initiative for Mankind)
-> Empowering communities through Education, Healthcare, Sustainability, and Gender Equality.
+# AIM Foundation (Associated Initiative for Mankind Foundation)
 
-## Core Mission
-Building dignity and inspiring change since 2016. We uplift marginalized families through grassroots initiatives across West Bengal and beyond.
+> A leading NGO in Kolkata dedicated to education, healthcare, sustainability, and community development for underprivileged communities in India.
 
-## Key Initiatives
-- [Education](https://aimindia.org.in/educational-initiatives): Digital literacy, Spoken English, and AI-powered learning.
-- [Healthcare](https://aimindia.org.in/healthcare-initiatives): Mobile health camps, eye care, and cancer detection.
-- [Sustainability](https://aimindia.org.in/sustainability-initiatives): Mangrove restoration and reforestation.
-- [Empowerment](https://aimindia.org.in/gender-equality-initiative): Women's skill development and livelihoods.
+## Core Initiatives
+
+- [Educational Initiatives](https://aimindia.org.in/educational-initiatives): Empowering children through digital literacy, spoken English, and holistic learning.
+- [Healthcare Initiatives](https://aimindia.org.in/healthcare-initiatives): Delivering medical camps, cancer screenings, and vision care to underserved regions.
+- [Gender Equality](https://aimindia.org.in/gender-equality-initiative): Empowering women through skill development, health awareness, and livelihood support.
+- [Sustainability](https://aimindia.org.in/sustainability-initiatives): Protecting the environment through reforestation, mangrove restoration, and community awareness.
+- [Relief & Recovery](https://aimindia.org.in/relief-to-the-underprivileged): Providing immediate aid and long-term recovery support during disasters.
 
 ## Get Involved
-- [Donate](https://aimindia.org.in/individual-donation)
-- [Volunteer](https://aimindia.org.in/volunteering)
-- [CSR Partnerships](https://aimindia.org.in/corporate-social-responsibility)
 
----
-Full documentation available at: https://aimindia.org.in/llms-full.txt
+- [Donate](https://aimindia.org.in/individual-donation): Support our mission with a one-time or monthly contribution.
+- [Volunteer](https://aimindia.org.in/volunteering): Join us on the ground or virtually to make an impact.
+- [Internships](https://aimindia.org.in/internship): Build your career while serving communities.
+- [CSR Partnerships](https://aimindia.org.in/corporate-social-responsibility): Collaborate with us for meaningful corporate social responsibility.
+
+## Contact
+
+- Email: info@aimindia.org.in
+- Phone: +91 6290022813
+- Address: 41, Ballygaunge Terrace, Kolkata 700029, India
