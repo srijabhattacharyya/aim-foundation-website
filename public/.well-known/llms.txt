@@ -1,0 +1,22 @@
+# AIM Foundation (Associated Initiative for Mankind Foundation)
+
+Associated Initiative for Mankind Foundation (AIM Foundation) is a leading NGO in Kolkata dedicated to uplifting underprivileged communities through Education, Healthcare, Women Empowerment, and Environmental Sustainability.
+
+## Mission
+To empower marginalized communities by providing access to essential services and fostering self-reliance.
+
+## Core Initiatives
+- Educational: Innocent Smiles (Art/Music), EduAccess (E-learning), Empower English, DigiEmpower, VidyaShakti (AI-powered).
+- Healthcare: CureLine (Rural), CareCircle (Urban), ChildFirst (Pediatric), Detect (Cervical Cancer), SightHope (Vision), OralScan.
+- Empowerment: SuiDhaga (Tailoring), Krishti (Entrepreneurship), CycleSafe (Menstrual Health).
+- Sustainability: GreenRoots (Reforestation), TideShield (Mangroves), Roots of Change (Education).
+- Relief: Disaster Management, Relief to the Underprivileged.
+
+## Getting Involved
+- [Donate](https://aimindia.org.in/individual-donation)
+- [Volunteer](https://aimindia.org.in/volunteering)
+- [Internships](https://aimindia.org.in/internship)
+- [CSR Partnerships](https://aimindia.org.in/corporate-social-responsibility)
+
+---
+Full details available at [llms-full.txt](https://aimindia.org.in/.well-known/llms-full.txt)
