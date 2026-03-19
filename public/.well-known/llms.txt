@@ -1,22 +1,48 @@
-# AIM Foundation (Associated Initiative for Mankind Foundation)
+# AIM Foundation
 
-Associated Initiative for Mankind Foundation (AIM Foundation) is a leading NGO in Kolkata dedicated to uplifting underprivileged communities through Education, Healthcare, Women Empowerment, and Environmental Sustainability.
-
-## Mission
-To empower marginalized communities by providing access to essential services and fostering self-reliance.
+AIM Foundation is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development for underprivileged communities across India.
 
 ## Core Initiatives
-- Educational: Innocent Smiles (Art/Music), EduAccess (E-learning), Empower English, DigiEmpower, VidyaShakti (AI-powered).
-- Healthcare: CureLine (Rural), CareCircle (Urban), ChildFirst (Pediatric), Detect (Cervical Cancer), SightHope (Vision), OralScan.
-- Empowerment: SuiDhaga (Tailoring), Krishti (Entrepreneurship), CycleSafe (Menstrual Health).
-- Sustainability: GreenRoots (Reforestation), TideShield (Mangroves), Roots of Change (Education).
-- Relief: Disaster Management, Relief to the Underprivileged.
 
-## Getting Involved
-- [Donate](https://aimindia.org.in/individual-donation)
-- [Volunteer](https://aimindia.org.in/volunteering)
-- [Internships](https://aimindia.org.in/internship)
-- [CSR Partnerships](https://aimindia.org.in/corporate-social-responsibility)
+### Educational Initiatives
+- **Innocent Smiles**: Combines education with art, dance, and music.
+- **EduAccess**: Quality education for rural areas via online classes.
+- **Empower English**: Spoken English training for underserved youth.
+- **DigiEmpower**: Digital literacy and computer training for children.
+- **Milieu**: Fosters empathy by connecting children from diverse backgrounds.
+- **VidyaShakti**: AI-powered multilingual learning app for rural students.
 
----
-Full details available at [llms-full.txt](https://aimindia.org.in/.well-known/llms-full.txt)
+### Healthcare Initiatives
+- **CureLine**: Medical outreach for remote and disaster-hit areas.
+- **CareCircle**: Inclusive medical services for urban marginalized groups.
+- **ChildFirst**: Pediatric health camps for children in red-light districts.
+- **Detect**: Cervical cancer screening and awareness for rural women.
+- **SightHope**: Free eye care, screenings, and cataract surgeries.
+- **OralScan**: Early detection of oral cancer in high-risk communities.
+- **CycleSafe**: Menstrual hygiene and reproductive health support.
+- **SoulCircle**: 24/7 AI-powered mental health support app.
+
+### Sustainability Initiatives
+- **GreenRoots**: Grassroots reforestation and tree distribution.
+- **TideShield**: Mangrove restoration in the Sundarbans.
+- **Roots of Change**: Environmental education and awareness seminars.
+- **Forest Cleaning**: Volunteer-led waste removal in natural habitats.
+
+### Empowerment & Livelihood
+- **SuiDhaga**: Vocational training in tailoring and embroidery.
+- **Krishti**: Supporting women entrepreneurs with production and marketing.
+
+### Relief & Recovery
+- **Disaster Management**: Rapid response and long-term recovery for calamities.
+- **Relief to the Underprivileged**: Essential food, water, and clothing aid.
+- **Ignite Change Initiative**: Supporting grassroots community projects.
+
+## Get Involved
+- **Donations**: Individual, CSR, and Payroll giving options.
+- **Opportunities**: Volunteering, Internships, and Careers.
+
+## Contact Information
+- **Email**: info@aimindia.org.in
+- **Phone**: +91 6290022813
+- **Location**: 41, Ballygaunge Terrace, Kolkata 700029, India.
+- **Website**: https://www.aimindia.org.in

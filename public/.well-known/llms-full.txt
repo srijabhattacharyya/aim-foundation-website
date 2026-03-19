@@ -1,59 +1,59 @@
-# AIM Foundation - Full Directory of Impact
+# AIM Foundation - Full Directory
 
-## Organization Profile
-- Legal Name: Associated Initiative for Mankind Foundation
-- Established: 2016
-- Focus: Education, Health, Environment, Women & Child Welfare.
+Associated Initiative for Mankind (AIM) Foundation is a Public Charitable Trust dedicated to uplifting marginalized communities in India since 2016.
 
-## Initiatives in Detail
+## Mission and Vision
+- **Mission**: To empower underprivileged communities by providing access to education, healthcare, and sustainable livelihood opportunities.
+- **Vision**: A world of equality and dignity where every individual has the power to reach their full potential.
 
-### Education & Child Development
-- **Innocent Smiles**: Art, music, and academic support for underprivileged children.
-- **EduAccess**: Expert-led online classes for rural West Bengal.
-- **Empower English**: Spoken English training for youth confidence.
-- **DigiEmpower**: Digital literacy and computer training.
-- **VidyaShakti**: Multilingual AI app for Class 5-12 learners.
-- **Milieu**: Shared learning between diverse socio-economic groups.
+## Detailed Initiative Directory
 
-### Healthcare & Hygiene
-- **CureLine**: Rural medical camps in remote and forest-fringe areas.
-- **CareCircle**: Urban health camps for daily wage workers and elderly in Kolkata.
-- **ChildFirst**: Pediatric care for children in red-light districts.
-- **Detect**: Cervical cancer screening and awareness for rural women.
-- **SightHope**: Free eye care and cataract surgeries.
-- **OralScan**: Early detection of oral cancer.
-- **SoulCircle**: 24/7 AI-powered mental health support.
+### Educational Initiatives
+- **Innocent Smiles**: Focuses on holistic development via creative arts and academics.
+- **EduAccess**: Connects rural students with expert teachers from a Kolkata studio.
+- **Empower English**: Boosts confidence through communication skills training.
+- **DigiEmpower**: Hands-on computer training in rural and Adivasi villages.
+- **Milieu**: Interactive sessions between students of different socio-economic backgrounds.
+- **VidyaShakti**: Tailored, on-demand AI tutoring for Classes 5-12 in regional languages.
 
-### Women Empowerment & Livelihood
-- **SuiDhaga**: Tailoring and embroidery vocational training.
-- **Krishti**: Production and marketing support for women entrepreneurs.
-- **CycleSafe**: Menstrual hygiene products and reproductive health education.
+### Healthcare Initiatives
+- **CureLine**: Frontline medical camps in Sundarbans, forest-fringes, and flood zones.
+- **CareCircle**: Urban outreach centers providing check-ups and free medicines.
+- **ChildFirst**: Specialized pediatric care for children of sex workers in Sonagachi/Rambagan.
+- **Detect**: Partnership with CNCI for cervical cancer screening in rural West Bengal.
+- **SightHope**: Partnership with Sushrut and B.B. Eye Foundations for free surgeries.
+- **OralScan**: Detection camps focusing on tobacco-related health risks.
+- **CycleSafe**: Workshops and monthly sanitary napkin distribution for adolescent girls.
+- **SoulCircle**: Stigma-free, anonymous emotional guidance via a 24/7 AI chatbot.
 
-### Environmental Sustainability
-- **GreenRoots**: Decentralized tree plantation in homes and schools.
-- **TideShield**: Mangrove restoration in the Sundarbans.
-- **Roots of Change**: Environmental seminars and awareness drives.
-- **Forest Cleaning**: Removing waste from natural habitats.
+### Sustainability & Environment
+- **GreenRoots**: Decentralized afforestation in courtyards and temple grounds.
+- **TideShield**: Planting native species like Avicennia marina to protect Sundarbans coastlines.
+- **Roots of Change**: Practical workshops on waste segregation and composting.
+- **Forest Cleaning**: Mobilizing volunteers for large-scale cleanup drives in Gorumara and beyond.
 
-### Relief & Resilience
-- **Disaster Management**: Rapid response for floods and cyclones.
-- **Relief to the Underprivileged**: Ration kits, blankets, and essential aid.
-- **Ignite Change**: Empowering grassroots changemakers.
+### Women Empowerment & Livelihoods
+- **SuiDhaga**: Skills-based training in stitching and kantha embroidery.
+- **Krishti**: Bridging the gap between training and entrepreneurship via market linkage.
+
+### Relief & Disaster Management
+- **Disaster Response**: Emergency distribution of ration kits, tarpaulins, and medical aid.
+- **Relief Efforts**: Ongoing support for footpath dwellers and fire/flood victims.
+- **Ignite Change**: Seed funding and mentorship for local changemakers.
 
 ## Services for Corporates
-- **Impact Assessment**: Independent third-party evaluation of CSR projects.
-- **CSR Reporting**: End-to-end statutory compliance documentation.
-- **Employee Engagement**: Purpose-driven volunteering and giving programs.
+- **CSR Reporting**: Compliant annual reports and impact assessments.
+- **Impact Assessment**: SROI analysis and third-party evaluations.
+- **Employee Engagement**: Purpose-driven team-building and volunteering.
+- **Cause Marketing**: Strategic brand alignments for social good.
 
-## Governance & Policies
-- Transparency Policy
-- Safeguarding Policy
-- Code of Conduct
-- Privacy Policy
-- Refund & Donation Policies
+## Governance & Transparency
+- **Legal Status**: Registered under Indian Trusts Act, 1882. 12A, 80G, CSR-1, and FCRA compliant.
+- **Leadership**: Board of Trustees (Amitabha Mookherjee, Chandan Roy, Saibal Ganguly, Banasri Bhattacharyya).
+- **Verified By**: Goodstack, Give.do, GuideStar, Google for Non-Profits.
 
-## Contact Information
-- Office: 41, Ballygaunge Terrace, Kolkata 700029, India
-- Email: info@aimindia.org.in
-- Phone: +91 6290022813
-- Website: https://aimindia.org.in
+## Contact
+- **Address**: 41, Ballygaunge Terrace, Kolkata 700029, India.
+- **Head Office**: Sarala Punyashram, 91/34, Bosepukur Road, Kolkata 700042.
+- **Email**: info@aimindia.org.in
+- **Website**: https://www.aimindia.org.in
