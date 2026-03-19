@@ -1,3 +1,4 @@
+# Allow all bots to crawl the site
 User-agent: *
 Allow: /
 
@@ -5,6 +6,10 @@ Allow: /
 Disallow: /admin/
 Disallow: /dashboard/
 Disallow: /login/
+Disallow: /api/
+
+# LLM Discovery (Points AI to your new summary file)
+Link: https://aimindia.org.in/llms.txt; rel="help"
 
 # Sitemap location
-Sitemap: https://www.aimindia.org.in/sitemap.xml
+Sitemap: https://aimindia.org.in/sitemap.xml
