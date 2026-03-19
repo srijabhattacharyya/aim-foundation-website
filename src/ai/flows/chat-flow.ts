@@ -45,7 +45,7 @@ const chatFlow = ai.defineFlow(
       console.error('Could not read knowledge base file:', e);
     }
 
-    const { output } = await ai.generate({
+    const response = await ai.generate({
       system: `You are the "AIM Foundation AI Ambassador," a professional, empathetic, and knowledgeable assistant representing AIM Foundation (Kolkata, India). Your goal is to provide accurate information to donors, volunteers, corporate partners, and beneficiaries.
 
 Your primary source of truth is the following Institutional Knowledge Base:
@@ -75,9 +75,27 @@ INSTRUCTIONS:
       config: {
         temperature: 0.3,
         topP: 0.8,
+        safetySettings: [
+          {
+            category: 'HARM_CATEGORY_HARASSMENT',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          },
+          {
+            category: 'HARM_CATEGORY_HATE_SPEECH',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          },
+          {
+            category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          },
+          {
+            category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          },
+        ],
       }
     });
 
-    return { response: output?.text || "I'm sorry, I'm having trouble connecting right now. Please try again or email us at info@aimindia.org.in." };
+    return { response: response.text || "I'm sorry, I'm having trouble connecting right now. Please try again or email us at info@aimindia.org.in." };
   }
 );
