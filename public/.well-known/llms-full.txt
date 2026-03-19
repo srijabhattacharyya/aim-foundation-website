@@ -1,57 +1,46 @@
-AIM Foundation Institutional Knowledge Base
+# AIM Foundation Institutional Knowledge Base
 
-ABOUT AIM FOUNDATION
-- Formed: 2016
-- Mission: To empower underprivileged communities through education, healthcare, and sustainable livelihood.
-- Belief: "Act with Impact."
-- Locations: Kolkata, Sundarbans, Purulia, Jalpaiguri, Howrah, and more.
+## Organization Overview
+Associated Initiative for Mankind Foundation (AIM Foundation) is a public charitable trust registered in Kolkata, India (2016).
+- **Registration**: Indian Trusts Act, 1882.
+- **Certifications**: 12A, 80G, CSR-1, FCRA.
+- **Location**: 41, Ballygunge Terrace, Kolkata 700029.
 
-CORE INITIATIVES
+## Healthcare Initiatives
+1. **Project Detect**: A cervical cancer screening program targeting rural women. Partners with Chittaranjan National Cancer Institute (CNCI). Focuses on early detection and awareness.
+2. **OralScan**: Free oral cancer screening camps in association with Narayana Health. Targets tobacco users and underserved urban/rural populations.
+3. **SightHope**: Vision care initiative. Provides free eye check-ups, spectacles, and cataract surgeries. Partners with Susrut Eye Foundation and B B Eye Foundation.
+4. **CycleSafe**: Promotes menstrual hygiene among adolescent girls. Provides sanitary napkins and reproductive health education to break social taboos.
+5. **CureLine**: Mobile health camps reaching the "last mile" in the Sundarbans and forest-fringe villages of North Bengal.
+6. **CareCircle**: Urban health initiative providing regular clinics for daily wage earners and senior citizens in Kolkata.
+7. **SoulCircle**: AI-powered 24/7 mental health support app offering a judgment-free space for emotional well-being.
 
-1. Healthcare & Hygiene
-- Project Detect: Cervical cancer screening and awareness for rural women.
-- OralScan: Early detection of oral cancer in underserved communities.
-- SightHope: Free eye care, cataract surgeries, and spectacles distribution.
-- CycleSafe: Menstrual hygiene awareness and sanitary pad distribution for adolescent girls.
-- CareCircle: Urban healthcare camps in Kolkata.
-- CureLine: Rural and remote healthcare outreach.
+## Educational Initiatives
+1. **Innocent Smiles**: Holistic child development through a mix of academic support, art, dance, and music for underprivileged children.
+2. **EduAccess**: Connecting rural classrooms to expert teachers in Kolkata via high-speed internet and high-definition cameras.
+3. **Empower English**: Spoken English training for students in Kolkata, Purba Bardhaman, and Jalpaiguri to improve employability.
+4. **DigiEmpower**: Hands-on computer literacy training for Adivasi and rural children through Dhriti Abilizing Centres.
+5. **VidyaShakti**: A multilingual AI learning app that adjusts to students (Classes 5-12) grade levels and native languages.
+6. **Milieu**: Bringing together children from privileged schools and underserved areas to build empathy and social harmony.
 
-2. Education & Child Development
-- Innocent Smiles: Holistic child development through art, music, and academics.
-- EduAccess: Online classes connecting expert teachers to rural classrooms.
-- Empower English: Spoken English training for youth.
-- DigiEmpower: Digital literacy and computer skills for children.
-- VidyaShakti: Multilingual AI learning app for Classes 5-12.
-- Milieu: Fostering empathy by connecting children from diverse backgrounds.
+## Livelihood & Skills
+1. **SuiDhaga**: Vocational training in tailoring and embroidery for women to foster financial independence.
+2. **Krishti**: An entrepreneurship bridge for SuiDhaga graduates, providing modern infrastructure and marketing support for their handcrafted goods.
+3. **Digital Skills**: Free courses in Canva (Graphic Design), Web Development (WordPress), and Digital Marketing.
 
-3. Environment & Sustainability
-- TideShield: Mangrove restoration in the Sundarbans (Bali Island).
-- GreenRoots: Reforestation and tree plantation at the grassroots level.
-- Roots of Change: Environmental education and awareness seminars.
-- Forest Cleaning: Large-scale cleanup drives in national parks.
+## Environmental Sustainability
+1. **TideShield**: Restoration of mangrove ecosystems on Bali Island, Sundarbans, protecting against coastal erosion and cyclones.
+2. **GreenRoots**: Community-driven reforestation distributing saplings for courtyard and farm-boundary planting.
+3. **Roots of Change**: Environmental education seminars and workshops targeting climate resilience.
+4. **Forest Cleaning**: Large-scale volunteer drives to remove plastic waste from national parks like Gorumara.
 
-4. Livelihood & Women Empowerment
-- SuiDhaga: Tailoring and embroidery training for women.
-- Krishti: Support for women entrepreneurs with production and marketing.
-- Skill Development: Free courses in Digital Marketing, Canva, and Web Dev.
+## Corporate Services
+- **CSR Impact Assessment**: Independent third-party evaluation of social projects across 22+ states in India.
+- **CSR Reporting**: End-to-end statutory and impact reporting aligned with Companies Act 2021 Rules.
+- **Cause-Marketing**: Strategic brand partnerships that link product sales or promotions to social impact.
 
-5. Relief & Disaster Management
-- Disaster Relief: Immediate aid (food, medicine, shelter) during cyclones and floods.
-- Relief to Underprivileged: Support for daily wage workers and marginalized families.
-
-CORPORATE SERVICES
-- CSR Impact Assessment: Independent third-party evaluation of CSR projects.
-- CSR Reporting: Annual reports and impact dashboards compliant with Indian laws.
-- Cause-Marketing: Collaborative branding campaigns for social good.
-- Employee Engagement: Corporate volunteering and payroll giving programs.
-
-POLICIES
-- Transparency: Audited reports and open governance.
-- Safeguarding: Zero tolerance for abuse; child protection priority.
-- Code of Conduct: High ethical standards for all staff and volunteers.
-
-CONTACT INFORMATION
-- Office: 41, Ballygunge Terrace, Kolkata 700029.
-- General/Partnerships: info@aimindia.org.in
-- Careers/HR: hr@aimindia.org.in
-- Phone: +91 6290022813
+## Contact Routing
+- **General/Partnerships**: info@aimindia.org.in
+- **Donations/Receipts**: donation@aimindia.org.in
+- **Careers/HR**: hr@aimindia.org.in
+- **Trustee Queries**: trustee@aimindia.org.in

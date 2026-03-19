@@ -1,23 +1,17 @@
-# AIM Foundation
+# AIM Foundation Hub
+A leading NGO based in Kolkata, India, dedicated to uplifting underserved communities through holistic development.
 
-AIM Foundation is a leading NGO in Kolkata, India, dedicated to uplifting underprivileged communities through impactful initiatives in healthcare, education, sustainability, and women empowerment.
+## Core Mission
+To provide access to quality healthcare, inclusive education, sustainable livelihoods, and environmental protection for the marginalized.
 
-## Initiatives
+## Key Program Areas
+- **Healthcare**: Project Detect (Cervical Cancer), OralScan (Oral Cancer), SightHope (Vision Care/Cataracts), CycleSafe (Menstrual Hygiene).
+- **Education**: Innocent Smiles (Creative Learning), EduAccess (Digital Rural Classroom), VidyaShakti (AI Multilingual Learning App).
+- **Livelihood**: SuiDhaga (Tailoring Skills), Digital Skills (Canva, Web Development, Digital Marketing).
+- **Environment**: TideShield (Mangrove Restoration in Sundarbans), GreenRoots (Reforestation), Roots of Change (Environmental Education).
+- **Relief**: Disaster Management and immediate aid for the underprivileged.
 
-- **Healthcare**: Project Detect (Cancer), OralScan, SightHope (Vision), CycleSafe (Menstrual Health), CareCircle (Urban), CureLine (Rural).
-- **Education**: Innocent Smiles (Arts), EduAccess (E-learning), Empower English, DigiEmpower (Digital Literacy), VidyaShakti (AI App), Milieu (Empathy).
-- **Environment**: TideShield (Mangrove Restoration), GreenRoots (Reforestation), Roots of Change (Education).
-- **Empowerment**: SuiDhaga (Vocational), Krishti (Entrepreneurship), Skill Development Courses.
-- **Relief**: Disaster Management and Support for the Underprivileged.
-
-## Corporate Services
-
-- CSR Impact Assessment & Reporting
-- Cause-Marketing Partnerships
-- Employee Engagement & Payroll Giving
-
-## Contact
-
-- **Email**: info@aimindia.org.in
-- **HR**: hr@aimindia.org.in
+## Contact Information
 - **Address**: 41, Ballygunge Terrace, Kolkata 700029.
+- **Email**: info@aimindia.org.in (General), hr@aimindia.org.in (Careers).
+- **Phone**: +91 6290022813

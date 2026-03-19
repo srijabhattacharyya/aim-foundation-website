@@ -43,19 +43,29 @@ const chatFlow = ai.defineFlow(
   },
   async (input) => {
     let knowledgeBase = '';
-    try {
-      // Primary path: public/.well-known/ (standard Next.js structure)
-      const kbPath = path.join(process.cwd(), 'public/.well-known/llms-full.txt');
-      knowledgeBase = await fs.readFile(kbPath, 'utf-8');
-    } catch (e) {
-      console.warn('Could not read knowledge base from primary path, trying root .well-known');
+    const cwd = process.cwd();
+    
+    // Define potential paths for the knowledge base
+    const paths = [
+      path.join(cwd, 'public/.well-known/llms-full.txt'),
+      path.join(cwd, '.well-known/llms-full.txt'),
+      path.join(cwd, 'llms-full.txt')
+    ];
+
+    for (const kbPath of paths) {
       try {
-        // Fallback for some deployment environments
-        const kbPathFallback = path.join(process.cwd(), '.well-known/llms-full.txt');
-        knowledgeBase = await fs.readFile(kbPathFallback, 'utf-8');
-      } catch (e2) {
-        console.error('Knowledge base file not found in any expected path');
+        knowledgeBase = await fs.readFile(kbPath, 'utf-8');
+        if (knowledgeBase) {
+          console.log(`✅ Successfully loaded knowledge base from: ${kbPath}`);
+          break;
+        }
+      } catch (e) {
+        console.warn(`⚠️ Knowledge base not found at: ${kbPath}`);
       }
+    }
+
+    if (!knowledgeBase) {
+      console.error('❌ Failed to load knowledge base from any expected path.');
     }
 
     const response = await ai.generate({
