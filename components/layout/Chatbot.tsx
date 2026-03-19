@@ -25,14 +25,18 @@ export default function Chatbot() {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      const scrollContainer = scrollRef.current.querySelector('[data-radix-scroll-area-viewport]');
+      if (scrollContainer) {
+        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+      }
     }
-  }, [messages]);
+  }, [messages, isLoading]);
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
     const userMessage = input.trim();
+    const currentHistory = [...messages];
     setInput('');
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setIsLoading(true);
@@ -40,13 +44,14 @@ export default function Chatbot() {
     try {
       const { response } = await chatWithAmbassador({
         message: userMessage,
-        history: messages
+        history: currentHistory
       });
       setMessages(prev => [...prev, { role: 'model', content: response }]);
     } catch (error) {
+      console.error('Chat error:', error);
       setMessages(prev => [...prev, { 
         role: 'model', 
-        content: "I apologize, but I encountered an error. Please reach out to us at info@aimindia.org.in for assistance." 
+        content: "I'm having a brief technical hiccup. Please reach out to our team at info@aimindia.org.in or try asking me again in a moment." 
       }]);
     } finally {
       setIsLoading(false);
@@ -56,7 +61,7 @@ export default function Chatbot() {
   return (
     <div className="fixed bottom-6 left-6 z-50 flex flex-col items-start">
       {isOpen && (
-        <Card className="mb-4 w-[350px] sm:w-[400px] h-[500px] shadow-2xl flex flex-col border-primary/20 animate-in slide-in-from-bottom-5 duration-300">
+        <Card className="mb-4 w-[320px] sm:w-[400px] h-[500px] shadow-2xl flex flex-col border-primary/20 animate-in slide-in-from-bottom-5 duration-300">
           <CardHeader className="bg-primary text-primary-foreground p-4 flex flex-row items-center justify-between rounded-t-lg">
             <div className="flex items-center gap-2">
               <div className="bg-white p-1 rounded-full">

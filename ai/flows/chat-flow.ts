@@ -27,7 +27,12 @@ const ChatOutputSchema = z.object({
 export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
 export async function chatWithAmbassador(input: ChatInput): Promise<ChatOutput> {
-  return chatFlow(input);
+  try {
+    return await chatFlow(input);
+  } catch (error) {
+    console.error('chatWithAmbassador server action error:', error);
+    return { response: "I'm having trouble connecting to my knowledge base right now. Please reach out to us at info@aimindia.org.in for direct assistance." };
+  }
 }
 
 const chatFlow = ai.defineFlow(
@@ -39,10 +44,18 @@ const chatFlow = ai.defineFlow(
   async (input) => {
     let knowledgeBase = '';
     try {
+      // Primary path: public/.well-known/ (standard Next.js structure)
       const kbPath = path.join(process.cwd(), 'public/.well-known/llms-full.txt');
       knowledgeBase = await fs.readFile(kbPath, 'utf-8');
     } catch (e) {
-      console.error('Could not read knowledge base file:', e);
+      console.warn('Could not read knowledge base from primary path, trying root .well-known');
+      try {
+        // Fallback for some deployment environments
+        const kbPathFallback = path.join(process.cwd(), '.well-known/llms-full.txt');
+        knowledgeBase = await fs.readFile(kbPathFallback, 'utf-8');
+      } catch (e2) {
+        console.error('Knowledge base file not found in any expected path');
+      }
     }
 
     const response = await ai.generate({
@@ -50,7 +63,7 @@ const chatFlow = ai.defineFlow(
 
 Your primary source of truth is the following Institutional Knowledge Base:
 ---
-${knowledgeBase}
+${knowledgeBase || "Information about AIM Foundation mission, healthcare, education, livelihood, environment and corporate services."}
 ---
 
 INSTRUCTIONS:
