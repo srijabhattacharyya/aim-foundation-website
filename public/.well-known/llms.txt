@@ -1,48 +1,19 @@
-# AIM Foundation
+# AIM Foundation (Associated Initiative for Mankind)
+> Empowering communities through Education, Healthcare, Sustainability, and Gender Equality.
 
-AIM Foundation is a leading NGO in Kolkata dedicated to education, healthcare, women empowerment, environment, and community development for underprivileged communities across India.
+## Core Mission
+Building dignity and inspiring change since 2016. We uplift marginalized families through grassroots initiatives across West Bengal and beyond.
 
-## Core Initiatives
-
-### Educational Initiatives
-- **Innocent Smiles**: Combines education with art, dance, and music.
-- **EduAccess**: Quality education for rural areas via online classes.
-- **Empower English**: Spoken English training for underserved youth.
-- **DigiEmpower**: Digital literacy and computer training for children.
-- **Milieu**: Fosters empathy by connecting children from diverse backgrounds.
-- **VidyaShakti**: AI-powered multilingual learning app for rural students.
-
-### Healthcare Initiatives
-- **CureLine**: Medical outreach for remote and disaster-hit areas.
-- **CareCircle**: Inclusive medical services for urban marginalized groups.
-- **ChildFirst**: Pediatric health camps for children in red-light districts.
-- **Detect**: Cervical cancer screening and awareness for rural women.
-- **SightHope**: Free eye care, screenings, and cataract surgeries.
-- **OralScan**: Early detection of oral cancer in high-risk communities.
-- **CycleSafe**: Menstrual hygiene and reproductive health support.
-- **SoulCircle**: 24/7 AI-powered mental health support app.
-
-### Sustainability Initiatives
-- **GreenRoots**: Grassroots reforestation and tree distribution.
-- **TideShield**: Mangrove restoration in the Sundarbans.
-- **Roots of Change**: Environmental education and awareness seminars.
-- **Forest Cleaning**: Volunteer-led waste removal in natural habitats.
-
-### Empowerment & Livelihood
-- **SuiDhaga**: Vocational training in tailoring and embroidery.
-- **Krishti**: Supporting women entrepreneurs with production and marketing.
-
-### Relief & Recovery
-- **Disaster Management**: Rapid response and long-term recovery for calamities.
-- **Relief to the Underprivileged**: Essential food, water, and clothing aid.
-- **Ignite Change Initiative**: Supporting grassroots community projects.
+## Key Initiatives
+- [Education](https://aimindia.org.in/educational-initiatives): Digital literacy, Spoken English, and AI-powered learning.
+- [Healthcare](https://aimindia.org.in/healthcare-initiatives): Mobile health camps, eye care, and cancer detection.
+- [Sustainability](https://aimindia.org.in/sustainability-initiatives): Mangrove restoration and reforestation.
+- [Empowerment](https://aimindia.org.in/gender-equality-initiative): Women's skill development and livelihoods.
 
 ## Get Involved
-- **Donations**: Individual, CSR, and Payroll giving options.
-- **Opportunities**: Volunteering, Internships, and Careers.
+- [Donate](https://aimindia.org.in/individual-donation)
+- [Volunteer](https://aimindia.org.in/volunteering)
+- [CSR Partnerships](https://aimindia.org.in/corporate-social-responsibility)
 
-## Contact Information
-- **Email**: info@aimindia.org.in
-- **Phone**: +91 6290022813
-- **Location**: 41, Ballygaunge Terrace, Kolkata 700029, India.
-- **Website**: https://www.aimindia.org.in
+---
+Full documentation available at: https://aimindia.org.in/llms-full.txt

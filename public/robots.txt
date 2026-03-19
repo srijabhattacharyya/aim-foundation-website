@@ -8,8 +8,9 @@ Disallow: /dashboard/
 Disallow: /login/
 Disallow: /api/
 
-# LLM Discovery (Points AI to your new summary file)
-Link: https://aimindia.org.in/llms.txt; rel="help"
+# AI & LLM Discovery (Standardized Location)
+# This helps Apple, OpenAI, and Perplexity find your NGO's data map
+Link: https://aimindia.org.in/.well-known/llms.txt; rel="help"
 
 # Sitemap location
 Sitemap: https://aimindia.org.in/sitemap.xml
