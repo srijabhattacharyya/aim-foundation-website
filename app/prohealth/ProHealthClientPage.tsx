@@ -64,7 +64,7 @@ export default function ProHealthClientPage() {
                     In the vibrant yet complex landscape of Kolkata, opportunity and hardship often exist side by side. While the city continues to grow as a cultural and economic hub, thousands of children and young people in underserved communities still struggle with limited access to basic healthcare and well-being services. For them, good health is not guaranteed—it is a daily challenge.
                   </p>
                   <p>
-                    Against this backdrop emerges <strong>Project ProHealth</strong>, a transformative initiative supported by <strong>Children International, USA</strong>. With a dedicated fund of <strong>$70,479.04</strong>, the project is reaching 3,250 children and youth, delivering not just healthcare—but dignity, resilience, and hope.
+                    Against this backdrop emerges <strong>Project ProHealth</strong>, a transformative initiative supported by <strong>Children International, USA</strong>. With a dedicated fund of <strong>$70,479.04</strong>, the project is reaching 3,252 children and youth, delivering not just healthcare—but dignity, resilience, and hope.
                   </p>
                   <p className="font-semibold text-primary">
                     This is not merely a grant. It is a strategic, high-impact intervention aimed at ensuring that no child’s future is determined by their socio-economic circumstances.
@@ -168,7 +168,7 @@ export default function ProHealthClientPage() {
                       <ul className="list-none space-y-3">
                         <li className="flex items-center gap-3">
                           <div className="h-2 w-2 rounded-full bg-primary" />
-                          <span><strong>Total Beneficiaries:</strong> 2,700 children and youth</span>
+                          <span><strong>Total Beneficiaries:</strong> 3,252 children and youth</span>
                         </li>
                         <li className="flex items-center gap-3">
                           <div className="h-2 w-2 rounded-full bg-primary" />
