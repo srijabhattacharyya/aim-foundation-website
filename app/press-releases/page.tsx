@@ -56,7 +56,7 @@ export default function PressReleasesPage() {
                   <blockquote className="border-l-4 border-primary pl-6 py-4 italic bg-primary/5 rounded-r-xl">
                     <p className="text-foreground">"SuiDhaga is not just about skills—it’s about dignity, confidence, and empowering women to become financially independent."</p>
                     <footer className="mt-3 not-italic font-bold text-primary">
-                      — Representative, AIM Foundation
+                      — Dhruba Narayan Dutta, Vice-President. AIM Foundation
                     </footer>
                   </blockquote>
 
