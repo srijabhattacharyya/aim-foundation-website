@@ -8,11 +8,11 @@ import Link from 'next/link';
 
 const announcements = [
   {
-    title: 'Community Health Camp',
+    title: 'ProHealth: A $70,000 Strategic Investment in the Future of Kolkata',
     date: 'August 23, 2025',
     image: '/images/projects/carecircle/carecircle2.avif',
     hint: 'health camp',
-    description: 'A successful health camp providing free check-ups and medicines to over 500 people in rural areas.',
+    description: 'In Partnership with Children International, USA',
     link: '#'
   },
   {
