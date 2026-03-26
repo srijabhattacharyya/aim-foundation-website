@@ -9,7 +9,7 @@ import Link from 'next/link';
 const announcements = [
   {
     title: 'ProHealth: A $70,000 Strategic Investment in the Future of Kolkata',
-    date: 'August 23, 2025',
+    date: '',
     image: '/images/projects/carecircle/carecircle2.avif',
     hint: 'health camp',
     description: (
@@ -62,7 +62,7 @@ const LatestAnnouncements = () => {
                 />
               </CardHeader>
               <CardContent className="p-6 flex-grow flex flex-col">
-                <p className="text-sm text-muted-foreground mb-2">{item.date}</p>
+                {item.date && <p className="text-sm text-muted-foreground mb-2">{item.date}</p>}
                 <CardTitle className="mb-2 font-headline">{item.title}</CardTitle>
                 <CardDescription className="flex-grow">{item.description}</CardDescription>
                 <Button variant="link" asChild className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
