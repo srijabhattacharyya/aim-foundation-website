@@ -12,7 +12,7 @@ import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const DynamicDonationForm = dynamic(
-  () => import('@/components/sections/donation-forms/HealthcareDonationForm'),
+  () => import('@/components/sections/donation-forms/ChildcareDonationForm'),
   {
     ssr: false,
     loading: () => (
@@ -225,7 +225,7 @@ export default function ProHealthClientPage() {
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button size="lg">
-                          Donate to Healthcare
+                          Donate to Childcare
                         </Button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[600px] p-0 max-h-[90vh] overflow-y-auto">
