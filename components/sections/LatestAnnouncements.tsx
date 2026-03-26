@@ -44,7 +44,7 @@ const LatestAnnouncements = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Flagship Projects</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            Stay informed about our current activities and upcoming events.
+            Discover our flagship work
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
