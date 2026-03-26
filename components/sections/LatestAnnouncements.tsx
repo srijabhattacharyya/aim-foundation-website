@@ -12,7 +12,11 @@ const announcements = [
     date: 'August 23, 2025',
     image: '/images/projects/carecircle/carecircle2.avif',
     hint: 'health camp',
-    description: 'In Partnership with Children International, USA',
+    description: (
+      <>
+        In Partnership with <strong>Children International, USA</strong>
+      </>
+    ),
     link: '#'
   },
   {
