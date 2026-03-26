@@ -27,7 +27,52 @@ export default function PressReleasesPage() {
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto space-y-8">
+            <div className="max-w-4xl mx-auto space-y-12">
+              {/* Press Release: SuiDhaga Expansion */}
+              <Card className="shadow-lg border-primary/10 overflow-hidden">
+                <CardHeader className="bg-card border-b border-muted p-6 md:p-8">
+                  <div className="flex justify-between items-start mb-4">
+                    <Badge className="bg-primary text-primary-foreground hover:bg-primary/90">Women Empowerment</Badge>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Calendar className="mr-2 h-4 w-4" />
+                      New
+                    </div>
+                  </div>
+                  <CardTitle className="text-2xl md:text-3xl font-bold font-headline text-foreground leading-tight">
+                    AIM Foundation Opens Second SuiDhaga Unit in Natunhat, Boral
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 md:p-8 space-y-6 text-lg text-muted-foreground leading-relaxed text-justify">
+                  <p>
+                    <strong>AIM Foundation</strong> proudly announces the launch of its second <strong>SuiDhaga Unit</strong> in Natunhat, Boral, with an initial batch of 23 women trainees.
+                  </p>
+                  <p>
+                    SuiDhaga, the Foundation’s women-centric skill development initiative, focuses on tailoring and embroidery training to help women from underserved communities gain practical, income-generating skills.
+                  </p>
+                  <p>
+                    Built on the philosophy <strong>“Threads of Hope, Dreams in Every Stitch,”</strong> the program enables women to transform traditional skills into sustainable livelihood opportunities—whether from home or through local work.
+                  </p>
+                  
+                  <blockquote className="border-l-4 border-primary pl-6 py-4 italic bg-primary/5 rounded-r-xl">
+                    <p className="text-foreground">"SuiDhaga is not just about skills—it’s about dignity, confidence, and empowering women to become financially independent."</p>
+                    <footer className="mt-3 not-italic font-bold text-primary">
+                      — Representative, AIM Foundation
+                    </footer>
+                  </blockquote>
+
+                  <p>
+                    With this expansion, AIM Foundation continues its mission of creating self-reliant communities by equipping women with tools for a better future.
+                  </p>
+
+                  <div className="bg-muted/50 p-6 rounded-xl border border-primary/10">
+                    <h3 className="text-xl font-bold text-foreground mb-2">About SuiDhaga:</h3>
+                    <p className="text-base">
+                      SuiDhaga is AIM Foundation’s initiative to empower women through skill-based training, helping them build confidence, support their families, and become active contributors to society.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
               {/* Press Release: Digital Marketing Course */}
               <Card className="shadow-lg border-primary/10 overflow-hidden">
                 <CardHeader className="bg-card border-b border-muted p-6 md:p-8">
@@ -35,7 +80,7 @@ export default function PressReleasesPage() {
                     <Badge className="bg-primary text-primary-foreground hover:bg-primary/90">Skill Development</Badge>
                     <div className="flex items-center text-sm text-muted-foreground">
                       <Calendar className="mr-2 h-4 w-4" />
-                      Latest
+                      Recent
                     </div>
                   </div>
                   <CardTitle className="text-2xl md:text-3xl font-bold font-headline text-foreground leading-tight">
