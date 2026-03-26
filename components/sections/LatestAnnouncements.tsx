@@ -17,7 +17,7 @@ const announcements = [
         In Partnership with <strong>Children International, USA</strong>
       </>
     ),
-    link: '#'
+    link: '/prohealth'
   },
   {
     title: 'Book Distribution',
