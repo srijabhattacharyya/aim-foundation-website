@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, ComponentType } from 'react';
@@ -51,6 +50,7 @@ const navLinks: NavItem[] = [
       { href: '/organisation', label: 'Organisation' },
       { href: '/profile', label: 'Our Profile' },
       { href: '/team', label: 'Our Team' },
+      { href: '/policies', label: 'Policies' },
     ]
   },
   { label: 'Initiatives', isDropdown: true, items: [
@@ -120,7 +120,6 @@ const navLinks: NavItem[] = [
   { label: 'Resources', isDropdown: true, items: [
       { href: '/blog', label: 'Blog' },
       { href: '/annual-report', label: 'Annual Report' },
-      { href: '/policies', label: 'Policies' },
     ]
   },
   { label: 'Media', isDropdown: true, items: [
