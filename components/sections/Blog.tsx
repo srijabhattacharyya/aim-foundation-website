@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -8,23 +7,23 @@ const blogPosts = [
   {
     slug: 'the-quiet-revolution-in-womens-health',
     title: 'The Quiet Revolution in Women’s Health',
-    image: '/images/projects/detect/detect1.avif',
+    image: '/images/banner/detect1.avif',
     hint: 'women health rural',
     excerpt: 'Discover how Project Detect is bringing life-saving cervical cancer screenings to rural women.',
   },
   {
     slug: 'nurturing-a-kinder-tomorrow-the-story-of-milieu',
     title: 'Nurturing a Kinder Tomorrow: The Story of Milieu',
-    image: '/images/projects/milieu/milieu1.avif',
+    image: '/images/banner/milieu.avif',
     hint: 'children collaboration',
     excerpt: 'Discover how Milieu helps shape conscious citizens who learn to see beyond economic, cultural, and social differences.',
   },
   {
-    slug: 'threading-changes-the-suidhaga-story',
-    title: 'Threading Changes: The SuiDhaga Story',
-    image: '/images/projects/suidhaga/suidhaga1.avif',
-    hint: 'women tailoring',
-    excerpt: 'Discover how AIM Foundation\'s SuiDhaga initiative is empowering women, stitching dignity into livelihoods...',
+    slug: 'planting-hope-growing-futures',
+    title: 'Planting Hope, Growing Futures: The GreenRoots Journey',
+    image: '/images/banner/green-root1.avif',
+    hint: 'community planting trees',
+    excerpt: 'Discover how GreenRoots is empowering communities to plant trees and restore green cover in their own backyards.',
   },
 ];
 
