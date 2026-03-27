@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const announcements = [
   {
-    title: 'ProHealth: A $70,000 Strategic Investment in the Future of Kolkata',
+    title: 'ProHealth',
     date: '',
     image: '/images/banner/innocent-smiles.avif',
     hint: 'children smiling classroom',
