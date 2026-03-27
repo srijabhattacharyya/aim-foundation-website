@@ -21,7 +21,7 @@ const blogPosts = [
   {
     slug: 'planting-hope-growing-futures',
     title: 'Planting Hope, Growing Futures: The GreenRoots Journey',
-    image: '/images/banner/green-root1.avif',
+    image: '/images/banner/greenroots.avif',
     hint: 'community planting trees',
     excerpt: 'Discover how GreenRoots is empowering communities to plant trees and restore green cover in their own backyards.',
   },
