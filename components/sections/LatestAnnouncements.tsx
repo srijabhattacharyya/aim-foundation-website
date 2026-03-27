@@ -32,7 +32,7 @@ const announcements = [
     date: '',
     image: '/images/banner/carecircle.avif',
     hint: 'urban health camp',
-    description: 'CareCircle delivers compassionate, affordable, and inclusive medical care to underserved urban communities in Kolkata, ensuring healthcare for all.',
+    description: 'CareCircle delivers accessible healthcare in Kolkata, supported by Neotia Bhagirathi Women and Child Care Centre, advancing equity for underserved communities.',
     link: '/carecircle'
   },
 ];
