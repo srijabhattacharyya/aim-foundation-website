@@ -20,7 +20,7 @@ const announcements = [
     link: '/prohealth'
   },
   {
-    title: 'Threads of Hope: How SuiDhaga and Krishti Are Stitching a Future of Women’s Empowerment',
+    title: 'Threads of Hope',
     date: '',
     image: '/images/projects/suidhaga/suidhaga1.avif',
     hint: 'women tailoring',
