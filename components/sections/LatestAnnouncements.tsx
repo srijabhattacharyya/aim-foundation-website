@@ -29,7 +29,7 @@ const announcements = [
   },
   {
     title: 'Environmental Awareness Drive',
-    date: 'September 25, 2025',
+    date: '',
     image: '/images/projects/sustainability/sustainablity6.avif',
     hint: 'environment cleanup',
     description: 'Planted over 1000 saplings and conducted workshops on waste management in local communities.',
