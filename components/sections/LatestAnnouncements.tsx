@@ -28,12 +28,12 @@ const announcements = [
     link: '/threads-of-hope'
   },
   {
-    title: 'Environmental Awareness Drive',
+    title: 'Health Equity in Every Neighbourhood',
     date: '',
-    image: '/images/projects/sustainability/sustainablity6.avif',
-    hint: 'environment cleanup',
-    description: 'Planted over 1000 saplings and conducted workshops on waste management in local communities.',
-    link: '#'
+    image: '/images/banner/carecircle.avif',
+    hint: 'urban health camp',
+    description: 'CareCircle delivers compassionate, affordable, and inclusive medical care to underserved urban communities in Kolkata, ensuring healthcare for all.',
+    link: '/carecircle'
   },
 ];
 
