@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -33,8 +34,8 @@ export default function ProHealthClientPage() {
           <header className="relative w-full h-auto">
             <div className="relative w-full">
               <Image
-                src="/images/projects/carecircle/carecircle2.avif"
-                alt="ProHealth initiative health camp"
+                src="/images/banner/innocent-smiles.avif"
+                alt="ProHealth initiative - children smiling"
                 width={1920}
                 height={580}
                 className="w-full h-auto object-cover"

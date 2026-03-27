@@ -10,8 +10,8 @@ const announcements = [
   {
     title: 'ProHealth: A $70,000 Strategic Investment in the Future of Kolkata',
     date: '',
-    image: '/images/projects/carecircle/carecircle2.avif',
-    hint: 'health camp',
+    image: '/images/banner/innocent-smiles.avif',
+    hint: 'children smiling classroom',
     description: (
       <>
         Backed by <strong>Children International, USA</strong>, ProHealth invests $70,479.04 to provide holistic well-being to 3,250 Kolkata children.
