@@ -24,7 +24,7 @@ const announcements = [
     date: '',
     image: '/images/projects/suidhaga/suidhaga1.avif',
     hint: 'women tailoring',
-    description: 'Discover how our women-centric skill initiatives are transforming lives through vocational training, entrepreneurship, and sustainable livelihoods.',
+    description: 'SuiDhaga and Krishti empower underserved women with skills, resources, and opportunities to achieve financial independence, dignity, and sustainable livelihoods.',
     link: '/blog/threading-changes-the-suidhaga-story'
   },
   {
@@ -62,7 +62,9 @@ const LatestAnnouncements = () => {
                 />
               </CardHeader>
               <CardContent className="p-6 flex-grow flex flex-col">
-                {item.date && <p className="text-sm text-muted-foreground mb-2">{item.date}</p>}
+                {item.date && (
+                  <p className="text-sm text-muted-foreground mb-2">{item.date}</p>
+                )}
                 <CardTitle className="mb-2 font-headline">{item.title}</CardTitle>
                 <CardDescription className="flex-grow">{item.description}</CardDescription>
                 <Button variant="link" asChild className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
