@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -20,7 +19,6 @@ const DynamicDonationForm = dynamic(() => import('@/components/sections/donation
 
 const educationalInitiatives = [
   { href: '/innocent-smiles?from=educational', label: 'Innocent Smiles' },
-  { href: '/inspire-eduLab?from=educational', label: 'Inspire EduLab' },
   { href: '/eduaccess?from=educational', label: 'EduAccess' },
   { href: '/empower-english?from=educational', label: 'Empower English'},
   { href: '/digiempower?from=educational', label: 'DigiEmpower' },
