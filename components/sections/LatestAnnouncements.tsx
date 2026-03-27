@@ -20,12 +20,12 @@ const announcements = [
     link: '/prohealth'
   },
   {
-    title: 'Book Distribution',
-    date: 'August 15, 2025',
-    image: '/images/projects/book/book-distribution.avif',
-    hint: 'book distribution',
-    description: 'We distributed books to underprivileged students to support their education and foster a love for reading.',
-    link: '#'
+    title: 'Threads of Hope: How SuiDhaga and Krishti Are Stitching a Future of Women’s Empowerment',
+    date: '',
+    image: '/images/projects/suidhaga/suidhaga1.avif',
+    hint: 'women tailoring',
+    description: 'Discover how our women-centric skill initiatives are transforming lives through vocational training, entrepreneurship, and sustainable livelihoods.',
+    link: '/blog/threading-changes-the-suidhaga-story'
   },
   {
     title: 'Environmental Awareness Drive',
