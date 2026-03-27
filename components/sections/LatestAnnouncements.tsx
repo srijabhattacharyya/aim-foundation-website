@@ -25,7 +25,7 @@ const announcements = [
     image: '/images/projects/suidhaga/suidhaga1.avif',
     hint: 'women tailoring',
     description: 'SuiDhaga and Krishti empower underserved women with skills, resources, and opportunities to achieve financial independence, dignity, and sustainable livelihoods.',
-    link: '/blog/threading-changes-the-suidhaga-story'
+    link: '/threads-of-hope'
   },
   {
     title: 'Environmental Awareness Drive',
