@@ -14,7 +14,7 @@ const announcements = [
     hint: 'health camp',
     description: (
       <>
-        In Partnership with <strong>Children International, USA</strong>
+        Backed by <strong>Children International, USA</strong>, ProHealth invests $70,479.04 to provide holistic well-being to 3,250 Kolkata children.
       </>
     ),
     link: '/prohealth'
