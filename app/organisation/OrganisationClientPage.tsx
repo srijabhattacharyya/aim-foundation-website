@@ -7,17 +7,15 @@ import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Ethos from "@/components/sections/Ethos";
-import LegalRecognitions from "@/components/sections/LegalRecognitions";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const FootprintCarousel = dynamic(() => import('@/components/sections/FootprintCarousel'), {
     loading: () => <Skeleton className="h-[400px] w-full max-w-lg" />,
 });
 
-
 export default function OrganisationClientPage() {
-
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -45,6 +43,8 @@ export default function OrganisationClientPage() {
             </div>
           </div>
         </section>
+
+        <Breadcrumbs items={[{ label: 'About', href: '/organisation' }, { label: 'Organisation' }]} />
 
         <section className="py-12 md:py-20 lg:py-24 bg-card">
           <div className="container mx-auto px-4 md:px-6">

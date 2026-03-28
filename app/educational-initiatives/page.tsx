@@ -1,9 +1,10 @@
 
 import type { Metadata } from 'next';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
+import { Card, CardContent, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'AIM Foundation | Educational Initiatives for Brighter Futures',
@@ -138,6 +139,8 @@ export default function EducationalInitiativesPage() {
           </div>
         </div>
       </section>
+
+      <Breadcrumbs items={[{ label: 'Initiatives', href: '/educational-initiatives' }, { label: 'Educational' }]} />
 
       <section className="py-12 md:py-20 lg:py-24 bg-muted">
         <div className="container mx-auto px-4 md:px-6">

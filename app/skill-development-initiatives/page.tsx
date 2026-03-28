@@ -4,6 +4,7 @@ import { Card, CardContent, CardTitle, CardDescription } from "../../components/
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Skill Development Initiatives | AIM Foundation',
@@ -111,6 +112,8 @@ export default function SkillDevelopmentInitiativesPage() {
           </div>
         </div>
       </section>
+
+      <Breadcrumbs items={[{ label: 'Initiatives', href: '/skill-development-initiatives' }, { label: 'Skill Development' }]} />
 
       <section className="py-12 md:py-20 lg:py-24 bg-muted">
         <div className="container mx-auto px-4 md:px-6">

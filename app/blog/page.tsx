@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Navbar from "@/components/layout/Navbar";
@@ -5,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Blog - AIM Foundation',
@@ -206,7 +208,10 @@ export default function BlogPage() {
                 Stay close to the change you’re helping spark. Discover stories, reflections, and milestones from our journey of hope. Read about our work in <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>, <Link href="/sustainability-initiatives" className="text-primary hover:underline">sustainability</Link>, and <Link href="/gender-equality-initiative" className="text-primary hover:underline">women empowerment</Link>.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <Breadcrumbs items={[{ label: 'Resources', href: '/annual-report' }, { label: 'Blog' }]} />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
               {blogPosts.map((post, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                   <Link href={`/blog/${post.slug}`} className="block">

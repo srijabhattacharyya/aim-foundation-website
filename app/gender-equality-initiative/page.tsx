@@ -6,6 +6,7 @@ import { Card, CardContent, CardTitle, CardDescription } from "../../components/
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Gender Equality by AIM Foundation: Women Empowerment',
@@ -47,7 +48,6 @@ export const metadata: Metadata = {
     site: '@aimindiango',
     title: 'Gender Equality by AIM Foundation: Women Empowerment',
     description: 'AIM Foundation’s Gender Equality Programs empower women and girls through health, skills, and education—building confidence, independence, and equity.',
-    // ✅ Correct field
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
@@ -124,7 +124,7 @@ export default function GenderEqualityInitiativesPage() {
                 data-ai-hint="women empowerment"
               />
             </div>
-            <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
+            <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
               <div className="relative z-10 text-left">
                 <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                   Empowering Women, Uplifting Society
@@ -135,6 +135,8 @@ export default function GenderEqualityInitiativesPage() {
               </div>
             </div>
           </section>
+
+          <Breadcrumbs items={[{ label: 'Initiatives', href: '/gender-equality-initiative' }, { label: 'Gender Equality' }]} />
 
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">

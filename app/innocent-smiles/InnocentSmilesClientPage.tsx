@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -11,6 +12,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/InnocentSmilesDonationForm'), { 
     ssr: false,
@@ -47,6 +49,9 @@ export default function InnocentSmilesClientPage() {
         ? [{ title: "Educational Initiatives", initiatives: educationalInitiatives }, { title: "Childcare Initiatives", initiatives: childcareInitiatives }]
         : [{ title: "Childcare Initiatives", initiatives: childcareInitiatives }, { title: "Educational Initiatives", initiatives: educationalInitiatives }];
 
+    const parentLabel = from === 'educational' ? 'Educational' : 'Childcare';
+    const parentHref = from === 'educational' ? '/educational-initiatives' : '/childcare-initiatives';
+
     return (
         <div className="flex flex-col min-h-screen">
           <Navbar />
@@ -63,7 +68,7 @@ export default function InnocentSmilesClientPage() {
                   priority
                 />
               </div>
-              <div className="absolute inset-0 flex items-end justify-start text-white p-8 md:p-12">
+              <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
                 <div className="relative z-10 text-left">
                   <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                     Innocent Smiles
@@ -74,6 +79,12 @@ export default function InnocentSmilesClientPage() {
                 </div>
               </div>
             </section>
+
+            <Breadcrumbs items={[
+              { label: 'Initiatives', href: parentHref },
+              { label: parentLabel, href: parentHref },
+              { label: 'Innocent Smiles' }
+            ]} />
     
             <section className="py-12 md:py-20 lg:py-24 bg-muted">
               <div className="container mx-auto px-4 md:px-6 relative">

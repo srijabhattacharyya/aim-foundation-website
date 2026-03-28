@@ -1,11 +1,12 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
     title: "Sustainability Initiatives by AIM Foundation: Nurturing Nature",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     openGraph: {
         type: 'website',
         url: 'https://aimindia.org.in/sustainability-initiatives',
-        title: 'Sustainability Initiatives by AIM Foundation: Nurturing Nature',
+        title: "Sustainability Initiatives by AIM Foundation: Nurturing Nature",
         description: 'Explore AIM Foundation’s sustainability programs, including mangrove restoration, reforestation, and environmental education, to build a greener future in India.',
         images: [
             {
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         site: '@aimindiango',
-        title: 'Sustainability Initiatives by AIM Foundation: Nurturing Nature',
+        title: "Sustainability Initiatives by AIM Foundation: Nurturing Nature",
         description: 'Explore AIM Foundation’s sustainability programs, including mangrove restoration, reforestation, and environmental education, to build a greener future in India.',
         images: ['https://aimindia.org.in/home.avif'],
     },
@@ -134,6 +135,8 @@ export default function SustainabilityInitiativesPage() {
               </div>
             </div>
           </section>
+
+          <Breadcrumbs items={[{ label: 'Initiatives', href: '/sustainability-initiatives' }, { label: 'Sustainability' }]} />
 
           {/* Initiatives Grid */}
           <section className="py-12 md:py-20 lg:py-24 bg-muted">

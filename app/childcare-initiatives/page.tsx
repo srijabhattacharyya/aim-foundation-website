@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Card, CardContent, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
@@ -5,6 +6,7 @@ import { Button } from "../../components/ui/button";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Childcare Programs by AIM Foundation: Nurturing Futures',
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     site: '@aimindiango',
     title: 'Childcare Programs by AIM Foundation: Nurturing Futures',
     description: 'AIM Foundation’s Childcare Programs support children through education, creativity, health camps, and safe spaces, fostering growth, dignity, and well-being.',
-    images: ['https://aimindia.org.in/home.avif'], // Removed url
+    images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
     canonical: '/childcare-initiatives',
@@ -118,6 +120,8 @@ export default function ChildcareInitiativesPage() {
               </div>
             </div>
           </section>
+
+          <Breadcrumbs items={[{ label: 'Initiatives', href: '/childcare-initiatives' }, { label: 'Childcare' }]} />
 
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">
