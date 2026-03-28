@@ -63,9 +63,11 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "NGO",
     "name": "AIM Foundation",
-    "alternateName": "Associated Initiative for Mankind Foundation",
     "url": "https://aimindia.org.in",
     "logo": "https://aimindia.org.in/logo.png",
+    "description": "AIM Foundation is a Kolkata-based NGO working on healthcare, education, environment, childcare, skill development and women empowerment initiatives.",
+    "telephone": "+91-6290022813",
+    "email": "info@aimindia.org.in",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "41, Ballygaunge Terrace",
@@ -74,21 +76,42 @@ export default function RootLayout({
       "postalCode": "700029",
       "addressCountry": "IN"
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91-6290022813",
-      "contactType": "customer service",
-      "email": "info@aimindia.org.in"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "22.5726",
+      "longitude": "88.3639"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "West Bengal"
     },
     "sameAs": [
       "https://www.facebook.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo",
-      "https://x.com/aimindiango",
       "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
+      "https://www.instagram.com/aimfoundation_ngo",
+      "https://www.youtube.com/@aimfoundation2604",
+      "https://x.com/aimindiango"
     ],
-    "description": "A leading NGO in Kolkata dedicated to education, healthcare, and sustainability.",
-    "taxID": "80G/12A/CSR-1/FCRA Certified",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "10:00",
+      "closes": "18:00"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-6290022813",
+      "contactType": "customer support",
+      "areaServed": "IN",
+      "availableLanguage": ["English", "Hindi", "Bengali"]
+    },
     "potentialAction": {
       "@type": "DonateAction",
       "target": "https://aimindia.org.in/individual-donation"
