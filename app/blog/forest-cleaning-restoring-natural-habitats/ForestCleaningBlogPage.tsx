@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/ForestCleaningDonationForm'), { 
     ssr: false,
@@ -47,6 +48,8 @@ export default function ForestCleaningBlogPage() {
               </div>
             </div>
           </header>
+
+          <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: 'Blog', href: '/blog' }, { label: 'Forest Cleaning' }]} />
 
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
             <div className="max-w-4xl mx-auto">

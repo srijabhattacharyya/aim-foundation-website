@@ -1,43 +1,12 @@
 
+'use client';
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
 import Link from 'next/link';
-
-export const metadata: Metadata = {
-  title: 'Cookie Policy - AIM Foundation',
-  description: 'Learn how AIM Foundation uses cookies and similar technologies on our website.',
-  keywords: ['AIM Foundation cookie policy', 'website cookies AIM Foundation', 'privacy AIM Foundation', 'NGO cookies India', 'data protection NGO'],
-  robots: 'index, follow',
-  authors: [{ name: 'AIM Foundation' }],
-  openGraph: {
-    type: 'website',
-    url: 'https://aimindia.org.in/cookie-policy',
-    title: 'Cookie Policy - AIM Foundation',
-    description: 'Learn how AIM Foundation uses cookies and similar technologies on our website.',
-    images: [
-      {
-        url: 'https://aimindia.org.in/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'AIM Foundation Logo',
-      },
-    ],
-    siteName: 'AIM Foundation',
-    locale: 'en_IN',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@aimindiango',
-    title: 'Cookie Policy - AIM Foundation',
-    description: 'Learn how AIM Foundation uses cookies and similar technologies on our website.',
-    images: ['https://aimindia.org.in/logo.png'],
-  },
-  alternates: {
-    canonical: '/cookie-policy',
-  },
-};
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export default function CookiePolicyPage() {
   const schemaMarkup = {
@@ -77,7 +46,14 @@ export default function CookiePolicyPage() {
               <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
                 Cookie Policy
               </h1>
-              <div className="space-y-6 text-muted-foreground text-justify">
+
+              <Breadcrumbs items={[
+                { label: 'About', href: '/organisation' },
+                { label: 'Policies', href: '/policies' },
+                { label: 'Cookie Policy' }
+              ]} />
+
+              <div className="space-y-6 text-muted-foreground text-justify mt-12">
                 <p>
                   This Cookie Policy explains how Associated Initiative for Mankind Foundation ("AIM Foundation") uses cookies and similar technologies to recognise users when they visit our website: www.aimindia.org.in. It outlines what these technologies are, why we use them, and your rights to control their use.
                 </p>

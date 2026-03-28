@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'CSR with AIM Foundation | Corporate Social Responsibility India',
@@ -91,6 +92,8 @@ export default function CorporateSocialResponsibilityPage() {
               </div>
             </div>
           </section>
+
+          <Breadcrumbs items={[{ label: 'Get Involved', href: '/individual-donation' }, { label: 'CSR' }]} />
 
           {/* Content Section */}
           <section className="py-12 md:py-20 lg:py-24 bg-muted">

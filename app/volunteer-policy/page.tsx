@@ -1,18 +1,12 @@
 
+'use client';
 
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
 import Link from 'next/link';
-
-export const metadata: Metadata = {
-  title: 'Volunteer Policy | AIM Foundation',
-  description: 'Learn about AIM Foundation’s volunteer policy, rights, responsibilities, code of conduct, and opportunities for meaningful engagement.',
-  keywords: ['AIM Foundation volunteer policy', 'NGO volunteering India', 'volunteer rights', 'volunteer code of conduct', 'volunteer opportunities'],
-  robots: 'index, follow',
-  alternates: { canonical: '/volunteer-policy' },
-};
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export default function VolunteerPolicyPage() {
   const schemaMarkup = {
@@ -45,7 +39,14 @@ export default function VolunteerPolicyPage() {
             <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
               Volunteer Policy
             </h1>
-            <div className="space-y-6 text-muted-foreground text-justify break-words">
+
+            <Breadcrumbs items={[
+              { label: 'About', href: '/organisation' },
+              { label: 'Policies', href: '/policies' },
+              { label: 'Volunteer Policy' }
+            ]} />
+
+            <div className="space-y-6 text-muted-foreground text-justify break-words mt-12">
               <p>
                 <Link href="/volunteering" className="text-primary hover:underline">Volunteers</Link> are the heart of Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), helping us drive positive change in communities through <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, empowerment, and social development initiatives. This Volunteer Policy outlines the principles, expectations, and procedures for engaging volunteers ethically, respectfully, and effectively.
               </p>
