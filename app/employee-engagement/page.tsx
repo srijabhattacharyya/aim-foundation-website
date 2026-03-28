@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -5,6 +6,8 @@ import Image from "next/image";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import Link from 'next/link';
 
 const EngagementStats = dynamic(() => import('@/components/sections/EngagementStats'), {
   loading: () => <Skeleton className="h-[250px] w-full" />,
@@ -96,6 +99,8 @@ export default function EmployeeEngagementPage() {
               </div>
             </div>
           </section>
+
+          <Breadcrumbs items={[{ label: 'Corporate', href: '/corporate-social-responsibility' }, { label: 'Employee Engagement' }]} />
 
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">

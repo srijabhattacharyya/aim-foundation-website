@@ -1,10 +1,10 @@
 
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Grievance Redressal Policy | AIM Foundation',
@@ -52,7 +52,7 @@ export default function GrievanceRedressalPage() {
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
+    "logo": "https://www.aimindia.org.in/logo.png",
     "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
@@ -78,7 +78,14 @@ export default function GrievanceRedressalPage() {
               <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
                 Grievance Redressal Policy
               </h1>
-              <div className="space-y-6 text-muted-foreground text-justify">
+
+              <Breadcrumbs items={[
+                { label: 'About', href: '/organisation' },
+                { label: 'Policies', href: '/policies' },
+                { label: 'Grievance Redressal' }
+              ]} />
+
+              <div className="space-y-6 text-muted-foreground text-justify mt-12">
                 <p>
                   At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we are committed to conducting our work with integrity, accountability, and respect for all individuals. We believe every stakeholder has the right to raise concerns, lodge complaints, or provide feedback about any aspect of our operations, services, or conduct of personnel.
                 </p>

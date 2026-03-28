@@ -7,6 +7,7 @@ import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Payroll Giving Programs with AIM Foundation India",
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     title: "Payroll Giving Programs with AIM Foundation India",
     description:
       "Support social impact with AIM Foundation Payroll Giving. Enable employees to donate effortlessly, strengthen CSR goals, and create lasting community change.",
-    images: ["https://aimindia.org.in/home.avif"], // ✅ correct key
+    images: ["https://aimindia.org.in/home.avif"],
   },
   alternates: {
     canonical: "/payroll-giving",
@@ -106,6 +107,8 @@ export default function PayrollGivingPage() {
               </div>
             </div>
           </section>
+
+          <Breadcrumbs items={[{ label: 'Get Involved', href: '/individual-donation' }, { label: 'Payroll Giving' }]} />
 
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">

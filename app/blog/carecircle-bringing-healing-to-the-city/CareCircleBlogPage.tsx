@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -11,7 +12,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { Metadata } from "next";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(
   () => import('@/components/sections/donation-forms/CareCircleDonationForm'),
@@ -24,39 +25,6 @@ const DynamicDonationForm = dynamic(
     ),
   }
 );
-
-// ✅ Correct metadata (no 'url' inside twitter)
-export const metadata: Metadata = {
-  title: 'CareCircle by AIM Foundation | Healthcare for Kolkata',
-  description:
-    'CareCircle by AIM Foundation delivers free check-ups, medicines, and screenings to underserved communities in Kolkata, ensuring healthcare for all.',
-  alternates: {
-    canonical: 'https://aimindia.org.in/blog/carecircle-bringing-healing-to-the-city',
-  },
-  openGraph: {
-    title: 'CareCircle by AIM Foundation | Healthcare for Kolkata',
-    description:
-      'CareCircle by AIM Foundation delivers free check-ups, medicines, and screenings to underserved communities in Kolkata, ensuring healthcare for all.',
-    url: 'https://aimindia.org.in/blog/carecircle-bringing-healing-to-the-city',
-    images: [
-      {
-        url: 'https://aimindia.org.in/home.avif',
-        width: 1200,
-        height: 630,
-        alt: 'CareCircle health camp by AIM Foundation',
-      },
-    ],
-    type: 'article',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@aimindiango',
-    title: 'CareCircle by AIM Foundation | Healthcare for Kolkata',
-    description:
-      'CareCircle by AIM Foundation delivers free check-ups, medicines, and screenings to underserved communities in Kolkata, ensuring healthcare for all.',
-    images: ['https://aimindia.org.in/home.avif'],
-  },
-};
 
 export default function CareCircleBlogPage() {
   const [showForm, setShowForm] = useState(false);
@@ -87,6 +55,8 @@ export default function CareCircleBlogPage() {
               </div>
             </div>
           </header>
+
+          <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: 'Blog', href: '/blog' }, { label: 'CareCircle Story' }]} />
 
           {/* --- Main Blog Content --- */}
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">

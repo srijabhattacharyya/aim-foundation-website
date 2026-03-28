@@ -1,10 +1,10 @@
 
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Internship Policy - AIM Foundation',
@@ -24,7 +24,14 @@ export default function InternshipPolicyPage() {
             <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
               Internship Policy
             </h1>
-            <div className="space-y-6 text-muted-foreground text-justify">
+
+            <Breadcrumbs items={[
+              { label: 'About', href: '/organisation' },
+              { label: 'Policies', href: '/policies' },
+              { label: 'Internship Policy' }
+            ]} />
+
+            <div className="space-y-6 text-muted-foreground text-justify mt-12">
               <p>
                 Interns are valuable members of the Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), contributing fresh perspectives and skills to our mission. This Internship Policy outlines the principles, expectations, and procedures for engaging interns ethically, respectfully, and effectively, ensuring a mutually beneficial experience.
               </p>
