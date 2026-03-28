@@ -1,10 +1,10 @@
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Megaphone, Calendar } from 'lucide-react';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Press Releases | AIM Foundation',
@@ -27,7 +27,9 @@ export default function PressReleasesPage() {
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto space-y-12">
+            <Breadcrumbs items={[{ label: 'Media', href: '/gallery' }, { label: 'Press Releases' }]} />
+
+            <div className="max-w-4xl mx-auto space-y-12 mt-12">
               {/* Press Release: SuiDhaga Expansion */}
               <Card className="shadow-lg border-primary/10 overflow-hidden">
                 <CardHeader className="bg-card border-b border-muted p-6 md:p-8">

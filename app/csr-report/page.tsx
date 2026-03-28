@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -12,6 +11,7 @@ import { Card, CardContent, CardTitle, CardFooter } from '@/components/ui/card';
 import { reportTypes } from './reportTypes';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 
 export const metadata: Metadata = {
@@ -144,6 +144,8 @@ export default function CsrReportPage() {
                     </h2>
                 </div>
 
+                <Breadcrumbs items={[{ label: 'Services', href: '/csr-report' }, { label: 'CSR Report' }]} />
+
                 <div className="bg-card p-6 rounded-lg shadow-sm">
                   <p>AIM Foundation delivers comprehensive, end-to-end Corporate Social Responsibility Reporting and impact measurement solutions—from annual CSR reports to bespoke impact dashboards. Our reports are fully compliant with Indian CSR regulations (Companies Act, Schedule VII) and aligned with global reporting standards, ensuring credibility, transparency, and strategic value.</p>
                   <p className="mt-4">With strong local expertise and communicative, storytelling-driven design, we transform data into meaningful narratives that bring your social impact to life.</p>
@@ -162,7 +164,7 @@ export default function CsrReportPage() {
                 </div>
 
                  <div>
-                  <h2 className="text-2xl font-bold font-headline mb-4 text-center">India’s Independent CSR Consulting Partner</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4 text-center">India’s Independent CSR Consulting Partner</h2>
                   <p>AIM Foundation is a trusted CSR consulting and reporting agency in India, working with leading organisations, corporate foundations, and global brands. We design and deliver clear, compliant, and compelling CSR and impact reports that communicate social value with credibility and creativity.</p>
                    <p className="mt-4 font-semibold">Our expertise spans:</p>
                   <ul className="list-disc list-inside space-y-2 pl-4 mt-2">

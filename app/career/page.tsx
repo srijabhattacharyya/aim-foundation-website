@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import HREmail from "@/components/layout/HREmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Careers & Opportunities at AIM Foundation India',
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     site: '@aimindiango',
     title: 'Careers & Opportunities at AIM Foundation India',
     description: 'Join AIM Foundation to create impact in education, healthcare, women empowerment, environment, and disaster relief. Build a career with purpose and value.',
-    images: ['https://aimindia.org.in/home.avif'], // Remove url property
+    images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
     canonical: '/career',
@@ -94,6 +95,8 @@ export default function CareerPage() {
               </div>
             </div>
           </section>
+
+          <Breadcrumbs items={[{ label: 'Join Us', href: '/join-us' }, { label: 'Careers' }]} />
 
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">

@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -7,6 +6,7 @@ import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const QuickFacts = dynamic(() => import('@/components/sections/QuickFacts'), {
   loading: () => <Skeleton className="h-[200px] w-full" />,
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     site: '@aimindiango',
     title: 'Cause-Related Marketing with AIM Foundation | CRM India',
     description: 'Partner with AIM Foundation for impactful cause-related marketing campaigns. Build customer trust, drive social good, and enhance your brand reputation.',
-    images: ['https://aimindia.org.in/home.avif'], // Removed url property
+    images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
     canonical: '/cause-marketing-events',
@@ -104,6 +104,8 @@ export default function CauseMarketingEventsPage() {
               </div>
             </div>
           </section>
+
+          <Breadcrumbs items={[{ label: 'Get Involved', href: '/individual-donation' }, { label: 'Cause Marketing' }]} />
 
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">
