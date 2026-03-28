@@ -11,6 +11,7 @@ import { HeartPulse, ShieldCheck, UserCheck, Palette } from 'lucide-react';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(
   () => import('@/components/sections/donation-forms/ChildcareDonationForm'),
@@ -43,7 +44,7 @@ export default function ProHealthClientPage() {
               />
             </div>
             <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16 bg-gradient-to-t from-black/70 to-transparent">
-              <div className="container mx-auto px-4 md:px-6 text-white">
+              <div className="container mx-auto px-4 md:px-6 text-white text-left">
                 <Badge className="mb-4 bg-primary hover:bg-primary/90">Flagship Project</Badge>
                 <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)] leading-tight">
                   ProHealth: A $70,000 Strategic Investment in the Future of Kolkata
@@ -54,6 +55,12 @@ export default function ProHealthClientPage() {
               </div>
             </div>
           </header>
+
+          <Breadcrumbs items={[
+            { label: 'Initiatives', href: '/healthcare-initiatives' },
+            { label: 'Healthcare', href: '/healthcare-initiatives' },
+            { label: 'ProHealth' }
+          ]} />
 
           {/* --- Main Content --- */}
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">

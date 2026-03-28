@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Navbar from "@/components/layout/Navbar";
@@ -5,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Voices of Change Stories | AIM Foundation India Impact',
@@ -234,17 +236,17 @@ export default function VoicesPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "AIM Foundation",
-    url: "https://aimindia.org.in/",
-    logo: "https://aimindia.org.in/logo.png",
-    sameAs: [
+    "name": "AIM Foundation",
+    "url": "https://aimindia.org.in/",
+    "logo": "https://aimindia.org.in/logo.png",
+    "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
       "https://www.instagram.com/aimfoundation_ngo/",
       "https://www.linkedin.com/in/aim-foundation-ngo/",
       "https://www.youtube.com/@aimfoundation2604"
     ],
-    description: "Explore Voices of Change by AIM Foundation—real stories of hope, resilience, and impact in education, healthcare, women empowerment, and environment."
+    "description": "Explore Voices of Change by AIM Foundation—real stories of hope, resilience, and impact in education, healthcare, women empowerment, and environment."
   };
 
   return (
@@ -264,7 +266,10 @@ export default function VoicesPage() {
                 Stay close to the change you’re helping spark. Discover stories, reflections, and milestones from our journey of hope. Read about our work in <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>, <Link href="/sustainability-initiatives" className="text-primary hover:underline">sustainability</Link>, and <Link href="/gender-equality-initiative" className="text-primary hover:underline">women empowerment</Link>.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: 'Voices of Change' }]} />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
               {blogPosts.map((post, index) => (
                 <Card key={post.slug} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                   <Link href={`/blog/${post.slug}`} className="block">

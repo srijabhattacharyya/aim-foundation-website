@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const policies = [
   {
@@ -78,7 +79,10 @@ export default function PoliciesPage() {
                 Transparency and accountability are at the core of our operations. Explore our policies to understand our commitment to ethical and responsible practices.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+            <Breadcrumbs items={[{ label: 'About', href: '/organisation' }, { label: 'Policies' }]} />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-12">
               {policies.map((policy, index) => (
                 <Card key={index} className="shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
                   <CardHeader>

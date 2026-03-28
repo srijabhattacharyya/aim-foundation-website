@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Briefcase, HeartHandshake, GraduationCap } from 'lucide-react';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Join Us | Volunteer, Intern, or Build a Career with AIM Foundation',
@@ -104,7 +105,10 @@ export default function JoinUsPage() {
                             Whether you're looking to build a career, gain experience, or simply give back, there's a place for you at AIM Foundation.
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+                    <Breadcrumbs items={[{ label: 'Join Us' }]} />
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
                         {opportunities.map((opp, index) => (
                             <Card key={index} className="text-center p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
                                 <div className="bg-primary/10 p-4 rounded-full mb-6">

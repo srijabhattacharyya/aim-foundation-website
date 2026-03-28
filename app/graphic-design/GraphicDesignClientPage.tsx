@@ -11,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/GraphicDesignDonationForm'), { 
     ssr: false,
@@ -20,7 +21,7 @@ const DynamicDonationForm = dynamic(() => import('@/components/sections/donation
 const skillDevelopmentInitiatives = [
   { href: '/digital-marketing', label: 'Digital Marketing' },
   { href: '/graphic-design', label: 'Graphic Designing' },
-  { href: '/skill-development-initiatives', label: 'Web Development' },
+  { href: '/web-development', label: 'Web Development' },
 ];
 
 const relatedResource = {
@@ -63,6 +64,12 @@ export default function GraphicDesignClientPage() {
                 </div>
               </div>
             </section>
+
+            <Breadcrumbs items={[
+              { label: 'Initiatives', href: '/skill-development-initiatives' },
+              { label: 'Skill Development', href: '/skill-development-initiatives' },
+              { label: 'Graphic Design' }
+            ]} />
     
             <section className="py-12 md:py-20 lg:py-24 bg-muted">
               <div className="container mx-auto px-4 md:px-6 relative">

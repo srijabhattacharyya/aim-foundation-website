@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/ChildFirstDonationForm'), { 
     ssr: false,
@@ -50,6 +51,9 @@ export default function ChildFirstClientPage() {
         ? [{ title: "Childcare Initiatives", initiatives: childcareInitiatives }, { title: "Healthcare Initiatives", initiatives: healthcareInitiatives }]
         : [{ title: "Healthcare Initiatives", initiatives: healthcareInitiatives }, { title: "Childcare Initiatives", initiatives: childcareInitiatives }];
 
+    const parentLabel = fromQuery === 'childcare' ? 'Childcare' : 'Healthcare';
+    const parentHref = fromQuery === 'childcare' ? '/childcare-initiatives' : '/healthcare-initiatives';
+
     return (
         <div className="flex flex-col min-h-screen">
           <Navbar />
@@ -77,6 +81,12 @@ export default function ChildFirstClientPage() {
                 </div>
               </div>
             </section>
+
+            <Breadcrumbs items={[
+              { label: 'Initiatives', href: parentHref },
+              { label: parentLabel, href: parentHref },
+              { label: 'ChildFirst' }
+            ]} />
     
             <section className="py-12 md:py-20 lg:py-24 bg-muted">
               <div className="container mx-auto px-4 md:px-6 relative">

@@ -1,10 +1,10 @@
 
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import ContactEmail from "@/components/layout/ContactEmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export default function SafeguardingPolicyPage() {
   return (
@@ -16,7 +16,14 @@ export default function SafeguardingPolicyPage() {
             <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
               Safeguarding Policy
             </h1>
-            <div className="space-y-6 text-muted-foreground text-justify">
+
+            <Breadcrumbs items={[
+              { label: 'About', href: '/organisation' },
+              { label: 'Policies', href: '/policies' },
+              { label: 'Safeguarding Policy' }
+            ]} />
+
+            <div className="space-y-6 text-muted-foreground text-justify mt-12">
               <p>
                 At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we are committed to creating a safe, inclusive, and respectful environment for all individuals who engage with our organization — especially children, women, persons with disabilities, and other vulnerable communities.
               </p>

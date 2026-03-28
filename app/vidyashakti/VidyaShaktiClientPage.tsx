@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "../../components/layout/Navbar";
@@ -10,6 +11,7 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/VidyaShaktiDonationForm'), { 
     ssr: false,
@@ -61,6 +63,12 @@ export default function VidyaShaktiClientPage() {
             </div>
           </div>
         </section>
+
+        <Breadcrumbs items={[
+          { label: 'Initiatives', href: '/educational-initiatives' },
+          { label: 'Educational', href: '/educational-initiatives' },
+          { label: 'VidyaShakti' }
+        ]} />
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">

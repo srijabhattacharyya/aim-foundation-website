@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/CycleSafeDonationForm'), { 
     ssr: false,
@@ -51,6 +52,9 @@ export default function CycleSafeClientPage() {
         ? [{ title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }, { title: "Healthcare Initiatives", initiatives: healthcareInitiatives }]
         : [{ title: "Healthcare Initiatives", initiatives: healthcareInitiatives }, { title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }];
 
+    const parentLabel = from === 'gender-equality' ? 'Gender Equality' : 'Healthcare';
+    const parentHref = from === 'gender-equality' ? '/gender-equality-initiative' : '/healthcare-initiatives';
+
     return (
         <div className="flex flex-col min-h-screen">
           <Navbar />
@@ -78,6 +82,12 @@ export default function CycleSafeClientPage() {
                 </div>
               </div>
             </section>
+
+            <Breadcrumbs items={[
+              { label: 'Initiatives', href: parentHref },
+              { label: parentLabel, href: parentHref },
+              { label: 'CycleSafe' }
+            ]} />
     
             <section className="py-12 md:py-20 lg:py-24 bg-muted">
               <div className="container mx-auto px-4 md:px-6 relative">

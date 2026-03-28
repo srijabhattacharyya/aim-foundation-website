@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactEmail from "@/components/layout/ContactEmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export default function PrivacyPolicyPage() {
   return (
@@ -14,7 +15,14 @@ export default function PrivacyPolicyPage() {
             <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
               Privacy Policy
             </h1>
-            <div className="space-y-6 text-muted-foreground text-justify">
+
+            <Breadcrumbs items={[
+              { label: 'About', href: '/organisation' },
+              { label: 'Policies', href: '/policies' },
+              { label: 'Privacy Policy' }
+            ]} />
+
+            <div className="space-y-6 text-muted-foreground text-justify mt-12">
               <p>
                 Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation") is committed to protecting the privacy and confidentiality of all visitors, donors, and supporters who engage with us through our website: www.aimindia.org.in.
               </p>
