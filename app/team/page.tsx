@@ -1,9 +1,11 @@
+
 import { Card, CardContent } from "../../components/ui/card";
 import Image from "next/image";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import teamMembers from './team-data.json';
 import type { Metadata } from 'next';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Meet Our Team | AIM Foundation Leaders & Change-Makers',
@@ -41,17 +43,17 @@ export default function TeamPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "AIM Foundation",
-    url: "https://www.aimindia.org.in/",
-    logo: "https://www.aimindia.org.in/logo.png",
-    sameAs: [
+    "name": "AIM Foundation",
+    "url": "https://www.aimindia.org.in/",
+    "logo": "https://www.aimindia.org.in/logo.png",
+    "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
       "https://www.instagram.com/aimfoundation_ngo/",
       "https://www.linkedin.com/in/aim-foundation-ngo/",
       "https://www.youtube.com/@aimfoundation2604"
     ],
-    description: "Discover the dedicated team behind AIM Foundation, working passionately to drive education, healthcare, women empowerment, and community change across West Bengal."
+    "description": "Discover the dedicated team behind AIM Foundation, working passionately to drive education, healthcare, women empowerment, and community change across West Bengal."
   };
 
   return (
@@ -84,6 +86,8 @@ export default function TeamPage() {
             </div>
           </div>
         </section>
+
+        <Breadcrumbs items={[{ label: 'About', href: '/organisation' }, { label: 'Our Team' }]} />
 
         {/* Team Members */}
         <section className="py-12 md:py-20 lg:py-24 bg-muted">

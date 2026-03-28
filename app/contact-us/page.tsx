@@ -1,9 +1,11 @@
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/sections/ContactForm";
 import ContactEmail from "@/components/layout/ContactEmail";
 import { Mail, Phone, MapPin } from 'lucide-react';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Contact Us | AIM Foundation',
@@ -82,7 +84,10 @@ export default function ContactUsPage() {
                   We'd love to hear from you. Whether you have a question, a suggestion, or just want to say hello, feel free to reach out.
                 </p>
               </div>
-              <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+
+              <Breadcrumbs items={[{ label: 'Connect', href: '/connect' }, { label: 'Contact Us' }]} />
+
+              <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mt-12">
                 <div className="bg-card p-8 rounded-lg shadow-lg">
                   <h2 className="text-2xl font-bold font-headline mb-6">Send us a Message</h2>
                   <ContactForm />

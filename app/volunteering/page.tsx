@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
@@ -5,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ContactEmail from "@/components/layout/ContactEmail";
 import type { Metadata } from 'next';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Volunteer with AIM Foundation in Kolkata & Beyond',
@@ -98,6 +100,8 @@ export default function VolunteeringPage() {
             </div>
           </div>
         </section>
+
+        <Breadcrumbs items={[{ label: 'Join Us', href: '/join-us' }, { label: 'Volunteering' }]} />
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">

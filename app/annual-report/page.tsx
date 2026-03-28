@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Annual Reports - AIM Foundation',
@@ -93,14 +94,32 @@ export default function AnnualReportPage() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <section className="py-12 md:py-20 lg:py-24 bg-muted">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold font-headline">Our Annual Reports</h1>
-              <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                Explore our journey of impact, transparency, and accountability through our annual reports.
+        <section className="relative w-full">
+          <div className="relative w-full h-[334px]">
+            <Image
+              src="/images/banner/organisation.avif"
+              alt="Reports Banner"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
+            <div className="relative z-10 text-left">
+              <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                Our Annual Reports
+              </h1>
+              <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                Impact, Transparency, and Accountability.
               </p>
             </div>
+          </div>
+        </section>
+
+        <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: 'Annual Reports' }]} />
+
+        <section className="py-12 md:py-20 lg:py-24 bg-muted">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {reports.map((report) => (
                 <Card key={report.year} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">

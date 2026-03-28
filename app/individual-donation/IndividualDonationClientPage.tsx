@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/IndividualDonationForm'), { 
     ssr: false,
@@ -45,6 +46,8 @@ export default function IndividualDonationClientPage() {
             </div>
           </div>
         </section>
+
+        <Breadcrumbs items={[{ label: 'Get Involved', href: '/corporate-social-responsibility' }, { label: 'Individual Donation' }]} />
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">

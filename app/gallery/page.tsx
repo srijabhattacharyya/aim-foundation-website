@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from "react";
@@ -7,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import imageData from 'app/lib/placeholder-images.json';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export interface GalleryImage {
   id: string;
@@ -24,10 +26,8 @@ export default function GalleryPage() {
   const [loadedStates, setLoadedStates] = useState<boolean[]>([]);
 
   useEffect(() => {
-    // Sort images by ID in descending order
     const sortedImages = [...imageData.gallery].sort((a, b) => parseInt(b.id) - parseInt(a.id));
     setImages(sortedImages);
-    // Initially, mark all as not loaded
     setLoadedStates(new Array(sortedImages.length).fill(false));
     setLoading(false);
   }, []);
@@ -44,15 +44,32 @@ export default function GalleryPage() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <section className="py-12 md:py-20 lg:py-24 bg-muted">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold font-headline">Gallery</h1>
-              <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                Moments of impact, stories of change. Explore our journey through these images.
+        <section className="relative w-full">
+          <div className="relative w-full h-[334px]">
+            <Image
+              src="/images/banner/pg.avif"
+              alt="Gallery Banner"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/30 to-transparent text-white p-8 md:p-12">
+            <div className="relative z-10 text-left">
+              <h1 className="text-4xl md:text-5xl font-bold font-headline animate-fade-in-down [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                Gallery
+              </h1>
+              <p className="mt-4 text-lg md:text-xl max-w-3xl animate-fade-in-up [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                Capturing Moments of Hope and Change.
               </p>
             </div>
+          </div>
+        </section>
 
+        <Breadcrumbs items={[{ label: 'Media', href: '/press-releases' }, { label: 'Gallery' }]} />
+
+        <section className="py-12 md:py-20 lg:py-24 bg-muted">
+          <div className="container mx-auto px-4 md:px-6">
             {loading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[...Array(9)].map((_, i) => (
