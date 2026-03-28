@@ -10,6 +10,7 @@ import Link from 'next/link';
 import TrusteeEmail from '@/components/layout/TrusteeEmail';
 import GovernanceAndTeam from '@/components/sections/GovernanceAndTeam';
 import ImpactAndReach from '@/components/sections/ImpactAndReach';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
     title: 'Our Profile & Transparency | AIM Foundation',
@@ -82,6 +83,9 @@ export default function ProfilePage() {
                         </div>
                     </div>
                 </section>
+
+                <Breadcrumbs items={[{ label: 'About', href: '/organisation' }, { label: 'Profile' }]} />
+
                 <section className="py-12 md:py-20 lg:py-24 bg-background">
                     <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
                         <h2 className="text-3xl md:text-4xl font-bold font-headline">Our Commitment to Transparency</h2>

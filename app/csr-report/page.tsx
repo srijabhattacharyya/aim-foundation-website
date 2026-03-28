@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -144,7 +145,7 @@ export default function CsrReportPage() {
                     </h2>
                 </div>
 
-                <Breadcrumbs items={[{ label: 'Services', href: '/csr-report' }, { label: 'CSR Report' }]} />
+                <Breadcrumbs items={[{ label: 'Services', href: '/services' }, { label: 'CSR Report' }]} />
 
                 <div className="bg-card p-6 rounded-lg shadow-sm">
                   <p>AIM Foundation delivers comprehensive, end-to-end Corporate Social Responsibility Reporting and impact measurement solutions—from annual CSR reports to bespoke impact dashboards. Our reports are fully compliant with Indian CSR regulations (Companies Act, Schedule VII) and aligned with global reporting standards, ensuring credibility, transparency, and strategic value.</p>

@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -98,7 +99,7 @@ export default function ImpactAssessmentServicesPage() {
                     </p>
                 </div>
 
-                <Breadcrumbs items={[{ label: 'Services', href: '/csr-report' }, { label: 'Impact Assessment' }]} />
+                <Breadcrumbs items={[{ label: 'Services', href: '/services' }, { label: 'Impact Assessment' }]} />
 
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4 text-center text-primary">Leading CSR Impact Assessment Agency in India</h2>
