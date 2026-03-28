@@ -136,7 +136,7 @@ export default function GenderEqualityInitiativesPage() {
             </div>
           </section>
 
-          <Breadcrumbs items={[{ label: 'Initiatives', href: '/gender-equality-initiative' }, { label: 'Gender Equality' }]} />
+          <Breadcrumbs items={[{ label: 'Initiatives' }, { label: 'Gender Equality' }]} />
 
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">

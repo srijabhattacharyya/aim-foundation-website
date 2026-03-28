@@ -113,7 +113,7 @@ export default function SkillDevelopmentInitiativesPage() {
         </div>
       </section>
 
-      <Breadcrumbs items={[{ label: 'Initiatives', href: '/skill-development-initiatives' }, { label: 'Skill Development' }]} />
+      <Breadcrumbs items={[{ label: 'Initiatives' }, { label: 'Skill Development' }]} />
 
       <section className="py-12 md:py-20 lg:py-24 bg-muted">
         <div className="container mx-auto px-4 md:px-6">

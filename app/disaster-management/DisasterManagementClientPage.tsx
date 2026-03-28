@@ -66,7 +66,7 @@ export default function DisasterManagementClientPage() {
           </div>
         </section>
 
-        <Breadcrumbs items={[{ label: 'Initiatives', href: '/relief-to-the-underprivileged' }, { label: 'Disaster Management' }]} />
+        <Breadcrumbs items={[{ label: 'Initiatives' }, { label: 'Disaster Management' }]} />
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">

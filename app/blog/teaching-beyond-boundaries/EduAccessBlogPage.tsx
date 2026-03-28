@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -38,7 +39,7 @@ export default function EduAccessBlogPage() {
           </header>
 
           <Breadcrumbs items={[
-            { label: 'Resources', href: '/blog' },
+            { label: 'Resources' },
             { label: 'Blog', href: '/blog' },
             { label: 'EduAccess Story' }
           ]} />

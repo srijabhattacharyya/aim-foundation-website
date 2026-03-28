@@ -167,7 +167,7 @@ export default function HealthCareInitiativesPage() {
         </div>
       </section>
 
-      <Breadcrumbs items={[{ label: 'Initiatives', href: '/healthcare-initiatives' }, { label: 'Healthcare' }]} />
+      <Breadcrumbs items={[{ label: 'Initiatives' }, { label: 'Healthcare' }]} />
 
       <section className="py-12 md:py-20 lg:py-24 bg-muted">
         <div className="container mx-auto px-4 md:px-6">

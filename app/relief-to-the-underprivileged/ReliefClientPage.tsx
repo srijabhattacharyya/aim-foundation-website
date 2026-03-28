@@ -66,7 +66,7 @@ export default function ReliefClientPage() {
           </div>
         </section>
 
-        <Breadcrumbs items={[{ label: 'Initiatives', href: '/disaster-management' }, { label: 'Relief' }]} />
+        <Breadcrumbs items={[{ label: 'Initiatives' }, { label: 'Relief to the Underprivileged' }]} />
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">
@@ -93,7 +93,7 @@ export default function ReliefClientPage() {
                           </p>
                           <h3 className="text-2xl font-bold font-headline pt-4">Be the Lifeline for Someone in Need</h3>
                           <p>
-                            For many, a single meal, a warm blanket, or access to clean water can be a lifeline. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> provides immediate, tangible relief to those who have the least. You can help us reach more families, provide more meals, and offer a glimmer of hope in the darkest of times. Your support ensures that our helping hand can extend to every person who needs it.
+                            For many, a single meal, a warm blanket, or access to clean water can be a lifeline. Your <Link href="/individual-donation" className="text-primary hover:underline">donation</Link> provides immediate, tangible relief to those who have the least. You can help us reach more families, provide more meals, and offer a glimpse of hope in the darkest of times. Your support ensures that our helping hand can extend to every person who needs it.
                           </p>
                         </div>
                     </div>
