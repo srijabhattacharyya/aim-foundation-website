@@ -68,6 +68,7 @@ export default function RootLayout({
     "description": "AIM Foundation is a Kolkata-based NGO working on healthcare, education, environment, childcare, skill development and women empowerment initiatives.",
     "telephone": "+91-6290022813",
     "email": "info@aimindia.org.in",
+    "hasMap": "https://maps.google.com/?q=22.515176534870683, 88.36798957976836",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "41, Ballygaunge Terrace",
