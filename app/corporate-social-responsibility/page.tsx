@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -45,18 +44,16 @@ export const metadata: Metadata = {
 export default function CorporateSocialResponsibilityPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "Partner with AIM Foundation for impactful CSR initiatives in India. Build brand trust, support communities, and align with SDGs through sustainable projects."
+    "@type": "DonateAction",
+    "name": "Corporate CSR Support",
+    "description": "Partner with AIM Foundation for impactful CSR initiatives in India. Align your brand with SDGs and support sustainable community projects.",
+    "recipient": {
+      "@type": "NGO",
+      "name": "AIM Foundation",
+      "url": "https://www.aimindia.org.in/",
+      "logo": "https://www.aimindia.org.in/logo.png"
+    },
+    "target": "https://aimindia.org.in/corporate-social-responsibility"
   };
 
   return (
@@ -98,7 +95,7 @@ export default function CorporateSocialResponsibilityPage() {
           {/* Content Section */}
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">
-              <div className="max-w-4xl mx-auto space-y-6 text-lg text-muted-foreground text-justify">
+              <div className="max-w-4xl auto space-y-6 text-lg text-muted-foreground text-justify">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline text-center">CSR with AIM Foundation</h2>
                 <p>In today’s evolving business landscape, a strong commitment to social responsibility is a hallmark of respected and resilient brands. Companies across the globe are now aligning their operations with sustainable development goals, recognizing that true success includes social, environmental, and ethical impact.</p>
                 <p>At AIM Foundation, we partner with visionary businesses to co-create CSR programs that deliver real change at the grassroots level—while enhancing brand trust and stakeholder value.</p>

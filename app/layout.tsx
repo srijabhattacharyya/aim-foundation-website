@@ -88,7 +88,11 @@ export default function RootLayout({
       "https://www.youtube.com/@aimfoundation2604"
     ],
     "description": "A leading NGO in Kolkata dedicated to education, healthcare, and sustainability.",
-    "taxID": "80G/12A/CSR-1/FCRA Certified"
+    "taxID": "80G/12A/CSR-1/FCRA Certified",
+    "potentialAction": {
+      "@type": "DonateAction",
+      "target": "https://aimindia.org.in/individual-donation"
+    }
   };
 
   const websiteSchemaMarkup = {

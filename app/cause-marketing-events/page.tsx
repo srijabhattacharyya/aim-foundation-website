@@ -58,18 +58,16 @@ export const metadata: Metadata = {
 export default function CauseMarketingEventsPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "Partner with AIM Foundation for impactful cause-related marketing campaigns. Build customer trust, drive social good, and enhance your brand reputation."
+    "@type": "DonateAction",
+    "name": "Cause-Related Marketing Partnership",
+    "description": "Collaborate with AIM Foundation on strategic cause marketing campaigns. Align your brand's sales or services with social impact.",
+    "recipient": {
+      "@type": "NGO",
+      "name": "AIM Foundation",
+      "url": "https://www.aimindia.org.in/",
+      "logo": "https://www.aimindia.org.in/logo.png"
+    },
+    "target": "https://aimindia.org.in/cause-marketing-events"
   };
 
   return (

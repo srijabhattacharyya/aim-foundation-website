@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
@@ -60,19 +59,16 @@ export const metadata: Metadata = {
 export default function PayrollGivingPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604",
-    ],
-    "description":
-      "Support social impact with AIM Foundation Payroll Giving. Enable employees to donate effortlessly, strengthen CSR goals, and create lasting community change.",
+    "@type": "DonateAction",
+    "name": "Payroll Giving Program",
+    "description": "Enable employees to donate a small, voluntary portion of their monthly salary to support AIM Foundation's high-impact social initiatives.",
+    "recipient": {
+      "@type": "NGO",
+      "name": "AIM Foundation",
+      "url": "https://www.aimindia.org.in/",
+      "logo": "https://www.aimindia.org.in/logo.png"
+    },
+    "target": "https://aimindia.org.in/payroll-giving"
   };
 
   return (
