@@ -51,20 +51,14 @@ export const metadata: Metadata = {
 
 export default function ReliefPage() {
   const schemaMarkup = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'AIM Foundation',
-    url: 'https://www.aimindia.org.in/',
-    logo: 'https://www.aimindia.org.in/logo.png',
-    sameAs: [
-      'https://www.facebook.com/aimindiango/',
-      'https://x.com/aimindiango',
-      'https://www.instagram.com/aimfoundation_ngo/',
-      'https://www.linkedin.com/in/aim-foundation-ngo/',
-      'https://www.youtube.com/@aimfoundation2604',
-    ],
-    description:
-      'AIM Foundation’s Relief to the Underprivileged program provides food, water, clothing, and essentials to marginalized families, restoring hope and dignity.',
+    "@context": "https://schema.org",
+    "@type": "DonateAction",
+    "recipient": {
+      "@type": "NGO",
+      "name": "AIM Foundation",
+      "url": "https://aimindia.org.in",
+      "logo": "https://aimindia.org.in/logo.png"
+    }
   };
 
   return (

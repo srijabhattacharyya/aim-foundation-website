@@ -59,15 +59,12 @@ export default function CauseMarketingEventsPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
-    "name": "Cause-Related Marketing Partnership",
-    "description": "Collaborate with AIM Foundation on strategic cause marketing campaigns. Align your brand's sales or services with social impact.",
     "recipient": {
       "@type": "NGO",
       "name": "AIM Foundation",
-      "url": "https://www.aimindia.org.in/",
-      "logo": "https://www.aimindia.org.in/logo.png"
-    },
-    "target": "https://aimindia.org.in/cause-marketing-events"
+      "url": "https://aimindia.org.in",
+      "logo": "https://aimindia.org.in/logo.png"
+    }
   };
 
   return (

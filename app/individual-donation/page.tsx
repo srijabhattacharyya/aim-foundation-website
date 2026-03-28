@@ -53,23 +53,12 @@ export default function IndividualDonationPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
-    "name": "Donate to AIM Foundation",
-    "description": "Support AIM Foundation with your donation. Help provide education, healthcare, women empowerment, and sustainability for communities in need across India.",
     "recipient": {
       "@type": "NGO",
       "name": "AIM Foundation",
-      "url": "https://www.aimindia.org.in/",
-      "logo": "https://www.aimindia.org.in/logo.png",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "41, Ballygaunge Terrace",
-        "addressLocality": "Kolkata",
-        "addressRegion": "West Bengal",
-        "postalCode": "700029",
-        "addressCountry": "IN"
-      }
-    },
-    "target": "https://www.aimindia.org.in/individual-donation"
+      "url": "https://aimindia.org.in",
+      "logo": "https://aimindia.org.in/logo.png"
+    }
   };
 
   return (

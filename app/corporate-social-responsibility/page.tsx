@@ -45,15 +45,12 @@ export default function CorporateSocialResponsibilityPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
-    "name": "Corporate CSR Support",
-    "description": "Partner with AIM Foundation for impactful CSR initiatives in India. Align your brand with SDGs and support sustainable community projects.",
     "recipient": {
       "@type": "NGO",
       "name": "AIM Foundation",
-      "url": "https://www.aimindia.org.in/",
-      "logo": "https://www.aimindia.org.in/logo.png"
-    },
-    "target": "https://aimindia.org.in/corporate-social-responsibility"
+      "url": "https://aimindia.org.in",
+      "logo": "https://aimindia.org.in/logo.png"
+    }
   };
 
   return (
@@ -66,7 +63,6 @@ export default function CorporateSocialResponsibilityPage() {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
-          {/* Banner Section */}
           <section className="relative w-full">
             <div className="relative w-full">
               <Image
@@ -92,7 +88,6 @@ export default function CorporateSocialResponsibilityPage() {
 
           <Breadcrumbs items={[{ label: 'Get Involved', href: '/individual-donation' }, { label: 'CSR' }]} />
 
-          {/* Content Section */}
           <section className="py-12 md:py-20 lg:py-24 bg-muted">
             <div className="container mx-auto px-4 md:px-6">
               <div className="max-w-4xl auto space-y-6 text-lg text-muted-foreground text-justify">

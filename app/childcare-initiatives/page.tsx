@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { Card, CardContent, CardTitle, CardDescription } from "../../components/ui/card";
 import Image from "next/image";
@@ -74,18 +73,13 @@ const initiatives = [
 export default function ChildcareInitiativesPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "AIM Foundation’s Childcare Programs support children through education, creativity, health camps, and safe spaces, fostering growth, dignity, and well-being."
+    "@type": "DonateAction",
+    "recipient": {
+      "@type": "NGO",
+      "name": "AIM Foundation",
+      "url": "https://aimindia.org.in",
+      "logo": "https://aimindia.org.in/logo.png"
+    }
   };
 
   return (

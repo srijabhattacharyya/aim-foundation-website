@@ -60,15 +60,12 @@ export default function PayrollGivingPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
-    "name": "Payroll Giving Program",
-    "description": "Enable employees to donate a small, voluntary portion of their monthly salary to support AIM Foundation's high-impact social initiatives.",
     "recipient": {
       "@type": "NGO",
       "name": "AIM Foundation",
-      "url": "https://www.aimindia.org.in/",
-      "logo": "https://www.aimindia.org.in/logo.png"
-    },
-    "target": "https://aimindia.org.in/payroll-giving"
+      "url": "https://aimindia.org.in",
+      "logo": "https://aimindia.org.in/logo.png"
+    }
   };
 
   return (

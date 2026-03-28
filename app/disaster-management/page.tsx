@@ -50,18 +50,13 @@ export const metadata: Metadata = {
 export default function DisasterManagementPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "AIM Foundation’s Disaster Relief Program provides emergency food, shelter, medical aid, and recovery support to communities hit by floods, cyclones, and crises."
+    "@type": "DonateAction",
+    "recipient": {
+      "@type": "NGO",
+      "name": "AIM Foundation",
+      "url": "https://aimindia.org.in",
+      "logo": "https://aimindia.org.in/logo.png"
+    }
   };
 
   return (

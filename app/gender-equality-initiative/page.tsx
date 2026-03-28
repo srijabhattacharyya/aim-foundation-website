@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
@@ -89,18 +88,13 @@ const initiatives = [
 export default function GenderEqualityInitiativesPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://www.aimindia.org.in/",
-    "logo": "https://www.aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "AIM Foundation’s Gender Equality Programs empower women and girls through health, skills, and education—building confidence, independence, and equity."
+    "@type": "DonateAction",
+    "recipient": {
+      "@type": "NGO",
+      "name": "AIM Foundation",
+      "url": "https://aimindia.org.in",
+      "logo": "https://aimindia.org.in/logo.png"
+    }
   };
 
   return (
