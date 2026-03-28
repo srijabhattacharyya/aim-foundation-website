@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import ContactEmail from "@/components/layout/ContactEmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Terms and Conditions | AIM Foundation',
@@ -52,7 +53,7 @@ export default function TermsAndConditionsPage() {
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
+    "logo": "https://www.aimindia.org.in/logo.png",
     "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
@@ -78,7 +79,14 @@ export default function TermsAndConditionsPage() {
               <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
                 Terms and Conditions
               </h1>
-              <div className="space-y-6 text-muted-foreground text-justify">
+
+              <Breadcrumbs items={[
+                { label: 'About', href: '/organisation' },
+                { label: 'Policies', href: '/policies' },
+                { label: 'Terms & Conditions' }
+              ]} />
+
+              <div className="space-y-6 text-muted-foreground text-justify mt-12">
                 <p>Welcome to AIM Foundation (“we,” “our,” “us”).</p>
                 <p>These Terms and Conditions govern your use of our website, services, donation platform, and any associated content. By accessing or using our website, you agree to comply with and be bound by these Terms. If you do not agree, please do not use this website.</p>
 

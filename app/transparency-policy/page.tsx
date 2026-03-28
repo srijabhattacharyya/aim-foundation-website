@@ -1,10 +1,10 @@
 
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Transparency Policy | AIM Foundation',
@@ -17,7 +17,6 @@ export const metadata: Metadata = {
     'donor communication policy'
   ],
   authors: [{ name: 'AIM Foundation' }],
-  robots: 'index, follow',
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/transparency-policy',
@@ -79,7 +78,14 @@ export default function TransparencyPolicyPage() {
               <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
                 Transparency Policy
               </h1>
-              <div className="space-y-6 text-muted-foreground text-justify">
+
+              <Breadcrumbs items={[
+                { label: 'About', href: '/organisation' },
+                { label: 'Policies', href: '/policies' },
+                { label: 'Transparency Policy' }
+              ]} />
+
+              <div className="space-y-6 text-muted-foreground text-justify mt-12">
                 <p>
                   At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we believe that transparency is fundamental to building trust with our stakeholders — including donors, partners, beneficiaries, <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link>, and the general public. We are committed to conducting all our operations with honesty, openness, and accountability.
                 </p>

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Code of Conduct - AIM Foundation',
@@ -44,7 +45,7 @@ export default function CodeOfConductPage() {
     "@type": "Organization",
     "name": "AIM Foundation",
     "url": "https://www.aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
+    "logo": "https://www.aimindia.org.in/logo.png",
     "sameAs": [
       "https://www.facebook.com/aimindiango/",
       "https://x.com/aimindiango",
@@ -70,7 +71,14 @@ export default function CodeOfConductPage() {
               <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
                 Code of Conduct
               </h1>
-              <div className="space-y-6 text-muted-foreground text-justify">
+
+              <Breadcrumbs items={[
+                { label: 'About', href: '/organisation' },
+                { label: 'Policies', href: '/policies' },
+                { label: 'Code of Conduct' }
+              ]} />
+
+              <div className="space-y-6 text-muted-foreground text-justify mt-12">
                   <p>Our Code of Conduct applies to all AIM Foundation staff, <Link href="/volunteering" className="text-primary hover:underline">volunteers</Link>, interns, partners, and representatives. It outlines the ethical principles and standards of behavior expected of everyone associated with our organization, ensuring we operate with integrity, respect, and accountability.</p>
                   
                   <h2 className="text-2xl font-bold font-headline pt-4">1. Professionalism and Integrity</h2>

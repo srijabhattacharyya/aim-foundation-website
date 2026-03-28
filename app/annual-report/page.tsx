@@ -116,7 +116,7 @@ export default function AnnualReportPage() {
           </div>
         </section>
 
-        <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: 'Annual Reports' }]} />
+        <Breadcrumbs items={[{ label: 'Resources' }, { label: 'Annual Reports' }]} />
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6">

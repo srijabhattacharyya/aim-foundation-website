@@ -44,7 +44,7 @@ export default function OrganisationClientPage() {
           </div>
         </section>
 
-        <Breadcrumbs items={[{ label: 'About', href: '/organisation' }, { label: 'Organisation' }]} />
+        <Breadcrumbs items={[{ label: 'About' }, { label: 'Organisation' }]} />
 
         <section className="py-12 md:py-20 lg:py-24 bg-card">
           <div className="container mx-auto px-4 md:px-6">

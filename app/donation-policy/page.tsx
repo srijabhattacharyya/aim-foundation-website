@@ -1,10 +1,10 @@
 
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import DonationEmail from "@/components/layout/DonationEmail";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Donation Policy | AIM Foundation',
@@ -77,7 +77,14 @@ export default function DonationPolicyPage() {
               <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
                 Donation Policy
               </h1>
-              <div className="space-y-6 text-muted-foreground text-justify">
+
+              <Breadcrumbs items={[
+                { label: 'About', href: '/organisation' },
+                { label: 'Policies', href: '/policies' },
+                { label: 'Donation Policy' }
+              ]} />
+
+              <div className="space-y-6 text-muted-foreground text-justify mt-12">
                 <p>
                   At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we are deeply grateful for the generosity and trust of our donors. Your contributions play a vital role in supporting our mission to empower underprivileged communities through <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, and social development programs.
                 </p>
