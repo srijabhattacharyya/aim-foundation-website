@@ -59,7 +59,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const schemaMarkup = {
+  const ngoSchemaMarkup = {
     "@context": "https://schema.org",
     "@type": "NGO",
     "name": "AIM Foundation",
@@ -91,6 +91,17 @@ export default function RootLayout({
     "taxID": "80G/12A/CSR-1/FCRA Certified"
   };
 
+  const websiteSchemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://aimindia.org.in",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://aimindia.org.in/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   const measurementId = "G-0Q40BRFCRS";
   const adwordsId = "AW-16896084763";
 
@@ -100,7 +111,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaMarkup),
+            __html: JSON.stringify([ngoSchemaMarkup, websiteSchemaMarkup]),
           }}
         />
         {/* Google tag (gtag.js) */}
