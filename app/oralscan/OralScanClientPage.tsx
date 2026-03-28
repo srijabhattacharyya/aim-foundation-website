@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -11,6 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/OralScanDonationForm'), { 
     ssr: false,
@@ -31,7 +31,7 @@ const healthcareInitiatives = [
 const relatedResource = {
     link: "/blog/screening-today-for-a-healthier-tomorrow",
     text: "Screening Today for a Healthier Tomorrow",
-    image: { src: "/images/projects/oralscan/oranscan2.avif", alt: "OralScan initiative", hint: "oral cancer screening", description: "An oral cancer screening camp in session"}
+    image: { src: "/images/projects/oralscan/oralscan2.avif", alt: "OralScan initiative", hint: "oral cancer screening", description: "An oral cancer screening camp in session"}
 };
 
 export default function OralScanClientPage() {
@@ -66,6 +66,12 @@ export default function OralScanClientPage() {
             </div>
           </div>
         </section>
+
+        <Breadcrumbs items={[
+          { label: 'Initiatives', href: '/healthcare-initiatives' },
+          { label: 'Healthcare', href: '/healthcare-initiatives' },
+          { label: 'OralScan' }
+        ]} />
 
         <section className="py-12 md:py-20 lg:py-24 bg-muted">
           <div className="container mx-auto px-4 md:px-6 relative">

@@ -1,9 +1,8 @@
-
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrusteeEmail from "@/components/layout/TrusteeEmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export default function WhistleblowerPolicyPage() {
   return (
@@ -15,7 +14,14 @@ export default function WhistleblowerPolicyPage() {
             <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
               Whistleblower Policy
             </h1>
-            <div className="space-y-6 text-muted-foreground text-justify">
+
+            <Breadcrumbs items={[
+              { label: 'About', href: '/organisation' },
+              { label: 'Policies', href: '/policies' },
+              { label: 'Whistleblower Policy' }
+            ]} />
+
+            <div className="space-y-6 text-muted-foreground text-justify mt-12">
               
               <h2 className="text-2xl font-bold font-headline pt-4">Purpose</h2>
               <p>The purpose of this Whistleblower Policy is to:</p>

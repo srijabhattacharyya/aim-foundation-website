@@ -1,9 +1,9 @@
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import DonationEmail from "@/components/layout/DonationEmail";
 import Link from 'next/link';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Refund Policy | AIM Foundation',
@@ -15,7 +15,6 @@ export const metadata: Metadata = {
     'charitable contribution policy'
   ],
   authors: [{ name: 'AIM Foundation' }],
-  robots: 'index, follow',
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/refund-policy',
@@ -76,7 +75,14 @@ export default function RefundPolicyPage() {
               <h1 className="text-3xl md:text-4xl font-bold font-headline mb-8 text-center">
                 Refund Policy
               </h1>
-              <div className="space-y-6 text-muted-foreground text-justify">
+
+              <Breadcrumbs items={[
+                { label: 'About', href: '/organisation' },
+                { label: 'Policies', href: '/policies' },
+                { label: 'Refund Policy' }
+              ]} />
+
+              <div className="space-y-6 text-muted-foreground text-justify mt-12">
                 <p>
                   At Associated Initiative for Mankind Foundation (hereinafter referred to as "AIM Foundation"), we deeply value the generosity and trust of all our donors. Your contributions go directly toward supporting our mission to uplift underprivileged communities through <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">health</Link>, and <Link href="/gender-equality-initiative" className="text-primary hover:underline">empowerment</Link> initiatives.
                 </p>

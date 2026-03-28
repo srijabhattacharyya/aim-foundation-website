@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -8,6 +7,7 @@ import Link from "next/link";
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Stethoscope } from 'lucide-react';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export default function DetectBlogPage() {
   return (
@@ -36,6 +36,12 @@ export default function DetectBlogPage() {
               </div>
             </div>
           </header>
+
+          <Breadcrumbs items={[
+            { label: 'Resources', href: '/blog' },
+            { label: 'Blog', href: '/blog' },
+            { label: 'Project Detect Story' }
+          ]} />
 
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
             <div className="max-w-4xl mx-auto">

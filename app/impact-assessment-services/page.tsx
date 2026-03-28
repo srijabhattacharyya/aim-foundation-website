@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -10,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import TrusteeEmail from '@/components/layout/TrusteeEmail';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'CSR Impact Assessment Services India | AIM Foundation',
@@ -97,6 +97,8 @@ export default function ImpactAssessmentServicesPage() {
                         Measuring What Matters: From CSR Spend to Real Social Value
                     </p>
                 </div>
+
+                <Breadcrumbs items={[{ label: 'Services', href: '/csr-report' }, { label: 'Impact Assessment' }]} />
 
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4 text-center text-primary">Leading CSR Impact Assessment Agency in India</h2>

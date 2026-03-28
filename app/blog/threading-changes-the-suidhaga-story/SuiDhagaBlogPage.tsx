@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -8,6 +7,7 @@ import Link from "next/link";
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { PenTool } from 'lucide-react';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export default function SuiDhagaBlogPage() {
   return (
@@ -37,11 +37,17 @@ export default function SuiDhagaBlogPage() {
             </div>
           </header>
 
+          <Breadcrumbs items={[
+            { label: 'Resources', href: '/blog' },
+            { label: 'Blog', href: '/blog' },
+            { label: 'SuiDhaga Story' }
+          ]} />
+
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg lg:prose-xl max-w-none text-muted-foreground text-justify space-y-6">
                 <p>
-                  In a world full of noise, the soft hum of a sewing machine can seem almost unremarkable. But for many <Link href="/gender-equality-initiative" className="text-primary hover:underline">women</Link> across India’s underserved communities, that hum represents something powerful: transformation. It’s not just about tailoring—it’s about threading change into the fabric of everyday life. Through its unique initiative <strong><Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link></strong>, AIM Foundation is doing just that—threading changes that empower women, stitch dignity into livelihoods, and create new patterns of possibility.
+                  In a world full of noise, the soft hum of a sewing machine can seem almost unremarkable. But for many <Link href="/gender-equality-initiative" className="text-primary hover:underline">women</Link> across India’s underserved communities, that hum represents something powerful: transformation. It’s not just about tailoring—it’s about threading change into the fabric of everyday life. Through its unique initiative <strong><Link href="/suidhaga" className="text-primary hover:underline">SuiDhaga</Link></strong>, AIM Foundation is doing just that—threading changes that empower women, stitch dignity into livelihoods, and create new patterns of possibility through tailoring and embroidery skills.
                 </p>
 
                 <h2 className="text-3xl font-bold font-headline text-foreground">A Needle, A Thread, A New Beginning</h2>

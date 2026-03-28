@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -6,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { PlayCircle } from 'lucide-react';
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: 'Our Films | Stories of Impact from AIM Foundation',
@@ -131,7 +131,10 @@ export default function FilmsPage() {
                   Stories of change, captured on camera. Watch the impact of our work and the lives we've touched through these short films.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+              <Breadcrumbs items={[{ label: 'Media', href: '/gallery' }, { label: 'Films' }]} />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
                 {videos.map((video, index) => (
                   <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
                       <CardContent className="p-0">

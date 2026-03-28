@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -12,6 +11,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import InitiativeSidebar from "@/components/layout/InitiativeSidebar";
 import { useSearchParams } from 'next/navigation';
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const DynamicDonationForm = dynamic(() => import('@/components/sections/donation-forms/DetectDonationForm'), { 
     ssr: false,
@@ -45,11 +45,14 @@ const relatedResource = {
 export default function DetectClientPage() {
     const [showForm, setShowForm] = useState(false);
     const searchParams = useSearchParams();
-    const from = searchParams?.get('from') ?? 'healthcare';  // ✅ Safe handling
+    const from = searchParams?.get('from') ?? 'healthcare';
 
     const initiativeLists = from === 'gender-equality'
         ? [{ title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }, { title: "Healthcare Initiatives", initiatives: healthcareInitiatives }]
         : [{ title: "Healthcare Initiatives", initiatives: healthcareInitiatives }, { title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }];
+
+    const parentLabel = from === 'gender-equality' ? 'Gender Equality' : 'Healthcare';
+    const parentHref = from === 'gender-equality' ? '/gender-equality-initiative' : '/healthcare-initiatives';
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -78,6 +81,12 @@ export default function DetectClientPage() {
                 </div>
               </div>
             </section>
+
+            <Breadcrumbs items={[
+              { label: 'Initiatives', href: parentHref },
+              { label: parentLabel, href: parentHref },
+              { label: 'Detect' }
+            ]} />
     
             <section className="py-12 md:py-20 lg:py-24 bg-muted">
               <div className="container mx-auto px-4 md:px-6 relative">
