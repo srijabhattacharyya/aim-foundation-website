@@ -34,7 +34,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    // ✅ Removed `url` here
     title: 'AIM Foundation GreenRoots: Community Tree Planting',
     description: "AIM Foundation’s GreenRoots empowers families, schools, and villages to plant trees in courtyards, farms, and temples, building climate resilience at the grassroots.",
     images: ['https://aimindia.org.in/home.avif'],
@@ -45,28 +44,40 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "AIM Foundation’s GreenRoots empowers families, schools, and villages to plant trees in courtyards, farms, and temples, building climate resilience at the grassroots."
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': 'Planting Hope, Growing Futures: The GreenRoots Journey',
+    'description': "AIM Foundation’s GreenRoots empowers families, schools, and villages to plant trees in courtyards, farms, and temples, building climate resilience at the grassroots.",
+    'image': 'https://aimindia.org.in/images/banner/green-root1.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2021-11-26T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/planting-hope-growing-futures'
+    }
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-greenroots-blog"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogSchema),
+        }}
+        key="blog-post-schema"
       />
       <GreenRootsBlogPage />
     </>

@@ -51,21 +51,30 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
+  const blogSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'AIM Foundation',
-    url: 'https://aimindia.org.in/',
-    logo: 'https://aimindia.org.in/logo.png',
-    sameAs: [
-      'https://www.facebook.com/aimindiango/',
-      'https://x.com/aimindiango',
-      'https://www.instagram.com/aimfoundation_ngo/',
-      'https://www.linkedin.com/in/aim-foundation-ngo/',
-      'https://www.youtube.com/@aimfoundation2604',
-    ],
-    description:
-      'Empower English helps students in West Bengal gain spoken English skills, confidence, and opportunities for education, jobs, and a brighter future.',
+    '@type': 'BlogPosting',
+    'headline': 'Confidence Begins with Conversation: How Empower English Is Changing Lives',
+    'description': 'Empower English helps students in West Bengal gain spoken English skills, confidence, and opportunities for education, jobs, and a brighter future.',
+    'image': 'https://placehold.co/1920x580.png',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2020-11-01T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/empower-english-story'
+    }
   };
 
   return (
@@ -73,9 +82,9 @@ export default function Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
+          __html: JSON.stringify(blogSchema),
         }}
-        key="org-schema-empower-english-blog"
+        key="blog-post-schema"
       />
       <EmpowerEnglishBlogPage />
     </>

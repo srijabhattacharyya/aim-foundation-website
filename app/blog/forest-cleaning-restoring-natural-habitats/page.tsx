@@ -50,21 +50,30 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
+  const blogSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'AIM Foundation',
-    url: 'https://aimindia.org.in/',
-    logo: 'https://aimindia.org.in/logo.png',
-    sameAs: [
-      'https://www.facebook.com/aimindiango/',
-      'https://x.com/aimindiango',
-      'https://www.instagram.com/aimfoundation_ngo/',
-      'https://www.linkedin.com/in/aim-foundation-ngo/',
-      'https://www.youtube.com/@aimfoundation2604',
-    ],
-    description:
-      'Join AIM Foundation’s Forest Cleaning initiative—volunteer-driven cleanups to remove waste, protect wildlife, and restore India’s forests sustainably.',
+    '@type': 'BlogPosting',
+    'headline': 'Restoring Natural Habitats: The Forest Cleaning Initiative',
+    'description': 'Join AIM Foundation’s Forest Cleaning initiative—volunteer-driven cleanups to remove waste, protect wildlife, and restore India’s forests sustainably.',
+    'image': 'https://aimindia.org.in/images/banner/roots-of-change1.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2022-08-16T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/forest-cleaning-restoring-natural-habitats'
+    }
   };
 
   return (
@@ -72,9 +81,9 @@ export default function Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
+          __html: JSON.stringify(blogSchema),
         }}
-        key="org-schema-forest-cleaning-blog"
+        key="blog-post-schema"
       />
       <ForestCleaningBlogPage />
     </>

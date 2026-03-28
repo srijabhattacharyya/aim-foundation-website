@@ -47,28 +47,40 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "EduAccess by AIM Foundation connects rural West Bengal students with expert teachers through online classes, ensuring quality English, Math, and Science learning."
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': 'Teaching Beyond Boundaries: How EduAccess is Bringing Quality Education to Rural West Bengal',
+    'description': 'EduAccess by AIM Foundation connects rural West Bengal students with expert teachers through online classes, ensuring quality English, Math, and Science learning.',
+    'image': 'https://aimindia.org.in/images/banner/eduaccess.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2020-08-28T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/teaching-beyond-boundaries'
+    }
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-eduaccess-blog"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogSchema),
+        }}
+        key="blog-post-schema"
       />
       <EduAccessBlogPage />
     </>

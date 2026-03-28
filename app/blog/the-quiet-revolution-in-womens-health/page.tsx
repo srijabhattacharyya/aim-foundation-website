@@ -47,28 +47,40 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "Project Detect by AIM Foundation brings cervical cancer screening, awareness, and health education to rural India, empowering women with early detection and care."
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': 'The Quiet Revolution in Women’s Health: The Story of Project Detect',
+    'description': 'Project Detect by AIM Foundation brings cervical cancer screening, awareness, and health education to rural India, empowering women with early detection and care.',
+    'image': 'https://aimindia.org.in/images/banner/detect1.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2020-02-12T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/the-quiet-revolution-in-womens-health'
+    }
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-detect-blog"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogSchema),
+        }}
+        key="blog-post-schema"
       />
       <DetectBlogPage />
     </>

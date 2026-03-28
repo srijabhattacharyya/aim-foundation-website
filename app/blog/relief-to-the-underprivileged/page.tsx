@@ -43,7 +43,6 @@ export const metadata: Metadata = {
     description:
       'AIM Foundation provides food, water, clothing, and shelter to underprivileged families in crisis, delivering immediate relief with dignity and compassion.',
     images: ['https://aimindia.org.in/home.avif'],
-    // ❌ url removed
   },
   alternates: {
     canonical: '/blog/relief-to-the-underprivileged',
@@ -51,29 +50,40 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "AIM Foundation",
-    url: "https://aimindia.org.in/",
-    logo: "https://aimindia.org.in/logo.png",
-    sameAs: [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    description:
-      "AIM Foundation provides food, water, clothing, and shelter to underprivileged families in crisis, delivering immediate relief with dignity and compassion."
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': 'Relief to the Underprivileged – AIM Foundation’s Lifeline of Hope',
+    'description': 'AIM Foundation provides food, water, clothing, and shelter to underprivileged families in crisis, delivering immediate relief with dignity and compassion.',
+    'image': 'https://aimindia.org.in/images/banner/relief.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2022-05-09T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/relief-to-the-underprivileged'
+    }
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-relief-blog"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogSchema),
+        }}
+        key="blog-post-schema"
       />
       <ReliefBlogPage />
     </>

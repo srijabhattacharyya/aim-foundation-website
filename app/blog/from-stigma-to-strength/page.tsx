@@ -47,28 +47,40 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "AIM Foundation’s CycleSafe provides pads, health education, and awareness to empower girls, ensuring dignity, confidence, and uninterrupted schooling."
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': 'From Stigma to Strength: Supporting Girls’ Health and Education',
+    'description': 'AIM Foundation’s CycleSafe provides pads, health education, and awareness to empower girls, ensuring dignity, confidence, and uninterrupted schooling.',
+    'image': 'https://aimindia.org.in/images/banner/cyclesafe.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2023-02-28T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/from-stigma-to-strength'
+    }
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-cyclesafe-blog"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogSchema),
+        }}
+        key="blog-post-schema"
       />
       <CycleSafeBlogPage />
     </>

@@ -48,21 +48,30 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
+  const blogSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'AIM Foundation',
-    url: 'https://aimindia.org.in/',
-    logo: 'https://aimindia.org.in/logo.png',
-    sameAs: [
-      'https://www.facebook.com/aimindiango/',
-      'https://x.com/aimindiango',
-      'https://www.instagram.com/aimfoundation_ngo/',
-      'https://www.linkedin.com/in/aim-foundation-ngo/',
-      'https://www.youtube.com/@aimfoundation2604',
-    ],
-    description:
-      'DigiEmpower by AIM Foundation equips underprivileged children with vital digital skills, bridging the digital divide through training, access, and mentorship.',
+    '@type': 'BlogPosting',
+    'headline': 'No Child Left Offline: How DigiEmpower is Bridging the Digital Divide',
+    'description': 'DigiEmpower by AIM Foundation equips underprivileged children with vital digital skills, bridging the digital divide through training, access, and mentorship.',
+    'image': 'https://aimindia.org.in/images/banner/digiempower.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2023-11-20T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/no-child-left-offline'
+    }
   };
 
   return (
@@ -70,9 +79,9 @@ export default function Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
+          __html: JSON.stringify(blogSchema),
         }}
-        key="org-schema-digiempower-blog"
+        key="blog-post-schema"
       />
       <NoChildLeftOfflineBlogPage />
     </>

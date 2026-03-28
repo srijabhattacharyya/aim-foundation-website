@@ -47,28 +47,40 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AIM Foundation",
-    "url": "https://aimindia.org.in/",
-    "logo": "https://aimindia.org.in/logo.png",
-    "sameAs": [
-      "https://www.facebook.com/aimindiango/",
-      "https://x.com/aimindiango",
-      "https://www.instagram.com/aimfoundation_ngo/",
-      "https://www.linkedin.com/in/aim-foundation-ngo/",
-      "https://www.youtube.com/@aimfoundation2604"
-    ],
-    "description": "Discover VidyaShakti by AIM Foundation—an AI-powered learning app transforming rural education with multilingual support, equity, and 24/7 access."
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': 'VidyaShakti: Bringing AI-Powered Multilingual Learning to Rural Classrooms',
+    'description': 'Discover VidyaShakti by AIM Foundation—an AI-powered learning app transforming rural education with multilingual support, equity, and 24/7 access.',
+    'image': 'https://aimindia.org.in/images/banner/vidyashakti.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2025-02-02T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/vidyashakti-ai-learning'
+    }
   };
   
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-vidyashakti-blog"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogSchema),
+        }}
+        key="blog-post-schema"
       />
       <VidyaShaktiBlogPage />
     </>

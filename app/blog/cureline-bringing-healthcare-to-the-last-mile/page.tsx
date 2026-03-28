@@ -47,21 +47,30 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
+  const blogSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'AIM Foundation',
-    url: 'https://aimindia.org.in/',
-    logo: 'https://aimindia.org.in/logo.png',
-    sameAs: [
-      'https://www.facebook.com/aimindiango/',
-      'https://x.com/aimindiango',
-      'https://www.instagram.com/aimfoundation_ngo/',
-      'https://www.linkedin.com/in/aim-foundation-ngo/',
-      'https://www.youtube.com/@aimfoundation2604',
-    ],
-    description:
-      'CureLine by AIM Foundation brings doctors, medicines, and health camps to remote villages, Sundarbans, and flood-hit areas where care is scarce.',
+    '@type': 'BlogPosting',
+    'headline': 'CureLine: Bringing Healthcare to the Last Mile',
+    'description': 'CureLine by AIM Foundation brings doctors, medicines, and health camps to remote villages, Sundarbans, and flood-hit areas where care is scarce.',
+    'image': 'https://aimindia.org.in/images/banner/cureline.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2024-02-27T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/cureline-bringing-healthcare-to-the-last-mile'
+    }
   };
 
   return (
@@ -69,9 +78,9 @@ export default function Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
+          __html: JSON.stringify(blogSchema),
         }}
-        key="org-schema-cureline-blog"
+        key="blog-post-schema"
       />
       <CureLineBlogPage />
     </>

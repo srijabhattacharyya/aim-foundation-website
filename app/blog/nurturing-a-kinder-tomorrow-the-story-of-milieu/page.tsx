@@ -35,7 +35,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    // ❌ removed the invalid "url" property
     title: 'Milieu by AIM Foundation | Building Empathy & Inclusion',
     description:
       'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
@@ -47,21 +46,30 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const schemaMarkup = {
+  const blogSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'AIM Foundation',
-    url: 'https://aimindia.org.in/',
-    logo: 'https://aimindia.org.in/logo.png',
-    sameAs: [
-      'https://www.facebook.com/aimindiango/',
-      'https://x.com/aimindiango',
-      'https://www.instagram.com/aimfoundation_ngo/',
-      'https://www.linkedin.com/in/aim-foundation-ngo/',
-      'https://www.youtube.com/@aimfoundation2604',
-    ],
-    description:
-      'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
+    '@type': 'BlogPosting',
+    'headline': 'Nurturing a Kinder Tomorrow: The Story of Milieu',
+    'description': 'Milieu by AIM Foundation unites children from diverse backgrounds, fostering empathy, respect, and social harmony through shared learning and connection.',
+    'image': 'https://aimindia.org.in/images/banner/milieu.avif',
+    'author': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'AIM Foundation',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://aimindia.org.in/logo.png'
+      }
+    },
+    'datePublished': '2019-11-05T00:00:00Z',
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': 'https://aimindia.org.in/blog/nurturing-a-kinder-tomorrow-the-story-of-milieu'
+    }
   };
 
   return (
@@ -69,9 +77,9 @@ export default function Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
+          __html: JSON.stringify(blogSchema),
         }}
-        key="org-schema-milieu-blog"
+        key="blog-post-schema"
       />
       <MilieuBlogPage />
     </>
