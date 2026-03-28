@@ -49,11 +49,7 @@ export default function TideShieldBlogPage() {
             </div>
           </header>
 
-          <Breadcrumbs items={[
-            { label: 'Resources' },
-            { label: 'Blog', href: '/blog' },
-            { label: 'TideShield Story' }
-          ]} />
+          <Breadcrumbs items={[{ label: 'Resources' }, { label: 'Blog', href: '/blog' }, { label: 'TideShield Story' }]} />
 
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
             <div className="max-w-4xl mx-auto">

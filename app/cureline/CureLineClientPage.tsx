@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -68,7 +69,7 @@ export default function CureLineClientPage() {
         </section>
 
         <Breadcrumbs items={[
-          { label: 'Initiatives', href: '/healthcare-initiatives' },
+          { label: 'Initiatives' },
           { label: 'Healthcare', href: '/healthcare-initiatives' },
           { label: 'CureLine' }
         ]} />
