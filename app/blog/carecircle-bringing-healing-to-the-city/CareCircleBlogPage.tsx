@@ -56,7 +56,7 @@ export default function CareCircleBlogPage() {
             </div>
           </header>
 
-          <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: 'Blog', href: '/blog' }, { label: 'CareCircle Story' }]} />
+          <Breadcrumbs items={[{ label: 'Resources' }, { label: 'Blog', href: '/blog' }, { label: 'CareCircle Story' }]} />
 
           {/* --- Main Blog Content --- */}
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">

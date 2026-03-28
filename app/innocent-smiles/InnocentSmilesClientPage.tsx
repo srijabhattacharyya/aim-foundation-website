@@ -81,7 +81,7 @@ export default function InnocentSmilesClientPage() {
             </section>
 
             <Breadcrumbs items={[
-              { label: 'Initiatives', href: parentHref },
+              { label: 'Initiatives' },
               { label: parentLabel, href: parentHref },
               { label: 'Innocent Smiles' }
             ]} />

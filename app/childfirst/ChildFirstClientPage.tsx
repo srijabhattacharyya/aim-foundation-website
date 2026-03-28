@@ -83,7 +83,7 @@ export default function ChildFirstClientPage() {
             </section>
 
             <Breadcrumbs items={[
-              { label: 'Initiatives', href: parentHref },
+              { label: 'Initiatives' },
               { label: parentLabel, href: parentHref },
               { label: 'ChildFirst' }
             ]} />

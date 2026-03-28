@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -48,7 +49,7 @@ export default function DetectClientPage() {
     const from = searchParams?.get('from') ?? 'healthcare';
 
     const initiativeLists = from === 'gender-equality'
-        ? [{ title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }, { title: "Healthcare Initiatives", initiatives: healthcareInitiatives }]
+        ? [{ title: "Gender Equality Initiatives", initiatives: genderEqualityEqualityInitiatives }, { title: "Healthcare Initiatives", initiatives: healthcareInitiatives }]
         : [{ title: "Healthcare Initiatives", initiatives: healthcareInitiatives }, { title: "Gender Equality Initiatives", initiatives: genderEqualityInitiatives }];
 
     const parentLabel = from === 'gender-equality' ? 'Gender Equality' : 'Healthcare';
@@ -83,7 +84,7 @@ export default function DetectClientPage() {
             </section>
 
             <Breadcrumbs items={[
-              { label: 'Initiatives', href: parentHref },
+              { label: 'Initiatives' },
               { label: parentLabel, href: parentHref },
               { label: 'Detect' }
             ]} />

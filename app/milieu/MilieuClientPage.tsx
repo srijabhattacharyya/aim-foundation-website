@@ -80,7 +80,7 @@ export default function MilieuClientPage() {
             </section>
 
             <Breadcrumbs items={[
-              { label: 'Initiatives', href: parentHref },
+              { label: 'Initiatives' },
               { label: parentLabel, href: parentHref },
               { label: 'Milieu' }
             ]} />

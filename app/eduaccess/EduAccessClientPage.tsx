@@ -65,7 +65,7 @@ export default function EduAccessClientPage() {
         </section>
 
         <Breadcrumbs items={[
-          { label: 'Initiatives', href: '/educational-initiatives' },
+          { label: 'Initiatives' },
           { label: 'Educational', href: '/educational-initiatives' },
           { label: 'EduAccess' }
         ]} />

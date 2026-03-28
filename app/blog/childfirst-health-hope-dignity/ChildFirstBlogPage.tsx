@@ -49,7 +49,7 @@ export default function ChildFirstBlogPage() {
             </div>
           </header>
 
-          <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: 'Blog', href: '/blog' }, { label: 'ChildFirst Story' }]} />
+          <Breadcrumbs items={[{ label: 'Resources' }, { label: 'Blog', href: '/blog' }, { label: 'ChildFirst Story' }]} />
 
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
             <div className="max-w-4xl mx-auto">
@@ -65,7 +65,7 @@ export default function ChildFirstBlogPage() {
                 <p>Children in these red-light districts face unique and compounded challenges:</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li><strong>High Risk of Illness:</strong> Overcrowded and poorly ventilated living conditions make them highly susceptible to respiratory infections, skin diseases, and waterborne illnesses.</li>
-                  <li><strong>Poor Nutrition:</strong> With limited access to balanced meals, malnutrition is widespread, leading to stunted growth, weak immunity, and developmental delays.</li>
+                  <li><strong>Poor Nutrition:</strong> With limited access to balanced meals, malnutrition is widespread, leading to stalled growth, weak immunity, and developmental delays.</li>
                   <li><strong>Lack of Access to Healthcare:</strong> Stigma and financial hardship often keep families from seeking medical help, even when children are critically ill.</li>
                   <li><strong>Psychological Trauma:</strong> Growing up amidst exploitation, violence, and neglect leaves deep emotional scars, often leading to mental health challenges later in life.</li>
                 </ul>

@@ -49,7 +49,7 @@ export default function EmpowerEnglishBlogPage() {
             </div>
           </header>
 
-          <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: 'Blog', href: '/blog' }, { label: 'Empower English Story' }]} />
+          <Breadcrumbs items={[{ label: 'Resources' }, { label: 'Blog', href: '/blog' }, { label: 'Empower English Story' }]} />
 
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function EmpowerEnglishBlogPage() {
                   This is the magic of <strong><Link href="/empower-english" className="text-primary hover:underline">Empower English</Link></strong> — a transformative initiative by the AIM Foundation that is helping young students in Kolkata, Purba Bardhaman, and Jalpaiguri find their voice, their confidence, and their place in the world.
                 </p>
 
-                <h2 className="text-3xl font-bold font-headline text-foreground">The Challenge: When Language Becomes a Barrier</h2>
+                <h2 className="text-3xl font-bold font-headline text-foreground">The Challenge: When Language Become a Barrier</h2>
                 <p>
                   English is more than a language in today’s world. It’s a passport to <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, a bridge to opportunity, and a tool for global connection. In India, where competitive exams, job interviews, and higher education often require English proficiency, the lack of spoken English skills can leave talented young minds at the margins.
                 </p>

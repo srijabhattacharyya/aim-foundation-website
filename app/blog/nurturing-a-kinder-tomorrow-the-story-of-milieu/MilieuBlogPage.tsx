@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -48,11 +49,7 @@ export default function MilieuBlogPage() {
             </div>
           </header>
 
-          <Breadcrumbs items={[
-            { label: 'Resources', href: '/blog' },
-            { label: 'Blog', href: '/blog' },
-            { label: 'Milieu Story' }
-          ]} />
+          <Breadcrumbs items={[{ label: 'Resources' }, { label: 'Blog', href: '/blog' }, { label: 'Milieu Story' }]} />
 
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
             <div className="max-w-4xl mx-auto">
