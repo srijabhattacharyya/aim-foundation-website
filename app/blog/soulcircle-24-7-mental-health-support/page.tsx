@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import SoulCircleBlogPage from './SoulCircleBlogPage';
 
@@ -51,7 +50,12 @@ export default function Page() {
     "headline": "SoulCircle: Bringing 24/7 Compassionate Mental Health Support to Everyone, Everywhere",
     "author": {
       "@type": "Organization",
-      "name": "AIM Foundation"
+      "name": "Team AIM Foundation",
+      "url": "https://aimindia.org.in/"
+    },
+    "editor": {
+      "@type": "Person",
+      "name": "Saibal Ganguly"
     },
      "publisher": {
       "@type": "Organization",

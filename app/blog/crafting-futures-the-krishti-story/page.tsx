@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import KrishtiBlogPage from './KrishtiBlogPage';
 
@@ -50,7 +49,12 @@ export default function Page() {
     "headline": "Crafted by Her. Backed by Krishti: The Story of Empowering Women Entrepreneurs",
     "author": {
       "@type": "Organization",
-      "name": "AIM Foundation"
+      "name": "Team AIM Foundation",
+      "url": "https://aimindia.org.in/"
+    },
+    "editor": {
+      "@type": "Person",
+      "name": "Saibal Ganguly"
     },
     "publisher": {
       "@type": "Organization",

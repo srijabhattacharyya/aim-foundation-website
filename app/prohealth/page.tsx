@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import ProHealthClientPage from './ProHealthClientPage';
 
@@ -52,8 +51,12 @@ export default function ProHealthPage() {
     'description': 'AIM Foundation, in partnership with Children International, USA, announces a major strategic investment in healthcare.',
     'author': {
       '@type': 'Organization',
-      'name': 'AIM Foundation',
+      'name': 'Team AIM Foundation',
       'url': 'https://aimindia.org.in/'
+    },
+    'editor': {
+      '@type': 'Person',
+      'name': 'Saibal Ganguly'
     },
     'publisher': {
       '@type': 'Organization',

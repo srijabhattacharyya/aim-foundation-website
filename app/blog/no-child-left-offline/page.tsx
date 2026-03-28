@@ -56,8 +56,12 @@ export default function Page() {
     'image': 'https://aimindia.org.in/images/banner/digiempower.avif',
     'author': {
       '@type': 'Organization',
-      'name': 'AIM Foundation',
+      'name': 'Team AIM Foundation',
       'url': 'https://aimindia.org.in/'
+    },
+    'editor': {
+      '@type': 'Person',
+      'name': 'Saibal Ganguly'
     },
     'publisher': {
       '@type': 'Organization',

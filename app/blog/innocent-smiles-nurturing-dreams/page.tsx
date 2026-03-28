@@ -52,11 +52,16 @@ export default function Page() {
     headline: 'Innocent Smiles: Nurturing Dreams, Inspiring Futures',
     author: {
       '@type': 'Organization',
-      name: 'AIM Foundation',
+      'name': 'Team AIM Foundation',
+      'url': 'https://aimindia.org.in/'
+    },
+    'editor': {
+      '@type': 'Person',
+      'name': 'Saibal Ganguly'
     },
     publisher: {
       '@type': 'Organization',
-      name: 'AIM Foundation',
+      'name': 'AIM Foundation',
       logo: {
         '@type': 'ImageObject',
         url: 'https://aimindia.org.in/logo.png',
@@ -64,7 +69,7 @@ export default function Page() {
     },
     description: 'Discover how AIM Foundation’s Innocent Smiles initiative is transforming lives through education, art, music, and mentorship for underprivileged children.',
     image: 'https://aimindia.org.in/images/banner/innocent-smiles.avif',
-    datePublished: new Date().toISOString(),
+    datePublished: '2025-10-18T00:00:00Z',
     mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': 'https://aimindia.org.in/blog/innocent-smiles-nurturing-dreams'

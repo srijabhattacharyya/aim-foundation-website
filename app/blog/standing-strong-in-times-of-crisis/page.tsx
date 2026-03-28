@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import DisasterReliefBlogPage from './DisasterReliefBlogPage';
 
@@ -49,7 +48,12 @@ export default function Page() {
     "headline": "From Despair to Recovery: Rebuilding Lives After Disaster",
     "author": {
       "@type": "Organization",
-      "name": "AIM Foundation"
+      "name": "Team AIM Foundation",
+      "url": "https://aimindia.org.in/"
+    },
+    "editor": {
+      "@type": "Person",
+      "name": "Saibal Ganguly"
     },
      "publisher": {
       "@type": "Organization",
