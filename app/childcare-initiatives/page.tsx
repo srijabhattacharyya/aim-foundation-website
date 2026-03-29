@@ -71,7 +71,7 @@ const initiatives = [
 ];
 
 export default function ChildcareInitiativesPage() {
-  const schemaMarkup = {
+  const donateSchema = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
     "recipient": {
@@ -82,12 +82,37 @@ export default function ChildcareInitiativesPage() {
     }
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.aimindia.org.in/childcare-initiatives#webpage",
+    "url": "https://www.aimindia.org.in/childcare-initiatives",
+    "name": "Childcare Initiatives — AIM Foundation",
+    "description": "AIM Foundation provides safe environments, healthcare, and protection for vulnerable children in India, including children of sex workers in Kolkata.",
+    "isPartOf": { "@id": "https://www.aimindia.org.in/#organization" },
+    "knowsAbout": [
+      "sponsor a child India",
+      "child sponsorship India",
+      "child welfare NGO India",
+      "NGO for children in Kolkata",
+      "best NGO for child welfare Kolkata",
+      "child rights NGO Kolkata",
+      "underprivileged children NGO West Bengal",
+      "child protection programs India"
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-childcare"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
+        key="org-schema-childcare-donate"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+        key="org-schema-childcare-webpage"
       />
       <div className="flex flex-col min-h-screen">
         <Navbar />
