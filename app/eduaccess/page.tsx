@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export default function EduAccessPage() {
-  const schemaMarkup = {
+  const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AIM Foundation",
@@ -52,12 +52,60 @@ export default function EduAccessPage() {
     "description": "AIM Foundation EduAccess, rural education West Bengal, online learning NGO, digital classrooms for villages, AIM Foundation online education, bridging education gap."
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.aimindia.org.in/eduaccess#webpage",
+    "url": "https://www.aimindia.org.in/eduaccess",
+    "name": "EduAccess — AIM Foundation Rural Online Learning Program",
+    "description": "EduAccess by AIM Foundation delivers expert-led live online classes in English, Math, and Science to underprivileged students in rural West Bengal — bridging the rural-urban education divide through technology.",
+    "inLanguage": "en-IN",
+    "isPartOf": { "@id": "https://www.aimindia.org.in/#organization" },
+    "about": {
+      "@type": "Thing",
+      "name": "Online Education Access for Rural and Underprivileged Children in India"
+    },
+    "mentions": [
+      {
+        "@type": "Thing",
+        "name": "SDG 4 — Quality Education",
+        "sameAs": "https://sdgs.un.org/goals/goal4"
+      },
+      {
+        "@type": "Thing",
+        "name": "Digital Divide in Indian Education",
+        "sameAs": "https://en.wikipedia.org/wiki/Digital_divide"
+      },
+      {
+        "@type": "Thing",
+        "name": "National Education Policy 2020",
+        "sameAs": "https://en.wikipedia.org/wiki/National_Education_Policy_2020"
+      }
+    ],
+    "knowsAbout": [
+      "rural education NGO India",
+      "online education rural India",
+      "rural-urban education divide India",
+      "digital classroom rural India",
+      "bridge education gap India",
+      "quality education underprivileged children India",
+      "e-learning for rural students India",
+      "West Bengal education NGO",
+      "NGO for education in rural West Bengal",
+      "online classes underprivileged children",
+      "interactive online learning rural India",
+      "donate for education West Bengal",
+      "education CSR West Bengal",
+      "SDG4 quality education India"
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
+          __html: JSON.stringify([orgSchema, webPageSchema]),
         }}
         key="org-schema-eduaccess"
       />
