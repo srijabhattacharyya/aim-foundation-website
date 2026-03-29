@@ -18,7 +18,6 @@ export const metadata: Metadata = {
     'humanitarian relief',
   ],
   authors: [{ name: 'AIM Foundation' }],
-  robots: 'index, follow',
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/relief-to-the-underprivileged',
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 export default function ReliefPage() {
-  const schemaMarkup = {
+  const donateSchema = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
     "recipient": {
@@ -61,12 +60,35 @@ export default function ReliefPage() {
     }
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.aimindia.org.in/relief-to-the-underprivileged#webpage",
+    "url": "https://www.aimindia.org.in/relief-to-the-underprivileged",
+    "name": "Relief to the Underprivileged — AIM Foundation",
+    "description": "AIM Foundation provides immediate and compassionate aid, including food, water, and shelter, to individuals facing extreme hardship and crises.",
+    "isPartOf": { "@id": "https://www.aimindia.org.in/#organization" },
+    "knowsAbout": [
+      "relief for poor people India",
+      "emergency aid NGO India",
+      "charity for underprivileged India",
+      "food distribution NGO Kolkata",
+      "blanket distribution NGO India",
+      "humanitarian aid West Bengal"
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-relief"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
+        key="org-schema-relief-donate"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+        key="org-schema-relief-webpage"
       />
       <ReliefClientPage />
     </>
