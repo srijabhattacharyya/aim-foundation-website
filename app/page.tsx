@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from "@/components/layout/Navbar";
@@ -8,6 +7,7 @@ import HeroCarousel from '@/components/sections/HeroCarousel';
 import InfoSection from '@/components/sections/InfoSection';
 import AboutUs from '@/components/sections/AboutUs';
 import Impact from '@/components/sections/Impact';
+import Blog from '@/components/sections/Blog';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -16,7 +16,6 @@ const DonateSection = dynamic(() => import('@/components/sections/DonateSection'
 const Volunteer = dynamic(() => import('@/components/sections/Volunteer'), { loading: () => <Skeleton className="h-[250px] w-full" /> });
 const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), { loading: () => <Skeleton className="h-[400px] w-full" /> });
 const Patrons = dynamic(() => import('@/components/sections/Patrons'), { loading: () => <Skeleton className="h-[400px] w-full" /> });
-const Blog = dynamic(() => import('@/components/sections/Blog'), { loading: () => <Skeleton className="h-[500px] w-full" /> });
 const Newsletter = dynamic(() => import('@/components/sections/Newsletter'), { loading: () => <Skeleton className="h-[300px] w-full" /> });
 
 export default function HomePage() {
