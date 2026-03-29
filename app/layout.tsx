@@ -116,7 +116,24 @@ export default function RootLayout({
     "potentialAction": {
       "@type": "DonateAction",
       "target": "https://aimindia.org.in/individual-donation"
-    }
+    },
+    "knowsAbout": [
+      "NGO in India",
+      "donate to NGO India",
+      "women empowerment India",
+      "child welfare NGO",
+      "CSR partnership NGO",
+      "NGO volunteer India",
+      "sponsor a child India",
+      "education for underprivileged children",
+      "free health camp India",
+      "community development India",
+      "social welfare programs India",
+      "NGO internship India",
+      "NGO Kolkata",
+      "payroll giving India",
+      "cause marketing India"
+    ]
   };
 
   const websiteSchemaMarkup = {
