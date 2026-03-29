@@ -86,7 +86,7 @@ const initiatives = [
 ];
 
 export default function GenderEqualityInitiativesPage() {
-  const schemaMarkup = {
+  const donateSchema = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
     "recipient": {
@@ -97,12 +97,39 @@ export default function GenderEqualityInitiativesPage() {
     }
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.aimindia.org.in/gender-equality-initiative#webpage",
+    "url": "https://www.aimindia.org.in/gender-equality-initiative",
+    "name": "Gender Equality by AIM Foundation: Women Empowerment",
+    "description": "AIM Foundation empowers women through vocational training, tailoring, menstrual health awareness, cervical screening, and women entrepreneurship programs in West Bengal.",
+    "isPartOf": { "@id": "https://www.aimindia.org.in/#organization" },
+    "knowsAbout": [
+      "women empowerment India",
+      "women empowerment NGO in Kolkata",
+      "NGO for women empowerment West Bengal",
+      "women welfare NGO Kolkata",
+      "vocational training for women India",
+      "skill development for women India",
+      "women entrepreneurship rural India",
+      "financial independence women India",
+      "gender equality NGO West Bengal",
+      "tailoring training women NGO"
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-gender-equality"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
+        key="org-schema-gender-equality-donate"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+        key="org-schema-gender-equality-webpage"
       />
       <div className="flex flex-col min-h-screen">
         <Navbar />
