@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 };
 
 export default function DisasterManagementPage() {
-  const schemaMarkup = {
+  const donateSchema = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
     "recipient": {
@@ -59,14 +59,38 @@ export default function DisasterManagementPage() {
     }
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.aimindia.org.in/disaster-management#webpage",
+    "url": "https://www.aimindia.org.in/disaster-management",
+    "name": "Disaster Relief by AIM Foundation: Emergency Aid & Support",
+    "description": "AIM Foundation delivers rapid disaster relief including emergency food, shelter, mobile medical units, and psychosocial support to communities hit by floods and cyclones in India.",
+    "isPartOf": { "@id": "https://www.aimindia.org.in/#organization" },
+    "knowsAbout": [
+       "flood relief India",
+    "disaster relief NGO India",
+    "natural disaster relief NGO India",
+    "donate for flood relief India",
+    "flood relief NGO West Bengal",
+    "cyclone relief West Bengal",
+    "cyclone Amphan relief West Bengal",
+    "disaster relief Sundarbans",
+    "Sundarbans flood relief"
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
-        key="org-schema-disaster"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
+        key="org-schema-disaster-donate"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+        key="org-schema-disaster-webpage"
       />
       <DisasterManagementClientPage />
     </>
