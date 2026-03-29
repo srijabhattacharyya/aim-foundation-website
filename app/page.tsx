@@ -20,25 +20,53 @@ const Blog = dynamic(() => import('@/components/sections/Blog'), { loading: () =
 const Newsletter = dynamic(() => import('@/components/sections/Newsletter'), { loading: () => <Skeleton className="h-[300px] w-full" /> });
 
 export default function HomePage() {
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "AIM Foundation",
+    "url": "https://aimindia.org.in",
+    "logo": "https://aimindia.org.in/logo.png",
+    "knowsAbout": [
+      "best NGO to donate in India",
+      "best NGO in West Bengal",
+      "top NGOs in West Bengal",
+      "best NGO in Kolkata",
+      "top NGO in kolkata",
+      "child sponsorship India",
+      "top NGOs in Kolkata",
+      "donate online India charity",
+      "NGO working for poor children India",
+      "volunteer opportunities Kolkata",
+      "CSR NGO partner India"
+    ]
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        <Hero>
-          <HeroCarousel />
-        </Hero>
-        <InfoSection />
-        <AboutUs />
-        <Impact />
-        <LatestAnnouncements />
-        <DonateSection />
-        <Volunteer />
-        <Testimonials />
-        <Patrons />
-        <Blog />
-        <Newsletter />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
+        key="home-page-schema"
+      />
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Hero>
+            <HeroCarousel />
+          </Hero>
+          <InfoSection />
+          <AboutUs />
+          <Impact />
+          <LatestAnnouncements />
+          <DonateSection />
+          <Volunteer />
+          <Testimonials />
+          <Patrons />
+          <Blog />
+          <Newsletter />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
