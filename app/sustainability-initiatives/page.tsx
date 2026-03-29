@@ -85,7 +85,7 @@ const initiatives = [
 ];
 
 export default function SustainabilityInitiativesPage() {
-  const schemaMarkup = {
+  const donateSchema = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
     "recipient": {
@@ -96,12 +96,39 @@ export default function SustainabilityInitiativesPage() {
     }
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.aimindia.org.in/sustainability-initiatives#webpage",
+    "url": "https://www.aimindia.org.in/sustainability-initiatives",
+    "name": "Sustainability Initiatives by AIM Foundation: Nurturing Nature",
+    "description": "AIM Foundation drives reforestation, mangrove restoration in Sundarbans, forest cleaning, and environmental education to build a sustainable future in India.",
+    "isPartOf": { "@id": "https://www.aimindia.org.in/#organization" },
+    "knowsAbout": [
+      "tree plantation NGO India",
+      "tree plantation NGO West Bengal",
+      "environmental NGO in Kolkata",
+      "environmental NGO West Bengal",
+      "reforestation NGO India",
+      "mangrove restoration Sundarbans",
+      "Sundarbans conservation NGO",
+      "environmental awareness programs India",
+      "green CSR India",
+      "forest conservation NGO India"
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-sustainability"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
+        key="org-schema-sustainability-donate"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+        key="org-schema-sustainability-webpage"
       />
       <div className="flex flex-col min-h-screen">
         <Navbar />
