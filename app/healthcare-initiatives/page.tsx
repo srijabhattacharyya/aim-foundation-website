@@ -118,7 +118,7 @@ const initiatives = [
 ];
 
 export default function HealthCareInitiativesPage() {
-  const schemaMarkup = {
+  const donateSchema = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
     "recipient": {
@@ -129,12 +129,42 @@ export default function HealthCareInitiativesPage() {
     }
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.aimindia.org.in/healthcare-initiatives#webpage",
+    "url": "https://www.aimindia.org.in/healthcare-initiatives",
+    "name": "Healthcare Access for the Underserved — AIM Foundation",
+    "description": "AIM Foundation provides free health camps, cervical cancer screening, eye care, oral cancer detection, mental health support, and pediatric healthcare to underserved communities in India.",
+    "isPartOf": { "@id": "https://www.aimindia.org.in/#organization" },
+    "knowsAbout": [
+      "free health camp India",
+      "rural healthcare India",
+      "healthcare NGO in Kolkata",
+      "health NGO Kolkata",
+      "best NGO for medical help in Kolkata",
+      "menstrual hygiene India",
+      "cervical cancer screening India",
+      "mental health app India",
+      "oral cancer screening camp",
+      "free eye camp India",
+      "pediatric healthcare underprivileged",
+      "reproductive health adolescent girls India",
+      "healthcare access Kolkata"
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        key="org-schema-healthcare"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
+        key="org-schema-healthcare-donate"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+        key="org-schema-healthcare-webpage"
       />
 
       <section className="relative w-full">
