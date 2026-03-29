@@ -91,7 +91,7 @@ const initiatives = [
 ];
 
 export default function EducationalInitiativesPage() {
-  const schemaMarkup = {
+  const donateSchema = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
     "recipient": {
@@ -102,14 +102,41 @@ export default function EducationalInitiativesPage() {
     }
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.aimindia.org.in/educational-initiatives#webpage",
+    "url": "https://www.aimindia.org.in/educational-initiatives",
+    "name": "Educational Initiatives for Brighter Futures — AIM Foundation",
+    "description": "AIM Foundation runs education programs for underprivileged children in West Bengal — digital literacy, online classes, spoken English, art & music, and an AI learning app.",
+    "isPartOf": { "@id": "https://www.aimindia.org.in/#organization" },
+    "knowsAbout": [
+      "education for underprivileged children",
+      "education for poor children India",
+      "education NGO in Kolkata",
+      "NGO for education in Kolkata",
+      "West Bengal education NGO",
+      "digital literacy for children",
+      "free online classes rural India",
+      "spoken English class underprivileged",
+      "art and music education NGO",
+      "AI education app rural students",
+      "digital literacy Adivasi children",
+      "first generation learner support India"
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaMarkup),
-        }}
-        key="org-schema-edu"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
+        key="org-schema-edu-donate"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+        key="org-schema-edu-webpage"
       />
       <section className="relative w-full">
         <div className="relative w-full">
