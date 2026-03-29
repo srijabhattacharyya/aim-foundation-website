@@ -196,52 +196,75 @@ const blogPosts = [
 ];
 
 export default function BlogPage() {
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "AIM Foundation Blog",
+    "url": "https://aimindia.org.in/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AIM Foundation",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://aimindia.org.in/logo.png"
+      }
+    },
+    "description": "Read stories of change, impact reports, and updates from AIM Foundation."
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        <section className="py-12 md:py-20 lg:py-24 bg-muted">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold font-headline">Voices of Change</h1>
-              <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                Stay close to the change you’re helping spark. Discover stories, reflections, and milestones from our journey of hope. Read about our work in <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>, <Link href="/sustainability-initiatives" className="text-primary hover:underline">sustainability</Link>, and <Link href="/gender-equality-initiative" className="text-primary hover:underline">women empowerment</Link>.
-              </p>
-            </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        key="org-schema-blog-landing"
+      />
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <section className="py-12 md:py-20 lg:py-24 bg-muted">
+            <div className="container mx-auto px-4 md:px-6">
+              <div className="text-center mb-12">
+                <h1 className="text-4xl md:text-5xl font-bold font-headline">Voices of Change</h1>
+                <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                  Stay close to the change you’re helping spark. Discover stories, reflections, and milestones from our journey of hope. Read about our work in <Link href="/educational-initiatives" className="text-primary hover:underline">education</Link>, <Link href="/healthcare-initiatives" className="text-primary hover:underline">healthcare</Link>, <Link href="/sustainability-initiatives" className="text-primary hover:underline">sustainability</Link>, and <Link href="/gender-equality-initiative" className="text-primary hover:underline">women empowerment</Link>.
+                </p>
+              </div>
 
-            <Breadcrumbs items={[{ label: 'Resources' }, { label: 'Blog' }]} />
+              <Breadcrumbs items={[{ label: 'Resources' }, { label: 'Blog' }]} />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-              {blogPosts.map((post, index) => (
-                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                  <Link href={`/blog/${post.slug}`} className="block">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      width={600}
-                      height={400}
-                      data-ai-hint={post.hint}
-                      className="w-full h-56 object-cover"
-                      loading={index > 2 ? 'lazy' : 'eager'}
-                    />
-                  </Link>
-                  <CardContent className="p-6 flex flex-col flex-grow">
-                    <p className="text-sm text-muted-foreground mb-2">{post.date}</p>
-                    <CardTitle className="font-headline mb-2 text-xl">
-                      <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">{post.title}</Link>
-                    </CardTitle>
-                    <CardDescription className="flex-grow text-justify">{post.excerpt}</CardDescription>
-                    <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
-                      <Link href={`/blog/${post.slug}`}>Read More &rarr;</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                {blogPosts.map((post, index) => (
+                  <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <Link href={`/blog/${post.slug}`} className="block">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        width={600}
+                        height={400}
+                        data-ai-hint={post.hint}
+                        className="w-full h-56 object-cover"
+                        loading={index > 2 ? 'lazy' : 'eager'}
+                      />
+                    </Link>
+                    <CardContent className="p-6 flex flex-col flex-grow">
+                      <p className="text-sm text-muted-foreground mb-2">{post.date}</p>
+                      <CardTitle className="font-headline mb-2 text-xl">
+                        <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">{post.title}</Link>
+                      </CardTitle>
+                      <CardDescription className="flex-grow text-justify">{post.excerpt}</CardDescription>
+                      <Button asChild variant="link" className="p-0 mt-4 self-start transition-transform transform hover:scale-105">
+                        <Link href={`/blog/${post.slug}`}>Read More &rarr;</Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
