@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ProHealthClientPage from './ProHealthClientPage';
 
 export const metadata: Metadata = {
-  title: 'ProHealth: Strategic Healthcare Investment in Kolkata | AIM Foundation',
-  description: 'AIM Foundation, in partnership with Children International, USA, announces ProHealth—a $70,000 strategic investment to transform healthcare accessibility in Kolkata.',
+  title: 'Healthcare NGO Kolkata | Project ProHealth Impact',
+  description: 'Healthcare NGO in Kolkata improving lives of 3,252 children through menstrual hygiene, mental health support, and holistic care.',
   keywords: [
     'ProHealth AIM Foundation',
     'Children International partnership',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://aimindia.org.in/prohealth',
-    title: 'ProHealth: Strategic Healthcare Investment in Kolkata | AIM Foundation',
-    description: 'A $70,000 strategic investment in the future of Kolkata’s healthcare, in partnership with Children International, USA.',
+    title: 'Healthcare NGO Kolkata | Project ProHealth Impact',
+    description: 'Healthcare NGO in Kolkata improving lives of 3,252 children through menstrual hygiene, mental health support, and holistic care.',
     images: [
       {
         url: 'https://aimindia.org.in/home.avif',
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@aimindiango',
-    title: 'ProHealth: Strategic Healthcare Investment in Kolkata | AIM Foundation',
-    description: 'Transforming healthcare in Kolkata through strategic partnership and $70,000 investment.',
+    title: 'Healthcare NGO Kolkata | Project ProHealth Impact',
+    description: 'Healthcare NGO in Kolkata improving lives of 3,252 children through menstrual hygiene, mental health support, and holistic care.',
     images: ['https://aimindia.org.in/home.avif'],
   },
   alternates: {
